@@ -4,506 +4,1448 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Family — Margie Nell Ballard Line</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Josefin+Sans:wght@200;300;400;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Josefin+Sans:wght@200;300;400;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0c0804;--bg2:#14100a;--gold:#c9a84c;--gold2:#e8c97a;--gold3:#8b6420;--parch:#f0e2c0;--parch2:#d4c4a0;--sepia:#7a5c2e;--sepia2:#5a3e1e;--rust:#8b3a1a;}
+/* ── RESET ── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--parch);font-family:'Cormorant Garamond',Georgia,serif;min-height:100vh;}
-.nav{position:sticky;top:0;z-index:100;background:rgba(12,8,4,.96);border-bottom:1px solid rgba(201,168,76,.2);backdrop-filter:blur(8px);display:flex;align-items:center;padding:0 16px;overflow-x:auto;gap:0;}
+html{font-size:16px;-webkit-text-size-adjust:100%;}
+
+/* ── LIGHT THEME ── */
+:root{
+  --bg:#faf7f2;
+  --bg2:#f3ede0;
+  --bg3:#ebe3d0;
+  --card:#ffffff;
+  --border:#d4c4a0;
+  --border2:#c4ae80;
+  --ink:#2a1e0a;
+  --ink2:#4a3820;
+  --ink3:#6a5430;
+  --gold:#8b6420;
+  --gold2:#b08030;
+  --gold3:#c9a84c;
+  --gold-bg:rgba(139,100,32,0.08);
+  --gold-bg2:rgba(139,100,32,0.14);
+  --rust:#8b3a1a;
+  --rust-bg:rgba(139,58,26,0.08);
+  --forest:#1e4a2e;
+  --forest-bg:rgba(30,74,46,0.08);
+  --blue:#2a4a7a;
+  --blue-bg:rgba(42,74,122,0.08);
+  --red:#aa3333;
+  --shadow:rgba(42,30,10,0.12);
+  --shadow2:rgba(42,30,10,0.06);
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Cormorant Garamond',Georgia,serif;
+  min-height:100vh;
+  line-height:1.6;
+}
+
+/* ── NAV ── */
+.nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(250,247,242,0.97);
+  border-bottom:2px solid var(--border);
+  backdrop-filter:blur(8px);
+  display:flex;align-items:center;
+  padding:0 20px;
+  overflow-x:auto;
+  gap:0;
+  box-shadow:0 2px 12px var(--shadow2);
+}
 .nav::-webkit-scrollbar{height:0;}
-.nav-brand{font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:300;letter-spacing:3px;color:var(--gold);text-transform:uppercase;white-space:nowrap;padding:14px 16px 14px 0;border-right:1px solid rgba(201,168,76,.2);margin-right:8px;flex-shrink:0;}
-.nb{font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:var(--sepia);padding:16px 14px;cursor:pointer;border:none;background:none;white-space:nowrap;flex-shrink:0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;}
-.nb:hover{color:var(--parch2);}
-.nb.active{color:var(--gold);border-bottom-color:var(--gold);}
-.sec{display:none;min-height:100vh;}
+.nav-brand{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:11px;font-weight:600;letter-spacing:3px;
+  color:var(--gold);text-transform:uppercase;
+  white-space:nowrap;padding:14px 16px 14px 0;
+  border-right:2px solid var(--border);
+  margin-right:8px;flex-shrink:0;
+}
+.nb{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:10px;font-weight:300;letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--ink3);
+  padding:16px 14px;
+  cursor:pointer;border:none;background:none;
+  white-space:nowrap;flex-shrink:0;
+  border-bottom:3px solid transparent;
+  transition:color .2s,border-color .2s;
+}
+.nb:hover{color:var(--ink);}
+.nb.active{color:var(--gold);border-bottom-color:var(--gold);font-weight:600;}
+
+/* ── SECTIONS ── */
+.sec{display:none;}
 .sec.active{display:block;}
-.shdr{padding:52px 40px 36px;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.06) 0%,transparent 65%);}
-.sey{font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:300;letter-spacing:5px;text-transform:uppercase;color:var(--gold3);margin-bottom:12px;}
-.sttl{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,58px);font-weight:300;letter-spacing:-1px;line-height:1;color:var(--parch);margin-bottom:8px;}
-.sttl em{font-style:italic;color:var(--gold);}
-.ssub{font-family:'IM Fell English',serif;font-size:clamp(13px,2vw,17px);font-style:italic;color:var(--sepia);margin-bottom:18px;}
-.srul{display:flex;align-items:center;justify-content:center;gap:12px;}
-.srul::before,.srul::after{content:'';flex:1;max-width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold3));}
-.srul::after{background:linear-gradient(to left,transparent,var(--gold3));}
-.sdia{width:5px;height:5px;background:var(--gold3);transform:rotate(45deg);}
-.ctr{max-width:880px;margin:0 auto;padding:0 24px 80px;}
-.prose{font-size:17px;line-height:1.85;color:var(--parch);}
-.prose em{font-style:italic;color:var(--gold);}
+
+/* ── SECTION HEADER ── */
+.shdr{
+  padding:56px 24px 40px;
+  text-align:center;
+  background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%);
+  border-bottom:1px solid var(--border);
+  margin-bottom:40px;
+}
+.sey{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:10px;font-weight:300;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:12px;
+  display:block;
+}
+.sttl{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,5vw,60px);font-weight:300;
+  letter-spacing:-1px;line-height:1.1;
+  color:var(--ink);margin-bottom:10px;
+  display:block;
+}
+.sttl em{font-style:italic;color:var(--gold2);}
+.ssub{
+  font-family:'IM Fell English',serif;
+  font-size:clamp(15px,2.2vw,20px);
+  font-style:italic;color:var(--ink3);
+  margin-bottom:20px;
+  display:block;
+}
+.srul{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px;}
+.srul::before,.srul::after{content:'';flex:1;max-width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold2));}
+.srul::after{background:linear-gradient(to left,transparent,var(--gold2));}
+.sdia{width:6px;height:6px;background:var(--gold2);transform:rotate(45deg);}
+.shint{font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:200;letter-spacing:3px;color:var(--ink3);text-transform:uppercase;}
+
+/* ── CONTAINER ── */
+.ctr{max-width:860px;margin:0 auto;padding:0 24px 80px;}
+
+/* ── TYPOGRAPHY ── */
+.prose{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;line-height:1.85;color:var(--ink2);
+}
 .prose p{margin-bottom:1.4em;}
-.pq{padding:18px 22px 18px 26px;border-left:3px solid var(--gold3);background:rgba(201,168,76,.05);margin:28px 0;font-family:'IM Fell English',serif;font-size:18px;font-style:italic;line-height:1.7;color:var(--parch2);}
-.div{width:100%;height:1px;background:linear-gradient(to right,transparent,var(--gold3),transparent);margin:36px 0;}
-.chd{display:block;width:100%;font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:var(--gold3);margin-bottom:12px;margin-top:4px;}
-.cttl{display:block;width:100%;font-family:'Cormorant Garamond',serif;font-size:clamp(20px,3vw,28px);font-weight:600;color:var(--parch);margin-bottom:18px;line-height:1.2;}
-.ftbl{width:100%;border-collapse:collapse;margin:18px 0;}
-.ftbl tr{border-bottom:1px solid rgba(255,255,255,.05);}
-.ftbl td{padding:9px 0;vertical-align:top;}
-.ftbl td:first-child{font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:300;letter-spacing:1px;color:var(--gold3);text-transform:uppercase;width:150px;padding-right:18px;padding-top:11px;}
-.ftbl td:last-child{font-size:15px;line-height:1.6;color:var(--parch2);}
-.pcard{background:var(--bg2);border:1px solid rgba(201,168,76,.2);border-radius:2px;padding:22px 26px;margin:18px 0;position:relative;overflow:hidden;}
-.pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
-.pcard.lost::before{background:linear-gradient(to right,var(--rust),#cc4444);}
-.pcard.settled::before{background:linear-gradient(to right,#1e3a2e,#2a7a2a);}
-.pcard.active::before{background:linear-gradient(to right,var(--gold3),var(--gold2));}
-.plbl{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:300;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;}
-.pcard.lost .plbl{color:#cc6644;}
-.pcard.settled .plbl{color:#4a9a4a;}
-.pcard.active .plbl{color:var(--gold3);}
-.pnm{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--parch);margin-bottom:3px;}
-.ploc{font-size:14px;font-style:italic;color:var(--sepia);margin-bottom:14px;}
-.pstat{display:inline-block;padding:3px 10px;border-radius:12px;font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:400;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
-.pcard.lost .pstat{background:rgba(139,58,26,.3);color:#d48060;border:1px solid rgba(139,58,26,.5);}
-.pcard.settled .pstat{background:rgba(30,58,46,.4);color:#6ab890;border:1px solid rgba(30,58,46,.6);}
-.pcard.active .pstat{background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.3);}
-.pe{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.05);}
+.prose p:last-child{margin-bottom:0;}
+.prose em{font-style:italic;color:var(--gold);}
+.prose strong{font-weight:600;color:var(--ink);}
+
+/* Chapter headings */
+.chd{
+  display:block;
+  font-family:'Josefin Sans',sans-serif;
+  font-size:10px;font-weight:400;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);margin:0 0 10px;padding-top:4px;
+}
+.cttl{
+  display:block;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,3.5vw,32px);font-weight:600;
+  color:var(--ink);margin-bottom:20px;line-height:1.25;
+}
+
+/* ── DIVIDER ── */
+.div{
+  width:100%;height:1px;
+  background:linear-gradient(to right,transparent,var(--border2),transparent);
+  margin:40px 0;
+  display:block;
+}
+
+/* ── PULL QUOTE ── */
+.pq{
+  padding:20px 24px 20px 28px;
+  border-left:4px solid var(--gold2);
+  background:var(--gold-bg);
+  margin:32px 0;
+  font-family:'IM Fell English',serif;
+  font-size:19px;font-style:italic;line-height:1.7;
+  color:var(--ink2);
+  border-radius:0 4px 4px 0;
+  display:block;
+}
+
+/* ── FACT TABLE ── */
+.ftbl{width:100%;border-collapse:collapse;margin:20px 0;}
+.ftbl tr{border-bottom:1px solid var(--border);}
+.ftbl tr:last-child{border-bottom:none;}
+.ftbl td{padding:10px 0;vertical-align:top;font-size:16px;line-height:1.6;}
+.ftbl td:first-child{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:10px;font-weight:400;letter-spacing:1px;
+  color:var(--gold);text-transform:uppercase;
+  width:160px;padding-right:20px;padding-top:12px;
+  flex-shrink:0;
+}
+.ftbl td:last-child{color:var(--ink2);}
+
+/* ── CARDS ── */
+.card-box{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:24px 28px;
+  margin:20px 0;
+  position:relative;
+  box-shadow:0 2px 8px var(--shadow2);
+}
+.card-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(to right,var(--gold),var(--gold3));border-radius:4px 4px 0 0;}
+.card-box.red::before{background:linear-gradient(to right,var(--rust),#cc4444);}
+.card-box.green::before{background:linear-gradient(to right,var(--forest),#2a7a2a);}
+.card-box.blue::before{background:linear-gradient(to right,var(--blue),#4a7acc);}
+
+.card-label{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:9px;font-weight:400;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:8px;
+  display:block;
+}
+.card-box.red .card-label{color:var(--rust);}
+.card-box.green .card-label{color:var(--forest);}
+.card-box.blue .card-label{color:var(--blue);}
+
+.card-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:600;color:var(--ink);
+  margin-bottom:4px;display:block;
+}
+.card-loc{font-size:14px;font-style:italic;color:var(--ink3);margin-bottom:14px;display:block;}
+
+.badge{
+  display:inline-block;padding:3px 10px;border-radius:12px;
+  font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:400;letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:14px;
+}
+.badge-red{background:var(--rust-bg);color:var(--rust);border:1px solid rgba(139,58,26,.3);}
+.badge-green{background:var(--forest-bg);color:var(--forest);border:1px solid rgba(30,74,46,.3);}
+.badge-gold{background:var(--gold-bg);color:var(--gold);border:1px solid rgba(139,100,32,.3);}
+
+/* ── PERSON ENTRIES ── */
+.pe{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:14px 0;border-bottom:1px solid var(--border);
+}
 .pe:last-child{border-bottom:none;}
-.ped{width:10px;height:10px;border-radius:50%;border:1px solid var(--gold3);background:var(--bg);flex-shrink:0;margin-top:6px;}
-.ped.dir{background:var(--gold);border-color:var(--gold2);box-shadow:0 0 6px rgba(201,168,76,.4);}
-.ped.dna{background:#4a7aaa;border-color:#6a9acc;}
-.pei{flex:1;}
-.penm{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--parch);margin-bottom:2px;}
-.pedt{font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:200;letter-spacing:1px;color:var(--sepia);margin-bottom:4px;}
-.pent{font-size:14px;font-style:italic;color:var(--parch2);line-height:1.5;}
-.pedna{display:inline-block;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1px;color:#6a9acc;padding:2px 8px;border:1px solid rgba(74,122,170,.4);border-radius:10px;background:rgba(74,122,170,.1);margin-top:4px;}
-.gg{margin:28px 0;}
-.ggt{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--gold3);padding:6px 0;margin-bottom:10px;border-bottom:1px solid rgba(201,168,76,.2);}
-.warn{padding:12px 16px;background:rgba(139,58,26,.1);border:1px solid rgba(139,58,26,.4);border-radius:2px;font-family:'Cormorant Garamond',serif;font-size:14px;line-height:1.55;color:#d4a080;margin:16px 0;}
-.sw{overflow-x:auto;overflow-y:visible;padding:16px 60px 80px;cursor:grab;user-select:none;-webkit-overflow-scrolling:touch;}
+.pe-dot{
+  width:10px;height:10px;border-radius:50%;
+  border:2px solid var(--border2);background:var(--bg);
+  flex-shrink:0;margin-top:6px;
+}
+.pe-dot.dir{background:var(--gold2);border-color:var(--gold3);box-shadow:0 0 6px rgba(176,128,48,.4);}
+.pe-dot.dna{background:var(--blue);border-color:#4a7acc;}
+.pe-info{flex:1;min-width:0;}
+.pe-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--ink);margin-bottom:2px;display:block;}
+.pe-name.you{color:var(--red);}
+.pe-name.gone{color:var(--ink2);}
+.pe-dates{font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:200;letter-spacing:1px;color:var(--ink3);margin-bottom:4px;display:block;}
+.pe-note{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--ink3);line-height:1.5;display:block;margin-top:2px;}
+.pe-partner{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--ink3);margin-top:2px;display:block;}
+.pe-dna{
+  display:inline-block;
+  font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1px;
+  color:var(--blue);padding:2px 8px;
+  border:1px solid rgba(42,74,122,.3);border-radius:10px;
+  background:var(--blue-bg);margin-top:4px;
+}
+
+/* ── GENERATION GROUPS ── */
+.gen-group{margin:28px 0;}
+.gen-title{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:9px;font-weight:400;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);padding:6px 0;margin-bottom:12px;
+  border-bottom:2px solid var(--border);
+  display:block;
+}
+
+/* ── FAMILY TREE (indented) ── */
+.ft-p{padding:10px 0;border-bottom:1px solid var(--border);}
+.ft-p:last-child{border-bottom:none;}
+.ft-l1{padding-left:0;}
+.ft-l2{padding-left:20px;border-left:2px solid var(--border2);margin-left:14px;}
+.ft-l3{padding-left:18px;border-left:2px solid var(--border);margin-left:14px;}
+.ft-l4{padding-left:16px;border-left:1px solid var(--border);margin-left:12px;}
+.ft-nm{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--ink);line-height:1.3;display:block;}
+.ft-nm.you{color:var(--red);}
+.ft-nm.mem{color:var(--ink2);}
+.ft-dt{font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:200;letter-spacing:.5px;color:var(--ink3);margin-top:1px;display:block;}
+.ft-nt{font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:var(--ink3);margin-top:2px;line-height:1.4;display:block;}
+.ft-pt{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ink3);margin-top:2px;display:block;}
+.ft-dna{display:inline-block;font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:1px;color:var(--blue);padding:1px 7px;border:1px solid rgba(42,74,122,.3);border-radius:10px;background:var(--blue-bg);margin-top:3px;}
+.ft-await{font-family:'Josefin Sans',sans-serif;font-size:9px;font-style:italic;color:var(--ink3);padding:6px 0;display:block;}
+
+/* ── CHILD GROUP ── */
+.cgrp{margin-top:14px;padding-top:12px;border-top:1px solid var(--border);}
+.cgrp-lbl{font-family:'Josefin Sans',sans-serif;font-size:8px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;}
+
+/* ── PHOTO ── */
+.photo-wrap{width:200px;margin:0 auto 20px;text-align:center;}
+.photo-frame{width:200px;height:260px;background:var(--bg2);border:2px dashed var(--border2);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:border-color .2s,background .2s;}
+.photo-frame:hover{border-color:var(--gold2);background:var(--gold-bg);}
+.photo-frame img{width:100%;height:100%;object-fit:cover;border-radius:2px;display:block;}
+.photo-frame span{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);text-align:center;padding:0 12px;}
+.photo-cap{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:200;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);text-align:center;margin-top:8px;display:block;}
+
+/* ── TIMELINE CARDS (Family Tree tab) ── */
+.sw{overflow-x:auto;overflow-y:visible;padding:20px 48px 60px;cursor:grab;user-select:none;-webkit-overflow-scrolling:touch;background:var(--bg2);border-bottom:1px solid var(--border);}
 .sw:active{cursor:grabbing;}
-.sw::-webkit-scrollbar{height:3px;}
-.sw::-webkit-scrollbar-thumb{background:var(--gold3);}
+.sw::-webkit-scrollbar{height:4px;}
+.sw::-webkit-scrollbar-track{background:var(--border);}
+.sw::-webkit-scrollbar-thumb{background:var(--gold2);border-radius:2px;}
 .tl{display:flex;align-items:flex-start;min-width:max-content;padding:60px 0 40px;position:relative;}
-.tl::before{content:'';position:absolute;left:0;right:0;top:155px;height:1px;background:linear-gradient(to right,transparent 0%,var(--gold3) 3%,var(--gold3) 97%,transparent 100%);}
+.tl::before{content:'';position:absolute;left:0;right:0;top:152px;height:2px;background:linear-gradient(to right,transparent 0%,var(--border2) 3%,var(--border2) 97%,transparent 100%);}
 .gc{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
-.era{font-family:'Josefin Sans',sans-serif;font-size:8px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:var(--gold3);text-align:center;white-space:nowrap;padding:3px 10px;border:1px solid rgba(201,168,76,.2);border-radius:20px;background:rgba(201,168,76,.04);margin-bottom:18px;}
-.dot{width:10px;height:10px;border-radius:50%;border:1px solid var(--gold3);background:var(--bg);flex-shrink:0;position:relative;z-index:2;margin-bottom:10px;}
-.dot.g{background:var(--gold);border-color:var(--gold2);box-shadow:0 0 10px rgba(201,168,76,.5);}
-.card{width:192px;border-radius:2px;overflow:hidden;cursor:pointer;position:relative;flex-shrink:0;transition:transform .25s,box-shadow .25s;}
-.card:hover{transform:translateY(-7px);box-shadow:0 18px 55px rgba(0,0,0,.7),0 0 0 1px var(--gold);}
-.card:hover .csh{opacity:1;}
-.csh{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.12) 0%,transparent 60%);opacity:0;transition:opacity .25s;}
-.cb{height:3px;}
-.cd{padding:13px 13px 9px;}
-.cr{font-family:'Josefin Sans',sans-serif;font-size:8px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;}
-.cn{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;line-height:1.2;margin-bottom:4px;color:var(--parch);}
-.cdt{font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:200;letter-spacing:.5px;color:var(--sepia);margin-bottom:3px;}
-.cp{font-family:'Cormorant Garamond',serif;font-size:12px;font-style:italic;color:var(--sepia2);}
-.cf{display:flex;align-items:center;justify-content:space-between;padding:5px 13px 9px;border-top:1px solid rgba(255,255,255,.04);margin-top:5px;}
-.cdc{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:300;letter-spacing:1px;color:var(--gold3);}
-.cck{font-family:'Cormorant Garamond',serif;font-size:11px;font-style:italic;color:var(--sepia2);}
-.ca{background:linear-gradient(170deg,#1e1208,#120c04);border:1px solid #6b4c1e;}
-.ca .cb{background:linear-gradient(to right,#3a2808,#8b6420);}
-.ca .cr{color:var(--sepia);}
-.cd2{background:linear-gradient(170deg,#241800,#160e00);border:1px solid var(--gold);}
-.cd2 .cb{background:linear-gradient(to right,var(--gold3),var(--gold2));}
-.cd2 .cr{color:var(--gold);}
-.cs{background:linear-gradient(170deg,#180e0e,#0e0808);border:1px solid #6a3a3a;}
-.cs .cb{background:linear-gradient(to right,#3a1a1a,#6a3a3a);}
-.cs .cr{color:#8a5a5a;}
-.cy{background:linear-gradient(170deg,#1e0808,#120404);border:2px solid #cc4444;box-shadow:0 0 22px rgba(200,60,60,.15);}
-.cy .cb{background:linear-gradient(to right,#8b1a1a,#cc4444);}
-.cy .cr{color:#cc6666;}
-.conn{display:flex;align-items:center;padding-top:143px;flex-shrink:0;}
-.cl{position:relative;height:1px;}
-.cl::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--sepia2),var(--gold3));}
-.cl::after{content:'';position:absolute;right:-5px;top:-4px;border-left:7px solid var(--gold3);border-top:4px solid transparent;border-bottom:4px solid transparent;}
-.clb{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-family:'Cormorant Garamond',serif;font-size:10px;font-style:italic;color:var(--sepia2);white-space:nowrap;}
-.mrg{font-family:'IM Fell English',serif;font-size:11px;font-style:italic;color:var(--sepia2);text-align:center;padding:3px 0;}
-.ch{margin-top:10px;display:flex;flex-direction:column;gap:3px;}
-.ch-lbl{font-family:'Josefin Sans',sans-serif;font-size:8px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:var(--sepia2);text-align:center;margin-bottom:4px;}
-.chi{width:192px;padding:5px 10px;background:rgba(8,6,4,.7);border:1px solid rgba(90,62,30,.4);border-radius:2px;cursor:pointer;transition:border-color .2s,background .2s;display:flex;align-items:center;gap:8px;flex-shrink:0;}
-.chi:hover{border-color:var(--gold3);}
-.chi.hl{border-color:var(--gold);background:rgba(30,20,8,.8);}
-.chd{width:5px;height:5px;border-radius:50%;flex-shrink:0;background:var(--sepia2);}
-.chi.hl .chd{background:var(--gold);}
-.chn{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--parch2);line-height:1.3;}
-.chi.hl .chn{color:var(--gold);}
-.gap-n{font-family:'Cormorant Garamond',serif;font-size:11px;font-style:italic;color:var(--sepia2);text-align:center;padding:3px 8px;border:1px dashed var(--sepia2);border-radius:2px;background:rgba(90,62,30,.05);width:192px;margin:4px 0;}
-.pov{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.65);backdrop-filter:blur(3px);display:none;align-items:stretch;justify-content:flex-end;}
+.era{font-family:'Josefin Sans',sans-serif;font-size:8px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-align:center;white-space:nowrap;padding:3px 10px;border:1px solid var(--border2);border-radius:20px;background:var(--gold-bg);margin-bottom:18px;}
+.tdot{width:12px;height:12px;border-radius:50%;border:2px solid var(--border2);background:var(--bg);flex-shrink:0;position:relative;z-index:2;margin-bottom:10px;}
+.tdot.g{background:var(--gold2);border-color:var(--gold3);box-shadow:0 0 8px rgba(176,128,48,.4);}
+.tdot.r{background:var(--red);border-color:#cc6666;}
+.tc{width:196px;border-radius:4px;overflow:hidden;cursor:pointer;flex-shrink:0;transition:transform .22s,box-shadow .22s;background:var(--card);border:1px solid var(--border);box-shadow:0 2px 8px var(--shadow2);}
+.tc:hover{transform:translateY(-6px);box-shadow:0 12px 32px var(--shadow),0 0 0 2px var(--gold2);}
+.tcbar{height:4px;}
+.tc.anc .tcbar{background:linear-gradient(to right,#8b6420,#c9a84c);}
+.tc.dir .tcbar{background:linear-gradient(to right,var(--gold),var(--gold3));}
+.tc.sps .tcbar{background:linear-gradient(to right,#8b3a1a,#cc6644);}
+.tc.you .tcbar{background:linear-gradient(to right,var(--red),#cc6666);}
+.tcbd{padding:12px 13px 8px;}
+.tcrole{font-family:'Josefin Sans',sans-serif;font-size:8px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;display:block;}
+.tc.anc .tcrole,.tc.dir .tcrole{color:var(--gold);}
+.tc.sps .tcrole{color:var(--rust);}
+.tc.you .tcrole{color:var(--red);}
+.tcnm{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;line-height:1.25;margin-bottom:4px;color:var(--ink);display:block;}
+.tcdt{font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:200;letter-spacing:.5px;color:var(--ink3);margin-bottom:3px;display:block;}
+.tcpl{font-family:'Cormorant Garamond',serif;font-size:12px;font-style:italic;color:var(--ink3);display:block;}
+.tcft{display:flex;align-items:center;justify-content:space-between;padding:5px 13px 9px;border-top:1px solid var(--border);margin-top:6px;}
+.tcrec{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:300;letter-spacing:1px;color:var(--gold);}
+.tcck{font-family:'Cormorant Garamond',serif;font-size:11px;font-style:italic;color:var(--ink3);}
+.tconn{display:flex;align-items:center;padding-top:140px;flex-shrink:0;}
+.tline{position:relative;height:2px;}
+.tline::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--border2),var(--gold2));}
+.tline::after{content:'';position:absolute;right:-6px;top:-4px;border-left:9px solid var(--gold2);border-top:5px solid transparent;border-bottom:5px solid transparent;}
+.tlbl{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);font-family:'Cormorant Garamond',serif;font-size:10px;font-style:italic;color:var(--ink3);white-space:nowrap;}
+.tmarr{font-family:'IM Fell English',serif;font-size:12px;font-style:italic;color:var(--ink3);text-align:center;padding:3px 0;display:block;}
+.tch{margin-top:10px;display:flex;flex-direction:column;gap:3px;}
+.tchl{font-family:'Josefin Sans',sans-serif;font-size:8px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);text-align:center;margin-bottom:4px;display:block;}
+.tchi{width:196px;padding:5px 10px;background:var(--bg2);border:1px solid var(--border);border-radius:3px;cursor:pointer;transition:border-color .2s,background .2s;display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.tchi:hover{border-color:var(--gold2);background:var(--gold-bg);}
+.tchi.hl{border-color:var(--gold2);background:var(--gold-bg);}
+.tchidot{width:5px;height:5px;border-radius:50%;flex-shrink:0;background:var(--border2);}
+.tchi.hl .tchidot{background:var(--gold2);}
+.tchinm{font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--ink2);line-height:1.3;}
+.tchi.hl .tchinm{color:var(--gold);font-weight:600;}
+.tgap{font-family:'Cormorant Garamond',serif;font-size:11px;font-style:italic;color:var(--ink3);text-align:center;padding:4px 10px;border:1px dashed var(--border2);border-radius:3px;background:var(--bg2);width:196px;margin:4px 0;display:block;}
+
+/* ── PANEL ── */
+.pov{position:fixed;inset:0;z-index:500;background:rgba(42,30,10,.55);backdrop-filter:blur(4px);display:none;align-items:stretch;justify-content:flex-end;}
 .pov.open{display:flex;}
-.pan{width:min(600px,100vw);height:100vh;background:linear-gradient(170deg,#1c1408,#120e06);border-left:1px solid var(--gold3);overflow-y:auto;position:relative;animation:si .3s ease;display:flex;flex-direction:column;}
-@keyframes si{from{transform:translateX(40px);opacity:0;}to{transform:translateX(0);opacity:1;}}
-.pan::-webkit-scrollbar{width:3px;}
-.pan::-webkit-scrollbar-thumb{background:var(--gold3);}
-.pbar{height:3px;background:linear-gradient(to right,var(--gold3),var(--gold2),var(--gold3));flex-shrink:0;}
-.pcl{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);color:var(--gold3);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:10;}
-.pcl:hover{background:rgba(201,168,76,.25);}
-.phd{padding:36px 36px 22px;border-bottom:1px solid rgba(201,168,76,.15);flex-shrink:0;}
-.pey{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:300;letter-spacing:3px;text-transform:uppercase;color:var(--gold3);margin-bottom:10px;}
-.pnm{font-family:'Cormorant Garamond',serif;font-size:33px;font-weight:300;line-height:1;color:var(--parch);margin-bottom:6px;}
-.pdtt{font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:200;letter-spacing:1px;color:var(--sepia);}
-.pbdy{padding:26px 36px 48px;flex:1;}
-.ps{margin-bottom:26px;}
-.pst{font-family:'Josefin Sans',sans-serif;font-size:8px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--gold3);padding-bottom:6px;margin-bottom:12px;border-bottom:1px solid rgba(201,168,76,.2);}
-.pss{font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.75;color:var(--parch);}
-.pss em{font-style:italic;color:var(--gold);}
-.pfs{display:flex;flex-direction:column;gap:6px;}
-.pf{display:flex;gap:14px;font-size:15px;line-height:1.5;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);}
-.pfl{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:300;letter-spacing:1px;color:var(--gold3);min-width:120px;flex-shrink:0;padding-top:3px;text-transform:uppercase;}
-.pfv{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--parch2);}
-.pds{display:flex;flex-direction:column;gap:8px;}
-.pdoc{padding:12px 16px;background:rgba(0,0,0,.3);border:1px solid rgba(201,168,76,.15);border-radius:2px;display:flex;gap:14px;align-items:flex-start;transition:border-color .2s;}
-.pdoc:hover{border-color:var(--gold);}
-.pdi{font-size:20px;flex-shrink:0;margin-top:2px;}
-.pdin{flex:1;}
-.pdt2{font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:400;letter-spacing:1px;color:var(--gold);margin-bottom:4px;}
-.pdd{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--parch2);line-height:1.5;margin-bottom:4px;}
-.pds2{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:200;color:var(--sepia);font-style:italic;}
-.pnt{padding:14px 18px;background:rgba(201,168,76,.06);border-left:3px solid var(--gold3);font-family:'IM Fell English',serif;font-size:15px;font-style:italic;line-height:1.65;color:var(--parch2);}
-.pwn{padding:12px 16px;background:rgba(139,58,26,.1);border:1px solid rgba(139,58,26,.4);border-radius:2px;font-family:'Cormorant Garamond',serif;font-size:14px;line-height:1.55;color:#d4a080;}
-.ftr{text-align:center;padding:24px;border-top:1px solid rgba(201,168,76,.08);font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:200;letter-spacing:2px;color:var(--sepia2);text-transform:uppercase;}
+.pan{width:min(600px,100vw);height:100vh;background:var(--card);border-left:2px solid var(--border2);overflow-y:auto;position:relative;animation:panIn .3s ease;display:flex;flex-direction:column;box-shadow:-8px 0 32px var(--shadow);}
+@keyframes panIn{from{transform:translateX(40px);opacity:0;}to{transform:translateX(0);opacity:1;}}
+.pan::-webkit-scrollbar{width:4px;}
+.pan::-webkit-scrollbar-thumb{background:var(--border2);}
+.panbar{height:4px;background:linear-gradient(to right,var(--gold),var(--gold3));flex-shrink:0;}
+.pancl{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;background:var(--bg2);border:1px solid var(--border);color:var(--ink3);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:10;}
+.pancl:hover{background:var(--bg3);color:var(--ink);}
+.panhd{padding:36px 36px 22px;border-bottom:2px solid var(--border);flex-shrink:0;}
+.paney{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:300;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;}
+.pannm{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;line-height:1;color:var(--ink);margin-bottom:6px;display:block;}
+.pandt{font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:200;letter-spacing:1px;color:var(--ink3);display:block;}
+.panbdy{padding:26px 36px 48px;flex:1;}
+.pans{margin-bottom:26px;}
+.panst{font-family:'Josefin Sans',sans-serif;font-size:8px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--gold);padding-bottom:6px;margin-bottom:12px;border-bottom:2px solid var(--border);display:block;}
+.panss{font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.78;color:var(--ink2);}
+.panss em{font-style:italic;color:var(--gold2);}
+.panfs{display:flex;flex-direction:column;gap:0;}
+.panf{display:flex;gap:14px;padding:9px 0;border-bottom:1px solid var(--border);}
+.panfl{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:300;letter-spacing:1px;color:var(--gold);min-width:120px;flex-shrink:0;padding-top:3px;text-transform:uppercase;}
+.panfv{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--ink2);line-height:1.5;}
+.pandocs{display:flex;flex-direction:column;gap:8px;}
+.pandoc{padding:12px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:4px;cursor:pointer;transition:border-color .2s,background .2s;display:flex;gap:12px;align-items:flex-start;}
+.pandoc:hover{border-color:var(--gold2);background:var(--gold-bg);}
+.pandicn{font-size:20px;flex-shrink:0;margin-top:2px;}
+.pandinfo{flex:1;min-width:0;}
+.pandtit{font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:400;letter-spacing:1px;color:var(--gold);margin-bottom:4px;display:block;}
+.panddsc{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--ink2);line-height:1.5;margin-bottom:3px;display:block;}
+.pandsrc{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:200;color:var(--ink3);font-style:italic;display:block;}
+.pannote{padding:14px 18px;background:var(--gold-bg);border-left:4px solid var(--gold2);font-family:'IM Fell English',serif;font-size:15px;font-style:italic;line-height:1.65;color:var(--ink2);border-radius:0 4px 4px 0;}
+.panwarn{padding:12px 16px;background:var(--rust-bg);border:1px solid rgba(139,58,26,.3);border-radius:4px;font-family:'Cormorant Garamond',serif;font-size:14px;line-height:1.55;color:var(--rust);}
+
+/* ── MAP SECTION ── */
+.map-container{width:100%;height:420px;border-radius:4px;border:1px solid var(--border);overflow:hidden;margin:20px 0;background:var(--bg2);}
+.map-legend{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0;}
+.map-legend-item{display:flex;align-items:center;gap:7px;font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:1px;color:var(--ink2);}
+.map-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
+.map-card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:16px 20px;margin:10px 0;display:flex;gap:14px;align-items:flex-start;}
+.map-num{font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:1px;color:var(--gold);min-width:24px;}
+.map-info{flex:1;}
+.map-place{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--ink);margin-bottom:3px;display:block;}
+.map-dates{font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:1px;color:var(--ink3);margin-bottom:4px;display:block;}
+.map-story{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--ink2);line-height:1.55;}
+
+/* ── DNA EXPLAINER ── */
+.dna-box{background:var(--blue-bg);border:1px solid rgba(42,74,122,.25);border-radius:4px;padding:20px 24px;margin:16px 0;}
+.dna-box-title{font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--blue);margin-bottom:10px;display:block;}
+.dna-table{width:100%;border-collapse:collapse;margin:12px 0;}
+.dna-table tr{border-bottom:1px solid rgba(42,74,122,.15);}
+.dna-table tr:last-child{border-bottom:none;}
+.dna-table td{padding:9px 0;font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--ink2);vertical-align:top;}
+.dna-table td:first-child{font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:.5px;color:var(--blue);width:90px;padding-right:16px;padding-top:11px;}
+
+/* ── RESEARCH TIMELINE ── */
+.rtl{display:flex;flex-direction:column;gap:0;margin:20px 0;}
+.rtl-item{display:flex;gap:0;align-items:stretch;}
+.rtl-left{display:flex;flex-direction:column;align-items:center;width:80px;flex-shrink:0;}
+.rtl-date{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:400;letter-spacing:1px;text-transform:uppercase;color:var(--gold);text-align:right;padding-right:16px;padding-top:16px;width:80px;}
+.rtl-line{width:2px;background:var(--border2);flex:1;margin:4px 0;}
+.rtl-dot{width:14px;height:14px;border-radius:50%;background:var(--gold2);border:3px solid var(--bg);box-shadow:0 0 0 2px var(--gold2);flex-shrink:0;margin-top:14px;}
+.rtl-content{flex:1;padding:12px 0 20px 20px;border-bottom:1px solid var(--border);}
+.rtl-item:last-child .rtl-content{border-bottom:none;}
+.rtl-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--ink);margin-bottom:4px;display:block;}
+.rtl-text{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--ink2);line-height:1.6;}
+.rtl-src{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1px;color:var(--ink3);margin-top:5px;display:block;}
+
+/* ── ENSLAVED FAMILY SECTION ── */
+.ensl-person{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:20px 24px;margin:16px 0;position:relative;overflow:hidden;box-shadow:0 2px 8px var(--shadow2);}
+.ensl-person::before{content:'';position:absolute;top:0;left:0;bottom:0;width:4px;background:var(--gold2);}
+.ensl-person .status{font-family:'Josefin Sans',sans-serif;font-size:8px;font-weight:400;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;display:block;}
+.status-conf{color:var(--forest);}
+.status-prob{color:var(--gold);}
+.status-poss{color:var(--ink3);}
+.ensl-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--ink);margin-bottom:4px;display:block;}
+.ensl-dates{font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:200;letter-spacing:1px;color:var(--ink3);margin-bottom:10px;display:block;}
+.ensl-body{font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.7;color:var(--ink2);}
+.ensl-docs{margin-top:12px;display:flex;flex-direction:column;gap:6px;}
+.ensl-doc{padding:8px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:3px;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.5px;color:var(--gold);}
+
+/* ── WHO'S WHO GUIDE ── */
+.ww-card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:20px 24px;margin:16px 0;box-shadow:0 2px 8px var(--shadow2);}
+.ww-card::before{content:'';display:block;height:4px;background:linear-gradient(to right,var(--gold),var(--gold3));border-radius:4px 4px 0 0;margin:-20px -24px 16px;}
+.ww-relation{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;display:block;}
+.ww-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--ink);margin-bottom:4px;display:block;}
+.ww-dates{font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:200;letter-spacing:1px;color:var(--ink3);margin-bottom:8px;display:block;}
+.ww-desc{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--ink2);line-height:1.6;}
+
+/* ── JUNETEENTH ── */
+.jt-highlight{background:linear-gradient(135deg,var(--gold-bg2),var(--gold-bg));border:2px solid var(--gold2);border-radius:4px;padding:24px 28px;margin:28px 0;text-align:center;}
+.jt-year{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,8vw,80px);font-weight:300;color:var(--gold);line-height:1;margin-bottom:6px;display:block;}
+.jt-sub{font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:300;letter-spacing:4px;text-transform:uppercase;color:var(--gold2);}
+
+/* ── FOOTER ── */
+.ftr{text-align:center;padding:28px 24px;border-top:2px solid var(--border);font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:200;letter-spacing:2px;color:var(--ink3);text-transform:uppercase;margin-top:40px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .shdr{padding:36px 16px 28px;}
+  .ctr{padding:0 16px 60px;}
+  .ftbl td:first-child{width:120px;font-size:9px;}
+  .panhd{padding:28px 20px 16px;}
+  .panbdy{padding:18px 20px 40px;}
+  .ft-l2{padding-left:14px;}
+  .ft-l3{padding-left:12px;}
+  .map-container{height:280px;}
+}
 </style>
 </head>
 <body>
+
+<!-- NAV -->
 <nav class="nav">
   <div class="nav-brand">Our Family</div>
   <button class="nb active" onclick="show('timeline',this)">Family Timeline</button>
+  <button class="nb" onclick="show('whoiswho',this)">Who's Who</button>
+  <button class="nb" onclick="show('easter',this)">Easter Bell</button>
+  <button class="nb" onclick="show('eva',this)">Eva Armstrong</button>
   <button class="nb" onclick="show('bondage',this)">Bondage to Belonging</button>
-  <button class="nb" onclick="show('nichols',this)">Nichols &amp; Waldrop</button>
+  <button class="nb" onclick="show('enslaved',this)">Enslaved Family</button>
+  <button class="nb" onclick="show('juneteenth',this)">Juneteenth</button>
+  <button class="nb" onclick="show('nichols',this)">Nichols · Waldrop</button>
   <button class="nb" onclick="show('land',this)">The Land</button>
-  <button class="nb" onclick="show('descendants',this)">Margie's Descendants</button>
+  <button class="nb" onclick="show('homage',this)">Margie's Family</button>
+  <button class="nb" onclick="show('descendants',this)">DNA Cousins</button>
+  <button class="nb" onclick="show('map',this)">Where We Are</button>
+  <button class="nb" onclick="show('dna',this)">DNA Guide</button>
+  <button class="nb" onclick="show('timeline_research',this)">Research Timeline</button>
   <button class="nb" onclick="show('research',this)">Research Notes</button>
 </nav>
 
-<!-- TIMELINE TAB -->
+<!-- ═══ FAMILY TIMELINE ═══ -->
 <div class="sec active" id="tab-timeline">
 <div class="shdr">
-  <div class="sey">The Family of Margie Nell Ballard · Research by Jasmine M. Lee · Dock Ellis Foundation</div>
-  <h1 class="sttl">Our <em>Journey</em></h1>
-  <p class="ssub">From Patience in South Carolina to You in California · ca. 1780s to Present</p>
+  <span class="sey">The Family of Margie Nell Ballard · Research by Jasmine M. Lee · Dock Ellis Foundation</span>
+  <span class="sttl">Our <em>Journey</em></span>
+  <span class="ssub">From Patience in South Carolina to You in California · ca. 1780s to Present</span>
   <div class="srul"><div class="sdia"></div></div>
-  <p style="font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:200;letter-spacing:3px;color:var(--sepia2);text-transform:uppercase;margin-top:10px;">← scroll left to right · click any name to read their story →</p>
+  <span class="shint">← scroll left to right · click any name to read their story →</span>
 </div>
 <div class="sw" id="sw">
 <div class="tl">
-  <div class="gc"><div class="era">Earliest Known · ca. 1780s · South Carolina</div><div class="dot g"></div>
-    <div class="card ca" onclick="op('patience')"><div class="csh"></div><div class="cb"></div><div class="cd"><div class="cr">Your Ancestor · Enslaved</div><div class="cn">Patience</div><div class="cdt">ca. 1780s — unknown</div><div class="cp">Newberry County, South Carolina</div></div><div class="cf"><div class="cdc">2 Records</div><div class="cck">read her story →</div></div></div>
-    <div class="ch"><div class="ch-lbl">Her children</div><div class="chi hl" onclick="op('clarissa')"><div class="chd"></div><div class="chn">★ Clarissa — your line</div></div><div class="chi" onclick="op('rachel')"><div class="chd"></div><div class="chn">Rachel · Clarissa's sister</div></div><div class="chi"><div class="chd"></div><div class="chn">Tom · William · Amanda · Harriet</div></div></div>
+  <div class="gc"><div class="era">Earliest Known · ca. 1780s · South Carolina</div><div class="tdot g"></div>
+    <div class="tc anc" onclick="op('patience')"><div class="tcbar"></div><div class="tcbd"><span class="tcrole">Your Ancestor · Enslaved</span><span class="tcnm">Patience</span><span class="tcdt">ca. 1780s — unknown</span><span class="tcpl">Newberry County, South Carolina</span></div><div class="tcft"><span class="tcrec">2 Records</span><span class="tcck">read her story →</span></div></div>
+    <div class="tch"><span class="tchl">Her children</span><div class="tchi hl" onclick="op('clarissa')"><div class="tchidot"></div><span class="tchinm">★ Clarissa — your line</span></div><div class="tchi" onclick="op('rachel')"><div class="tchidot"></div><span class="tchinm">Rachel · Clarissa's sister</span></div><div class="tchi"><div class="tchidot"></div><span class="tchinm">Tom · William · Amanda · Harriet</span></div></div>
   </div>
-  <div class="conn" style="width:80px"><div class="cl" style="width:80px"><div class="clb">daughter</div></div></div>
-  <div class="gc"><div class="era">South Carolina → Mississippi · ca. 1807</div><div class="dot g"></div>
-    <div class="card ca" onclick="op('clarissa')"><div class="csh"></div><div class="cb"></div><div class="cd"><div class="cr">Your Ancestor · DNA Confirmed · 46 Matches</div><div class="cn">Clarissa</div><div class="cdt">ca. 1807 — unknown</div><div class="cp">South Carolina → Mississippi</div></div><div class="cf"><div class="cdc">3 Records</div><div class="cck">read her story →</div></div></div>
-    <div class="gap-n">⟡ Path to Joseph Nichols<br>being researched · DNA confirmed</div>
+  <div class="tconn" style="width:80px"><div class="tline" style="width:80px"><div class="tlbl">daughter</div></div></div>
+  <div class="gc"><div class="era">South Carolina → Mississippi · ca. 1807</div><div class="tdot g"></div>
+    <div class="tc anc" onclick="op('clarissa')"><div class="tcbar"></div><div class="tcbd"><span class="tcrole">Your Ancestor · DNA Confirmed · 46 Matches</span><span class="tcnm">Clarissa</span><span class="tcdt">ca. 1807 — unknown</span><span class="tcpl">South Carolina → Mississippi</span></div><div class="tcft"><span class="tcrec">3 Records</span><span class="tcck">read her story →</span></div></div>
+    <span class="tgap">⟡ Path to Joseph Nichols<br>researching · DNA confirmed</span>
   </div>
-  <div class="conn" style="width:80px"><div class="cl" style="width:80px;opacity:.35"><div class="clb" style="color:var(--sepia2)">researching</div></div></div>
-  <div class="gc"><div class="era">Bellville, Austin County, Texas · 1847 – 1935</div><div class="dot g"></div>
-    <div class="card ca" onclick="op('joseph')"><div class="csh"></div><div class="cb"></div><div class="cd"><div class="cr">Your 3rd Great-Grandfather · Freed 1865</div><div class="cn">Joseph Nichols</div><div class="cdt">ca. 1847 — ca. 1900–1910</div><div class="cp">Bellville, Austin County TX</div></div><div class="cf"><div class="cdc">2 Records</div><div class="cck">read his story →</div></div></div>
-    <div class="mrg">married December 18, 1865</div>
-    <div class="card cd2" onclick="op('easter')"><div class="csh"></div><div class="cb"></div><div class="cd"><div class="cr">Your 3rd Great-Grandmother · Born July 4, 1848</div><div class="cn">Easter Bell Nichols</div><div class="cdt">July 4, 1848 – December 17, 1935</div><div class="cp">Bellville, Austin County TX</div></div><div class="cf"><div class="cdc">6 Records</div><div class="cck">read her story →</div></div></div>
-    <div class="ch"><div class="ch-lbl">Their 12 children</div><div class="chi"><div class="chd"></div><div class="chn">Katie · Allen · Annie · Josephine</div></div><div class="chi"><div class="chd"></div><div class="chn">Oscar · Henry · John Nazy</div></div><div class="chi hl" onclick="op('hellen')"><div class="chd"></div><div class="chn">★ Hellen Nichols Armstrong</div></div><div class="chi"><div class="chd"></div><div class="chn">Clara · William · Helen Reese · Mabel</div></div></div>
+  <div class="tconn" style="width:80px"><div class="tline" style="width:80px;opacity:.4"><div class="tlbl" style="color:var(--ink3)">researching</div></div></div>
+  <div class="gc"><div class="era">Bellville, Austin County, Texas · 1847–1935</div><div class="tdot g"></div>
+    <div class="tc anc" onclick="op('joseph')"><div class="tcbar"></div><div class="tcbd"><span class="tcrole">Your 3rd Great-Grandfather · Freed 1865</span><span class="tcnm">Joseph Nichols</span><span class="tcdt">ca. 1847 — ca. 1900–1910</span><span class="tcpl">Bellville, Austin County TX</span></div><div class="tcft"><span class="tcrec">2 Records</span><span class="tcck">read his story →</span></div></div>
+    <span class="tmarr">married December 18, 1865</span>
+    <div class="tc dir" onclick="op('easter')"><div class="tcbar"></div><div class="tcbd"><span class="tcrole">Your 3rd Great-Grandmother · Born July 4, 1848</span><span class="tcnm">Easter Bell Nichols</span><span class="tcdt">July 4, 1848 – December 17, 1935</span><span class="tcpl">Bellville, Austin County TX</span></div><div class="tcft"><span class="tcrec">6 Records</span><span class="tcck">read her story →</span></div></div>
+    <div class="tch"><span class="tchl">Their 12 children</span><div class="tchi"><div class="tchidot"></div><span class="tchinm">Katie · Allen · Annie · Josephine</span></div><div class="tchi"><div class="tchidot"></div><span class="tchinm">Oscar · Henry · John Nazy</span></div><div class="tchi hl" onclick="op('hellen')"><div class="tchidot"></div><span class="tchinm">★ Hellen Nichols Armstrong</span></div><div class="tchi"><div class="tchidot"></div><span class="tchinm">Clara · William · Helen Reese · Mabel</span></div></div>
   </div>
-  <div class="conn" style="width:80px"><div class="cl" style="width:80px"><div class="clb">daughter</div></div></div>
-  <div class="gc"><div class="era">Bellville → Fort Worth, Texas · 1870 – 1931</div><div class="dot g"></div>
-    <div class="card cd2" onclick="op('hellen')"><div class="csh"></div><div class="cb"></div><div class="cd"><div class="cr">Your 2nd Great-Grandmother</div><div class="cn">Hellen Nichols Armstrong</div><div class="cdt">September 1870 – December 5, 1931</div><div class="cp">Bellville TX · Fort Worth TX</div></div><div class="cf"><div class="cdc">4 Records</div><div class="cck">read her story →</div></div></div>
-    <div class="mrg">married</div>
-    <div class="card cs" onclick="op('john_a')"><div class="csh"></div><div class="cb"></div><div class="cd"><div class="cr">Hellen's Husband · Killed 1911</div><div class="cn">John Armstrong</div><div class="cdt">March 1872 – August 30, 1911</div><div class="cp">Bellville TX → Fort Worth TX</div></div><div class="cf"><div class="cdc">2 Records</div><div class="cck">read his story →</div></div></div>
+  <div class="tconn" style="width:80px"><div class="tline" style="width:80px"><div class="tlbl">daughter</div></div></div>
+  <div class="gc"><div class="era">Bellville → Fort Worth, Texas · 1870–1931</div><div class="tdot g"></div>
+    <div class="tc dir" onclick="op('hellen')"><div class="tcbar"></div><div class="tcbd"><span class="tcrole">Your 2nd Great-Grandmother</span><span class="tcnm">Hellen Nichols Armstrong</span><span class="tcdt">September 1870 – December 5, 1931</span><span class="tcpl">Bellville TX · Fort Worth TX</span></div><div class="tcft"><span class="tcrec">4 Records</span><span class="tcck">read her story →</span></div></div>
+    <span class="tmarr">married</span>
+    <div class="tc sps" onclick="op('john_a')"><div class="tcbar"></div><div class="tcbd"><span class="tcrole">Hellen's Husband · Killed 1911</span><span class="tcnm">John Armstrong</span><span class="tcdt">March 1872 – August 30, 1911</span><span class="tcpl">Bellville TX → Fort Worth TX</span></div><div class="tcft"><span class="tcrec">2 Records</span><span class="tcck">read his story →</span></div></div>
   </div>
-  <div class="conn" style="width:80px"><div class="cl" style="width:80px"><div class="clb">daughter</div></div></div>
-  <div class="gc"><div class="era">Bellville → Fort Worth → San Antonio → California · 1900 – 1977</div><div class="dot g"></div>
-    <div class="card cd2" onclick="op('eva')"><div class="csh"></div><div class="cb"></div><div class="cd"><div class="cr">Your Great-Grandmother</div><div class="cn">Eva Armstrong Ballard</div><div class="cdt">June 27, 1900 – November 24, 1977</div><div class="cp">Bellville TX · Garden Grove CA</div></div><div class="cf"><div class="cdc">6 Records</div><div class="cck">read her story →</div></div></div>
-    <div class="mrg">married</div>
-    <div class="card cs" onclick="op('james_b')"><div class="csh"></div><div class="cb"></div><div class="cd"><div class="cr">Eva's Husband · Son of Rev. George W. Ballard</div><div class="cn">James Wilson Ballard Sr.</div><div class="cdt">August 26, 1897 – March 13, 1953</div><div class="cp">Palestine TX · Austin State Hospital</div></div><div class="cf"><div class="cdc">3 Records</div><div class="cck">read his story →</div></div></div>
-    <div class="ch"><div class="ch-lbl">Their children</div><div class="chi"><div class="chd"></div><div class="chn">James Ballard Jr. (1926–1986)</div></div><div class="chi hl"><div class="chd"></div><div class="chn">★ Margie Nell Ballard</div></div><div class="chi"><div class="chd"></div><div class="chn">Lois · Betty · Charles Ray</div></div></div>
+  <div class="tconn" style="width:80px"><div class="tline" style="width:80px"><div class="tlbl">daughter</div></div></div>
+  <div class="gc"><div class="era">Bellville → Fort Worth → San Antonio → California · 1900–1977</div><div class="tdot g"></div>
+    <div class="tc dir" onclick="op('eva')"><div class="tcbar"></div><div class="tcbd"><span class="tcrole">Your Great-Grandmother</span><span class="tcnm">Eva Armstrong Ballard</span><span class="tcdt">June 27, 1900 – November 24, 1977</span><span class="tcpl">Bellville TX · Garden Grove CA</span></div><div class="tcft"><span class="tcrec">6 Records</span><span class="tcck">read her story →</span></div></div>
+    <span class="tmarr">married</span>
+    <div class="tc sps" onclick="op('james_b')"><div class="tcbar"></div><div class="tcbd"><span class="tcrole">Eva's Husband · Son of Rev. George W. Ballard</span><span class="tcnm">James Wilson Ballard Sr.</span><span class="tcdt">August 26, 1897 – March 13, 1953</span><span class="tcpl">Palestine TX · Austin State Hospital</span></div><div class="tcft"><span class="tcrec">3 Records</span><span class="tcck">read his story →</span></div></div>
+    <div class="tch"><span class="tchl">Their children</span><div class="tchi"><div class="tchidot"></div><span class="tchinm">James Ballard Jr. (1926–1986)</span></div><div class="tchi hl"><div class="tchidot"></div><span class="tchinm">★ Margie Nell Ballard</span></div><div class="tchi"><div class="tchidot"></div><span class="tchinm">Lois · Betty · Charles Ray</span></div></div>
   </div>
-  <div class="conn" style="width:80px"><div class="cl" style="width:80px"><div class="clb">daughter</div></div></div>
-  <div class="gc"><div class="era">Fort Worth → San Antonio → Santa Ana, California · 1929 – 1988</div><div class="dot g"></div>
-    <div class="card cd2" onclick="op('margie')"><div class="csh"></div><div class="cb"></div><div class="cd"><div class="cr">Your Grandmother</div><div class="cn">Margie Nell Ballard Corbin</div><div class="cdt">March 13, 1929 – October 15, 1988</div><div class="cp">Fort Worth TX · Santa Ana CA</div></div><div class="cf"><div class="cdc">4 Records</div><div class="cck">read her story →</div></div></div>
-    <div class="mrg">with</div>
-    <div class="card cs" onclick="op('norman')"><div class="csh"></div><div class="cb"></div><div class="cd"><div class="cr">Your Grandfather · Corbin Line Not Yet Researched</div><div class="cn">Norman Caswell Corbin</div><div class="cdt">February 10, 1921 – April 21, 1974</div><div class="cp">Santa Ana, Orange County CA</div></div><div class="cf"><div class="cdc">1 Record</div><div class="cck">read his story →</div></div></div>
-    <div class="ch"><div class="ch-lbl">Margie's children</div><div class="chi"><div class="chd"></div><div class="chn">Michael Corbin Sr. (1951–2009)</div></div><div class="chi"><div class="chd"></div><div class="chn">Ronnie Ballard (1953–) half sibling</div></div><div class="chi hl" onclick="op('hjordis')"><div class="chd"></div><div class="chn">★ Hjordis L. Corbin (1960–)</div></div><div class="chi"><div class="chd"></div><div class="chn">Deanna · Sonsorey · Orngiel · Se'Taun</div></div></div>
+  <div class="tconn" style="width:80px"><div class="tline" style="width:80px"><div class="tlbl">daughter</div></div></div>
+  <div class="gc"><div class="era">Fort Worth → San Antonio → Santa Ana, California · 1929–1988</div><div class="tdot g"></div>
+    <div class="tc dir" onclick="op('margie')"><div class="tcbar"></div><div class="tcbd"><span class="tcrole">Your Grandmother</span><span class="tcnm">Margie Nell Ballard Corbin</span><span class="tcdt">March 13, 1929 – October 15, 1988</span><span class="tcpl">Fort Worth TX · Santa Ana CA</span></div><div class="tcft"><span class="tcrec">4 Records</span><span class="tcck">read her story →</span></div></div>
+    <span class="tmarr">with</span>
+    <div class="tc sps" onclick="op('norman')"><div class="tcbar"></div><div class="tcbd"><span class="tcrole">Your Grandfather</span><span class="tcnm">Norman Caswell Corbin</span><span class="tcdt">February 10, 1921 – April 21, 1974</span><span class="tcpl">Santa Ana, Orange County CA</span></div><div class="tcft"><span class="tcrec">1 Record</span><span class="tcck">read his story →</span></div></div>
+    <div class="tch"><span class="tchl">Margie's children</span><div class="tchi"><div class="tchidot"></div><span class="tchinm">Michael Corbin Sr. (1951–2009)</span></div><div class="tchi"><div class="tchidot"></div><span class="tchinm">Ronnie Ballard (1953–)</span></div><div class="tchi hl" onclick="op('hjordis')"><div class="tchidot"></div><span class="tchinm">★ Hjordis L. Corbin (1960–)</span></div><div class="tchi"><div class="tchidot"></div><span class="tchinm">Deanna · Sonsorey · Orngiel · Se'Taun</span></div></div>
   </div>
-  <div class="conn" style="width:80px"><div class="cl" style="width:80px"><div class="clb">daughter</div></div></div>
-  <div class="gc"><div class="era">Los Angeles → Orange County, California · 1960 – Present</div><div class="dot g"></div>
-    <div class="card cd2" onclick="op('hjordis')"><div class="csh"></div><div class="cb"></div><div class="cd"><div class="cr">Your Mother</div><div class="cn">Hjordis L. Corbin</div><div class="cdt">January 20, 1960 – living</div><div class="cp">Los Angeles, California</div></div><div class="cf"><div class="cdc">DNA Confirmed</div><div class="cck">read her story →</div></div></div>
-    <div class="mrg">↓</div>
-    <div class="card cy" onclick="op('jasmine')"><div class="csh"></div><div class="cb"></div><div class="cd"><div class="cr">You · Researcher · Founder</div><div class="cn">Jasmine M. Lee</div><div class="cdt">January 25, 1982 – living</div><div class="cp">Orange County, California</div></div><div class="cf"><div class="cdc">This project</div><div class="cck">read your story →</div></div></div>
+  <div class="tconn" style="width:80px"><div class="tline" style="width:80px"><div class="tlbl">daughter</div></div></div>
+  <div class="gc"><div class="era">Los Angeles → Orange County, California · 1960–Present</div><div class="tdot g"></div>
+    <div class="tc dir" onclick="op('hjordis')"><div class="tcbar"></div><div class="tcbd"><span class="tcrole">Your Mother</span><span class="tcnm">Hjordis L. Corbin</span><span class="tcdt">January 20, 1960 – living</span><span class="tcpl">Los Angeles, California</span></div><div class="tcft"><span class="tcrec">DNA Confirmed</span><span class="tcck">read her story →</span></div></div>
+    <span class="tmarr" style="font-size:16px;">↓</span>
+    <div class="tc you" onclick="op('jasmine')"><div class="tcbar"></div><div class="tcbd"><span class="tcrole">You · Researcher · Founder</span><span class="tcnm">Jasmine M. Lee</span><span class="tcdt">January 25, 1982 – living</span><span class="tcpl">Orange County, California</span></div><div class="tcft"><span class="tcrec">This project</span><span class="tcck">read your story →</span></div></div>
   </div>
 </div></div>
-<footer class="ftr">Every gold card verified by primary source document · Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</footer>
+<div class="ftr">Every gold card verified by primary source document · Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
 </div>
 
-<!-- BONDAGE TO BELONGING TAB -->
+<!-- ═══ WHO'S WHO ═══ -->
+<div class="sec" id="tab-whoiswho">
+<div class="shdr">
+  <span class="sey">A Simple Guide · For the Whole Family</span>
+  <span class="sttl">Who's <em>Who</em></span>
+  <span class="ssub">How everyone connects to Margie Nell Ballard Corbin — and to you</span>
+  <div class="srul"><div class="sdia"></div></div>
+</div>
+<div class="ctr">
+  <div class="prose"><p>Not everyone grew up knowing exactly how all the generations connect. This page is a plain-language guide — no genealogy jargon, no complicated charts. Just an explanation of who each person is, in terms you can share at the dinner table.</p></div>
+  <div class="div"></div>
+
+  <div class="chd">Margie's Generation — The Root</div>
+  <div class="cttl">Starting with Margie Nell Ballard Corbin</div>
+
+  <div class="ww-card">
+    <span class="ww-relation">The Center of This Family</span>
+    <span class="ww-name">Margie Nell Ballard Corbin</span>
+    <span class="ww-dates">March 13, 1929 – October 15, 1988 · Fort Worth TX → Santa Ana CA</span>
+    <p class="ww-desc">Margie is the grandmother of Jasmine M. Lee and the mother of seven children. She is the reason this family ended up in Southern California. Every person on this page descends from her or is directly connected through her. When you see the name Corbin in this family, it traces back to Margie and her partner Norman Caswell Corbin.</p>
+  </div>
+
+  <div class="ww-card">
+    <span class="ww-relation">Margie's Mother — Your Great-Grandmother</span>
+    <span class="ww-name">Eva Armstrong Ballard</span>
+    <span class="ww-dates">June 27, 1900 – November 24, 1977 · Bellville TX → Garden Grove CA</span>
+    <p class="ww-desc">Eva is Margie's mother. She is the woman your aunts and uncles actually remember. She ran a Night Club and Cafe in San Antonio, owned property, and eventually made it to California. She is your great-grandmother.</p>
+  </div>
+
+  <div class="ww-card">
+    <span class="ww-relation">Margie's Grandmother — Your 2nd Great-Grandmother</span>
+    <span class="ww-name">Hellen Nichols Armstrong</span>
+    <span class="ww-dates">September 1870 – December 5, 1931 · Bellville TX</span>
+    <p class="ww-desc">Hellen is Eva's mother and Margie's grandmother. She was born in Bellville, Texas, just five years after her parents were freed from slavery. She worked as a waitress in Fort Worth and never left the Bellville area. She is your 2nd great-grandmother.</p>
+  </div>
+
+  <div class="ww-card">
+    <span class="ww-relation">Margie's Great-Grandmother — Your 3rd Great-Grandmother</span>
+    <span class="ww-name">Easter Bell Nichols</span>
+    <span class="ww-dates">July 4, 1848 – December 17, 1935 · Bellville TX</span>
+    <p class="ww-desc">Easter Bell is Hellen's mother — Margie's great-grandmother, and your 3rd great-grandmother. She was born enslaved on July 4, 1848, in Bellville, Texas. After emancipation she stayed in Bellville, raised twelve children, and her family held two acres of land there for 141 years. She is the woman this entire family history is about.</p>
+  </div>
+
+  <div class="div"></div>
+  <div class="chd">How Jasmine's Aunts and Uncles Connect</div>
+  <div class="cttl">Margie's Seven Children and How They Relate to You</div>
+
+  <div class="ww-card">
+    <span class="ww-relation">Jasmine's Uncle (half) — Margie's Child</span>
+    <span class="ww-name">Michael Eugene Corbin Sr.</span>
+    <span class="ww-dates">August 26, 1951 – November 1, 2009</span>
+    <p class="ww-desc">Michael is Margie's first child and Jasmine's half-uncle on her mother's side. He shares Margie as his mother. His children — Darrell, Quincy, Brendyal, Damien, Deserae, Dominque, Mychal, Jamie, and Michael Jr. — are Jasmine's half first cousins.</p>
+  </div>
+
+  <div class="ww-card">
+    <span class="ww-relation">Jasmine's Half-Uncle — Different Father Than the Corbin Children</span>
+    <span class="ww-name">Ronnie Leroy Ballard</span>
+    <span class="ww-dates">b. November 11, 1953 · Living</span>
+    <p class="ww-desc">Ronnie is Margie's son but has a different father than the Corbin children. He shares only Margie as a parent with Hjordis and her siblings. This makes him a half-sibling to them and a half-uncle to Jasmine. His DNA match of 799 cM with Jasmine confirms this half relationship. His children are Jasmine's half cousins.</p>
+  </div>
+
+  <div class="ww-card" style="border-color:rgba(170,51,51,.3);">
+    <span class="ww-relation">Jasmine's Mother — Your Direct Line</span>
+    <span class="ww-name">Hjordis L. Corbin</span>
+    <span class="ww-dates">b. January 20, 1960 · Living · Los Angeles CA</span>
+    <p class="ww-desc">Hjordis is Margie's daughter and Jasmine's mother. She is the living link between Easter Bell Nichols and Jasmine M. Lee. Her DNA has been tested and verified — Kit SQ8499767 on Ancestry.</p>
+  </div>
+
+  <div class="ww-card">
+    <span class="ww-relation">Jasmine's Aunt — Margie's Daughter</span>
+    <span class="ww-name">Deanna Denise Corbin</span>
+    <span class="ww-dates">b. December 28, 1961 · Living</span>
+    <p class="ww-desc">Deanna is Margie's daughter and Jasmine's aunt. Her daughter Lauryn Platkowski (b. 1996) is Jasmine's first cousin. Lauryn's children Nahla (b. 2020) and David (b. 2023) are Jasmine's first cousins once removed.</p>
+  </div>
+
+  <div class="ww-card">
+    <span class="ww-relation">Jasmine's Aunt — Margie's Daughter</span>
+    <span class="ww-name">Sonsorey Yevette Corbin</span>
+    <span class="ww-dates">b. November 29, 1962 · Living</span>
+    <p class="ww-desc">Sonsorey is Margie's daughter and Jasmine's aunt. Her son Alerick Jeron Olivier (b. 1979) is Jasmine's first cousin.</p>
+  </div>
+
+  <div class="ww-card">
+    <span class="ww-relation">Jasmine's Aunt — Margie's Daughter</span>
+    <span class="ww-name">Orngiel L. Corbin</span>
+    <span class="ww-dates">b. December 14, 1964 · Living</span>
+    <p class="ww-desc">Orngiel is Margie's daughter and Jasmine's aunt. Her daughter Brittany Hubert Corbin (b. 1983) is Jasmine's first cousin. Brittany's daughter Bria Bailey is Jasmine's first cousin once removed.</p>
+  </div>
+
+  <div class="ww-card">
+    <span class="ww-relation">Jasmine's Aunt — Margie's Daughter</span>
+    <span class="ww-name">Se'Taun Corbin</span>
+    <span class="ww-dates">b. April 30, 1966 · Living</span>
+    <p class="ww-desc">Se'Taun is Margie's daughter and Jasmine's aunt. Partner: David D. Light. No children currently on record.</p>
+  </div>
+
+  <div class="div"></div>
+  <div class="chd">A Note on Norman Corbin's Other Children</div>
+  <div class="card-box blue">
+    <span class="card-label">Half-Siblings to Hjordis and the Corbin Children</span>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.65;color:var(--ink2);">Norman Caswell Corbin had three children from a previous marriage to <strong>Estella Dolores Richards</strong> before his relationship with Margie: <strong>Norma Delores Corbin</strong> (1942–2006), <strong>Matta Carol Corbin</strong> (1944–2009), and <strong>Marvin Darrel Corbin</strong> (1949–1989). These three share Norman as their father with Hjordis and the other Corbin children, but they are not Margie's children. They are half-siblings to Hjordis, which makes them Jasmine's half-aunts and half-uncle on the Corbin side.</p>
+  </div>
+</div>
+<div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
+</div>
+
+<!-- ═══ EASTER BELL ═══ -->
+<div class="sec" id="tab-easter">
+<div class="shdr">
+  <span class="sey">Your 3rd Great-Grandmother · July 4, 1848 – December 17, 1935</span>
+  <span class="sttl"><em>Easter Bell</em></span>
+  <span class="ssub">The Woman This Entire Story Is About</span>
+  <div class="srul"><div class="sdia"></div></div>
+</div>
+<div class="ctr">
+
+  <div class="prose">
+    <p>If there is one person at the center of this family's history, it is Easter Bell Nichols. She was born enslaved on July 4, 1848, in Bellville, Texas. She died free on December 17, 1935, in the same town, at 87 years old. Between those two dates she raised twelve children, held onto two acres of land for the rest of her life, and watched her grandchildren begin building lives across Texas and eventually California. She did all of this on land that bore the name of the man who had once owned her.</p>
+    <p>She did not leave. She did not need to. The land was hers now.</p>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">Her Death Certificate — The Most Important Document We Have</span>
+  <span class="cttl">What the Record Confirms</span>
+  <div class="card-box">
+    <span class="card-label">Texas Death Certificate · File No. 54496 · December 17, 1935</span>
+    <div class="ftbl">
+      <tr><td>Full Name</td><td>Ester Pinkes (Easter Pinks / Easter Bell) — the spelling variation is common in these records</td></tr>
+      <tr><td>Date of Birth</td><td>Listed as July 4, 1838 on certificate — but Jeff Cemetery confirms July 4, 1848. The discrepancy is a recording error. She was 87 at death, consistent with 1848.</td></tr>
+      <tr><td>Mother's Name</td><td><strong>Rendy Blayn</strong> — this is the single most important fact on this certificate. It confirms Rendy Blayn as Easter Bell's mother.</td></tr>
+      <tr><td>Husband</td><td>Hannable Pinkes (Hannibal Pink) — her second husband, confirming the Pink surname in records</td></tr>
+      <tr><td>Cause of Death</td><td>Fracture of left femur · Contributing cause: Senility · Fell on floor</td></tr>
+      <tr><td>Informant</td><td>Clara Ney, Bellville, Texas — a trusted person from her community</td></tr>
+      <tr><td>Buried</td><td>Bellville, Texas · December 19, 1935 · Undertaker: Ben E. Davis, Columbus TX</td></tr>
+    </div>
+  </div>
+
+  <div class="pq">Her death certificate lists her mother as Rendy Blayn. That single line connects two generations — and it is one of the most important pieces of information in this entire research project.</div>
+
+  <div class="div"></div>
+  <span class="chd">Born Into Bondage · July 4, 1848</span>
+  <span class="cttl">Independence Day, Piney Creek, Bellville, Texas</span>
+  <div class="prose">
+    <p>Easter Bell was born on <em>July 4, 1848</em> — Independence Day — on the John Nichols plantation along Piney Creek in Bellville, Texas. She was born enslaved. Her mother was <em>Rendy Blayn</em>, a woman born in North Carolina around 1817. Mother and daughter appear together in the 1860 slave schedule: a female age 43 and a female age 13 — no names, just numbers, because that was all the law required.</p>
+    <p>Her father is listed as unknown on her death certificate. That silence in the record says a great deal on its own — it was a common and painful reality for enslaved women, whose children often had unknown or unacknowledged fathers.</p>
+    <p>Easter Bell spent the first seventeen years of her life on that plantation. In 1865, everything changed.</p>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">Freedom · 1865 · What She Did With It</span>
+  <span class="cttl">Twelve Children and 141 Years of Land</span>
+  <div class="prose">
+    <p>On December 18, 1865 — six months after emancipation — Easter Bell married <em>Joseph Nichols</em>. Over the next thirty years they had twelve children. At some point after emancipation the family acquired two acres of land in the J. Nichols Survey — the same survey named for her former enslaver. Her family held that land for 141 years.</p>
+    <p>Later in life, after Joseph died between 1900 and 1910, Easter Bell married <em>Hannibal Pink</em> on July 30, 1914. By 1920 she was listed as widowed and head of household. She kept going. She always kept going.</p>
+    <p>She died on December 17, 1935 in Bellville. She was buried there. She had lived through slavery, the Civil War, emancipation, Reconstruction, Jim Crow, and into the Great Depression. She was 87 years old. She had outlived her first husband, her daughter Hellen, and her daughter Katie. And she had held onto her land the whole time.</p>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">Her Twelve Children</span>
+  <div class="card-box">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;">
+      <div class="ft-p ft-l1"><span class="ft-nm">Katie Thornton</span><span class="ft-dt">1860–1923 · Throckmorton TX</span><span class="ft-nt">Death cert names mother as Easter Bell — primary source</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">Allen Nichols Sr.</span><span class="ft-dt">1865–1944</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">Annie Nichols</span><span class="ft-dt">1866–</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">Josephine Nichols</span><span class="ft-dt">1868–</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">Oscar Nichols</span><span class="ft-dt">1869–1949</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">Henry Nichols</span><span class="ft-dt">1870 · age 2 months in 1870 census</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm mem">Hellen Nichols Armstrong</span><span class="ft-dt">September 1870 – December 5, 1931</span><span class="ft-nt">★ Your 2nd great-grandmother</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">John Nagy Nichols</span><span class="ft-dt">1872–1938</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">Clara Nichols</span><span class="ft-dt">1875–1944</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">William Willie Nichols</span><span class="ft-dt">1884–1956</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">Helen Reese</span><span class="ft-dt">1884–1931</span><span class="ft-nt">Gwen Reese DNA match (53.5 cM) may descend from Helen</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">Mabel Nichols</span><span class="ft-dt">ca. 1891 · age 19 in 1910 census</span></div>
+    </div>
+  </div>
+
+  <div class="pq">Easter Bell was born enslaved on July 4, 1848 — Independence Day. She died free on December 17, 1935. In between she raised twelve children and held onto two acres of land for 141 years. That is what she did with freedom. — Jasmine M. Lee, March 2026</div>
+
+  <div class="ftbl">
+    <tr><td>Born</td><td>July 4, 1848 · Bellville, Austin County, Texas</td></tr>
+    <tr><td>Mother</td><td>Rendy Blayn · born North Carolina ca. 1817 · confirmed by death certificate Field 15</td></tr>
+    <tr><td>Father</td><td>Unknown — listed as such on death certificate</td></tr>
+    <tr><td>Enslaved by</td><td>John Nichols · Piney Creek plantation · Bellville TX · female age 13 in 1860 slave schedule</td></tr>
+    <tr><td>1st marriage</td><td>Joseph Nichols · December 18, 1865 · Austin County TX</td></tr>
+    <tr><td>2nd marriage</td><td>Hannibal Pink · July 30, 1914</td></tr>
+    <tr><td>Land</td><td>2 acres · J. Nichols Survey · Abstract No. 73 · held 141 years · lost 2006 tax sale</td></tr>
+    <tr><td>Died</td><td>December 17, 1935 · Bellville, Austin County, Texas · age 87</td></tr>
+    <tr><td>Buried</td><td>Jeff Cemetery · Bellville, Austin County, Texas · December 19, 1935</td></tr>
+  </div>
+
+</div>
+<div class="ftr">Easter Bell Nichols · July 4, 1848 – December 17, 1935 · Bellville, Texas · Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
+</div>
+
+<!-- ═══ EVA ARMSTRONG ═══ -->
+<div class="sec" id="tab-eva">
+<div class="shdr">
+  <span class="sey">Your Great-Grandmother · June 27, 1900 – November 24, 1977</span>
+  <span class="sttl"><em>Eva Armstrong</em></span>
+  <span class="ssub">The Woman Your Family Remembers</span>
+  <div class="srul"><div class="sdia"></div></div>
+</div>
+<div class="ctr">
+
+  <!-- EVA PHOTO PLACEHOLDER -->
+  <div class="photo-wrap">
+    <div class="photo-frame" id="evaPhotoBox" onclick="document.getElementById('evaPhotoInput').click()">
+      <span style="font-size:28px;">📷</span>
+      <span>Add a photo of Eva<br>Click to upload</span>
+    </div>
+    <input type="file" id="evaPhotoInput" accept="image/*" style="display:none" onchange="loadPhoto('evaPhotoBox',event)">
+    <span class="photo-cap">Eva Armstrong Ballard · 1900–1977</span>
+  </div>
+
+  <div class="prose">
+    <p>Eva Armstrong Ballard is the person your mother and her siblings actually remember. Not through documents — through stories. The way she carried herself. The business she ran. The way she held her family together across cities and decades and hardships that would have broken most people. She is the living memory anchor for the generation that knew her, and she is the reason this family made it to California.</p>
+    <p>She was born on June 27, 1900 in Bellville, Texas. She died on November 24, 1977 in Garden Grove, California. In between she traveled the full length of this family's story — from the plantation land of Austin County to the Pacific coast — and she did it on her own terms.</p>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">Bellville to Fort Worth · 1900–1911</span>
+  <span class="cttl">The Daughter of Hellen Nichols Armstrong</span>
+  <div class="prose">
+    <p>Eva was born in Bellville — the same town where her grandmother Easter Bell had been born enslaved in 1848. Her mother was <em>Hellen Nichols Armstrong</em>, Easter Bell's daughter. Her father was <em>John Armstrong</em>, whose own father David had been enslaved in Upshur County, Texas.</p>
+    <p>Eva was eleven years old when her father was killed. On August 30, 1911, John Armstrong was shot by a man named Jack Thompson in Fort Worth. Thompson was later acquitted. John Armstrong was 39 years old. Eva grew up after that without her father — in a household run by her mother Hellen, who worked as a waitress and kept her children together on her own until she died in 1931.</p>
+    <p>That kind of resilience — keeping yourself and your children going after loss — is something Eva learned early. She watched her mother do it. She would do it herself, and do it bigger.</p>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">Fort Worth to San Antonio · Marriage and Business</span>
+  <span class="cttl">Eva Armstrong Runs a Night Club and Cafe</span>
+  <div class="prose">
+    <p>Eva married <em>James Wilson Ballard Sr.</em> — the son of Reverend George W. Ballard, whose own grandfather Newton Bullard had claimed 160 acres of Texas land in 1856 as a formerly enslaved person. James and Eva had six children: James Jr., Margie Nell, Lois, Selma (who died in infancy), Betty, and Charles Ray.</p>
+    <p>In San Antonio, Eva ran a <em>Night Club and Cafe</em>. She owned property. She was a businesswoman in a city and an era that did not make things easy for Black women who wanted to own things and run things. She did it anyway.</p>
+    <p>On April 22, 1944, Eva purchased Lot 13, Block 2, NCB 2924 in San Antonio — in her own name, jointly with James Sr. and James Jr. She paid $3,600. In 1957, after James Sr. had died, all five surviving children signed the property over to Eva. She then sold it to Emmie Garrett on January 22, 1957. She knew how to close a transaction. She knew how to protect what she had built.</p>
+  </div>
+
+  <div class="pq">She ran a Night Club and Cafe in San Antonio. She owned property. She knew how to close a transaction. That is not luck. That is character.</div>
+
+  <div class="div"></div>
+  <span class="chd">California · The Final Chapter</span>
+  <span class="cttl">Garden Grove, Orange County · 1977</span>
+  <div class="prose">
+    <p>Eva eventually married again — to <em>Minor Green</em> — and made it to California. She died on November 24, 1977 in Garden Grove, Orange County, as Eva Green. She was 77 years old.</p>
+    <p>Your mother and her siblings remember Eva. That memory is a primary source of its own kind — more vivid than any census record or property deed. Whatever they remember about her is true in the way that only living memory can be true.</p>
+    <p>If you knew Eva Armstrong — if your mother or your aunts or uncles ever told you a story about her — those stories belong in this archive too. This page will grow. If you have a memory of Eva, a photograph, or a story passed down, contact Jasmine so it can be added here.</p>
+  </div>
+
+  <div class="pq">Three generations from slavery to the Pacific coast. Easter Bell in 1848 Bellville. Eva Armstrong in 1977 Garden Grove. That is the distance one family traveled.</div>
+
+  <div class="ftbl">
+    <tr><td>Born</td><td>June 27, 1900 · Bellville, Austin County, Texas</td></tr>
+    <tr><td>Mother</td><td>Hellen Nichols Armstrong (1870–1931)</td></tr>
+    <tr><td>Father</td><td>John Armstrong (1872–1911) · killed Fort Worth TX</td></tr>
+    <tr><td>Grandmother</td><td>Easter Bell Nichols (1848–1935)</td></tr>
+    <tr><td>Married</td><td>James Wilson Ballard Sr. · son of Rev. George W. Ballard</td></tr>
+    <tr><td>Business</td><td>Night Club and Cafe · San Antonio TX</td></tr>
+    <tr><td>Property</td><td>Lot 13, Block 2, NCB 2924 · San Antonio · purchased April 22, 1944 · sold 1957 · fully settled</td></tr>
+    <tr><td>Later married</td><td>Minor Green</td></tr>
+    <tr><td>Children</td><td>James Jr. (1926–1986) · Margie Nell (1929–1988) · Lois · Selma (died infant) · Betty · Charles Ray</td></tr>
+    <tr><td>Died</td><td>November 24, 1977 · Garden Grove, Orange County, California</td></tr>
+  </div>
+</div>
+<div class="ftr">Eva Armstrong Ballard · June 27, 1900 – November 24, 1977 · Bellville TX to Garden Grove CA · Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
+</div>
+
+<!-- ═══ BONDAGE TO BELONGING ═══ -->
 <div class="sec" id="tab-bondage">
 <div class="shdr">
-  <div class="sey">The Story of This Family · ca. 1780s to Present</div>
-  <h1 class="sttl"><em>Bondage</em> to Belonging</h1>
-  <p class="ssub">How one family survived slavery, claimed land, built lives, and made it to California</p>
+  <span class="sey">The Story of This Family · ca. 1780s to Present</span>
+  <span class="sttl"><em>Bondage</em> to Belonging</span>
+  <span class="ssub">How one family survived slavery, claimed land, built lives, and made it to California</span>
   <div class="srul"><div class="sdia"></div></div>
 </div>
 <div class="ctr">
-  <div class="chd">Prologue</div>
-  <div class="prose"><p>This is the story of a family that was not supposed to survive — not intact, not named, not remembered. The system that held them was designed to prevent exactly this: a great-great-great-granddaughter sitting down with documents and DNA and piecing together the names of women who lived two hundred years ago in South Carolina.</p><p>But here we are. The names survived. The family survived. And because Jasmine M. Lee asked the questions, we know who they were.</p></div>
+  <div class="prose"><p>This is the story of a family that was not supposed to survive — not intact, not named, not remembered. The system that held them was designed to prevent exactly this: a great-great-great-granddaughter sitting down with documents and DNA and piecing together the names of women who lived two hundred years ago in South Carolina. But here we are. The names survived. The family survived.</p></div>
   <div class="div"></div>
-  <div class="chd">Chapter One · South Carolina · ca. 1780s–1839</div>
-  <div class="cttl">Patience, and What Was Done to Her</div>
-  <div class="prose"><p>Sometime in the 1780s, a woman named <em>Patience</em> was born — likely in South Carolina, possibly in Union County. She was enslaved her entire life. On August 4, 1795, Francis Davenport Sr. of Newberry County signed a deed giving Patience to his daughter Martha, called Patty, who had married <em>Hezekiah Waldrop</em>. The deed said Patience was given "with her increase" — a legal phrase meaning all children she might ever have would automatically belong to the Waldrop family. She had no say. Her future children had no say.</p><p>Patience had children. One of them was named <em>Clarissa</em>, born approximately 1807. The 1839 Waldrop estate deed names Patience's children: Clarissa, Rachel, Tom, William, Amanda, and Harriet. Six people. All enslaved. All distributed among white heirs like furniture.</p></div>
+  <span class="chd">Chapter One · South Carolina · ca. 1780s–1839</span>
+  <span class="cttl">Patience, and What Was Done to Her</span>
+  <div class="prose"><p>Sometime in the 1780s, a woman named <em>Patience</em> was born in South Carolina. On August 4, 1795, Francis Davenport Sr. signed a deed giving Patience to his daughter Patty, who had married <em>Hezekiah Waldrop</em>. The deed said Patience was given "with her increase" — meaning all children she might ever have would automatically belong to the Waldrop family by law.</p><p>Patience had children. One of them was named <em>Clarissa</em>, born approximately 1807. The 1839 Waldrop estate deed names Patience's children: Clarissa, Rachel, Tom, William, Amanda, and Harriet. Six people. All enslaved. All distributed among white heirs like furniture.</p></div>
   <div class="pq">"one Negro girl named Patience with her increase" — Newberry County SC Deed Book C:367, August 4, 1795</div>
-  <div class="prose"><p>The Waldrop family moved — South Carolina to Georgia to Tennessee to Mississippi. Patience and her children moved with them, not by choice. Hezekiah's daughter Fanny eventually married a man named <em>John Nichols</em> and moved to Texas, bringing enslaved people with her. This is how Patience's descendants came to Bellville, Texas.</p></div>
   <div class="div"></div>
-  <div class="chd">Chapter Two · Texas · 1834–1865</div>
-  <div class="cttl">Piney Creek, Bellville, Austin County</div>
-  <div class="prose"><p>John Nichols arrived in Austin County, Texas in 1834. He was granted 4,428 acres of land along Piney Creek — the J. Nichols Survey, Abstract No. 73. On his plantation, enslaved people worked the land and raised children who were also enslaved. In 1860, the U.S. Census recorded nine enslaved people in his household — listed by age and gender only, with no names given.</p><p>Among them: a female age 43 born approximately 1817 in North Carolina, and a female age 13 born approximately 1848 in Texas. The female age 43 was almost certainly <em>Rendy Blayn</em> — Easter Bell's mother. The female age 13 was almost certainly <em>Easter Bell</em> herself — born July 4, 1848, on the Nichols plantation on Piney Creek. Easter Bell was born on Independence Day. She would wait seventeen years for her own.</p></div>
-  <div class="pq">She was born on July 4, 1848 — Independence Day — on land that bore the name of the man who owned her. She stayed on that land for the rest of her life. After 1865, it was hers too.</div>
+  <span class="chd">Chapter Two · Texas · 1834–1865</span>
+  <span class="cttl">Piney Creek, Bellville, Austin County</span>
+  <div class="prose"><p>John Nichols arrived in Austin County, Texas in 1834. His daughter-in-law Fanny Waldrop — Hezekiah's daughter — married John Nichols, bringing enslaved people from the Waldrop household into the Nichols plantation. In 1860, nine enslaved people lived on that plantation. Among them: <em>Rendy Blayn</em>, a woman from North Carolina, and her daughter <em>Easter Bell</em> — born July 4, 1848, on Piney Creek. Easter Bell was born on Independence Day. She would wait seventeen years for her own.</p></div>
   <div class="div"></div>
-  <div class="chd">Chapter Three · 1865 and After</div>
-  <div class="cttl">What Freedom Looked Like in Bellville, Texas</div>
-  <div class="prose"><p>When emancipation came in June 1865, Easter Bell was seventeen years old. She stayed in Bellville. On December 18, 1865, she married <em>Joseph Nichols</em> — also formerly enslaved on the Nichols plantation, who had taken the surname of his enslaver. Together they built a family. They had twelve children over the next thirty years.</p><p>At some point after emancipation, Easter Bell's family acquired two acres of land — a small portion of the same J. Nichols Survey where she had been born enslaved. A formerly enslaved woman, on land that bore her enslaver's name, held by her family for the next <em>141 years</em>.</p></div>
+  <span class="chd">Chapter Three · 1865 and After</span>
+  <span class="cttl">What Freedom Looked Like in Bellville, Texas</span>
+  <div class="prose"><p>When emancipation came in June 1865, Easter Bell was seventeen years old. She stayed in Bellville. On December 18, 1865, she married <em>Joseph Nichols</em>. They had twelve children. The family acquired two acres of land in the J. Nichols Survey — on land still bearing her enslaver's name. <em>141 years</em> that land stayed in the family.</p></div>
   <div class="div"></div>
-  <div class="chd">Chapter Four · Fort Worth · 1900–1953</div>
-  <div class="cttl">Eva Armstrong Ballard Moves North</div>
-  <div class="prose"><p>Easter Bell and Joseph's daughter <em>Hellen Nichols</em> married <em>John Armstrong</em> — whose father David had also been enslaved in Upshur County, Texas. Their daughter <em>Eva Armstrong</em> was born on June 27, 1900 in Bellville. John Armstrong was killed in Fort Worth in 1911. Eva was eleven years old.</p><p>Eva grew up in Fort Worth, married James Wilson Ballard Sr., ran a Night Club and Cafe in San Antonio, owned property, raised her children, and eventually made it to California — to Garden Grove, Orange County — where she died on November 24, 1977. Three generations from slavery to the Pacific coast.</p></div>
+  <span class="chd">Chapter Four · Fort Worth · 1900–1953</span>
+  <span class="cttl">Eva Armstrong Ballard Moves North</span>
+  <div class="prose"><p>Easter Bell's granddaughter <em>Eva Armstrong</em> was born June 27, 1900 in Bellville. Her father was killed when she was eleven. She grew up in Fort Worth, ran a Night Club and Cafe in San Antonio, owned property, and eventually died in Garden Grove, California in 1977. Three generations from slavery to the Pacific coast.</p></div>
   <div class="div"></div>
-  <div class="chd">Chapter Five · Santa Ana, California · 1929–1988</div>
-  <div class="cttl">Margie Nell Ballard Corbin</div>
-  <div class="prose"><p><em>Margie Nell Ballard</em> was born in Fort Worth, Texas on March 13, 1929. She was Eva's daughter, Hellen's granddaughter, Easter Bell's great-granddaughter. She settled in Santa Ana, California. She raised seven children on Townsend Street. She died on October 15, 1988 in Orange County.</p><p>Her daughter Hjordis L. Corbin was born January 20, 1960 in Los Angeles. Hjordis's daughter <em>Jasmine M. Lee</em> was born January 25, 1982 in Orange County, California.</p></div>
-  <div class="div"></div>
-  <div class="chd">Epilogue · March 2026</div>
-  <div class="cttl">What This Research Found</div>
-  <div class="prose"><p>Patience existed. Clarissa existed. Easter Bell existed. Hellen existed. Eva existed. Margie existed. They were real women with real names and real lives. The system that held them tried to make them invisible. It did not succeed.</p><p>From Patience in Newberry County, South Carolina in 1795 to Jasmine M. Lee in Orange County, California in 2026 — that is the distance this family has traveled. That is what belonging looks like, built out of bondage, one generation at a time.</p></div>
-  <div class="pq">Patience is the earliest ancestor we have confirmed through primary source documents. She was a real person. Her children were real people. This family existed before the records tried to erase them. — Jasmine M. Lee, March 2026</div>
+  <span class="chd">Chapter Five · Santa Ana, California · 1929–Present</span>
+  <span class="cttl">Margie Nell Ballard Corbin — and Her Children</span>
+  <div class="prose"><p><em>Margie Nell Ballard</em> was born in Fort Worth on March 13, 1929. She settled in Santa Ana, California, raised seven children on Townsend Street, and died October 15, 1988 in Orange County. Her daughter Hjordis gave birth to <em>Jasmine M. Lee</em> on January 25, 1982 — the researcher who found all of this and brought it back.</p></div>
+  <div class="pq">From Patience in Newberry County, South Carolina in 1795 to Jasmine M. Lee in Orange County, California in 2026 — that is the distance this family has traveled. That is what belonging looks like, built out of bondage, one generation at a time.</div>
 </div>
-<footer class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</footer>
+<div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
 </div>
 
-<!-- NICHOLS WALDROP TAB -->
+<!-- ═══ ENSLAVED FAMILY ═══ -->
+<div class="sec" id="tab-enslaved">
+<div class="shdr">
+  <span class="sey">Confirmed · Probable · Possible · Research Status Noted</span>
+  <span class="sttl">The <em>Enslaved</em> Family</span>
+  <span class="ssub">What Each Person Endured, What Was Confirmed, What Families Were Separated</span>
+  <div class="srul"><div class="sdia"></div></div>
+</div>
+<div class="ctr">
+  <div class="prose"><p>Every person documented here was held as property against their will. They could not legally marry, own land, keep their children, or control where they lived. This page names them, documents what we know about what happened to them, and is honest about what the records confirm versus what is probable but not yet proven.</p></div>
+
+  <div class="card-box blue" style="margin:24px 0;">
+    <span class="card-label">How to Read the Status Labels</span>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.6;color:var(--ink2);"><strong style="color:var(--forest);">Confirmed</strong> — verified by a primary source document (deed, slave schedule, census, death certificate).<br><strong style="color:var(--gold);">Probable</strong> — strong evidence exists but a primary source confirmation is pending.<br><strong style="color:var(--ink3);">Possible</strong> — a credible lead that has not yet been confirmed by a document.</p>
+  </div>
+
+  <div class="div"></div>
+
+  <div class="ensl-person">
+    <span class="status status-conf">● Confirmed — Primary Source: 1795 SC Deed Book C:367 · 1839 MS Waldrop Estate Deed</span>
+    <span class="ensl-name">Patience</span>
+    <span class="ensl-dates">ca. 1780s — unknown · Newberry County, South Carolina → Mississippi</span>
+    <div class="ensl-body">
+      <p>Patience was given away as property by Francis Davenport Sr. to his daughter Patty Waldrop on August 4, 1795. The deed included "with her increase" — meaning all of her children were automatically enslaved by the Waldrop family by law, with no additional transaction needed.</p>
+      <p style="margin-top:12px;"><strong>What she endured:</strong> Patience was transferred between slaveholding families at least once — from the Davenport household to the Waldrop household. She was enslaved for her entire life. Her children were distributed among white heirs through her enslaver's 1839 estate deed.</p>
+      <p style="margin-top:8px;"><strong>Family separation:</strong> In 1839, Hezekiah Waldrop's estate distributed Patience's children — Clarissa, Rachel, Tom, William, Amanda, and Harriet — among his heirs. Whether this separated them from Patience or from each other is not yet documented.</p>
+    </div>
+    <div class="ensl-docs">
+      <div class="ensl-doc">📜 1795 Newberry County SC Deed Book C:367–368 — Primary source confirming Patience's existence and the "with her increase" clause</div>
+      <div class="ensl-doc">📜 1839 Rankin County MS Waldrop Estate Deed — Names Patience's children distributed as property</div>
+    </div>
+  </div>
+
+  <div class="ensl-person">
+    <span class="status status-conf">● Confirmed — Primary Source: 1839 MS Waldrop Estate Deed · 46 DNA ThruLines Matches</span>
+    <span class="ensl-name">Clarissa</span>
+    <span class="ensl-dates">ca. 1807 — unknown · South Carolina → Mississippi</span>
+    <div class="ensl-body">
+      <p>Clarissa was Patience's daughter, born into Waldrop ownership through the terms of her mother's 1795 deed. She never had a free moment under South Carolina or Mississippi law. She is confirmed as your direct ancestor by 46 DNA ThruLines matches.</p>
+      <p style="margin-top:12px;"><strong>What she endured:</strong> Clarissa was born enslaved, distributed through an estate deed, and — based on a possible 1807 document — may have been sold. The paper trail connecting Clarissa to Joseph Nichols has not yet been found, but DNA confirms the connection.</p>
+      <p style="margin-top:8px;"><strong>Family separation:</strong> The 1839 Waldrop estate deed distributed her alongside her siblings. Whether they were kept together or separated is unknown.</p>
+    </div>
+    <div class="ensl-docs">
+      <div class="ensl-doc">📜 1839 Rankin County MS Waldrop Estate Deed</div>
+      <div class="ensl-doc">🧬 46 DNA ThruLines Matches on Ancestry — confirm descent from Clarissa</div>
+      <div class="ensl-doc">📋 1807 Laurens District SC Deed Book H:253 (Research Lead — not confirmed)</div>
+    </div>
+  </div>
+
+  <div class="ensl-person">
+    <span class="status status-conf">● Confirmed — Primary Source: 1860 Slave Schedule · Jeff Cemetery Record · Death Certificate</span>
+    <span class="ensl-name">Rendy Blayn</span>
+    <span class="ensl-dates">ca. 1817, North Carolina — unknown · Bellville, Austin County, Texas</span>
+    <div class="ensl-body">
+      <p>Rendy Blayn is Easter Bell's mother, confirmed by Easter Bell's 1935 death certificate — Field 15: Mother's Maiden Name: Rendy Blayn. She was born in North Carolina around 1817 and was brought to Texas, likely as an enslaved person under the Nichols household.</p>
+      <p style="margin-top:12px;"><strong>What she endured:</strong> Rendy was enslaved in North Carolina and transported to Texas — a forced migration away from whatever family and community she had. In 1860 she was 43 years old, still enslaved on the John Nichols plantation in Bellville, alongside her daughter Easter Bell who was 13. Mother and daughter, enslaved together on Piney Creek.</p>
+      <p style="margin-top:8px;"><strong>Family separation:</strong> Rendy was separated from whatever family she had in North Carolina when she was brought to Texas. Her fate after emancipation in 1865 has not yet been documented. She does not appear in post-war census records under a confirmed name.</p>
+    </div>
+    <div class="ensl-docs">
+      <div class="ensl-doc">💀 Easter Bell's 1935 Death Certificate — Field 15 names Rendy Blayn as Easter Bell's mother</div>
+      <div class="ensl-doc">📋 1860 John Nichols Slave Schedule — Female age 43, born NC — almost certainly Rendy Blayn</div>
+    </div>
+  </div>
+
+  <div class="ensl-person">
+    <span class="status status-conf">● Confirmed — Primary Source: 1860 Slave Schedule · Jeff Cemetery Record · 1870 Census</span>
+    <span class="ensl-name">Easter Bell Nichols</span>
+    <span class="ensl-dates">July 4, 1848 – December 17, 1935 · Bellville, Austin County, Texas</span>
+    <div class="ensl-body">
+      <p>Easter Bell was born enslaved on Independence Day on the John Nichols plantation in Bellville, Texas. Her mother was Rendy Blayn. Her father is listed as unknown on her death certificate. She was enslaved for the first 17 years of her life on Piney Creek.</p>
+      <p style="margin-top:12px;"><strong>What she endured:</strong> Easter Bell was born into slavery, lived on the same plantation her entire childhood, and had no legal rights until she was 17. She likely witnessed or experienced the violence and degradation that was endemic to plantation slavery. After emancipation she chose to stay in Bellville — the only home she had ever known.</p>
+      <p style="margin-top:8px;"><strong>What she built:</strong> After emancipation she married, raised twelve children, acquired land, and lived 87 years. She survived everything. See the full Easter Bell page for her complete story.</p>
+    </div>
+    <div class="ensl-docs">
+      <div class="ensl-doc">📋 1860 John Nichols Slave Schedule — Female age 13, born TX — Easter Bell</div>
+      <div class="ensl-doc">⚰️ Jeff Cemetery Record — confirms July 4, 1848 birth date</div>
+      <div class="ensl-doc">💀 1935 Death Certificate — confirms Rendy Blayn as mother</div>
+    </div>
+  </div>
+
+  <div class="ensl-person">
+    <span class="status status-prob">◐ Probable — Source: Death Certificate of Son John Armstrong · DNA Evidence</span>
+    <span class="ensl-name">David Armstrong</span>
+    <span class="ensl-dates">ca. 1840s — unknown · Born South Carolina · Enslaved in Upshur County, Texas</span>
+    <div class="ensl-body">
+      <p>David Armstrong is the father of John Armstrong (Hellen's husband, Eva's grandfather). John Armstrong's death certificate names his father as Dave Armstrong, born South Carolina. Research confirms David was enslaved by the John K. Armstrong household in Upshur County, Texas — taking that family's surname after emancipation.</p>
+      <p style="margin-top:12px;"><strong>Family separation:</strong> David was almost certainly separated from his South Carolina family when transported to Texas as an enslaved person. How old he was when this happened is unknown.</p>
+    </div>
+    <div class="ensl-docs">
+      <div class="ensl-doc">💀 John Armstrong Death Certificate — names father as Dave Armstrong, born South Carolina</div>
+      <div class="ensl-doc">📋 1850/1860 Upshur County TX Slave Schedules — John K. Armstrong household (research ongoing)</div>
+    </div>
+  </div>
+
+  <div class="ensl-person">
+    <span class="status status-conf">● Confirmed — Source: Texas GLO Patent Records · 1873 Sale Deed</span>
+    <span class="ensl-name">Newton Bullard</span>
+    <span class="ensl-dates">ca. 1820s–1830s — unknown · Enslaved in Texas · Freed 1865</span>
+    <div class="ensl-body">
+      <p>Newton Bullard was formerly enslaved and became the grandfather of James Wilson Ballard Sr. (Eva's husband). After emancipation he claimed 160 acres of land in Upshur County, Texas — Texas GLO File No. 3378, Patent No. 595, filed August 26, 1856. He sold the land in 1873 for $250 in gold — a legal sale.</p>
+      <p style="margin-top:12px;"><strong>What he endured:</strong> Newton was enslaved his entire early life. The specific details of his enslavement have not yet been documented. His act of claiming 160 acres of land after emancipation — one of the largest documented property claims by a formerly enslaved person in this family — speaks to his determination and capability.</p>
+    </div>
+    <div class="ensl-docs">
+      <div class="ensl-doc">📜 Texas GLO File No. 3378 · Patent No. 595 · Volume 46 · August 26, 1856</div>
+    </div>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">A Note on the Gaps</span>
+  <div class="prose"><p>The enslaved people documented here survived. Their names reached us. But for every person named above, there are others whose names did not survive — whose children were sold away, whose lives were erased from the records entirely. The silence in the historical record is not absence. It is what violence looks like in an archive.</p><p>This research names the people it can confirm. It will keep searching for the ones it cannot yet name.</p></div>
+
+</div>
+<div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
+</div>
+
+<!-- ═══ JUNETEENTH ═══ -->
+<div class="sec" id="tab-juneteenth">
+<div class="shdr">
+  <span class="sey">June 19, 1865 · Galveston, Texas · Our Family Was There</span>
+  <span class="sttl"><em>Juneteenth</em></span>
+  <span class="ssub">How the Day America Honors Changed Our Family's Life Forever</span>
+  <div class="srul"><div class="sdia"></div></div>
+</div>
+<div class="ctr">
+
+  <div class="jt-highlight">
+    <span class="jt-year">June 19, 1865</span>
+    <span class="jt-sub">General Order No. 3 · Galveston, Texas</span>
+  </div>
+
+  <div class="prose"><p>On June 19, 1865, Union soldiers arrived in Galveston, Texas and read General Order No. 3, announcing that all enslaved people in Texas were free. This was two and a half years after the Emancipation Proclamation had been signed. The delay was not an accident — Texas was one of the last Confederate states to receive the news, and enslavers had suppressed and withheld the information as long as they could.</p><p>That day is now celebrated as Juneteenth — a federal holiday, a day of remembrance, and a day of joy. And it connects directly to this family.</p></div>
+
+  <div class="div"></div>
+  <span class="chd">Our Family's Connection</span>
+  <span class="cttl">Easter Bell Was Seventeen Years Old</span>
+  <div class="prose">
+    <p>When General Order No. 3 was read in Galveston on June 19, 1865, <em>Easter Bell Nichols</em> was seventeen years old. She was living on the John Nichols plantation on Piney Creek in Bellville, Austin County, Texas — approximately 150 miles from Galveston.</p>
+    <p>Easter Bell had been born enslaved on that plantation on July 4, 1848. She had spent her entire life there. When the announcement reached Bellville in June 1865, she was free for the first time in her life. Six months later — on December 18, 1865 — she married Joseph Nichols.</p>
+    <p>Juneteenth is not an abstract holiday to this family. It is the specific moment when Easter Bell — your 3rd great-grandmother, the woman at the center of this entire family history — became legally free. Everything that followed in this family's story flows from that date.</p>
+  </div>
+
+  <div class="card-box" style="margin:28px 0;">
+    <span class="card-label">The Direct Connection</span>
+    <div class="ftbl">
+      <tr><td>June 19, 1865</td><td>General Order No. 3 read in Galveston, Texas — all enslaved people in Texas declared free</td></tr>
+      <tr><td>Age of Easter Bell</td><td>17 years old · living on Piney Creek plantation · Bellville, Austin County, Texas · ~150 miles from Galveston</td></tr>
+      <tr><td>Six months later</td><td>December 18, 1865 — Easter Bell married Joseph Nichols in Austin County, Texas</td></tr>
+      <tr><td>What followed</td><td>12 children · 141 years of land ownership · generations that reached California</td></tr>
+      <tr><td>Also affected</td><td>Rendy Blayn (Easter's mother) · Joseph Nichols · David Armstrong · Newton Bullard — all freed by the same order</td></tr>
+    </div>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">Also in Texas on Juneteenth 1865</span>
+  <span class="cttl">Other Family Members Who Were Freed That Day</span>
+  <div class="prose">
+    <p><em>Rendy Blayn</em>, Easter Bell's mother — born in North Carolina, brought to Texas against her will, enslaved on Piney Creek her entire adult life — was also freed on June 19, 1865. She was approximately 48 years old. What happened to her after emancipation is still being researched.</p>
+    <p><em>Joseph Nichols</em>, who would become Easter Bell's husband six months later — also enslaved on the Nichols plantation — was freed that same day. He was approximately 18 years old. Within six months he had married and begun building a family.</p>
+    <p><em>David Armstrong</em>, Easter Bell's future son-in-law's father — enslaved in Upshur County, Texas — was also freed in June 1865. His son John Armstrong was born in Bellville in 1872, married Hellen Nichols, and was Eva Armstrong's father.</p>
+    <p><em>Newton Bullard</em>, Eva's husband's grandfather — freed in Texas in 1865 — went on to claim 160 acres of land. He had already filed his land patent in 1856, suggesting he had found some way to stake that claim even before emancipation. His exact circumstances before June 19, 1865 are still being researched.</p>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">Juneteenth in the Family Today</span>
+  <span class="cttl">What This Holiday Means for Our Line</span>
+  <div class="prose">
+    <p>Juneteenth became a federal holiday on June 17, 2021. For many American families, it is a day to celebrate a historical event. For this family, it is the specific anniversary of the moment when Easter Bell Nichols — the woman this entire archive is about — became free.</p>
+    <p>Every Juneteenth, this family is not celebrating an abstraction. They are celebrating Easter Bell. They are celebrating Rendy Blayn. They are celebrating Joseph Nichols. They are celebrating the specific day when the long chain of bondage that began with Patience in 1795 South Carolina was finally broken — at least legally — in Bellville, Texas in 1865.</p>
+    <p>Everything in this archive that comes after June 19, 1865 — the twelve children, the two acres, Eva's Night Club and Cafe, Margie's family in Santa Ana, Jasmine's research in 2026 — all of it begins on that day.</p>
+  </div>
+
+  <div class="pq">When General Order No. 3 was read in Galveston on June 19, 1865, Easter Bell was seventeen years old and she was standing on Piney Creek. Six months later she was married. 141 years later her family still owned land on that creek. That is what Juneteenth means to this family.</div>
+
+</div>
+<div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
+</div>
+
+
+<!-- ═══ NICHOLS WALDROP ═══ -->
 <div class="sec" id="tab-nichols">
 <div class="shdr">
-  <div class="sey">The Enslaving Families · For Research Context Only</div>
-  <h1 class="sttl">Nichols · <em>Waldrop</em></h1>
-  <p class="ssub">How Two Slaveholding Families Were Connected — and Why It Matters for This Research</p>
+  <span class="sey">The Enslaving Families · Research Context Only</span>
+  <span class="sttl">Nichols · <em>Waldrop</em></span>
+  <span class="ssub">How Two Slaveholding Families Were Connected — and Why It Matters</span>
   <div class="srul"><div class="sdia"></div></div>
 </div>
 <div class="ctr">
-  <div class="prose"><p>The families documented here are not blood relatives. They are the enslaving families whose records — deeds, slave schedules, land grants, wills — are the only paper trail that documents our ancestors' existence. Understanding these families is essential to tracing the history of Patience, Clarissa, Joseph Nichols, and Easter Bell.</p></div>
+  <div class="prose"><p>These families are not blood relatives. They are the enslaving families whose documents — deeds, slave schedules, land grants, wills — are the only paper trail that confirms our ancestors existed. Understanding how these families were connected is essential to tracing Easter Bell, Rendy Blayn, Clarissa, and Patience.</p></div>
   <div class="div"></div>
-  <div class="chd">The Waldrop Family</div>
-  <div class="cttl">Hezekiah Waldrop and the Davenport Connection</div>
-  <div class="prose"><p><em>Hezekiah Parrish Waldrop</em> was born in 1772 in Newberry County, South Carolina. His father was John Waldrop, whose will names seven sons including Zekiah (Hezekiah). Hezekiah married <em>Martha "Patty" Davenport</em> — the daughter of Francis Davenport Sr. This marriage is the critical connection: two of Davenport's daughters married Waldrop men. When Francis Davenport distributed enslaved people to his daughters in 1795, he gave <em>Patience</em> to Patty Waldrop on August 4, 1795.</p><p>The Waldrop family migrated from South Carolina through Georgia, Tennessee, and Mississippi, bringing enslaved people with them at every stage. Hezekiah's 1839 estate deed in Rankin County, Mississippi confirmed Patience and her children were distributed among his heirs.</p></div>
+  <span class="chd">The Waldrop Family</span>
+  <span class="cttl">Hezekiah Waldrop and the Davenport Connection</span>
+  <div class="prose"><p>Hezekiah Waldrop (1772–ca.1840) married Martha Patty Davenport, daughter of Francis Davenport Sr. of Newberry County, SC. This marriage is the critical connection: when Davenport distributed enslaved people to his daughters in 1795, he gave <em>Patience</em> to Patty Waldrop on August 4, 1795. The Waldrop family migrated from SC through GA, TN, and into MS, bringing enslaved people at every stage. Hezekiah's 1839 estate deed distributed Patience's children among his heirs.</p></div>
+  <div class="div"></div>
+  <span class="chd">The Nichols Family</span>
+  <span class="cttl">John Nichols and the Austin County Plantation</span>
+  <div class="prose"><p>John Nichols arrived in Austin County, Texas in 1834, granted 4,428 acres along Piney Creek — the J. Nichols Survey, Abstract No. 73. He married <em>Frances Jane Waldroup</em> — confirmed by DNA match Sherry Newman Welty (March 2026) as Fanny Waldrop, Hezekiah's daughter. This is the critical link: enslaved people from the Waldrop household came to the Nichols plantation through this marriage. In 1860, nine enslaved people lived there — including Rendy Blayn and her daughter Easter Bell.</p></div>
   <table class="ftbl">
-    <tr><td>John Waldrop</td><td>Father of Hezekiah · Newberry County SC · died October 20, 1794 · named seven sons in will including Zekiah (Hezekiah)</td></tr>
-    <tr><td>Hezekiah Waldrop</td><td>1772–ca.1840 · SC → GA → TN → MS · enslaved Patience and her children · DNA: 47 ThruLines matches</td></tr>
-    <tr><td>Patty Davenport Waldrop</td><td>Hezekiah's wife · daughter of Francis Davenport Sr. · received Patience from her father 1795</td></tr>
-    <tr><td>Fanny Waldrop</td><td>1802–1881 · Hezekiah's daughter · married John Nichols as her third husband · lived and died in Bellville, Austin County TX · confirmed by DNA match Sherry Newman Welty, March 2026</td></tr>
-    <tr><td>Francis Davenport Sr.</td><td>died March 15, 1803 · gave Patience to daughter Patty Waldrop August 4, 1795 · two daughters married Waldrop men</td></tr>
+    <tr><td>Key connection</td><td>Fanny Waldrop (Hezekiah's daughter) married John Nichols — linking both enslaving families and explaining how Patience's descendants ended up in Bellville TX</td></tr>
+    <tr><td>John Nichols</td><td>1799–March 3, 1864 · Bellville TX · 4,428 acres · 9 enslaved people in 1860</td></tr>
+    <tr><td>DNA confirmation</td><td>Sherry Newman Welty confirmed Fanny Waldrop married John Nichols · she grew up in Bellville TX · March 2026</td></tr>
   </table>
-  <div class="div"></div>
-  <div class="chd">The Nichols Family</div>
-  <div class="cttl">John Nichols and the Austin County Plantation</div>
-  <div class="prose"><p><em>John Nichols</em> arrived in Austin County, Texas in 1834 as one of Stephen F. Austin's original colonists. He was granted 4,428 acres along Piney Creek — the J. Nichols Survey, Abstract No. 73. He married <em>Frances Jane Waldroup</em> — confirmed by DNA match Sherry Newman Welty as <em>Fanny Waldrop</em>, daughter of Hezekiah Waldrop. This is the critical link: the enslaved people from the Waldrop household came to the Nichols plantation through this marriage.</p></div>
-  <table class="ftbl">
-    <tr><td>John Nichols</td><td>1799–March 3, 1864 · Bellville, Austin County TX · 4,428 acres J. Nichols Survey · signed by mark (illiterate) · held 9 enslaved people in 1860</td></tr>
-    <tr><td>Fanny Waldrop Nichols</td><td>1802–1881 · Hezekiah Waldrop's daughter · married John Nichols as third husband · died Bellville 1881 · DNA confirmed</td></tr>
-    <tr><td>1860 Slave Schedule</td><td>Female age 43 = Rendy Blayn (Easter's mother, born NC ca.1817) · Female age 13 = Easter Bell (born July 4, 1848) · 7 others</td></tr>
-    <tr><td>Land grant</td><td>Texas GLO File No. 3378 · J. Nichols Survey · Abstract No. 73 · 4,428 acres · Piney Creek · Austin County TX</td></tr>
-    <tr><td>1838 Land record</td><td>Austin County Board of Land Commissioners No. 115 · confirmed in Texas 1834 · man of family · signed by mark</td></tr>
-  </table>
-  <div class="div"></div>
-  <div class="cttl">The Critical Connection</div>
-  <div class="prose"><p>Fanny Waldrop — Hezekiah's daughter — married John Nichols and brought enslaved people from her father's household into the Nichols plantation. This means the same family network — Davenport, Waldrop, Nichols — held your ancestors in bondage across two states and eight decades. Patience was enslaved by the Waldrop family in South Carolina. Her descendants came to Texas through Fanny Waldrop's marriage to John Nichols. After emancipation, Easter Bell's family stayed on the J. Nichols Survey land.</p></div>
-  <div class="pq">"Fanny married third to John Nichols who all lived in Bellville, Austin, Texas, where I grew up. I always suspected that there are Africans in my family and I'm glad to finally know of you!" — Sherry Newman Welty, DNA match, March 2026</div>
+  <div class="pq">"Fanny married third to John Nichols who all lived in Bellville, Austin, Texas, where I grew up." — Sherry Newman Welty, DNA match, March 2026</div>
 </div>
-<footer class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</footer>
+<div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
 </div>
 
-<!-- LAND TAB -->
+<!-- ═══ THE LAND ═══ -->
 <div class="sec" id="tab-land">
 <div class="shdr">
-  <div class="sey">Property Research · Three Properties · Three Stories</div>
-  <h1 class="sttl">The <em>Land</em></h1>
-  <p class="ssub">How This Family Acquired Land, What Happened to It, and What Was Found</p>
+  <span class="sey">Property Research · Three Properties · Three Stories</span>
+  <span class="sttl">The <em>Land</em></span>
+  <span class="ssub">How This Family Acquired Land, What Happened to It, and What Was Found</span>
   <div class="srul"><div class="sdia"></div></div>
 </div>
 <div class="ctr">
-  <div class="prose"><p>Three properties have been identified in this family's history. Two were lost to tax sales. One was legally settled by all heirs. All three tell the story of a family that fought to own something — again and again — in the century after emancipation.</p></div>
+  <div class="prose"><p>Three properties have been identified in this family's history. Two were lost to tax sales. One was legally settled. All three tell the story of a family that fought to own something — again and again — in the century after emancipation.</p></div>
+  <div class="div"></div>
+  <div class="card-box red">
+    <span class="card-label">Property One · Lost 2006</span>
+    <span class="card-title">The Bellville Land</span>
+    <span class="card-loc">2 Acres · J. Nichols Survey · Abstract No. 73 · Bellville, Austin County, Texas</span>
+    <span class="badge badge-red">Lost — Tax Sale 2006 — Legal Review Possible</span>
+    <div class="prose" style="font-size:16px;margin-top:12px;"><p>Sometime after emancipation in 1865, Easter Bell's family acquired two acres of the same J. Nichols Survey where she had been born enslaved. They stayed on that land for 141 years. In 1997, Austin County filed tax suit Cause No. 97V-003. Judgment December 14, 1999. Sheriff's Deed to Bellville ISD: August 1, 2006.</p></div>
+    <table class="ftbl" style="margin-top:14px;">
+      <tr><td>Original deed</td><td>Volume 209, Page 228 · Austin County Deed Records · Certified copy ordered March 2026</td></tr>
+      <tr><td>Sheriff's Deed</td><td>Instrument No. 66418 · August 1, 2006</td></tr>
+      <tr><td>Austin County Clerk</td><td>Patty Norman Leger · 979-227-3144 ext 5143 · ccvault@austincounty.com</td></tr>
+      <tr><td>District Clerk</td><td>Marcy Grimes · 979-270-6830 · 265 N. Chesley Street Suite 1, Bellville TX 77418</td></tr>
+      <tr><td>Legal Aid</td><td>Lone Star Legal Aid · 713-652-0077 · lonestarlegal.org</td></tr>
+    </table>
+  </div>
+  <div class="card-box red" style="margin-top:20px;">
+    <span class="card-label">Property Two · Lost 2017 · Most Actionable</span>
+    <span class="card-title">The Waco Land</span>
+    <span class="card-loc">724 East Johnson Street · Waco, McLennan County, Texas</span>
+    <span class="badge badge-red">Lost — Tax Sale 2017 — Contact Legal Aid First</span>
+    <div class="prose" style="font-size:16px;margin-top:12px;"><p>Rev. George W. Ballard owned this property. Sold November 7, 2017 to McQuades for $1,600 — 80 years after Rev. Ballard died in 1937. Call Lone Star Legal Aid about this property FIRST.</p></div>
+    <table class="ftbl" style="margin-top:14px;">
+      <tr><td>Tax suit</td><td>Cause No. 2014-3167-4 · McLennan County</td></tr>
+      <tr><td>Legal Aid</td><td>Lone Star Legal Aid · 713-652-0077 · CALL THIS FIRST</td></tr>
+    </table>
+  </div>
+  <div class="card-box green" style="margin-top:20px;">
+    <span class="card-label">Property Three · Sold Legally 1873</span>
+    <span class="card-title">Newton Bullard's 160 Acres</span>
+    <span class="card-loc">Survey No. 124 · Caney Creek · Upshur County, Texas</span>
+    <span class="badge badge-green">Legal Sale — No Recourse</span>
+    <div class="prose" style="font-size:16px;margin-top:12px;"><p>Newton Bullard claimed 160 acres in Upshur County TX. Patent filed August 26, 1856 — Texas GLO File No. 3378. Sold legally to E.G. Horn for $250 gold on August 9, 1873. Newton's grandson James Wilson Ballard Sr. was born August 26, 1897 — the same calendar date as the land patent.</p></div>
+  </div>
+</div>
+<div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
+</div>
+
+<!-- ═══ MARGIE'S FAMILY ═══ -->
+<div class="sec" id="tab-homage">
+<div class="shdr">
+  <span class="sey">In Memory and In Honor · Margie Nell Ballard Corbin · March 13, 1929 – October 15, 1988</span>
+  <span class="sttl">Margie's <em>Family</em></span>
+  <span class="ssub">Her Children, Grandchildren, and Great-Grandchildren — Three Generations of Her Legacy</span>
+  <div class="srul"><div class="sdia"></div></div>
+</div>
+<div class="ctr">
+
+  <!-- MARGIE PHOTO -->
+  <div class="photo-wrap">
+    <div class="photo-frame" id="margiePhotoBox" onclick="document.getElementById('margiePhotoInput').click()">
+      <span style="font-size:28px;">📷</span>
+      <span>Add a photo of Margie<br>Click to upload</span>
+    </div>
+    <input type="file" id="margiePhotoInput" accept="image/*" style="display:none" onchange="loadPhoto('margiePhotoBox',event)">
+    <span class="photo-cap">Margie Nell Ballard Corbin · March 13, 1929 – October 15, 1988</span>
+  </div>
+
+  <div class="prose"><p>Margie Nell Ballard was born in Fort Worth, Texas on March 13, 1929. She was Eva Armstrong's daughter, Hellen Nichols's granddaughter, Easter Bell's great-granddaughter. She carried all of them when she came to California and settled on Townsend Street in Santa Ana. She raised seven children and built a family that now spans three generations. She died on October 15, 1988 in Orange County, California. She was 59 years old. Everything on this page is her legacy.</p></div>
+
   <div class="div"></div>
 
-  <div class="pcard lost">
-    <div class="plbl">Property One · Lost 2006</div>
-    <div class="pnm">The Bellville Land</div>
-    <div class="ploc">2 Acres · J. Nichols Survey · Abstract No. 73 · Account R20014 · Bellville, Austin County, Texas</div>
-    <div class="pstat">Lost — Tax Sale 2006 — Legal Review Possible</div>
-    <div class="chd" style="margin-top:14px">The Story</div>
-    <div class="prose" style="font-size:16px"><p>Sometime after emancipation in 1865, Easter Bell Nichols's family acquired two acres of land in the J. Nichols Survey in Bellville — the same survey that bore the name of the man who had enslaved them. They stayed on that land for 141 years.</p><p>The land passed through multiple generations. In 1997, Austin County filed a tax suit — Cause No. 97V-003 — naming all heirs as defendants. Most were already dead. Easter Bell herself, who died in 1935, was named as Easter Pink. Judgment was rendered December 14, 1999. On August 1, 2006, a Sheriff's Deed conveyed the two acres to Austin County for the use of Bellville Independent School District. The land was sold for back taxes.</p></div>
-    <table class="ftbl" style="margin-top:14px">
-      <tr><td>Original deed</td><td>Volume 209, Page 228 · Austin County Deed Records · Certified copy ordered March 2026 · $8.00</td></tr>
-      <tr><td>Tax suit</td><td>Cause No. 97V-003 · 155th Judicial District Court · Bellville ISD vs. Myrtle T. Everline, Easter Pink, Allen Nichols, Oscar Nichols, Clara Nazy et al.</td></tr>
-      <tr><td>Judgment</td><td>December 14, 1999</td></tr>
-      <tr><td>Sheriff's Deed</td><td>Instrument No. 66418 · August 1, 2006 · Certified copy ordered March 2026 · $8.00</td></tr>
-      <tr><td>Contact</td><td>Patty Norman Leger · 979-227-3144 ext 5143 · ccvault@austincounty.com</td></tr>
-      <tr><td>Court file</td><td>Marcy Grimes · 979-270-6830 · 265 N. Chesley Street Suite 1, Bellville TX 77418</td></tr>
-      <tr><td>Legal action</td><td>Lone Star Legal Aid · 713-652-0077 · lonestarlegal.org</td></tr>
-    </table>
+  <div class="card-box blue" style="margin-bottom:24px;">
+    <span class="card-label">About the Corbin Name</span>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.65;color:var(--ink2);">Norman Caswell Corbin (February 10, 1921 – April 21, 1974) was Margie's partner. He also had three children from a previous marriage to Estella Dolores Richards: <strong>Norma Delores Corbin</strong> (1942–2006), <strong>Matta Carol Corbin</strong> (1944–2009), and <strong>Marvin Darrel Corbin</strong> (1949–1989). These are half-siblings to Hjordis and the Corbin children but are not Margie's children. The Corbin Community Center at 2215 McFadden Avenue, Santa Ana was named in Norman's honor in July 1974.</p>
   </div>
 
-  <div class="pcard lost" style="margin-top:24px">
-    <div class="plbl">Property Two · Lost 2017 · Most Actionable</div>
-    <div class="pnm">The Waco Land</div>
-    <div class="ploc">Lots 4–5–6 · Block 3 · Lincoln Park Addition · 724 East Johnson Street · Waco, McLennan County, Texas</div>
-    <div class="pstat">Lost — Tax Sale 2017 — Contact Legal Aid First</div>
-    <div class="chd" style="margin-top:14px">The Story</div>
-    <div class="prose" style="font-size:16px"><p>Rev. George W. Ballard — Eva Armstrong Ballard's father-in-law — owned property at 724 East Johnson Street in Waco, Texas, recorded in McLennan County Deed Records, Volume 289, Page 655. On November 7, 2017, the property was sold in a tax sale to McQuades for $1,600 — 80 years after Rev. Ballard died in Waco on October 24, 1937. The 2017 sale is the most recent and most actionable for potential legal recovery.</p></div>
-    <table class="ftbl" style="margin-top:14px">
-      <tr><td>Original deed</td><td>Volume 289, Page 655 · McLennan County Deed Records</td></tr>
-      <tr><td>Tax suit</td><td>Cause No. 2014-3167-4 · McLennan County</td></tr>
-      <tr><td>Sold to</td><td>McQuades · November 7, 2017 · $1,600</td></tr>
-      <tr><td>Legal action</td><td>Lone Star Legal Aid · 713-652-0077 · PRIORITY — most recent sale</td></tr>
-    </table>
+  <div class="card-box" style="margin-top:20px;">
+    <span class="card-label">Margie's First Child</span>
+    <span class="ft-nm" style="font-size:21px;">Michael Eugene Corbin Sr.</span>
+    <span class="ft-dt" style="font-size:11px;">August 26, 1951 – November 1, 2009</span>
+    <span class="ft-nt" style="font-size:14px;">Margie's first child · Born San Antonio, Texas</span>
+    <span class="ft-pt">Partners: Janice Murray (b. November 1951) · Grace Yevette Webster (b. December 26, 1957) · Shirley Jean McLemore (April 29, 1952 – September 28, 2015)</span>
+    <div class="cgrp"><span class="cgrp-lbl">Children &amp; Grandchildren</span>
+<div class="ft-p ft-l2"><span class="ft-nm">Darrell Devon Corbin</span><span class="ft-dt">b. January 23, 1970</span><span class="ft-nt">Partner: Sushma Gohil (b. May 1, 1974)</span><span class="ft-dna">DNA · 456 cM</span></div><div class="ft-p ft-l3"><span class="ft-nm">Brennan Corbin</span><span class="ft-dt">b. December 1997</span></div><div class="ft-p ft-l3"><span class="ft-nm">Braylin Corbin</span><span class="ft-dt">dates unknown</span></div><div class="ft-p ft-l3"><span class="ft-nm">Sennia Corbin</span><span class="ft-dt">dates unknown</span></div><div class="ft-p ft-l3"><span class="ft-nm">Mariah Corbin</span><span class="ft-dt">dates unknown</span><span class="ft-nt">Darrell's daughter · different mother · DNA verified</span></div><div class="ft-p ft-l2"><span class="ft-nm">Quincy De'Von Young</span><span class="ft-dt">b. December 17, 1976</span></div><div class="ft-p ft-l2"><span class="ft-nm">Brendyal Corbin</span><span class="ft-dt">b. January 24, 1972</span><span class="ft-dna">DNA · 451 cM</span></div><div class="ft-p ft-l3"><span class="ft-nm">Dmarje M. Morris</span><span class="ft-dt">b. July 1, 1991</span><span class="ft-dna">DNA · 149 cM</span></div><div class="ft-p ft-l4"><span class="ft-nm">Makai Morris</span><span class="ft-dt">dates unknown</span></div><div class="ft-p ft-l3"><span class="ft-nm">Fatisha Corbin</span><span class="ft-dt">b. April 1997</span></div><div class="ft-p ft-l3"><span class="ft-nm">Malani Corbin</span><span class="ft-dt">b. January 27, 2023</span></div><div class="ft-p ft-l2"><span class="ft-nm">Damien A. Price-Corbin</span><span class="ft-dt">b. February 18, 1979</span></div><div class="ft-p ft-l2"><span class="ft-nm">Deserae Charese Corbin</span><span class="ft-dt">b. October 9, 1982</span><span class="ft-nt">Partner: Trey Grey</span></div><div class="ft-p ft-l3"><span class="ft-nm">Kailyn Joseph</span><span class="ft-dt">dates unknown</span></div><div class="ft-p ft-l4"><span class="ft-nm">Travis Kailon Smith</span><span class="ft-dt">b. June 14, 2021</span><span class="ft-nt">Kailyn's son</span></div><div class="ft-p ft-l3"><span class="ft-nm">Noah Josiah Gray</span><span class="ft-dt">b. July 4, 2023</span></div><div class="ft-p ft-l2"><span class="ft-nm">Dominque Corbin</span><span class="ft-dt">b. March 2, 1985</span></div><div class="ft-p ft-l2"><span class="ft-nm">Mychal Corbin</span><span class="ft-dt">b. February 8, 1990</span><span class="ft-dna">DNA · 1,002 cM</span></div><div class="ft-p ft-l2"><span class="ft-nm">Jamie Richard Corbin</span><span class="ft-dt">b. January 6, 1996</span></div><div class="ft-p ft-l2"><span class="ft-nm">Michael Eugene Corbin Jr.</span><span class="ft-dt">b. November 26, 1998</span></div>    </div>
   </div>
 
-  <div class="pcard settled" style="margin-top:24px">
-    <div class="plbl">Property Three · Sold Legally 1873</div>
-    <div class="pnm">Newton Bullard's 160 Acres</div>
-    <div class="ploc">Survey No. 124 · Caney Creek · Upshur County, Texas · 160 acres</div>
-    <div class="pstat">Legal Sale — No Recourse — Fully Documented</div>
-    <div class="chd" style="margin-top:14px">The Story</div>
-    <div class="prose" style="font-size:16px"><p>Newton Bullard — formerly enslaved, grandfather of James Wilson Ballard Sr. — claimed 160 acres on Survey No. 124 along Caney Creek in Upshur County, Texas. Patent filed August 26, 1856 — Texas GLO File No. 3378, Patent No. 595, Volume 46. On August 9, 1873, Newton Bullard sold the 160 acres to E.G. Horn for $250 in gold. This was a legal sale. This land cannot be legally recovered.</p><p>Newton's grandson James Wilson Ballard Sr. was born on August 26, 1897 — the same calendar date as the 1856 land patent. The land and the man share a birthdate across generations.</p></div>
-    <table class="ftbl" style="margin-top:14px">
-      <tr><td>Patent</td><td>Texas GLO File No. 3378 · Patent No. 595 · Volume 46 · August 26, 1856</td></tr>
-      <tr><td>Sold</td><td>August 9, 1873 · to E.G. Horn · $250 gold · legal sale · no recourse</td></tr>
-    </table>
+  <div class="card-box" style="margin-top:20px;">
+    <span class="card-label">Margie's Second Child</span>
+    <span class="ft-nm" style="font-size:21px;">Ronnie Leroy Ballard</span>
+    <span class="ft-dt" style="font-size:11px;">b. November 11, 1953 · Living</span>
+    <span class="ft-nt" style="font-size:14px;">Half-sibling to Corbin children · Different father · DNA: 799 cM</span>
+    <span class="ft-pt">Partners: Gwendolyn Charles Stoneham (August 6, 1953 – August 18, 2010) · Mary Corbin (dates unknown)</span>
+    <div class="cgrp"><span class="cgrp-lbl">Children &amp; Grandchildren</span>
+<div class="ft-p ft-l2"><span class="ft-nm">Shawntee R. Mitchell</span><span class="ft-dt">b. August 15, 1975</span></div><div class="ft-p ft-l3"><span class="ft-nm">Shawntasia Daniellejade Jordan</span><span class="ft-dt">b. March 29, 1994</span></div><div class="ft-p ft-l2"><span class="ft-nm">Veronica Ler'a Amado</span><span class="ft-dt">b. October 22, 1980</span></div><div class="ft-p ft-l3"><span class="ft-nm">Son</span><span class="ft-dt">Name Awaiting Information</span></div><div class="ft-p ft-l2"><span class="ft-nm">William Corbin</span><span class="ft-dt">dates unknown</span></div><div class="ft-p ft-l2"><span class="ft-nm">Stacey Austin</span><span class="ft-dt">dates unknown</span></div><div class="ft-p ft-l3"><span class="ft-nm">Children 1–4</span><span class="ft-dt">Names Awaiting Information</span></div>    </div>
+  </div>
+
+  <div class="card-box" style="margin-top:20px;">
+    <span class="card-label">Your Direct Line</span>
+    <span class="ft-nm" style="font-size:21px;">Hjordis L. Corbin</span>
+    <span class="ft-dt" style="font-size:11px;">b. January 20, 1960 · Living · Los Angeles CA</span>
+    <span class="ft-nt" style="font-size:14px;">Your mother · DNA Kit SQ8499767</span>
+    <span class="ft-pt">Partner: Ronald Keith Lee (b. September 7, 1957)</span>
+    <div class="cgrp"><span class="cgrp-lbl">Children &amp; Grandchildren</span>
+<div class="ft-p ft-l2"><span class="ft-nm">Lakesha Setaun Demyers</span><span class="ft-dt">September 24, 1979 – September 24, 1979</span><span class="ft-nt">Jasmine's sister · passed the same day she was born · she is remembered here</span></div><div class="ft-p ft-l2"><span class="ft-nm">Jasmine M. Lee ★</span><span class="ft-dt">b. January 25, 1982 · Living · YOU</span><span class="ft-nt">Founder & CEO, Dock Ellis Foundation · GEDmatch QW8418781</span></div><div class="ft-p ft-l3"><span class="ft-nm">Partner: Ronaldo Cotay Williams</span><span class="ft-dt">b. August 24, 1980</span></div>    </div>
+  </div>
+
+  <div class="card-box" style="margin-top:20px;">
+    <span class="card-label">Margie's Fourth Child</span>
+    <span class="ft-nm" style="font-size:21px;">Deanna Denise Corbin</span>
+    <span class="ft-dt" style="font-size:11px;">b. December 28, 1961 · Living</span>
+    <span class="ft-pt">Partner: Jimmy Brandon (dates unknown)</span>
+    <div class="cgrp"><span class="cgrp-lbl">Children &amp; Grandchildren</span>
+<div class="ft-p ft-l2"><span class="ft-nm">Jade Aureana Brandon</span><span class="ft-dt">b. June 3, 1989</span></div><div class="ft-p ft-l2"><span class="ft-nm">Lauryn Platkowski</span><span class="ft-dt">b. October 21, 1996</span><span class="ft-dna">DNA · 1,002 cM</span></div><div class="ft-p ft-l3"><span class="ft-nm">Nahla Noelle Delhomme</span><span class="ft-dt">b. May 26, 2020</span></div><div class="ft-p ft-l3"><span class="ft-nm">David Michael Carter</span><span class="ft-dt">b. May 25, 2023</span></div>    </div>
+  </div>
+
+  <div class="card-box" style="margin-top:20px;">
+    <span class="card-label">Margie's Fifth Child</span>
+    <span class="ft-nm" style="font-size:21px;">Sonsorey Yevette Corbin</span>
+    <span class="ft-dt" style="font-size:11px;">b. November 29, 1962 · Living</span>
+    <span class="ft-nt" style="font-size:14px;">DNA · 1,938 cM</span>
+    <div class="cgrp"><span class="cgrp-lbl">Children &amp; Grandchildren</span>
+<div class="ft-p ft-l2"><span class="ft-nm">Alerick Jeron Olivier</span><span class="ft-dt">b. October 4, 1979</span></div>    </div>
+  </div>
+
+  <div class="card-box" style="margin-top:20px;">
+    <span class="card-label">Margie's Sixth Child</span>
+    <span class="ft-nm" style="font-size:21px;">Orngiel L. Corbin</span>
+    <span class="ft-dt" style="font-size:11px;">b. December 14, 1964 · Living</span>
+    <div class="cgrp"><span class="cgrp-lbl">Children &amp; Grandchildren</span>
+<div class="ft-p ft-l2"><span class="ft-nm">Brittany Hubert Corbin</span><span class="ft-dt">b. December 10, 1983</span><span class="ft-nt">Partner: James Bailey</span></div><div class="ft-p ft-l3"><span class="ft-nm">Bria Bailey</span><span class="ft-dt">dates unknown</span></div>    </div>
+  </div>
+
+  <div class="card-box" style="margin-top:20px;">
+    <span class="card-label">Margie's Seventh Child</span>
+    <span class="ft-nm" style="font-size:21px;">Se'Taun Corbin</span>
+    <span class="ft-dt" style="font-size:11px;">b. April 30, 1966 · Living</span>
+    <span class="ft-nt" style="font-size:14px;">No children currently on record</span>
+    <span class="ft-pt">Partner: David D. Light (b. abt. 1962)</span>
+  </div>
+
+  <div class="div"></div>
+  <div style="text-align:center;padding:16px 0;">
+    <span style="font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ink3);">This page will grow · Contact Jasmine to update names, dates, or add photos</span>
   </div>
 </div>
-<footer class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</footer>
+<div class="ftr">In memory of Margie Nell Ballard Corbin · March 13, 1929 – October 15, 1988 · Santa Ana, California · Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
 </div>
 
-<!-- DESCENDANTS TAB -->
+<!-- ═══ DNA COUSINS ═══ -->
 <div class="sec" id="tab-descendants">
 <div class="shdr">
-  <div class="sey">The Living Family · Margie Nell Ballard Corbin's Line</div>
-  <h1 class="sttl">Margie's <em>Descendants</em></h1>
-  <p class="ssub">Her Children, Grandchildren, and Extended Family · DNA Connections Noted</p>
+  <span class="sey">Confirmed DNA Matches · Extended Family</span>
+  <span class="sttl">DNA <em>Cousins</em></span>
+  <span class="ssub">Family Members Confirmed Through DNA Testing · cM Values Explained in DNA Guide Tab</span>
   <div class="srul"><div class="sdia"></div></div>
 </div>
 <div class="ctr">
-  <div class="prose"><p>Margie Nell Ballard Corbin (March 13, 1929 – October 15, 1988) was the daughter of Eva Armstrong Ballard and James Wilson Ballard Sr. She is the grandmother of Jasmine M. Lee. What follows is the documented family that descends from Margie, including DNA match values where confirmed.</p></div>
-  <div class="div"></div>
-
-  <div class="gg"><div class="ggt">Margie's Children — First Generation</div>
-    <div class="pe"><div class="ped"></div><div class="pei"><div class="penm">Michael Eugene Corbin Sr.</div><div class="pedt">August 26, 1951 – November 1, 2009</div><div class="pent">Born San Antonio, Texas. Margie's first child. Father: Norman Caswell Corbin.</div></div></div>
-    <div class="pe"><div class="ped"></div><div class="pei"><div class="penm">Ronnie Leroy Ballard</div><div class="pedt">November 11, 1953 – living</div><div class="pent">Half sibling to the other Corbin children — shares only Margie as parent, different father. DNA confirmed at 799 cM (half uncle relationship to Jasmine).</div><div class="pedna">DNA · 799 cM · half uncle</div></div></div>
-    <div class="pe"><div class="ped dir"></div><div class="pei"><div class="penm">Hjordis L. Corbin</div><div class="pedt">January 20, 1960 – living</div><div class="pent">Born Los Angeles, California. Mother of Jasmine M. Lee. DNA kit SQ8499767. Direct maternal ancestor confirmed.</div><div class="pedna">DNA · 3,575 cM · mother</div></div></div>
-    <div class="pe"><div class="ped"></div><div class="pei"><div class="penm">Deanna Denise Corbin</div><div class="pedt">December 28, 1961 – living</div><div class="pent">Margie's daughter. Father: Norman Caswell Corbin.</div><div class="pedna">DNA · 1,990 cM · aunt</div></div></div>
-    <div class="pe"><div class="ped"></div><div class="pei"><div class="penm">Sonsorey Yevette Corbin</div><div class="pedt">November 29, 1962 – living</div><div class="pent">Margie's daughter. Father: Norman Caswell Corbin.</div><div class="pedna">DNA · 1,938 cM · aunt</div></div></div>
-    <div class="pe"><div class="ped"></div><div class="pei"><div class="penm">Orngiel L. Corbin</div><div class="pedt">December 14, 1964 – living</div><div class="pent">Margie's daughter. Father: Norman Caswell Corbin.</div></div></div>
-    <div class="pe"><div class="ped"></div><div class="pei"><div class="penm">Se'Taun Corbin</div><div class="pedt">April 30, 1966 – living</div><div class="pent">Margie's child. Father: Norman Caswell Corbin.</div><div class="pedna">DNA · 1,746 cM · aunt</div></div></div>
+  <div class="gen-group"><span class="gen-title">Confirmed Through Eva Armstrong Ballard's Other Children</span>
+    <div class="pe"><div class="pe-dot dna"></div><div class="pe-info"><span class="pe-name">Jahna Bradshaw</span><span class="pe-dates">living</span><span class="pe-note">Descends through Eva's daughter Lois Ballard Bradshaw who married Warren Bradshaw. Ancestry tree has 79 people.</span><span class="pe-dna">DNA · 41 cM · 2nd cousin 1x removed · confirmed through Lois Ballard Bradshaw</span></div></div>
+    <div class="pe"><div class="pe-dot dna"></div><div class="pe-info"><span class="pe-name">Teresa Ballard</span><span class="pe-dates">living</span><span class="pe-note">Descends through Moses Ballard (1903–1988), son of Rev. George W. Ballard, then Freddie Eugene Ballard (1926–2005). Common ancestors: Rev. George W. Ballard and Mary Ann Edwards.</span><span class="pe-dna">DNA · 54 cM · 2nd cousin 1x removed · confirmed through Moses Ballard</span></div></div>
+    <div class="pe"><div class="pe-dot dna"></div><div class="pe-info"><span class="pe-name">D'marje Morris</span><span class="pe-dates">b. July 1, 1991 · living</span><span class="pe-note">Brendyal Corbin's daughter. Connects through Margie's line.</span><span class="pe-dna">DNA · 149 cM · half 2nd cousin</span></div></div>
+    <div class="pe"><div class="pe-dot dna"></div><div class="pe-info"><span class="pe-name">Mariah Herrera</span><span class="pe-dates">living</span><span class="pe-note">Confirmed DNA cousin through the Corbin family line.</span><span class="pe-dna">DNA · 241 cM · confirmed cousin</span></div></div>
   </div>
-
-  <div class="gg"><div class="ggt">Michael Eugene Corbin Sr.'s Children</div>
-    <div class="pe"><div class="ped dna"></div><div class="pei"><div class="penm">Mychal Corbin</div><div class="pedt">living</div><div class="pent">Son of Michael Eugene Corbin Sr. DNA tested.</div><div class="pedna">DNA · 456 cM · half 1st cousin</div></div></div>
-    <div class="pe"><div class="ped dna"></div><div class="pei"><div class="penm">Brendyal Corbin</div><div class="pedt">living</div><div class="pent">Child of Michael Eugene Corbin Sr. DNA tested.</div><div class="pedna">DNA · 451 cM · half 1st cousin</div></div></div>
-    <div class="pe"><div class="ped dna"></div><div class="pei"><div class="penm">Sirquincy7661</div><div class="pedt">living</div><div class="pent">Child of Michael Eugene Corbin Sr. — Ancestry username.</div><div class="pedna">DNA · 388 cM · half 1st cousin</div></div></div>
-  </div>
-
-  <div class="gg"><div class="ggt">Ronnie Leroy Ballard's Children</div>
-    <div class="pe"><div class="ped dna"></div><div class="pei"><div class="penm">Yumiko Mitchell (Ronya)</div><div class="pedt">living</div><div class="pent">Ronnie's daughter. Manages Ronnie's DNA kit on Ancestry. Has a 453-person tree. Also manages DNA kit for Shawntasia Jordan.</div><div class="pedna">DNA · 252 cM · 1st cousin 2x removed</div></div></div>
-  </div>
-
-  <div class="gg"><div class="ggt">Hjordis L. Corbin's Children</div>
-    <div class="pe"><div class="ped dir"></div><div class="pei"><div class="penm">Jasmine M. Lee</div><div class="pedt">January 25, 1982 – living</div><div class="pent">Born Orange County, California. Founder and CEO, Dock Ellis Foundation. Researcher who documented this family history. Father: Ronald K. Lee.</div><div class="pedna">GEDmatch QW8418781 · AncestryDNA</div></div></div>
-  </div>
-
-  <div class="gg"><div class="ggt">Deanna Denise Corbin's Children</div>
-    <div class="pe"><div class="ped dna"></div><div class="pei"><div class="penm">Lauryn Corbin</div><div class="pedt">living</div><div class="pent">Daughter of Deanna Denise Corbin. DNA tested.</div><div class="pedna">DNA · 1,002 cM · 1st cousin</div></div></div>
-  </div>
-
-  <div class="div"></div>
-
-  <div class="gg"><div class="ggt">Confirmed DNA Cousins — Eva Armstrong Ballard's Other Children's Lines</div>
-    <div class="prose" style="margin-bottom:18px;font-size:15px"><p>These are DNA matches confirmed through Ancestry ThruLines as descending from Eva Armstrong Ballard and James Wilson Ballard Sr. through their other children.</p></div>
-    <div class="pe"><div class="ped dna"></div><div class="pei"><div class="penm">Jahna Bradshaw</div><div class="pedt">living</div><div class="pent">Confirmed 2nd cousin once removed. Descends through Eva's daughter Lois Ballard Bradshaw who married Warren Bradshaw. Common ancestors: James Wilson Ballard Sr. and Eva Armstrong Ballard. Ancestry tree has 79 people.</div><div class="pedna">DNA · 41 cM · 2nd cousin 1x removed · through Lois Ballard Bradshaw</div></div></div>
-    <div class="pe"><div class="ped dna"></div><div class="pei"><div class="penm">Teresa Ballard</div><div class="pedt">living</div><div class="pent">Confirmed 2nd cousin once removed. Common ancestors: Rev. George W. Ballard and Mary Ann Edwards. Descends through Moses Ballard (1903–1988), son of Rev. George W. Ballard, then Freddie Eugene Ballard (1926–2005).</div><div class="pedna">DNA · 54 cM · 2nd cousin 1x removed · through Moses Ballard</div></div></div>
-    <div class="pe"><div class="ped dna"></div><div class="pei"><div class="penm">D'marje Morris</div><div class="pedt">living</div><div class="pent">Half 2nd cousin. Maternal side. Likely connects through the Ballard or Armstrong line.</div><div class="pedna">DNA · 149 cM · half 2nd cousin</div></div></div>
-    <div class="pe"><div class="ped dna"></div><div class="pei"><div class="penm">Mariah Herrera</div><div class="pedt">living</div><div class="pent">Confirmed DNA cousin. Paternal side connection through Corbin family.</div><div class="pedna">DNA · 241 cM · confirmed cousin</div></div></div>
+  <div class="gen-group"><span class="gen-title">Key Research DNA Matches</span>
+    <div class="pe"><div class="pe-dot dna"></div><div class="pe-info"><span class="pe-name">J.N. managed by Debbie Anderson</span><span class="pe-dates">living</span><span class="pe-note">199 cM match · 3,280-person tree · 9 Nichols entries · Arden Nichols of Pitt County NC in tree · connects through white Nichols slaveholding family · important research lead for confirming Pitt County NC origins</span><span class="pe-dna">DNA · 199 cM · through Nichols family</span></div></div>
+    <div class="pe"><div class="pe-dot dna"></div><div class="pe-info"><span class="pe-name">Sherry Newman Welty</span><span class="pe-dates">living · grew up in Bellville TX</span><span class="pe-note">Descends through Hezekiah Waldrop → Fanny Waldrop → John Nichols. Confirmed in March 2026 that Frances Jane Waldroup Nichols was Fanny Waldrop, Hezekiah's daughter. Grew up in Bellville, Texas.</span><span class="pe-dna">DNA match · confirmed Fanny Waldrop connection · March 2026</span></div></div>
+    <div class="pe"><div class="pe-dot dna"></div><div class="pe-info"><span class="pe-name">Gwen Reese</span><span class="pe-dates">GEDmatch kit A103465</span><span class="pe-note">53.5 cM match · possible descendant of Helen Reese, Easter Bell's confirmed daughter (1884–1931). Contact pending.</span><span class="pe-dna">DNA · 53.5 cM · possible Helen Reese connection</span></div></div>
   </div>
 </div>
-<footer class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</footer>
+<div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
 </div>
 
-<!-- RESEARCH NOTES TAB -->
+<!-- ═══ WHERE WE ARE ═══ -->
+<div class="sec" id="tab-map">
+<div class="shdr">
+  <span class="sey">The Family's Migration · South Carolina to California</span>
+  <span class="sttl">Where We <em>Are</em></span>
+  <span class="ssub">The Places This Family Has Lived — From Slavery Through Today</span>
+  <div class="srul"><div class="sdia"></div></div>
+</div>
+<div class="ctr">
+  <div class="prose"><p>This family's geography tells the story of American history. From the slave states of the Deep South to the plantations of Texas, from the post-war migrations north to the great movement to California — every place below is a chapter in this family's journey.</p></div>
+  <div class="div"></div>
+
+  <div class="map-card"><div class="map-num">1</div><div class="map-info"><span class="map-place">Newberry County, South Carolina</span><span class="map-dates">ca. 1780s–1839</span><div class="map-story">Where Patience was enslaved by the Waldrop family. Francis Davenport Sr. gave Patience to his daughter Patty Waldrop here on August 4, 1795. This is the starting point of the documented family history. Clarissa was born here around 1807.</div></div></div>
+
+  <div class="map-card"><div class="map-num">2</div><div class="map-info"><span class="map-place">Rankin County, Mississippi</span><span class="map-dates">ca. 1820s–1839</span><div class="map-story">The Waldrop family migrated here from South Carolina through Georgia and Tennessee, bringing Patience and her children. Hezekiah Waldrop's 1839 estate deed, distributing Patience's children, was filed in Rankin County. This is where the family's documented paper trail continues after South Carolina.</div></div></div>
+
+  <div class="map-card"><div class="map-num">3</div><div class="map-info"><span class="map-place">Bellville, Austin County, Texas</span><span class="map-dates">1834 – 2006</span><div class="map-story">The home of this family for over 140 years. John Nichols arrived in 1834. Easter Bell was born here in 1848. After emancipation, Easter Bell's family acquired two acres of land on the J. Nichols Survey and held it until 2006. Hellen Nichols Armstrong was born and died here. This is the geographic heart of this family's story.</div></div></div>
+
+  <div class="map-card"><div class="map-num">4</div><div class="map-info"><span class="map-place">Fort Worth, Tarrant County, Texas</span><span class="map-dates">ca. 1900s–1940s</span><div class="map-story">Hellen Nichols Armstrong and her husband John Armstrong moved here. John Armstrong was killed here in 1911. Eva Armstrong grew up here after her father's death. Hellen worked as a waitress here in the 1930s. Margie Nell Ballard was born here on March 13, 1929. The family's first major move away from Bellville.</div></div></div>
+
+  <div class="map-card"><div class="map-num">5</div><div class="map-info"><span class="map-place">Waco, McLennan County, Texas</span><span class="map-dates">ca. 1900s–1937</span><div class="map-story">Rev. George W. Ballard — James Wilson Ballard Sr.'s father and Eva's father-in-law — owned property here at 724 East Johnson Street. Rev. Ballard died in Waco on October 24, 1937. The property was lost to a tax sale in 2017.</div></div></div>
+
+  <div class="map-card"><div class="map-num">6</div><div class="map-info"><span class="map-place">San Antonio, Bexar County, Texas</span><span class="map-dates">ca. 1940s–1957</span><div class="map-story">Eva Armstrong Ballard ran her Night Club and Cafe here. She owned property at Lot 13, Block 2, NCB 2924 — purchased April 22, 1944, sold January 22, 1957. Margie Nell Ballard was born in Fort Worth but the family was based in San Antonio during this period.</div></div></div>
+
+  <div class="map-card"><div class="map-num">7</div><div class="map-info"><span class="map-place">Santa Ana, Orange County, California</span><span class="map-dates">ca. 1950s–Present</span><div class="map-story">Margie Nell Ballard Corbin settled here with Norman Caswell Corbin and raised seven children at 622 S. Townsend Street. Norman Corbin died here in 1974 and the Corbin Community Center at 2215 McFadden Avenue was named in his honor. This is where the California chapter of the family story begins.</div></div></div>
+
+  <div class="map-card"><div class="map-num">8</div><div class="map-info"><span class="map-place">Los Angeles → Orange County, California</span><span class="map-dates">1960–Present</span><div class="map-story">Hjordis L. Corbin was born in Los Angeles on January 20, 1960. Her daughter Jasmine M. Lee was born in Orange County on January 25, 1982. This is the current generation's home base and the place from which Jasmine conducted this research.</div></div></div>
+
+  <div class="map-card"><div class="map-num">9</div><div class="map-info"><span class="map-place">Garden Grove, Orange County, California</span><span class="map-dates">1977</span><div class="map-story">Eva Armstrong Ballard died here on November 24, 1977, as Eva Green. She had traveled from Bellville, Texas to the Pacific coast in one lifetime. Three generations from slavery to Garden Grove.</div></div></div>
+
+  <div class="div"></div>
+  <div class="prose"><p>The family's migration follows the pattern of the Great Migration — the massive movement of Black Americans from the South to the North and West between 1910 and 1970. Bellville to Fort Worth. Fort Worth to San Antonio. San Antonio to California. Each move was driven by opportunity, necessity, and the desire to build something better than what the South allowed.</p></div>
+</div>
+<div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
+</div>
+
+<!-- ═══ DNA GUIDE ═══ -->
+<div class="sec" id="tab-dna">
+<div class="shdr">
+  <span class="sey">For Family Members Who Have Never Done a DNA Test</span>
+  <span class="sttl">Understanding <em>DNA</em></span>
+  <span class="ssub">What the Numbers Mean · How We Found Family · Why DNA Confirmed What Documents Couldn't</span>
+  <div class="srul"><div class="sdia"></div></div>
+</div>
+<div class="ctr">
+  <div class="prose"><p>DNA testing has been one of the most powerful tools in this research. But the numbers and terms can be confusing if you haven't encountered them before. This page explains everything in plain language — no science degree required.</p></div>
+  <div class="div"></div>
+
+  <span class="chd">What Is a DNA Test?</span>
+  <span class="cttl">The Basics</span>
+  <div class="prose"><p>A DNA test for genealogy (ancestry tracing) works by analyzing your genetic material — usually from a saliva sample — and comparing it to thousands of other people who have tested. When you share a significant amount of DNA with someone, the testing company flags it as a match. The more DNA you share, the more closely related you are.</p><p>The most important number in DNA genealogy is called the <strong>centiMorgan (cM)</strong>. Think of it as a unit of genetic similarity. The higher the number, the more closely related two people are.</p></div>
+
+  <div class="dna-box" style="margin:24px 0;">
+    <span class="dna-box-title">What Do the cM Numbers Mean?</span>
+    <table class="dna-table">
+      <tr><td>3,400+ cM</td><td>Parent or child — you share about half your DNA</td></tr>
+      <tr><td>1,700–2,300 cM</td><td>Grandparent/grandchild, sibling, aunt/uncle, or half-sibling</td></tr>
+      <tr><td>700–1,200 cM</td><td>First cousin, great-grandparent, great-aunt/uncle</td></tr>
+      <tr><td>200–700 cM</td><td>First cousin once or twice removed, half first cousin</td></tr>
+      <tr><td>50–200 cM</td><td>Second cousin, second cousin once removed</td></tr>
+      <tr><td>Below 50 cM</td><td>Third cousin or more distant — still related but very far back</td></tr>
+    </table>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">Our Key DNA Matches and What They Confirmed</span>
+  <span class="cttl">Real Examples From This Research</span>
+
+  <div class="dna-box" style="margin:16px 0;">
+    <span class="dna-box-title">Hjordis L. Corbin — Jasmine's Mother</span>
+    <table class="dna-table">
+      <tr><td>Match</td><td>Hjordis L. Corbin (DNA Kit SQ8499767)</td></tr>
+      <tr><td>cM</td><td>3,575 cM across 25 segments</td></tr>
+      <tr><td>Relationship</td><td>Parent-child — exactly as expected</td></tr>
+      <tr><td>What it confirmed</td><td>Jasmine and Hjordis are confirmed mother and daughter. This anchors the entire direct maternal line.</td></tr>
+    </table>
+  </div>
+
+  <div class="dna-box" style="margin:16px 0;">
+    <span class="dna-box-title">Ronnie Leroy Ballard — Half-Uncle</span>
+    <table class="dna-table">
+      <tr><td>Match</td><td>Ronnie Leroy Ballard</td></tr>
+      <tr><td>cM</td><td>799 cM</td></tr>
+      <tr><td>Relationship</td><td>Half uncle — shares Margie as mother but has a different father than Hjordis</td></tr>
+      <tr><td>What it confirmed</td><td>DNA confirmed that Ronnie and Hjordis share only one parent (Margie), not both parents. This resolved a family question about his parentage.</td></tr>
+    </table>
+  </div>
+
+  <div class="dna-box" style="margin:16px 0;">
+    <span class="dna-box-title">Sherry Newman Welty — The Fanny Waldrop Confirmation</span>
+    <table class="dna-table">
+      <tr><td>Who she is</td><td>A DNA match who grew up in Bellville, Texas. She descends from Hezekiah Waldrop through his daughter Fanny Waldrop.</td></tr>
+      <tr><td>What she confirmed</td><td>In March 2026, Sherry confirmed directly that "Fanny married third to John Nichols who all lived in Bellville, Austin, Texas." This confirmed that the Frances Jane Waldroup in John Nichols's records was Fanny Waldrop — Hezekiah's daughter — linking the two enslaving families that held our ancestors.</td></tr>
+      <tr><td>Why this matters</td><td>This was a connection that documents hinted at but could not prove alone. A living DNA match confirmed it in a single message. That is the power of DNA genealogy.</td></tr>
+    </table>
+  </div>
+
+  <div class="dna-box" style="margin:16px 0;">
+    <span class="dna-box-title">Clarissa — 46 Matches Confirm an Ancestor We Can't Find in Documents</span>
+    <table class="dna-table">
+      <tr><td>The challenge</td><td>Clarissa was enslaved. The paper trail between Clarissa and Joseph Nichols has not been found yet. No deed, no census, no record names Clarissa as Joseph's ancestor.</td></tr>
+      <tr><td>What DNA did</td><td>46 separate people on Ancestry — all descended from Clarissa — share DNA with Jasmine. When 46 different people all share the same ancestor in their trees, and they all match you, that is confirmation. DNA said "Clarissa is your ancestor" before any document could.</td></tr>
+      <tr><td>What's still needed</td><td>A document — a deed, census, or estate record — that shows how Clarissa connects to Joseph Nichols. That research is ongoing.</td></tr>
+    </table>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">How to Get Tested</span>
+  <span class="cttl">If You Want to Add Your DNA to This Research</span>
+  <div class="prose"><p>The two best platforms for this family's research are <strong>AncestryDNA</strong> (ancestry.com/dna) and <strong>23andMe</strong> (23andme.com). AncestryDNA is currently most useful for this research because the largest number of matches are there. A kit costs approximately $99 and requires only a saliva sample — no needles.</p><p>Once you test, you can upload your raw DNA data for free to <strong>GEDmatch</strong> (gedmatch.com), which allows comparison across all platforms. Jasmine's GEDmatch kit is QW8418781.</p><p>If you are a descendant of Margie Nell Ballard and you test, please contact Jasmine at jlee@dockellisfoundation.com — your results could confirm new connections and extend this research.</p></div>
+</div>
+<div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
+</div>
+
+<!-- ═══ RESEARCH TIMELINE ═══ -->
+<div class="sec" id="tab-timeline_research">
+<div class="shdr">
+  <span class="sey">The Story of How This Research Was Done</span>
+  <span class="sttl">Research <em>Timeline</em></span>
+  <span class="ssub">Every Major Discovery — When It Was Found and What It Meant</span>
+  <div class="srul"><div class="sdia"></div></div>
+</div>
+<div class="ctr">
+  <div class="prose"><p>This research did not happen all at once. It was built finding by finding, document by document, DNA match by DNA match. This timeline documents the research itself as a story — showing how each discovery led to the next.</p></div>
+  <div class="div"></div>
+
+  <div class="rtl">
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div><div class="rtl-line"></div></div>
+      <div class="rtl-content"><span class="rtl-title">Jeff Cemetery Record Confirmed</span><div class="rtl-text">Easter Bell's birth date confirmed as July 4, 1848 and burial confirmed at Jeff Cemetery, Bellville, Austin County, Texas. This primary source established the foundation of the direct maternal line.</div><span class="rtl-src">Jeff Cemetery, Bellville TX</span></div>
+    </div>
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div><div class="rtl-line"></div></div>
+      <div class="rtl-content"><span class="rtl-title">1860 John Nichols Slave Schedule</span><div class="rtl-text">Identified female age 13 as Easter Bell (born 1848, Texas) and female age 43 as Rendy Blayn (born ca. 1817, North Carolina). Places Easter Bell and her mother in John Nichols's household before emancipation — a primary source confirming their enslavement on Piney Creek.</div><span class="rtl-src">1860 U.S. Federal Census Slave Schedule · Austin County TX</span></div>
+    </div>
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div><div class="rtl-line"></div></div>
+      <div class="rtl-content"><span class="rtl-title">Easter Bell's 1935 Death Certificate Found</span><div class="rtl-text">Texas Death Certificate File No. 54496 confirmed Rendy Blayn as Easter Bell's mother (Field 15: Mother's Maiden Name). This single document connected two generations and gave us Rendy Blayn's name for the first time. The informant was Clara Ney of Bellville, Texas.</div><span class="rtl-src">Texas State Department of Health · Bureau of Vital Statistics · File No. 54496</span></div>
+    </div>
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div><div class="rtl-line"></div></div>
+      <div class="rtl-content"><span class="rtl-title">1795 Newberry County SC Deed Book C:367 Found</span><div class="rtl-text">Francis Davenport Sr. gives "one negro girl named Patience with her increase" to his daughter Patty Waldrop. This deed pushed the family's documented history back to 1795 South Carolina and established the legal mechanism — "with her increase" — that automatically enslaved all of Patience's future children without a separate deed.</div><span class="rtl-src">Newberry County, South Carolina · Deed Book C:367–368 · August 4, 1795</span></div>
+    </div>
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div><div class="rtl-line"></div></div>
+      <div class="rtl-content"><span class="rtl-title">1839 Waldrop Estate Deed Found</span><div class="rtl-text">Rankin County, Mississippi estate deed names Patience's children — Clarissa, Rachel, Tom, William, Amanda, and Harriet — distributed among Hezekiah Waldrop's heirs. Confirmed Clarissa as Patience's daughter and established the family connection across two documents.</div><span class="rtl-src">Rankin County, Mississippi · March 25, 1839</span></div>
+    </div>
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div><div class="rtl-line"></div></div>
+      <div class="rtl-content"><span class="rtl-title">Texas GLO Records — J. Nichols Survey Confirmed</span><div class="rtl-text">Texas General Land Office records confirmed John Nichols received 4,428 acres along Piney Creek in Austin County, TX — the J. Nichols Survey, Abstract No. 73. Austin County Board of Land Commissioners No. 115 confirmed John Nichols arrived 1834 and signed by mark (illiterate). The same survey where Easter Bell's family held land for 141 years.</div><span class="rtl-src">Texas GLO · Austin County Board of Land Commissioners No. 115 · January 31, 1838</span></div>
+    </div>
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div><div class="rtl-line"></div></div>
+      <div class="rtl-content"><span class="rtl-title">46 ThruLines DNA Matches Confirm Clarissa</span><div class="rtl-text">AncestryDNA ThruLines identified 46 separate DNA matches who share Clarissa as a common ancestor with Jasmine M. Lee. DNA confirmed the ancestral connection to Clarissa before any document could establish the paper trail between Clarissa and Joseph Nichols.</div><span class="rtl-src">AncestryDNA · ThruLines · 2025</span></div>
+    </div>
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div><div class="rtl-line"></div></div>
+      <div class="rtl-content"><span class="rtl-title">1957 San Antonio Estate Affidavit Found</span><div class="rtl-text">Bexar County Instrument 86820 — all five surviving children of Eva Armstrong Ballard signed property over to Eva. Margie Nell Ballard Corbin's signature on this document confirmed her relationship to Eva and established her legal name at the time.</div><span class="rtl-src">Bexar County, Texas · Instrument No. 86820 · January 16, 1957</span></div>
+    </div>
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div><div class="rtl-line"></div></div>
+      <div class="rtl-content"><span class="rtl-title">Tax Suit Cause No. 97V-003 Discovered</span><div class="rtl-text">Austin County tax suit against Easter Bell's heirs identified the 2006 loss of the Bellville land and confirmed the names of Easter Bell's surviving heirs as of 1997. Easter Bell was named as a defendant 62 years after her death as "Easter Pink."</div><span class="rtl-src">155th Judicial District Court · Austin County TX · 1997–2006</span></div>
+    </div>
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div></div>
+      <div class="rtl-content"><span class="rtl-title">Sherry Newman Welty Confirms Fanny Waldrop — March 2026</span><div class="rtl-text">DNA match Sherry Newman Welty — who grew up in Bellville, Texas and descends through Hezekiah Waldrop → Fanny Waldrop → John Hutchins — confirmed directly: "Fanny married third to John Nichols who all lived in Bellville, Austin, Texas." This confirmed that Frances Jane Waldroup Nichols was Fanny Waldrop, Hezekiah's daughter, linking the two enslaving families and explaining how Patience's descendants ended up on the John Nichols plantation.</div><span class="rtl-src">DNA Match Correspondence · March 2026</span></div>
+    </div>
+  </div>
+</div>
+<div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
+</div>
+
+<!-- ═══ RESEARCH NOTES ═══ -->
 <div class="sec" id="tab-research">
 <div class="shdr">
-  <div class="sey">Active Research · Status · Next Steps</div>
-  <h1 class="sttl">Research <em>Notes</em></h1>
-  <p class="ssub">What Has Been Confirmed · What Is Still Open · What To Stop Researching</p>
+  <span class="sey">Active Research · Status · Next Steps</span>
+  <span class="sttl">Research <em>Notes</em></span>
+  <span class="ssub">What Has Been Confirmed · What Is Still Open · What To Stop Researching</span>
   <div class="srul"><div class="sdia"></div></div>
 </div>
 <div class="ctr">
-  <div class="chd">Confirmed — Do Not Change in Ancestry Tree</div>
+  <span class="chd">Confirmed — Do Not Change in Ancestry Tree</span>
   <table class="ftbl">
-    <tr><td>Patience → Clarissa</td><td>1795 SC Deed C:367 (Patience given to Patty Waldrop) · 1839 MS Waldrop estate deed (Clarissa named as Patience's daughter)</td></tr>
-    <tr><td>Clarissa → Joseph</td><td>DNA confirmed — 46 ThruLines matches · paper trail still being researched</td></tr>
+    <tr><td>Patience → Clarissa</td><td>1795 SC Deed C:367 · 1839 MS Waldrop estate deed</td></tr>
+    <tr><td>Clarissa → Joseph Nichols</td><td>DNA confirmed — 46 ThruLines matches · paper trail still researching</td></tr>
     <tr><td>Joseph + Easter Bell</td><td>1870 Census Austin County TX · Marriage record December 18, 1865 · Jeff Cemetery record</td></tr>
+    <tr><td>Rendy Blayn = Easter's mother</td><td>Easter Bell's 1935 Death Certificate · Field 15: Mother's Maiden Name: Rendy Blayn</td></tr>
     <tr><td>Hellen Nichols Armstrong</td><td>1930 FW City Directory · 1997 tax suit · daughter of Easter Bell confirmed</td></tr>
-    <tr><td>Eva Armstrong Ballard</td><td>Birth cert · 1957 San Antonio estate affidavit · daughter of Hellen confirmed</td></tr>
-    <tr><td>Margie Nell Ballard</td><td>Birth cert · 1957 estate affidavit · daughter of Eva confirmed</td></tr>
-    <tr><td>Fanny Waldrop = Frances Jane Waldroup</td><td>DNA match Sherry Newman Welty March 2026 · confirmed John Nichols's wife was Hezekiah Waldrop's daughter</td></tr>
+    <tr><td>Eva Armstrong Ballard</td><td>1957 San Antonio estate affidavit · daughter of Hellen confirmed</td></tr>
+    <tr><td>Margie Nell Ballard</td><td>1957 estate affidavit · daughter of Eva confirmed</td></tr>
+    <tr><td>Fanny Waldrop = Frances Jane Waldroup</td><td>DNA match Sherry Newman Welty confirmed March 2026</td></tr>
   </table>
   <div class="div"></div>
-  <div class="chd">Tree Corrections — Fix These in Ancestry</div>
-  <div class="warn">
-    <strong>Remove:</strong> Any direct line from John Nichols to Clarissa. John Nichols enslaved Clarissa's descendant Joseph Nichols — not Clarissa herself.<br><br>
-    <strong>Fix:</strong> Rachel is Clarissa's SISTER — both daughters of Patience. Rachel does NOT go above Clarissa in the tree.<br><br>
-    <strong>Remove:</strong> Joseph Nichols from John Nichols's free white children. Joseph was enslaved by John Nichols — not his biological son.<br><br>
-    <strong>Add note:</strong> Frances Jane Waldroup Nichols profile — confirmed as Fanny Waldrop, daughter of Hezekiah Waldrop, by DNA match Sherry Newman Welty March 2026.
+  <span class="chd">Tree Corrections — Fix These in Ancestry</span>
+  <div class="card-box red" style="margin-bottom:16px;">
+    <div class="prose" style="font-size:15px;"><p><strong>Remove:</strong> Any direct line from John Nichols to Clarissa. John Nichols enslaved Joseph Nichols — not Clarissa herself.</p><p style="margin-top:8px;"><strong>Fix:</strong> Rachel is Clarissa's SISTER — both daughters of Patience. Rachel does NOT go above Clarissa in the tree.</p><p style="margin-top:8px;"><strong>Remove:</strong> Joseph Nichols from John Nichols's free white children. Joseph was enslaved by John Nichols — not his biological son.</p><p style="margin-top:8px;"><strong>Add note:</strong> Frances Jane Waldroup Nichols — confirmed as Fanny Waldrop, daughter of Hezekiah Waldrop, by DNA match Sherry Newman Welty March 2026.</p></div>
   </div>
   <div class="div"></div>
-  <div class="chd">Urgent Actions — Do This Week</div>
+  <span class="chd">Urgent Actions This Week</span>
   <table class="ftbl">
-    <tr><td>Call Austin County</td><td>Patty Norman Leger · 979-227-3144 ext 5143 · pay $16 for certified copies of Volume 209 Page 228 and Instrument 66418 · provide mailing address</td></tr>
+    <tr><td>Call Austin County</td><td>Patty Norman Leger · 979-227-3144 ext 5143 · pay $16 for certified copies of Volume 209 Page 228 and Instrument 66418</td></tr>
     <tr><td>Call District Clerk</td><td>Marcy Grimes · 979-270-6830 · request complete file Cause No. 97V-003</td></tr>
     <tr><td>Call Lone Star Legal Aid</td><td>713-652-0077 · lonestarlegal.org · Waco property (2017) FIRST, then Bellville (2006)</td></tr>
   </table>
   <div class="div"></div>
-  <div class="chd">Active Research Leads</div>
-  <table class="ftbl">
-    <tr><td>Charlie Armstrong</td><td>Harris County TX death certificate — will confirm David Armstrong's parents and exact birthplace</td></tr>
-    <tr><td>Samuel Barksdale 1830</td><td>Did he move to Mississippi? If yes, confirms Clarissa's path from Barksdale to Waldrop household</td></tr>
-    <tr><td>Samuel Barksdale estate 1833</td><td>23 images in SC probate records · sales papers may show what happened to Clarissa and Tom</td></tr>
-    <tr><td>Pitt County NC</td><td>J.N. DNA match has Arden Nichols of Pitt County NC in tree · search 1820-1830 Pitt County census for John Nichols before he emigrated to Texas 1834</td></tr>
-    <tr><td>Contact Gwen Reese</td><td>GEDmatch kit A103465 · 53.5 cM · possible connection to Helen Reese, Easter Bell's daughter</td></tr>
-    <tr><td>Reply to Sherry Welty</td><td>Confirmed Fanny Waldrop married John Nichols · grew up in Bellville · valuable research partner</td></tr>
-  </table>
-  <div class="div"></div>
-  <div class="chd">Stop Researching — Already Resolved</div>
+  <span class="chd">Stop Researching — Already Resolved</span>
   <table class="ftbl">
     <tr><td>Newton Bullard 160 acres</td><td>Legal sale 1873. No recourse. Fully documented.</td></tr>
     <tr><td>Eva Ballard San Antonio property</td><td>Properly settled January 22, 1957. All heirs signed. No claims.</td></tr>
-    <tr><td>Baby Ballard 1952 Houston</td><td>Not your family. Different G.W. Ballard — Rev. Ballard died 1937.</td></tr>
+    <tr><td>Baby Ballard 1952 Houston</td><td>Not your family. Different G.W. Ballard.</td></tr>
     <tr><td>1840 Ezekiah Waldrop discrepancy</td><td>Resolved. Ezekiah and Hezekiah are two different brothers.</td></tr>
-    <tr><td>Vicksburg 1858 Clarissa auction</td><td>Different person. Robert P. Shelby household — wrong timeline. Discard.</td></tr>
+    <tr><td>Vicksburg 1858 Clarissa auction</td><td>Different person. Wrong timeline. Discard.</td></tr>
   </table>
   <div class="div"></div>
-  <div class="chd">Next Major Project</div>
-  <div class="cttl">Norman Corbin's Family Line</div>
-  <div class="prose"><p>Norman Caswell Corbin's family line has not yet been researched. Ancestry ThruLines confirms ancestors going back to 1767.</p></div>
-  <table class="ftbl">
-    <tr><td>Abraham Corbin</td><td>1767–1813</td></tr>
-    <tr><td>Benedict Beal Corbin</td><td>1831–1915</td></tr>
-    <tr><td>Thomas Russel Corbin</td><td>1869–1936</td></tr>
-    <tr><td>Earl Russell Corbin</td><td>1892–1959</td></tr>
-    <tr><td>Frances D. Fanny Durrett</td><td>1794–1871 · 5 DNA matches</td></tr>
-    <tr><td>Elizabeth Buckner</td><td>1814–1868 · 5 DNA matches</td></tr>
-    <tr><td>Archibald Buckner</td><td>1787–1872</td></tr>
-  </table>
+  <span class="chd">Next Major Project</span>
+  <span class="cttl">Norman Corbin's Family Line</span>
+  <div class="prose"><p>Norman Caswell Corbin's family line has not yet been researched. Ancestry ThruLines confirms ancestors going back to 1767 — Abraham Corbin (1767), Benedict Beal Corbin (1831), Thomas Russel Corbin (1869), Earl Russell Corbin (1892). The Buckner and Durrett family lines also appear with DNA matches. This is the next project.</p></div>
 </div>
-<footer class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026 · jlee@dockellisfoundation.com</footer>
+<div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026 · jlee@dockellisfoundation.com</div>
 </div>
 
 <!-- PANEL -->
 <div class="pov" id="ov" onclick="mc(event)">
 <div class="pan" id="pan">
-  <div class="pbar"></div>
-  <button class="pcl" onclick="cp()">&#x2715;</button>
-  <div class="phd"><div class="pey" id="pey"></div><div class="pnm" id="pnm"></div><div class="pdtt" id="pdt"></div></div>
-  <div class="pbdy" id="pbdy"></div>
+  <div class="panbar"></div>
+  <button class="pancl" onclick="cp()">&#x2715;</button>
+  <div class="panhd">
+    <span class="paney" id="pey"></span>
+    <span class="pannm" id="pnm"></span>
+    <span class="pandt" id="pdt"></span>
+  </div>
+  <div class="panbdy" id="pbdy"></div>
 </div>
 </div>
+
 <script>
 function show(id,btn){
-  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.add('active');
-  if(btn) btn.classList.add('active');
+  document.querySelectorAll(".sec").forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll(".nb").forEach(b=>b.classList.remove("active"));
+  document.getElementById("tab-"+id).classList.add("active");
+  if(btn) btn.classList.add("active");
   window.scrollTo(0,0);
 }
 const D={
@@ -583,27 +1525,48 @@ jasmine:{ey:"You · Researcher · Founder · Dock Ellis Foundation",nm:"Jasmine 
 };
 function op(id){
   const d=D[id];if(!d)return;
-  document.getElementById('pey').textContent=d.ey||'';
-  document.getElementById('pnm').textContent=d.nm;
-  document.getElementById('pdt').textContent=d.dt||'';
-  let h='';
+  document.getElementById("pey").textContent=d.ey||"";
+  document.getElementById("pnm").textContent=d.nm;
+  document.getElementById("pdt").textContent=d.dt||"";
+  let h="";
   for(const s of d.secs){
-    if(s.s!==undefined){h+=`<div class="ps"><div class="pst">${s.t}</div><div class="pss">${s.s}</div></div>`;}
-    else if(s.f){h+=`<div class="ps"><div class="pst">${s.t}</div><div class="pfs">`;for(const[l,v]of s.f)h+=`<div class="pf"><div class="pfl">${l}</div><div class="pfv">${v}</div></div>`;h+=`</div></div>`;}
-    else if(s.d){h+=`<div class="ps"><div class="pst">${s.t}</div><div class="pds">`;for(const doc of s.d)h+=`<div class="pdoc"><div class="pdi">${doc.i}</div><div class="pdin"><div class="pdt2">${doc.t}</div><div class="pdd">${doc.d}</div><div class="pds2">${doc.s}</div></div></div>`;h+=`</div></div>`;}
-    else if(s.n){h+=`<div class="pnt">${s.n}</div>`;}
-    else if(s.w){h+=`<div class="pwn">${s.w}</div>`;}
+    if(s.s!==undefined){h+=`<div class="pans"><div class="panst">${s.t}</div><div class="panss">${s.s}</div></div>`;}
+    else if(s.f){h+=`<div class="pans"><div class="panst">${s.t}</div><div class="panfs">`;for(const[l,v]of s.f)h+=`<div class="panf"><div class="panfl">${l}</div><div class="panfv">${v}</div></div>`;h+=`</div></div>`;}
+    else if(s.d){h+=`<div class="pans"><div class="panst">${s.t}</div><div class="pandocs">`;for(const doc of s.d)h+=`<div class="pandoc"><div class="pandicn">${doc.i}</div><div class="pandinfo"><span class="pandtit">${doc.t}</span><span class="panddsc">${doc.d}</span><span class="pandsrc">${doc.s}</span></div></div>`;h+=`</div></div>`;}
+    else if(s.n){h+=`<div class="pannote">${s.n}</div>`;}
+    else if(s.w){h+=`<div class="panwarn">${s.w}</div>`;}
   }
-  document.getElementById('pbdy').innerHTML=h;
-  document.getElementById('ov').classList.add('open');
-  document.body.style.overflow='hidden';
-  document.getElementById('pan').scrollTop=0;
+  document.getElementById("pbdy").innerHTML=h;
+  document.getElementById("ov").classList.add("open");
+  document.body.style.overflow="hidden";
+  document.getElementById("pan").scrollTop=0;
 }
-function cp(){document.getElementById('ov').classList.remove('open');document.body.style.overflow='';}
-function mc(e){if(e.target===document.getElementById('ov'))cp();}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')cp();});
+function cp(){document.getElementById("ov").classList.remove("open");document.body.style.overflow="";}
+function mc(e){if(e.target===document.getElementById("ov"))cp();}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")cp();});
+function loadPhoto(boxId,event){
+  var file=event.target.files[0];
+  if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(e){
+    var box=document.getElementById(boxId);
+    var img=document.createElement('img');
+    img.src=e.target.result;
+    img.style.cssText='width:100%;height:100%;object-fit:cover;border-radius:2px;';
+    img.alt='Family photo';
+    box.innerHTML='';
+    box.appendChild(img);
+    box.style.height='auto';
+    box.style.padding='0';
+    box.style.border='none';
+    box.style.background='none';
+    box.style.cursor='default';
+  };
+  reader.readAsDataURL(file);
+}
 const sw=document.getElementById('sw');
-if(sw){let drag=false,sx,sl;
+if(sw){
+  let drag=false,sx,sl;
   sw.addEventListener('mousedown',e=>{drag=true;sx=e.pageX-sw.offsetLeft;sl=sw.scrollLeft;sw.style.cursor='grabbing';});
   sw.addEventListener('mouseleave',()=>{drag=false;sw.style.cursor='grab';});
   sw.addEventListener('mouseup',()=>{drag=false;sw.style.cursor='grab';});

@@ -4,6 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Family — Margie Nell Ballard Line</title>
+
+<!-- Open Graph / Link Preview -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jasminesworkspace2-ui.github.io/Armstrongfamily/">
+<meta property="og:title" content="Our Family — The Ballard · Corbin · Nichols · Armstrong Line">
+<meta property="og:description" content="From Patience in South Carolina to California — a documented family history spanning from the 1780s to today. Research by Jasmine M. Lee, Dock Ellis Foundation.">
+<meta property="og:image" content="https://jasminesworkspace2-ui.github.io/Armstrongfamily/og_preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Our Family Journey — Ballard · Corbin · Nichols · Armstrong — From South Carolina to California">
+<meta property="og:site_name" content="Our Family History">
+
+<!-- Twitter / iMessage card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Our Family — The Ballard · Corbin · Nichols · Armstrong Line">
+<meta name="twitter:description" content="From Patience in South Carolina to California — a documented family history. Research by Jasmine M. Lee, Dock Ellis Foundation.">
+<meta name="twitter:image" content="https://jasminesworkspace2-ui.github.io/Armstrongfamily/og_preview.png">
+
+<!-- General -->
+<meta name="description" content="A documented family history of the Ballard, Corbin, Nichols, and Armstrong families — from enslaved ancestors in South Carolina and Texas to present-day California. Research by Jasmine M. Lee, Dock Ellis Foundation.">
+<meta name="author" content="Jasmine M. Lee, Dock Ellis Foundation">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Josefin+Sans:wght@200;300;400;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 <style>
 /* ── RESET ── */
@@ -793,11 +814,16 @@ body{
 
   <!-- EVA PHOTO PLACEHOLDER -->
   <div class="photo-wrap">
-    <div class="photo-frame" id="evaPhotoBox" onclick="document.getElementById('evaPhotoInput').click()">
-      <span style="font-size:28px;">📷</span>
-      <span>Add a photo of Eva<br>Click to upload</span>
+    <div class="photo-frame" id="evaPhotoBox" onclick="document.getElementById('evaPhotoInput').click()" style="position:relative;">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none;">
+        <div style="width:40px;height:40px;border-radius:50%;border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--ink3)"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </div>
+        <span style="font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;">Add Photo</span>
+        <span style="font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:1px;color:var(--ink3);">Eva Armstrong Ballard</span>
+      </div>
     </div>
-    <input type="file" id="evaPhotoInput" accept="image/*" style="display:none" onchange="loadPhoto('evaPhotoBox',event)">
+    <input type="file" id="evaPhotoInput" accept="image/*" style="display:none" onchange="loadPhoto('evaPhotoBox','evaPhoto',event)">
     <span class="photo-cap">Eva Armstrong Ballard · ca. 1899–1977</span>
   </div>
 
@@ -994,7 +1020,7 @@ body{
 
     <div style="background:var(--bg2);border:1px solid var(--border);border-radius:4px;overflow:hidden;">
       <a href="https://texashistory.unt.edu/ark:/67531/metapth38549/" target="_blank" style="display:block;">
-        <img src="https://texashistory.unt.edu/ark:/67531/metapth38549/thumbnail/" alt="Commerce Street Fort Worth 1911 — Majestic Theater, horse-drawn buggies, telephone poles" style="width:100%;height:160px;object-fit:cover;display:block;filter:sepia(30%) contrast(1.05);">
+        <img src="https://texashistory.unt.edu/ark:/67531/metapth38549/thumbnail/" alt="Commerce Street Fort Worth 1911 — Majestic Theater, horse-drawn buggies, telephone poles" style="width:100%;height:160px;object-fit:cover;display:block;filter:sepia(30%) contrast(1.05);" onerror="this.src='https://texashistory.unt.edu/ark:/67531/metapth38537/thumbnail/'">
       </a>
       <div style="padding:14px 16px;">
         <p style="font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Commerce Street · 1911</p>
@@ -1004,13 +1030,13 @@ body{
     </div>
 
     <div style="background:var(--bg2);border:1px solid var(--border);border-radius:4px;overflow:hidden;">
-      <a href="https://texashistory.unt.edu/ark:/67531/metapth38536/" target="_blank" style="display:block;">
-        <img src="https://texashistory.unt.edu/ark:/67531/metapth38536/thumbnail/" alt="Street scene Fort Worth Texas — trolley, horse-drawn buggies, Hotel Worth sign" style="width:100%;height:160px;object-fit:cover;display:block;filter:sepia(30%) contrast(1.05);">
+      <a href="https://texashistory.unt.edu/ark:/67531/metapth38544/" target="_blank" style="display:block;">
+        <img src="https://texashistory.unt.edu/ark:/67531/metapth38544/thumbnail/" alt="North Main Street Fort Worth Texas 1914 — downtown streetscape" style="width:100%;height:160px;object-fit:cover;display:block;filter:sepia(30%) contrast(1.05);" onerror="this.src='https://texashistory.unt.edu/ark:/67531/metapth38536/thumbnail/';">
       </a>
       <div style="padding:14px 16px;">
-        <p style="font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Downtown Fort Worth · ca. 1910</p>
-        <p style="font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--ink2);line-height:1.6;">A street scene near the Hotel Worth — trolleys, buggies, and the rising skyline of Cowtown. The Terminal Hotel where John worked was just blocks from here.</p>
-        <p style="font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:1px;color:var(--ink3);margin-top:6px;">Smith Photo Co. · Portal to Texas History · UTA Library</p>
+        <p style="font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">North Main Street · 1914</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--ink2);line-height:1.6;">North Main Street, Fort Worth — completed April 1913, photographed 1914. The growing city John Armstrong knew. The Terminal Hotel where he worked was blocks from here.</p>
+        <p style="font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:1px;color:var(--ink3);margin-top:6px;">Unknown photographer · 1914 · Portal to Texas History · UTA Library</p>
       </div>
     </div>
 

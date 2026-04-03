@@ -3,13 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta property="og:title" content="Our Family — Margie Nell Ballard Line">
-<meta property="og:description" content="The documented history of Patience, Easter Bell, Eva Armstrong, Margie Nell Ballard, and their descendants. Compiled by Jasmine M. Lee, Dock Ellis Foundation, 2026.">
-<meta property="og:image" content="https://jasminesworkspace2-ui.github.io/Armstrongfamily/thumbnail.jpg">
-<meta property="og:url" content="https://jasminesworkspace2-ui.github.io/Armstrongfamily">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/jpeg" href="thumbnail.jpg"><title>Our Family — Margie Nell Ballard Line</title>
+<title>Our Family — Margie Nell Ballard Line</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Josefin+Sans:wght@200;300;400;600&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
 <style>
 /* ── RESET ── */
@@ -126,12 +120,13 @@ body{
 .shint{font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:200;letter-spacing:3px;color:var(--ink3);text-transform:uppercase;}
 
 /* ── CONTAINER ── */
-.ctr{max-width:860px;margin:0 auto;padding:0 24px 80px;}
+.ctr{max-width:860px;margin:0 auto;padding:0 24px 80px;word-wrap:break-word;overflow-wrap:break-word;}
 
 /* ── TYPOGRAPHY ── */
 .prose{
   font-family:'Cormorant Garamond',serif;
   font-size:18px;line-height:1.85;color:var(--ink2);
+  word-wrap:break-word;overflow-wrap:break-word;
 }
 .prose p{margin-bottom:1.4em;}
 .prose p:last-child{margin-bottom:0;}
@@ -196,6 +191,9 @@ body{
   margin:20px 0;
   position:relative;
   box-shadow:0 2px 8px var(--shadow2);
+  word-wrap:break-word;
+  overflow-wrap:break-word;
+  overflow:hidden;
 }
 .card-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(to right,var(--gold),var(--gold3));border-radius:4px 4px 0 0;}
 .card-box.red::before{background:linear-gradient(to right,var(--rust),#cc4444);}
@@ -295,11 +293,11 @@ body{
 .photo-cap{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:200;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);text-align:center;margin-top:8px;display:block;}
 
 /* ── TIMELINE CARDS (Family Tree tab) ── */
-.sw{overflow-x:auto;overflow-y:visible;padding:20px 48px 60px;cursor:grab;user-select:none;-webkit-overflow-scrolling:touch;background:var(--bg2);border-bottom:1px solid var(--border);}
+.sw{overflow-x:scroll;overflow-y:visible;padding:20px 48px 60px;cursor:grab;user-select:none;-webkit-overflow-scrolling:touch;background:var(--bg2);border-bottom:1px solid var(--border);scroll-behavior:smooth;}
 .sw:active{cursor:grabbing;}
-.sw::-webkit-scrollbar{height:4px;}
+.sw::-webkit-scrollbar{height:6px;}
 .sw::-webkit-scrollbar-track{background:var(--border);}
-.sw::-webkit-scrollbar-thumb{background:var(--gold2);border-radius:2px;}
+.sw::-webkit-scrollbar-thumb{background:var(--gold2);border-radius:3px;}
 .tl{display:flex;align-items:flex-start;min-width:max-content;padding:60px 0 40px;position:relative;}
 .tl::before{content:'';position:absolute;left:0;right:0;top:152px;height:2px;background:linear-gradient(to right,transparent 0%,var(--border2) 3%,var(--border2) 97%,transparent 100%);}
 .gc{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
@@ -467,11 +465,12 @@ body{
   <button class="nb" onclick="show('nichols',this)">Nichols · Waldrop</button>
   <button class="nb" onclick="show('land',this)">The Land</button>
   <button class="nb" onclick="show('homage',this)">Margie's Family</button>
-  <button class="nb" onclick="show('descendants',this)">DNA Cousins</button>
+  <button class="nb" onclick="show('descendants',this)">DNA Connections</button>
   <button class="nb" onclick="show('map',this)">Where We Are</button>
   <button class="nb" onclick="show('dna',this)">DNA Guide</button>
   <button class="nb" onclick="show('timeline_research',this)">Research Timeline</button>
   <button class="nb" onclick="show('research',this)">Research Notes</button>
+  <button class="nb" onclick="show('archive',this)">📁 Research Archive</button>
 </nav>
 
 <!-- ═══ FAMILY TIMELINE ═══ -->
@@ -509,7 +508,7 @@ body{
   </div>
   <div class="tconn" style="width:80px"><div class="tline" style="width:80px"><div class="tlbl">daughter</div></div></div>
   <div class="gc"><div class="era">Bellville → Fort Worth → San Antonio → California · 1900–1977</div><div class="tdot g"></div>
-    <div class="tc dir" onclick="op('eva')"><div class="tcbar"></div><div class="tcbd"><span class="tcrole">Your Great-Grandmother</span><span class="tcnm">Eva Armstrong Ballard</span><span class="tcdt">June 27, 1900 – November 24, 1977</span><span class="tcpl">Bellville TX · Garden Grove CA</span></div><div class="tcft"><span class="tcrec">6 Records</span><span class="tcck">read her story →</span></div></div>
+    <div class="tc dir" onclick="op('eva')"><div class="tcbar"></div><div class="tcbd"><span class="tcrole">Your Great-Grandmother</span><span class="tcnm">Eva Armstrong Ballard</span><span class="tcdt">ca. 1899 – November 24, 1977</span><span class="tcpl">Bellville TX · Garden Grove CA</span></div><div class="tcft"><span class="tcrec">6 Records</span><span class="tcck">read her story →</span></div></div>
     <span class="tmarr">married</span>
     <div class="tc sps" onclick="op('james_b')"><div class="tcbar"></div><div class="tcbd"><span class="tcrole">Eva's Husband · Son of Rev. George W. Ballard</span><span class="tcnm">James Wilson Ballard Sr.</span><span class="tcdt">August 26, 1897 – March 13, 1953</span><span class="tcpl">Palestine TX · Austin State Hospital</span></div><div class="tcft"><span class="tcrec">3 Records</span><span class="tcck">read his story →</span></div></div>
     <div class="tch"><span class="tchl">Their children</span><div class="tchi"><div class="tchidot"></div><span class="tchinm">James Ballard Jr. (1926–1986)</span></div><div class="tchi hl"><div class="tchidot"></div><span class="tchinm">★ Margie Nell Ballard</span></div><div class="tchi"><div class="tchidot"></div><span class="tchinm">Lois · Betty · Charles Ray</span></div></div>
@@ -556,7 +555,7 @@ body{
   <div class="ww-card">
     <span class="ww-relation">Margie's Mother — Your Great-Grandmother</span>
     <span class="ww-name">Eva Armstrong Ballard</span>
-    <span class="ww-dates">June 27, 1900 – November 24, 1977 · Bellville TX → Garden Grove CA</span>
+    <span class="ww-dates">ca. 1899 – November 24, 1977 · Bellville TX → Garden Grove CA</span>
     <p class="ww-desc">Eva is Margie's mother. She is the woman your aunts and uncles actually remember. She ran a Night Club and Cafe in San Antonio, owned property, and eventually made it to California. She is your great-grandmother.</p>
   </div>
 
@@ -671,6 +670,58 @@ body{
   <div class="pq">Her death certificate lists her mother as Rendy Blayn. That single line connects two generations — and it is one of the most important pieces of information in this entire research project.</div>
 
   <div class="div"></div>
+  <span class="chd">June 1900 · The Whole Family in the Bellville Jail</span>
+  <span class="cttl">What the Census Found on Piney Creek</span>
+  <div class="prose">
+    <p>On census day in June 1900, the U.S. Census enumerator walked through the Austin County Jail in Bellville and counted everyone present. What he found on Sheets 12 and 13 of that census was Easter Bell's entire family — imprisoned together.</p>
+    <p><em>Sheet 12:</em> John Armstrong (age 22), Helen Armstrong / Hellen Nichols (age 23), and baby Eva Armstrong — just 4 months old. Easter Bell's daughter, her son-in-law, and her infant granddaughter.</p>
+    <p><em>Sheet 13:</em> Joe Nichols (age 52) — Easter Bell's husband. Oscar Nichols (age 26) — Joseph's son.</p>
+    <p>The building they were held in was the Austin County Jail at Bellville — built in 1896 on land that had originally been granted to <em>John Nichols</em> on October 20, 1832 by the Mexican Government. The man who had enslaved Easter Bell's mother had owned the very land where her family was now imprisoned. Easter Bell herself was not in the jail that day — she was 52 years old, living on Piney Creek, on the land her family owned free and clear, waiting.</p>
+    <p>This was almost certainly <em>convict leasing</em> — the system used across the post-Reconstruction South where Black men and women were arrested on minor or fabricated charges and forced to work as essentially free labor. John Armstrong's occupation was listed as Section Hand — railroad labor — one of the primary users of convict lease workers in Texas. Joseph was 52 years old, a farmer who owned his home. Being in that jail on census day likely had nothing to do with any crime.</p>
+    <p>Joseph Nichols does not appear in any record after June 1900. He was alive in that jail. He was gone by 1910. What happened to him between those two dates has not been found.</p>
+  </div>
+  <div class="card-box" style="margin:20px 0;">
+    <span class="card-label">1900 Census · Austin County Jail · Sheet 12 and 13 · Same Building · Same Day</span>
+    <div class="ftbl">
+      <tr><td>Sheet 12</td><td>John Armstrong · age 22 · Section Hand · Hellen Nichols Armstrong · age 23 · Eva Armstrong · age 4 months</td></tr>
+      <tr><td>Sheet 13</td><td>Joe Nichols · age 52 · Farmer · owns home free and clear · Oscar Nichols · age 26</td></tr>
+      <tr><td>The building</td><td>Austin County Jail · Bellville · built 1896 · on land originally granted to John Nichols (Easter's enslaver) by the Mexican Government in 1832</td></tr>
+      <tr><td>Easter Bell</td><td>Not present in the jail · age 52 · living on Piney Creek · listed on a separate census sheet as head of household</td></tr>
+      <tr><td>Joseph after 1900</td><td>No record found after June 1900 · Easter listed as widowed in 1910 census · death record not located · may have died before Texas began mandatory death registration in 1903</td></tr>
+    </div>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">July 10, 1862 · Three Years Before Freedom</span>
+  <span class="cttl">General Order No. 5 — Easter Bell Was 14 Years Old</span>
+  <div class="prose">
+    <p>On July 10, 1862, the Provost Marshal of Austin County published General Order No. 5 in the Bellville Countryman newspaper. Easter Bell was 14 years old. Rendy Blayn was approximately 45. This is the specific law that governed their daily lives on Piney Creek three years before emancipation.</p>
+  </div>
+  <div class="pq">"All persons owning or having control of slaves are notified and required not to allow such slaves to leave their premises at all at night without written passes specifying where they are to go, and when to return... all residents of this jurisdiction are authorized and required to arrest any slave found away from home at night in violation of this order." — Provost Marshal N. Holland, Austin County, July 10, 1862</div>
+  <div class="prose">
+    <p>Easter Bell could not leave the Nichols plantation at night without a written pass. Any white resident of Austin County was authorized to arrest her if she did. She could not carry a weapon. Any weapon found on her could be seized and kept by whoever took it. This was the legal framework of her daily life at age 14, in Bellville, Texas, three years before Juneteenth.</p>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">June 5, 1917 · The Draft Registration List</span>
+  <span class="cttl">Easter Bell's Grandchildren Register for War</span>
+  <div class="prose">
+    <p>On June 5, 1917, every male between 21 and 31 in Austin County was required to register for the World War I draft. The Bellville Times published the list by precinct, segregated — white registrants first, then "Colored" at the bottom. Easter Bell's grandchildren were on that list.</p>
+  </div>
+  <div class="card-box" style="margin:20px 0;">
+    <span class="card-label">Easter Bell's Family · 1917 Draft Registration · Precinct 1 Colored · Bellville TX</span>
+    <div class="ftbl">
+      <tr><td>Nazy, Roy</td><td>Son of Clara Nichols Nagy and John Nagy · Easter Bell's grandson · first documented record of Roy</td></tr>
+      <tr><td>Nichols, Will</td><td>William Willie Nichols · Easter Bell's son · confirmed still in Austin County in 1917 · age 32 at upper edge of registration range</td></tr>
+      <tr><td>Reese, Arthur</td><td>Almost certainly son of Helen Reese and Nelson Reese · Easter Bell's grandson · connects to Gwen Reese DNA match (53.5 cM)</td></tr>
+      <tr><td>Nichols, Ralph</td><td>Previously undocumented · likely Easter Bell's grandson through Allen, Oscar, William, or Henry · born approximately 1886–1896</td></tr>
+    </div>
+  </div>
+  <div class="prose">
+    <p>These men registered to potentially die in a war for a country that had enslaved their grandmother, imprisoned their parents under convict leasing seventeen years earlier, and still listed them separately at the bottom of a newspaper page. They registered anyway. Roy Nazy was charged with aggravated assault six months later in December 1917 — the charge was dismissed. He was not a criminal. He was a Black man in Austin County, Texas in 1917.</p>
+  </div>
+
+<div class="div"></div>
   <span class="chd">Born Into Bondage · July 4, 1848</span>
   <span class="cttl">Independence Day, Piney Creek, Bellville, Texas</span>
   <div class="prose">
@@ -692,18 +743,22 @@ body{
   <span class="chd">Her Twelve Children</span>
   <div class="card-box">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;">
-      <div class="ft-p ft-l1"><span class="ft-nm">Katie Thornton</span><span class="ft-dt">1860–1923 · Throckmorton TX</span><span class="ft-nt">Death cert names mother as Easter Bell — primary source</span></div>
-      <div class="ft-p ft-l1"><span class="ft-nm">Allen Nichols Sr.</span><span class="ft-dt">1865–1944</span></div>
-      <div class="ft-p ft-l1"><span class="ft-nm">Annie Nichols</span><span class="ft-dt">1866–</span></div>
-      <div class="ft-p ft-l1"><span class="ft-nm">Josephine Nichols</span><span class="ft-dt">1868–</span></div>
-      <div class="ft-p ft-l1"><span class="ft-nm">Oscar Nichols</span><span class="ft-dt">1869–1949</span></div>
-      <div class="ft-p ft-l1"><span class="ft-nm">Henry Nichols</span><span class="ft-dt">1870 · age 2 months in 1870 census</span></div>
-      <div class="ft-p ft-l1"><span class="ft-nm mem">Hellen Nichols Armstrong</span><span class="ft-dt">September 1870 – December 5, 1931</span><span class="ft-nt">★ Your 2nd great-grandmother</span></div>
-      <div class="ft-p ft-l1"><span class="ft-nm">John Nagy Nichols</span><span class="ft-dt">1872–1938</span></div>
-      <div class="ft-p ft-l1"><span class="ft-nm">Clara Nichols</span><span class="ft-dt">1875–1944</span></div>
-      <div class="ft-p ft-l1"><span class="ft-nm">William Willie Nichols</span><span class="ft-dt">1884–1956</span></div>
-      <div class="ft-p ft-l1"><span class="ft-nm">Helen Reese</span><span class="ft-dt">1884–1931</span><span class="ft-nt">Gwen Reese DNA match (53.5 cM) may descend from Helen</span></div>
-      <div class="ft-p ft-l1"><span class="ft-nm">Mabel Nichols</span><span class="ft-dt">ca. 1891 · age 19 in 1910 census</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">Katie Thornton</span><span class="ft-dt">1860 – May 11, 1923 · Throckmorton TX</span><span class="ft-nt">Death cert confirms Easter as mother · Father unknown · born before emancipation and before Joseph and Easter married</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">Allen Nichols Sr.</span><span class="ft-dt">February 1, 1867 – October 1944 · Galveston TX</span><span class="ft-nt">Death cert lists father as Phillips Nichols (not Joe Nichols) · mother listed as Esther · research ongoing</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">Annie Nichols</span><span class="ft-dt">1866 – unknown</span><span class="ft-nt">Confirmed 1870 and 1880 census</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">Josephine Nichols</span><span class="ft-dt">1868 – unknown</span><span class="ft-nt">Confirmed 1880 census</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">Oscar Nichols</span><span class="ft-dt">June 8, 1869 – June 24, 1949 · Bellville TX</span><span class="ft-nt">⚠️ Mother = Clara Alexander NOT Easter Bell · Joseph's son by different woman · confirmed by death certificate · grew up in household · half-sibling to Easter's children</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">Henry Nichols</span><span class="ft-dt">1870 – unknown</span><span class="ft-nt">Age 2 months in 1870 census · post-1870 records not located · Henry Nichols / Rachel Pettis 1913 Colorado County is a DIFFERENT person — mother listed as Queen Nichols</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm mem">Hellen Nichols Armstrong</span><span class="ft-dt">September 1870 – December 5, 1931</span><span class="ft-nt">★ Your 2nd great-grandmother · confirmed · in 1900 jail census with 4-month-old Eva</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">Helen Reese</span><span class="ft-dt">October 7, 1874 – 1932 · Bellville TX</span><span class="ft-nt">Death cert confirmed · Father Joe Nichols · Mother Easter Nichols · Married Nelson Reese · Son Arthur Reese on 1917 draft list · Gwen Reese (53.5 cM DNA match) likely descends from this line</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">Clara Nichols / Clara Nagy</span><span class="ft-dt">March 6, 1875 – March 1944 · Ballinger TX</span><span class="ft-nt">Death cert confirmed · Father Joe Nichols · Mother Easter · Married John Nagy · Son Roy Nazy on 1917 draft list · Roy Nagy charged aggravated assault December 1917 — dismissed</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">William Willie Nichols</span><span class="ft-dt">June 7, 1884 – April 29, 1956 · Austin TX</span><span class="ft-nt">Death cert confirmed · Born Ballinger TX · Father Joe Nichols · Mother Easter · On 1917 draft registration in Bellville</span></div>
+      <div class="ft-p ft-l1"><span class="ft-nm">Mabel Nichols</span><span class="ft-dt">ca. 1891 – unknown</span><span class="ft-nt">1910 census only · age 19 · living with Easter Bell</span></div>
+    </div>
+    <div style="margin-top:14px;padding:10px 14px;background:var(--blue-bg);border:1px solid rgba(42,74,122,.25);border-radius:4px;">
+      <span style="font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:6px;">Note — John Nagy</span>
+      <span style="font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--ink2);">John Nagy (1872–1938) was Clara Nichols's husband — not Easter Bell's son. Roy Nazy, their son, appears on both the June 1917 draft registration and the December 1917 court docket (aggravated assault charge dismissed).</span>
+    </div>
     </div>
   </div>
 
@@ -728,7 +783,7 @@ body{
 <!-- ═══ EVA ARMSTRONG ═══ -->
 <div class="sec" id="tab-eva">
 <div class="shdr">
-  <span class="sey">Your Great-Grandmother · June 27, 1900 – November 24, 1977</span>
+  <span class="sey">Your Great-Grandmother · ca. 1899 – November 24, 1977</span>
   <span class="sttl"><em>Eva Armstrong</em></span>
   <span class="ssub">The Woman Your Family Remembers</span>
   <div class="srul"><div class="sdia"></div></div>
@@ -742,59 +797,127 @@ body{
       <span>Add a photo of Eva<br>Click to upload</span>
     </div>
     <input type="file" id="evaPhotoInput" accept="image/*" style="display:none" onchange="loadPhoto('evaPhotoBox',event)">
-    <span class="photo-cap">Eva Armstrong Ballard · 1900–1977</span>
+    <span class="photo-cap">Eva Armstrong Ballard · ca. 1899–1977</span>
   </div>
 
   <div class="prose">
     <p>Eva Armstrong Ballard is the person your mother and her siblings actually remember. Not through documents — through stories. The way she carried herself. The business she ran. The way she held her family together across cities and decades and hardships that would have broken most people. She is the living memory anchor for the generation that knew her, and she is the reason this family made it to California.</p>
-    <p>She was born on June 27, 1900 in Bellville, Texas. She died on November 24, 1977 in Garden Grove, California. In between she traveled the full length of this family's story — from the plantation land of Austin County to the Pacific coast — and she did it on her own terms.</p>
+    <p>She was born approximately early 1899 in Bellville, Texas. She died on November 24, 1977 in Garden Grove, California. In between she traveled the full length of this family's story — from the plantation land of Austin County to the Pacific coast — and she did it on her own terms.</p>
   </div>
 
   <div class="div"></div>
-  <span class="chd">Bellville to Fort Worth · 1900–1911</span>
+  <span class="chd">Bellville to Fort Worth · 1899–1911</span>
   <span class="cttl">The Daughter of Hellen Nichols Armstrong</span>
   <div class="prose">
-    <p>Eva was born in Bellville — the same town where her grandmother Easter Bell had been born enslaved in 1848. Her mother was <em>Hellen Nichols Armstrong</em>, Easter Bell's daughter. Her father was <em>John Armstrong</em>, whose own father David had been enslaved in Upshur County, Texas.</p>
-    <p>Eva was eleven years old when her father was killed. On August 30, 1911, John Armstrong was shot by a man named Jack Thompson in Fort Worth. Thompson was later acquitted. John Armstrong was 39 years old. Eva grew up after that without her father — in a household run by her mother Hellen, who worked as a waitress and kept her children together on her own until she died in 1931.</p>
-    <p>That kind of resilience — keeping yourself and your children going after loss — is something Eva learned early. She watched her mother do it. She would do it herself, and do it bigger.</p>
+    <p>Eva Armstrong was born approximately early 1899 in Bellville, Texas — the 1900 census shows her as 4 months old in June 1900, correcting the previously recorded birth year of 1900. Her mother was <em>Hellen Nichols Armstrong</em>, Easter Bell's daughter. Her father was <em>John Armstrong</em>.</p>
+    <p>When Eva was just 4 months old, she was in the Austin County Jail in Bellville with her parents. The June 1900 census found Hellen (age 23), John Armstrong (age 22), and baby Eva (4 months) all listed as inmates on Sheet 12 — and her grandfather Joe Nichols and Oscar Nichols on Sheet 13 of the same building.</p>
+    <p>Eva was eleven years old when her father was killed. On August 30, 1911, John Armstrong was shot dead near the East Front Street entrance to the Terminal Hotel in Fort Worth by a white transfer line operator named Jack Thompson. Thompson claimed Armstrong had assaulted his son earlier that day. The bullet entered Armstrong's mouth and came out the top of his head. Thompson surrendered to police, was released on $3,000 bond, waived his preliminary trial, and was never convicted. The verdict: justifiable homicide.</p>
+    <p>Four months before his death, on May 6, 1911, John Armstrong had published a legal notice in the Fort Worth newspaper severing his business connection with C.A. Steele &amp; Co. He was a literate, independent businessman operating in Fort Worth's commercial world. Eva was old enough to understand what her father had been building. She was old enough to understand what had been taken.</p>
   </div>
 
   <div class="div"></div>
-  <span class="chd">Fort Worth to San Antonio · Marriage and Business</span>
-  <span class="cttl">Eva Armstrong Runs a Night Club and Cafe</span>
+  <span class="chd">Fort Worth to San Antonio · The Business Years</span>
+  <span class="cttl">Proprietor of The Spot · 1501 Burnet Street</span>
   <div class="prose">
-    <p>Eva married <em>James Wilson Ballard Sr.</em> — the son of Reverend George W. Ballard, whose own grandfather Newton Bullard had claimed 160 acres of Texas land in 1856 as a formerly enslaved person. James and Eva had six children: James Jr., Margie Nell, Lois, Selma (who died in infancy), Betty, and Charles Ray.</p>
-    <p>In San Antonio, Eva ran a <em>Night Club and Cafe</em>. She owned property. She was a businesswoman in a city and an era that did not make things easy for Black women who wanted to own things and run things. She did it anyway.</p>
-    <p>On April 22, 1944, Eva purchased Lot 13, Block 2, NCB 2924 in San Antonio — in her own name, jointly with James Sr. and James Jr. She paid $3,600. In 1957, after James Sr. had died, all five surviving children signed the property over to Eva. She then sold it to Emmie Garrett on January 22, 1957. She knew how to close a transaction. She knew how to protect what she had built.</p>
+    <p>Eva married James Wilson Ballard Sr. and had children in Fort Worth and San Antonio. But it is in San Antonio where Eva Armstrong Ballard built something that newspapers would write about for years.</p>
+    <p>Eva Armstrong Ballard owned and operated <em>The Spot</em> — a cafe at 1501 Burnet Street on San Antonio's East Side. She held the beer license for the establishment in her name. Her address was <strong>150 Paul Street, San Antonio</strong>. Her son James Wilson Ballard Jr. lived with her at the same address. She was the proprietor of record. She was present. She ran the place.</p>
+    <p>The San Antonio Light identified her directly in March 1954 as <em>"Mrs. Eva Ballard, 150 Paul, proprietor of The Spot."</em> When police officers arrived at The Spot that night to investigate an alleged liquor violation, it was Eva who gave them the key to the storeroom. She cooperated. No charges were ever filed against her.</p>
+    <p>What happened next was one of San Antonio's most significant police brutality cases of the 1950s. Officer O.R. Graves shot and killed <em>John Wesley Caldwell</em> in the back office of The Spot — demanding Caldwell open a safe that belonged to the establishment's gambling operator. Caldwell said he didn't know the combination. Graves shot him anyway. Then Graves handed a knife to Detective Hubble and told him to place it under Caldwell's right hand. Two officers swore to the cover-up in sworn statements.</p>
+    <p>The entire East Side community mobilized. The NAACP got involved. The district attorney launched a grand jury investigation. Eva's son <em>James Ballard Jr.</em> was a witness. Eva herself was a witness. The community demanded accountability. Officer Graves was ultimately tried — but in Atascosa County, far from the San Antonio jury pool that might actually hold him accountable.</p>
+    <p>Eva Armstrong Ballard ran a business at the center of a civil rights fight. She kept running it.</p>
   </div>
 
-  <div class="pq">She ran a Night Club and Cafe in San Antonio. She owned property. She knew how to close a transaction. That is not luck. That is character.</div>
+  <div class="card-box" style="margin:20px 0;">
+    <span class="card-label">The Spot · 1954 · Confirmed Primary Sources</span>
+    <div class="ftbl">
+      <tr><td>Business</td><td>The Spot — cafe and establishment — 1501 Burnet Street at Nolan and N. New Braunfels Avenue — San Antonio TX</td></tr>
+      <tr><td>Eva's address</td><td>150 Paul Street — San Antonio TX — confirmed San Antonio Light 1954</td></tr>
+      <tr><td>Eva's role</td><td>Proprietor — beer license holder — named directly in newspaper as owner</td></tr>
+      <tr><td>James Ballard Jr.</td><td>Lived with Eva at 150 Paul — witness to the Caldwell shooting — listed on federal gambling tax stamp as agent at 207 N. Center St</td></tr>
+      <tr><td>John Wesley Caldwell</td><td>Employee — shot and killed by Officer O.R. Graves in the back office — March 1954</td></tr>
+      <tr><td>The cover-up</td><td>Graves planted a knife on Caldwell's body — two officers (Hubble and Siebrecht) gave sworn statements confirming the plant</td></tr>
+      <tr><td>Eva's status</td><td>Witness — cooperated with investigators — police found no record against Mrs. Ballard — no charges filed</td></tr>
+      <tr><td>Community response</td><td>NAACP mobilized — citizens committee of 60+ representatives — demanded investigation of killing as unjustified</td></tr>
+    </div>
+  </div>
 
   <div class="div"></div>
   <span class="chd">California · The Final Chapter</span>
   <span class="cttl">Garden Grove, Orange County · 1977</span>
   <div class="prose">
-    <p>Eva eventually married again — to <em>Minor Green</em> — and made it to California. She died on November 24, 1977 in Garden Grove, Orange County, as Eva Green. She was 77 years old.</p>
-    <p>Your mother and her siblings remember Eva. That memory is a primary source of its own kind — more vivid than any census record or property deed. Whatever they remember about her is true in the way that only living memory can be true.</p>
-    <p>If you knew Eva Armstrong — if your mother or your aunts or uncles ever told you a story about her — those stories belong in this archive too. This page will grow. If you have a memory of Eva, a photograph, or a story passed down, contact Jasmine so it can be added here.</p>
+    <p>Eva eventually married again — to <em>Minor Green</em> — and made it to California. She died on November 24, 1977 in Garden Grove, Orange County, as Eva Green. She was approximately 78 years old.</p>
+    <p>Your mother and her siblings remember Eva. That memory is a primary source of its own kind — more vivid than any census record or property deed. Whatever they remember about her is true in the way that only living memory can be true. This page will grow. If you have a memory of Eva, a photograph, or a story passed down, contact Jasmine so it can be added here.</p>
   </div>
 
-  <div class="pq">Three generations from slavery to the Pacific coast. Easter Bell in 1848 Bellville. Eva Armstrong in 1977 Garden Grove. That is the distance one family traveled.</div>
+  <div class="pq">She ran a business at the center of one of San Antonio's most significant police brutality cases. She was there when a man was shot and killed in her back office. She cooperated with investigators. She kept running her business. That is not luck. That is character.</div>
 
   <div class="ftbl">
-    <tr><td>Born</td><td>June 27, 1900 · Bellville, Austin County, Texas</td></tr>
+    <tr><td>Born</td><td>ca. early 1899 · Bellville, Austin County, Texas (corrected from 1900)</td></tr>
     <tr><td>Mother</td><td>Hellen Nichols Armstrong (1870–1931)</td></tr>
-    <tr><td>Father</td><td>John Armstrong (1872–1911) · killed Fort Worth TX</td></tr>
+    <tr><td>Father</td><td>John Armstrong (1872–August 30, 1911) · killed Fort Worth TX by Jack Thompson · verdict: justifiable homicide</td></tr>
     <tr><td>Grandmother</td><td>Easter Bell Nichols (1848–1935)</td></tr>
     <tr><td>Married</td><td>James Wilson Ballard Sr. · son of Rev. George W. Ballard</td></tr>
-    <tr><td>Business</td><td>Night Club and Cafe · San Antonio TX</td></tr>
+    <tr><td>Business</td><td>The Spot · 1501 Burnet Street · San Antonio TX · proprietor confirmed 1954</td></tr>
+    <tr><td>Address</td><td>150 Paul Street · San Antonio TX · confirmed 1954</td></tr>
     <tr><td>Property</td><td>Lot 13, Block 2, NCB 2924 · San Antonio · purchased April 22, 1944 · sold 1957 · fully settled</td></tr>
     <tr><td>Later married</td><td>Minor Green</td></tr>
     <tr><td>Children</td><td>James Jr. (1926–1986) · Margie Nell (1929–1988) · Lois · Selma (died infant) · Betty · Charles Ray</td></tr>
     <tr><td>Died</td><td>November 24, 1977 · Garden Grove, Orange County, California</td></tr>
   </div>
+
 </div>
-<div class="ftr">Eva Armstrong Ballard · June 27, 1900 – November 24, 1977 · Bellville TX to Garden Grove CA · Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
+  <div class="div"></div>
+  <span class="chd">The Full Story · For the Family</span>
+  <span class="cttl">Eva, James, Margie, and The Spot on San Antonio's East Side</span>
+
+  <div class="prose">
+    <p>To understand Eva Armstrong Ballard, you have to understand what San Antonio's East Side was in the 1940s and 1950s. It was the center of Black life in San Antonio — its own economy, its own politics, its own newspaper, its own network of people who took care of each other because nobody else was going to. The East Side was not a place people ended up. It was a place people built.</p>
+    <p>Eva Armstrong Ballard built something there.</p>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">How Eva Got to San Antonio</span>
+  <div class="prose">
+    <p>Eva was born approximately early 1899 in Bellville, Texas — the granddaughter of Easter Bell Nichols, who had been born enslaved on that same Piney Creek land in 1848. When Eva was 4 months old, she was counted in the Austin County Jail census alongside her mother Hellen, her father John Armstrong, and her grandfather Joseph Nichols. The whole family, imprisoned together on census day in June 1900.</p>
+    <p>When Eva was eleven, her father John Armstrong was shot and killed in Fort Worth by a white man named Jack Thompson. Four months before he died, her father had published a legal notice in the Fort Worth newspaper — cutting ties with a business partner, protecting what he had built. He was literate. He was a businessman. He was trying to build something. Then he was gone. The verdict: justifiable homicide. Thompson was never convicted.</p>
+    <p>Eva grew up in Fort Worth after that. She married James Wilson Ballard Sr. and had children — James Jr., Margie Nell, and others. She ran a Night Club and Cafe. She owned property. She kept moving. When San Antonio opened up, Eva Armstrong Ballard was ready.</p>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">The Spot · 1501 Burnet Street</span>
+  <div class="prose">
+    <p>By the early 1950s Eva had established herself on the East Side. She lived at 150 Paul Street. She held the beer license for an establishment at 1501 Burnet Street — at the corner of Nolan and North New Braunfels Avenue — called The Spot. The San Antonio Light would later identify her directly as <em>"Mrs. Eva Ballard, 150 Paul, proprietor of The Spot."</em></p>
+    <p>Her son <em>James Wilson Ballard Jr.</em> lived with her at the same address, embedded in the same East Side community. Her daughter <em>Margie Nell Ballard</em> was there too — at 24 years old, operating in her mother's world with enough authority that a police officer's sworn statement named her directly, saying he had told Margie Ballard to either make the man stop bootlegging or fire him.</p>
+    <p>Margie was not a bystander. She was known. She had standing.</p>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">The Night Everything Changed · 1954</span>
+  <div class="prose">
+    <p>In early 1954, Officer O.R. Graves and two other San Antonio police officers arrived at The Spot claiming to investigate a liquor violation. Eva gave them the key to her storeroom. What happened next in the back office became one of the most significant police brutality cases in San Antonio's history.</p>
+    <p>Graves demanded that an employee named John Wesley Caldwell open a safe. Caldwell said he couldn't — the safe wasn't his. Graves pointed his pistol and clicked it twice. Then it went off. Caldwell slumped forward in his chair with a bullet hole above his left ear.</p>
+    <p>Graves claimed Caldwell had attacked him with a knife. But the other two officers later gave sworn statements under oath telling a different story. Detective Hubble had a knife he had picked up at a different scene earlier that night. After Caldwell was shot, the knife was placed under the dead man's right hand. Two officers swore to it. The knife had been planted.</p>
+    <p>The official verdict: justifiable homicide. The community response: mobilization. Sixty community representatives formed a citizens committee. The NAACP got involved. They went to the district attorney. They went to the city manager. The San Antonio newspapers reported everything.</p>
+    <p>Police found no record against Mrs. Ballard. No charges were ever filed against Eva. She had given investigators the key to her own storeroom. She had cooperated. She had done nothing wrong.</p>
+    <p>Eva kept her business.</p>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">Margie and Ronnie · A Question Worth Noting</span>
+  <div class="prose">
+    <p>Ronnie Leroy Ballard was born November 11, 1953 — nine months before the Caldwell shooting, conceived in the same San Antonio world Margie was navigating. His middle name is Leroy. His father has not been confirmed by documents or DNA. The timing, the location, and the name are part of the family's open research. Ronnie's DNA confirms he shares only Margie as a parent with his siblings — his father is a different man than Norman Caswell Corbin.</p>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">Eva Keeps Going</span>
+  <div class="prose">
+    <p>After San Antonio, Eva kept moving. She settled her property. She married Minor Green. She made it to California. She died in Garden Grove, Orange County, on November 24, 1977, as Eva Green. She was approximately 78 years old.</p>
+    <p>Three generations from slavery to the Pacific coast. Easter Bell born enslaved in Bellville in 1848. Eva born in the same town in 1899. Eva dying in Southern California in 1977. Everything in between — the jail, her father's killing, the Night Club and Cafe, The Spot, the Caldwell shooting, the community mobilization, the move west — all of it was the distance between those two dates.</p>
+    <p>Your mother and her siblings remember Eva. The documents confirm she existed. The memory confirms she mattered. What she built on San Antonio's East Side — the establishment, the community standing, the refusal to be moved — that is the inheritance she passed to Margie, who passed it to Hjordis, who passed it to Jasmine.</p>
+    <p>That is who she was. That is what this family came from.</p>
+  </div>
+
+<div class="ftr">Eva Armstrong Ballard · ca. 1899 – November 24, 1977 · Bellville TX to Garden Grove CA · Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
 </div>
 
 <!-- ═══ BONDAGE TO BELONGING ═══ -->
@@ -940,7 +1063,26 @@ body{
     </div>
   </div>
 
-  <div class="div"></div>
+  <div class="ensl-person">
+    <span class="status status-conf">● Confirmed — Primary Source: Death Certificate · 1880, 1900, 1930 Census · Marriage Records</span>
+    <span class="ensl-name">Oscar Nichols</span>
+    <span class="ensl-dates">June 8, 1869 – June 24, 1949 · Bellville, Austin County, Texas</span>
+    <div class="ensl-body">
+      <p>Oscar Nichols was Joseph Nichols's son — but his mother was <em>Clara Alexander</em>, not Easter Bell. He grew up in Joseph and Easter Bell's household, was counted in their 1880 census as a son, and remained in Bellville his entire life. He married twice — first to Clarissa Alexander in 1892, then to Clara Nichols ca. 1894. He and his second wife Clara were still together in 1930, farming on Millheim Road in Precinct 1, Austin County.</p>
+      <p style="margin-top:10px;">His son Walter Nichols (b. ca. 1896) was the informant on Oscar's 1949 death certificate — the last documented Nichols in Bellville. Oscar was 80 years old when he died. He had lived his entire life within a few miles of Piney Creek.</p>
+      <p style="margin-top:10px;"><strong>June 1900:</strong> Oscar was counted in the Austin County Jail on census day alongside his father Joseph Nichols. He was 26 years old. Joseph was 52. Both listed as inmates on Sheet 13.</p>
+    </div>
+    <div class="ensl-docs">
+      <div class="ensl-doc">💀 Death Certificate · Texas File No. 26579 · Father: Joe Nichols · Mother: Clara Alexander — confirms Oscar's parentage</div>
+      <div class="ensl-doc">📋 1880 Census — Oscar age 10, in Joseph and Easter Bell's household</div>
+      <div class="ensl-doc">📋 1900 Census — Oscar listed as inmate of Austin County Jail, same sheet as Joseph Nichols</div>
+      <div class="ensl-doc">📋 1930 Census — Oscar and Clara Nichols, Millheim Road, Precinct 1, Austin County · Farmer · Employer</div>
+      <div class="ensl-doc">💒 Marriage 1 — Clarissa Alexander · 1892 · Austin County TX · File No. 0010119274</div>
+      <div class="ensl-doc">💒 Marriage 2 — Clara Nichols · ca. 1894 · Austin County TX</div>
+    </div>
+  </div>
+
+    <div class="div"></div>
   <span class="chd">A Note on the Gaps</span>
   <div class="prose"><p>The enslaved people documented here survived. Their names reached us. But for every person named above, there are others whose names did not survive — whose children were sold away, whose lives were erased from the records entirely. The silence in the historical record is not absence. It is what violence looks like in an archive.</p><p>This research names the people it can confirm. It will keep searching for the ones it cannot yet name.</p></div>
 
@@ -963,7 +1105,8 @@ body{
     <span class="jt-sub">General Order No. 3 · Galveston, Texas</span>
   </div>
 
-  <div class="prose"><p>On June 19, 1865, Union soldiers arrived in Galveston, Texas and read General Order No. 3, announcing that all enslaved people in Texas were free. This was two and a half years after the Emancipation Proclamation had been signed. The delay was not an accident — Texas was one of the last Confederate states to receive the news, and enslavers had suppressed and withheld the information as long as they could.</p><p>That day is now celebrated as Juneteenth — a federal holiday, a day of remembrance, and a day of joy. And it connects directly to this family.</p></div>
+  <div class="prose"><p>Before June 19, 1865, Easter Bell's movements were controlled by law. On July 10, 1862 — three years before Juneteenth — the Provost Marshal of Austin County published General Order No. 5 in the Bellville Countryman, requiring all enslaved people to carry written passes to leave their enslaver's premises at night, authorizing any white resident to arrest any enslaved person found away from home, and prohibiting enslaved people from carrying weapons of any kind. Easter Bell was 14 years old when this order was published. Rendy Blayn was approximately 45. This was their daily legal reality on Piney Creek.</p>
+    <p>On June 19, 1865, Union soldiers arrived in Galveston, Texas and read General Order No. 3, announcing that all enslaved people in Texas were free. This was two and a half years after the Emancipation Proclamation had been signed. The delay was not an accident — Texas was one of the last Confederate states to receive the news, and enslavers had suppressed and withheld the information as long as they could.</p><p>That day is now celebrated as Juneteenth — a federal holiday, a day of remembrance, and a day of joy. And it connects directly to this family.</p></div>
 
   <div class="div"></div>
   <span class="chd">Our Family's Connection</span>
@@ -1059,7 +1202,7 @@ body{
     <table class="ftbl" style="margin-top:14px;">
       <tr><td>Original deed</td><td>Volume 209, Page 228 · Austin County Deed Records · Certified copy ordered March 2026</td></tr>
       <tr><td>Sheriff's Deed</td><td>Instrument No. 66418 · August 1, 2006</td></tr>
-      <tr><td>Austin County Clerk</td><td>Patty Norman Leger · 979-227-3144 ext 5143 · ccvault@austincounty.com</td></tr>
+      <tr><td>Austin County Clerk</td><td>Patty Norman Leger · 979-227-3144 ext 5143 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6300001502160f1723021610170a0d000c160d171a4d000c0e">[email&#160;protected]</a></td></tr>
       <tr><td>District Clerk</td><td>Marcy Grimes · 979-270-6830 · 265 N. Chesley Street Suite 1, Bellville TX 77418</td></tr>
       <tr><td>Legal Aid</td><td>Lone Star Legal Aid · 713-652-0077 · lonestarlegal.org</td></tr>
     </table>
@@ -1083,6 +1226,47 @@ body{
     <div class="prose" style="font-size:16px;margin-top:12px;"><p>Newton Bullard claimed 160 acres in Upshur County TX. Patent filed August 26, 1856 — Texas GLO File No. 3378. Sold legally to E.G. Horn for $250 gold on August 9, 1873. Newton's grandson James Wilson Ballard Sr. was born August 26, 1897 — the same calendar date as the land patent.</p></div>
   </div>
 </div>
+  <div class="div"></div>
+  <span class="chd">The John Nichols Survey · Still Trading Hands · 1915 and 1947</span>
+  <span class="cttl">While Your Family Held Their 2 Acres — The Survey Around Them Was Being Sold</span>
+  <div class="prose">
+    <p>The John Nichols Survey — the same 4,428-acre grant where Easter Bell was born enslaved in 1848, where her family acquired 2 acres after emancipation, where they held that land for 141 years — was actively being bought and sold around them throughout the 20th century. White families in Bellville used "J. Nichols league," "Jno. Nichols league," and "John Nichols survey" as the standard legal description for dozens of transactions while your family held their small piece of that same survey.</p>
+  </div>
+  <div class="card-box" style="margin:20px 0;">
+    <span class="card-label">1915 Real Estate Transfers · Bellville Times · John Nichols Survey</span>
+    <div class="ftbl">
+      <tr><td>E.J. Spence to Joe D. Sutton</td><td>2 acres · J. Nichols league · $767.50 — same acreage as your family's parcel</td></tr>
+      <tr><td>F.M. Howard to Emil Harigel</td><td>½ acre · Joe Nichols league · $500</td></tr>
+      <tr><td>Max Roensch to Henrietta DuBois</td><td>½ acre · Jno. Nichols league · $1 and other considerations</td></tr>
+      <tr><td>Margaret D. Chesley to Rose Porter</td><td>1 lot · Nichols league · gift</td></tr>
+    </div>
+  </div>
+  <div class="card-box" style="margin:20px 0;">
+    <span class="card-label">1947 Real Estate Transfers · Bellville Times · John Nichols Survey</span>
+    <div class="ftbl">
+      <tr><td>Sheriff E.E. Reinecker to Thomas E. Hilliard</td><td>43¾ acres · John Nichols survey · $275 — a sheriff's sale, same mechanism used to take your family's land in 2006</td></tr>
+      <tr><td>Hugo Muery to G.R. Eckerman</td><td>1 acre · John Nichols league · $500</td></tr>
+      <tr><td>Richard Berndt to Arthur J. Smith</td><td>13,500 sq ft · John Nichols league · $600</td></tr>
+      <tr><td>Paul Rudloff to Eugene Rudloff</td><td>22,500 sq ft · John Nichols league · $10 and other considerations</td></tr>
+      <tr><td>Bertha E. Braun to Charles D. Rogers</td><td>2.65 acres · John Nichols league · $10 and other considerations</td></tr>
+    </div>
+  </div>
+  <div class="prose">
+    <p>In 1947, 82 years after emancipation, the name John Nichols still defined the land in Bellville. Sheriff's sales on the John Nichols survey in 1947. Sheriff's sale on the John Nichols survey in 2006. The same mechanism, the same survey, 59 years apart. Your family's 2 acres sat inside all of this for 141 years.</p>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">The Austin County Jail · Built on John Nichols's Original Land</span>
+  <span class="cttl">1832 Land Grant · 1896 Jail · 1900 Census</span>
+  <div class="prose">
+    <p>The Austin County Jail in Bellville — the building where Joseph Nichols, Oscar Nichols, Hellen Nichols Armstrong, John Armstrong, and 4-month-old Eva Armstrong were all counted in the June 1900 census — was built in 1896 on land that had originally been granted to <em>John Nichols</em> by the Mexican Government on October 20, 1832.</p>
+    <p>John Nichols received this land grant two years before he appears in Texas GLO records in 1834. He was one of Stephen F. Austin's Old 300 — the original Anglo settlers of Texas. The jail where Easter Bell's entire family was imprisoned in 1900 sat on land John Nichols had owned 68 years earlier. The man who enslaved them owned the very ground under the building that held them.</p>
+  </div>
+  <div class="card-box blue" style="margin:20px 0;">
+    <span class="card-label">Source · National Register of Historic Places · Austin County Jail · Bellville TX</span>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.65;color:var(--ink2);">"This land had been granted to John Nichols on October 20, 1832 by the Mexican Government. Nichols over the next several years sold portions of his original grant to James and Thomas Bell. In March of 1846, Austin County purchased a total of 145½ acres of land from the Bells for a sum of $2.00." The jail was built on Lot 6 of Block F of this original Nichols land grant. Architects F.B. and W.S. Hull of Dallas, 1896. Romanesque Revival style. A hanging gallows was housed on the fourth floor — used once, on March 14, 1901, nine months after Joseph Nichols and his family were counted in that building on census day.</p>
+  </div>
+
 <div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
 </div>
 
@@ -1190,12 +1374,99 @@ body{
 <!-- ═══ DNA COUSINS ═══ -->
 <div class="sec" id="tab-descendants">
 <div class="shdr">
-  <span class="sey">Confirmed DNA Matches · Extended Family</span>
-  <span class="sttl">DNA <em>Cousins</em></span>
-  <span class="ssub">Family Members Confirmed Through DNA Testing · cM Values Explained in DNA Guide Tab</span>
+  <span class="sey">Confirmed DNA Matches · Ancestral Journeys · Extended Family</span>
+  <span class="sttl">DNA <em>Connections</em></span>
+  <span class="ssub">Family Members Confirmed Through DNA Testing · Ancestral Region Comparisons</span>
   <div class="srul"><div class="sdia"></div></div>
 </div>
 <div class="ctr">
+
+  <span class="chd">Ancestral Journeys — Compare Your DNA Regions</span>
+  <div class="cttl">Where This Family Comes From</div>
+  <div class="prose"><p>AncestryDNA assigns each person to ancestral regions based on their DNA. Below is a comparison across six family members — showing which regions are shared and which are unique to each line. Regions marked <strong>Assigned</strong> appear in that person's DNA results.</p></div>
+
+  <div style="overflow-x:auto;margin:24px 0;">
+  <table style="width:100%;border-collapse:collapse;font-family:'Josefin Sans',sans-serif;font-size:11px;min-width:700px;">
+    <thead>
+      <tr style="border-bottom:2px solid var(--gold2);">
+        <th style="text-align:left;padding:10px 8px 10px 0;color:var(--gold);font-weight:600;letter-spacing:1px;width:220px;">Ancestral Region</th>
+        <th style="text-align:center;padding:10px 6px;color:var(--ink2);font-weight:400;letter-spacing:1px;">Jasmine</th>
+        <th style="text-align:center;padding:10px 6px;color:var(--ink2);font-weight:400;letter-spacing:1px;">Hjordis</th>
+        <th style="text-align:center;padding:10px 6px;color:var(--ink2);font-weight:400;letter-spacing:1px;">Deanna</th>
+        <th style="text-align:center;padding:10px 6px;color:var(--ink2);font-weight:400;letter-spacing:1px;">Sonsorey</th>
+        <th style="text-align:center;padding:10px 6px;color:var(--ink2);font-weight:400;letter-spacing:1px;">Se'Taun</th>
+        <th style="text-align:center;padding:10px 6px;color:var(--ink2);font-weight:400;letter-spacing:1px;">Ronnie</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:var(--gold-bg2);"><td colspan="7" style="padding:8px 8px 4px;color:var(--gold);font-weight:600;letter-spacing:2px;font-size:10px;">SHARED BY ALL OR MOST</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px 9px 0;color:var(--ink2);">Early Southern U.S. African Americans</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--ink3);">—</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px 9px 0;color:var(--ink2);">East Texas &amp; Oklahoma African Americans</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px 9px 0;color:var(--ink2);">Central Southern U.S. African Americans</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px 9px 0;color:var(--ink2);">Virginia, Maryland &amp; Lower Mississippi</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--ink3);">—</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px 9px 0;color:var(--ink2);">Upland South African Americans</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--ink3);">—</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px 9px 0;color:var(--ink2);">Eastern Bluegrass African Americans</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--ink3);">—</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px 9px 0;color:var(--ink2);">Missouri to Lower Ohio River Valley</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--ink3);">—</td></tr>
+
+      <tr style="background:var(--gold-bg2);"><td colspan="7" style="padding:8px 8px 4px;color:var(--gold);font-weight:600;letter-spacing:2px;font-size:10px;">JASMINE'S UNIQUE REGIONS — SOUTH CAROLINA LINE</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px 9px 0;color:var(--ink2);">South Carolina African Americans</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px 9px 0;color:var(--ink2);">Carolina Piedmont African Americans</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px 9px 0;color:var(--ink2);">Catawba to Central Midlands</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td></tr>
+
+      <tr style="background:var(--gold-bg2);"><td colspan="7" style="padding:8px 8px 4px;color:var(--gold);font-weight:600;letter-spacing:2px;font-size:10px;">RONNIE'S UNIQUE REGIONS — DIFFERENT PATERNAL LINE</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px 9px 0;color:var(--ink2);">South Central Texas African Americans</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--forest);">✓</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--forest);">✓</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px 9px 0;color:var(--ink2);">South Texas African Americans</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--forest);">✓</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px 9px 0;color:var(--ink2);">Early North Carolina African Americans</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--forest);">✓</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px 9px 0;color:var(--ink2);">Alabama &amp; Mississippi Area</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--forest);">✓</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px 9px 0;color:var(--ink2);">Deep South African Americans</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--forest);">✓</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:9px 8px 9px 0;color:var(--ink2);">N. Louisiana &amp; S. Arkansas</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--ink3);">—</td><td style="text-align:center;color:var(--forest);">✓</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="card-box blue">
+    <span class="card-label">What This Table Tells Us</span>
+    <span class="card-title">South Carolina Shows Only in Jasmine</span>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--ink2);line-height:1.7;margin-top:8px;">The South Carolina, Carolina Piedmont, and Catawba to Central Midlands regions appear only in Jasmine's results — not in Hjordis, Deanna, Sonsorey, or Se'Taun. This is the DNA signature of the Patience → Clarissa → Joseph Nichols line that traces directly to Newberry County, South Carolina in 1795. It is Jasmine's deepest confirmed ancestral region.<br><br>Ronnie's unique Deep South, Alabama/Mississippi, Louisiana/Arkansas, and North Carolina regions confirm he has a different paternal line than his siblings — consistent with the open research question about his father.</p>
+  </div>
+
+  <div class="div"></div>
+
+  <span class="chd">Ethnic Origins — DNA Breakdown</span>
+  <div class="cttl">West African and European Ancestry</div>
+  <div style="overflow-x:auto;margin:24px 0;">
+  <table style="width:100%;border-collapse:collapse;font-family:'Josefin Sans',sans-serif;font-size:11px;min-width:600px;">
+    <thead>
+      <tr style="border-bottom:2px solid var(--gold2);">
+        <th style="text-align:left;padding:10px 8px 10px 0;color:var(--gold);font-weight:600;letter-spacing:1px;">Origin</th>
+        <th style="text-align:center;padding:10px 6px;color:var(--ink2);font-weight:400;">Jasmine</th>
+        <th style="text-align:center;padding:10px 6px;color:var(--ink2);font-weight:400;">Hjordis</th>
+        <th style="text-align:center;padding:10px 6px;color:var(--ink2);font-weight:400;">Deanna</th>
+        <th style="text-align:center;padding:10px 6px;color:var(--ink2);font-weight:400;">Sonsorey</th>
+        <th style="text-align:center;padding:10px 6px;color:var(--ink2);font-weight:400;">Se'Taun</th>
+        <th style="text-align:center;padding:10px 6px;color:var(--ink2);font-weight:400;">Ronnie</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:var(--gold-bg2);"><td colspan="7" style="padding:8px 0 4px;color:var(--gold);font-weight:600;font-size:10px;letter-spacing:2px;">WEST AFRICA</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 8px 8px 0;color:var(--ink2);">Nigeria</td><td style="text-align:center;color:var(--ink2);">24%</td><td style="text-align:center;">19%</td><td style="text-align:center;">18%</td><td style="text-align:center;">17%</td><td style="text-align:center;">23%</td><td style="text-align:center;">12%</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 8px 8px 0;color:var(--ink2);">Benin &amp; Togo</td><td style="text-align:center;">14%</td><td style="text-align:center;">6%</td><td style="text-align:center;">8%</td><td style="text-align:center;">6%</td><td style="text-align:center;">6%</td><td style="text-align:center;">10%</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 8px 8px 0;color:var(--ink2);">Mali</td><td style="text-align:center;">12%</td><td style="text-align:center;">4%</td><td style="text-align:center;">13%</td><td style="text-align:center;">12%</td><td style="text-align:center;">7%</td><td style="text-align:center;">18%</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 8px 8px 0;color:var(--ink2);">Ivory Coast &amp; Ghana</td><td style="text-align:center;">3%</td><td style="text-align:center;">10%</td><td style="text-align:center;">6%</td><td style="text-align:center;">10%</td><td style="text-align:center;">4%</td><td style="text-align:center;">10%</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 8px 8px 0;color:var(--ink2);">Senegal</td><td style="text-align:center;">3%</td><td style="text-align:center;">5%</td><td style="text-align:center;">1%</td><td style="text-align:center;">2%</td><td style="text-align:center;">3%</td><td style="text-align:center;">0%</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 8px 8px 0;color:var(--ink2);">Central West Africa</td><td style="text-align:center;">3%</td><td style="text-align:center;">1%</td><td style="text-align:center;">6%</td><td style="text-align:center;">4%</td><td style="text-align:center;">5%</td><td style="text-align:center;">8%</td></tr>
+      <tr style="background:var(--gold-bg2);"><td colspan="7" style="padding:8px 0 4px;color:var(--gold);font-weight:600;font-size:10px;letter-spacing:2px;">CENTRAL &amp; EAST AFRICA</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 8px 8px 0;color:var(--ink2);">Western Bantu Peoples</td><td style="text-align:center;">9%</td><td style="text-align:center;">5%</td><td style="text-align:center;">6%</td><td style="text-align:center;">3%</td><td style="text-align:center;">8%</td><td style="text-align:center;">11%</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 8px 8px 0;color:var(--ink2);">Cameroon</td><td style="text-align:center;">2%</td><td style="text-align:center;">3%</td><td style="text-align:center;">1%</td><td style="text-align:center;">3%</td><td style="text-align:center;">4%</td><td style="text-align:center;">1%</td></tr>
+      <tr style="background:var(--gold-bg2);"><td colspan="7" style="padding:8px 0 4px;color:var(--gold);font-weight:600;font-size:10px;letter-spacing:2px;">ENGLAND &amp; EUROPE</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 8px 8px 0;color:var(--ink2);">SE England &amp; NW Europe</td><td style="text-align:center;">18%</td><td style="text-align:center;">12%</td><td style="text-align:center;">16%</td><td style="text-align:center;">11%</td><td style="text-align:center;">10%</td><td style="text-align:center;">2%</td></tr>
+      <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 8px 8px 0;color:var(--ink2);">Northwestern Germany</td><td style="text-align:center;">1%</td><td style="text-align:center;">3%</td><td style="text-align:center;">2%</td><td style="text-align:center;">7%</td><td style="text-align:center;">—</td><td style="text-align:center;">0%</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">Confirmed DNA Cousin Matches</span>
   <div class="gen-group"><span class="gen-title">Confirmed Through Eva Armstrong Ballard's Other Children</span>
     <div class="pe"><div class="pe-dot dna"></div><div class="pe-info"><span class="pe-name">Jahna Bradshaw</span><span class="pe-dates">living</span><span class="pe-note">Descends through Eva's daughter Lois Ballard Bradshaw who married Warren Bradshaw. Ancestry tree has 79 people.</span><span class="pe-dna">DNA · 41 cM · 2nd cousin 1x removed · confirmed through Lois Ballard Bradshaw</span></div></div>
     <div class="pe"><div class="pe-dot dna"></div><div class="pe-info"><span class="pe-name">Teresa Ballard</span><span class="pe-dates">living</span><span class="pe-note">Descends through Moses Ballard (1903–1988), son of Rev. George W. Ballard, then Freddie Eugene Ballard (1926–2005). Common ancestors: Rev. George W. Ballard and Mary Ann Edwards.</span><span class="pe-dna">DNA · 54 cM · 2nd cousin 1x removed · confirmed through Moses Ballard</span></div></div>
@@ -1208,7 +1479,7 @@ body{
     <div class="pe"><div class="pe-dot dna"></div><div class="pe-info"><span class="pe-name">Gwen Reese</span><span class="pe-dates">GEDmatch kit A103465</span><span class="pe-note">53.5 cM match · possible descendant of Helen Reese, Easter Bell's confirmed daughter (1884–1931). Contact pending.</span><span class="pe-dna">DNA · 53.5 cM · possible Helen Reese connection</span></div></div>
   </div>
 </div>
-<div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
+<div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · April 2026</div>
 </div>
 
 <!-- ═══ WHERE WE ARE ═══ -->
@@ -1320,7 +1591,7 @@ body{
   <div class="div"></div>
   <span class="chd">How to Get Tested</span>
   <span class="cttl">If You Want to Add Your DNA to This Research</span>
-  <div class="prose"><p>The two best platforms for this family's research are <strong>AncestryDNA</strong> (ancestry.com/dna) and <strong>23andMe</strong> (23andme.com). AncestryDNA is currently most useful for this research because the largest number of matches are there. A kit costs approximately $99 and requires only a saliva sample — no needles.</p><p>Once you test, you can upload your raw DNA data for free to <strong>GEDmatch</strong> (gedmatch.com), which allows comparison across all platforms. Jasmine's GEDmatch kit is QW8418781.</p><p>If you are a descendant of Margie Nell Ballard and you test, please contact Jasmine at jlee@dockellisfoundation.com — your results could confirm new connections and extend this research.</p></div>
+  <div class="prose"><p>The two best platforms for this family's research are <strong>AncestryDNA</strong> (ancestry.com/dna) and <strong>23andMe</strong> (23andme.com). AncestryDNA is currently most useful for this research because the largest number of matches are there. A kit costs approximately $99 and requires only a saliva sample — no needles.</p><p>Once you test, you can upload your raw DNA data for free to <strong>GEDmatch</strong> (gedmatch.com), which allows comparison across all platforms. Jasmine's GEDmatch kit is QW8418781.</p><p>If you are a descendant of Margie Nell Ballard and you test, please contact Jasmine at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="acc6c0c9c9ecc8c3cfc7c9c0c0c5dfcac3d9c2c8cdd8c5c3c282cfc3c1">[email&#160;protected]</a> — your results could confirm new connections and extend this research.</p></div>
 </div>
 <div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
 </div>
@@ -1376,6 +1647,38 @@ body{
     </div>
     <div class="rtl-item">
       <div class="rtl-left"><div class="rtl-dot"></div></div>
+      <div class="rtl-content"><span class="rtl-title">Oscar Nichols Death Certificate — Mother Confirmed as Clara Alexander</span><div class="rtl-text">Texas Death Certificate File No. 26579 confirmed Oscar Nichols's mother as Clara Alexander, not Easter Bell. This corrected a significant tree error. Oscar was Joseph's son by a different woman, a half-sibling to Easter Bell's children who grew up in their household. Son Walter Nichols confirmed as informant — same Walter who appears in 1900 census.</div><span class="rtl-src">Texas Death Certificate · File No. 26579 · Austin County TX</span></div>
+    </div>
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div><div class="rtl-line"></div></div>
+      <div class="rtl-content"><span class="rtl-title">Three Census Records Confirm Joseph Nichols Profile</span><div class="rtl-text">1870, 1880, and 1900 census records confirmed Joseph born June 1847 in Texas, father born Texas, mother born Tennessee (new research lead), could not read or write, farmer, owned his home free and clear. 1900 census placed him in the Austin County Jail on census day with son Oscar, daughter Hellen, son-in-law John Armstrong, and 4-month-old granddaughter Eva. He disappears from all records after June 1900.</div><span class="rtl-src">1870 · 1880 · 1900 U.S. Federal Census · Austin County TX</span></div>
+    </div>
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div><div class="rtl-line"></div></div>
+      <div class="rtl-content"><span class="rtl-title">1900 Census — Entire Family in Austin County Jail</span><div class="rtl-text">Census Sheets 12 and 13 of the Austin County Jail enumeration found Easter Bell's entire immediate family imprisoned together on the same day: Hellen Nichols Armstrong (23), John Armstrong (22), baby Eva (4 months, correcting her birth year to 1899), Joe Nichols (52), and Oscar Nichols (26). The jail was built on land originally granted to their enslaver John Nichols in 1832. Joseph Nichols never appears in any record after this date.</div><span class="rtl-src">1900 U.S. Federal Census · Austin County Jail · Sheets 12–13 · Bellville TX</span></div>
+    </div>
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div><div class="rtl-line"></div></div>
+      <div class="rtl-content"><span class="rtl-title">Five Death Certificates Confirm Easter Bell's Children</span><div class="rtl-text">Death certificates for Clara Nichols/Nagy, Helen Reese, Allen Nichols Sr., Oscar Nichols, and William Willie Nichols confirmed parents, birth dates, burial locations, and occupations. Clara's certificate confirmed John Nagy as her husband (not Easter's son). Allen's certificate listed father as Phillips Nichols — not Joe — an ongoing research question. Helen Reese's certificate confirmed marriage to Nelson Reese, opening the Gwen Reese DNA connection.</div><span class="rtl-src">Texas Death Certificates · Austin County · Galveston County · Travis County · Runnels County</span></div>
+    </div>
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div><div class="rtl-line"></div></div>
+      <div class="rtl-content"><span class="rtl-title">1917 Draft Registration — Easter Bell's Grandchildren</span><div class="rtl-text">The June 5, 1917 Austin County draft registration list (Bellville Times) found four family members in Precinct 1 Colored: Roy Nazy (Clara's son — first documented record), Will Nichols (Easter's son — confirmed still in Austin County), Arthur Reese (Helen Reese's son — connects to Gwen Reese 53.5 cM DNA match), and Ralph Nichols (previously undocumented). Roy Nagy was charged with aggravated assault in December 1917 — dismissed.</div><span class="rtl-src">Bellville Times · June 14, 1917 · Austin County TX</span></div>
+    </div>
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div></div>
+      <div class="rtl-content"><span class="rtl-title">John Armstrong Killing — Fort Worth Newspaper Found</span><div class="rtl-text">Fort Worth newspaper confirmed the full account of John Armstrong's killing on August 30, 1911. Shot by Jack Thompson near the Terminal Hotel at 3-foot range. Verdict: justifiable homicide. Thompson never convicted. Also found: May 6, 1911 legal notice published by John Armstrong severing business ties with C.A. Steele & Co. — confirming he was a literate, independent businessman four months before his death. Eva was 11 or 12 years old.</div><span class="rtl-src">Fort Worth Star-Telegram · August 1911 · Fort Worth TX</span></div>
+    </div>
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div><div class="rtl-line"></div></div>
+      <div class="rtl-content"><span class="rtl-title">Eva Armstrong Ballard — The Spot — San Antonio 1954</span><div class="rtl-text">San Antonio Light confirmed Eva Armstrong Ballard as proprietor of The Spot at 1501 Burnet Street, San Antonio. Her son James Ballard Jr. lived with her at 150 Paul Street. Officer O.R. Graves shot and killed John Caldwell in Eva's back office. Two officers later gave sworn statements confirming they planted a knife on the body. Eva cooperated fully with investigators. No charges filed against her. Margie Ballard named in officer's sworn statement as a known responsible party at the establishment.</div><span class="rtl-src">San Antonio Light · San Antonio Express · March 1954</span></div>
+    </div>
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div><div class="rtl-line"></div></div>
+      <div class="rtl-content"><span class="rtl-title">Margie Ballard 1946 Marriage Confirmed · Divorce Filing 1961</span><div class="rtl-text">The News San Antonio October 10, 1946 confirmed Margie Nell Ballard married Charles R. Baker — matching the documented October 8, 1946 Bexar County marriage record. Los Angeles Times June 13, 1961 confirmed Margie Corbin filed for divorce from Norman Corbin in Los Angeles — confirms they were in LA by 1961. Family oral history confirms they reconciled before final decree.</div><span class="rtl-src">The News San Antonio · October 10, 1946 · Los Angeles Times · June 13, 1961</span></div>
+    </div>
+    <div class="rtl-item">
+      <div class="rtl-left"><div class="rtl-dot"></div></div>
       <div class="rtl-content"><span class="rtl-title">Sherry Newman Welty Confirms Fanny Waldrop — March 2026</span><div class="rtl-text">DNA match Sherry Newman Welty — who grew up in Bellville, Texas and descends through Hezekiah Waldrop → Fanny Waldrop → John Hutchins — confirmed directly: "Fanny married third to John Nichols who all lived in Bellville, Austin, Texas." This confirmed that Frances Jane Waldroup Nichols was Fanny Waldrop, Hezekiah's daughter, linking the two enslaving families and explaining how Patience's descendants ended up on the John Nichols plantation.</div><span class="rtl-src">DNA Match Correspondence · March 2026</span></div>
     </div>
   </div>
@@ -1386,50 +1689,197 @@ body{
 <!-- ═══ RESEARCH NOTES ═══ -->
 <div class="sec" id="tab-research">
 <div class="shdr">
-  <span class="sey">Active Research · Status · Next Steps</span>
+  <span class="sey">Active Research · Status · Next Steps · Last Updated April 2026</span>
   <span class="sttl">Research <em>Notes</em></span>
   <span class="ssub">What Has Been Confirmed · What Is Still Open · What To Stop Researching</span>
   <div class="srul"><div class="sdia"></div></div>
 </div>
 <div class="ctr">
+
   <span class="chd">Confirmed — Do Not Change in Ancestry Tree</span>
   <table class="ftbl">
-    <tr><td>Patience → Clarissa</td><td>1795 SC Deed C:367 · 1839 MS Waldrop estate deed</td></tr>
-    <tr><td>Clarissa → Joseph Nichols</td><td>DNA confirmed — 46 ThruLines matches · paper trail still researching</td></tr>
-    <tr><td>Joseph + Easter Bell</td><td>1870 Census Austin County TX · Marriage record December 18, 1865 · Jeff Cemetery record</td></tr>
-    <tr><td>Rendy Blayn = Easter's mother</td><td>Easter Bell's 1935 Death Certificate · Field 15: Mother's Maiden Name: Rendy Blayn</td></tr>
-    <tr><td>Hellen Nichols Armstrong</td><td>1930 FW City Directory · 1997 tax suit · daughter of Easter Bell confirmed</td></tr>
-    <tr><td>Eva Armstrong Ballard</td><td>1957 San Antonio estate affidavit · daughter of Hellen confirmed</td></tr>
-    <tr><td>Margie Nell Ballard</td><td>1957 estate affidavit · daughter of Eva confirmed</td></tr>
-    <tr><td>Fanny Waldrop = Frances Jane Waldroup</td><td>DNA match Sherry Newman Welty confirmed March 2026</td></tr>
+    <tr><td>Patience → Clarissa</td><td>1795 SC Deed C:367 (Patience given to Patty Waldrop "with her increase") · 1839 MS Waldrop estate deed (Clarissa named as Patience's daughter)</td></tr>
+    <tr><td>Clarissa → Joseph Nichols</td><td>DNA confirmed — 46 ThruLines matches · paper trail still being researched</td></tr>
+    <tr><td>Joseph Nichols</td><td>Born June 1847 · Austin County TX · father born TX · mother born Tennessee · confirmed 1870/1880/1900 census · in Austin County Jail June 1900 · disappeared from records after 1900</td></tr>
+    <tr><td>Rendy Blayn = Easter's mother</td><td>Easter Bell's 1935 Death Certificate Field 15 — Mother's Maiden Name: Rendy Blayn · confirmed</td></tr>
+    <tr><td>Easter Bell + Joseph married</td><td>December 18, 1865 · Austin County TX · confirmed marriage record</td></tr>
+    <tr><td>Easter Bell death</td><td>December 17, 1935 · Bellville TX · Jeff Cemetery · TX Death Cert File 54496</td></tr>
+    <tr><td>Oscar Nichols — mother correction</td><td>Mother = Clara Alexander NOT Easter Bell · confirmed TX Death Cert File 26579 · Joseph's son by different woman · half-sibling to Easter's children</td></tr>
+    <tr><td>Allen Nichols Sr.</td><td>Born February 1, 1867 · parents confirmed as Joe Nichols and Esther (Easter) Nichols on death cert · earlier cert listing Phillips Nichols was a hospital registrar error · died October 17, 1944 Galveston TX</td></tr>
+    <tr><td>Clara Nichols / Clara Nagy</td><td>Born March 6, 1875 · death cert confirms father Joe Nichols · mother Easter · married John Nagy (John Nagy was her HUSBAND not Easter's son)</td></tr>
+    <tr><td>Helen Reese</td><td>Born October 7, 1874 · death cert confirms father Joe Nichols · mother Easter Nichols · married Nelson Reese · son Arthur Reese on 1917 draft list</td></tr>
+    <tr><td>William Willie Nichols</td><td>Born June 7, 1884 Ballinger TX · death cert confirms Joe Nichols father · Easter mother · died April 29, 1956 Austin TX</td></tr>
+    <tr><td>Arthur Nichols</td><td>Born March 4, 1889 Bellville TX · Allen's son · WWI veteran · died May 14, 1958 VA Hospital Houston TX · buried Bellville Local Cemetery</td></tr>
+    <tr><td>Mabel Nichols</td><td>Born ca. 1891 · wife of William Nichols in 1910 census · Easter Bell listed as Mother in same household · research note: possible family relationship</td></tr>
+    <tr><td>Hellen Nichols Armstrong</td><td>September 1870 – December 5, 1931 · Bellville TX / Fort Worth TX · daughter of Joseph and Easter Bell confirmed</td></tr>
+    <tr><td>John Armstrong killed 1911</td><td>Shot August 30, 1911 near Terminal Hotel Fort Worth by Jack Thompson · verdict justifiable homicide · Thompson never convicted · May 6, 1911 legal notice published in FW newspaper 4 months before death — he was a businessman</td></tr>
+    <tr><td>Eva Armstrong — birth corrected</td><td>Born ca. early 1899 NOT June 1900 · 1900 census shows her age 4/12 (4 months) in June 1900 · in Austin County Jail with parents on census day</td></tr>
+    <tr><td>Eva Armstrong — The Spot</td><td>Proprietor of The Spot · 1501 Burnet Street · San Antonio TX · confirmed San Antonio Light March 1954 · address: 150 Paul Street San Antonio</td></tr>
+    <tr><td>Eva Armstrong — 1954 Caldwell shooting</td><td>Officer Graves shot and killed John Caldwell in Eva's back office · knife planted on body · two officers gave sworn confessions · no charges against Eva · James Ballard Jr. was witness · Margie Ballard named in officer's sworn statement</td></tr>
+    <tr><td>Eva Armstrong died</td><td>November 24, 1977 · Garden Grove Orange County CA · as Eva Green (married Minor Green)</td></tr>
+    <tr><td>Margie 1946 marriage</td><td>The News San Antonio October 10, 1946 · married Charles R. Baker · confirmed</td></tr>
+    <tr><td>Margie 1961 divorce filing</td><td>Los Angeles Times June 13, 1961 · Margie Corbin vs Norman Corbin · filing in LA confirms they were in California by 1961 · family oral history confirms reconciliation</td></tr>
+    <tr><td>Fanny Waldrop = Frances Jane Waldroup</td><td>DNA match Sherry Newman Welty confirmed March 2026 · John Nichols's wife was Hezekiah Waldrop's daughter</td></tr>
+    <tr><td>1900 jail census — whole family</td><td>Sheet 12: Hellen Nichols Armstrong / John Armstrong / baby Eva (4 months) · Sheet 13: Joe Nichols / Oscar Nichols · Sheet 14: Allen Nichols · same building same day</td></tr>
+    <tr><td>1917 draft registration</td><td>Bellville Times June 14, 1917 · Precinct 1 Colored: Roy Nazy (Clara's son) · Will Nichols (Easter's son) · Arthur Reese (Helen's son — Gwen Reese DNA connection) · Ralph Nichols (undocumented grandson)</td></tr>
+    <tr><td>Roy Nazy 1917 court record</td><td>Bellville Times December 6, 1917 · State vs Roy Nagy aggravated assault · DISMISSED</td></tr>
+    <tr><td>1862 General Order No. 5</td><td>Bellville Countryman July 10, 1862 · required written passes for enslaved people to leave premises at night · Easter Bell was 14 years old when published</td></tr>
+    <tr><td>Real estate transfers</td><td>1915 and 1947 Bellville Times show John Nichols survey land actively traded around your family's 2 acres throughout 20th century · 1947 sheriff's sale mechanism same as 2006</td></tr>
+    <tr><td>Austin County Jail building</td><td>Built 1896 on land originally granted to John Nichols by Mexican Government October 20, 1832 · same building where whole family imprisoned in 1900 census</td></tr>
   </table>
+
   <div class="div"></div>
   <span class="chd">Tree Corrections — Fix These in Ancestry</span>
-  <div class="card-box red" style="margin-bottom:16px;">
-    <div class="prose" style="font-size:15px;"><p><strong>Remove:</strong> Any direct line from John Nichols to Clarissa. John Nichols enslaved Joseph Nichols — not Clarissa herself.</p><p style="margin-top:8px;"><strong>Fix:</strong> Rachel is Clarissa's SISTER — both daughters of Patience. Rachel does NOT go above Clarissa in the tree.</p><p style="margin-top:8px;"><strong>Remove:</strong> Joseph Nichols from John Nichols's free white children. Joseph was enslaved by John Nichols — not his biological son.</p><p style="margin-top:8px;"><strong>Add note:</strong> Frances Jane Waldroup Nichols — confirmed as Fanny Waldrop, daughter of Hezekiah Waldrop, by DNA match Sherry Newman Welty March 2026.</p></div>
+  <div class="card-box red">
+    <div class="prose" style="font-size:15px;">
+      <p><strong>Remove:</strong> Any direct line from John Nichols to Clarissa. John Nichols enslaved Joseph Nichols — not Clarissa herself.</p>
+      <p style="margin-top:8px;"><strong>Fix:</strong> Rachel is Clarissa's SISTER — both daughters of Patience. Rachel does NOT go above Clarissa in the tree.</p>
+      <p style="margin-top:8px;"><strong>Remove:</strong> Joseph Nichols from John Nichols's free white children. Joseph was enslaved by John Nichols — not his biological son.</p>
+      <p style="margin-top:8px;"><strong>Fix:</strong> Oscar Nichols — mother is Clara Alexander NOT Easter Bell. He is Joseph's son by a different woman. He is a half-sibling to Easter's children.</p>
+      <p style="margin-top:8px;"><strong>Fix:</strong> John Nagy — he is Clara Nichols's HUSBAND, not Easter Bell's son. Remove him from Easter Bell's children list.</p>
+      <p style="margin-top:8px;"><strong>Fix:</strong> Eva Armstrong — birth year corrected to ca. early 1899, not June 27, 1900.</p>
+      <p style="margin-top:8px;"><strong>Add note:</strong> Frances Jane Waldroup Nichols profile — confirmed as Fanny Waldrop, daughter of Hezekiah Waldrop, by DNA match Sherry Newman Welty March 2026.</p>
+      <p style="margin-top:8px;"><strong>Add note:</strong> Allen Nichols Sr. — earlier death certificate listing Phillips Nichols as father was a hospital registrar error — later certificate confirms father as Jos Nichols.</p>
+    </div>
   </div>
+
   <div class="div"></div>
-  <span class="chd">Urgent Actions This Week</span>
+  <span class="chd">Urgent Actions — Do This First</span>
   <table class="ftbl">
-    <tr><td>Call Austin County</td><td>Patty Norman Leger · 979-227-3144 ext 5143 · pay $16 for certified copies of Volume 209 Page 228 and Instrument 66418</td></tr>
-    <tr><td>Call District Clerk</td><td>Marcy Grimes · 979-270-6830 · request complete file Cause No. 97V-003</td></tr>
-    <tr><td>Call Lone Star Legal Aid</td><td>713-652-0077 · lonestarlegal.org · Waco property (2017) FIRST, then Bellville (2006)</td></tr>
+    <tr><td>Call Austin County Clerk</td><td>Patty Norman Leger · 979-227-3144 ext 5143 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c1a2a2b7a0b4adb581a0b4b2b5a8afa2aeb4afb5b8efa2aeac">[email&#160;protected]</a> · pay $16 for certified copies of Volume 209 Page 228 and Instrument 66418</td></tr>
+    <tr><td>Call District Clerk</td><td>Marcy Grimes · 979-270-6830 · 265 N. Chesley Street Suite 1 · Bellville TX 77418 · request complete file Cause No. 97V-003</td></tr>
+    <tr><td>Call Lone Star Legal Aid</td><td>713-652-0077 · lonestarlegal.org · Waco property (2017) FIRST · then Bellville (2006)</td></tr>
+    <tr><td>Contact Gwen Reese</td><td>GEDmatch kit A103465 · 53.5 cM · you have Helen Reese's death cert + son Arthur Reese on 1917 draft list · reach out now with specifics</td></tr>
+    <tr><td>Reply to Sherry Newman Welty</td><td>DNA match who confirmed Fanny Waldrop married John Nichols · grew up in Bellville TX · valuable research partner</td></tr>
   </table>
+
+  <div class="div"></div>
+  <span class="chd">Active Research Leads</span>
+  <table class="ftbl">
+    <tr><td>Joseph Nichols death record</td><td>Search Austin County local death register 1900–1903 · Jeff Cemetery records · FindAGrave · he died before Texas mandatory death registration began · call Patty Norman Leger</td></tr>
+    <tr><td>Joseph's Tennessee-born mother</td><td>1880 census confirms Joseph's mother born Tennessee · search Tennessee slave schedules 1840–1860 for Nichols households who migrated to Texas</td></tr>
+    <tr><td>Ronnie Leroy Ballard — father</td><td>Middle name Leroy · conceived San Antonio ca. February 1953 · Margie embedded in East Side community at that time · search Leroy Armstrong Sr.'s descendants at Fort Sam Houston National Cemetery San Antonio for DNA comparison</td></tr>
+    <tr><td>Leroy Armstrong Sr. descendants</td><td>Son Leroy Robert Armstrong Jr. (February 21, 1934 – May 31, 1979) buried Fort Sam Houston National Cemetery San Antonio · search for his children · DNA comparison with Ronnie's descendants would confirm or eliminate paternity question</td></tr>
+    <tr><td>Ralph Nichols</td><td>On 1917 draft list Precinct 1 Bellville · born ca. 1886–1896 · likely Easter Bell's grandson through Allen, Oscar, William, or Henry · search 1920 and 1930 census Austin County</td></tr>
+    <tr><td>Henry Nichols post-1870</td><td>Age 2 months in 1870 census · never found in later records · search Austin County death records 1870–1900 for Henry Nichols</td></tr>
+    <tr><td>Mabel Nichols post-1910</td><td>Age 19 in 1910 census · wife of William Nichols · Easter listed as Mother · search Texas death records 1910–1960</td></tr>
+    <tr><td>Gwen Reese connection</td><td>53.5 cM · Helen Reese married Nelson Reese · son Arthur Reese on 1917 draft · contact Gwen with Helen's death cert and Arthur's draft registration as evidence</td></tr>
+    <tr><td>J.N. / Debbie Anderson tree</td><td>199 cM · 3,280-person tree · 9 Nichols entries · Arden Nichols of Pitt County NC · search for Austin County TX connections</td></tr>
+    <tr><td>Samuel Barksdale estate 1833</td><td>23 images in SC probate records · may show what happened to Clarissa and Tom after 1833</td></tr>
+    <tr><td>Eva Armstrong — San Antonio records</td><td>Search San Antonio city directories 1950–1957 for Eva Ballard at 150 Paul Street · Texas Alcoholic Beverage Commission records for The Spot beer license in name of Eva Smith</td></tr>
+    <tr><td>James Ballard Jr. post-1954</td><td>Last confirmed in San Antonio 1954 · died 1986 · search California records for his later years</td></tr>
+    <tr><td>Leroy Armstrong Sr. California records</td><td>Left San Antonio December 1960 for Los Angeles · search California death records and LA city directories 1961–1993 for Leroy Armstrong</td></tr>
+  </table>
+
+  <div class="div"></div>
+  <span class="chd">New Confirmed Family Members — Add to Tree</span>
+  <table class="ftbl">
+    <tr><td>Allen Nichols Jr.</td><td>Born ca. 1885 · son of Allen Nichols Sr. and Diana Nichols · confirmed 1900 census age 15 in Allen's household</td></tr>
+    <tr><td>Arthur Nichols</td><td>Born March 4, 1889 Bellville TX · son of Allen Nichols Sr. · WWI veteran · died May 14, 1958 Houston TX · buried Bellville</td></tr>
+    <tr><td>Ada Nichols</td><td>Born ca. 1892 · daughter of Allen Nichols Sr. and Diana Nichols · confirmed 1900 census age 8</td></tr>
+    <tr><td>Walter Nichols</td><td>Born ca. 1896 · son of Oscar Nichols and Clara Nichols · informant on Oscar's 1949 death certificate · address San Felipe Bellville TX</td></tr>
+    <tr><td>Roy Nazy</td><td>Son of Clara Nichols Nagy and John Nagy · Easter Bell's grandson · 1917 draft registration · 1917 court record (charge dismissed)</td></tr>
+    <tr><td>Arthur Reese</td><td>Son of Helen Reese and Nelson Reese · Easter Bell's grandson · 1917 draft registration · connects to Gwen Reese DNA match</td></tr>
+  </table>
+
   <div class="div"></div>
   <span class="chd">Stop Researching — Already Resolved</span>
   <table class="ftbl">
     <tr><td>Newton Bullard 160 acres</td><td>Legal sale 1873. No recourse. Fully documented.</td></tr>
     <tr><td>Eva Ballard San Antonio property</td><td>Properly settled January 22, 1957. All heirs signed. No claims.</td></tr>
-    <tr><td>Baby Ballard 1952 Houston</td><td>Not your family. Different G.W. Ballard.</td></tr>
-    <tr><td>1840 Ezekiah Waldrop discrepancy</td><td>Resolved. Ezekiah and Hezekiah are two different brothers.</td></tr>
+    <tr><td>Baby Ballard 1952 Houston</td><td>Not your family. Different G.W. Ballard — Rev. Ballard died 1937.</td></tr>
+    <tr><td>1840 Ezekiah Waldrop discrepancy</td><td>Resolved. Ezekiah and Hezekiah are two different brothers — sons of John Waldrop.</td></tr>
     <tr><td>Vicksburg 1858 Clarissa auction</td><td>Different person. Wrong timeline. Discard.</td></tr>
+    <tr><td>Henry Nichols / Rachel Pettis 1913 Colorado County</td><td>Different person entirely — mother listed as Queen Nichols. Not Easter Bell's Henry.</td></tr>
+    <tr><td>John Nagy as Easter Bell's son</td><td>John Nagy was Clara Nichols's HUSBAND. Confirmed and corrected.</td></tr>
+    <tr><td>Oscar Nichols as Easter Bell's son</td><td>Oscar's mother is Clara Alexander. Confirmed by death certificate.</td></tr>
+    <tr><td>Leroy Armstrong as Eva's son</td><td>Leroy was a separate San Antonio Armstrong family — parents Cornelius Armstrong and Edna Burse — born 1915 San Antonio. No connection to Eva's bloodline. He was a business associate and community figure your family knew well.</td></tr>
+    <tr><td>Phillips Nichols as Allen's father</td><td>Hospital registrar error on earlier death certificate. A later death certificate confirms father as Jos Nichols. Resolved.</td></tr>
   </table>
+
   <div class="div"></div>
-  <span class="chd">Next Major Project</span>
-  <span class="cttl">Norman Corbin's Family Line</span>
-  <div class="prose"><p>Norman Caswell Corbin's family line has not yet been researched. Ancestry ThruLines confirms ancestors going back to 1767 — Abraham Corbin (1767), Benedict Beal Corbin (1831), Thomas Russel Corbin (1869), Earl Russell Corbin (1892). The Buckner and Durrett family lines also appear with DNA matches. This is the next project.</p></div>
+  <span class="chd">Newspaper Articles Found — File in Archive</span>
+  <table class="ftbl">
+    <tr><td>Fort Worth Star-Telegram August 1911</td><td>John Armstrong killing — Jack Thompson surrenders — justifiable homicide verdict — Thompson never convicted</td></tr>
+    <tr><td>Fort Worth newspaper May 6, 1911</td><td>John Armstrong legal notice severing business ties with C.A. Steele &amp; Co. — confirms he was literate and an independent businessman</td></tr>
+    <tr><td>Bellville Countryman July 12, 1862</td><td>General Order No. 5 — slave pass requirements — Easter Bell was 14 years old when published</td></tr>
+    <tr><td>Bellville Times June 14, 1917</td><td>WWI Draft Registration list — Roy Nazy / Will Nichols / Arthur Reese / Ralph Nichols confirmed in Precinct 1 Colored</td></tr>
+    <tr><td>Bellville Times December 6, 1917</td><td>Roy Nagy aggravated assault charge — dismissed</td></tr>
+    <tr><td>Bellville Times 1915 real estate</td><td>J. Nichols league land transactions — same survey as your family's 2 acres</td></tr>
+    <tr><td>Bellville Times 1947 real estate</td><td>John Nichols survey land transactions including sheriff's sale — same mechanism used 2006</td></tr>
+    <tr><td>San Antonio Light March 8, 1954</td><td>Cop Coverups — Eva Ballard named as proprietor of The Spot · Margie Ballard named in officer's sworn statement</td></tr>
+    <tr><td>San Antonio Express March 8, 1954</td><td>Confession — two officers admit planting knife on Caldwell's body · safe belonged to Ice Cream (Leroy Armstrong)</td></tr>
+    <tr><td>San Antonio Light March 1954</td><td>Gaming Tax Data — James Wilson Ballard listed as gambling agent at 207 N. Center St</td></tr>
+    <tr><td>San Antonio News October 10, 1946</td><td>Margie Nell Ballard married Charles R. Baker — confirmed</td></tr>
+    <tr><td>San Antonio Express-News December 31, 1960</td><td>Leroy Armstrong leaves San Antonio for Los Angeles — separate family, not related to Eva by blood</td></tr>
+    <tr><td>Los Angeles Times June 13, 1961</td><td>Margie Corbin divorce filing vs Norman Corbin — confirms they were in Los Angeles by 1961 — family confirms reconciliation</td></tr>
+  </table>
+
+  <div class="div"></div>
+  <span class="chd">Next Major Project — Norman Corbin Family Line</span>
+  <div class="prose">
+    <p>Norman Caswell Corbin's family line has not yet been researched. Ancestry ThruLines confirms ancestors back to 1767. Starting points below.</p>
+  </div>
+  <table class="ftbl">
+    <tr><td>Abraham Corbin</td><td>1767–1813</td></tr>
+    <tr><td>Benedict Beal Corbin</td><td>1831–1915</td></tr>
+    <tr><td>Thomas Russel Corbin</td><td>1869–1936</td></tr>
+    <tr><td>Earl Russell Corbin</td><td>1892–1959</td></tr>
+    <tr><td>Frances D. Fanny Durrett</td><td>1794–1871 · 5 DNA matches</td></tr>
+    <tr><td>Elizabeth Buckner</td><td>1814–1868 · 5 DNA matches</td></tr>
+    <tr><td>Archibald Buckner</td><td>1787–1872</td></tr>
+    <tr><td>Annie S. Batts</td><td>1872–1959</td></tr>
+  </table>
+
 </div>
-<div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026 · jlee@dockellisfoundation.com</div>
+<div class="ftr">Research Notes · Last Updated April 2026 · Compiled by Jasmine M. Lee · Dock Ellis Foundation · jlee@dockellisfoundation.com</div>
+</div>
+
+<!-- ═══ RESEARCH ARCHIVE ═══ -->
+<div class="sec" id="tab-archive">
+<div class="shdr">
+  <span class="sey">Family Documents · Research Files · Compiled by Jasmine M. Lee</span>
+  <span class="sttl">Research <em>Archive</em></span>
+  <span class="ssub">Documents created for this family · Click any link to open</span>
+  <div class="srul"><div class="sdia"></div></div>
+  <span class="shint">All documents compiled March–April 2026 · Dock Ellis Foundation</span>
+</div>
+<div class="ctr">
+  <span class="chd">Family History Narratives</span>
+  <table class="ftbl">
+    <tr><td><strong>The Land They Kept</strong><br><span style="font-size:13px;color:var(--ink3)">Easter Bell &amp; Joseph Nichols · 2 acres · Bellville Texas · 1865–2006</span></td><td><a href="https://jasminesworkspace2-ui.github.io/Armstrongfamily/Bellville_Land_History.pdf" target="_blank" style="color:var(--gold);font-weight:600">Open Document →</a></td></tr>
+    <tr><td><strong>The Land He Claimed</strong><br><span style="font-size:13px;color:var(--ink3)">Newton Bullard · 160 acres · Upshur County Texas · 1856–1873</span></td><td><a href="https://jasminesworkspace2-ui.github.io/Armstrongfamily/Newton_Bullard_Land.pdf" target="_blank" style="color:var(--gold);font-weight:600">Open Document →</a></td></tr>
+    <tr><td><strong>Property &amp; Land Research</strong><br><span style="font-size:13px;color:var(--ink3)">All three properties · Bellville · Waco · Upshur County</span></td><td><a href="https://jasminesworkspace2-ui.github.io/Armstrongfamily/Property_Land_Research.pdf" target="_blank" style="color:var(--gold);font-weight:600">Open Document →</a></td></tr>
+  </table>
+
+  <div class="div"></div>
+  <span class="chd">Research Reference Documents</span>
+  <table class="ftbl">
+    <tr><td><strong>Nichols · Waldrop Complete History</strong><br><span style="font-size:13px;color:var(--ink3)">Patience · Clarissa · Joseph · Easter Bell · Full documented line</span></td><td><a href="https://jasminesworkspace2-ui.github.io/Armstrongfamily/NicholsWaldrop_FINAL_v3.pdf" target="_blank" style="color:var(--gold);font-weight:600">Open Document →</a></td></tr>
+    <tr><td><strong>Waldrop · Davenport Research Profile</strong><br><span style="font-size:13px;color:var(--ink3)">The enslaving families · Francis Davenport Sr. · Hezekiah Waldrop</span></td><td><a href="https://jasminesworkspace2-ui.github.io/Armstrongfamily/WaldropDavenport_Research_Profile.pdf" target="_blank" style="color:var(--gold);font-weight:600">Open Document →</a></td></tr>
+    <tr><td><strong>Ballard Family Research Profile</strong><br><span style="font-size:13px;color:var(--ink3)">Newton Ballard · Rev. George W. Ballard · Mary Ann Edwards</span></td><td><a href="https://jasminesworkspace2-ui.github.io/Armstrongfamily/Ballard_Research_Profile.pdf" target="_blank" style="color:var(--gold);font-weight:600">Open Document →</a></td></tr>
+    <tr><td><strong>Family Address Record</strong><br><span style="font-size:13px;color:var(--ink3)">Every confirmed address for every family member</span></td><td><a href="https://jasminesworkspace2-ui.github.io/Armstrongfamily/Family_Address_Record.pdf" target="_blank" style="color:var(--gold);font-weight:600">Open Document →</a></td></tr>
+    <tr><td><strong>Master Research Handoff</strong><br><span style="font-size:13px;color:var(--ink3)">Complete research status · all findings · all pending items</span></td><td><a href="https://jasminesworkspace2-ui.github.io/Armstrongfamily/Research_Handoff_Updated.pdf" target="_blank" style="color:var(--gold);font-weight:600">Open Document →</a></td></tr>
+  </table>
+
+  <div class="div"></div>
+  <span class="chd">About This Archive</span>
+  <div class="prose">
+    <p>These documents were compiled by Jasmine M. Lee for the Ballard · Corbin · Nichols · Armstrong family. They are free to share with any family member. Every document is based on primary sources — census records, death certificates, deed records, slave schedules, and DNA evidence.</p>
+    <p><strong>To view and download all family documents, open the shared Google Drive folder:</strong></p>
+  </div>
+  <div class="card-box green" style="text-align:center;margin:20px 0;">
+    <span class="card-label">Family Document Folder — Open to All Family Members</span>
+    <span class="card-title" style="margin-bottom:12px;">📁 Family Research Archive</span>
+    <a href="https://drive.google.com/drive/folders/17CIHPRAveJgm0NFpoVOqPuCVBo2n5Xk1" target="_blank" style="display:inline-block;background:var(--forest);color:#fff;font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;padding:12px 28px;border-radius:3px;margin-top:4px;">Open Google Drive Folder →</a>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--ink3);margin-top:12px;">Click the link above · All documents are available to view and download · No account required</p>
+  </div>
+  <div class="prose">
+    <p>For questions about this research or to share what you know about the family, contact:<br><strong>Jasmine M. Lee · jlee@dockellisfoundation.com</strong></p>
+    <p style="margin-top:16px;font-style:italic;color:var(--ink3);">Documents last updated April 2026. New documents will be added as research continues.</p>
+  </div>
+</div>
+<div class="ftr">Research Archive · Last Updated April 2026 · Compiled by Jasmine M. Lee · Dock Ellis Foundation · jlee@dockellisfoundation.com</div>
 </div>
 
 <!-- PANEL -->
@@ -1450,10 +1900,21 @@ body{
 function show(id,btn){
   document.querySelectorAll(".sec").forEach(s=>s.classList.remove("active"));
   document.querySelectorAll(".nb").forEach(b=>b.classList.remove("active"));
-  document.getElementById("tab-"+id).classList.add("active");
-  if(btn) btn.classList.add("active");
+  var el=document.getElementById("tab-"+id);
+  if(el){el.classList.add("active");}
+  if(btn){btn.classList.add("active");}
   window.scrollTo(0,0);
 }
+// Drag to scroll timeline
+(function(){
+  var el=document.getElementById("sw");
+  if(!el)return;
+  var isDown=false,startX,scrollLeft;
+  el.addEventListener("mousedown",function(e){isDown=true;el.classList.add("active");startX=e.pageX-el.offsetLeft;scrollLeft=el.scrollLeft;});
+  el.addEventListener("mouseleave",function(){isDown=false;});
+  el.addEventListener("mouseup",function(){isDown=false;});
+  el.addEventListener("mousemove",function(e){if(!isDown)return;e.preventDefault();var x=e.pageX-el.offsetLeft;var walk=(x-startX)*1.5;el.scrollLeft=scrollLeft-walk;});
+})();
 const D={
 patience:{ey:"Your Earliest Known Ancestor · Enslaved · South Carolina",nm:"Patience",dt:"ca. 1780s — unknown",secs:[
   {t:"Her Story",s:`Patience was a real woman with a name, a life, and children she loved — though almost nothing about her individual story was ever recorded.<br><br>What we know: she existed. She was given away as property by <em>Francis Davenport Sr.</em> to his daughter Patty Waldrop in 1795. The deed included <em>"with her increase"</em> — meaning all of her future children were automatically enslaved by the Waldrop family by law.<br><br>Her name survived. Her children survived. You are one of them.`},
@@ -1475,7 +1936,7 @@ rachel:{ey:"Clarissa's Sister · Patience's Daughter · Same Level in Tree",nm:"
 ]},
 joseph:{ey:"Your 3rd Great-Grandfather · Enslaved · Freed 1865",nm:"Joseph Nichols",dt:"ca. 1847 — ca. 1900–1910 · Bellville, Austin County, Texas",secs:[
   {t:"His Story",s:`Joseph Nichols was born enslaved on the John Nichols plantation. He took the Nichols surname from his enslaver after emancipation. He married Easter Bell on <em>December 18, 1865</em> and raised twelve children in Bellville.`},
-  {t:"Key Facts",f:[["Enslaved by","John Nichols · Piney Creek plantation · Bellville TX"],["Married","Easter Bell · December 18, 1865 · Austin County, Texas"],["DNA","Confirmed descendant of Clarissa through 46 ThruLines DNA matches"]]},
+  {t:"Key Facts",f:[["Born","June 1847 · Austin County, Texas · confirmed 1900 census"],["Father's birthplace","Texas · confirmed 1880 census"],["Mother's birthplace","Tennessee · confirmed 1880 census — new research lead"],["Enslaved by","John Nichols · Piney Creek plantation · Bellville TX"],["Married","Easter Bell · December 18, 1865 · Austin County, Texas (1900 census lists marriage year as 1864 — trust the actual record)"],["DNA","Confirmed descendant of Clarissa through 46 ThruLines DNA matches"]]},
   {t:"Records",d:[{i:"📋",t:"1870 U.S. Census · Austin County, Texas",d:"Joseph Nichols, age 27, head of household with wife Esther (Easter Bell), age 22, and children.",s:"1870 U.S. Federal Census"},{i:"💒",t:"Marriage Record · December 18, 1865",d:"Joseph Nichols married Easter Bell in Austin County, Texas.",s:"Austin County, Texas Marriage Records"}]},
   {w:"⚠️ Joseph Nichols is NOT John Nichols's biological son. He was enslaved by John Nichols and took his surname."}
 ]},
@@ -1493,12 +1954,12 @@ hellen:{ey:"Your 2nd Great-Grandmother",nm:"Hellen Nichols Armstrong",dt:"Septem
 ]},
 john_a:{ey:"Hellen's Husband · Son of David Armstrong",nm:"John Armstrong",dt:"March 1872 – August 30, 1911 · Bellville TX · Fort Worth TX",secs:[
   {t:"His Story",s:`John Armstrong was born in Bellville in March 1872 — the son of David Armstrong (enslaved in Upshur County, TX, born South Carolina) and Clarissa Ann Morgan (born North Carolina). He was shot and killed by Jack Thompson on August 30, 1911. Thompson was later acquitted. His daughter Eva was 11 years old.`},
-  {t:"Key Facts",f:[["Parents","David Armstrong (born SC) and Clarissa Ann Morgan (born NC)"],["Occupation","Truck driver · Fort Worth TX"],["Died","August 30, 1911 · Fort Worth TX · shot by Jack Thompson"],["Buried","New Colored Cemetery · Fort Worth, Texas"]]},
+  {t:"Key Facts",f:[["Born","ca. March 1872 · Bellville, Austin County, Texas"],["Parents","David Armstrong (born South Carolina · enslaved Upshur County TX) and Clarissa Ann Morgan (born North Carolina)"],["May 6, 1911","Published legal notice in Fort Worth newspaper severing business connection with C.A. Steele & Co. — 4 months before his death"],["Occupation","Truck driver · wagon driver for Denver News Service · Terminal Hotel Fort Worth"],["Killed","August 30, 1911 · near East Front Street entrance to Terminal Hotel · Fort Worth TX · shot by Jack Thompson at 3-foot range"],["Thompson's claim","Armstrong had assaulted his 19-year-old son Ernest earlier that day"],["Thompson's outcome","Surrendered to police · $3,000 bond · waived preliminary trial · NEVER CONVICTED · verdict: justifiable homicide"],["Buried","New Colored Cemetery · Fort Worth, Texas"],["Eva's age","11 years old when her father was killed"]]},
   {t:"Records",d:[{i:"💀",t:"Death Certificate · Tarrant County TX",d:"Confirms parents as Dave Armstrong (born South Carolina) and Clara Morgan (born North Carolina).",s:"Texas Death Certificate · Tarrant County"}]}
 ]},
-eva:{ey:"Your Great-Grandmother",nm:"Eva Armstrong Ballard",dt:"June 27, 1900 – November 24, 1977 · Bellville TX → Garden Grove CA",secs:[
+eva:{ey:"Your Great-Grandmother",nm:"Eva Armstrong Ballard",dt:"ca. 1899 – November 24, 1977 · Bellville TX → Garden Grove CA",secs:[
   {t:"Her Story",s:`Eva Armstrong was born in Bellville, Texas on June 27, 1900. Her father was killed when she was eleven. She grew up in Fort Worth, married James Wilson Ballard Sr., ran a <em>Night Club and Cafe</em> in San Antonio, owned property, raised her children, and made it to California. She died in Garden Grove in November 1977. <em>Three generations from slavery to the Pacific coast.</em>`},
-  {t:"Key Facts",f:[["Born","June 27, 1900 · Bellville, Austin County, Texas"],["Business","Night Club and Cafe · San Antonio TX"],["Died","November 24, 1977 · Garden Grove, Orange County, California"],["Children","James Jr., Margie Nell, Lois, Selma (died infant), Betty, Charles Ray"]]},
+  {t:"Key Facts",f:[["Born","ca. June 1899 · Bellville, Austin County, Texas (corrected from 1900 — 1900 census shows her age 4/12 in June 1900)"],["Business","The Spot · 1501 Burnet Street at Nolan and N. New Braunfels Ave · San Antonio TX · Eva was named proprietor of record in 1954 San Antonio Light"],["Address","150 Paul Street · San Antonio TX · confirmed 1954"],["1954 Caldwell shooting","Officer O.R. Graves shot and killed John Caldwell in Eva's back office · Eva gave investigators the key · cooperated fully · no charges filed against Eva · two officers later confessed to planting a knife on the body"],["James Ballard Jr.","Lived with Eva at 150 Paul · witness to shooting · listed on federal gambling tax stamp list"],["Died","November 24, 1977 · Garden Grove, Orange County, California"],["Children","James Jr., Margie Nell, Lois, Selma (died infant), Betty, Charles Ray"]]},
   {t:"Records",d:[{i:"📜",t:"1957 San Antonio Estate Affidavit · Instrument 86820",d:"All five surviving children including Margie Nell Ballard signed property over to Eva. Confirms Eva's children.",s:"Bexar County, Texas · January 16, 1957"},{i:"🏠",t:"San Antonio Property · Lot 13, Block 2, NCB 2924",d:"Eva purchased April 22, 1944 for $3,600. Sold to Emmie Garrett January 22, 1957. Fully settled.",s:"Bexar County, Texas · Instrument 86813"}]},
   {n:"Eva Armstrong Ballard traveled the full distance — from Bellville Texas where her grandmother had been enslaved to Garden Grove California."}
 ]},
@@ -1564,20 +2025,11 @@ function loadPhoto(boxId,event){
     box.appendChild(img);
     box.style.height='auto';
     box.style.padding='0';
-    box.style.border='none';
-    box.style.background='none';
-    box.style.cursor='default';
+    box.style.height='auto';
   };
   reader.readAsDataURL(file);
 }
-const sw=document.getElementById('sw');
-if(sw){
-  let drag=false,sx,sl;
-  sw.addEventListener('mousedown',e=>{drag=true;sx=e.pageX-sw.offsetLeft;sl=sw.scrollLeft;sw.style.cursor='grabbing';});
-  sw.addEventListener('mouseleave',()=>{drag=false;sw.style.cursor='grab';});
-  sw.addEventListener('mouseup',()=>{drag=false;sw.style.cursor='grab';});
-  sw.addEventListener('mousemove',e=>{if(!drag)return;e.preventDefault();sw.scrollLeft=sl-(e.pageX-sw.offsetLeft-sx)*1.5;});
-}
+show('timeline', document.querySelector('.nb'));
 </script>
 </body>
 </html>

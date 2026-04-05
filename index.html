@@ -470,6 +470,37 @@ body{
   .map-container{height:280px;}
 }
 </style>
+
+<style>
+/* ── FLOWING TREE STYLES ── */
+.ftw{width:100%;overflow-x:auto;padding-bottom:40px;}
+.family-unit{display:flex;flex-direction:column;align-items:center;margin:0 auto 0;width:100%;}
+.couple-row{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;}
+.v-down{width:2px;height:32px;background:var(--border2);margin:0 auto;}
+.h-branch{display:flex;justify-content:center;align-items:flex-start;position:relative;gap:0;width:100%;}
+.h-branch::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:calc(100% - 40px);max-width:900px;height:2px;background:var(--border2);}
+.child-col{display:flex;flex-direction:column;align-items:center;flex:1;min-width:140px;max-width:200px;padding:0 6px;}
+.child-col .v-down{height:18px;}
+.fbox{background:var(--card);border:1.5px solid var(--border);border-radius:4px;padding:9px 13px;text-align:center;width:100%;position:relative;box-shadow:0 1px 4px var(--shadow2);}
+.fbox.direct{background:var(--gold-bg2);border-color:var(--gold2);border-width:2px;}
+.fbox.direct::before{content:'';display:block;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold3));border-radius:3px 3px 0 0;margin:-9px -13px 7px;}
+.fbox.enslaved{background:#f5ede0;border-color:var(--border2);}
+.fbox.side{background:var(--bg2);}
+.fbox.infant{background:var(--bg2);border-style:dashed;opacity:.75;}
+.fbox.you{background:linear-gradient(135deg,var(--gold-bg2),#fff8e8);border:2.5px solid var(--gold);box-shadow:0 2px 12px rgba(139,100,32,.18);}
+.fn{display:block;font-family:"Cormorant Garamond",serif;font-size:14px;font-weight:700;color:var(--ink);line-height:1.25;margin-bottom:2px;}
+.fd{display:block;font-family:"Josefin Sans",sans-serif;font-size:8px;font-weight:300;letter-spacing:1px;color:var(--ink3);}
+.fnt{display:block;font-family:"Josefin Sans",sans-serif;font-size:7.5px;letter-spacing:.5px;color:var(--gold);text-transform:uppercase;margin-top:3px;}
+.fplus{font-family:"Josefin Sans",sans-serif;font-size:14px;color:var(--ink3);padding:0 4px;flex-shrink:0;}
+.sec-label{font-family:"Josefin Sans",sans-serif;font-size:9px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--ink3);text-align:center;padding:20px 0 12px;display:block;width:100%;}
+.branch-divider{width:100%;border-top:1px dashed var(--border);margin:28px 0 20px;text-align:center;}
+.branch-note{font-family:"Josefin Sans",sans-serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);background:var(--bg);padding:0 12px;position:relative;top:-9px;display:inline-block;}
+.children-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 8px;width:100%;padding:0 4px;}
+.single-child{display:flex;flex-direction:column;align-items:center;}
+.grandkids-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 6px;width:100%;padding:4px;}
+.gkid .fn{font-size:12px;}
+.gkid .fd{font-size:7.5px;}
+</style>
 </head>
 <body>
 
@@ -477,23 +508,24 @@ body{
 <nav class="nav">
   <div class="nav-brand">Our Family</div>
   <button class="nb active" onclick="show('timeline',this)">Family Timeline</button>
+  <button class="nb" onclick="show('familytree',this)">Family Tree</button>
   <button class="nb" onclick="show('whoiswho',this)">Who's Who</button>
-  <button class="nb" onclick="show('easter',this)">Easter Bell</button>
-  <button class="nb" onclick="show('eva',this)">Eva Armstrong</button>
-  <button class="nb" onclick="show('john_armstrong',this)">John Armstrong</button>
   <button class="nb" onclick="show('bondage',this)">Bondage to Belonging</button>
   <button class="nb" onclick="show('enslaved',this)">Enslaved Family</button>
-  <button class="nb" onclick="show('juneteenth',this)">Juneteenth</button>
   <button class="nb" onclick="show('nichols',this)">Nichols · Waldrop</button>
+  <button class="nb" onclick="show('easter',this)">Easter Bell</button>
+  <button class="nb" onclick="show('juneteenth',this)">Juneteenth</button>
   <button class="nb" onclick="show('land',this)">The Land</button>
+  <button class="nb" onclick="show('john_armstrong',this)">John Armstrong</button>
+  <button class="nb" onclick="show('eva',this)">Eva Armstrong</button>
+  <button class="nb" onclick="show('ballard_line',this)">Ballard Line</button>
   <button class="nb" onclick="show('homage',this)">Margie's Family</button>
-  <button class="nb" onclick="show('descendants',this)">DNA Connections</button>
   <button class="nb" onclick="show('map',this)">Where We Are</button>
+  <button class="nb" onclick="show('descendants',this)">DNA Connections</button>
   <button class="nb" onclick="show('dna',this)">DNA Guide</button>
   <button class="nb" onclick="show('timeline_research',this)">Research Timeline</button>
   <button class="nb" onclick="show('research',this)">Research Notes</button>
   <button class="nb" onclick="show('archive',this)">📁 Research Archive</button>
-  <button class="nb" onclick="show('familytree',this)">Family Tree</button>
 </nav>
 
 <!-- ═══ FAMILY TIMELINE ═══ -->
@@ -785,9 +817,11 @@ body{
     </div>
   </div>
 
-  <div class="pq">Easter Bell was born enslaved on July 4, 1848 — Independence Day. She died free on December 17, 1935. In between she raised twelve children and held onto two acres of land for 141 years. That is what she did with freedom. — Jasmine M. Lee, March 2026</div>
+  <div class="div"></div>
 
-  <div class="ftbl">
+  <div class="pq" style="max-width:860px;margin:32px auto;">Easter Bell was born enslaved on July 4, 1848 — Independence Day. She died free on December 17, 1935. In between she raised twelve children and held onto two acres of land for 141 years. That is what she did with freedom. — Jasmine M. Lee, March 2026</div>
+
+  <table class="ftbl" style="max-width:860px;margin:20px auto;">
     <tr><td>Born</td><td>July 4, 1848 · Bellville, Austin County, Texas</td></tr>
     <tr><td>Mother</td><td>Rendy Blayn · born North Carolina ca. 1817 · confirmed by death certificate Field 15</td></tr>
     <tr><td>Father</td><td>Unknown — listed as such on death certificate</td></tr>
@@ -797,7 +831,7 @@ body{
     <tr><td>Land</td><td>2 acres · J. Nichols Survey · Abstract No. 73 · held 141 years · lost 2006 tax sale</td></tr>
     <tr><td>Died</td><td>December 17, 1935 · Bellville, Austin County, Texas · age 87</td></tr>
     <tr><td>Buried</td><td>Jeff Cemetery · Bellville, Austin County, Texas · December 19, 1935</td></tr>
-  </div>
+  </table>
 
 </div>
 <div class="ftr">Easter Bell Nichols · July 4, 1848 – December 17, 1935 · Bellville, Texas · Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
@@ -1472,27 +1506,118 @@ body{
 <div class="shdr">
   <span class="sey">The Enslaving Families · Research Context Only</span>
   <span class="sttl">Nichols · <em>Waldrop</em></span>
-  <span class="ssub">How Two Slaveholding Families Were Connected — and Why It Matters</span>
+  <span class="ssub">How Two Slaveholding Families Were Connected — and Why It Matters for Our Family</span>
   <div class="srul"><div class="sdia"></div></div>
 </div>
 <div class="ctr">
-  <div class="prose"><p>These families are not blood relatives. They are the enslaving families whose documents — deeds, slave schedules, land grants, wills — are the only paper trail that confirms our ancestors existed. Understanding how these families were connected is essential to tracing Easter Bell, Rendy Blayn, Clarissa, and Patience.</p></div>
+
+  <div class="prose"><p>These families are not our blood relatives. They are the enslaving families whose documents — deeds, slave schedules, land grants, wills — are the only paper trail that confirms our ancestors existed. Understanding how they were connected is essential to tracing Patience, Clarissa, Rendy Blayn, and Easter Bell across five generations and two states.</p></div>
+
   <div class="div"></div>
-  <span class="chd">The Waldrop Family</span>
-  <span class="cttl">Hezekiah Waldrop and the Davenport Connection</span>
-  <div class="prose"><p>Hezekiah Waldrop (1772–ca.1840) married Martha Patty Davenport, daughter of Francis Davenport Sr. of Newberry County, SC. This marriage is the critical connection: when Davenport distributed enslaved people to his daughters in 1795, he gave <em>Patience</em> to Patty Waldrop on August 4, 1795. The Waldrop family migrated from SC through GA, TN, and into MS, bringing enslaved people at every stage. Hezekiah's 1839 estate deed distributed Patience's children among his heirs.</p></div>
+
+  <!-- HISTORICAL CONTEXT IMAGES -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;">
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:4px;overflow:hidden;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Austin%27s_map_of_Texas_1830.jpg/800px-Austin%27s_map_of_Texas_1830.jpg"
+           alt="Stephen F. Austin's 1830 map of Texas — the land where John Nichols received his grant"
+           style="width:100%;height:180px;object-fit:cover;display:block;"
+           onerror="this.style.display='none'">
+      <p style="font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1px;color:var(--ink3);padding:8px 10px;text-transform:uppercase;">Stephen F. Austin's 1830 Map of Texas · John Nichols received his 4,428-acre grant the same year this map was drawn</p>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:4px;overflow:hidden;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Newberry_County%2C_SC_-_1820_Mills_Atlas.jpg/800px-Newberry_County%2C_SC_-_1820_Mills_Atlas.jpg"
+           alt="Newberry County South Carolina 1820 — where Patience was held and given away in 1795"
+           style="width:100%;height:180px;object-fit:cover;display:block;"
+           onerror="this.style.display='none'">
+      <p style="font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1px;color:var(--ink3);padding:8px 10px;text-transform:uppercase;">Newberry County, South Carolina · 1820 · Where Francis Davenport gave Patience to Patty Waldrop in 1795</p>
+    </div>
+  </div>
+
   <div class="div"></div>
-  <span class="chd">The Nichols Family</span>
-  <span class="cttl">John Nichols and the Austin County Plantation</span>
-  <div class="prose"><p>John Nichols arrived in Austin County, Texas in 1834, granted 4,428 acres along Piney Creek — the J. Nichols Survey, Abstract No. 73. He married <em>Frances Jane Waldroup</em> — confirmed by DNA match Sherry Newman Welty (March 2026) as Fanny Waldrop, Hezekiah's daughter. This is the critical link: enslaved people from the Waldrop household came to the Nichols plantation through this marriage. In 1860, nine enslaved people lived there — including Rendy Blayn and her daughter Easter Bell.</p></div>
+  <span class="chd">Where This Family Came From</span>
+  <span class="cttl">The Migration Path · South Carolina → Mississippi → Texas</span>
+  <div class="prose">
+    <p>Our ancestors did not begin in Texas. They began in South Carolina — held by the Davenport and Waldrop families — and were carried westward through Georgia, Tennessee, and Mississippi as those enslaving families migrated in search of new land. Each move west meant more distance from any community, any family, any hope of escape. By the time Rendy Blayn and Easter Bell appear in the Bellville, Texas slave schedule in 1860, this family had been moved across four states over three generations.</p>
+    <p>Understanding this migration is understanding the violence behind it — not just the physical uprooting, but the deliberate destruction of family ties that made resistance harder and community building nearly impossible.</p>
+  </div>
+
+  <div class="card-box" style="margin:20px 0;">
+    <span class="card-label">Migration Timeline · Our Enslaved Ancestors</span>
+    <table class="ftbl">
+      <tr><td>1795</td><td>Newberry County, SC — Francis Davenport gives <strong>Patience</strong> to his daughter Patty Waldrop. Patience is approximately 15 years old. This is the earliest document naming our ancestor.</td></tr>
+      <tr><td>ca. 1800–1820</td><td>Waldrop family migrates — SC → GA → TN → MS — Patience travels with them. Her daughter <strong>Clarissa</strong> is born ca. 1807, likely in South Carolina or Georgia.</td></tr>
+      <tr><td>1839</td><td>Hezekiah Waldrop's estate deed — Patience's children distributed among Waldrop heirs including Claiborne P. Waldrop. <strong>Clarissa</strong> confirmed in deed with children Amanda, Harriet, William.</td></tr>
+      <tr><td>ca. 1827–1834</td><td>Fanny Waldrop (Hezekiah's daughter) marries John Nichols. They arrive in Austin County, Texas. Enslaved people from the Waldrop line come with them to Piney Creek.</td></tr>
+      <tr><td>1830</td><td>John Nichols receives Spanish land grant — 4,428 acres on Piney Creek, Bellville, Texas. The plantation where Easter Bell will be born enslaved 18 years later.</td></tr>
+      <tr><td>ca. 1817</td><td><strong>Rendy Blayn</strong> born — North Carolina. How she came to the Nichols plantation is not yet documented. Her daughter Easter Bell was born on that plantation.</td></tr>
+      <tr><td>1848</td><td><strong>Easter Bell</strong> born July 4, 1848 — Piney Creek plantation, Bellville TX. The fifth generation of documented enslavement in this family.</td></tr>
+      <tr><td>June 19, 1865</td><td>Juneteenth. Easter Bell is 17 years old. Rendy Blayn is approximately 48. They are free on the same land they were enslaved on.</td></tr>
+    </table>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">The Waldrop Family · DNA Confirmed</span>
+  <span class="cttl">Hezekiah Waldrop · Newberry County, SC · 46 DNA Matches</span>
+  <div class="prose">
+    <p>Hezekiah P. Waldrop (1772–ca. 1840) is your confirmed 5th great-grandfather through DNA — 46 total matches across Waldrop family branches connect to your line. He married Martha "Patty" Davenport, daughter of Francis Davenport Sr. of Newberry County, South Carolina. That marriage is what brought Patience into the Waldrop household. When Davenport distributed enslaved people to his daughters in 1795, Patty Waldrop received Patience — a girl approximately 15 years old.</p>
+    <p>Hezekiah's children each inherited enslaved people from his estate. His son <strong>Claiborne P. Waldrop</strong> (1792–1872) enslaved Clarissa — confirmed by 18 DNA matches. His daughter <strong>Fanny Waldrop</strong> married John Nichols and brought the enslaved Waldrop community to Texas.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0;">
+    <div style="background:var(--gold-bg);border:1px solid var(--border2);border-radius:4px;padding:14px;text-align:center;">
+      <span style="font-family:'Josefin Sans',sans-serif;font-size:22px;font-weight:600;color:var(--gold);display:block;">46</span>
+      <span style="font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);">DNA Matches · Waldrop Lines</span>
+    </div>
+    <div style="background:var(--gold-bg);border:1px solid var(--border2);border-radius:4px;padding:14px;text-align:center;">
+      <span style="font-family:'Josefin Sans',sans-serif;font-size:22px;font-weight:600;color:var(--gold);display:block;">18</span>
+      <span style="font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);">DNA Matches · Claiborne Waldrop / Clarissa Line</span>
+    </div>
+    <div style="background:var(--gold-bg);border:1px solid var(--border2);border-radius:4px;padding:14px;text-align:center;">
+      <span style="font-family:'Josefin Sans',sans-serif;font-size:22px;font-weight:600;color:var(--gold);display:block;">5</span>
+      <span style="font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);">Generations of Enslavement Documented</span>
+    </div>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">The Nichols Family · Austin County, Texas</span>
+  <span class="cttl">John Nichols · 4,428 Acres · Piney Creek Plantation</span>
+  <div class="prose">
+    <p>John Nichols (1797–March 3, 1864) was one of Stephen F. Austin's original colonists — among the first Anglo settlers to receive land grants in Mexican Texas. He received 4,428 acres on Piney Creek on October 20, 1830, under the State of Coahuila and Texas. The original Spanish-language land grant document survives and has been located by this research — it names the surveyor, the creek, the neighboring landowners, and the specific legal boundaries of the land where Easter Bell was born.</p>
+    <p>Nichols sold portions of his original grant to James and Thomas Bell in the 1830s. That land became the town of Bellville — named for the Bell family — on the same survey where your ancestors were enslaved. John Nichols's estate in 1864 listed ten enslaved people. He died before emancipation. His widow and the estate held Easter Bell and Rendy Blayn until June 19, 1865.</p>
+  </div>
+
   <table class="ftbl">
-    <tr><td>Key connection</td><td>Fanny Waldrop (Hezekiah's daughter) married John Nichols — linking both enslaving families and explaining how Patience's descendants ended up in Bellville TX</td></tr>
-    <tr><td>John Nichols</td><td>1799–March 3, 1864 · Bellville TX · 4,428 acres · 9 enslaved people in 1860</td></tr>
-    <tr><td>DNA confirmation</td><td>Sherry Newman Welty confirmed Fanny Waldrop married John Nichols · she grew up in Bellville TX · March 2026</td></tr>
+    <tr><td>Land grant date</td><td>October 20, 1830 · State of Coahuila and Texas · Patent No. 1750, Volume 6</td></tr>
+    <tr><td>Acreage</td><td>4,428.40 acres · Piney Creek, Austin County, Texas · surveyed by Samuel P. Browne</td></tr>
+    <tr><td>Bellville founded</td><td>Land sold to James and Thomas Bell in 1830s → became the town of Bellville, county seat of Austin County</td></tr>
+    <tr><td>1860 slave schedule</td><td>9 enslaved people on the Nichols plantation · Rendy Blayn (female, age 43) and Easter Bell (female, age 13) confirmed in this record</td></tr>
+    <tr><td>1864 estate</td><td>John Nichols died March 3, 1864 · estate listed "10 negroes" · Easter Bell and Rendy held until Juneteenth 1865</td></tr>
+    <tr><td>Fanny Waldrop link</td><td>John Nichols married Frances "Fanny" Waldrop — Hezekiah's daughter — confirmed by DNA match Sherry Newman Welty, March 2026</td></tr>
   </table>
+
   <div class="pq">"Fanny married third to John Nichols who all lived in Bellville, Austin, Texas, where I grew up." — Sherry Newman Welty, DNA match, March 2026</div>
+
+  <div class="div"></div>
+  <span class="chd">The Original Land Grant · April 25, 1830</span>
+  <span class="cttl">The Document That Describes the Land Easter Bell Was Born On</span>
+  <div class="card-box blue" style="margin:16px 0;">
+    <span class="card-label">John Nichols Land Grant · Original Text · April 25, 1830</span>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.75;color:var(--ink2);font-style:italic;">"...in the name of the State I grant, confer, and put the aforementioned John Nicholls in real and personal possession of one league of land... situated on the creek called Piney Creek... beginning at the southwest corner of Stephenson's league... thence from said stake ran a line north 25° east, at 1,200 varas crossed Piney Creek... it comprises one league of land. This tract is pasture land in its entirety..."</p>
+    <p style="font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-top:10px;">State of Coahuila and Texas · April 25, 1830 · Patent No. 1750, Volume 6 · Surveyor: Samuel P. Browne · Validated for the Biennium 1828–1832</p>
+  </div>
+  <div class="prose">
+    <p>The creek described in this document — Piney Creek — is the creek Easter Bell was born beside in 1848. The landmarks named in the survey — the blackjack trees, the post oaks, the neighboring Stephenson and Cummins leagues — defined the boundaries of the world our ancestors lived in. This document, written in Spanish under Mexican law eighteen years before Easter Bell's birth, is the legal foundation of the land where this family's story in Texas began.</p>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">Why These Records Matter</span>
+  <div class="prose">
+    <p>Enslaved people had no legal right to create records. They could not sign deeds, file wills, or register births. Every document that confirms Patience, Clarissa, Rendy, and Easter Bell existed was created by the people who enslaved them — for the purpose of documenting property, not people. The Waldrop deeds, the Nichols land grants, the slave schedules — all of these were made to track ownership. We use them now to track survival.</p>
+    <p>The DNA evidence connects the living family to these historical records across 200 years and five generations. Forty-six matches to the Waldrop line. Eighteen matches to Claiborne Waldrop's branch. A confirmed DNA match to Sherry Newman Welty who grew up in Bellville and knew the Nichols family by name. The records and the DNA together confirm what the family has always known: we were here. We survived. We are still here.</p>
+  </div>
+
 </div>
-<div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
+<div class="ftr">Nichols · Waldrop Research · Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
 </div>
 
 <!-- ═══ THE LAND ═══ -->
@@ -1538,7 +1663,7 @@ body{
     <span class="badge badge-green">Legal Sale — No Recourse</span>
     <div class="prose" style="font-size:16px;margin-top:12px;"><p>Newton Bullard claimed 160 acres in Upshur County TX. Patent filed August 26, 1856 — Texas GLO File No. 3378. Sold legally to E.G. Horn for $250 gold on August 9, 1873. Newton's grandson James Wilson Ballard Sr. was born August 26, 1897 — the same calendar date as the land patent.</p></div>
   </div>
-</div>
+
   <div class="div"></div>
   <span class="chd">The John Nichols Survey · Still Trading Hands · 1915 and 1947</span>
   <span class="cttl">While Your Family Held Their 2 Acres — The Survey Around Them Was Being Sold</span>
@@ -1547,22 +1672,22 @@ body{
   </div>
   <div class="card-box" style="margin:20px 0;">
     <span class="card-label">1915 Real Estate Transfers · Bellville Times · John Nichols Survey</span>
-    <div class="ftbl">
+    <table class="ftbl">
       <tr><td>E.J. Spence to Joe D. Sutton</td><td>2 acres · J. Nichols league · $767.50 — same acreage as your family's parcel</td></tr>
       <tr><td>F.M. Howard to Emil Harigel</td><td>½ acre · Joe Nichols league · $500</td></tr>
       <tr><td>Max Roensch to Henrietta DuBois</td><td>½ acre · Jno. Nichols league · $1 and other considerations</td></tr>
       <tr><td>Margaret D. Chesley to Rose Porter</td><td>1 lot · Nichols league · gift</td></tr>
-    </div>
+    </table>
   </div>
   <div class="card-box" style="margin:20px 0;">
     <span class="card-label">1947 Real Estate Transfers · Bellville Times · John Nichols Survey</span>
-    <div class="ftbl">
+    <table class="ftbl">
       <tr><td>Sheriff E.E. Reinecker to Thomas E. Hilliard</td><td>43¾ acres · John Nichols survey · $275 — a sheriff's sale, same mechanism used to take your family's land in 2006</td></tr>
       <tr><td>Hugo Muery to G.R. Eckerman</td><td>1 acre · John Nichols league · $500</td></tr>
       <tr><td>Richard Berndt to Arthur J. Smith</td><td>13,500 sq ft · John Nichols league · $600</td></tr>
       <tr><td>Paul Rudloff to Eugene Rudloff</td><td>22,500 sq ft · John Nichols league · $10 and other considerations</td></tr>
       <tr><td>Bertha E. Braun to Charles D. Rogers</td><td>2.65 acres · John Nichols league · $10 and other considerations</td></tr>
-    </div>
+    </table>
   </div>
   <div class="prose">
     <p>In 1947, 82 years after emancipation, the name John Nichols still defined the land in Bellville. Sheriff's sales on the John Nichols survey in 1947. Sheriff's sale on the John Nichols survey in 2006. The same mechanism, the same survey, 59 years apart. Your family's 2 acres sat inside all of this for 141 years.</p>
@@ -1579,8 +1704,142 @@ body{
     <span class="card-label">Source · National Register of Historic Places · Austin County Jail · Bellville TX</span>
     <p style="font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.65;color:var(--ink2);">"This land had been granted to John Nichols on October 20, 1832 by the Mexican Government. Nichols over the next several years sold portions of his original grant to James and Thomas Bell. In March of 1846, Austin County purchased a total of 145½ acres of land from the Bells for a sum of $2.00." The jail was built on Lot 6 of Block F of this original Nichols land grant. Architects F.B. and W.S. Hull of Dallas, 1896. Romanesque Revival style. A hanging gallows was housed on the fourth floor — used once, on March 14, 1901, nine months after Joseph Nichols and his family were counted in that building on census day.</p>
   </div>
-
+</div>
 <div class="ftr">Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
+</div>
+
+<!-- ═══ BALLARD LINE ═══ -->
+<div class="sec" id="tab-ballard_line">
+<div class="shdr">
+  <span class="sey">Your Great-Grandparents · The Ballard Family Line</span>
+  <span class="sttl">James Wilson <em>Ballard</em></span>
+  <span class="ssub">From Newton Ballard — Enslaved in Mississippi — to James Wilson Ballard · Palestine, Texas · 1897</span>
+  <div class="srul"><div class="sdia"></div></div>
+</div>
+<div class="ctr">
+
+  <div class="prose"><p>James Wilson Ballard Sr. is Eva Armstrong's husband and Margie Nell Ballard's father — your great-grandfather. But his story begins two generations earlier, with an enslaved man named Newton Ballard, born in Mississippi around 1830, who survived slavery, was freed in 1865, and then disappeared from every record by 1870. This page documents everything confirmed about the Ballard line — and honestly addresses what may have happened to Newton in those five years after emancipation.</p></div>
+
+  <div class="div"></div>
+  <span class="chd">Newton Ballard · ca. 1830 – unknown</span>
+  <span class="cttl">Enslaved in Mississippi · Freed in Texas · Gone by 1870</span>
+
+  <div class="card-box" style="margin:16px 0;">
+    <span class="card-label">What We Know · Primary Sources Confirmed</span>
+    <table class="ftbl">
+      <tr><td>Born</td><td>ca. 1830 · Mississippi</td></tr>
+      <tr><td>Enslaved by</td><td>Lewis F. Ballard · Smith County, Texas · confirmed by 1850 U.S. Federal Census Slave Schedule — Black male age 20 listed under Lewis F. Ballard · FamilySearch Ark: /61903/1:1:MVC7-WLT</td></tr>
+      <tr><td>Enslaving family origin</td><td>Lewis F. Ballard came from Copiah County, Mississippi — 1830 census shows him holding 5 enslaved people there. He migrated to Smith County, Texas by 1850 bringing Newton with him.</td></tr>
+      <tr><td>Surname</td><td>Newton took the Ballard surname at emancipation June 19, 1865 — the name of the family that had enslaved him. This was the most common practice for freed people establishing legal identities after 1865.</td></tr>
+      <tr><td>Wife</td><td>Rebecca Ballard · born ca. 1835 · Mississippi · confirmed by 1870 U.S. Federal Census, Upshur County, Texas</td></tr>
+      <tr><td>Children</td><td>Silva Ballard (ca. 1857) · Sandy Ballard (ca. 1860) · Rev. George W. Ballard (Sep 4, 1861)</td></tr>
+      <tr><td>Named as father</td><td>Texas Death Certificate for Rev. George W. Ballard (filed October 28, 1937) — Field: Father's Name — <strong>Newton Ballard</strong>. This is a primary source document.</td></tr>
+      <tr><td>Last known record</td><td>Newton does not appear in the 1870 census. Rebecca is listed as head of household in Upshur County, Texas in 1870 — alone, with their three children. Newton is gone.</td></tr>
+    </table>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">What Happened to Newton Ballard?</span>
+  <span class="cttl">The Five Years Between Freedom and Silence · 1865–1870</span>
+
+  <div class="prose">
+    <p>Newton Ballard was alive in June 1865 when emancipation came to Texas. He was approximately 35 years old — a man in his prime who had survived a lifetime of enslavement. By 1870, he was gone from every record, and his wife Rebecca was raising their children alone in Upshur County, Texas. What happened to him in those five years is unknown. But the historical context of that period tells us the range of possibilities — and none of them are peaceful.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;">
+    <div class="card-box" style="margin:0;border-left:4px solid var(--rust);">
+      <span class="card-label" style="color:var(--rust);">Possibility One · Racial Violence</span>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.65;color:var(--ink2);">Between 1865 and 1870, the Freedmen's Bureau in Texas documented hundreds of murders of formerly enslaved Black men by white Texans. The vast majority were never investigated, never prosecuted, and never recorded in newspapers. A Black man killed in Upshur or Smith County in 1866 or 1867 would leave no death record, no court filing, no newspaper notice. He would simply be gone. This is the reality of Reconstruction-era East Texas.</p>
+    </div>
+    <div class="card-box" style="margin:0;border-left:4px solid var(--gold2);">
+      <span class="card-label" style="color:var(--gold);">Possibility Two · Natural Death</span>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.65;color:var(--ink2);">The years immediately after emancipation were medically devastating for formerly enslaved people. Decades of inadequate nutrition, forced labor, and no medical care left many freed people physically depleted. Disease — yellow fever, cholera, tuberculosis — moved through East Texas communities with devastating speed in the late 1860s. Newton may have simply died of illness, without a record being created, before Texas began mandatory death registration in 1903.</p>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 20px;">
+    <div class="card-box" style="margin:0;border-left:4px solid var(--forest);">
+      <span class="card-label" style="color:var(--forest);">Possibility Three · Convict Leasing</span>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.65;color:var(--ink2);">Texas had a thriving convict lease system after the Civil War. Black men were arrested on minor or fabricated charges and forced to work as essentially free labor — on railroads, in mines, on farms. We know Easter Bell's son-in-law John Armstrong and her husband Joseph Nichols were in the Austin County Jail on census day in 1900. Newton may have been taken into the convict system and died in those conditions, leaving no family-facing record.</p>
+    </div>
+    <div class="card-box" style="margin:0;border-left:4px solid var(--blue);">
+      <span class="card-label" style="color:var(--blue);">Possibility Four · He Left</span>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.65;color:var(--ink2);">Some freed men left their families — not by abandonment but by necessity. Looking for work, following labor opportunities, or fleeing danger, some men became separated from families and were never found. It is less likely in Newton's case because Rebecca stayed in Upshur County and raised three children there, which suggests she had community support. But it cannot be ruled out. He may be in another state under a different spelling of his name.</p>
+    </div>
+  </div>
+
+  <div class="pq">We do not know what happened to Newton Ballard. What we know is that he survived slavery, he was freed, and he fathered children who built a line that reaches all the way to Jasmine M. Lee in 2026. Whatever took him — violence, illness, the convict system, distance — it did not take what he left behind. Research is continuing. — Jasmine M. Lee, April 2026</div>
+
+  <div class="div"></div>
+  <span class="chd">Rebecca Ballard · ca. 1835 – unknown</span>
+  <span class="cttl">She Raised Three Children Alone in Upshur County, Texas</span>
+
+  <div class="card-box" style="margin:16px 0;">
+    <span class="card-label">What We Know · Primary Sources Confirmed</span>
+    <table class="ftbl">
+      <tr><td>Born</td><td>ca. 1835 · Mississippi — birthplace confirmed by 1870 U.S. Federal Census</td></tr>
+      <tr><td>1870 Census</td><td>Head of household · Dwelling 228 · Pittsburg Precinct 3 · Upshur County, Texas · age 35 · race Black · cannot read · cannot write · occupation: at home</td></tr>
+      <tr><td>Children in 1870</td><td>Silva Ballard (age 13) · Sandy Ballard (age 10) · George Ballard (age 8)</td></tr>
+      <tr><td>Literacy</td><td>Cannot read or write — confirmed by 1870 census. Consistent with having been born into slavery where literacy was illegal.</td></tr>
+      <tr><td>Named as mother</td><td>Confirmed by two independent Ancestry family trees (Tree ID 185315051 and 199599760) as mother of Rev. George W. Ballard · both trees confirmed with 9 primary sources</td></tr>
+      <tr><td>After 1870</td><td>Rebecca's death date and location are unknown. Research is ongoing. The 1880 census for Upshur County, Texas has not yet been searched for her name.</td></tr>
+    </table>
+  </div>
+
+  <div class="div"></div>
+  <span class="chd">Rev. George Washington Ballard · 1861 – 1937</span>
+  <span class="cttl">Son of Newton and Rebecca · Minister · Waco, Texas</span>
+
+  <div class="prose"><p>Rev. George W. Ballard was born September 4, 1861 in Keller, Tarrant County, Texas — the youngest child of Newton and Rebecca Ballard. He was four years old when emancipation came. He grew up free in East Texas, became a minister, and spent his adult life traveling across Texas — Fort Bend County, Johnson County, McLennan County — leading congregations. He died October 24, 1937 in Waco, Texas at age 76 and was buried at Greenwood Annex.</p></div>
+
+  <table class="ftbl">
+    <tr><td>Born</td><td>September 4, 1861 · Keller, Tarrant County, Texas</td></tr>
+    <tr><td>Died</td><td>October 24, 1937 · 724 Johnson Street · Waco, McLennan County, Texas</td></tr>
+    <tr><td>Buried</td><td>Greenwood Annex · Waco, Texas · October 26, 1937</td></tr>
+    <tr><td>Occupation</td><td>Minister · A.M.E. Church · served congregations in Fort Bend, Johnson, and McLennan Counties</td></tr>
+    <tr><td>First marriage</td><td>Slorence W. Baker · January 9, 1887 · Ellis County, Texas</td></tr>
+    <tr><td>Second marriage</td><td>Mary Ann Edwards · 1887 · Fayette County, Texas · born November 4, 1870 · died March 19, 1949 · Fort Worth TX</td></tr>
+    <tr><td>Father confirmed</td><td>His death certificate (Texas, filed October 28, 1937) names <strong>Newton Ballard</strong> as his father — primary source</td></tr>
+    <tr><td>Informant</td><td>Miss Alberta Ballard (his daughter) filed the death certificate</td></tr>
+  </table>
+
+  <div class="div"></div>
+  <span class="chd">James Wilson Ballard Sr. · 1897 – 1953</span>
+  <span class="cttl">Your Great-Grandfather · Palestine, Texas · Austin State Hospital</span>
+
+  <div class="prose"><p>James Wilson Ballard Sr. was born August 26, 1897 in Palestine, Anderson County, Texas — the son of Rev. George W. Ballard and Mary Ann Edwards. He married Eva Armstrong and together they had seven children, including Margie Nell Ballard. His life was marked by illness — he spent his final years as a patient at Austin State Hospital in Austin, Texas, where he died on March 13, 1953. That date was his daughter Margie's 24th birthday.</p></div>
+
+  <table class="ftbl">
+    <tr><td>Born</td><td>August 26, 1897 · Palestine, Anderson County, Texas</td></tr>
+    <tr><td>Parents</td><td>Rev. George W. Ballard (1861–1937) and Mary Ann Edwards Ballard (1870–1949)</td></tr>
+    <tr><td>Wife</td><td>Eva Armstrong Ballard (ca. 1899 – November 24, 1977)</td></tr>
+    <tr><td>Died</td><td>March 13, 1953 · Austin State Hospital · Travis County, Texas</td></tr>
+    <tr><td>Cause of death</td><td>Broncho-pneumonia · bilateral pulmonary tuberculosis · psychosis with syphilitic meningoencephalitis</td></tr>
+    <tr><td>Last address</td><td>1224 Verbena Street · Fort Worth, Texas</td></tr>
+    <tr><td>Confirmed by</td><td>Texas death certificate · 1950 U.S. Federal Census (Austin State Hospital patient)</td></tr>
+    <tr><td>Notable date</td><td>Born August 26, 1897 — same calendar date as Newton Bullard's land patent filing: August 26, 1856</td></tr>
+  </table>
+
+  <div class="div"></div>
+  <span class="chd">The Full Ballard Line · Confirmed</span>
+  <div class="card-box green" style="margin:16px 0;">
+    <span class="card-label">Confirmed Direct Descent · Primary Sources at Every Generation</span>
+    <table class="ftbl">
+      <tr><td>1850</td><td><strong>Newton Ballard</strong> — enslaved by Lewis F. Ballard, Smith County TX — 1850 slave schedule</td></tr>
+      <tr><td>1861</td><td><strong>Rev. George W. Ballard</strong> — Newton's son — confirmed by George's death certificate naming Newton as father</td></tr>
+      <tr><td>1897</td><td><strong>James Wilson Ballard Sr.</strong> — George's son — confirmed by James's death certificate naming G.W. Ballard as father</td></tr>
+      <tr><td>1899</td><td><strong>Eva Armstrong Ballard</strong> — James's wife — confirmed by 1957 estate affidavit, census records</td></tr>
+      <tr><td>1929</td><td><strong>Margie Nell Ballard</strong> — Eva's daughter — confirmed by 1957 estate affidavit</td></tr>
+      <tr><td>1960</td><td><strong>Hjordis L. Corbin</strong> — Margie's daughter — confirmed by vital records</td></tr>
+      <tr><td>1982</td><td><strong>Jasmine M. Lee</strong> — Hjordis's daughter — DNA confirmed · AncestryDNA kit SQ8499767</td></tr>
+    </table>
+  </div>
+
+  <div class="prose" style="margin-top:20px;">
+    <p><strong>Research continues.</strong> Newton Ballard's death date and location remain unknown. Rebecca Ballard's death record has not been found. Mary Ann Edwards's parents have not been fully documented. These gaps are honestly noted here rather than filled with guesswork. As new records are found they will be added to this page.</p>
+  </div>
+
+</div>
+<div class="ftr">Ballard Line Research · Compiled by Jasmine M. Lee · Dock Ellis Foundation · April 2026</div>
 </div>
 
 <!-- ═══ MARGIE'S FAMILY ═══ -->
@@ -2214,19 +2473,19 @@ body{
 <div class="ctr">
   <span class="chd">Family History Narratives</span>
   <table class="ftbl">
-    <tr><td><strong>The Land They Kept</strong><br><span style="font-size:13px;color:var(--ink3)">Easter Bell &amp; Joseph Nichols · 2 acres · Bellville Texas · 1865–2006</span></td><td><a href="https://drive.google.com/drive/folders/1Yt8S7AXQH8B-kKkOvKvLEZZgEQBC1mGE" target="_blank" style="color:var(--gold);font-weight:600">Open in Drive →</a></td></tr>
-    <tr><td><strong>The Land He Claimed</strong><br><span style="font-size:13px;color:var(--ink3)">Newton Bullard · 160 acres · Upshur County Texas · 1856–1873</span></td><td><a href="https://drive.google.com/drive/folders/1Yt8S7AXQH8B-kKkOvKvLEZZgEQBC1mGE" target="_blank" style="color:var(--gold);font-weight:600">Open in Drive →</a></td></tr>
-    <tr><td><strong>Property &amp; Land Research</strong><br><span style="font-size:13px;color:var(--ink3)">All three properties · Bellville · Waco · Upshur County</span></td><td><a href="https://drive.google.com/drive/folders/1Yt8S7AXQH8B-kKkOvKvLEZZgEQBC1mGE" target="_blank" style="color:var(--gold);font-weight:600">Open in Drive →</a></td></tr>
+    <tr><td><strong>The Land They Kept</strong><br><span style="font-size:13px;color:var(--ink3)">Easter Bell &amp; Joseph Nichols · 2 acres · Bellville Texas · 1865–2006</span></td><td><a href="https://drive.google.com/drive/folders/17CIHPRAveJgm0NFpoVOqPuCVBo2n5Xk1" target="_blank" style="color:var(--gold);font-weight:600">Open in Drive →</a></td></tr>
+    <tr><td><strong>The Land He Claimed</strong><br><span style="font-size:13px;color:var(--ink3)">Newton Bullard · 160 acres · Upshur County Texas · 1856–1873</span></td><td><a href="https://drive.google.com/drive/folders/17CIHPRAveJgm0NFpoVOqPuCVBo2n5Xk1" target="_blank" style="color:var(--gold);font-weight:600">Open in Drive →</a></td></tr>
+    <tr><td><strong>Property &amp; Land Research</strong><br><span style="font-size:13px;color:var(--ink3)">All three properties · Bellville · Waco · Upshur County</span></td><td><a href="https://drive.google.com/drive/folders/17CIHPRAveJgm0NFpoVOqPuCVBo2n5Xk1" target="_blank" style="color:var(--gold);font-weight:600">Open in Drive →</a></td></tr>
   </table>
 
   <div class="div"></div>
   <span class="chd">Research Reference Documents</span>
   <table class="ftbl">
-    <tr><td><strong>Nichols · Waldrop Complete History</strong><br><span style="font-size:13px;color:var(--ink3)">Patience · Clarissa · Joseph · Easter Bell · Full documented line</span></td><td><a href="https://drive.google.com/drive/folders/1Yt8S7AXQH8B-kKkOvKvLEZZgEQBC1mGE" target="_blank" style="color:var(--gold);font-weight:600">Open in Drive →</a></td></tr>
-    <tr><td><strong>Waldrop · Davenport Research Profile</strong><br><span style="font-size:13px;color:var(--ink3)">The enslaving families · Francis Davenport Sr. · Hezekiah Waldrop</span></td><td><a href="https://drive.google.com/drive/folders/1Yt8S7AXQH8B-kKkOvKvLEZZgEQBC1mGE" target="_blank" style="color:var(--gold);font-weight:600">Open in Drive →</a></td></tr>
-    <tr><td><strong>Ballard Family Research Profile</strong><br><span style="font-size:13px;color:var(--ink3)">Newton Ballard · Rev. George W. Ballard · Mary Ann Edwards</span></td><td><a href="https://drive.google.com/drive/folders/1Yt8S7AXQH8B-kKkOvKvLEZZgEQBC1mGE" target="_blank" style="color:var(--gold);font-weight:600">Open in Drive →</a></td></tr>
-    <tr><td><strong>Family Address Record</strong><br><span style="font-size:13px;color:var(--ink3)">Every confirmed address for every family member</span></td><td><a href="https://drive.google.com/drive/folders/1Yt8S7AXQH8B-kKkOvKvLEZZgEQBC1mGE" target="_blank" style="color:var(--gold);font-weight:600">Open in Drive →</a></td></tr>
-    <tr><td><strong>Master Research Handoff</strong><br><span style="font-size:13px;color:var(--ink3)">Complete research status · all findings · all pending items</span></td><td><a href="https://drive.google.com/drive/folders/1Yt8S7AXQH8B-kKkOvKvLEZZgEQBC1mGE" target="_blank" style="color:var(--gold);font-weight:600">Open in Drive →</a></td></tr>
+    <tr><td><strong>Nichols · Waldrop Complete History</strong><br><span style="font-size:13px;color:var(--ink3)">Patience · Clarissa · Joseph · Easter Bell · Full documented line</span></td><td><a href="https://drive.google.com/drive/folders/17CIHPRAveJgm0NFpoVOqPuCVBo2n5Xk1" target="_blank" style="color:var(--gold);font-weight:600">Open in Drive →</a></td></tr>
+    <tr><td><strong>Waldrop · Davenport Research Profile</strong><br><span style="font-size:13px;color:var(--ink3)">The enslaving families · Francis Davenport Sr. · Hezekiah Waldrop</span></td><td><a href="https://drive.google.com/drive/folders/17CIHPRAveJgm0NFpoVOqPuCVBo2n5Xk1" target="_blank" style="color:var(--gold);font-weight:600">Open in Drive →</a></td></tr>
+    <tr><td><strong>Ballard Family Research Profile</strong><br><span style="font-size:13px;color:var(--ink3)">Newton Ballard · Rev. George W. Ballard · Mary Ann Edwards</span></td><td><a href="https://drive.google.com/drive/folders/17CIHPRAveJgm0NFpoVOqPuCVBo2n5Xk1" target="_blank" style="color:var(--gold);font-weight:600">Open in Drive →</a></td></tr>
+    <tr><td><strong>Family Address Record</strong><br><span style="font-size:13px;color:var(--ink3)">Every confirmed address for every family member</span></td><td><a href="https://drive.google.com/drive/folders/17CIHPRAveJgm0NFpoVOqPuCVBo2n5Xk1" target="_blank" style="color:var(--gold);font-weight:600">Open in Drive →</a></td></tr>
+    <tr><td><strong>Master Research Handoff</strong><br><span style="font-size:13px;color:var(--ink3)">Complete research status · all findings · all pending items</span></td><td><a href="https://drive.google.com/drive/folders/17CIHPRAveJgm0NFpoVOqPuCVBo2n5Xk1" target="_blank" style="color:var(--gold);font-weight:600">Open in Drive →</a></td></tr>
   </table>
 
   <div class="div"></div>
@@ -2238,7 +2497,7 @@ body{
   <div class="card-box green" style="text-align:center;margin:20px 0;">
     <span class="card-label">Family Document Folder — Open to All Family Members</span>
     <span class="card-title" style="margin-bottom:12px;">📁 Family Research Archive</span>
-    <a href="https://drive.google.com/drive/folders/1Yt8S7AXQH8B-kKkOvKvLEZZgEQBC1mGE" target="_blank" style="display:inline-block;background:var(--forest);color:#fff;font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;padding:12px 28px;border-radius:3px;margin-top:4px;">Open Google Drive Folder →</a>
+    <a href="https://drive.google.com/drive/folders/17CIHPRAveJgm0NFpoVOqPuCVBo2n5Xk1" target="_blank" style="display:inline-block;background:var(--forest);color:#fff;font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;padding:12px 28px;border-radius:3px;margin-top:4px;">Open Google Drive Folder →</a>
     <p style="font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--ink3);margin-top:12px;">Click the link above · All documents are available to view and download · No account required</p>
   </div>
   <div class="prose">
@@ -2252,282 +2511,515 @@ body{
 <!-- ═══ FAMILY TREE ═══ -->
 <div class="sec" id="tab-familytree">
 <div class="shdr">
-  <span class="sey">From Rendy Blay to the Present · All Known Generations</span>
+  <span class="sey">From Rendy Blay to the Present · All Known Family</span>
   <span class="sttl">Family <em>Tree</em></span>
-  <span class="ssub">A Descendant Chart · Top to Bottom · Direct Line Highlighted</span>
+  <span class="ssub">Each family grouped together · Parents · Spouse · Children · Grandchildren</span>
   <div class="srul"><div class="sdia"></div></div>
 </div>
 <div class="ctr">
+<div class="prose"><p>This tree is organized by family unit — each couple shown together with their children directly below them. Your direct line is highlighted in gold. Scroll down to follow the family from the earliest known ancestor to the youngest generation.</p></div>
 
-<div class="prose"><p>This tree flows from the earliest known ancestor at the top to the youngest generation at the bottom. Your direct line is highlighted in gold. Side branches extend left and right. Each generation sits on its own row. Couples are shown side by side. Children appear directly beneath their parents.</p></div>
 
-<style>
-.ft-tree{font-family:'Cormorant Garamond',serif;width:100%;overflow-x:auto;padding:0 0 40px;}
-.ft-gen{display:flex;flex-direction:column;align-items:center;margin-bottom:0;}
-.ft-gen-label{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--ink3);text-align:center;padding:6px 0 10px;width:100%;}
-.ft-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;padding:0 8px 0;}
-.ft-connector{display:flex;justify-content:center;align-items:flex-start;padding:0;margin:0;height:28px;}
-.ft-vline{width:1px;background:var(--border2);height:28px;margin:0 auto;}
-.ft-branch-wrap{display:flex;flex-direction:column;align-items:center;}
-.ft-couple{display:flex;align-items:center;gap:6px;}
-.ft-box{background:var(--card);border:1px solid var(--border);border-radius:3px;padding:8px 12px;min-width:130px;max-width:180px;text-align:center;position:relative;cursor:default;}
-.ft-box.direct{background:var(--gold-bg2);border:1.5px solid var(--gold2);}
-.ft-box.direct::before{content:'';display:block;height:3px;background:linear-gradient(to right,var(--gold),var(--gold3));border-radius:3px 3px 0 0;margin:-8px -12px 6px;}
-.ft-box.enslaved{background:var(--sepia-bg,#f5ede0);border:1px solid var(--border2);}
-.ft-box.side{background:var(--bg2);border:1px solid var(--border);}
-.ft-box-name{display:block;font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.2;margin-bottom:2px;}
-.ft-box-dates{display:block;font-family:'Josefin Sans',sans-serif;font-size:8.5px;font-weight:300;letter-spacing:1px;color:var(--ink3);}
-.ft-box-note{display:block;font-family:'Josefin Sans',sans-serif;font-size:7.5px;letter-spacing:0.5px;color:var(--gold);text-transform:uppercase;margin-top:3px;}
-.ft-plus{font-family:'Josefin Sans',sans-serif;font-size:11px;color:var(--ink3);padding:0 2px;}
-.ft-children-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 12px;padding:0 4px;}
-.ft-hline-wrap{display:flex;justify-content:center;height:14px;padding:0 8px;}
-.ft-hline{border-top:1px solid var(--border2);flex:1;margin-top:14px;}
-.ft-section-div{width:100%;border-top:2px solid var(--border);margin:32px 0 20px;text-align:center;padding-top:12px;}
-.ft-section-label{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ink3);}
-.ft-tiny{font-size:11px;color:var(--ink2);min-width:100px;max-width:150px;}
-.ft-infant{background:var(--bg2);border:1px dashed var(--border2);opacity:0.7;}
-</style>
 
-<div class="ft-tree">
 
-<!-- ══ GEN 1: RENDY BLAY ══ -->
-<div class="ft-gen">
-  <div class="ft-gen-label">Root Generation · Earliest Known Ancestor</div>
-  <div class="ft-row">
-    <div class="ft-box enslaved">
-      <span class="ft-box-name">Rendy Blay</span>
-      <span class="ft-box-dates">ca. 1817 – after 1865</span>
-      <span class="ft-box-note">Born North Carolina · Enslaved</span>
+<div class="ftw">
+
+<!-- ════════════════════════════════════════ -->
+<!-- ROOT: RENDY BLAY -->
+<!-- ════════════════════════════════════════ -->
+<span class="sec-label">Root Generation · Earliest Known Ancestor</span>
+<div class="family-unit">
+  <div class="couple-row">
+    <div class="fbox enslaved" style="max-width:220px;">
+      <span class="fn">Rendy Blay</span>
+      <span class="fd">ca. 1817 – after 1865</span>
+      <span class="fnt">Born North Carolina · Enslaved · Bellville TX</span>
+    </div>
+    <span class="fplus">+</span>
+    <div class="fbox side" style="max-width:180px;">
+      <span class="fn">Unknown Father</span>
+      <span class="fd">—</span>
+      <span class="fnt">Not documented</span>
     </div>
   </div>
-</div>
-<div class="ft-connector"><div class="ft-vline"></div></div>
+  <div class="v-down"></div>
 
-<!-- ══ GEN 2: EASTER BELL ══ -->
-<div class="ft-gen">
-  <div class="ft-gen-label">Generation 2 · Your 3rd Great-Grandmother</div>
-  <div class="ft-row">
-    <div class="ft-couple">
-      <div class="ft-box enslaved direct">
-        <span class="ft-box-name">Easter Bell Nichols</span>
-        <span class="ft-box-dates">July 4, 1848 – Dec 17, 1935</span>
-        <span class="ft-box-note">★ Your Direct Line · Bellville TX</span>
-      </div>
-      <span class="ft-plus">+</span>
-      <div class="ft-box side">
-        <span class="ft-box-name">Joseph Nichols</span>
-        <span class="ft-box-dates">ca. 1847 – ca. 1900–1910</span>
-        <span class="ft-box-note">Married Dec 18, 1865</span>
-      </div>
+  <!-- EASTER BELL -->
+  <span class="sec-label">Their Daughter · Your 3rd Great-Grandmother</span>
+  <div class="couple-row">
+    <div class="fbox enslaved direct" style="max-width:230px;">
+      <span class="fn">Easter Bell Nichols</span>
+      <span class="fd">July 4, 1848 – December 17, 1935</span>
+      <span class="fnt">★ Your Direct Line · Bellville, Austin County TX</span>
+    </div>
+    <span class="fplus">+</span>
+    <div class="fbox side" style="max-width:200px;">
+      <span class="fn">Joseph Nichols</span>
+      <span class="fd">ca. 1847 – ca. 1900–1910</span>
+      <span class="fnt">Married December 18, 1865</span>
     </div>
   </div>
-</div>
-<div class="ft-connector"><div class="ft-vline"></div></div>
+  <div class="v-down"></div>
 
-<!-- ══ GEN 3: EASTER'S CHILDREN ══ -->
-<div class="ft-gen">
-  <div class="ft-gen-label">Generation 3 · Easter Bell's Children</div>
-  <div class="ft-row">
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Katie Thornton</span><span class="ft-box-dates">1860 – May 11, 1923</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Allen Nichols Sr.</span><span class="ft-box-dates">Feb 1, 1867 – Oct 1944</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Annie Nichols</span><span class="ft-box-dates">1866 – unknown</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Josephine Nichols</span><span class="ft-box-dates">1868 – unknown</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Oscar Nichols</span><span class="ft-box-dates">Jun 8, 1869 – Jun 24, 1949</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Henry Nichols</span><span class="ft-box-dates">1870 – unknown</span></div>
-    <div class="ft-box direct">
-      <span class="ft-box-name">Hellen Nichols Armstrong</span>
-      <span class="ft-box-dates">Sep 1870 – Dec 5, 1931</span>
-      <span class="ft-box-note">★ Your Direct Line</span>
-    </div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Helen Reese</span><span class="ft-box-dates">Oct 7, 1874 – 1932</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Clara Nichols / Nagy</span><span class="ft-box-dates">Mar 6, 1875 – Mar 1944</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">John Nazy</span><span class="ft-box-dates">1872 – 1938</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">William Willie Nichols</span><span class="ft-box-dates">Jun 7, 1884 – Apr 29, 1956</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Mabel Nichols</span><span class="ft-box-dates">ca. 1891 – unknown</span></div>
-  </div>
-</div>
-<div class="ft-connector"><div class="ft-vline"></div></div>
-
-<!-- ══ GEN 4: HELLEN + JOHN ARMSTRONG ══ -->
-<div class="ft-gen">
-  <div class="ft-gen-label">Generation 4 · Your 2nd Great-Grandparents</div>
-  <div class="ft-row">
-    <div class="ft-couple">
-      <div class="ft-box direct">
-        <span class="ft-box-name">Hellen Nichols Armstrong</span>
-        <span class="ft-box-dates">Sep 1870 – Dec 5, 1931</span>
-        <span class="ft-box-note">★ Your Direct Line</span>
-      </div>
-      <span class="ft-plus">+</span>
-      <div class="ft-box side">
-        <span class="ft-box-name">John Armstrong</span>
-        <span class="ft-box-dates">Mar 1872 – Aug 30, 1911</span>
-        <span class="ft-box-note">Killed Fort Worth TX</span>
+  <!-- EASTER'S CHILDREN -->
+  <span class="sec-label">Easter Bell &amp; Joseph's Children</span>
+  <div class="children-wrap">
+    <div class="single-child">
+      <div class="fbox side" style="width:155px;">
+        <span class="fn">Katie Thornton</span>
+        <span class="fd">1860 – May 11, 1923</span>
+        <span class="fnt">Before emancipation</span>
       </div>
     </div>
-  </div>
-</div>
-<div class="ft-connector"><div class="ft-vline"></div></div>
-
-<!-- ══ GEN 5: EVA ARMSTRONG ══ -->
-<div class="ft-gen">
-  <div class="ft-gen-label">Generation 5 · Your Great-Grandparents</div>
-  <div class="ft-row">
-    <div class="ft-couple">
-      <div class="ft-box direct">
-        <span class="ft-box-name">Eva Armstrong Ballard</span>
-        <span class="ft-box-dates">ca. 1899 – Nov 24, 1977</span>
-        <span class="ft-box-note">★ Your Direct Line · Bellville TX → Garden Grove CA</span>
+    <div class="single-child">
+      <div class="fbox side" style="width:155px;">
+        <span class="fn">Annie Nichols</span>
+        <span class="fd">1866 – unknown</span>
       </div>
-      <span class="ft-plus">+</span>
-      <div class="ft-box side">
-        <span class="ft-box-name">James Wilson Ballard Sr.</span>
-        <span class="ft-box-dates">Aug 26, 1897 – Mar 13, 1953</span>
-        <span class="ft-box-note">Palestine TX · Austin State Hospital</span>
+    </div>
+    <div class="single-child">
+      <div class="fbox side" style="width:155px;">
+        <span class="fn">Josephine Nichols</span>
+        <span class="fd">1868 – unknown</span>
+      </div>
+    </div>
+    <div class="single-child">
+      <div class="fbox side" style="width:155px;">
+        <span class="fn">Allen Nichols Sr.</span>
+        <span class="fd">Feb 1, 1867 – Oct 1944</span>
+      </div>
+    </div>
+    <div class="single-child">
+      <div class="fbox side" style="width:155px;">
+        <span class="fn">Oscar Nichols</span>
+        <span class="fd">Jun 8, 1869 – Jun 24, 1949</span>
+        <span class="fnt">Half-sibling · diff. mother</span>
+      </div>
+    </div>
+    <div class="single-child">
+      <div class="fbox side" style="width:155px;">
+        <span class="fn">Henry Nichols</span>
+        <span class="fd">1870 – unknown</span>
+      </div>
+    </div>
+    <div class="single-child">
+      <div class="fbox direct" style="width:175px;">
+        <span class="fn">Hellen Nichols Armstrong</span>
+        <span class="fd">Sep 1870 – Dec 5, 1931</span>
+        <span class="fnt">★ Your Direct Line</span>
+      </div>
+    </div>
+    <div class="single-child">
+      <div class="fbox side" style="width:155px;">
+        <span class="fn">Helen Reese</span>
+        <span class="fd">Oct 7, 1874 – 1932</span>
+      </div>
+    </div>
+    <div class="single-child">
+      <div class="fbox side" style="width:155px;">
+        <span class="fn">Clara Nichols / Nagy</span>
+        <span class="fd">Mar 6, 1875 – Mar 1944</span>
+      </div>
+    </div>
+    <div class="single-child">
+      <div class="fbox side" style="width:155px;">
+        <span class="fn">William Nichols</span>
+        <span class="fd">Jun 7, 1884 – Apr 29, 1956</span>
+      </div>
+    </div>
+    <div class="single-child">
+      <div class="fbox side" style="width:155px;">
+        <span class="fn">Mabel Nichols</span>
+        <span class="fd">ca. 1891 – unknown</span>
       </div>
     </div>
   </div>
-</div>
-<div class="ft-connector"><div class="ft-vline"></div></div>
+</div><!-- end Rendy/Easter family unit -->
 
-<!-- ══ GEN 6: EVA'S CHILDREN ══ -->
-<div class="ft-gen">
-  <div class="ft-gen-label">Generation 6 · Eva and James's Children</div>
-  <div class="ft-row">
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">James W. Ballard Jr.</span><span class="ft-box-dates">1926 – 1986</span></div>
-    <div class="ft-box side ft-tiny ft-infant"><span class="ft-box-name">James W. Ballard</span><span class="ft-box-dates">1928 – 1928</span><span class="ft-box-note">Infant</span></div>
-    <div class="ft-box direct">
-      <span class="ft-box-name">Margie Nell Ballard</span>
-      <span class="ft-box-dates">Mar 13, 1929 – Oct 15, 1988</span>
-      <span class="ft-box-note">★ Your Direct Line · Santa Ana CA</span>
+<div class="branch-divider"><span class="branch-note">Following Your Direct Line ↓</span></div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- HELLEN NICHOLS + JOHN ARMSTRONG -->
+<!-- ════════════════════════════════════════ -->
+<span class="sec-label">Hellen Nichols · Your 2nd Great-Grandmother</span>
+<div class="family-unit">
+  <div class="couple-row">
+    <div class="fbox direct" style="max-width:230px;">
+      <span class="fn">Hellen Nichols Armstrong</span>
+      <span class="fd">Sep 1870 – December 5, 1931</span>
+      <span class="fnt">★ Your Direct Line · Daughter of Easter Bell</span>
     </div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Charles Ray Ballard</span><span class="ft-box-dates">1933 – 2001</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Bettie Jean Ballard</span><span class="ft-box-dates">1935 – 2002</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Lois Marie Ballard</span><span class="ft-box-dates">Living</span></div>
-    <div class="ft-box side ft-tiny ft-infant"><span class="ft-box-name">Thelma Louise Ballard</span><span class="ft-box-dates">1938 – 1939</span><span class="ft-box-note">Infant</span></div>
-  </div>
-</div>
-<div class="ft-connector"><div class="ft-vline"></div></div>
-
-<!-- ══ GEN 7: MARGIE'S CHILDREN ══ -->
-<div class="ft-gen">
-  <div class="ft-gen-label">Generation 7 · Margie Nell Ballard's Children · with Norman Caswell Corbin</div>
-  <div class="ft-row">
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Michael E. Corbin Sr.</span><span class="ft-box-dates">Aug 26, 1951 – Nov 1, 2009</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Ronnie Leroy Ballard</span><span class="ft-box-dates">b. Nov 11, 1953</span><span class="ft-box-note">Different father</span></div>
-    <div class="ft-box direct">
-      <span class="ft-box-name">Hjordis L. Corbin</span>
-      <span class="ft-box-dates">b. Jan 20, 1960</span>
-      <span class="ft-box-note">★ Your Direct Line · Your Mother</span>
+    <span class="fplus">+</span>
+    <div class="fbox side" style="max-width:220px;">
+      <span class="fn">John Armstrong</span>
+      <span class="fd">ca. March 1872 – August 30, 1911</span>
+      <span class="fnt">Killed in Fort Worth, TX · Son of Dave Armstrong</span>
     </div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Deanna Denise Corbin</span><span class="ft-box-dates">b. Dec 28, 1961</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Sonsorey Yevette Corbin</span><span class="ft-box-dates">b. Nov 29, 1962</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Orngiel L. Corbin</span><span class="ft-box-dates">b. Dec 14, 1964</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Se'Taun Corbin</span><span class="ft-box-dates">b. Apr 30, 1966</span></div>
   </div>
-</div>
-<div class="ft-connector"><div class="ft-vline"></div></div>
-
-<!-- ══ GEN 8: JASMINE ══ -->
-<div class="ft-gen">
-  <div class="ft-gen-label">Generation 8 · Your Generation</div>
-  <div class="ft-row">
-    <!-- Michael's children -->
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Darrell Devon Corbin</span><span class="ft-box-dates">b. Jan 23, 1970</span><span class="ft-box-note">Michael's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Quincy De'Von Young</span><span class="ft-box-dates">b. Dec 17, 1976</span><span class="ft-box-note">Michael's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Brendyal Corbin</span><span class="ft-box-dates">b. Jan 24, 1972</span><span class="ft-box-note">Michael's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Damien A. Price-Corbin</span><span class="ft-box-dates">b. Feb 18, 1979</span><span class="ft-box-note">Michael's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Deserae Charese Corbin</span><span class="ft-box-dates">b. Oct 9, 1982</span><span class="ft-box-note">Michael's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Dominque Corbin</span><span class="ft-box-dates">b. Mar 2, 1985</span><span class="ft-box-note">Michael's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Mychal Corbin</span><span class="ft-box-dates">b. Feb 8, 1990</span><span class="ft-box-note">Michael's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Jamie Richard Corbin</span><span class="ft-box-dates">b. Jan 6, 1996</span><span class="ft-box-note">Michael's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Fatisha Corbin</span><span class="ft-box-dates">b. Apr 1997</span><span class="ft-box-note">Michael's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Michael Eugene Corbin Jr.</span><span class="ft-box-dates">b. Nov 26, 1998</span><span class="ft-box-note">Michael's child</span></div>
-    <!-- Ronnie's children -->
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Shawntee R. Mitchell</span><span class="ft-box-dates">b. Aug 15, 1975</span><span class="ft-box-note">Ronnie's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Veronica Ler'a Amado</span><span class="ft-box-dates">b. Oct 22, 1980</span><span class="ft-box-note">Ronnie's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Stacey Austin</span><span class="ft-box-dates">dates unknown</span><span class="ft-box-note">Ronnie's child</span></div>
-    <!-- Hjordis's children -->
-    <div class="ft-box side ft-tiny ft-infant"><span class="ft-box-name">Lakesha Setaun Demyers</span><span class="ft-box-dates">Sep 24, 1979 – Sep 24, 1979</span><span class="ft-box-note">Hjordis's child · remembered</span></div>
-    <div class="ft-box direct" style="border-width:2px;">
-      <span class="ft-box-name">Jasmine M. Lee ★</span>
-      <span class="ft-box-dates">b. Jan 25, 1982</span>
-      <span class="ft-box-note">YOU · Researcher · Founder</span>
+  <div class="v-down"></div>
+  <span class="sec-label">Their Child · Your Great-Grandmother</span>
+  <div class="children-wrap">
+    <div class="single-child">
+      <div class="fbox direct" style="width:200px;">
+        <span class="fn">Eva Armstrong Ballard</span>
+        <span class="fd">ca. June 1899 – Nov 24, 1977</span>
+        <span class="fnt">★ Your Direct Line · Bellville TX → Garden Grove CA</span>
+      </div>
     </div>
-    <!-- Deanna's children -->
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Jade Aureana Brandon</span><span class="ft-box-dates">b. Jun 3, 1989</span><span class="ft-box-note">Deanna's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Lauryn Platkowski</span><span class="ft-box-dates">b. Oct 21, 1996</span><span class="ft-box-note">Deanna's child</span></div>
-    <!-- Sonsorey's children -->
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Alerick Jeron Olivier</span><span class="ft-box-dates">b. Oct 4, 1979</span><span class="ft-box-note">Sonsorey's child</span></div>
-    <!-- Orngiel's children -->
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Brittany Hubert Corbin</span><span class="ft-box-dates">b. Dec 10, 1983</span><span class="ft-box-note">Orngiel's child</span></div>
-  </div>
-</div>
-<div class="ft-connector"><div class="ft-vline"></div></div>
-
-<!-- ══ GEN 9: GREAT-GRANDCHILDREN OF MARGIE ══ -->
-<div class="ft-gen">
-  <div class="ft-gen-label">Generation 9 · Great-Grandchildren of Margie Nell Ballard</div>
-  <div class="ft-row">
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Brennan Corbin</span><span class="ft-box-dates">b. Dec 1997</span><span class="ft-box-note">Darrell's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Braylin Corbin</span><span class="ft-box-dates">dates unknown</span><span class="ft-box-note">Darrell's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Sennia Corbin</span><span class="ft-box-dates">dates unknown</span><span class="ft-box-note">Darrell's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Dmarje M. Morris</span><span class="ft-box-dates">b. Jul 1, 1991</span><span class="ft-box-note">Brendyal's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Malani Corbin</span><span class="ft-box-dates">b. Jan 27, 2023</span><span class="ft-box-note">Fatisha's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Kailyn Joseph</span><span class="ft-box-dates">dates unknown</span><span class="ft-box-note">Deserae's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Noah Josiah Gray</span><span class="ft-box-dates">b. Jul 4, 2023</span><span class="ft-box-note">Deserae's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Shawntasia Daniellejade Jordan</span><span class="ft-box-dates">b. Mar 29, 1994</span><span class="ft-box-note">Shawntee's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">William Corbin</span><span class="ft-box-dates">dates unknown</span><span class="ft-box-note">Shawntee's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Nahla Noelle Delhomme</span><span class="ft-box-dates">b. May 26, 2020</span><span class="ft-box-note">Lauryn's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">David Michael Carter</span><span class="ft-box-dates">b. May 25, 2023</span><span class="ft-box-note">Lauryn's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Bria Bailey</span><span class="ft-box-dates">dates unknown</span><span class="ft-box-note">Brittany's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Tammy Burrell</span><span class="ft-box-dates">Living</span><span class="ft-box-note">Remetha's child · Lois line</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Marve D. Burrell II</span><span class="ft-box-dates">b. 1976</span><span class="ft-box-note">Remetha's child · Lois line</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">James Ballard III</span><span class="ft-box-dates">Living</span><span class="ft-box-note">James Jr.'s child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Michael Wallace</span><span class="ft-box-dates">Living</span><span class="ft-box-note">Charles Ray's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Donell R. Boyd</span><span class="ft-box-dates">1958 – 2021</span><span class="ft-box-note">Bettie Jean's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Larry Bradshaw</span><span class="ft-box-dates">b. 1953</span><span class="ft-box-note">Lois's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Warren Bradshaw Jr.</span><span class="ft-box-dates">b. 1956</span><span class="ft-box-note">Lois's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Kathy Crosby</span><span class="ft-box-dates">Living</span><span class="ft-box-note">Lois's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Remetha Diane Pulley</span><span class="ft-box-dates">1947 – 2023</span><span class="ft-box-note">Lois's child</span></div>
-  </div>
-</div>
-<div class="ft-connector"><div class="ft-vline"></div></div>
-
-<!-- ══ GEN 10: GREAT-GREAT-GRANDCHILDREN ══ -->
-<div class="ft-gen">
-  <div class="ft-gen-label">Generation 10 · Great-Great-Grandchildren of Margie Nell Ballard</div>
-  <div class="ft-row">
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Makai Morris</span><span class="ft-box-dates">dates unknown</span><span class="ft-box-note">Dmarje's child</span></div>
-    <div class="ft-box side ft-tiny"><span class="ft-box-name">Travis Kailon Smith</span><span class="ft-box-dates">b. Jun 14, 2021</span><span class="ft-box-note">Kailyn's child</span></div>
   </div>
 </div>
 
-<div class="ft-section-div">
-  <span class="ft-section-label">Direct Line Summary · Rendy Blay to Jasmine M. Lee · 8 Generations</span>
+<!-- John Armstrong's siblings -->
+<div class="branch-divider"><span class="branch-note">John Armstrong's Siblings</span></div>
+<div class="children-wrap" style="margin-bottom:20px;">
+  <div class="fbox side" style="width:155px;">
+    <span class="fn">Ida Armstrong</span>
+    <span class="fd">Feb 28, 1875 – May 19, 1918</span>
+    <span class="fnt">Bellville TX</span>
+  </div>
+  <div class="fbox side" style="width:185px;">
+    <span class="fn">Joshua Armstrong</span>
+    <span class="fd">Mar 9, 1879 – Mar 1, 1957</span>
+    <span class="fnt">Married Lula Lott · Fort Worth TX</span>
+  </div>
+  <div class="fbox side" style="width:155px;">
+    <span class="fn">Louis Twiggs</span>
+    <span class="fd">1875 – 1921</span>
+    <span class="fnt">Hellen's 2nd relationship</span>
+  </div>
 </div>
 
-<div class="ft-row" style="gap:0;flex-wrap:nowrap;overflow-x:auto;padding:12px 0 24px;justify-content:flex-start;">
-  <div class="ft-box enslaved" style="min-width:120px;flex-shrink:0;"><span class="ft-box-name">Rendy Blay</span><span class="ft-box-dates">ca. 1817</span><span class="ft-box-note">Root</span></div>
-  <div style="display:flex;align-items:center;padding:0 4px;color:var(--gold);font-size:16px;">→</div>
-  <div class="ft-box enslaved direct" style="min-width:120px;flex-shrink:0;"><span class="ft-box-name">Easter Bell</span><span class="ft-box-dates">1848–1935</span></div>
-  <div style="display:flex;align-items:center;padding:0 4px;color:var(--gold);font-size:16px;">→</div>
-  <div class="ft-box direct" style="min-width:120px;flex-shrink:0;"><span class="ft-box-name">Hellen Nichols</span><span class="ft-box-dates">1870–1931</span></div>
-  <div style="display:flex;align-items:center;padding:0 4px;color:var(--gold);font-size:16px;">→</div>
-  <div class="ft-box direct" style="min-width:120px;flex-shrink:0;"><span class="ft-box-name">Eva Armstrong</span><span class="ft-box-dates">1899–1977</span></div>
-  <div style="display:flex;align-items:center;padding:0 4px;color:var(--gold);font-size:16px;">→</div>
-  <div class="ft-box direct" style="min-width:120px;flex-shrink:0;"><span class="ft-box-name">Margie Nell Ballard</span><span class="ft-box-dates">1929–1988</span></div>
-  <div style="display:flex;align-items:center;padding:0 4px;color:var(--gold);font-size:16px;">→</div>
-  <div class="ft-box direct" style="min-width:120px;flex-shrink:0;"><span class="ft-box-name">Hjordis L. Corbin</span><span class="ft-box-dates">b. 1960</span></div>
-  <div style="display:flex;align-items:center;padding:0 4px;color:var(--gold);font-size:16px;">→</div>
-  <div class="ft-box direct" style="min-width:120px;flex-shrink:0;border-width:2px;"><span class="ft-box-name">Jasmine M. Lee ★</span><span class="ft-box-dates">b. 1982</span><span class="ft-box-note">You</span></div>
+<!-- Joshua + Lula's child -->
+<span class="sec-label">Joshua Armstrong + Lula Lott · Their Son</span>
+<div class="children-wrap" style="margin-bottom:8px;">
+  <div class="fbox side" style="width:175px;">
+    <span class="fn">Luther Armstrong</span>
+    <span class="fd">Mar 16, 1898 – Oct 10, 1916</span>
+    <span class="fnt">Died age 18 · key research record</span>
+  </div>
 </div>
 
-<div style="margin-top:20px;padding:14px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:4px;text-align:center;">
-  <span style="font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);">Gold borders = your direct line · Dashed borders = died in infancy · This tree will grow as research continues · Contact Jasmine to add names or dates</span>
+<div class="branch-divider"><span class="branch-note">Following Your Direct Line ↓</span></div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- EVA ARMSTRONG + JAMES WILSON BALLARD -->
+<!-- ════════════════════════════════════════ -->
+<span class="sec-label">Eva Armstrong · Your Great-Grandparents</span>
+<div class="family-unit">
+  <div class="couple-row">
+    <div class="fbox direct" style="max-width:230px;">
+      <span class="fn">Eva Armstrong Ballard</span>
+      <span class="fd">ca. June 1899 – November 24, 1977</span>
+      <span class="fnt">★ Your Direct Line · Later Eva Green</span>
+    </div>
+    <span class="fplus">+</span>
+    <div class="fbox side" style="max-width:230px;">
+      <span class="fn">James Wilson Ballard Sr.</span>
+      <span class="fd">August 26, 1897 – March 13, 1953</span>
+      <span class="fnt">Palestine TX · Son of Rev. George W. Ballard</span>
+    </div>
+  </div>
+  <div class="v-down"></div>
+  <span class="sec-label">Eva &amp; James's Children</span>
+  <div class="children-wrap">
+    <div class="single-child">
+      <div class="fbox side" style="width:155px;">
+        <span class="fn">James W. Ballard Jr.</span>
+        <span class="fd">1926 – 1986</span>
+      </div>
+    </div>
+    <div class="single-child">
+      <div class="fbox infant" style="width:155px;">
+        <span class="fn">James W. Ballard</span>
+        <span class="fd">1928 – 1928</span>
+        <span class="fnt">Infant · remembered</span>
+      </div>
+    </div>
+    <div class="single-child">
+      <div class="fbox direct" style="width:175px;">
+        <span class="fn">Margie Nell Ballard</span>
+        <span class="fd">March 13, 1929 – October 15, 1988</span>
+        <span class="fnt">★ Your Direct Line · Santa Ana CA</span>
+      </div>
+    </div>
+    <div class="single-child">
+      <div class="fbox side" style="width:155px;">
+        <span class="fn">Charles Ray Ballard</span>
+        <span class="fd">1933 – 2001</span>
+      </div>
+    </div>
+    <div class="single-child">
+      <div class="fbox side" style="width:155px;">
+        <span class="fn">Bettie Jean Ballard</span>
+        <span class="fd">1935 – 2002</span>
+      </div>
+    </div>
+    <div class="single-child">
+      <div class="fbox side" style="width:155px;">
+        <span class="fn">Lois Marie Ballard</span>
+        <span class="fd">Living</span>
+      </div>
+    </div>
+    <div class="single-child">
+      <div class="fbox infant" style="width:155px;">
+        <span class="fn">Thelma Louise Ballard</span>
+        <span class="fd">1938 – 1939</span>
+        <span class="fnt">Infant · remembered</span>
+      </div>
+    </div>
+  </div>
 </div>
 
-</div><!-- end ft-tree -->
+<!-- James Wilson Ballard line through Rev George W Ballard -->
+<div class="branch-divider"><span class="branch-note">James's Parents · Rev. George W. Ballard Line</span></div>
+<div class="family-unit">
+  <div class="couple-row">
+    <div class="fbox side" style="max-width:220px;">
+      <span class="fn">Rev. George W. Ballard</span>
+      <span class="fd">Sep 4, 1861 – Oct 24, 1937</span>
+      <span class="fnt">Keller TX → Waco TX · Minister</span>
+    </div>
+    <span class="fplus">+</span>
+    <div class="fbox side" style="max-width:220px;">
+      <span class="fn">Mary Ann Edwards Ballard</span>
+      <span class="fd">Nov 4, 1870 – Mar 19, 1949</span>
+      <span class="fnt">LaGrange TX · Fort Worth TX</span>
+    </div>
+  </div>
+  <div class="v-down"></div>
+  <span class="sec-label">Rev. Ballard &amp; Mary Ann's Children</span>
+  <div class="children-wrap">
+    <div class="fbox side" style="width:145px;"><span class="fn">Lavinia Ballard</span><span class="fd">1888 –</span></div>
+    <div class="fbox side" style="width:145px;"><span class="fn">Lurania Ballard</span><span class="fd">1889 – 1910</span></div>
+    <div class="fbox side" style="width:145px;"><span class="fn">Benjamin Ballard</span><span class="fd">1890 – 1943</span></div>
+    <div class="fbox side" style="width:145px;"><span class="fn">Hallie Q. Ballard</span><span class="fd">1892 – 1954</span></div>
+    <div class="fbox side" style="width:145px;"><span class="fn">Bettie May Ballard</span><span class="fd">1896 –</span></div>
+    <div class="fbox side" style="width:145px;"><span class="fn">James Wilson Ballard</span><span class="fd">Aug 26, 1897 – 1953</span><span class="fnt">Eva's husband</span></div>
+    <div class="fbox side" style="width:145px;"><span class="fn">Mark Hanna Ballard</span><span class="fd">Aug 16, 1900 – 1972</span></div>
+    <div class="fbox side" style="width:145px;"><span class="fn">John Allen Ballard</span><span class="fd">Nov 20, 1901 – 1973</span></div>
+    <div class="fbox side" style="width:145px;"><span class="fn">Moses E. Ballard</span><span class="fd">Sep 22, 1903 – 1988</span></div>
+    <div class="fbox side" style="width:145px;"><span class="fn">Aleberta Kendle</span><span class="fd">Oct 14, 1913 – Jun 14, 1977</span></div>
+    <div class="fbox side" style="width:145px;"><span class="fn">Birdie Ballard</span><span class="fd">1906 –</span></div>
+    <div class="fbox side" style="width:145px;"><span class="fn">Blancherie Caesar</span><span class="fd">1910 –</span></div>
+  </div>
+</div>
+
+<!-- Rev Ballard's parents -->
+<div class="branch-divider"><span class="branch-note">Rev. Ballard's Parents · Newton &amp; Rebecca Ballard</span></div>
+<div class="family-unit">
+  <div class="couple-row">
+    <div class="fbox enslaved" style="max-width:220px;">
+      <span class="fn">Newton Ballard</span>
+      <span class="fd">ca. 1830 – ca. 1865–1870</span>
+      <span class="fnt">Born Mississippi · Enslaved by Lewis F. Ballard</span>
+    </div>
+    <span class="fplus">+</span>
+    <div class="fbox enslaved" style="max-width:220px;">
+      <span class="fn">Rebecca Ballard</span>
+      <span class="fd">ca. 1835 – after 1870</span>
+      <span class="fnt">Born Mississippi · Head of household 1870</span>
+    </div>
+  </div>
+  <div class="v-down"></div>
+  <div class="children-wrap">
+    <div class="fbox side" style="width:145px;"><span class="fn">Silva Ballard</span><span class="fd">ca. 1857 – unknown</span></div>
+    <div class="fbox side" style="width:145px;"><span class="fn">Sandy Ballard</span><span class="fd">ca. 1860 – unknown</span></div>
+    <div class="fbox side" style="width:175px;"><span class="fn">Rev. George W. Ballard</span><span class="fd">Sep 4, 1861 – Oct 24, 1937</span><span class="fnt">James's father</span></div>
+  </div>
+</div>
+
+<div class="branch-divider"><span class="branch-note">Following Your Direct Line ↓</span></div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- MARGIE NELL BALLARD + NORMAN CORBIN -->
+<!-- ════════════════════════════════════════ -->
+<span class="sec-label">Margie Nell Ballard · Your Grandmother</span>
+<div class="family-unit">
+  <div class="couple-row">
+    <div class="fbox direct" style="max-width:230px;">
+      <span class="fn">Margie Nell Ballard Corbin</span>
+      <span class="fd">March 13, 1929 – October 15, 1988</span>
+      <span class="fnt">★ Your Direct Line · Santa Ana, Orange County CA</span>
+    </div>
+    <span class="fplus">+</span>
+    <div class="fbox side" style="max-width:220px;">
+      <span class="fn">Norman Caswell Corbin</span>
+      <span class="fd">February 10, 1921 – April 21, 1974</span>
+      <span class="fnt">Santa Ana CA · Corbin Community Center named for him</span>
+    </div>
+  </div>
+  <div class="v-down"></div>
+  <span class="sec-label">Margie's Seven Children</span>
+  <div class="children-wrap">
+    <div class="single-child">
+      <div class="fbox side" style="width:165px;">
+        <span class="fn">Michael E. Corbin Sr.</span>
+        <span class="fd">Aug 26, 1951 – Nov 1, 2009</span>
+        <span class="fnt">Father unknown</span>
+      </div>
+      <div class="v-down" style="height:14px;"></div>
+      <div class="grandkids-wrap">
+        <div class="fbox side gkid" style="width:140px;"><span class="fn">Darrell Devon Corbin</span><span class="fd">b. Jan 23, 1970</span></div>
+        <div class="fbox side gkid" style="width:140px;"><span class="fn">Brendyal Corbin</span><span class="fd">b. Jan 24, 1972</span></div>
+        <div class="fbox side gkid" style="width:140px;"><span class="fn">Quincy De'Von Young</span><span class="fd">b. Dec 17, 1976</span></div>
+        <div class="fbox side gkid" style="width:140px;"><span class="fn">Damien A. Price-Corbin</span><span class="fd">b. Feb 18, 1979</span></div>
+        <div class="fbox side gkid" style="width:140px;"><span class="fn">Deserae Charese Corbin</span><span class="fd">b. Oct 9, 1982</span></div>
+        <div class="fbox side gkid" style="width:140px;"><span class="fn">Dominque Corbin</span><span class="fd">b. Mar 2, 1985</span></div>
+        <div class="fbox side gkid" style="width:140px;"><span class="fn">Mychal Corbin</span><span class="fd">b. Feb 8, 1990</span></div>
+        <div class="fbox side gkid" style="width:140px;"><span class="fn">Jamie Richard Corbin</span><span class="fd">b. Jan 6, 1996</span></div>
+        <div class="fbox side gkid" style="width:140px;"><span class="fn">Fatisha Corbin</span><span class="fd">b. Apr 1997</span></div>
+        <div class="fbox side gkid" style="width:140px;"><span class="fn">Michael Eugene Corbin Jr.</span><span class="fd">b. Nov 26, 1998</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="branch-divider" style="margin:20px 0 12px;"><span class="branch-note">Ronnie Leroy Ballard · Different Father</span></div>
+  <div class="children-wrap">
+    <div class="single-child">
+      <div class="fbox side" style="width:165px;">
+        <span class="fn">Ronnie Leroy Ballard</span>
+        <span class="fd">b. November 11, 1953</span>
+        <span class="fnt">Father: Leroy Armstrong Sr. (research ongoing)</span>
+      </div>
+      <div class="v-down" style="height:14px;"></div>
+      <div class="grandkids-wrap">
+        <div class="fbox side gkid" style="width:140px;"><span class="fn">Shawntee R. Mitchell</span><span class="fd">b. Aug 15, 1975</span></div>
+        <div class="fbox side gkid" style="width:140px;"><span class="fn">Veronica Ler'a Amado</span><span class="fd">b. Oct 22, 1980</span></div>
+        <div class="fbox side gkid" style="width:140px;"><span class="fn">Stacey Austin</span><span class="fd">dates unknown</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="branch-divider" style="margin:20px 0 12px;"><span class="branch-note">Hjordis L. Corbin · Your Mother · Direct Line</span></div>
+  <div class="children-wrap">
+    <div class="single-child">
+      <div class="fbox direct" style="width:200px;">
+        <span class="fn">Hjordis L. Corbin</span>
+        <span class="fd">b. January 20, 1960</span>
+        <span class="fnt">★ Your Direct Line · Your Mother</span>
+      </div>
+      <div class="v-down"></div>
+      <div class="grandkids-wrap">
+        <div class="fbox infant gkid" style="width:165px;"><span class="fn">Lakesha Setaun Demyers</span><span class="fd">Sep 24, 1979 – Sep 24, 1979</span><span class="fnt">Remembered</span></div>
+        <div class="fbox you gkid" style="width:165px;"><span class="fn">Jasmine M. Lee ★</span><span class="fd">b. January 25, 1982</span><span class="fnt">YOU · Researcher · Founder</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="branch-divider" style="margin:20px 0 12px;"><span class="branch-note">Deanna Denise Corbin</span></div>
+  <div class="children-wrap">
+    <div class="single-child">
+      <div class="fbox side" style="width:165px;">
+        <span class="fn">Deanna Denise Corbin</span>
+        <span class="fd">b. December 28, 1961</span>
+      </div>
+      <div class="v-down" style="height:14px;"></div>
+      <div class="grandkids-wrap">
+        <div class="fbox side gkid" style="width:140px;"><span class="fn">Jade Aureana Brandon</span><span class="fd">b. Jun 3, 1989</span></div>
+        <div class="fbox side gkid" style="width:140px;"><span class="fn">Lauryn Platkowski</span><span class="fd">b. Oct 21, 1996</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="branch-divider" style="margin:20px 0 12px;"><span class="branch-note">Sonsorey Yevette Corbin</span></div>
+  <div class="children-wrap">
+    <div class="single-child">
+      <div class="fbox side" style="width:165px;">
+        <span class="fn">Sonsorey Yevette Corbin</span>
+        <span class="fd">b. November 29, 1962</span>
+      </div>
+      <div class="v-down" style="height:14px;"></div>
+      <div class="grandkids-wrap">
+        <div class="fbox side gkid" style="width:140px;"><span class="fn">Alerick Jeron Olivier</span><span class="fd">b. Oct 4, 1979</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="branch-divider" style="margin:20px 0 12px;"><span class="branch-note">Orngiel L. Corbin</span></div>
+  <div class="children-wrap">
+    <div class="single-child">
+      <div class="fbox side" style="width:165px;">
+        <span class="fn">Orngiel L. Corbin</span>
+        <span class="fd">b. December 14, 1964</span>
+      </div>
+      <div class="v-down" style="height:14px;"></div>
+      <div class="grandkids-wrap">
+        <div class="fbox side gkid" style="width:140px;"><span class="fn">Brittany Hubert Corbin</span><span class="fd">b. Dec 10, 1983</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="branch-divider" style="margin:20px 0 12px;"><span class="branch-note">Se'Taun Corbin</span></div>
+  <div class="children-wrap">
+    <div class="single-child">
+      <div class="fbox side" style="width:165px;">
+        <span class="fn">Se'Taun Corbin</span>
+        <span class="fd">b. April 30, 1966</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end Margie family unit -->
+
+<!-- ════════════════════════════════════════ -->
+<!-- GREAT-GRANDCHILDREN OF MARGIE -->
+<!-- ════════════════════════════════════════ -->
+<div class="branch-divider"><span class="branch-note">Great-Grandchildren of Margie Nell Ballard</span></div>
+<div class="children-wrap" style="margin-bottom:24px;">
+  <div class="fbox side" style="width:145px;"><span class="fn">Brennan Corbin</span><span class="fd">b. Dec 1997</span><span class="fnt">Darrell's child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">Braylin Corbin</span><span class="fd">dates unknown</span><span class="fnt">Darrell's child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">Sennia Corbin</span><span class="fd">dates unknown</span><span class="fnt">Darrell's child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">Dmarje M. Morris</span><span class="fd">b. Jul 1, 1991</span><span class="fnt">Brendyal's child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">Malani Corbin</span><span class="fd">b. Jan 27, 2023</span><span class="fnt">Fatisha's child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">Kailyn Joseph</span><span class="fd">dates unknown</span><span class="fnt">Deserae's child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">Noah Josiah Gray</span><span class="fd">b. Jul 4, 2023</span><span class="fnt">Deserae's child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">Shawntasia Jordan</span><span class="fd">b. Mar 29, 1994</span><span class="fnt">Shawntee's child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">William Corbin</span><span class="fd">dates unknown</span><span class="fnt">Shawntee's child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">Nahla Noelle Delhomme</span><span class="fd">b. May 26, 2020</span><span class="fnt">Lauryn's child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">David Michael Carter</span><span class="fd">b. May 25, 2023</span><span class="fnt">Lauryn's child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">Bria Bailey</span><span class="fd">dates unknown</span><span class="fnt">Brittany's child</span></div>
+</div>
+
+<!-- Eva's other children lines -->
+<div class="branch-divider"><span class="branch-note">Eva's Other Children · Their Descendants</span></div>
+<div class="children-wrap" style="margin-bottom:8px;">
+  <div class="fbox side" style="width:155px;"><span class="fn">James W. Ballard Jr.</span><span class="fd">1926 – 1986</span></div>
+  <div class="fbox side" style="width:155px;"><span class="fn">Charles Ray Ballard</span><span class="fd">1933 – 2001</span></div>
+  <div class="fbox side" style="width:155px;"><span class="fn">Bettie Jean Ballard</span><span class="fd">1935 – 2002</span></div>
+  <div class="fbox side" style="width:155px;"><span class="fn">Lois Marie Ballard</span><span class="fd">Living</span></div>
+</div>
+<div class="children-wrap" style="margin-bottom:20px;">
+  <div class="fbox side" style="width:145px;"><span class="fn">Tammy Burrell</span><span class="fd">Living</span><span class="fnt">Remetha's child · Lois line</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">Marve D. Burrell II</span><span class="fd">b. 1976</span><span class="fnt">Remetha's child · Lois line</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">James Ballard III</span><span class="fd">Living</span><span class="fnt">James Jr.'s child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">Michael Wallace</span><span class="fd">Living</span><span class="fnt">Charles Ray's child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">Donell R. Boyd</span><span class="fd">1958 – 2021</span><span class="fnt">Bettie Jean's child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">Larry Bradshaw</span><span class="fd">b. 1953</span><span class="fnt">Lois's child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">Warren Bradshaw Jr.</span><span class="fd">b. 1956</span><span class="fnt">Lois's child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">Kathy Crosby</span><span class="fd">Living</span><span class="fnt">Lois's child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">Remetha Diane Pulley</span><span class="fd">1947 – 2023</span><span class="fnt">Lois's child</span></div>
+</div>
+
+<!-- YOUNGEST GENERATION -->
+<div class="branch-divider"><span class="branch-note">Youngest Generation · Great-Great-Grandchildren of Margie</span></div>
+<div class="children-wrap" style="margin-bottom:32px;">
+  <div class="fbox side" style="width:145px;"><span class="fn">Makai Morris</span><span class="fd">dates unknown</span><span class="fnt">Dmarje's child</span></div>
+  <div class="fbox side" style="width:145px;"><span class="fn">Travis Kailon Smith</span><span class="fd">b. Jun 14, 2021</span><span class="fnt">Kailyn's child</span></div>
+</div>
+
+<!-- LEGEND -->
+<div style="margin:24px auto;max-width:600px;padding:16px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:4px;text-align:center;">
+  <span style="font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:10px;">Legend</span>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+    <div style="display:flex;align-items:center;gap:6px;"><div style="width:20px;height:12px;background:var(--gold-bg2);border:2px solid var(--gold2);border-radius:2px;"></div><span style="font-family:'Josefin Sans',sans-serif;font-size:8.5px;color:var(--ink3);">Your direct line</span></div>
+    <div style="display:flex;align-items:center;gap:6px;"><div style="width:20px;height:12px;background:#f5ede0;border:1.5px solid var(--border2);border-radius:2px;"></div><span style="font-family:'Josefin Sans',sans-serif;font-size:8.5px;color:var(--ink3);">Enslaved ancestor</span></div>
+    <div style="display:flex;align-items:center;gap:6px;"><div style="width:20px;height:12px;background:var(--bg2);border:1.5px dashed var(--border2);border-radius:2px;opacity:.75;"></div><span style="font-family:'Josefin Sans',sans-serif;font-size:8.5px;color:var(--ink3);">Died in infancy</span></div>
+    <div style="display:flex;align-items:center;gap:6px;"><div style="width:20px;height:12px;background:var(--bg2);border:1.5px solid var(--border);border-radius:2px;"></div><span style="font-family:'Josefin Sans',sans-serif;font-size:8.5px;color:var(--ink3);">Collateral family</span></div>
+  </div>
+  <p style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ink3);margin-top:10px;">This tree will grow as research continues · Contact Jasmine M. Lee to add names or correct information</p>
+</div>
+
+</div><!-- end ftw -->
 
 </div>
 <div class="ftr">Family Tree · All Known Generations · Compiled by Jasmine M. Lee · Dock Ellis Foundation · April 2026</div>

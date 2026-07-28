@@ -590,8 +590,6 @@ body{display:flex;flex-direction:row;margin:0;padding:0;}
   <button class="nb" onclick="show('archive',this)">Archive</button>
 
   <span class="nav-section-label">New Features</span>
-  <button class="nb" onclick="show('migration',this)">Migration Map</button>
-  <button class="nb" onclick="show('sources',this)">Primary Sources</button>
   <button class="nb" onclick="show('reunion',this)">Family Reunion</button>
 </nav>
 
@@ -730,197 +728,11 @@ body{display:flex;flex-direction:row;margin:0;padding:0;}
 
 
 <!-- ═══ MIGRATION MAP ═══ -->
-<div class="sec" id="tab-migration">
-<div class="shdr">
-  <span class="sey">The Family's Journey Across America · ca. 1780s to Present</span>
-  <span class="sttl">The Migration <em>Map</em></span>
-  <span class="ssub">From South Carolina to California — Six Stops Across Four Centuries</span>
-  <div class="srul"><div class="sdia"></div></div>
-</div>
-<div class="ctr">
-  <div class="prose"><p>Click any stop on the map to read the family's story at that location.</p></div>
 
-  <!-- Leaflet Map -->
-  <div id="migmap" style="width:100%;height:480px;border-radius:8px;border:1px solid var(--border);margin:20px 0;z-index:1;"></div>
-
-  <!-- Story popup -->
-  <div id="map-popup" style="display:none;background:var(--card);border:1px solid var(--border2);border-radius:8px;padding:28px 32px;margin:0 0 32px;box-shadow:0 4px 20px var(--shadow2);position:relative;">
-    <button onclick="document.getElementById('map-popup').style.display='none'" style="position:absolute;top:12px;right:12px;background:var(--bg2);border:1px solid var(--border);border-radius:50%;width:30px;height:30px;cursor:pointer;font-size:14px;color:var(--ink3);">×</button>
-    <span id="mp-eyebrow" style="font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px;"></span>
-    <span id="mp-title" style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--ink);display:block;margin-bottom:6px;"></span>
-    <span id="mp-dates" style="font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:1px;color:var(--ink3);display:block;margin-bottom:16px;"></span>
-    <p id="mp-story" style="font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.8;color:var(--ink2);"></p>
-  </div>
-
-  <!-- Legend -->
-  <div style="display:flex;flex-wrap:wrap;gap:12px;margin:20px 0;">
-    <div style="display:flex;align-items:center;gap:8px;font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:1px;color:var(--ink3);"><span style="width:14px;height:14px;border-radius:50%;background:#8b3a1a;display:inline-block;"></span>Enslaved Era</div>
-    <div style="display:flex;align-items:center;gap:8px;font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:1px;color:var(--ink3);"><span style="width:14px;height:14px;border-radius:50%;background:#1e4a2e;display:inline-block;"></span>Freedom &amp; Building</div>
-    <div style="display:flex;align-items:center;gap:8px;font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:1px;color:var(--ink3);"><span style="width:14px;height:14px;border-radius:50%;background:#2d5a9e;display:inline-block;"></span>Migration West</div>
-  </div>
-
-  <script>
-  (function(){
-    if(document.getElementById('migmap')._leaflet_id) return;
-    var map = L.map('migmap',{scrollWheelZoom:false}).setView([34,-96],4);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-      attribution:'© OpenStreetMap contributors',maxZoom:18
-    }).addTo(map);
-
-    var stops = [
-      {lat:34.3,lng:-81.6,color:'#8b3a1a',num:1,
-       eye:'Stop 1 · ca. 1780s – 1839',title:'Newberry County, South Carolina',dates:'ca. 1780s – 1807',
-       story:'This is where your family's documented history begins. A woman named Patience was given as property by Francis Davenport Sr. to his daughter Patty Waldrop on August 4, 1795 in Newberry County, South Carolina. The deed included the words "with her increase" — meaning all of Patience's future children were automatically enslaved by law. Patience's daughter Clarissa was born here. In 1839, the Waldrop estate distributed Patience's children across heirs. Clarissa's path would eventually lead to Texas.'},
-      {lat:32.4,lng:-89.8,color:'#8b3a1a',num:2,
-       eye:'Stop 2 · ca. 1807 – 1865',title:'Mississippi',dates:'Clarissa · Waldrop Household',
-       story:'Clarissa — Patience's daughter and your confirmed DNA ancestor with 46 ThruLines matches — was moved to Mississippi with the Waldrop family. The path between Clarissa in Mississippi and Joseph Nichols in Bellville, Texas is still being researched, but DNA confirms the connection. Clarissa's descendants eventually made their way to Austin County, Texas by the time of emancipation in 1865.'},
-      {lat:29.95,lng:-96.28,color:'#1e4a2e',num:3,
-       eye:'Stop 3 · 1848 – 1911',title:'Bellville, Austin County, Texas',dates:'Easter Bell Nichols · 1848–1935 · Hellen Nichols Armstrong · 1870–1931',
-       story:'This is the heart of your Texas story. Easter Bell Nichols was born here on July 4, 1848 — enslaved on John Nichols's Piney Creek plantation. After emancipation in 1865 she married Joseph Nichols and raised twelve children here. Her daughter Hellen Nichols married John Armstrong in 1899. The Armstrong family — Dave Armstrong, Clarissa Ann Morgan, John, Joshua, Ida, Charlie, Bettie — all lived in Bellville in 1900. The Lott family lived two households away. The family held two acres of land on the J. Nichols Survey here for 141 years.'},
-      {lat:32.75,lng:-97.33,color:'#1e4a2e',num:4,
-       eye:'Stop 4 · 1910 – 1944',title:'Fort Worth, Tarrant County, Texas',dates:'Eva Armstrong · James Ballard Sr. · The Nichols Line',
-       story:'The family migrated to Fort Worth around 1910 — following work and opportunity. John Armstrong was killed here on August 30, 1911 by Jack Thompson near the Terminal Hotel. Eva Armstrong grew up here. In 1924, Eva and James Wilson Ballard Sr. were living at 905 East 2nd Street — a row of working-class Black duplexes now considered historically significant. Margie Nell Ballard was born here on March 13, 1929. Rev. George W. Ballard's wife Mary Ann Edwards Ballard died here in 1949 at 1224 Verbena Street. Joshua Armstrong and Lula Lott lived here until their deaths.'},
-      {lat:29.42,lng:-98.49,color:'#2d5a9e',num:5,
-       eye:'Stop 5 · 1931 – 1961',title:'San Antonio, Bexar County, Texas',dates:'Eva Armstrong Ballard · 150 Paul Street · The East Side',
-       story:'Eva Armstrong Ballard arrived in San Antonio and built something. By 1944 she owned 150 Paul Street. She held the beer license for The Spot at 1501 Burnet Street — the East Side café at the center of a police brutality case that would shake the city. Her son James Ballard Jr. appeared on the front page of the San Antonio Light on March 10, 1954, identified as someone who helped the district attorney break a cover-up case. Her daughter Margie was named in sworn police testimony. Both were subpoenaed to testify in a murder trial. The family sold the Paul Street property in 1957 and began moving west.'},
-      {lat:33.74,lng:-117.86,color:'#2d5a9e',num:6,
-       eye:'Stop 6 · 1961 – Present',title:'Orange County, California',dates:'Margie Nell Ballard Corbin · Eva Green · Present Day',
-       story:'The final migration west. Margie Nell Ballard filed for divorce in Los Angeles in 1961 and settled the family at 622 South Townsend Street in Santa Ana, Orange County. Eva Armstrong Ballard followed her children, dying in Garden Grove on November 24, 1977 as Eva Green. This is where the family is today. Three generations from Easter Bell born enslaved in Bellville, Texas in 1848 — to Jasmine M. Lee born in Orange County, California in 1982.'},
-    ];
-
-    var path = stops.map(s=>[s.lat,s.lng]);
-    L.polyline(path,{color:'#b0bcd8',weight:2.5,dashArray:'6,6',opacity:0.7}).addTo(map);
-
-    stops.forEach(function(s){
-      var icon = L.divIcon({className:'',html:'<div style="width:32px;height:32px;border-radius:50%;background:'+s.color+';border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;color:#fff;font-family:sans-serif;font-size:13px;font-weight:700;cursor:pointer;">'+s.num+'</div>',iconSize:[32,32],iconAnchor:[16,16]});
-      L.marker([s.lat,s.lng],{icon:icon}).addTo(map).on('click',function(){
-        document.getElementById('mp-eyebrow').textContent=s.eye;
-        document.getElementById('mp-title').textContent=s.title;
-        document.getElementById('mp-dates').textContent=s.dates;
-        document.getElementById('mp-story').textContent=s.story;
-        document.getElementById('map-popup').style.display='block';
-        document.getElementById('map-popup').scrollIntoView({behavior:'smooth',block:'nearest'});
-      });
-    });
-  })();
-  </script>
-</div>
-</div>
 
 
 <!-- ═══ PRIMARY SOURCES ═══ -->
-<div class="sec" id="tab-sources">
-<div class="shdr">
-  <span class="sey">Newspaper Articles · Death Certificates · Census Records · Court Documents</span>
-  <span class="sttl">Primary <em>Sources</em></span>
-  <span class="ssub">The Documents That Prove This Family's Story</span>
-  <div class="srul"><div class="sdia"></div></div>
-</div>
-<div class="ctr">
 
-  <div class="prose"><p>Every claim in this family history is sourced to a primary document. This page displays the key articles and records. As photographs of documents are uploaded, they will appear here with their full transcriptions. To add a document, send the image to <a href="mailto:jlee@dockellisfoundation.com" style="color:var(--gold);">jlee@dockellisfoundation.com</a>.</p></div>
-
-  <div class="div"></div>
-  <span class="chd">The Caldwell Case · San Antonio · 1953–1955</span>
-
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin:20px 0;">
-
-    <div class="source-card" onclick="openSource('src1')">
-      <div class="source-thumb" style="background:linear-gradient(135deg,var(--ink),#3a4060);"><span class="source-thumb-label">San Antonio Light<br>March 10, 1954</span></div>
-      <div class="source-info">
-        <span class="source-title">Cops, Witnesses Facing Jury</span>
-        <span class="source-sub">Front page · JAMES BALLARD JR. photograph</span>
-        <span class="source-tag">Newspaper · Front Page</span>
-      </div>
-    </div>
-
-    <div class="source-card" onclick="openSource('src2')">
-      <div class="source-thumb" style="background:linear-gradient(135deg,#3a1a0a,#6a3a1a);"><span class="source-thumb-label">San Antonio Express<br>October 11, 1953</span></div>
-      <div class="source-info">
-        <span class="source-title">Gambling Payoffs Bared</span>
-        <span class="source-sub">Front page · Leroy Armstrong arrest record published · KTSA exposé</span>
-        <span class="source-tag">Newspaper · Front Page</span>
-      </div>
-    </div>
-
-    <div class="source-card" onclick="openSource('src3')">
-      <div class="source-thumb" style="background:linear-gradient(135deg,#1a3a1a,#2a5a2a);"><span class="source-thumb-label">San Antonio Light<br>January 6, 1955</span></div>
-      <div class="source-info">
-        <span class="source-title">Freed Graves to Come Home</span>
-        <span class="source-sub">Not guilty · 45 minutes · The verdict</span>
-        <span class="source-tag">Newspaper · Verdict</span>
-      </div>
-    </div>
-
-    <div class="source-card" onclick="openSource('src4')">
-      <div class="source-thumb" style="background:linear-gradient(135deg,#1a1a3a,#2a2a6a);"><span class="source-thumb-label">City Council Minutes<br>September 9, 1954</span></div>
-      <div class="source-info">
-        <span class="source-title">Winton Removal — Official Minutes</span>
-        <span class="source-sub">City Manager personally ordered false report on Caldwell killing · government document</span>
-        <span class="source-tag">Government Record</span>
-      </div>
-    </div>
-
-    <div class="source-card" onclick="openSource('src5')">
-      <div class="source-thumb" style="background:linear-gradient(135deg,#2a1a3a,#4a2a6a);"><span class="source-thumb-label">Corpus Christi Times<br>November 4, 1953</span></div>
-      <div class="source-info">
-        <span class="source-title">Federal Gambling Tax Stamps</span>
-        <span class="source-sub">James Ballard Jr. + Leroy Armstrong both listed as agents at 207 N. Center under Bellinger</span>
-        <span class="source-tag">Federal Tax Record</span>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="div"></div>
-  <span class="chd">Vital Records · Death Certificates</span>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin:20px 0;">
-
-    <div class="source-card" onclick="openSource('src6')">
-      <div class="source-thumb" style="background:linear-gradient(135deg,#3a2a0a,#6a5a1a);"><span class="source-thumb-label">Texas Death Certificate<br>State File No. 51612</span></div>
-      <div class="source-info">
-        <span class="source-title">Rev. George W. Ballard</span>
-        <span class="source-sub">Died October 24, 1937 · Waco · Names Newton Ballard as father · Informant: Alberta Ballard</span>
-        <span class="source-tag">Death Certificate</span>
-      </div>
-    </div>
-
-    <div class="source-card" onclick="openSource('src7')">
-      <div class="source-thumb" style="background:linear-gradient(135deg,#3a2a0a,#6a5a1a);"><span class="source-thumb-label">Texas Death Certificate<br>State File No. 16556</span></div>
-      <div class="source-info">
-        <span class="source-title">James Wilson Ballard Sr.</span>
-        <span class="source-sub">Died March 13, 1953 · Austin State Hospital · Psychosis with syphilitic meningoencephalitis</span>
-        <span class="source-tag">Death Certificate</span>
-      </div>
-    </div>
-
-    <div class="source-card" onclick="openSource('src8')">
-      <div class="source-thumb" style="background:linear-gradient(135deg,#1a2a3a,#2a4a6a);"><span class="source-thumb-label">1950 U.S. Census<br>150 Paul Street</span></div>
-      <div class="source-info">
-        <span class="source-title">The Ballard Household</span>
-        <span class="source-sub">Eva · James Jr. · Charles · Bettie · Isaac Coco · Margie — all at 150 Paul Street, San Antonio</span>
-        <span class="source-tag">Federal Census</span>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Source detail overlay -->
-  <div id="source-overlay" style="display:none;position:fixed;inset:0;background:rgba(26,31,54,.7);z-index:600;align-items:center;justify-content:center;" onclick="if(event.target===this)closeSource()">
-    <div style="background:var(--card);width:min(680px,96vw);max-height:90vh;border-radius:12px;overflow-y:auto;padding:36px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.4);">
-      <button onclick="closeSource()" style="position:absolute;top:14px;right:14px;background:var(--bg2);border:1px solid var(--border);border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:15px;color:var(--ink3);">×</button>
-      <div id="src-content"></div>
-    </div>
-  </div>
-
-  <div class="div"></div>
-  <div class="card-box" style="margin:20px 0;">
-    <span class="card-label">Add Your Documents</span>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.7;color:var(--ink2);">Have a photograph, newspaper clipping, death certificate, or other document related to this family? Send it to <a href="mailto:jlee@dockellisfoundation.com" style="color:var(--gold);font-weight:600;">jlee@dockellisfoundation.com</a> and it will be added to this archive with full attribution and transcription.</p>
-  </div>
-
-</div>
-</div>
 
 
 <!-- ═══ FAMILY REUNION ═══ -->
@@ -2791,7 +2603,338 @@ body{display:flex;flex-direction:row;margin:0;padding:0;}
 </div>
 <div class="ctr">
 
-  <span class="chd">Ancestral Journeys — Compare Your DNA Regions</span>
+
+  <div class="div"></div>
+  <span class="chd">Confirmed DNA Match Network</span>
+  <div class="cttl">Our Proven Family Connections Through Living DNA</div>
+
+  <div class="prose"><p>These are family members and cousins who have taken DNA tests and match our family. For each match we show the exact connection path, how many centimorgans (cM) we share, and the full list of other people they also match in our family. The more people a match shares with us, the more confidence we have in which line they connect through.</p><p>A centimorgam (cM) is a unit of DNA measurement. The higher the number, the more closely related two people are. A parent-child match is about 3,500 cM. A first cousin is typically 850 cM. A third cousin is typically 40–80 cM.</p></div>
+
+<style>
+.dna-net{margin:32px 0;}
+.dnc{background:var(--card);border:1px solid var(--border);border-radius:10px;margin:28px 0;overflow:hidden;box-shadow:0 3px 14px var(--shadow2);}
+.dnc-top{background:var(--ink);padding:20px 24px;display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap;}
+.dnc-top-info{flex:1;min-width:200px;}
+.dnc-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#fff;display:block;margin-bottom:4px;}
+.dnc-handle{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.5);display:block;margin-bottom:8px;}
+.dnc-rel{font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:400;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:20px;display:inline-block;margin-right:6px;margin-bottom:4px;}
+.dnc-rel.arm{background:rgba(232,184,75,.2);color:var(--accent);}
+.dnc-rel.bal{background:rgba(26,107,74,.2);color:#6fcca0;}
+.dnc-rel.mat{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);}
+.dnc-cm-box{text-align:center;flex-shrink:0;}
+.dnc-cm-num{font-family:'Josefin Sans',sans-serif;font-size:42px;font-weight:700;color:var(--accent);line-height:1;display:block;}
+.dnc-cm-lbl{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);display:block;}
+.dnc-body{padding:20px 24px;}
+.dnc-section-lbl{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin:18px 0 8px;border-bottom:1px solid var(--border);padding-bottom:5px;}
+.dnc-path{background:var(--bg2);border-radius:6px;padding:14px 18px;margin:8px 0;font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.9;color:var(--ink2);border-left:4px solid var(--gold2);}
+.dnc-path b{color:var(--ink);font-weight:700;}
+.dnc-path .arr{color:var(--gold2);}
+.dnc-path.yours{border-left-color:var(--forest);}
+.dnc-confirms{font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.75;color:var(--ink2);}
+.dnc-shared-title{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin:18px 0 10px;}
+.shared-table{width:100%;border-collapse:collapse;margin:8px 0;}
+.shared-table th{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);padding:8px 10px;border-bottom:2px solid var(--border2);text-align:left;}
+.shared-table td{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--ink2);padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top;}
+.shared-table tr:last-child td{border-bottom:none;}
+.shared-table tr.fam td{background:var(--gold-bg);}
+.shared-table td.cm{font-family:'Josefin Sans',sans-serif;font-size:11px;font-weight:600;color:var(--gold);text-align:right;white-space:nowrap;}
+.shared-table td.side{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1px;color:var(--ink3);text-align:center;}
+.shared-table td.rel{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.5px;color:var(--ink3);}
+.dnc-note{padding:14px 18px;background:var(--forest-bg);border-radius:4px;border:1px solid rgba(26,107,74,.2);font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--ink2);line-height:1.65;margin:12px 0;}
+</style>
+
+<div class="dna-net">
+
+<!-- ════ DEBRA GHOLSTON ════ -->
+<div class="dnc">
+  <div class="dnc-top">
+    <div class="dnc-top-info">
+      <span class="dnc-name">Debra Louise Carter Gholston</span>
+      <span class="dnc-handle">dlcgholston1952 · Born November 9, 1952 · Age 60+</span>
+      <span class="dnc-rel mat">Maternal Side</span>
+      <span class="dnc-rel arm">Armstrong Line</span>
+      <span class="dnc-rel arm">3rd Cousin 1x Removed</span>
+    </div>
+    <div class="dnc-cm-box">
+      <span class="dnc-cm-num">42</span>
+      <span class="dnc-cm-lbl">cM · 4 segments</span>
+    </div>
+  </div>
+  <div class="dnc-body">
+
+    <span class="dnc-section-lbl">Her Parents</span>
+    <div class="dnc-confirms">Debra's mother was <b>Ida Harriett Carter</b> (born approximately 1920, age 32 at Debra's birth). Her father was <b>Lee Wilmer Carter</b> (born approximately 1921, age 31 at Debra's birth). She married Donald R. Gholston on October 15, 1971 at age 18.</div>
+
+    <span class="dnc-section-lbl">Her Connection to Our Family — Confirmed by Ancestry ThruLines</span>
+    <div class="dnc-path">
+      <b>Dave Armstrong</b> (~1845, South Carolina — our ancestor, enslaved in Upshur County TX) <span class="arr">+</span> <b>Clarissa Ann Morgan</b> (1848–1918, North Carolina)
+      <br><span class="arr">↓ their daughter ↓</span>
+      <br><b>Ida Armstrong</b> (February 28, 1875 – May 19, 1918, Bellville, Austin County TX) — John Armstrong's sister, Eva's aunt
+      <br><span class="arr">↓ she married ↓</span>
+      <br><b>Louis Twiggs</b> (1875–1921) on September 13, 1899
+      <br><span class="arr">↓ their children ↓</span>
+      <br><b>Ra Twiggs</b> (1896) · <b>Rother Twiggs</b> (1897–1913) · <b>Gertrude Twiggs</b> (1899) · <b>William Franklin Twiggs</b> (1901–1948)
+      <br><span class="arr">↓ one of these Twiggs children had ↓</span>
+      <br><b>Ida Harriett Carter</b> (~1920) — Debra's mother — this link is still being confirmed
+      <br><span class="arr">↓</span>
+      <br><b>Debra Louise Carter Gholston</b> (b. November 9, 1952) ← <b>DNA MATCH · 42 cM</b>
+    </div>
+
+    <div class="dnc-path yours">
+      <b>Your line for comparison:</b><br>
+      Dave Armstrong <span class="arr">→</span> <b>John Armstrong</b> (1872–1911, Bellville TX — killed Fort Worth) <span class="arr">→</span> <b>Eva Armstrong Ballard</b> (1900–1977) <span class="arr">→</span> <b>Margie Nell Ballard</b> (1929–1988) <span class="arr">→</span> <b>Hjordis L. Corbin</b> (1960–) <span class="arr">→</span> <b>Jasmine M. Lee</b>
+    </div>
+
+    <span class="dnc-section-lbl">What This Match Proves</span>
+    <div class="dnc-confirms">Debra's connection through Ida Armstrong independently confirms that <b>Dave Armstrong and Clarissa Ann Morgan</b> are real documented ancestors — exactly as shown in John Armstrong's death certificate. John Armstrong and Ida Armstrong were brother and sister. Their children and grandchildren share DNA with our family 100 years later.</div>
+
+    <span class="dnc-section-lbl">Everyone Who Matches Both You and Debra — Full Shared Match List</span>
+    <div class="dnc-note">Every person below has taken a DNA test on Ancestry and matches both Jasmine M. Lee AND Debra Carter Gholston. The gold rows are direct family members whose relationship to Jasmine is confirmed.</div>
+
+    <table class="shared-table">
+      <thead><tr><th>Name</th><th>Relationship to Jasmine</th><th>Side</th><th>cM to Jasmine</th></tr></thead>
+      <tbody>
+        <tr class="fam"><td><b>Hjordis Corbin</b></td><td class="rel">Mother — direct line</td><td class="side">Maternal</td><td class="cm">3,488 cM · 50%</td></tr>
+        <tr class="fam"><td><b>Deanna Corbin</b></td><td class="rel">Aunt — Margie's daughter</td><td class="side">Maternal</td><td class="cm">1,990 cM · 29%</td></tr>
+        <tr class="fam"><td><b>Sonsorey Corbin</b></td><td class="rel">Aunt — Margie's daughter</td><td class="side">Maternal</td><td class="cm">1,938 cM · 28%</td></tr>
+        <tr class="fam"><td><b>Se'Taun Light</b></td><td class="rel">Aunt — Margie's daughter</td><td class="side">Maternal</td><td class="cm">1,746 cM · 25%</td></tr>
+        <tr class="fam"><td><b>Lauryn Corbin</b></td><td class="rel">1st cousin — Deanna's daughter</td><td class="side">Maternal</td><td class="cm">1,002 cM · 14%</td></tr>
+        <tr class="fam"><td><b>Ronnie Ballard</b> (managed by yumiko_mitchell)</td><td class="rel">Half uncle — Margie's son, different father</td><td class="side">Maternal</td><td class="cm">799 cM · 11%</td></tr>
+        <tr class="fam"><td><b>Mychal Corbin</b></td><td class="rel">Half 1st cousin — Michael Corbin's son</td><td class="side">Maternal</td><td class="cm">456 cM · 7%</td></tr>
+        <tr class="fam"><td><b>Brendyal Corbin</b></td><td class="rel">Half 1st cousin — Michael Corbin's child</td><td class="side">Maternal</td><td class="cm">451 cM · 6%</td></tr>
+        <tr class="fam"><td><b>Sirquincy7661</b> (Quincy Young)</td><td class="rel">Half 1st cousin — Michael Corbin's son</td><td class="side">Maternal</td><td class="cm">388 cM · 6%</td></tr>
+        <tr><td><b>Mariah Herrera</b></td><td class="rel">Half 2nd cousin — Corbin family line</td><td class="side">Maternal</td><td class="cm">241 cM · 3%</td></tr>
+        <tr><td><b>J.N.</b> (managed by Debbie Anderson)</td><td class="rel">2nd cousin 1x removed — Nichols line, 3,287-person tree</td><td class="side">Maternal</td><td class="cm">199 cM · 3%</td></tr>
+        <tr><td><b>D'marje Morris</b></td><td class="rel">Half 2nd cousin — Brendyal Corbin's daughter</td><td class="side">Maternal</td><td class="cm">149 cM · 2%</td></tr>
+        <tr><td><b>Barbara Russell</b></td><td class="rel">Half 2nd cousin 1x removed or 2nd cousin 2x removed</td><td class="side">Maternal</td><td class="cm">100 cM · 1%</td></tr>
+        <tr><td><b>Stacy Garner</b></td><td class="rel">Half 2nd cousin 1x removed or 3rd cousin</td><td class="side">Maternal</td><td class="cm">69 cM</td></tr>
+        <tr><td><b>Preston Ives</b></td><td class="rel">Half 3rd cousin or 3rd cousin 1x removed</td><td class="side">Maternal</td><td class="cm">43 cM</td></tr>
+        <tr><td><b>jrs451</b></td><td class="rel">Half 3rd cousin 1x removed or 3rd cousin 2x removed</td><td class="side">Maternal</td><td class="cm">38 cM</td></tr>
+        <tr><td><b>Gwendolyn McCray</b> (managed by Jamie Sachs, 855-person tree)</td><td class="rel">Half 3rd cousin 1x removed or 3rd cousin 2x removed</td><td class="side">Maternal</td><td class="cm">33 cM</td></tr>
+        <tr><td><b>Cathy Porchia</b></td><td class="rel">Half 3rd cousin 1x removed or 3rd cousin 2x removed</td><td class="side">Maternal</td><td class="cm">32 cM</td></tr>
+        <tr><td><b>Frederick Randle</b></td><td class="rel">Half 3rd cousin 1x removed or 3rd cousin 2x removed</td><td class="side">Maternal</td><td class="cm">29 cM</td></tr>
+        <tr><td><b>kreese180</b> (855-person tree)</td><td class="rel">Half 3rd cousin 1x removed or 4th cousin</td><td class="side">Maternal</td><td class="cm">27 cM</td></tr>
+      </tbody>
+    </table>
+    <div class="dnc-note">The fact that every single shared match — from Jasmine's own mother down to distant 4th cousins — comes back on the <b>maternal side</b> confirms without question that Debra connects through the maternal Armstrong line, not through any paternal line.</div>
+  </div>
+</div>
+
+<!-- ════ KENNETH MAGEE ════ -->
+<div class="dnc">
+  <div class="dnc-top">
+    <div class="dnc-top-info">
+      <span class="dnc-name">Kenneth Magee</span>
+      <span class="dnc-handle">Connected to your tree · Descends through Mary George Ballard (1927–1995)</span>
+      <span class="dnc-rel mat">Maternal Side</span>
+      <span class="dnc-rel bal">Ballard Line</span>
+      <span class="dnc-rel bal">3rd Cousin 2x Removed</span>
+    </div>
+    <div class="dnc-cm-box">
+      <span class="dnc-cm-num">11</span>
+      <span class="dnc-cm-lbl">cM · 1 segment</span>
+    </div>
+  </div>
+  <div class="dnc-body">
+
+    <span class="dnc-section-lbl">Common Ancestors — Confirmed by Ancestry ThruLines</span>
+    <div class="dnc-confirms">Ancestry ThruLines identifies <b>Rev. George W. Ballard (1861–1937)</b> and <b>Mary Ann Edwards Ballard (1870–1949)</b> as the common ancestors between Jasmine and Kenneth Magee.</div>
+
+    <span class="dnc-section-lbl">Kenneth's Connection Path</span>
+    <div class="dnc-path">
+      <b>Rev. George W. Ballard</b> (Sep 4, 1861 – Oct 24, 1937, Waco, McLennan County TX)
+      <span class="arr">+</span> <b>Mary Ann Edwards Ballard</b> (Nov 4, 1870 – Mar 19, 1949, Fort Worth TX)
+      <br><span class="arr">↓ their son ↓</span>
+      <br><b>Moses Ballard Sr.</b> (Sep 22, 1903 – Sep 1, 1988, Tarrant County TX)
+      <span class="arr">+</span> <b>Lillie Rudd Ballard</b> (1907 – Jan 5, 1977, Euless, Tarrant County TX)
+      <br><span class="arr">↓ their daughter ↓</span>
+      <br><b>Mary George Ballard</b> (Nov 2, 1927 – Dec 1995, Dallas, Texas) — <i>no known children</i>
+      <br><span class="arr">↓ Kenneth likely connects through a sibling of Mary George ↓</span>
+      <br><b>Kenneth Magee</b> ← <b>DNA MATCH · 11 cM</b>
+    </div>
+
+    <div class="dnc-path yours">
+      <b>Your line for comparison:</b><br>
+      Rev. George W. Ballard <span class="arr">→</span> <b>James Wilson Ballard Sr.</b> (Aug 26, 1897 – Mar 13, 1953) <span class="arr">→</span> <b>Margie Nell Ballard</b> (Mar 13, 1929 – Oct 15, 1988) <span class="arr">→</span> <b>Hjordis L. Corbin</b> (1960–) <span class="arr">→</span> <b>Jasmine M. Lee</b>
+    </div>
+
+    <span class="dnc-section-lbl">The Moses Ballard Sr. Family — Dallas, Texas</span>
+    <div class="dnc-confirms">Moses Ballard Sr. lived in <b>Dallas, Dallas County, Texas</b> — not Fort Worth or Waco. All of his children were born in Dallas. By the end of his life the family had moved to Tarrant County (Fort Worth metro). His wife Lillie Rudd died in Euless, Tarrant County in 1977. Moses died in Tarrant County in 1988.</div>
+    <table class="shared-table">
+      <thead><tr><th>Name</th><th>Born</th><th>Died</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><b>Moses Ballard Jr.</b></td><td class="rel">1925</td><td class="rel">2003</td><td class="rel">Son of Moses Sr. and Lillie Rudd</td></tr>
+        <tr><td><b>Freddie Eugene Ballard</b></td><td class="rel">1926</td><td class="rel">2005</td><td class="rel">Teresa Ballard's grandfather — confirmed DNA line</td></tr>
+        <tr><td><b>Mary George Ballard</b></td><td class="rel">Nov 2, 1927, Dallas TX</td><td class="rel">Dec 1995</td><td class="rel">No known children · Kenneth Magee's connection point</td></tr>
+        <tr><td><b>Benjamion Harrison Ballard</b></td><td class="rel">Jan 22, 1929, Dallas TX</td><td class="rel">2001</td><td class="rel">Full sibling</td></tr>
+        <tr><td><b>Blanche Ree Ballard</b></td><td class="rel">Dec 16, 1930, Dallas TX</td><td class="rel">2021</td><td class="rel">Most recently deceased — obituary may name living children</td></tr>
+        <tr><td><b>Lester Ray Ballard</b></td><td class="rel">Mar 31, 1932, Dallas TX</td><td class="rel">1998</td><td class="rel">Full sibling</td></tr>
+        <tr><td><b>Donnell Ballard Sr.</b></td><td class="rel">Feb 8, 1934</td><td class="rel">Aug 25, 1995, Tarrant County TX</td><td class="rel">Full sibling</td></tr>
+        <tr style="background:var(--rust-bg);"><td><b>Charles Herbert Ballard</b></td><td class="rel">Sep 23, 1935</td><td class="rel">Jul 1991</td><td class="rel" style="color:var(--rust);">HALF-SIBLING — different mother than all others above</td></tr>
+      </tbody>
+    </table>
+
+    <span class="dnc-section-lbl">People Who Match Both You and Kenneth Magee</span>
+    <table class="shared-table">
+      <thead><tr><th>Name</th><th>Relationship to Jasmine</th><th>Side</th><th>cM to Jasmine</th></tr></thead>
+      <tbody>
+        <tr class="fam"><td><b>Hjordis Corbin</b></td><td class="rel">Mother</td><td class="side">Maternal</td><td class="cm">3,488 cM</td></tr>
+        <tr class="fam"><td><b>Deanna Corbin</b></td><td class="rel">Aunt — Margie's daughter</td><td class="side">Maternal</td><td class="cm">1,990 cM</td></tr>
+        <tr class="fam"><td><b>Sonsorey Corbin</b></td><td class="rel">Aunt — Margie's daughter</td><td class="side">Maternal</td><td class="cm">1,938 cM</td></tr>
+        <tr class="fam"><td><b>Se'Taun Light</b></td><td class="rel">Aunt — Margie's daughter</td><td class="side">Maternal</td><td class="cm">1,746 cM</td></tr>
+        <tr class="fam"><td><b>Ronnie Ballard</b></td><td class="rel">Half uncle — Margie's son</td><td class="side">Maternal</td><td class="cm">799 cM</td></tr>
+        <tr class="fam"><td><b>Mychal Corbin</b></td><td class="rel">Half 1st cousin</td><td class="side">Maternal</td><td class="cm">456 cM</td></tr>
+        <tr class="fam"><td><b>Brendyal Corbin</b></td><td class="rel">Half 1st cousin</td><td class="side">Maternal</td><td class="cm">451 cM</td></tr>
+        <tr class="fam"><td><b>Quincy Young</b></td><td class="rel">Half 1st cousin</td><td class="side">Maternal</td><td class="cm">388 cM</td></tr>
+        <tr><td><b>yumiko_mitchell</b></td><td class="rel">1st cousin 2x removed — Ronnie's line, 453-person tree</td><td class="side">Maternal</td><td class="cm">252 cM</td></tr>
+        <tr><td><b>Mariah Herrera</b></td><td class="rel">Half 2nd cousin — Corbin line, 84-person tree</td><td class="side">Maternal</td><td class="cm">241 cM</td></tr>
+        <tr><td><b>J.N.</b> (managed by Debbie Anderson)</td><td class="rel">2nd cousin 1x removed — Nichols line, 3,287-person tree</td><td class="side">Maternal</td><td class="cm">199 cM</td></tr>
+        <tr><td><b>D'marje Morris</b></td><td class="rel">Half 2nd cousin</td><td class="side">Maternal</td><td class="cm">149 cM</td></tr>
+        <tr><td><b>Teresa Ballard</b></td><td class="rel">Half 3rd cousin — Moses Ballard Sr. line, 6-person tree</td><td class="side">Maternal</td><td class="cm">54 cM</td></tr>
+        <tr><td><b>lisaromona67</b></td><td class="rel">3rd cousin 1x removed or half 3rd cousin</td><td class="side">Maternal</td><td class="cm">45 cM</td></tr>
+        <tr><td><b>Barbara Tennell</b></td><td class="rel">3rd cousin 1x removed, 404-person tree</td><td class="side">Maternal</td><td class="cm">41 cM</td></tr>
+        <tr><td><b>mkbrett1</b></td><td class="rel">4th cousin or half 3rd cousin 1x removed, 23-person tree</td><td class="side">Maternal</td><td class="cm">40 cM</td></tr>
+        <tr><td><b>Tracy Moore</b></td><td class="rel">Half 3rd cousin 1x removed or 4th cousin, 163-person tree</td><td class="side">Maternal</td><td class="cm">34 cM</td></tr>
+        <tr><td><b>johnsonar63</b></td><td class="rel">Half 3rd cousin 1x removed or 4th cousin, 44-person tree</td><td class="side">Maternal</td><td class="cm">27 cM</td></tr>
+        <tr><td><b>D.C.</b> (managed by Relative_Race_2)</td><td class="rel">4th cousin or half 3rd cousin 1x removed, 83-person tree</td><td class="side">Unassigned</td><td class="cm">26 cM</td></tr>
+        <tr><td><b>dlcarral</b></td><td class="rel">4th cousin or half 3rd cousin 1x removed, 13-person tree</td><td class="side">Unassigned</td><td class="cm">26 cM</td></tr>
+        <tr><td><b>Wyonda Hill</b></td><td class="rel">3rd cousin 2x removed or half 3rd cousin 1x removed, 1-person tree</td><td class="side">Maternal</td><td class="cm">26 cM</td></tr>
+        <tr><td><b>Jordan McCloud Tennell-Miles</b></td><td class="rel">4th cousin or half 3rd cousin 1x removed</td><td class="side">Maternal</td><td class="cm">23 cM</td></tr>
+        <tr><td><b>O.S.</b> (managed by mkbrett1)</td><td class="rel">Half 3rd cousin 1x removed or 3rd cousin 2x removed, 23-person tree</td><td class="side">Maternal</td><td class="cm">20 cM</td></tr>
+        <tr><td><b>Judith Scott</b></td><td class="rel">Half 3rd cousin 1x removed or 3rd cousin 2x removed, 18-person tree</td><td class="side">Maternal</td><td class="cm">19 cM</td></tr>
+        <tr><td><b>Derion Bruton</b> (managed by Kayla Bruton)</td><td class="rel">Half 3rd cousin 1x removed or 4th cousin, 192-person tree</td><td class="side">Maternal</td><td class="cm">19 cM</td></tr>
+        <tr><td><b>Debbie Young</b></td><td class="rel">4th cousin or half 3rd cousin 1x removed, 248-person tree</td><td class="side">Maternal</td><td class="cm">19 cM</td></tr>
+        <tr><td><b>Maurice Simpson</b></td><td class="rel">Half 3rd cousin 1x removed or 3rd cousin 2x removed, 8-person tree</td><td class="side">Maternal</td><td class="cm">19 cM</td></tr>
+        <tr><td><b>Taylor Mosley</b></td><td class="rel">Half 3rd cousin 1x removed or 4th cousin</td><td class="side">Maternal</td><td class="cm">19 cM</td></tr>
+        <tr><td><b>jmo0714lmt</b></td><td class="rel">4th cousin or half 3rd cousin 1x removed, 4-person tree</td><td class="side">Maternal</td><td class="cm">18 cM</td></tr>
+        <tr><td><b>Darryl Taplin</b></td><td class="rel">Half 3rd cousin 1x removed or 4th cousin, 3-person tree</td><td class="side">Maternal</td><td class="cm">17 cM</td></tr>
+        <tr><td><b>Jalyn Daniels</b></td><td class="rel">Half 3rd cousin 1x removed or 4th cousin</td><td class="side">Maternal</td><td class="cm">17 cM</td></tr>
+        <tr><td><b>elijah gibson</b></td><td class="rel">4th cousin or half 3rd cousin 1x removed</td><td class="side">Maternal</td><td class="cm">16 cM</td></tr>
+        <tr><td><b>Enjoli Page Filemu</b></td><td class="rel">4th cousin or half 3rd cousin 1x removed, 26-person tree</td><td class="side">Maternal</td><td class="cm">16 cM</td></tr>
+        <tr><td><b>Marion Elarms</b></td><td class="rel">4th cousin or half 3rd cousin 1x removed, 12-person tree</td><td class="side">Maternal</td><td class="cm">16 cM</td></tr>
+        <tr><td><b>Kimberly Brooks</b></td><td class="rel">Half 3rd cousin 1x removed or 4th cousin, 164-person tree</td><td class="side">Maternal</td><td class="cm">15 cM</td></tr>
+        <tr><td><b>sharonjmw</b></td><td class="rel">Half 3rd cousin 1x removed or 3rd cousin 2x removed</td><td class="side">Maternal</td><td class="cm">15 cM</td></tr>
+        <tr><td><b>Adrienna Britt</b></td><td class="rel">4th cousin or half 3rd cousin 1x removed, 4-person tree</td><td class="side">Maternal</td><td class="cm">15 cM</td></tr>
+        <tr><td><b>Shawn Stewart</b></td><td class="rel">4th cousin or half 3rd cousin 1x removed, 2-person tree</td><td class="side">Maternal</td><td class="cm">15 cM</td></tr>
+        <tr><td><b>J Calhoun</b> (managed by Angee Daniel)</td><td class="rel">4th cousin or half 3rd cousin 1x removed, 54-person tree</td><td class="side">Maternal</td><td class="cm">15 cM</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════ TERESA BALLARD ════ -->
+<div class="dnc">
+  <div class="dnc-top">
+    <div class="dnc-top-info">
+      <span class="dnc-name">Teresa Ballard</span>
+      <span class="dnc-handle">Joined Ancestry November 19, 2019 · Last signed in January 28, 2026 · Group: Moses Ballard · 6-person tree</span>
+      <span class="dnc-rel mat">Maternal Side</span>
+      <span class="dnc-rel bal">Ballard Line — Strongest Match</span>
+      <span class="dnc-rel bal">Half 3rd Cousin or 3rd Cousin 1x Removed</span>
+    </div>
+    <div class="dnc-cm-box">
+      <span class="dnc-cm-num">54</span>
+      <span class="dnc-cm-lbl">cM · 4 segments</span>
+    </div>
+  </div>
+  <div class="dnc-body">
+
+    <span class="dnc-section-lbl">Teresa's Connection Path — Confirmed by Ancestry ThruLines</span>
+    <div class="dnc-path">
+      <b>Rev. George W. Ballard</b> (1861–1937) <span class="arr">+</span> <b>Mary Ann Edwards</b> (1870–1949)
+      <br><span class="arr">↓ their son ↓</span>
+      <br><b>Moses Ballard Sr.</b> (1903–1988)
+      <br><span class="arr">↓ his son ↓</span>
+      <br><b>Freddie Eugene Ballard</b> (1926–2005)
+      <br><span class="arr">↓ his son ↓</span>
+      <br><b>Moses Ballard Jr.</b> (1925–2003)
+      <br><span class="arr">↓</span>
+      <br><b>Teresa Ballard</b> ← <b>DNA MATCH · 54 cM · 4 segments</b>
+    </div>
+
+    <div class="dnc-path yours">
+      <b>Your line for comparison:</b><br>
+      Rev. George W. Ballard <span class="arr">→</span> <b>James Wilson Ballard Sr.</b> (1897–1953) <span class="arr">→</span> <b>Margie Nell Ballard</b> (1929–1988) <span class="arr">→</span> <b>Hjordis L. Corbin</b> <span class="arr">→</span> <b>Jasmine M. Lee</b>
+    </div>
+
+    <span class="dnc-section-lbl">What This Match Proves</span>
+    <div class="dnc-confirms">Teresa Ballard is the strongest confirmed match through the <b>Rev. George W. Ballard and Mary Ann Edwards</b> line. Her 54 cM across 4 segments is consistent with a 3rd cousin 1x removed relationship, which matches exactly the predicted connection through Moses Ballard Sr. Together with Kenneth Magee's match (also through Moses Ballard Sr.), this branch of the Ballard family tree is confirmed by two independent living DNA tests.</div>
+
+    <span class="dnc-section-lbl">People Who Match Both You and Teresa Ballard</span>
+    <table class="shared-table">
+      <thead><tr><th>Name</th><th>Relationship to Jasmine</th><th>Side</th><th>cM to Jasmine</th></tr></thead>
+      <tbody>
+        <tr class="fam"><td><b>Hjordis Corbin</b></td><td class="rel">Mother</td><td class="side">Maternal</td><td class="cm">3,488 cM</td></tr>
+        <tr class="fam"><td><b>Deanna Corbin</b></td><td class="rel">Aunt</td><td class="side">Maternal</td><td class="cm">1,990 cM</td></tr>
+        <tr class="fam"><td><b>Sonsorey Corbin</b></td><td class="rel">Aunt</td><td class="side">Maternal</td><td class="cm">1,938 cM</td></tr>
+        <tr class="fam"><td><b>Se'Taun Light</b></td><td class="rel">Aunt</td><td class="side">Maternal</td><td class="cm">1,746 cM</td></tr>
+        <tr class="fam"><td><b>Ronnie Ballard</b></td><td class="rel">Half uncle</td><td class="side">Maternal</td><td class="cm">799 cM</td></tr>
+        <tr class="fam"><td><b>Mychal Corbin</b></td><td class="rel">Half 1st cousin</td><td class="side">Maternal</td><td class="cm">456 cM</td></tr>
+        <tr class="fam"><td><b>Brendyal Corbin</b></td><td class="rel">Half 1st cousin</td><td class="side">Maternal</td><td class="cm">451 cM</td></tr>
+        <tr class="fam"><td><b>Quincy Young</b></td><td class="rel">Half 1st cousin</td><td class="side">Maternal</td><td class="cm">388 cM</td></tr>
+        <tr><td><b>Mariah Herrera</b></td><td class="rel">Half 2nd cousin, 84-person tree</td><td class="side">Maternal</td><td class="cm">241 cM</td></tr>
+        <tr><td><b>J.N.</b> (Debbie Anderson)</td><td class="rel">2nd cousin 1x removed — Nichols line</td><td class="side">Maternal</td><td class="cm">199 cM</td></tr>
+        <tr><td><b>D'marje Morris</b></td><td class="rel">Half 2nd cousin</td><td class="side">Maternal</td><td class="cm">149 cM</td></tr>
+        <tr><td><b>Barbara Tennell</b></td><td class="rel">3rd cousin 1x removed, 404-person tree</td><td class="side">Maternal</td><td class="cm">41 cM</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════ JAHNA BRADSHAW ════ -->
+<div class="dnc">
+  <div class="dnc-top">
+    <div class="dnc-top-info">
+      <span class="dnc-name">Jahna Bradshaw</span>
+      <span class="dnc-handle">Ancestry tree has 79 people · Descends through Lois Marie Ballard Bradshaw</span>
+      <span class="dnc-rel mat">Maternal Side</span>
+      <span class="dnc-rel arm">Armstrong / Eva Ballard Line</span>
+      <span class="dnc-rel arm">2nd Cousin 1x Removed</span>
+    </div>
+    <div class="dnc-cm-box">
+      <span class="dnc-cm-num">41</span>
+      <span class="dnc-cm-lbl">cM · 2 segments</span>
+    </div>
+  </div>
+  <div class="dnc-body">
+
+    <span class="dnc-section-lbl">Jahna's Connection Path</span>
+    <div class="dnc-path">
+      <b>Eva Armstrong Ballard</b> (June 27, 1900 – November 24, 1977)
+      <br><span class="arr">↓ her daughter ↓</span>
+      <br><b>Lois Marie Ballard</b> (May 24, 1931 – living) — born San Antonio, Bexar County, Texas — Eva's fourth child, the first born in San Antonio
+      <br>married <b>Warren Bradshaw</b>
+      <br><span class="arr">↓</span>
+      <br><b>Jahna Bradshaw</b> ← <b>DNA MATCH · 41 cM · 2 segments</b>
+    </div>
+
+    <div class="dnc-path yours">
+      <b>Your line for comparison:</b><br>
+      Eva Armstrong Ballard <span class="arr">→</span> <b>Margie Nell Ballard</b> (1929–1988) <span class="arr">→</span> <b>Hjordis L. Corbin</b> <span class="arr">→</span> <b>Jasmine M. Lee</b>
+    </div>
+
+    <span class="dnc-section-lbl">What This Match Proves</span>
+    <div class="dnc-confirms">Jahna Bradshaw descends from <b>Lois Marie Ballard</b> — Eva's daughter born in San Antonio in 1931 — confirming Eva Armstrong Ballard as a real documented ancestor with living descendants across multiple children. Lois was the sister of Margie Nell Ballard. This match confirms the sibling relationship between Margie and Lois through living DNA.</div>
+  </div>
+</div>
+
+  <div class="card-box green" style="margin:32px 0;">
+    <span class="card-label">What All Four Matches Prove Together</span>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.8;color:var(--ink2);margin-top:10px;">
+    These four confirmed living DNA matches — through the Armstrong line (Debra Gholston), the Moses Ballard Sr. line twice (Kenneth Magee and Teresa Ballard), and Eva Ballard's other daughter Lois (Jahna Bradshaw) — verify three separate branches of the family tree through DNA that no document alone can provide.
+    <br><br>
+    <b>Dave Armstrong and Clarissa Ann Morgan were real people with real descendants.</b> Debra Gholston's match proves it through Ida Armstrong's Twiggs grandchildren.
+    <br><br>
+    <b>Rev. George W. Ballard and Mary Ann Edwards were real people with real descendants.</b> Teresa Ballard and Kenneth Magee both prove it through Moses Ballard Sr.'s Dallas branch.
+    <br><br>
+    <b>Eva Armstrong Ballard's children all connect back to the same woman.</b> Jahna Bradshaw proves it through Lois. Every Corbin aunt and cousin proves it through Margie.
+    <br><br>
+    The documents and the DNA agree. That is as confirmed as genealogy gets.
+    </p>
+  </div>
+
+
+    <span class="chd">Ancestral Journeys — Compare Your DNA Regions</span>
   <div class="cttl">Where This Family Comes From</div>
   <div class="prose"><p>AncestryDNA assigns each person to ancestral regions based on their DNA. Below is a comparison across six family members — showing which regions are shared and which are unique to each line. Regions marked <strong>Assigned</strong> appear in that person's DNA results.</p></div>
 
@@ -4189,191 +4332,10 @@ function loadPhoto(boxId,event){
 </script>
 
 <!-- ═══ MIGRATION MAP ═══ -->
-<div class="sec" id="tab-migration">
-<div class="shdr">
-  <span class="sey">From South Carolina to California · Five Generations · Two Centuries</span>
-  <span class="sttl">The <em>Migration Map</em></span>
-  <span class="ssub">Click any stop to read the family's story at that location</span>
-  <div class="srul"><div class="sdia"></div></div>
-</div>
-<div class="ctr">
 
-
-
-<style>
-#migmap{width:100%;height:520px;border-radius:8px;border:2px solid var(--border2);box-shadow:0 4px 20px var(--shadow);margin:20px 0;}
-.mig-popup h3{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--ink);margin:0 0 4px;}
-.mig-popup .dates{font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:1px;color:var(--gold);margin-bottom:8px;}
-.mig-popup p{font-family:'Cormorant Garamond',serif;font-size:14px;line-height:1.6;color:var(--ink2);margin:0;}
-.mig-legend{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0 24px;}
-.mig-leg-item{display:flex;align-items:center;gap:8px;font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:1px;color:var(--ink2);}
-.mig-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;}
-</style>
-
-<div id="migmap2" style="width:100%;height:500px;border-radius:8px;border:1px solid var(--border2);margin:20px 0;"></div>
-<div class="mig-legend">
-  <div class="mig-leg-item"><div class="mig-dot" style="background:#c0392b;"></div>Enslaved Origins</div>
-  <div class="mig-leg-item"><div class="mig-dot" style="background:#e67e22;"></div>Post-Emancipation</div>
-  <div class="mig-leg-item"><div class="mig-dot" style="background:#2d5a9e;"></div>Migration North & West</div>
-  <div class="mig-leg-item"><div class="mig-dot" style="background:#1a6b4a;"></div>Final Home</div>
-</div>
-
-<script>
-function initMigMap(){
-  var el=document.getElementById('migmap2');
-  if(!el||el._init)return;
-  el._init=true;
-  var stops = [
-    {lat:34.2,lng:-81.6,color:"#c0392b",size:16,name:"Newberry County, South Carolina",dates:"ca. 1780s – ca. 1807",story:"Patience — your earliest confirmed ancestor — was enslaved here by the Waldrop family. Francis Davenport Sr. gave her to his daughter Patty Waldrop in 1795 with the words 'with her increase' — meaning all of Patience's future children were automatically enslaved. Her daughter Clarissa was born here. DNA confirms 46 descendants of Clarissa still living today."},
-    {lat:32.3,lng:-89.8,color:"#c0392b",size:14,name:"Mississippi",dates:"ca. 1807 – ca. 1840s",story:"Clarissa was brought to Mississippi as part of the Waldrop family migration. The 1839 Waldrop estate deed in Rankin County, Mississippi names Clarissa and her siblings as they were distributed among the heirs. The path from Clarissa to Joseph Nichols — your 3rd great-grandfather — is still being researched but confirmed by DNA."},
-    {lat:29.95,lng:-96.16,color:"#e67e22",size:18,name:"Bellville, Austin County, Texas",dates:"1848 – ca. 1910",story:"Easter Bell Nichols was born enslaved here on July 4, 1848, on the John Nichols plantation on Piney Creek. After emancipation, she married Joseph Nichols and raised 12 children. The family held two acres of land on the J. Nichols Survey for 141 years — until a 2006 tax sale. This is where the Armstrong family also lived: Dave Armstrong married Clarissa Ann Morgan here in 1868. John Armstrong, Eva's father, was born here in 1872."},
-    {lat:32.75,lng:-97.33,color:"#2d5a9e",size:16,name:"Fort Worth, Tarrant County, Texas",dates:"ca. 1910 – ca. 1943",story:"Eva Armstrong came to Fort Worth after her father John was killed in San Antonio in 1911. She met and married James Wilson Ballard Sr. By 1924 they were living at 905 East 2nd Street — a Black working-class duplex row now considered eligible for the National Register of Historic Places. Margie Nell Ballard was born here on March 13, 1929. Joshua Armstrong and Lula Lott also settled in Fort Worth. Rev. George W. Ballard and Mary Ann Edwards are buried here."},
-    {lat:29.42,lng:-98.49,color:"#2d5a9e",size:18,name:"San Antonio, Bexar County, Texas",dates:"1944 – 1961",story:"Eva Armstrong Ballard purchased 150 Paul Street in April 1944 and built a life on the East Side. She operated The Spot at 1501 Burnet Street. Her son James Wilson Ballard Jr. and grandson Leroy 'Icecream' Armstrong Jr. were federal gambling agents together under Valmo Bellinger. In February 1954, Officer O.R. Graves shot and killed John Wesley Caldwell at The Spot, planted a knife on his body, and was acquitted in 45 minutes. Eva, James Jr., and Margie were all named in the investigation. Eva sold 150 Paul Street in January 1957."},
-    {lat:33.45,lng:-112.07,color:"#2d5a9e",size:12,name:"Phoenix, Arizona (Interim)",dates:"ca. 1957 – ca. 1961",story:"Some family members passed through the Southwest during the California migration. Research is ongoing on exact stops and dates between San Antonio and Orange County."},
-    {lat:33.75,lng:-117.87,color:"#1a6b4a",size:20,name:"Orange County, California",dates:"1961 – Present",story:"Margie Nell Ballard settled at 622 South Townsend Street in Santa Ana, Orange County. She registered to vote as a Democrat in 1964. Norman Caswell Corbin died here in April 1974 — the Corbin Community Center at 2215 McFadden Avenue, Santa Ana was named in his honor. Eva Armstrong Ballard died in Garden Grove, Orange County on November 24, 1977 as Eva Green. Margie died in Orange County on October 15, 1988. Jasmine M. Lee was born here on January 25, 1982."},
-  ];
-
-  var map = L.map('migmap2', {scrollWheelZoom:false}).setView([34,-95],4);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-    attribution:'© OpenStreetMap contributors',maxZoom:18
-  }).addTo(map);
-
-  // Draw migration path
-  var path = stops.map(function(s){return [s.lat,s.lng];});
-  L.polyline(path,{color:'#2d5a9e',weight:2.5,opacity:0.5,dashArray:'8,6'}).addTo(map);
-
-  stops.forEach(function(s,i){
-    var icon = L.divIcon({
-      className:'',
-      html:'<div style="width:'+s.size+'px;height:'+s.size+'px;border-radius:50%;background:'+s.color+';border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:'+(s.size>14?'10':'8')+'px;">'+(i+1)+'</div>',
-      iconSize:[s.size,s.size],
-      iconAnchor:[s.size/2,s.size/2]
-    });
-    var popup = '<div class="mig-popup"><h3>'+s.name+'</h3><div class="dates">'+s.dates+'</div><p>'+s.story+'</p></div>';
-    L.marker([s.lat,s.lng],{icon:icon}).addTo(map).bindPopup(popup,{maxWidth:340,className:'mig-pop'});
-  });
-}
-initMigMap();
-</script>
-
-<div class="prose">
-  <p>This map traces your family's documented journey from the 1780s through the present day — from the Waldrop plantation in Newberry County, South Carolina, through the Mississippi Delta, to the Piney Creek land in Bellville, Texas where Easter Bell Nichols was born enslaved and stayed free, through Fort Worth and San Antonio, and finally to Orange County, California where Margie Nell Ballard built the household that continues today.</p>
-  <p>Click any numbered marker to read the family's story at that location. The dashed line shows the migration path across two centuries and five generations.</p>
-</div>
-
-</div>
-</div>
 
 <!-- ═══ PRIMARY SOURCES ═══ -->
-<div class="sec" id="tab-sources">
-<div class="shdr">
-  <span class="sey">Original Documents · Newspaper Articles · Death Certificates · Census Records</span>
-  <span class="sttl"><em>Primary Sources</em></span>
-  <span class="ssub">Every document that proves this family existed and what happened to them</span>
-  <div class="srul"><div class="sdia"></div></div>
-</div>
-<div class="ctr">
 
-<style>
-.src-filter{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 28px;}
-.src-btn{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:400;letter-spacing:2px;text-transform:uppercase;padding:7px 14px;border:1px solid var(--border2);border-radius:20px;background:none;color:var(--ink3);cursor:pointer;transition:all .15s;}
-.src-btn:hover,.src-btn.active{background:var(--gold);border-color:var(--gold);color:#fff;}
-.src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin:20px 0;}
-.src-card{background:var(--card);border:1px solid var(--border);border-radius:6px;overflow:hidden;box-shadow:0 2px 10px var(--shadow2);transition:transform .2s,box-shadow .2s;}
-.src-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px var(--shadow);}
-.src-img{width:100%;height:180px;background:var(--bg2);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);overflow:hidden;position:relative;}
-.src-img img{width:100%;height:100%;object-fit:cover;}
-.src-img-placeholder{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);text-align:center;padding:20px;}
-.src-body{padding:14px 16px;}
-.src-type{font-family:'Josefin Sans',sans-serif;font-size:8px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;display:block;}
-.src-title{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--ink);margin-bottom:4px;display:block;}
-.src-date{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1px;color:var(--ink3);margin-bottom:8px;display:block;}
-.src-desc{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ink2);line-height:1.55;}
-.src-expand{display:block;margin-top:10px;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1px;color:var(--gold);cursor:pointer;background:none;border:none;padding:0;text-align:left;}
-.src-transcript{display:none;margin-top:10px;padding:10px 12px;background:var(--bg2);border-radius:4px;font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ink2);line-height:1.65;border-left:3px solid var(--gold);}
-.src-transcript.open{display:block;}
-.src-add-note{background:var(--gold-bg2);border:2px dashed var(--border2);border-radius:6px;padding:24px;text-align:center;margin:24px 0;}
-.src-add-note p{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--ink2);margin-bottom:8px;}
-.src-add-note a{color:var(--gold);font-weight:600;}
-</style>
-
-<div class="prose"><p>These are the actual primary source documents that confirm your family history. Every name, date, and story on this website traces back to one of these records. Click "Read Transcription" on any document to see the exact text.</p></div>
-
-<div class="src-filter">
-  <button class="src-btn active" onclick="filterSrc('all',this)">All Documents</button>
-  <button class="src-btn" onclick="filterSrc('newspaper',this)">Newspaper Articles</button>
-  <button class="src-btn" onclick="filterSrc('death',this)">Death Certificates</button>
-  <button class="src-btn" onclick="filterSrc('census',this)">Census Records</button>
-  <button class="src-btn" onclick="filterSrc('legal',this)">Legal Records</button>
-  <button class="src-btn" onclick="filterSrc('military',this)">Military Records</button>
-</div>
-
-<div class="src-grid" id="srcgrid"></div>
-
-<div class="src-add-note">
-  <p>Have a document, photograph, or newspaper clipping related to this family? Send it to be added to this archive.</p>
-  <p><a href="mailto:jlee@dockellisfoundation.com">jlee@dockellisfoundation.com</a></p>
-</div>
-
-<script>
-var SOURCES = [
-  {type:"newspaper",title:"GAMBLING PAYOFFS BARED",date:"San Antonio Express · October 11, 1953 · Page 1",who:"Leroy Armstrong Jr. / James Ballard Jr.",desc:"Front-page exposé launching the Caldwell case. Publishes Leroy Armstrong Jr.'s full arrest record. Names Armstrong and Eblen Isaac as the two gamblers. KTSA radio recordings described.",transcript:"Officer O.R. Graves, working with San Antonio Express reporter Howard Hunt and KTSA Radio, had spent four nights making secret recordings with a microphone hidden under the dash of his patrol car. Two East Side gamblers — Leroy 'Ice Cream' Armstrong and Eblen Isaac — were recorded allegedly arranging police protection payments. The full arrest record of Leroy Armstrong Jr. was published: 9 arrests from October 1946 to June 1953, all gambling related.",img:""},
-  {type:"newspaper",title:"MAN SLAIN BY S.A. COP",date:"San Antonio News · February 23, 1954 · Page 1",who:"John Wesley Caldwell / Eva Ballard / O.R. Graves",desc:"First breaking news — the day of the shooting. Caldwell's photograph published. Eva Ballard named as sub-lessee of The Spot.",transcript:"Patrolman O.R. Graves, who gained local fame when he tape-recorded bribe overtures made to him by gambling interests several months ago, Tuesday shot and killed a man he claimed attacked him with a knife. Killed was John W. (Jackhouse) Caldwell, 38. The shooting took place at 'The Spot' cafe at N. New Braunfels Ave. and Burnet St.",img:""},
-  {type:"newspaper",title:"COP COVERUPS ADMITTED IN STATEMENTS",date:"San Antonio Light · March 8, 1954 · Page 7",who:"Eva Ballard / Margie Ballard / Officers Hubble & Siebrecht",desc:"MOST IMPORTANT ARTICLE. Full sworn statements of Hubble and Siebrecht published. Margie Ballard named directly. Eva Ballard named as proprietor.",transcript:"Officer Siebrecht stated: 'I then heard something fall on the floor and when it fell, I saw a knife lying on the floor below Caldwell's right hand. He started to put the knife on the floor and then he said: I'll say he tried to cut me.' Detective Hubble stated: 'I reached in my pocket. The next thing I could think of was the knife I had found earlier that night. I handed it to Graves.' Margie Ballard is named: 'The only thing I could possibly add to it was that I did tell Margie Ballard the first she could do was either make the man quit bootlegging or fire him, one of the two.'",img:""},
-  {type:"newspaper",title:"COPS, WITNESSES FACING JURY — JAMES BALLARD PHOTOGRAPH",date:"San Antonio Light · March 10, 1954 · Page 1",who:"James Wilson Ballard Jr. / Sam Eanes",desc:"Front-page photograph of James Wilson Ballard Jr. Caption: 'They helped the district attorney break case.' FBI civil rights investigation announced.",transcript:"Caption under photograph: 'SAM EANES (L) AND JAMES BALLARD — They helped the district attorney break case.' The article notes that FBI authorities in Washington were considering civil rights charges in connection with the Caldwell killing. Charges of violation of civil rights were being considered by FBI authorities.",img:""},
-  {type:"newspaper",title:"FREED GRAVES TO COME HOME — NOT GUILTY",date:"San Antonio Light · January 6, 1955 · Page 1",who:"O.R. Graves / John Wesley Caldwell",desc:"THE VERDICT. Not guilty. 45 minutes. Graves weeps. His exact words after acquittal.",transcript:"C.R. Graves was a free man today. The youthful ex-policeman was handed a new lease on life with no strings attached by an Atascosa County jury here last night. It found Graves not guilty as charged for the fatal shooting of Johnny 'Jackhouse' Caldwell last Feb. 23 at the Spot cafe, 1501 Burnet, San Antonio. The jury deliberated only 45 minutes. Graves said: 'I want to live in this part of the country. This is where I belong.'",img:""},
-  {type:"newspaper",title:"RACKETEERS USE GRAVES CASE",date:"San Antonio Express-News · March 21, 1954 · Page 1",who:"East Side community / Valmo Bellinger",desc:"Front-page editorial. Underworld using the Caldwell case to destabilize police. 'Wide Open Town' sought as result.",transcript:"Ever since John G. Caldwell, 58-year-old East Side Negro, was killed Feb. 23 by a pistol blast fired by Police Officer O.R. Graves, the San Antonio Express and San Antonio News have sought to make clear the situation surrounding the incident. San Antonio racketeers, chafing under tight police reins, are pinning their hopes for a wide open town on the Johnny Caldwell murder case.",img:""},
-  {type:"legal",title:"City Council Minutes — Winton Ordered False Report",date:"City of San Antonio · September 9, 1954",who:"City Manager Ralph Winton / John Wesley Caldwell",desc:"GOVERNMENT DOCUMENT. Councilman A.C. White's letter confirming City Manager Winton personally ordered false report on Caldwell killing. Winton was fired.",transcript:"Councilman A.C. White stated: 'Mr. Winton also violated both the intent and provisions of the city charter when he personally intervened in a police matter and caused to be made a false and spurious report on the killing by a police officer of John W. Caldwell. This false report was made and accepted as official on direct orders and with full knowledge of Mr. Winton.'",img:""},
-  {type:"legal",title:"1957 Estate Affidavit — 150 Paul Street",date:"Bexar County, Texas · Document No. 86821 · January 22, 1957",who:"Eva Ballard / Margie Corbin / James Ballard Jr. / Leroy Armstrong / Minor Green",desc:"Property settlement for 150 Paul Street. All of Eva's children named as grantees. Leroy Armstrong Jr. and Minor A. Green listed as grantors — confirming both had legal interest in the property.",transcript:"Grantors: Ballard James W Estate, Armstrong Leroy, Ballard James W Jr Estate, Green A. Grantees: Ballard Chas R, Ballard James W Jr, Ballard Eva, Boyd Betty B, Bradshaw Lois NB, Corban Margie B. Document No. 86821. Consideration: $0.00. Recorded January 22, 1957. This affidavit confirms all five of Eva Ballard's surviving children and documents that Leroy Armstrong Jr. and Minor A. Green both held legal interests in the Paul Street property.",img:""},
-  {type:"death",title:"Rev. George W. Ballard Death Certificate",date:"Texas State File No. 51612 · October 28, 1937",who:"Rev. George W. Ballard / Newton Ballard",desc:"Confirms Newton Ballard as father. Informant: Miss Alberta Ballard. Buried Greenwood Annex, Waco.",transcript:"Full Name: Rev George W. Ballard. Born September 4, 1861, Texas. Died October 24, 1937, Waco, McLennan County, Texas. Occupation: Minister. Father: Newton Ballard. Father's birthplace: No Record. Mother's maiden name: No Record. Informant: Miss Alberta Ballard, 724 Johnson St., Waco, Texas. Burial: Greenwood Annex, October 26, 1937.",img:""},
-  {type:"death",title:"James Wilson Ballard Sr. Death Certificate",date:"Texas State File No. 16556 · March 13, 1953",who:"James Wilson Ballard Sr.",desc:"Austin State Hospital. Psychosis with syphilitic meningoencephalitis. Father listed as G.I. Ballard born Keller Texas. Died on Margie's birthday.",transcript:"Full Name: James Wilson Ballard. Born August 26, 1897, Palestine, Texas. Died March 13, 1953 at 6:30 AM, Austin State Hospital, Travis County. Marital status: Separated. Last address: 1224 Verbena Street, Fort Worth. Father: G.I. Ballard, birthplace Keller, Texas. Mother's maiden name: Mary Edward Ballard, birthplace LaGrange, Texas. Immediate cause of death: Broncho-pneumonia hypostatic. Due to: Bilateral pulmonary tuberculosis. Due to: Psychosis with syphilitic meningoencephalitis, onset June 11, 1948.",img:""},
-  {type:"census",title:"1950 Census — 150 Paul Street Household",date:"United States Federal Census · 1950 · San Antonio, Bexar County, Texas",who:"Eva Ballard / James Jr. / Margie / Isaac Coco",desc:"The entire family at 150 Paul Street four years before the Caldwell shooting. Eva as head of household. Isaac Coco as son-in-law. Margie as waitress at cafe.",transcript:"150 Paul Street, Apartment W, Dwelling 155, San Antonio, Bexar, Texas. Eva Ballard, age 46, Head, Proprietor. James Ballard, age 23, Son. Charles R. Ballard, age 16, Son. Bettie J. Ballard, age 14, Daughter. Isaac Coco, age 23, Son-in-law. Marjie N. Coco, age 21, Daughter, Waitress-Cafe.",img:""},
-  {type:"military",title:"James Wilson Ballard Jr. — WWII Draft Card",date:"Registration Date: June 17, 1944 · San Antonio, Texas",who:"James Wilson Ballard Jr.",desc:"Registered on his 18th birthday. Next of kin: Eva Ballard (Mother). Physical description confirmed. Employer: Ben Ruby Private Home.",transcript:"James Wilson Ballard. Born June 17, 1926, Fort Worth, Texas. Residence: San Antonio, Bexar County, Texas. Employer: Ben Ruby, Private Home. Height: 5 feet 6 inches. Weight: 120 pounds. Complexion: Dark Brown. Hair: Black. Eyes: Black. Next of Kin: Eva Ballard, Mother.",img:""},
-  {type:"military",title:"Isaac Coco — Good Conduct Medal",date:"San Antonio Register · Vol. 19, No. 19 · May 27, 1949 · Page 4",who:"Isaac Coco / Margie Ballard Coco",desc:"Confirms Isaac Coco was a Sergeant at Lackland AFB, 3727th Base Training Squadron. Jefferson Parish, Louisiana. Award for three years exemplary service.",transcript:"Twelve airmen of the 3727th base training squadron at Lackland Air Force Base received awards recently for exemplary behavior, efficiency, and fidelity for a period of three continuous years. Receiving Good Conduct medals were: ...Sergeant Isaac Coco, Jefferson Parish, La.",img:""},
-  {type:"legal",title:"Federal Gambling Tax Stamp Records",date:"Corpus Christi Times · November 4, 1953",who:"Leroy Armstrong Jr. / James Wilson Ballard Jr. / Valmo Bellinger",desc:"PRIMARY BUSINESS CONNECTION DOCUMENT. Both Leroy Armstrong Jr. and James Wilson Ballard Jr. listed as federal gambling agents at 207 N. Center Street under Valmo C. Bellinger as Principal.",transcript:"Federal gambling tax stamp records for San Antonio, Texas. Valmo C. Bellinger, 207 Center St., Principal (P). Leroy Armstrong, 207 N. Center, Agent (A). James Wilson Ballard Jr., 207 N. Center, Agent (A). This document confirms the business partnership between the Armstrong family and the Ballard family under the Bellinger gambling network.",img:""},
-];
-
-function filterSrc(type, btn){
-  document.querySelectorAll('.src-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  renderSrc(type);
-}
-
-function toggleTranscript(id){
-  var el = document.getElementById('tr-'+id);
-  var btn = document.getElementById('trb-'+id);
-  if(el.classList.contains('open')){
-    el.classList.remove('open');
-    btn.textContent = 'Read Transcription ↓';
-  } else {
-    el.classList.add('open');
-    btn.textContent = 'Hide Transcription ↑';
-  }
-}
-
-function renderSrc(type){
-  var grid = document.getElementById('srcgrid');
-  var filtered = type === 'all' ? SOURCES : SOURCES.filter(s=>s.type===type);
-  grid.innerHTML = filtered.map(function(s,i){
-    return '<div class="src-card" data-type="'+s.type+'">'
-      + '<div class="src-img">'
-      + (s.img ? '<img src="'+s.img+'" alt="'+s.title+'">' : '<div class="src-img-placeholder">Document Image<br>Coming Soon<br><br><span style="font-size:11px;color:var(--gold);">'+s.type.toUpperCase()+'</span></div>')
-      + '</div>'
-      + '<div class="src-body">'
-      + '<span class="src-type">'+s.type+'</span>'
-      + '<span class="src-title">'+s.title+'</span>'
-      + '<span class="src-date">'+s.date+'</span>'
-      + '<div class="src-desc">'+s.desc+'</div>'
-      + '<button class="src-expand" id="trb-'+i+'" onclick="toggleTranscript('+i+')">Read Transcription ↓</button>'
-      + '<div class="src-transcript" id="tr-'+i+'">'+s.transcript+'</div>'
-      + '</div></div>';
-  }).join('');
-}
-renderSrc('all');
-</script>
-
-</div>
-</div>
 
 <!-- ═══ THIS DAY IN HISTORY ═══ -->
 <div class="sec" id="tab-thisday">

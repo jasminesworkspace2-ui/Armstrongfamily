@@ -68,88 +68,42 @@ body{
   line-height:1.6;
 }
 
-/* ── SIDEBAR NAV ── */
-body{display:flex;flex-direction:row;}
+/* ── TOP NAV ── */
 .nav{
-  position:fixed;top:0;left:0;bottom:0;z-index:300;
-  width:220px;flex-shrink:0;
+  position:sticky;top:0;z-index:300;
   background:var(--ink);
-  overflow-y:auto;overflow-x:hidden;
-  display:flex;flex-direction:column;
-  box-shadow:4px 0 24px var(--shadow);
+  box-shadow:0 2px 16px var(--shadow);
 }
-.nav::-webkit-scrollbar{width:3px;}
-.nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);}
 .nav-brand{
   font-family:'Josefin Sans',sans-serif;
-  font-size:11px;font-weight:700;letter-spacing:3px;
+  font-size:12px;font-weight:700;letter-spacing:2px;
   color:var(--accent);text-transform:uppercase;
-  padding:24px 20px 12px;
-  border-bottom:1px solid rgba(255,255,255,.1);
-  display:block;line-height:1.4;
+  padding:14px 20px;display:block;
+  border-bottom:1px solid rgba(255,255,255,.12);
 }
-.nav-brand small{display:block;font-size:9px;font-weight:300;letter-spacing:2px;color:rgba(255,255,255,.5);margin-top:4px;}
+.nav-rows{padding:4px 8px 4px;}
 .nav-section-label{
   font-family:'Josefin Sans',sans-serif;
   font-size:8px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
-  color:rgba(255,255,255,.35);
-  padding:16px 20px 6px;display:block;
+  color:rgba(255,255,255,.4);
+  padding:8px 10px 2px;display:inline-block;
 }
 .nb{
   font-family:'Josefin Sans',sans-serif;
-  font-size:11px;font-weight:300;letter-spacing:.5px;
-  color:rgba(255,255,255,.7);
-  padding:10px 20px 10px 16px;
-  cursor:pointer;border:none;background:none;
-  width:100%;text-align:left;
-  border-left:3px solid transparent;
-  transition:all .18s;display:block;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  font-size:10px;font-weight:300;letter-spacing:.3px;
+  color:rgba(255,255,255,.75);
+  padding:7px 11px;margin:2px 2px;
+  cursor:pointer;border:none;background:rgba(255,255,255,.04);
+  white-space:nowrap;
+  border-radius:4px;
+  border:1px solid rgba(255,255,255,.08);
+  transition:all .15s;display:inline-block;
 }
-.nb:hover{color:#fff;background:rgba(255,255,255,.07);border-left-color:rgba(255,255,255,.3);}
-.nb.active{color:var(--accent);background:rgba(232,184,75,.1);border-left-color:var(--accent);font-weight:600;}
-/* MAIN CONTENT AREA */
-.main-content{margin-left:220px;flex:1;min-width:0;min-height:100vh;}
-/* MOBILE TOGGLE */
-.mob-toggle{display:none;position:fixed;top:12px;left:12px;z-index:400;width:40px;height:40px;background:var(--ink);border:none;border-radius:8px;cursor:pointer;align-items:center;justify-content:center;box-shadow:0 2px 12px var(--shadow);}
-.mob-toggle span{display:block;width:20px;height:2px;background:#fff;margin:4px auto;transition:.2s;}
-@media(max-width:768px){
-  body{flex-direction:column;}
-  .nav{position:fixed;left:-240px;top:0;bottom:0;width:240px;transition:left .25s;z-index:400;}
-  .nav.open{left:0;}
-  .main-content{margin-left:0;padding-top:60px;}
-  .mob-toggle{display:flex;}
-  .mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:350;}
-  .mob-overlay.open{display:block;}
-}
-/* ── DROPDOWN NAV ── */
-.nav-dropdown{position:relative;display:inline-block;}
-.nav-drop-btn{display:flex;align-items:center;gap:4px;}
-.nav-drop-menu{
-  display:none;position:absolute;top:100%;left:0;z-index:500;
-  background:rgba(250,247,242,0.99);
-  border:1px solid var(--border2);
-  border-top:2px solid var(--gold);
-  box-shadow:0 8px 24px var(--shadow);
-  min-width:220px;
-  border-radius:0 0 4px 4px;
-}
-.nav-drop-menu.open{display:block;}
-.nav-drop-menu button{
-  display:block!important;width:100%!important;text-align:left!important;
-  padding:12px 18px!important;border:none!important;border-bottom:1px solid var(--border)!important;
-  background:none!important;
-  font-family:'Josefin Sans',sans-serif!important;
-  font-size:10px!important;font-weight:300!important;letter-spacing:1.5px!important;text-transform:uppercase!important;
-  color:var(--ink3)!important;cursor:pointer!important;
-  transition:background .15s,color .15s;
-  white-space:nowrap!important;
-  border-bottom-color:var(--border)!important;
-}
-.nav-drop-menu button:last-child{border-bottom:none!important;}
-.nav-drop-menu button:hover{background:var(--gold-bg)!important;color:var(--gold)!important;}
-
-
+.nb:hover{color:#fff;background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);}
+.nb.active{color:var(--accent);background:rgba(232,184,75,.12);border-color:rgba(232,184,75,.4);font-weight:600;}
+.main-content{display:block;width:100%;}
+.mob-toggle{display:none;}
+.mob-overlay{display:none;}
 /* ── SECTIONS ── */
 .sec{display:none;}
 .sec.active{display:block;min-height:100vh;}
@@ -554,48 +508,40 @@ body{display:flex;flex-direction:row;}
 <body>
 
 <!-- NAV -->
-<!-- Mobile toggle -->
-<button class="mob-toggle" onclick="toggleSidebar()" id="mobtog">
-  <span></span><span></span><span></span>
-</button>
-<div class="mob-overlay" id="mobover" onclick="closeSidebar()"></div>
-
-<!-- SIDEBAR NAV -->
-<nav class="nav" id="sidebar">
-  <div class="nav-brand">Our Family<small>Ballard · Corbin · Nichols · Armstrong</small></div>
-
-  <span class="nav-section-label">Start Here</span>
-  <button class="nb active" onclick="show('timeline',this)">🌳 Family Timeline</button>
-  <button class="nb" onclick="show('familytree',this)">📋 Family Tree</button>
-  <button class="nb" onclick="show('letter',this)">✉ Letter to Family</button>
-  <button class="nb" onclick="show('whoiswho',this)">👥 Who's Who</button>
-
-  <span class="nav-section-label">Our Ancestors</span>
-  <button class="nb" onclick="show('bondage',this)">Bondage to Belonging</button>
-  <button class="nb" onclick="show('enslaved',this)">Enslaved Family</button>
-  <button class="nb" onclick="show('nichols',this)">Nichols · Waldrop</button>
-  <button class="nb" onclick="show('easter',this)">Easter Bell</button>
-  <button class="nb" onclick="show('juneteenth',this)">Juneteenth</button>
-  <button class="nb" onclick="show('john_armstrong',this)">John Armstrong</button>
-  <button class="nb" onclick="show('eva',this)">Eva Armstrong</button>
-
-  <span class="nav-section-label">Family Charts</span>
-  <button class="nb" onclick="show('ballard_chart',this)">📊 Ballard Chart</button>
-  <button class="nb" onclick="show('armstrong_chart',this)">📊 Armstrong Chart</button>
-  <button class="nb" onclick="show('ballard_line',this)">Ballard Line Research</button>
-  <button class="nb" onclick="show('homage',this)">Margie's Family</button>
-
-  <span class="nav-section-label">Research</span>
-  <button class="nb" onclick="show('land',this)">The Land</button>
-  <button class="nb" onclick="show('map',this)">Where We Are</button>
-  <button class="nb" onclick="show('descendants',this)">DNA Connections</button>
-  <button class="nb" onclick="show('dna',this)">DNA Guide</button>
-  <button class="nb" onclick="show('timeline_research',this)">Research Timeline</button>
-  <button class="nb" onclick="show('research',this)">Research Notes</button>
-  <button class="nb" onclick="show('archive',this)">📁 Archive</button>
+<nav class="nav">
+  <div class="nav-brand">Our Family — Ballard · Corbin · Nichols · Armstrong</div>
+  <div class="nav-rows">
+    <span class="nav-section-label">Start Here</span>
+    <button class="nb active" onclick="show('timeline',this)">🌳 Family Timeline</button>
+    <button class="nb" onclick="show('familytree',this)">📋 Family Tree</button>
+    <button class="nb" onclick="show('letter',this)">✉ Letter</button>
+    <button class="nb" onclick="show('whoiswho',this)">Who's Who</button>
+    <br>
+    <span class="nav-section-label">Our Ancestors</span>
+    <button class="nb" onclick="show('bondage',this)">Bondage to Belonging</button>
+    <button class="nb" onclick="show('enslaved',this)">Enslaved Family</button>
+    <button class="nb" onclick="show('nichols',this)">Nichols · Waldrop</button>
+    <button class="nb" onclick="show('easter',this)">Easter Bell</button>
+    <button class="nb" onclick="show('juneteenth',this)">Juneteenth</button>
+    <button class="nb" onclick="show('john_armstrong',this)">John Armstrong</button>
+    <button class="nb" onclick="show('eva',this)">Eva Armstrong</button>
+    <br>
+    <span class="nav-section-label">Family Charts</span>
+    <button class="nb" onclick="show('ballard_chart',this)">📊 Ballard Chart</button>
+    <button class="nb" onclick="show('armstrong_chart',this)">📊 Armstrong Chart</button>
+    <button class="nb" onclick="show('ballard_line',this)">Ballard Line</button>
+    <button class="nb" onclick="show('homage',this)">Margie's Family</button>
+    <br>
+    <span class="nav-section-label">Research</span>
+    <button class="nb" onclick="show('land',this)">The Land</button>
+    <button class="nb" onclick="show('map',this)">Where We Are</button>
+    <button class="nb" onclick="show('descendants',this)">DNA Connections</button>
+    <button class="nb" onclick="show('dna',this)">DNA Guide</button>
+    <button class="nb" onclick="show('timeline_research',this)">Research Timeline</button>
+    <button class="nb" onclick="show('research',this)">Research Notes</button>
+    <button class="nb" onclick="show('archive',this)">📁 Archive</button>
+  </div>
 </nav>
-
-<!-- MAIN CONTENT WRAPPER -->
 <div class="main-content">
 
 
@@ -3510,24 +3456,8 @@ function show(id,btn){
   var el=document.getElementById("tab-"+id);
   if(el){el.classList.add("active");}else{console.warn("Tab not found:",id);}
   if(btn){btn.classList.add("active");}
-  var mc=document.querySelector('.main-content');
-  if(mc){mc.scrollTop=0;}
   window.scrollTo(0,0);
-  closeSidebar();
 }
-function toggleSidebar(){
-  document.getElementById('sidebar').classList.toggle('open');
-  document.getElementById('mobover').classList.toggle('open');
-}
-function closeSidebar(){
-  if(window.innerWidth<=768){
-    document.getElementById('sidebar').classList.remove('open');
-    document.getElementById('mobover').classList.remove('open');
-  }
-}
-// Remove old dropdown functions - no longer needed
-function toggleDrop(){}
-function closeDrop(){}
 // Drag to scroll timeline
 (function(){
   var el=document.getElementById("sw");

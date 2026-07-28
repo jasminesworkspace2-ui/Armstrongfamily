@@ -100,6 +100,31 @@ body{
 }
 .nb:hover{color:var(--ink);}
 .nb.active{color:var(--gold);border-bottom-color:var(--gold);font-weight:600;}
+/* ── DROPDOWN NAV ── */
+.nav-dropdown{position:relative;display:inline-block;}
+.nav-drop-btn{display:flex;align-items:center;gap:4px;}
+.nav-drop-menu{
+  display:none;position:absolute;top:100%;left:0;z-index:500;
+  background:rgba(250,247,242,0.99);
+  border:1px solid var(--border2);
+  border-top:2px solid var(--gold);
+  box-shadow:0 8px 24px var(--shadow);
+  min-width:220px;
+  border-radius:0 0 4px 4px;
+}
+.nav-drop-menu.open{display:block;}
+.nav-drop-menu button{
+  display:block;width:100%;text-align:left;
+  padding:12px 18px;border:none;background:none;
+  font-family:'Josefin Sans',sans-serif;
+  font-size:10px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--ink3);cursor:pointer;
+  border-bottom:1px solid var(--border);
+  transition:background .15s,color .15s;
+}
+.nav-drop-menu button:last-child{border-bottom:none;}
+.nav-drop-menu button:hover{background:var(--gold-bg);color:var(--gold);}
+
 
 /* ── SECTIONS ── */
 .sec{display:none;}
@@ -509,24 +534,99 @@ body{
   <div class="nav-brand">Our Family</div>
   <button class="nb active" onclick="show('timeline',this)">Family Timeline</button>
   <button class="nb" onclick="show('familytree',this)">Family Tree</button>
+  <button class="nb" onclick="show('letter',this)">✉ Letter</button>
   <button class="nb" onclick="show('whoiswho',this)">Who's Who</button>
-  <button class="nb" onclick="show('bondage',this)">Bondage to Belonging</button>
-  <button class="nb" onclick="show('enslaved',this)">Enslaved Family</button>
-  <button class="nb" onclick="show('nichols',this)">Nichols · Waldrop</button>
-  <button class="nb" onclick="show('easter',this)">Easter Bell</button>
-  <button class="nb" onclick="show('juneteenth',this)">Juneteenth</button>
-  <button class="nb" onclick="show('land',this)">The Land</button>
-  <button class="nb" onclick="show('john_armstrong',this)">John Armstrong</button>
-  <button class="nb" onclick="show('eva',this)">Eva Armstrong</button>
-  <button class="nb" onclick="show('ballard_line',this)">Ballard Line</button>
-  <button class="nb" onclick="show('homage',this)">Margie's Family</button>
+  <div class="nav-dropdown">
+    <button class="nb nav-drop-btn" onclick="toggleDrop('drop-ancestry')">Ancestors ▾</button>
+    <div class="nav-drop-menu" id="drop-ancestry">
+      <button onclick="show('bondage',null);closeDrop()">Bondage to Belonging</button>
+      <button onclick="show('enslaved',null);closeDrop()">Enslaved Family</button>
+      <button onclick="show('nichols',null);closeDrop()">Nichols · Waldrop</button>
+      <button onclick="show('easter',null);closeDrop()">Easter Bell</button>
+      <button onclick="show('juneteenth',null);closeDrop()">Juneteenth</button>
+      <button onclick="show('john_armstrong',null);closeDrop()">John Armstrong</button>
+      <button onclick="show('eva',null);closeDrop()">Eva Armstrong</button>
+    </div>
+  </div>
+  <div class="nav-dropdown">
+    <button class="nb nav-drop-btn" onclick="toggleDrop('drop-charts')">Family Charts ▾</button>
+    <div class="nav-drop-menu" id="drop-charts">
+      <button onclick="show('ballard_chart',null);closeDrop()">Ballard Family Chart</button>
+      <button onclick="show('armstrong_chart',null);closeDrop()">Armstrong Family Chart</button>
+      <button onclick="show('ballard_line',null);closeDrop()">Ballard Line Research</button>
+      <button onclick="show('homage',null);closeDrop()">Margie's Family</button>
+    </div>
+  </div>
+  <div class="nav-dropdown">
+    <button class="nb nav-drop-btn" onclick="toggleDrop('drop-research')">Research ▾</button>
+    <div class="nav-drop-menu" id="drop-research">
+      <button onclick="show('land',null);closeDrop()">The Land</button>
+      <button onclick="show('descendants',null);closeDrop()">DNA Connections</button>
+      <button onclick="show('dna',null);closeDrop()">DNA Guide</button>
+      <button onclick="show('timeline_research',null);closeDrop()">Research Timeline</button>
+      <button onclick="show('research',null);closeDrop()">Research Notes</button>
+      <button onclick="show('archive',null);closeDrop()">📁 Archive</button>
+    </div>
+  </div>
   <button class="nb" onclick="show('map',this)">Where We Are</button>
-  <button class="nb" onclick="show('descendants',this)">DNA Connections</button>
-  <button class="nb" onclick="show('dna',this)">DNA Guide</button>
-  <button class="nb" onclick="show('timeline_research',this)">Research Timeline</button>
-  <button class="nb" onclick="show('research',this)">Research Notes</button>
-  <button class="nb" onclick="show('archive',this)">📁 Research Archive</button>
 </nav>
+
+
+<!-- ═══ LETTER TO FAMILY ═══ -->
+
+<!-- ═══ LETTER TO FAMILY ═══ -->
+<div class="sec" id="tab-letter">
+<div class="shdr">
+  <span class="sey">A Personal Note · From Jasmine M. Lee · Dock Ellis Foundation</span>
+  <span class="sttl">A Letter to <em>Our Family</em></span>
+  <span class="ssub">Why This Research Matters — And What I Hope It Becomes</span>
+  <div class="srul"><div class="sdia"></div></div>
+</div>
+<div class="ctr">
+
+  <div class="prose">
+    <p>To every member of this family —</p>
+    <p>Seven years ago I started asking questions. Simple ones at first. Where did we come from? Who were the people before Grandma Margie? What were their names? Where did they live? What happened to them?</p>
+    <p>What I found changed how I understand myself, this family, and what it means to be who we are. I found Easter Bell Nichols — born enslaved on July 4, 1848, in Bellville, Texas. I found her mother Clarissa, and Clarissa's mother Patience, who was born in South Carolina in the 1780s. I found a great-grandmother named Eva Armstrong Ballard who ran a café on San Antonio's East Side and was subpoenaed to testify in a police brutality case in 1955 — and told the truth. I found a great-uncle named James Wilson Ballard Jr. who made the front page of the San Antonio Light for helping break a cover-up case. I found ministers and porters and waitresses and gamblers and Air Force sergeants and community organizers. I found people who built things under impossible conditions and kept going.</p>
+    <p>I built this website so that what I found does not disappear. So that the names don't get lost again. So that the next generation doesn't have to start from zero the way I did.</p>
+    <p>This research is ongoing. You will find small errors — a death date that still needs confirming, a married name I haven't been able to verify, a birth town that records disagree on. Genealogy is never finished. Every generation adds to the story. What matters is that the foundation is here, sourced to primary documents, and honest about what we know and what we don't.</p>
+  </div>
+
+  <div class="pq">"You can't know where you're going unless you truly understand where you came from."</div>
+
+  <div class="prose">
+    <p>Teach your children who they are. Tell them Easter Bell's name. Tell them Eva's. Tell them that James Ballard Jr. stood up in 1954 and told the truth to a district attorney in a city where telling the truth about a white police officer could get you killed. Tell them that Margie Nell Ballard made it from Fort Worth to California with seven children and kept going. Tell them they come from people who kept going.</p>
+    <p>One day I hope we can all be in the same room. A reunion. A dinner. Something. People who share blood and history and these names sitting together and knowing — <em>really knowing</em> — who we are. That is the dream behind all of this work.</p>
+    <p>Until then, this website is our gathering place.</p>
+    <p>If you have family photographs, documents, stories, or information about any family member — especially birth dates, marriage records, death dates, or details about people whose information here is incomplete — please reach out. Every piece helps. No detail is too small.</p>
+  </div>
+
+  <div class="card-box green" style="margin:32px 0;">
+    <span class="card-label">Send Family Information · Photographs · Documents</span>
+    <span class="card-title">Contact Jasmine M. Lee</span>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.7;color:var(--ink2);margin-top:12px;">If you have family photos, documents, stories, birth records, marriage records, or any information about anyone in this family tree — please send it. Everything will be added to the research and credited to you.</p>
+    <table class="ftbl" style="margin-top:16px;">
+      <tr><td>Email</td><td><strong><a href="mailto:jlee@dockellisfoundation.com" style="color:var(--gold);">jlee@dockellisfoundation.com</a></strong></td></tr>
+      <tr><td>Organization</td><td>Dock Ellis Foundation</td></tr>
+      <tr><td>Website</td><td><a href="https://jasminesworkspace2-ui.github.io/Armstrongfamily" style="color:var(--gold);">jasminesworkspace2-ui.github.io/Armstrongfamily</a></td></tr>
+      <tr><td>Research note</td><td>This site is updated regularly as new records are found. Some details — death dates, exact birth towns, married names — may still be incomplete for newer generations where records are limited or unavailable. If you have corrections, please send them.</td></tr>
+    </table>
+  </div>
+
+  <div class="prose">
+    <p>With love and gratitude for every person who came before us —</p>
+    <p><strong>Jasmine M. Lee</strong><br>
+    Founder & CEO, Dock Ellis Foundation<br>
+    Granddaughter of Margie Nell Ballard Corbin<br>
+    Great-granddaughter of Eva Armstrong Ballard<br>
+    Great-great-granddaughter of Hellen Nichols Armstrong<br>
+    Great-great-great-granddaughter of Easter Bell Nichols<br>
+    <em>Born enslaved July 4, 1848 · Bellville, Texas · She was here first</em></p>
+  </div>
+
+</div>
+<div class="ftr">A Letter to Our Family · Jasmine M. Lee · Dock Ellis Foundation · July 2026</div>
+</div>
 
 <!-- ═══ FAMILY TIMELINE ═══ -->
 <div class="sec active" id="tab-timeline">
@@ -1694,6 +1794,249 @@ body{
 
 </div>
 <div class="ftr">Nichols · Waldrop Research · Compiled by Jasmine M. Lee · Dock Ellis Foundation · March 2026</div>
+</div>
+
+
+<!-- ═══ BALLARD FAMILY CHART ═══ -->
+<div class="sec" id="tab-ballard_chart">
+<div class="shdr">
+  <span class="sey">Four Generations · Newton Ballard to Margie's Children · Primary Sources Confirmed</span>
+  <span class="sttl">The Ballard <em>Family Chart</em></span>
+  <span class="ssub">From Mississippi to Texas to California · ca. 1830 to Present</span>
+  <div class="srul"><div class="sdia"></div></div>
+</div>
+<div class="ctr">
+
+<style>
+.bc-gen{margin:32px 0 8px;font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);border-bottom:2px solid var(--gold2);padding-bottom:6px;}
+.bc-row{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0 24px;}
+.bc-card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:14px 16px;min-width:170px;flex:1;box-shadow:0 2px 6px var(--shadow2);position:relative;}
+.bc-card.direct{border-left:4px solid var(--gold2);}
+.bc-card.enslaved{border-left:4px solid var(--rust);background:var(--rust-bg);}
+.bc-card.infant{border-left:4px solid var(--ink3);opacity:0.75;}
+.bc-card.dna{border-left:4px solid var(--forest);}
+.bc-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:600;color:var(--ink);display:block;margin-bottom:3px;}
+.bc-dates{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1px;color:var(--ink3);display:block;margin-bottom:4px;}
+.bc-note{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ink3);display:block;font-style:italic;}
+.bc-badge{display:inline-block;font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:1px;padding:2px 6px;border-radius:2px;margin-top:4px;text-transform:uppercase;}
+.bc-badge.gold{background:var(--gold-bg2);color:var(--gold);}
+.bc-badge.green{background:var(--forest-bg);color:var(--forest);}
+.bc-badge.red{background:var(--rust-bg);color:var(--rust);}
+.bc-connector{text-align:center;color:var(--gold2);font-size:20px;margin:4px 0;}
+</style>
+
+  <div class="bc-gen">Generation 1 · ca. 1830 · Mississippi</div>
+  <div class="bc-row">
+    <div class="bc-card enslaved">
+      <span class="bc-name">Newton Ballard</span>
+      <span class="bc-dates">ca. 1830 — unknown · Born Mississippi</span>
+      <span class="bc-note">Enslaved by Lewis F. Ballard · Smith County TX · TX GLO File No. 3378 Upshur County · Named as father on Rev. George W. Ballard's 1937 death certificate</span>
+      <span class="bc-badge red">Enslaved</span>
+    </div>
+    <div class="bc-card enslaved">
+      <span class="bc-name">Rebecca Ballard</span>
+      <span class="bc-dates">ca. 1835 — unknown · Born Mississippi</span>
+      <span class="bc-note">Head of household 1870 · Upshur County TX · Raised three children alone after Newton disappeared</span>
+      <span class="bc-badge red">Enslaved</span>
+    </div>
+  </div>
+  <div class="bc-connector">↓ their children ↓</div>
+  <div class="bc-row">
+    <div class="bc-card"><span class="bc-name">Silva Ballard</span><span class="bc-dates">ca. 1857 — unknown</span><span class="bc-note">Half sibling · Upshur County TX</span></div>
+    <div class="bc-card"><span class="bc-name">Sandy Ballard</span><span class="bc-dates">ca. 1860 — unknown</span><span class="bc-note">Half sibling · Upshur County TX</span></div>
+    <div class="bc-card direct"><span class="bc-name">Rev. George W. Ballard</span><span class="bc-dates">Sep 4, 1861 – Oct 24, 1937</span><span class="bc-note">★ Your direct line · Minister · Keller TX → Waco TX</span><span class="bc-badge gold">Your Line</span></div>
+  </div>
+
+  <div class="bc-gen">Generation 2 · 1861 · Keller, Tarrant County, Texas</div>
+  <div class="bc-row">
+    <div class="bc-card direct">
+      <span class="bc-name">Rev. George W. Ballard</span>
+      <span class="bc-dates">Sep 4, 1861 – Oct 24, 1937 · Waco TX</span>
+      <span class="bc-note">Minister · 724 Johnson Street Waco · death certificate State File No. 51612 · names Newton Ballard as father · buried Greenwood Annex, Waco</span>
+    </div>
+    <div class="bc-card">
+      <span class="bc-name">Mary Ann Edwards Ballard</span>
+      <span class="bc-dates">Nov 4, 1870 – Mar 19, 1949 · Fort Worth TX</span>
+      <span class="bc-note">Married Dec 16, 1886, Fayette County TX · died 1224 Verbena Street, Fort Worth · buried Waco Colored Cemetery · parents: Fernand/Bernard Edwards + Bettie (unknown)</span>
+    </div>
+  </div>
+  <div class="bc-connector">↓ their 11 children ↓</div>
+  <div class="bc-row">
+    <div class="bc-card infant"><span class="bc-name">Lavinia Ballard</span><span class="bc-dates">1888 – Feb 11, 1910</span><span class="bc-note">Died Throckmorton TX</span></div>
+    <div class="bc-card"><span class="bc-name">Benjamin Ballard</span><span class="bc-dates">1890 – 1943</span></div>
+    <div class="bc-card"><span class="bc-name">Hallique Ballard</span><span class="bc-dates">1892 – 1954</span></div>
+    <div class="bc-card"><span class="bc-name">Bettie May Ballard</span><span class="bc-dates">1896 –</span></div>
+    <div class="bc-card direct"><span class="bc-name">James Wilson Ballard Sr.</span><span class="bc-dates">Aug 26, 1897 – Mar 13, 1953</span><span class="bc-note">★ Your direct line · Palestine TX · Austin State Hospital</span><span class="bc-badge gold">Your Line</span></div>
+    <div class="bc-card"><span class="bc-name">Mark Hanna Ballard</span><span class="bc-dates">Aug 16, 1900 – 1972</span></div>
+    <div class="bc-card"><span class="bc-name">John Allen Ballard</span><span class="bc-dates">Nov 20, 1901 – 1973</span></div>
+    <div class="bc-card dna"><span class="bc-name">Moses E. Ballard Sr.</span><span class="bc-dates">Sep 22, 1903 – 1988</span><span class="bc-note">DNA match through this line — Teresa Ballard (53 cM)</span><span class="bc-badge green">DNA Match</span></div>
+    <div class="bc-card"><span class="bc-name">Birdie Ballard</span><span class="bc-dates">1906 –</span></div>
+    <div class="bc-card"><span class="bc-name">Blancherie Ballard</span><span class="bc-dates">1910 – 1988</span></div>
+    <div class="bc-card"><span class="bc-name">Aleberta (Alberta) Ballard Kendle</span><span class="bc-dates">Oct 14, 1913 – Jun 14, 1977</span><span class="bc-note">Informant on mother Mary Ann's 1949 death certificate · married name Kendle</span></div>
+  </div>
+
+  <div class="bc-gen">Moses Ballard Sr. · Descendants · DNA Confirmed Line</div>
+  <div class="bc-row">
+    <div class="bc-card dna"><span class="bc-name">Moses Ballard Sr.</span><span class="bc-dates">1903 – 1988</span><span class="bc-note">Married Lillie Rudd Ballard (1907–1977)</span></div>
+  </div>
+  <div class="bc-connector">↓ their children ↓</div>
+  <div class="bc-row">
+    <div class="bc-card"><span class="bc-name">Moses Ballard Jr.</span><span class="bc-dates">1925 – 2003</span></div>
+    <div class="bc-card dna"><span class="bc-name">Freddie Eugene Ballard</span><span class="bc-dates">1926 – 2005</span><span class="bc-note">Teresa Ballard's grandfather</span><span class="bc-badge green">DNA Line</span></div>
+    <div class="bc-card"><span class="bc-name">Mary George Ballard</span><span class="bc-dates">1927 – 1995</span></div>
+    <div class="bc-card"><span class="bc-name">Benjamion Harrison Ballard</span><span class="bc-dates">1929 – 2001</span></div>
+    <div class="bc-card"><span class="bc-name">Blanche Ree Ballard</span><span class="bc-dates">1930 – 2021</span></div>
+    <div class="bc-card"><span class="bc-name">Lester Ray Ballard</span><span class="bc-dates">1932 – 1998</span></div>
+    <div class="bc-card"><span class="bc-name">Donnell Ballard Sr.</span><span class="bc-dates">1934 – 1995</span></div>
+    <div class="bc-card"><span class="bc-name">Charles Herbert Ballard</span><span class="bc-dates">1935 – 1991</span></div>
+  </div>
+  <div class="bc-connector">↓ Freddie's line → Teresa Ballard (DNA match 53 cM) ↓</div>
+
+  <div class="bc-gen">Generation 3 · 1897 · Palestine, Anderson County, Texas</div>
+  <div class="bc-row">
+    <div class="bc-card direct">
+      <span class="bc-name">James Wilson Ballard Sr.</span>
+      <span class="bc-dates">Aug 26, 1897 – Mar 13, 1953</span>
+      <span class="bc-note">Born Palestine TX · died Austin State Hospital · cause: psychosis with syphilitic meningoencephalitis · separated from Eva · last address 1224 Verbena Street Fort Worth · WWII draft card: Porter, San Antonio 1942 · next of kin listed: Louis Durvin (not Eva)</span>
+    </div>
+    <div class="bc-card direct">
+      <span class="bc-name">Eva Armstrong Ballard</span>
+      <span class="bc-dates">Jun 27, 1900 – Nov 24, 1977</span>
+      <span class="bc-note">Born Bellville, Austin County TX · married James Sr. by 1924 · Fort Worth → San Antonio → Garden Grove CA · proprietor The Spot 1501 Burnet Street SA · 150 Paul Street SA · later married Minor Allen Green · died as Eva Green</span>
+    </div>
+  </div>
+  <div class="bc-connector">↓ their children ↓</div>
+  <div class="bc-row">
+    <div class="bc-card"><span class="bc-name">James Wilson Ballard Jr.</span><span class="bc-dates">Jun 17, 1926 – 1986</span><span class="bc-note">Fort Worth TX · WWII draft 1944 · front page SA Light Mar 10, 1954 · married Alice Faye Daniels (1947), Earline Ferguson (1952 Tulsa OK) · 5'6" 120 lbs dark brown complexion</span></div>
+    <div class="bc-card infant"><span class="bc-name">Infant Son Ballard</span><span class="bc-dates">Feb 25, 1928 – Feb 27, 1928</span><span class="bc-note">Lived 2 days · Fort Worth TX · remembered</span></div>
+    <div class="bc-card direct"><span class="bc-name">Margie Nell Ballard</span><span class="bc-dates">Mar 13, 1929 – Oct 15, 1988</span><span class="bc-note">★ Your grandmother · Fort Worth TX → Santa Ana CA · married Charles Baker (1946), Isaac Coco (1949), Norman Corbin</span><span class="bc-badge gold">Your Line</span></div>
+    <div class="bc-card"><span class="bc-name">Lois Marie Ballard Bradshaw</span><span class="bc-dates">May 24, 1931 – living</span><span class="bc-note">Born San Antonio TX · married Warren Bradshaw · DNA match: Jahna Bradshaw (41 cM)</span><span class="bc-badge green">DNA Line</span></div>
+    <div class="bc-card"><span class="bc-name">Charles Ray Ballard</span><span class="bc-dates">Mar 5, 1933 – 2001</span><span class="bc-note">Born Fort Worth TX</span></div>
+    <div class="bc-card"><span class="bc-name">Bettie Jean Ballard Boyd</span><span class="bc-dates">Dec 13, 1935 – 2002</span><span class="bc-note">Born San Antonio TX</span></div>
+    <div class="bc-card infant"><span class="bc-name">Thelma Louise Ballard</span><span class="bc-dates">Dec 3, 1938 – Mar 16, 1939</span><span class="bc-note">Buried Eastview Cemetery San Antonio · remembered · TX Certificate No. 11120</span></div>
+  </div>
+
+  <div class="bc-gen">Generation 4 · Margie's Children · 1951–1966</div>
+  <div class="prose" style="font-size:15px;margin-bottom:16px;"><p>See <strong>Margie's Family</strong> tab for the complete fourth generation including all of Margie's seven children and their descendants.</p></div>
+
+  <div class="div"></div>
+  <div class="card-box" style="margin:20px 0;">
+    <span class="card-label">A Note on This Chart</span>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.7;color:var(--ink2);">This chart reflects confirmed primary source research as of July 2026. Small details — exact death dates, married names, and birth towns for some individuals — are still being researched and updated. If you have information that can fill gaps or correct errors, please send it to <a href="mailto:jlee@dockellisfoundation.com" style="color:var(--gold);">jlee@dockellisfoundation.com</a>.</p>
+  </div>
+
+</div>
+<div class="ftr">Ballard Family Chart · Newton Ballard (ca. 1830) to Present · Compiled by Jasmine M. Lee · Dock Ellis Foundation · July 2026</div>
+</div>
+
+
+<!-- ═══ ARMSTRONG FAMILY CHART ═══ -->
+<div class="sec" id="tab-armstrong_chart">
+<div class="shdr">
+  <span class="sey">Dave Armstrong (South Carolina) to Eva Armstrong Ballard · And the Ice Cream Armstrong Line</span>
+  <span class="sttl">The Armstrong <em>Family Chart</em></span>
+  <span class="ssub">Two Armstrong Lines · One Community · San Antonio's East Side</span>
+  <div class="srul"><div class="sdia"></div></div>
+</div>
+<div class="ctr">
+
+  <div class="card-box blue" style="margin-bottom:32px;">
+    <span class="card-label">Two Separate Armstrong Families</span>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.7;color:var(--ink2);">This chart documents two distinct Armstrong families who were deeply connected through business and community on San Antonio's East Side — but whose blood connection has not been confirmed by DNA or documentary evidence. <strong>Line A</strong> is your direct maternal line through Dave Armstrong → John Armstrong → Eva Armstrong Ballard. <strong>Line B</strong> is the Ice Cream Armstrong family through Cornelius "Ice Cream" Armstrong Sr. → Leroy Armstrong Jr., whose grandson Leroy Jr. was Eva Ballard's business partner.</p>
+  </div>
+
+  <div class="bc-gen">Line A · Your Direct Line · Dave Armstrong (South Carolina) · ca. 1845</div>
+  <div class="bc-row">
+    <div class="bc-card enslaved">
+      <span class="bc-name">Dave Armstrong</span>
+      <span class="bc-dates">ca. 1845 — unknown · Born South Carolina</span>
+      <span class="bc-note">Enslaved by John K. Armstrong household · Upshur County TX · took Armstrong name after emancipation · married Clarissa Ann Morgan August 29, 1868 · Bellville, Austin County TX</span>
+      <span class="bc-badge red">Enslaved · SC Origin</span>
+    </div>
+    <div class="bc-card enslaved">
+      <span class="bc-name">Clarissa Ann Morgan</span>
+      <span class="bc-dates">ca. 1848 – Nov 24, 1918 · Fort Worth TX</span>
+      <span class="bc-note">Born North Carolina · married Dave Armstrong 1868 · died Fort Worth</span>
+    </div>
+  </div>
+  <div class="bc-connector">↓ their children ↓</div>
+  <div class="bc-row">
+    <div class="bc-card direct"><span class="bc-name">John Armstrong</span><span class="bc-dates">ca. Mar 1872 – Aug 30, 1911</span><span class="bc-note">★ Your direct line · Born Bellville TX · killed Fort Worth by Jack Thompson · verdict: justifiable homicide · married Hellen Nichols 1899</span><span class="bc-badge gold">Your Line</span></div>
+    <div class="bc-card"><span class="bc-name">Charlie Armstrong</span><span class="bc-dates">ca. 1874 –</span><span class="bc-note">Bellville TX · least documented sibling</span></div>
+    <div class="bc-card"><span class="bc-name">Ida Armstrong</span><span class="bc-dates">Feb 28, 1875 – May 19, 1918</span><span class="bc-note">Died Tarrant County TX · same year as mother Clarissa</span></div>
+    <div class="bc-card dna"><span class="bc-name">Joshua Armstrong</span><span class="bc-dates">Mar 9, 1879 – Mar 1, 1957</span><span class="bc-note">Born Bellville TX · married Lula Lott June 17, 1903, Williamson County TX · Fort Worth, Ward 7 · Porter · buried Haltom City TX · Common DNA Ancestor confirmed</span><span class="bc-badge green">DNA Ancestor</span></div>
+    <div class="bc-card"><span class="bc-name">Bettie Armstrong</span><span class="bc-dates">Jan 1885 –</span><span class="bc-note">Bellville TX</span></div>
+  </div>
+
+  <div class="bc-gen">Joshua Armstrong + Lula Lott · Their Son</div>
+  <div class="bc-row">
+    <div class="bc-card"><span class="bc-name">Luther Armstrong</span><span class="bc-dates">Mar 16, 1898 – Oct 10, 1916</span><span class="bc-note">Father: Joshua Armstrong · Mother: Lula Lott (Rosa Lott's daughter) · died Fort Worth age 18 · Eva's first cousin · Lott and Armstrong families were Bellville neighbors and kin</span></div>
+  </div>
+
+  <div class="bc-gen">John Armstrong + Hellen Nichols · Your Direct Line</div>
+  <div class="bc-row">
+    <div class="bc-card direct">
+      <span class="bc-name">Eva Armstrong Ballard</span>
+      <span class="bc-dates">Jun 27, 1900 – Nov 24, 1977</span>
+      <span class="bc-note">★ Your great-grandmother · born Bellville, Austin County TX · Fort Worth → San Antonio → Garden Grove CA · The Spot 1501 Burnet St · 150 Paul Street · later Eva Green</span>
+      <span class="bc-badge gold">Your Line</span>
+    </div>
+    <div class="bc-card infant">
+      <span class="bc-name">Unnamed Armstrong</span>
+      <span class="bc-dates">ca. early 1900 – unknown</span>
+      <span class="bc-note">Listed in 1900 Bellville census as infant · likely died young · John and Hellen's second child</span>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <div class="bc-gen">Line B · The Ice Cream Armstrong Family · San Antonio East Side · 1889</div>
+  <div class="card-box" style="margin-bottom:16px;">
+    <span class="card-label">How The Nickname Began</span>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.65;color:var(--ink2);">Cornelius Armstrong Sr. was orphaned at age three and raised by the white family that had employed his mother. As a child in that household he ate so much frozen dessert that the family dubbed him "Ice Cream." He carried that name for forty-four years. The nickname passed through three generations — his son became "Little Ice Cream" and his grandson "Little Joe Cream."</p>
+  </div>
+  <div class="bc-row">
+    <div class="bc-card">
+      <span class="bc-name">Cornelius "Ice Cream" Armstrong Sr.</span>
+      <span class="bc-dates">May 1888 – Dec 6, 1944 · San Antonio TX</span>
+      <span class="bc-note">Born Paul Junction, Austin County TX (same county as Bellville) · managed Charles Bellinger's club from age 14 · shot by Alice Brown 1925 (survived) · lottery raid 1940 · married Edna Josephine Burse · buried Eastview Cemetery, San Antonio · WWII draft next of kin: Velma C. Bellinger</span>
+    </div>
+    <div class="bc-card">
+      <span class="bc-name">Edna Josephine Burse</span>
+      <span class="bc-dates">1896 – 1971</span>
+      <span class="bc-note">Married Cornelius Sr. · later married a man named Smith · mother of Leroy Sr. and Cornelius Jr.</span>
+    </div>
+  </div>
+  <div class="bc-connector">↓ their children ↓</div>
+  <div class="bc-row">
+    <div class="bc-card"><span class="bc-name">Cornelius Armstrong Jr. "Little Ice Cream"</span><span class="bc-dates">Nov 20, 1918 – Jul 24, 1944</span><span class="bc-note">Died age 25 · ruptured appendix · buried Eastview Cemetery Block G Lot 755 · died 5 months before his father</span></div>
+    <div class="bc-card"><span class="bc-name">Leroy Armstrong Sr.</span><span class="bc-dates">Apr 12, 1915 – Jan 23, 1993</span><span class="bc-note">Born San Antonio TX · died Los Angeles CA · had son Leroy Jr. with Audrey Armstrong · left San Antonio for California</span></div>
+  </div>
+  <div class="bc-connector">↓ Leroy Sr. + Audrey Armstrong ↓</div>
+  <div class="bc-row">
+    <div class="bc-card">
+      <span class="bc-name">Leroy "Little Joe Cream" Armstrong Jr.</span>
+      <span class="bc-dates">Feb 15, 1932 – unknown</span>
+      <span class="bc-note">Born San Antonio TX · Owner: The Spot (1501 Burnet), The Brown, The Groove (1402 Moore), The Dream (3115 Nebraska), The Bop Club · Federal gambling agent under Valmo Bellinger at 207 N. Center · Grand jury witness Oct 1953 · Huntsville prison 1950 (Convict #117155) · left San Antonio for Los Angeles Dec 31, 1960 · court case 1974 No Billed</span>
+      <span class="bc-badge gold">Business Partner of James Ballard Jr.</span>
+    </div>
+  </div>
+
+  <div class="div"></div>
+  <div class="bc-gen">How the Two Lines Connected · San Antonio East Side · 1950–1954</div>
+  <div class="card-box green">
+    <span class="card-label">Primary Source Confirmed Connections</span>
+    <table class="ftbl">
+      <tr><td>Federal gambling stamps</td><td>Corpus Christi Times, Nov 4, 1953 — Leroy Armstrong Jr. and James Wilson Ballard Jr. both listed as agents at 207 N. Center Street under Valmo Bellinger</td></tr>
+      <tr><td>Beer license</td><td>Eva Ballard held the beer license for The Spot — Leroy Armstrong Jr.'s establishment</td></tr>
+      <tr><td>150 Paul Street 1950 census</td><td>Eva, James Jr., Margie, and Isaac Coco all living at 150 Paul — the same address from which the family engaged the Bellinger/Armstrong network</td></tr>
+      <tr><td>The Caldwell shooting</td><td>February 23, 1954 — Officer Graves shot Caldwell (Leroy's employee) in Eva's back office — Eva subpoenaed, James Jr. subpoenaed, Margie named in sworn testimony</td></tr>
+      <tr><td>Blood connection</td><td>Unconfirmed — Cornelius Sr. born Paul Junction, Austin County (same county as Dave Armstrong's family in Bellville) — possible kinship through Charlie Armstrong but not proven by DNA or documents</td></tr>
+    </table>
+  </div>
+
+</div>
+<div class="ftr">Armstrong Family Chart · Two Lines · One East Side Community · Compiled by Jasmine M. Lee · Dock Ellis Foundation · July 2026</div>
 </div>
 
 <!-- ═══ THE LAND ═══ -->
@@ -3266,6 +3609,19 @@ function loadPhoto(boxId,event){
   };
   reader.readAsDataURL(file);
 }
+
+function toggleDrop(id){
+  var m=document.getElementById(id);
+  var isOpen=m.classList.contains('open');
+  closeDrop();
+  if(!isOpen) m.classList.add('open');
+}
+function closeDrop(){
+  document.querySelectorAll('.nav-drop-menu').forEach(function(m){m.classList.remove('open');});
+}
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.nav-dropdown')) closeDrop();
+});
 </script>
 </body>
 </html>

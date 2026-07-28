@@ -93,13 +93,13 @@ body{display:flex;flex-direction:row;margin:0;padding:0;}
   font-family:'Josefin Sans',sans-serif;
   font-size:8px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
   color:rgba(255,255,255,.35);
-  padding:16px 18px 5px;display:block;
+  padding:10px 18px 4px;display:block;
 }
 .nb{
   font-family:'Josefin Sans',sans-serif;
-  font-size:11px;font-weight:300;letter-spacing:.3px;
+  font-size:10.5px;font-weight:300;letter-spacing:.2px;
   color:rgba(255,255,255,.72);
-  padding:9px 18px 9px 14px;
+  padding:7px 18px 7px 14px;
   cursor:pointer;border:none;background:none;
   width:100%;text-align:left;
   border-left:3px solid transparent;
@@ -542,6 +542,8 @@ body{display:flex;flex-direction:row;margin:0;padding:0;}
 .gkid .fn{font-size:12px;}
 .gkid .fd{font-size:7.5px;}
 </style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
 
@@ -739,9 +741,6 @@ body{display:flex;flex-direction:row;margin:0;padding:0;}
   <div class="prose"><p>Click any stop on the map to read the family's story at that location.</p></div>
 
   <!-- Leaflet Map -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
   <div id="migmap" style="width:100%;height:480px;border-radius:8px;border:1px solid var(--border);margin:20px 0;z-index:1;"></div>
 
   <!-- Story popup -->
@@ -3843,6 +3842,7 @@ function show(id,btn){
   if(el){el.classList.add("active");}
   if(btn){btn.classList.add("active");}
   window.scrollTo(0,0);
+  if(id==='migration'){setTimeout(initMigMap,100);}
 }
 // Drag to scroll timeline
 (function(){
@@ -3981,8 +3981,7 @@ function loadPhoto(boxId,event){
 </div>
 <div class="ctr">
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 
 <style>
 #migmap{width:100%;height:520px;border-radius:8px;border:2px solid var(--border2);box-shadow:0 4px 20px var(--shadow);margin:20px 0;}
@@ -3994,7 +3993,7 @@ function loadPhoto(boxId,event){
 .mig-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;}
 </style>
 
-<div id="migmap"></div>
+<div id="migmap2" style="width:100%;height:500px;border-radius:8px;border:1px solid var(--border2);margin:20px 0;"></div>
 <div class="mig-legend">
   <div class="mig-leg-item"><div class="mig-dot" style="background:#c0392b;"></div>Enslaved Origins</div>
   <div class="mig-leg-item"><div class="mig-dot" style="background:#e67e22;"></div>Post-Emancipation</div>
@@ -4003,7 +4002,10 @@ function loadPhoto(boxId,event){
 </div>
 
 <script>
-(function(){
+function initMigMap(){
+  var el=document.getElementById('migmap2');
+  if(!el||el._init)return;
+  el._init=true;
   var stops = [
     {lat:34.2,lng:-81.6,color:"#c0392b",size:16,name:"Newberry County, South Carolina",dates:"ca. 1780s – ca. 1807",story:"Patience — your earliest confirmed ancestor — was enslaved here by the Waldrop family. Francis Davenport Sr. gave her to his daughter Patty Waldrop in 1795 with the words 'with her increase' — meaning all of Patience's future children were automatically enslaved. Her daughter Clarissa was born here. DNA confirms 46 descendants of Clarissa still living today."},
     {lat:32.3,lng:-89.8,color:"#c0392b",size:14,name:"Mississippi",dates:"ca. 1807 – ca. 1840s",story:"Clarissa was brought to Mississippi as part of the Waldrop family migration. The 1839 Waldrop estate deed in Rankin County, Mississippi names Clarissa and her siblings as they were distributed among the heirs. The path from Clarissa to Joseph Nichols — your 3rd great-grandfather — is still being researched but confirmed by DNA."},
@@ -4014,7 +4016,7 @@ function loadPhoto(boxId,event){
     {lat:33.75,lng:-117.87,color:"#1a6b4a",size:20,name:"Orange County, California",dates:"1961 – Present",story:"Margie Nell Ballard settled at 622 South Townsend Street in Santa Ana, Orange County. She registered to vote as a Democrat in 1964. Norman Caswell Corbin died here in April 1974 — the Corbin Community Center at 2215 McFadden Avenue, Santa Ana was named in his honor. Eva Armstrong Ballard died in Garden Grove, Orange County on November 24, 1977 as Eva Green. Margie died in Orange County on October 15, 1988. Jasmine M. Lee was born here on January 25, 1982."},
   ];
 
-  var map = L.map('migmap', {scrollWheelZoom:false}).setView([34,-95],4);
+  var map = L.map('migmap2', {scrollWheelZoom:false}).setView([34,-95],4);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
     attribution:'© OpenStreetMap contributors',maxZoom:18
   }).addTo(map);
@@ -4023,7 +4025,6 @@ function loadPhoto(boxId,event){
   var path = stops.map(function(s){return [s.lat,s.lng];});
   L.polyline(path,{color:'#2d5a9e',weight:2.5,opacity:0.5,dashArray:'8,6'}).addTo(map);
 
-  // Add markers
   stops.forEach(function(s,i){
     var icon = L.divIcon({
       className:'',
@@ -4034,7 +4035,8 @@ function loadPhoto(boxId,event){
     var popup = '<div class="mig-popup"><h3>'+s.name+'</h3><div class="dates">'+s.dates+'</div><p>'+s.story+'</p></div>';
     L.marker([s.lat,s.lng],{icon:icon}).addTo(map).bindPopup(popup,{maxWidth:340,className:'mig-pop'});
   });
-})();
+}
+initMigMap();
 </script>
 
 <div class="prose">
@@ -4380,49 +4382,88 @@ function quickSearch(term){
   doSearch(term);
 }
 
+// Search index - pre-built from page content
+var SEARCH_INDEX = [
+  {id:'timeline',label:'Family Timeline',text:'patience clarissa easter bell nichols hellen armstrong eva ballard margie corbin hjordis jasmine south carolina mississippi bellville fort worth san antonio california 1780s 1848 1900 1929 1960 1982'},
+  {id:'letter',label:'Letter to Family',text:'jasmine lee dock ellis foundation why this research matters reunion family photos documents contact jlee@dockellisfoundation.com letter ancestors where you came from'},
+  {id:'whoiswho',label:"Who's Who",text:'margie ballard corbin michael corbin ronnie ballard hjordis corbin deanna sonsorey orngiel setaun norman corbin santa ana orange county california'},
+  {id:'bondage',label:'Bondage to Belonging',text:'slavery freedom emancipation waldrop patience clarissa south carolina newberry county 1795 1865 civil war reconstruction'},
+  {id:'enslaved',label:'Enslaved Family',text:'patience waldrop clarissa joseph nichols easter bell piney creek bellville enslaved freedom 1848 1865'},
+  {id:'nichols',label:'Nichols · Waldrop',text:'nichols waldrop hezekiah francis davenport easter bell joseph bellville austin county texas piney creek 1830 land grant'},
+  {id:'easter',label:'Easter Bell',text:'easter bell nichols july 4 1848 bellville austin county texas enslaved freedom joseph nichols piney creek 1935 jeff cemetery'},
+  {id:'juneteenth',label:'Juneteenth',text:'juneteenth june 19 1865 texas freedom emancipation easter bell bellville'},
+  {id:'john_armstrong',label:'John Armstrong',text:'john armstrong bellville 1872 fort worth 1911 killed jack thompson dave armstrong clarissa morgan hellen nichols eva armstrong transfer truck driver terminal hotel'},
+  {id:'eva',label:'Eva Ballard',text:'eva armstrong ballard 1900 bellville fort worth san antonio 1944 150 paul street the spot 1501 burnet street caldwell shooting graves margie james ballard jr minor green garden grove california 1977 eva green'},
+  {id:'james_sr',label:'James Ballard Sr.',text:'james wilson ballard senior 1897 palestine anderson county texas fort worth san antonio austin state hospital 1953 psychosis syphilis rev george ballard mary ann edwards 905 east 2nd street porter separated louis durvin'},
+  {id:'ballard_chart',label:'Ballard Family Chart',text:'newton ballard rebecca mississippi rev george ballard mary ann edwards lavinia benjamin hallique bettie james mark moses john birdie blancherie alberta james jr margie lois charles bettie thelma'},
+  {id:'armstrong_chart',label:'Armstrong Chart',text:'dave armstrong clarissa ann morgan john armstrong joshua bettie ida charlie cornelius ice cream armstrong sr leroy armstrong jr little joe cream paul junction bellville bellinger east side san antonio'},
+  {id:'ballard_line',label:'Ballard Line Research',text:'newton ballard upshur county texas rev george ballard waco mclennan county death certificate 51612 alberta kendle greenwood annex james wilson ballard sr palestine anderson county'},
+  {id:'homage',label:"Margie's Family",text:'margie nell ballard corbin santa ana townsend street michael corbin ronnie ballard hjordis deanna sonsorey orngiel setaun norman corbin community center mcfadden avenue'},
+  {id:'land',label:'The Land',text:'bellville 2 acres j nichols survey tax sale 2006 waco 724 johnson street rev george ballard newton ballard upshur county 160 acres lone star legal aid'},
+  {id:'map',label:'Where We Are',text:'south carolina mississippi bellville fort worth san antonio orange county california migration'},
+  {id:'descendants',label:'DNA Connections',text:'dna thrulines ancestry gedmatch hjordis clarissa waldrop teresa ballard jahna bradshaw raven johnson poppy harryTree 53 cM 41 cM 199 cM'},
+  {id:'dna',label:'DNA Guide',text:'dna centimorgans cM thrulines ancestry gedmatch matches half sibling parent child first cousin second cousin segments'},
+  {id:'timeline_research',label:'Research Timeline',text:'1954 caldwell shooting graves knife eva ballard 150 paul street margie ballard san antonio light express 1955 verdict not guilty atascosa county jourdanton'},
+  {id:'research',label:'Research Notes',text:'open questions pending records bellville times fort worth star telegram san antonio register atascosa county norris douglas teresa ballard minor green alice faye daniels earline ferguson'},
+  {id:'archive',label:'Archive',text:'documents newspapers death certificates census records affidavits military records research files google drive armstrong family research folder'},
+  {id:'migration',label:'Migration Map',text:'south carolina newberry county waldrop mississippi bellville texas austin county fort worth san antonio orange county california migration path family journey'},
+  {id:'sources',label:'Primary Sources',text:'gambling payoffs bared san antonio express 1953 man slain cop 1954 cop coverups admitted graves knife james ballard photograph 1957 affidavit census 150 paul street death certificate rev george ballard james ballard sr wwii draft card'},
+  {id:'thisday',label:'This Day in History',text:'easter bell july 4 1848 margie march 13 1929 james sr march 13 1953 eva november 24 1977 jasmine january 25 1982 caldwell february 23 1954 verdict january 5 1955'},
+  {id:'reunion',label:'Family Reunion',text:'reunion rsvp register interest family gathering contact jasmine lee ballard corbin armstrong nichols lott williams'},
+];
+
 function doSearch(q){
   q = q.trim();
+  var hint = '<div class="srch-hint"><h3>Search the entire family history</h3><p>Try searching for a name, a year, a city, or any keyword.</p><div class="srch-pills"><button class="srch-pill" onclick="quickSearch('Easter Bell')">Easter Bell</button><button class="srch-pill" onclick="quickSearch('Eva Ballard')">Eva Ballard</button><button class="srch-pill" onclick="quickSearch('Margie')">Margie</button><button class="srch-pill" onclick="quickSearch('Caldwell')">Caldwell</button><button class="srch-pill" onclick="quickSearch('Ice Cream')">Ice Cream</button><button class="srch-pill" onclick="quickSearch('San Antonio')">San Antonio</button><button class="srch-pill" onclick="quickSearch('Fort Worth')">Fort Worth</button><button class="srch-pill" onclick="quickSearch('Bellville')">Bellville</button><button class="srch-pill" onclick="quickSearch('Nichols')">Nichols</button><button class="srch-pill" onclick="quickSearch('Armstrong')">Armstrong</button><button class="srch-pill" onclick="quickSearch('1954')">1954</button><button class="srch-pill" onclick="quickSearch('Graves')">Graves</button></div></div>';
+  
   if(q.length < 2){
-    document.getElementById('srchresults').innerHTML = document.querySelector('.srch-hint').outerHTML;
+    document.getElementById('srchresults').innerHTML = hint;
     document.getElementById('srchcount').textContent = '';
     return;
   }
   
-  var sections = document.querySelectorAll('.sec');
+  var ql = q.toLowerCase();
   var results = [];
-  var re = new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
   
-  sections.forEach(function(sec){
-    var id = sec.id.replace('tab-','');
-    if(['search','thisday','sources','migration','reunion'].includes(id)) return;
-    var label = {'timeline':'Family Timeline','familytree':'Family Tree','letter':'Letter to Family','whoiswho':"Who's Who",'bondage':'Bondage to Belonging','enslaved':'Enslaved Family','nichols':'Nichols · Waldrop','easter':'Easter Bell','juneteenth':'Juneteenth','john_armstrong':'John Armstrong','eva':'Eva Ballard','james_sr':'James Ballard Sr.','ballard_chart':'Ballard Chart','armstrong_chart':'Armstrong Chart','ballard_line':'Ballard Line','homage':"Margie's Family",'land':'The Land','map':'Where We Are','descendants':'DNA Connections','dna':'DNA Guide','timeline_research':'Research Timeline','research':'Research Notes','archive':'Archive'}[id] || id;
+  SEARCH_INDEX.forEach(function(page){
+    // Also search live DOM text of visible sections
+    var el = document.getElementById('tab-'+page.id);
+    var liveText = el ? (el.textContent||'').toLowerCase() : '';
+    var combined = page.text.toLowerCase() + ' ' + liveText;
     
-    var text = sec.innerText || sec.textContent || '';
-    var matches = text.match(re);
-    if(!matches) return;
+    if(combined.indexOf(ql) === -1) return;
     
-    // Find context around match
-    var idx = text.search(re);
-    var start = Math.max(0, idx-80);
-    var end = Math.min(text.length, idx+200);
-    var snippet = (start>0?'...':'')+text.slice(start,end).trim()+(end<text.length?'...':'');
-    var highlighted = snippet.replace(re,'<mark>$1</mark>');
+    // Count occurrences
+    var count = 0;
+    var pos = 0;
+    while((pos = combined.indexOf(ql, pos)) !== -1){count++;pos+=ql.length;}
     
-    results.push({id:id, label:label, count:matches.length, snippet:highlighted});
+    // Get snippet from live text if available
+    var idx = liveText.indexOf(ql);
+    var snippet = '';
+    if(idx >= 0){
+      var start = Math.max(0, idx-60);
+      var end = Math.min(liveText.length, idx+180);
+      snippet = (start>0?'...':'')+liveText.slice(start,end).replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\]/g,'\$&')+')','gi'),'<mark>$1</mark>')+(end<liveText.length?'...':'');
+    } else {
+      snippet = page.text.slice(0,150)+'...';
+    }
+    
+    results.push({id:page.id, label:page.label, count:count, snippet:snippet});
   });
   
   results.sort(function(a,b){return b.count-a.count;});
   
   if(results.length===0){
-    document.getElementById('srchresults').innerHTML = '<div class="srch-hint"><h3>No results for "'+q+'"</h3><p>Try a different spelling or a related term.</p></div>';
-    document.getElementById('srchcount').textContent = '0 results';
+    document.getElementById('srchresults').innerHTML='<div class="srch-hint"><h3>No results for &ldquo;'+q+'&rdquo;</h3><p>Try a different spelling or related term.</p></div>';
+    document.getElementById('srchcount').textContent='0 results';
   } else {
-    document.getElementById('srchcount').textContent = results.length+' page'+(results.length===1?'':'s')+' found';
-    document.getElementById('srchresults').innerHTML = results.map(function(r){
+    document.getElementById('srchcount').textContent=results.length+' section'+(results.length===1?'':'s')+' found';
+    document.getElementById('srchresults').innerHTML=results.map(function(r){
       return '<div class="srch-result" onclick="show(''+r.id+'',null)">'
-        + '<span class="srch-section">'+r.label+' · '+r.count+' match'+(r.count===1?'':'es')+'</span>'
-        + '<div class="srch-text">'+r.snippet+'</div>'
-        + '</div>';
+        +'<span class="srch-section">'+r.label+'</span>'
+        +'<div class="srch-text">'+r.snippet+'</div>'
+        +'</div>';
     }).join('');
   }
 }

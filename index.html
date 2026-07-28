@@ -33,73 +33,95 @@ html{font-size:16px;-webkit-text-size-adjust:100%;}
 
 /* ── LIGHT THEME ── */
 :root{
-  --bg:#faf7f2;
-  --bg2:#f3ede0;
-  --bg3:#ebe3d0;
+  --bg:#f8f9fb;
+  --bg2:#f0f2f7;
+  --bg3:#e4e8f0;
   --card:#ffffff;
-  --border:#d4c4a0;
-  --border2:#c4ae80;
-  --ink:#2a1e0a;
-  --ink2:#4a3820;
-  --ink3:#6a5430;
-  --gold:#8b6420;
-  --gold2:#b08030;
-  --gold3:#c9a84c;
-  --gold-bg:rgba(139,100,32,0.08);
-  --gold-bg2:rgba(139,100,32,0.14);
-  --rust:#8b3a1a;
-  --rust-bg:rgba(139,58,26,0.08);
-  --forest:#1e4a2e;
-  --forest-bg:rgba(30,74,46,0.08);
-  --blue:#2a4a7a;
-  --blue-bg:rgba(42,74,122,0.08);
-  --red:#aa3333;
-  --shadow:rgba(42,30,10,0.12);
-  --shadow2:rgba(42,30,10,0.06);
+  --border:#d0d6e8;
+  --border2:#b0bcd8;
+  --ink:#1a1f36;
+  --ink2:#3a4060;
+  --ink3:#6b7294;
+  --gold:#2d5a9e;
+  --gold2:#1e3f7a;
+  --gold3:#4a7cc7;
+  --gold-bg:rgba(45,90,158,0.07);
+  --gold-bg2:rgba(45,90,158,0.13);
+  --rust:#7b2d5e;
+  --rust-bg:rgba(123,45,94,0.07);
+  --forest:#1a6b4a;
+  --forest-bg:rgba(26,107,74,0.07);
+  --blue:#1a5c8a;
+  --blue-bg:rgba(26,92,138,0.07);
+  --red:#c0392b;
+  --shadow:rgba(26,31,54,0.14);
+  --shadow2:rgba(26,31,54,0.06);
+  --accent:#e8b84b;
+  --accent2:#f0c96a;
 }
 
 body{
   background:var(--bg);
   color:var(--ink);
-  font-family:'Cormorant Garamond',Georgia,serif;
+  font-family:'Cormorant Garamond',Georgia,serif;background:var(--bg);
   min-height:100vh;
   line-height:1.6;
 }
 
-/* ── NAV ── */
+/* ── SIDEBAR NAV ── */
+body{display:flex;flex-direction:row;}
 .nav{
-  position:sticky;top:0;z-index:200;
-  background:rgba(250,247,242,0.97);
-  border-bottom:2px solid var(--border);
-  backdrop-filter:blur(8px);
-  display:flex;align-items:center;
-  padding:0 20px;
-  overflow-x:auto;
-  gap:0;
-  box-shadow:0 2px 12px var(--shadow2);
+  position:fixed;top:0;left:0;bottom:0;z-index:300;
+  width:220px;flex-shrink:0;
+  background:var(--ink);
+  overflow-y:auto;overflow-x:hidden;
+  display:flex;flex-direction:column;
+  box-shadow:4px 0 24px var(--shadow);
 }
-.nav::-webkit-scrollbar{height:0;}
+.nav::-webkit-scrollbar{width:3px;}
+.nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);}
 .nav-brand{
   font-family:'Josefin Sans',sans-serif;
-  font-size:11px;font-weight:600;letter-spacing:3px;
-  color:var(--gold);text-transform:uppercase;
-  white-space:nowrap;padding:14px 16px 14px 0;
-  border-right:2px solid var(--border);
-  margin-right:8px;flex-shrink:0;
+  font-size:11px;font-weight:700;letter-spacing:3px;
+  color:var(--accent);text-transform:uppercase;
+  padding:24px 20px 12px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+  display:block;line-height:1.4;
+}
+.nav-brand small{display:block;font-size:9px;font-weight:300;letter-spacing:2px;color:rgba(255,255,255,.5);margin-top:4px;}
+.nav-section-label{
+  font-family:'Josefin Sans',sans-serif;
+  font-size:8px;font-weight:600;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,.35);
+  padding:16px 20px 6px;display:block;
 }
 .nb{
   font-family:'Josefin Sans',sans-serif;
-  font-size:10px;font-weight:300;letter-spacing:1.5px;
-  text-transform:uppercase;
-  color:var(--ink3);
-  padding:16px 14px;
+  font-size:11px;font-weight:300;letter-spacing:.5px;
+  color:rgba(255,255,255,.7);
+  padding:10px 20px 10px 16px;
   cursor:pointer;border:none;background:none;
-  white-space:nowrap;flex-shrink:0;
-  border-bottom:3px solid transparent;
-  transition:color .2s,border-color .2s;
+  width:100%;text-align:left;
+  border-left:3px solid transparent;
+  transition:all .18s;display:block;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
-.nb:hover{color:var(--ink);}
-.nb.active{color:var(--gold);border-bottom-color:var(--gold);font-weight:600;}
+.nb:hover{color:#fff;background:rgba(255,255,255,.07);border-left-color:rgba(255,255,255,.3);}
+.nb.active{color:var(--accent);background:rgba(232,184,75,.1);border-left-color:var(--accent);font-weight:600;}
+/* MAIN CONTENT AREA */
+.main-content{margin-left:220px;flex:1;min-width:0;min-height:100vh;}
+/* MOBILE TOGGLE */
+.mob-toggle{display:none;position:fixed;top:12px;left:12px;z-index:400;width:40px;height:40px;background:var(--ink);border:none;border-radius:8px;cursor:pointer;align-items:center;justify-content:center;box-shadow:0 2px 12px var(--shadow);}
+.mob-toggle span{display:block;width:20px;height:2px;background:#fff;margin:4px auto;transition:.2s;}
+@media(max-width:768px){
+  body{flex-direction:column;}
+  .nav{position:fixed;left:-240px;top:0;bottom:0;width:240px;transition:left .25s;z-index:400;}
+  .nav.open{left:0;}
+  .main-content{margin-left:0;padding-top:60px;}
+  .mob-toggle{display:flex;}
+  .mob-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:350;}
+  .mob-overlay.open{display:block;}
+}
 /* ── DROPDOWN NAV ── */
 .nav-dropdown{position:relative;display:inline-block;}
 .nav-drop-btn{display:flex;align-items:center;gap:4px;}
@@ -114,21 +136,23 @@ body{
 }
 .nav-drop-menu.open{display:block;}
 .nav-drop-menu button{
-  display:block;width:100%;text-align:left;
-  padding:12px 18px;border:none;background:none;
-  font-family:'Josefin Sans',sans-serif;
-  font-size:10px;font-weight:300;letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--ink3);cursor:pointer;
-  border-bottom:1px solid var(--border);
+  display:block!important;width:100%!important;text-align:left!important;
+  padding:12px 18px!important;border:none!important;border-bottom:1px solid var(--border)!important;
+  background:none!important;
+  font-family:'Josefin Sans',sans-serif!important;
+  font-size:10px!important;font-weight:300!important;letter-spacing:1.5px!important;text-transform:uppercase!important;
+  color:var(--ink3)!important;cursor:pointer!important;
   transition:background .15s,color .15s;
+  white-space:nowrap!important;
+  border-bottom-color:var(--border)!important;
 }
-.nav-drop-menu button:last-child{border-bottom:none;}
-.nav-drop-menu button:hover{background:var(--gold-bg);color:var(--gold);}
+.nav-drop-menu button:last-child{border-bottom:none!important;}
+.nav-drop-menu button:hover{background:var(--gold-bg)!important;color:var(--gold)!important;}
 
 
 /* ── SECTIONS ── */
 .sec{display:none;}
-.sec.active{display:block;}
+.sec.active{display:block;min-height:100vh;}
 
 /* ── SECTION HEADER ── */
 .shdr{
@@ -171,7 +195,7 @@ body{
 /* ── TYPOGRAPHY ── */
 .prose{
   font-family:'Cormorant Garamond',serif;
-  font-size:18px;line-height:1.85;color:var(--ink2);
+  font-size:19px;line-height:1.9;color:var(--ink2);
   word-wrap:break-word;overflow-wrap:break-word;
 }
 .prose p{margin-bottom:1.4em;}
@@ -345,7 +369,7 @@ body{
 .sw::-webkit-scrollbar-track{background:var(--border);}
 .sw::-webkit-scrollbar-thumb{background:var(--gold2);border-radius:3px;}
 .tl{display:flex;align-items:flex-start;min-width:max-content;padding:60px 0 40px;position:relative;}
-.tl::before{content:'';position:absolute;left:0;right:0;top:152px;height:2px;background:linear-gradient(to right,transparent 0%,var(--border2) 3%,var(--border2) 97%,transparent 100%);}
+.tl::before{display:none;}/* line removed - was overlapping ancestor cards */
 .gc{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
 .era{font-family:'Josefin Sans',sans-serif;font-size:8px;font-weight:300;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-align:center;white-space:nowrap;padding:3px 10px;border:1px solid var(--border2);border-radius:20px;background:var(--gold-bg);margin-bottom:18px;}
 .tdot{width:12px;height:12px;border-radius:50%;border:2px solid var(--border2);background:var(--bg);flex-shrink:0;position:relative;z-index:2;margin-bottom:10px;}
@@ -530,46 +554,49 @@ body{
 <body>
 
 <!-- NAV -->
-<nav class="nav">
-  <div class="nav-brand">Our Family</div>
-  <button class="nb active" onclick="show('timeline',this)">Family Timeline</button>
-  <button class="nb" onclick="show('familytree',this)">Family Tree</button>
-  <button class="nb" onclick="show('letter',this)">✉ Letter</button>
-  <button class="nb" onclick="show('whoiswho',this)">Who's Who</button>
-  <div class="nav-dropdown">
-    <button class="nb nav-drop-btn" onclick="toggleDrop('drop-ancestry')">Ancestors ▾</button>
-    <div class="nav-drop-menu" id="drop-ancestry">
-      <button onclick="show('bondage',null);closeDrop()">Bondage to Belonging</button>
-      <button onclick="show('enslaved',null);closeDrop()">Enslaved Family</button>
-      <button onclick="show('nichols',null);closeDrop()">Nichols · Waldrop</button>
-      <button onclick="show('easter',null);closeDrop()">Easter Bell</button>
-      <button onclick="show('juneteenth',null);closeDrop()">Juneteenth</button>
-      <button onclick="show('john_armstrong',null);closeDrop()">John Armstrong</button>
-      <button onclick="show('eva',null);closeDrop()">Eva Armstrong</button>
-    </div>
-  </div>
-  <div class="nav-dropdown">
-    <button class="nb nav-drop-btn" onclick="toggleDrop('drop-charts')">Family Charts ▾</button>
-    <div class="nav-drop-menu" id="drop-charts">
-      <button onclick="show('ballard_chart',null);closeDrop()">Ballard Family Chart</button>
-      <button onclick="show('armstrong_chart',null);closeDrop()">Armstrong Family Chart</button>
-      <button onclick="show('ballard_line',null);closeDrop()">Ballard Line Research</button>
-      <button onclick="show('homage',null);closeDrop()">Margie's Family</button>
-    </div>
-  </div>
-  <div class="nav-dropdown">
-    <button class="nb nav-drop-btn" onclick="toggleDrop('drop-research')">Research ▾</button>
-    <div class="nav-drop-menu" id="drop-research">
-      <button onclick="show('land',null);closeDrop()">The Land</button>
-      <button onclick="show('descendants',null);closeDrop()">DNA Connections</button>
-      <button onclick="show('dna',null);closeDrop()">DNA Guide</button>
-      <button onclick="show('timeline_research',null);closeDrop()">Research Timeline</button>
-      <button onclick="show('research',null);closeDrop()">Research Notes</button>
-      <button onclick="show('archive',null);closeDrop()">📁 Archive</button>
-    </div>
-  </div>
+<!-- Mobile toggle -->
+<button class="mob-toggle" onclick="toggleSidebar()" id="mobtog">
+  <span></span><span></span><span></span>
+</button>
+<div class="mob-overlay" id="mobover" onclick="closeSidebar()"></div>
+
+<!-- SIDEBAR NAV -->
+<nav class="nav" id="sidebar">
+  <div class="nav-brand">Our Family<small>Ballard · Corbin · Nichols · Armstrong</small></div>
+
+  <span class="nav-section-label">Start Here</span>
+  <button class="nb active" onclick="show('timeline',this)">🌳 Family Timeline</button>
+  <button class="nb" onclick="show('familytree',this)">📋 Family Tree</button>
+  <button class="nb" onclick="show('letter',this)">✉ Letter to Family</button>
+  <button class="nb" onclick="show('whoiswho',this)">👥 Who's Who</button>
+
+  <span class="nav-section-label">Our Ancestors</span>
+  <button class="nb" onclick="show('bondage',this)">Bondage to Belonging</button>
+  <button class="nb" onclick="show('enslaved',this)">Enslaved Family</button>
+  <button class="nb" onclick="show('nichols',this)">Nichols · Waldrop</button>
+  <button class="nb" onclick="show('easter',this)">Easter Bell</button>
+  <button class="nb" onclick="show('juneteenth',this)">Juneteenth</button>
+  <button class="nb" onclick="show('john_armstrong',this)">John Armstrong</button>
+  <button class="nb" onclick="show('eva',this)">Eva Armstrong</button>
+
+  <span class="nav-section-label">Family Charts</span>
+  <button class="nb" onclick="show('ballard_chart',this)">📊 Ballard Chart</button>
+  <button class="nb" onclick="show('armstrong_chart',this)">📊 Armstrong Chart</button>
+  <button class="nb" onclick="show('ballard_line',this)">Ballard Line Research</button>
+  <button class="nb" onclick="show('homage',this)">Margie's Family</button>
+
+  <span class="nav-section-label">Research</span>
+  <button class="nb" onclick="show('land',this)">The Land</button>
   <button class="nb" onclick="show('map',this)">Where We Are</button>
+  <button class="nb" onclick="show('descendants',this)">DNA Connections</button>
+  <button class="nb" onclick="show('dna',this)">DNA Guide</button>
+  <button class="nb" onclick="show('timeline_research',this)">Research Timeline</button>
+  <button class="nb" onclick="show('research',this)">Research Notes</button>
+  <button class="nb" onclick="show('archive',this)">📁 Archive</button>
 </nav>
+
+<!-- MAIN CONTENT WRAPPER -->
+<div class="main-content">
 
 
 <!-- ═══ LETTER TO FAMILY ═══ -->
@@ -3481,10 +3508,26 @@ function show(id,btn){
   document.querySelectorAll(".sec").forEach(s=>s.classList.remove("active"));
   document.querySelectorAll(".nb").forEach(b=>b.classList.remove("active"));
   var el=document.getElementById("tab-"+id);
-  if(el){el.classList.add("active");}
+  if(el){el.classList.add("active");}else{console.warn("Tab not found:",id);}
   if(btn){btn.classList.add("active");}
+  var mc=document.querySelector('.main-content');
+  if(mc){mc.scrollTop=0;}
   window.scrollTo(0,0);
+  closeSidebar();
 }
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('mobover').classList.toggle('open');
+}
+function closeSidebar(){
+  if(window.innerWidth<=768){
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('mobover').classList.remove('open');
+  }
+}
+// Remove old dropdown functions - no longer needed
+function toggleDrop(){}
+function closeDrop(){}
 // Drag to scroll timeline
 (function(){
   var el=document.getElementById("sw");
@@ -3610,18 +3653,7 @@ function loadPhoto(boxId,event){
   reader.readAsDataURL(file);
 }
 
-function toggleDrop(id){
-  var m=document.getElementById(id);
-  var isOpen=m.classList.contains('open');
-  closeDrop();
-  if(!isOpen) m.classList.add('open');
-}
-function closeDrop(){
-  document.querySelectorAll('.nav-drop-menu').forEach(function(m){m.classList.remove('open');});
-}
-document.addEventListener('click',function(e){
-  if(!e.target.closest('.nav-dropdown')) closeDrop();
-});
 </script>
+</div><!-- end main-content -->
 </body>
 </html>

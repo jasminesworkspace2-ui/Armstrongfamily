@@ -1632,35 +1632,276 @@ body{display:flex;flex-direction:row;margin:0;padding:0;}
 <!-- ═══ BONDAGE TO BELONGING ═══ -->
 <div class="sec" id="tab-bondage">
 <div class="shdr">
-  <span class="sey">The Story of This Family · ca. 1780s to Present</span>
+  <span class="sey">From Newberry County, South Carolina · 1780s · To Orange County, California · Today</span>
   <span class="sttl"><em>Bondage</em> to Belonging</span>
-  <span class="ssub">How one family survived slavery, claimed land, built lives, and made it to California</span>
+  <span class="ssub">How this family survived the unsurvivable — and came out the other side with their names</span>
   <div class="srul"><div class="sdia"></div></div>
 </div>
 <div class="ctr">
-  <div class="prose"><p>This is the story of a family that was not supposed to survive — not intact, not named, not remembered. The system that held them was designed to prevent exactly this: a great-great-great-granddaughter sitting down with documents and DNA and piecing together the names of women who lived two hundred years ago in South Carolina. But here we are. The names survived. The family survived.</p></div>
-  <div class="div"></div>
-  <span class="chd">Chapter One · South Carolina · ca. 1780s–1839</span>
-  <span class="cttl">Patience, and What Was Done to Her</span>
-  <div class="prose"><p>Sometime in the 1780s, a woman named <em>Patience</em> was born in South Carolina. On August 4, 1795, Francis Davenport Sr. signed a deed giving Patience to his daughter Patty, who had married <em>Hezekiah Waldrop</em>. The deed said Patience was given "with her increase" — meaning all children she might ever have would automatically belong to the Waldrop family by law.</p><p>Patience had children. One of them was named <em>Clarissa</em>, born approximately 1807. The 1839 Waldrop estate deed names Patience's children: Clarissa, Rachel, Tom, William, Amanda, and Harriet. Six people. All enslaved. All distributed among white heirs like furniture.</p></div>
-  <div class="pq">"one Negro girl named Patience with her increase" — Newberry County SC Deed Book C:367, August 4, 1795</div>
-  <div class="div"></div>
-  <span class="chd">Chapter Two · Texas · 1834–1865</span>
-  <span class="cttl">Piney Creek, Bellville, Austin County</span>
-  <div class="prose"><p>John Nichols arrived in Austin County, Texas in 1834. His daughter-in-law Fanny Waldrop — Hezekiah's daughter — married John Nichols, bringing enslaved people from the Waldrop household into the Nichols plantation. In 1860, nine enslaved people lived on that plantation. Among them: <em>Rendy Blayn</em>, a woman from North Carolina, and her daughter <em>Easter Bell</em> — born July 4, 1848, on Piney Creek. Easter Bell was born on Independence Day. She would wait seventeen years for her own.</p></div>
-  <div class="div"></div>
-  <span class="chd">Chapter Three · 1865 and After</span>
-  <span class="cttl">What Freedom Looked Like in Bellville, Texas</span>
-  <div class="prose"><p>When emancipation came in June 1865, Easter Bell was seventeen years old. She stayed in Bellville. On December 18, 1865, she married <em>Joseph Nichols</em>. They had twelve children. The family acquired two acres of land in the J. Nichols Survey — on land still bearing her enslaver's name. <em>141 years</em> that land stayed in the family.</p></div>
-  <div class="div"></div>
-  <span class="chd">Chapter Four · Fort Worth · 1900–1953</span>
-  <span class="cttl">Eva Armstrong Ballard Moves North</span>
-  <div class="prose"><p>Easter Bell's granddaughter <em>Eva Armstrong</em> was born June 27, 1900 in Bellville. Her father was killed when she was eleven. She grew up in Fort Worth, ran a Night Club and Cafe in San Antonio, owned property, and eventually died in Garden Grove, California in 1977. Three generations from slavery to the Pacific coast.</p></div>
-  <div class="div"></div>
-  <span class="chd">Chapter Five · Santa Ana, California · 1929–Present</span>
-  <span class="cttl">Margie Nell Ballard Corbin — and Her Children</span>
-  <div class="prose"><p><em>Margie Nell Ballard</em> was born in Fort Worth on March 13, 1929. She settled in Santa Ana, California, raised seven children on Townsend Street, and died October 15, 1988 in Orange County. Her daughter Hjordis gave birth to <em>Jasmine M. Lee</em> on January 25, 1982 — the researcher who found all of this and brought it back.</p></div>
-  <div class="pq">From Patience in Newberry County, South Carolina in 1795 to Jasmine M. Lee in Orange County, California in 2026 — that is the distance this family has traveled. That is what belonging looks like, built out of bondage, one generation at a time.</div>
+
+<style>
+.btb-chapter{margin:48px 0 0;position:relative;}
+.btb-chapter-num{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px;}
+.btb-chapter-title{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,4vw,42px);font-weight:300;color:var(--ink);line-height:1.15;margin-bottom:6px;display:block;}
+.btb-chapter-title em{font-style:italic;color:var(--gold2);}
+.btb-chapter-place{font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:300;letter-spacing:3px;text-transform:uppercase;color:var(--ink3);margin-bottom:28px;display:block;}
+.btb-rule{width:60px;height:3px;background:linear-gradient(to right,var(--gold2),var(--gold3));margin-bottom:28px;display:block;}
+.btb-prose{font-family:'Cormorant Garamond',serif;font-size:19px;line-height:1.9;color:var(--ink2);margin-bottom:18px;}
+.btb-prose p{margin-bottom:1.4em;}
+.btb-prose p:last-child{margin-bottom:0;}
+.btb-prose em{font-style:italic;color:var(--gold2);}
+.btb-prose strong{font-weight:700;color:var(--ink);}
+.btb-doc{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:14px 18px;margin:14px 0;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);display:flex;align-items:flex-start;gap:12px;}
+.btb-doc-icon{font-size:16px;flex-shrink:0;margin-top:-1px;}
+.btb-doc-text{line-height:1.6;color:var(--ink3);}
+.btb-doc-text strong{color:var(--gold);display:block;margin-bottom:3px;}
+.btb-quote{border-left:4px solid var(--gold2);padding:20px 24px;margin:28px 0;background:var(--gold-bg);border-radius:0 6px 6px 0;}
+.btb-quote-text{font-family:'IM Fell English',serif;font-size:21px;font-style:italic;line-height:1.7;color:var(--ink2);display:block;margin-bottom:10px;}
+.btb-quote-src{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:block;}
+.btb-stat{display:inline-block;text-align:center;padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:6px;margin:8px 6px 8px 0;box-shadow:0 2px 8px var(--shadow2);}
+.btb-stat-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--gold);line-height:1;display:block;}
+.btb-stat-lbl{font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);display:block;margin-top:4px;}
+.btb-person{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:22px 26px;margin:20px 0;position:relative;overflow:hidden;box-shadow:0 2px 12px var(--shadow2);}
+.btb-person::before{content:'';position:absolute;top:0;left:0;bottom:0;width:5px;background:linear-gradient(to bottom,var(--gold2),var(--gold3));}
+.btb-person-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--ink);display:block;margin-bottom:4px;}
+.btb-person-dates{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:14px;}
+.btb-person-body{font-family:'Cormorant Garamond',serif;font-size:17px;line-height:1.8;color:var(--ink2);}
+.btb-person-body p{margin-bottom:1.2em;}
+.btb-person-body p:last-child{margin-bottom:0;}
+.btb-divider{width:100%;height:1px;background:linear-gradient(to right,transparent,var(--border2),transparent);margin:52px 0 0;display:block;}
+.btb-timeline{margin:24px 0;display:flex;flex-direction:column;gap:0;}
+.btb-tl-item{display:flex;gap:0;align-items:stretch;}
+.btb-tl-year{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:600;letter-spacing:1px;color:var(--gold);text-align:right;width:60px;flex-shrink:0;padding-right:16px;padding-top:14px;}
+.btb-tl-line{width:2px;background:var(--border2);flex-shrink:0;}
+.btb-tl-dot{width:12px;height:12px;border-radius:50%;background:var(--gold2);border:3px solid var(--bg);box-shadow:0 0 0 2px var(--gold2);flex-shrink:0;margin-top:12px;margin-left:-7px;}
+.btb-tl-content{flex:1;padding:8px 0 20px 20px;border-bottom:1px solid var(--border);}
+.btb-tl-item:last-child .btb-tl-content{border-bottom:none;}
+.btb-tl-what{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--ink2);line-height:1.6;}
+.btb-tl-who{font-family:'Josefin Sans',sans-serif;font-size:10px;font-weight:600;letter-spacing:.5px;color:var(--ink);margin-bottom:3px;display:block;}
+.btb-highlight{background:linear-gradient(135deg,var(--gold-bg2),var(--gold-bg));border:2px solid var(--gold2);border-radius:8px;padding:28px 32px;margin:32px 0;text-align:center;}
+.btb-highlight-num{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,9vw,96px);font-weight:300;color:var(--gold);line-height:1;display:block;}
+.btb-highlight-lbl{font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--ink3);margin-top:6px;display:block;}
+.btb-highlight-desc{font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.7;color:var(--ink2);margin-top:16px;max-width:540px;margin-left:auto;margin-right:auto;}
+.btb-closing{background:var(--ink);color:#fff;border-radius:10px;padding:40px 40px;margin:52px 0 20px;text-align:center;}
+.btb-closing-title{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,38px);font-weight:300;color:var(--accent);margin-bottom:20px;display:block;line-height:1.2;}
+.btb-closing-body{font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.9;color:rgba(255,255,255,.82);max-width:600px;margin:0 auto;}
+.btb-closing-line{display:flex;align-items:center;gap:14px;margin:10px 0;flex-wrap:wrap;justify-content:center;}
+.btb-closing-arrow{color:var(--accent);font-size:20px;flex-shrink:0;}
+.btb-closing-person{font-family:'Cormorant Garamond',serif;font-size:17px;color:rgba(255,255,255,.9);}
+.btb-closing-person em{font-style:italic;color:var(--accent);}
+.btb-closing-year{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);display:block;text-align:center;margin-top:3px;}
+</style>
+
+<!-- OPENING -->
+<div class="btb-prose" style="margin-top:8px;">
+<p>This is the story of a family that was not supposed to survive. Not intact. Not named. Not remembered. The machinery of slavery was designed with deliberate precision to prevent exactly this — a great-great-great-great-granddaughter sitting at a desk in 2026 with seven years of research, with DNA results, with primary source documents, piecing together the names of women who lived and loved and suffered two hundred years ago in South Carolina, Mississippi, and Texas.</p>
+<p>But the names survived. The blood survived. And so the story survived — because surviving is what this family has always done.</p>
+<p>What follows is not a sanitized account. It is honest about what was done to these people, what they endured, and what they built from the ruins of what was taken from them. It is also honest about what we still don't know — because the gaps in the record are themselves a form of evidence. Silence in the archive is what violence looks like a hundred and fifty years later.</p>
+</div>
+
+<div style="display:flex;flex-wrap:wrap;gap:0;margin:32px 0;">
+  <div class="btb-stat"><span class="btb-stat-num">~240</span><span class="btb-stat-lbl">Years Documented</span></div>
+  <div class="btb-stat"><span class="btb-stat-num">8</span><span class="btb-stat-lbl">Generations</span></div>
+  <div class="btb-stat"><span class="btb-stat-num">4</span><span class="btb-stat-lbl">States of Enslavement</span></div>
+  <div class="btb-stat"><span class="btb-stat-num">141</span><span class="btb-stat-lbl">Years of Land Held</span></div>
+  <div class="btb-stat"><span class="btb-stat-num">46</span><span class="btb-stat-lbl">DNA Matches to Clarissa</span></div>
+  <div class="btb-stat"><span class="btb-stat-num">2,500</span><span class="btb-stat-lbl">Miles Traveled</span></div>
+</div>
+
+<!-- CHAPTER ONE -->
+<span class="btb-divider"></span>
+<div class="btb-chapter">
+  <span class="btb-chapter-num">Chapter One</span>
+  <span class="btb-chapter-title"><em>Patience</em> — and What Was Done to Her</span>
+  <span class="btb-chapter-place">Newberry County, South Carolina · ca. 1780s – 1839</span>
+  <span class="btb-rule"></span>
+
+  <div class="btb-prose">
+    <p>Sometime in the 1780s, in Newberry County, South Carolina, a woman was born. Her name was <strong>Patience</strong>. We do not know who her parents were. We do not know what she looked like, what language her grandparents spoke, what country her ancestors were taken from. The document that first names her does not record any of that. It records only that she was given away.</p>
+    <p>On August 4, 1795, a white man named Francis Davenport Sr. signed a deed transferring Patience to his daughter Patty, who had married a man named <strong>Hezekiah Waldrop</strong>. The deed describes Patience as <em>"one Negro girl."</em> She was approximately fifteen years old.</p>
+    <p>The deed contained four words that would define the lives of every child Patience would ever have: <em>"with her increase."</em> Under South Carolina law, this clause meant that all of Patience's future children — every child she had not yet conceived, every child not yet born, every grandchild she might live to hold — were automatically the property of the Waldrop family from the moment of their first breath. No transaction required. No auction block. Patience's body, and the bodies that came from her body, belonged to the Waldrops forever and by law.</p>
+    <p>Patience had children. We know the names of six of them — <strong>Clarissa, Rachel, Tom, William, Amanda, and Harriet</strong> — because they appear in the 1839 Waldrop estate deed, distributed among white heirs after Hezekiah Waldrop died. Six people. Six lives. Itemized in a legal document alongside livestock and furniture.</p>
+    <p>We do not know what happened to Patience after 1839. We do not know if she was still alive when her children were divided up. We do not know if she watched them go. The record ends where the law allowed it to end — which is to say, at the boundary of what the enslaving family needed to document.</p>
+    <p>But her daughter Clarissa survived. And Clarissa's descendants — confirmed now by 46 living DNA matches — survived. Which means Patience survived, in the only way the law allowed her to.</p>
+  </div>
+
+  <div class="btb-quote">
+    <span class="btb-quote-text">"one Negro girl named Patience with her increase"</span>
+    <span class="btb-quote-src">Newberry County, South Carolina · Deed Book C, Pages 367–368 · August 4, 1795</span>
+  </div>
+
+  <div class="btb-person">
+    <span class="btb-person-name">Clarissa</span>
+    <span class="btb-person-dates">ca. 1807 — unknown · South Carolina → Mississippi → Texas</span>
+    <div class="btb-person-body">
+      <p>Clarissa was Patience's daughter. She was born into bondage before she drew her first breath — owned by the Waldrop family the instant she existed, by the terms of her mother's 1795 deed. She never knew a day of legal freedom in South Carolina or Mississippi.</p>
+      <p>In 1839, when Hezekiah Waldrop died and his estate was divided, Clarissa was distributed among his heirs. Her mother Patience disappears from the record here. Her siblings disappear. Whether the family was kept together or torn apart is not documented.</p>
+      <p>What we know is that Clarissa eventually reached Texas — and that her descendants stayed. <strong>46 separate living DNA matches</strong> on Ancestry all trace back to Clarissa as a common ancestor. She is the genetic root of this family's documented history. The path from Clarissa to Joseph Nichols — the man Easter Bell married in 1865 — is still being researched. But the DNA confirms the connection across 200 years and counting.</p>
+      <p>Clarissa is the reason this family exists. We do not know her face. We do not know her voice. We know her blood — because it runs in us, confirmed by science that did not exist when she lived, answering a question she never knew anyone would ask.</p>
+    </div>
+  </div>
+
+  <div class="btb-doc"><div class="btb-doc-icon">📜</div><div class="btb-doc-text"><strong>1795 Newberry County SC · Deed Book C:367–368</strong>Primary source confirming Patience's existence. Francis Davenport Sr. gives "one Negro girl named Patience with her increase" to his daughter Patty Waldrop. The first document in this family's recorded history.</div></div>
+  <div class="btb-doc"><div class="btb-doc-icon">📜</div><div class="btb-doc-text"><strong>1839 Rankin County MS · Waldrop Estate Deed</strong>Hezekiah Waldrop's estate distributed Patience's children — Clarissa, Rachel, Tom, William, Amanda, Harriet — among his heirs as property. Clarissa confirmed as your direct ancestor.</div></div>
+  <div class="btb-doc"><div class="btb-doc-icon">🧬</div><div class="btb-doc-text"><strong>AncestryDNA ThruLines · 46 DNA Matches</strong>46 separate living people share Clarissa as a common ancestor with Jasmine M. Lee. DNA confirmation across 200 years. The science confirms what the documents suggest.</div></div>
+</div>
+
+<!-- CHAPTER TWO -->
+<span class="btb-divider"></span>
+<div class="btb-chapter">
+  <span class="btb-chapter-num">Chapter Two</span>
+  <span class="btb-chapter-title">Piney Creek — <em>The Land Where Easter Bell Was Born</em></span>
+  <span class="btb-chapter-place">Bellville, Austin County, Texas · 1834 – 1865</span>
+  <span class="btb-rule"></span>
+
+  <div class="btb-prose">
+    <p>In 1830, Mexico granted a league of land — 4,428 acres — to a man named John Nichols, along a creek called Piney Creek in Austin County, Texas. The land grant document describes the terrain in careful Spanish — the blackjack trees, the post oaks, the bearing of the survey lines. What it does not describe is the enslaved people who would work that land for the next three decades.</p>
+    <p>The Nichols and Waldrop families were connected by marriage. <strong>Frances Jane Waldrop</strong> — called Fanny, daughter of Hezekiah Waldrop — married into the Nichols family. This is the specific mechanism by which enslaved people from the Waldrop household entered the Nichols plantation. Fanny Waldrop Nichols brought with her the people her father had owned. The DNA connection between this family and the Waldrop line — confirmed in March 2026 by a living descendant named Sherry Newman Welty who grew up in Bellville and knew the Nichols family by name — locks this chain in place.</p>
+    <p>Somewhere in that chain was a woman named <strong>Rendy Blayn</strong>, born in North Carolina around 1817. She did not choose to come to Texas. She was brought. By 1860 she was 43 years old, enslaved on the Nichols plantation, and she had a daughter. Her daughter's name was Easter Bell. Easter Bell was twelve years old in 1860, born on the banks of Piney Creek on July 4, 1848 — Independence Day.</p>
+    <p>Let that land in for a moment. A child born into slavery on Independence Day. Born on the same day the Declaration of Independence proclaimed that all men are created equal with the unalienable right to liberty. Easter Bell would wait seventeen more years for a liberty that the country had supposedly already declared was hers.</p>
+    <p>In 1860, the John Nichols slave schedule recorded nine enslaved people on the Piney Creek plantation. They have no names in that document — only ages, sexes, and a note on their complexion. A female age 43, born in North Carolina: almost certainly Rendy. A female age 12, born in Texas: almost certainly Easter Bell. Mother and daughter. No names in the ledger. Just numbers in a column.</p>
+  </div>
+
+  <div class="btb-quote">
+    <span class="btb-quote-text">"Female, 12, Black, born Texas." — That was how the record described Easter Bell Nichols in 1860. No name. No family. No future anyone was required to acknowledge.</span>
+    <span class="btb-quote-src">1860 U.S. Federal Census Slave Schedule · John Nichols household · Austin County, Texas</span>
+  </div>
+
+  <div class="btb-person">
+    <span class="btb-person-name">Rendy Blayn</span>
+    <span class="btb-person-dates">ca. 1817, North Carolina — unknown after 1865 · Bellville, Austin County, Texas</span>
+    <div class="btb-person-body">
+      <p>Rendy Blayn is Easter Bell's mother. We know her name because Easter Bell's 1935 death certificate — signed seventy years after emancipation — named her: <em>Mother's Maiden Name: Rendy Blayn.</em> Easter Bell remembered her mother's name until she was 87 years old. She made sure it was written down.</p>
+      <p>Rendy was born in North Carolina around 1817. She was transported to Texas as part of the enslaved labor force connected to the Nichols-Waldrop family network. The distance from North Carolina to Austin County, Texas is approximately 1,400 miles. She made that journey in chains, or under threat of chains, leaving behind whatever family she had — her own mother, her siblings, anyone who had known her before.</p>
+      <p>She appears in the 1860 slave schedule as a woman, age 43, Black, born in North Carolina. That is the last confirmed sighting of her in any document. After emancipation in 1865, her name does not appear in any census record we have found. Whether she survived, where she went, whether she was buried in Bellville alongside the family she helped create — we do not know. We are still looking.</p>
+      <p>What we know is that she raised a daughter who lived 87 years and never forgot her name.</p>
+    </div>
+  </div>
+
+  <div class="btb-doc"><div class="btb-doc-icon">📜</div><div class="btb-doc-text"><strong>1830 John Nichols Land Grant · Patent No. 1750, Volume 6</strong>The land grant that established the Piney Creek plantation where Easter Bell was born. "Situated on the creek called Piney Creek." Austin County, Texas.</div></div>
+  <div class="btb-doc"><div class="btb-doc-icon">📋</div><div class="btb-doc-text"><strong>1860 John Nichols Slave Schedule · Austin County, Texas</strong>Nine enslaved people. No names recorded. Female age 43 (Rendy Blayn) and female age 12 (Easter Bell) confirmed by cross-reference with Easter Bell's death certificate.</div></div>
+  <div class="btb-doc"><div class="btb-doc-icon">💀</div><div class="btb-doc-text"><strong>Easter Bell Nichols Death Certificate · December 17, 1935</strong>Field 15: Mother's Maiden Name: Rendy Blayn. The only document in which Rendy is named. Her daughter made sure of it.</div></div>
+  <div class="btb-doc"><div class="btb-doc-icon">🧬</div><div class="btb-doc-text"><strong>Sherry Newman Welty · DNA Match · March 2026</strong>Descends from Hezekiah Waldrop through his daughter Fanny Waldrop Nichols. Confirmed in direct communication that "Fanny married third to John Nichols who all lived in Bellville, Austin, Texas." The DNA connection between Waldrop and Nichols enslaved families confirmed by a living person who grew up in Bellville.</div></div>
+</div>
+
+<!-- CHAPTER THREE -->
+<span class="btb-divider"></span>
+<div class="btb-chapter">
+  <span class="btb-chapter-num">Chapter Three</span>
+  <span class="btb-chapter-title"><em>June 19, 1865</em> — What Freedom Cost</span>
+  <span class="btb-chapter-place">Bellville, Texas · Upshur County, Texas · 1865 – 1900</span>
+  <span class="btb-rule"></span>
+
+  <div class="btb-prose">
+    <p>On June 19, 1865 — Juneteenth — General Gordon Granger arrived in Galveston, Texas and read General Order No. 3 aloud to a crowd of enslaved people who had been legally free for two and a half years without knowing it. The Emancipation Proclamation had been signed in January 1863. Texas had simply refused to comply. Easter Bell was seventeen years old when freedom finally arrived at Piney Creek. She had been alive for every one of the 912 days between the legal end of slavery and its actual end in Texas.</p>
+    <p>Freedom in 1865 was not a door opening. It was a door being unlocked with no guarantee that anyone on the other side would let you through. The formerly enslaved people of Austin County — and across the South — walked out of bondage into a world that had built its entire economy on their labor and saw no reason to compensate them for any of it. No land. No back wages. No reparations. Forty acres and a mule was a promise briefly floated and immediately betrayed.</p>
+    <p>Easter Bell stayed in Bellville. On December 18, 1865 — six months after Juneteenth — she married <strong>Joseph Nichols</strong>, a man who had also been enslaved on the same plantation, who had also taken the Nichols name from his enslaver. They had twelve children. They built a life on Piney Creek. And at some point after emancipation, through some transaction we have not yet fully documented, this family acquired <strong>two acres</strong> of the J. Nichols Survey — two acres of the same land where Easter Bell had been born and held in bondage — and they made it their own.</p>
+  </div>
+
+  <div class="btb-highlight">
+    <span class="btb-highlight-num">141</span>
+    <span class="btb-highlight-lbl">Years That Land Stayed in the Family</span>
+    <span class="btb-highlight-desc">Easter Bell's family acquired two acres of the J. Nichols Survey — the same land where she had been born into slavery. They held it for 141 years. A tax suit filed in 1997 resulted in a sheriff's deed to Bellville ISD in 2006. The family held that land from the Civil War through two World Wars, through the Great Migration, through the Civil Rights Movement, through the invention of the internet — and lost it to a tax debt in 2006.</span>
+  </div>
+
+  <div class="btb-prose">
+    <p>Meanwhile, one hundred miles north, another formerly enslaved man was also staking his claim.</p>
+    <p><strong>Newton Ballard</strong> had been enslaved in Mississippi before being brought to Texas. By 1856 — nine years before emancipation — he had somehow managed to file a land patent in Upshur County, Texas: Texas GLO File No. 3378, 160 acres on Caney Creek. We do not know how he accomplished this while still legally enslaved. We do not know who helped him or what it cost. What we know is that on August 26, 1856, Newton Bullard's name appeared on a land patent for 160 acres of Texas soil.</p>
+    <p>By 1870, Newton was gone. His wife <strong>Rebecca</strong> was listed as head of household in Upshur County, alone, raising three children. Newton Ballard had survived slavery, claimed 160 acres of land, fathered a son who would become a minister in Waco, and then disappeared from every record. The Freedmen's Bureau in Texas documented hundreds of murders of formerly enslaved Black men in the years immediately following emancipation — men killed by white Texans who refused to accept that the war had changed anything. Newton Ballard may have been one of them. We may never know.</p>
+    <p>What we know is that his son <strong>Rev. George W. Ballard</strong> was born in Keller, Texas in 1861, became a minister, moved to Waco, and had a son named James Wilson Ballard Sr. who married Eva Armstrong. And Eva Armstrong's mother Hellen was Easter Bell's daughter. Two families emerging from slavery — the Nichols line and the Ballard line — joined together in Fort Worth in the 1920s when James and Eva married and began building the family that eventually reached California.</p>
+  </div>
+
+  <div class="btb-person">
+    <span class="btb-person-name">Newton Ballard</span>
+    <span class="btb-person-dates">ca. 1830, Mississippi — disappeared ca. 1865–1870 · Upshur County, Texas</span>
+    <div class="btb-person-body">
+      <p>Newton Ballard was enslaved by Lewis F. Ballard in Smith County, Texas. He appears in the 1850 slave schedule. He somehow — through means we have not yet fully documented — filed a land patent in Upshur County, Texas in 1856 for 160 acres on Caney Creek. He sold that land legally in 1873 for $250 in gold. His name appears on Rev. George W. Ballard's 1937 death certificate as his father.</p>
+      <p>By 1870, Newton was gone. Rebecca Ballard — his wife — was head of household in Upshur County with three children. The historical context of Reconstruction-era East Texas makes his disappearance comprehensible in the most devastating way: formerly enslaved men were being murdered at a rate the Freedmen's Bureau could barely document, let alone prevent. A Black man who had claimed land, who had his name on legal documents, who had proved he could own property — he was exactly the kind of man white supremacists targeted in 1866 and 1867.</p>
+      <p>We are still searching. If there is a record of what happened to Newton Ballard, we have not found it yet. His family — his wife Rebecca, his son George, his grandchildren — carried his name forward without him.</p>
+    </div>
+  </div>
+
+  <div class="btb-doc"><div class="btb-doc-icon">📜</div><div class="btb-doc-text"><strong>Texas GLO File No. 3378 · Patent No. 595 · Volume 46</strong>Newton Ballard — also recorded as Newton Bullard — filed this land patent for 160 acres in Upshur County, Texas on August 26, 1856. Sold August 9, 1873, to E.G. Horn for $250 in gold. His grandson James Wilson Ballard Sr. was born on August 26, 1897 — the same calendar date.</div></div>
+  <div class="btb-doc"><div class="btb-doc-icon">💀</div><div class="btb-doc-text"><strong>Rev. George W. Ballard Death Certificate · State File No. 51612 · October 1937</strong>Father listed as Newton Ballard. Father's birthplace: No Record. The informant — his daughter Miss Alberta Ballard — did not know where Newton was from. He had been gone for 70 years.</div></div>
+</div>
+
+<!-- CHAPTER FOUR -->
+<span class="btb-divider"></span>
+<div class="btb-chapter">
+  <span class="btb-chapter-num">Chapter Four</span>
+  <span class="btb-chapter-title">Dave Armstrong — <em>A Man Who Took His Enslaver's Name</em></span>
+  <span class="btb-chapter-place">South Carolina · Upshur County, Texas · Bellville, Texas · 1845 – 1918</span>
+  <span class="btb-rule"></span>
+
+  <div class="btb-prose">
+    <p><strong>Dave Armstrong</strong> was born in South Carolina around 1845. He was transported to Upshur County, Texas — the same county where Newton Ballard would later claim land — and enslaved by the John K. Armstrong household. After emancipation he did what millions of formerly enslaved people were forced to do: he took his enslaver's surname. He became Dave Armstrong, keeping the only last name the law had ever allowed him to use.</p>
+    <p>By August 29, 1868, Dave Armstrong was in Bellville, Austin County, Texas — the same community where Easter Bell Nichols lived, where the Nichols plantation had stood. He married <strong>Clarissa Ann Morgan</strong>, a woman from North Carolina. They settled in Bellville. They had children: John, born 1872. Charlie, born 1874. Ida, born 1875. Joshua, born 1879. Bettie, born 1885.</p>
+    <p>These five children grew up free — the first generation of Armstrongs born without the weight of the law pressing down on them. They grew up in the same Bellville community as Easter Bell's children. They were neighbors. They were part of the same freedmen's community that had formed on the ash of the plantation system.</p>
+    <p>In 1900, the Bellville census page shows the Armstrong household a few doors from the Nichols household. <strong>Rosa Lott</strong> lived nearby. Her daughter Lula would marry Dave's son Joshua in 1903. The formerly enslaved families of Bellville were building a world together, intermarrying, buying land, going to the same churches, raising their children in the same neighborhoods.</p>
+    <p>Then on August 30, 1911, <strong>John Armstrong</strong> — Dave's eldest son, Eva's father — was shot and killed at the Terminal Hotel in Fort Worth by a white man named Jack Thompson. The verdict: justifiable homicide. Thompson was never convicted. Eva Armstrong was eleven years old.</p>
+    <p>Freedom was not safety. Freedom was not protection. Freedom was a legal status that white Texans were willing to ignore whenever it suited them. The Reconstruction-era violence that may have taken Newton Ballard did not end in 1865. It continued through 1911 and well beyond. John Armstrong's murder is documented. His killer's acquittal is documented. The pattern they represent has never ended.</p>
+    <p>Dave Armstrong and Clarissa Ann Morgan's family continued. Their son Joshua married Lula Lott, connected the Armstrong and Lott families across the Bellville community network. Their DNA — confirmed in 2025 through a living match named <strong>Debra Louise Carter Gholston</strong> whose grandmother descended from Dave's daughter Ida Armstrong Twiggs — runs through this family and can be measured in centimorgans two hundred years after Dave was born in South Carolina.</p>
+  </div>
+
+  <div class="btb-doc"><div class="btb-doc-icon">💀</div><div class="btb-doc-text"><strong>John Armstrong Death Certificate · Tarrant County, Texas · August 30, 1911</strong>Father listed as Dave Armstrong, born South Carolina. This is the primary source confirming Dave Armstrong's origins. John was shot by Jack Thompson. Verdict: justifiable homicide. Thompson walked free.</div></div>
+  <div class="btb-doc"><div class="btb-doc-icon">🧬</div><div class="btb-doc-text"><strong>Debra Louise Carter Gholston · DNA Match · 42 cM · 4 Segments</strong>Descends through Dave Armstrong's daughter Ida Armstrong Twiggs. Confirmed by Ancestry ThruLines. 20 shared matches with Jasmine M. Lee — all maternal side. Dave Armstrong confirmed as a real ancestor by living DNA.</div></div>
+</div>
+
+<!-- CHAPTER FIVE -->
+<span class="btb-divider"></span>
+<div class="btb-chapter">
+  <span class="btb-chapter-num">Chapter Five</span>
+  <span class="btb-chapter-title">What <em>Freedom</em> Actually Built</span>
+  <span class="btb-chapter-place">Fort Worth · San Antonio · Orange County, California · 1900 – Present</span>
+  <span class="btb-rule"></span>
+
+  <div class="btb-prose">
+    <p>Three generations after emancipation, this is what the descendants of enslaved people had built:</p>
+    <p><strong>Eva Armstrong Ballard</strong> — Easter Bell's granddaughter, Dave Armstrong's granddaughter — was born in Bellville in 1900 and died in Garden Grove, California in 1977. In between she owned property in San Antonio, held a beer license, ran a café on the East Side, survived a police shooting in her own back office, was subpoenaed to testify in a murder trial, and built a community standing that newspapers wrote about for years. She did all of this as a Black woman in Texas in the 1940s and 50s.</p>
+    <p>Her daughter <strong>Margie Nell Ballard</strong> was born on March 13, 1929 in Fort Worth — the same day her father James Wilson Ballard Sr. would die twenty-four years later, in a psychiatric institution in Austin. Margie raised seven children on Townsend Street in Santa Ana, California. She registered to vote in 1964. She stayed.</p>
+    <p>Her daughter <strong>Hjordis L. Corbin</strong> was born in Los Angeles in 1960. Her daughter <strong>Jasmine M. Lee</strong> was born in Orange County on January 25, 1982.</p>
+    <p>Jasmine is the founder and CEO of the Dock Ellis Foundation. She spent seven years finding the names on this page. She found Patience. She found Clarissa. She found Rendy Blayn. She found Newton Ballard and Dave Armstrong and Easter Bell and Hellen and Eva and all the rest. She found them because the DNA survived, the documents survived, and this family — against every mechanism designed to erase it — survived.</p>
+  </div>
+
+  <div class="btb-timeline">
+    <div class="btb-tl-item"><div class="btb-tl-year">1780s</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">Patience</span><span class="btb-tl-what">Born in South Carolina. Given away as property at approximately age 15. Her children will be enslaved from birth by law.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1795</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">The Deed</span><span class="btb-tl-what">"One Negro girl named Patience with her increase." Newberry County, South Carolina. The first document in this family's recorded history.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1807</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">Clarissa</span><span class="btb-tl-what">Born into Waldrop ownership. Will eventually reach Texas. Confirmed as direct ancestor by 46 living DNA matches.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1817</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">Rendy Blayn</span><span class="btb-tl-what">Born in North Carolina. Transported to Texas against her will. Will raise a daughter named Easter Bell on Piney Creek.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1830</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">Newton Ballard</span><span class="btb-tl-what">Born in Mississippi. Enslaved in Smith County, Texas by the Ballard family. Will claim 160 acres of land in 1856. Will disappear by 1870.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1839</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">The Estate Deed</span><span class="btb-tl-what">Hezekiah Waldrop dies. Clarissa, Rachel, Tom, William, Amanda, and Harriet — Patience's children — distributed among white heirs as property. The family may be separated here.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1845</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">Dave Armstrong</span><span class="btb-tl-what">Born in South Carolina. Enslaved in Upshur County, Texas by the Armstrong family. Will take his enslaver's name. Will eventually settle in Bellville.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1848</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">Easter Bell</span><span class="btb-tl-what">Born July 4 — Independence Day — on Piney Creek, Bellville, Texas. Her mother is Rendy Blayn. She is born into slavery and will wait 17 years for her legal freedom.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1856</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">Newton Ballard</span><span class="btb-tl-what">Files Texas GLO Patent No. 3378 — 160 acres in Upshur County. How he accomplished this while legally enslaved is not documented. August 26, 1856.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1861</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">Rev. George W. Ballard</span><span class="btb-tl-what">Born September 4 in Keller, Tarrant County, Texas. Son of Newton Ballard. The first generation born in Texas.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1865</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">Juneteenth</span><span class="btb-tl-what">June 19. General Order No. 3 read in Galveston, Texas. Easter Bell is 17. She is legally free. She stays in Bellville.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1865</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">Easter Bell + Joseph Nichols</span><span class="btb-tl-what">Married December 18, 1865 — six months after Juneteenth. Both formerly enslaved on the same plantation. Both took the Nichols name from their enslaver. Together they will have 12 children.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1868</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">Dave Armstrong + Clarissa Ann Morgan</span><span class="btb-tl-what">Married August 29 in Bellville, Austin County, Texas. Two formerly enslaved people building a family in freedom.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1870</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">Newton Ballard</span><span class="btb-tl-what">Gone from every record. Rebecca Ballard heads the household alone in Upshur County. Three children. No Newton. He will not be found.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1872</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">John Armstrong</span><span class="btb-tl-what">Born in Bellville. Son of Dave Armstrong and Clarissa Ann Morgan. Grows up free in the same community as Easter Bell's children. Will marry Hellen Nichols — Easter Bell's daughter.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">Post-emancipation</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">The Family's Land</span><span class="btb-tl-what">Easter Bell's family acquires two acres of the J. Nichols Survey — the same land where she was born enslaved. They will hold it for 141 years.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1897</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">James Wilson Ballard Sr.</span><span class="btb-tl-what">Born August 26 in Palestine, Anderson County, Texas. Son of Rev. George W. Ballard. Grandson of Newton Ballard. Will marry Eva Armstrong.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1900</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">Eva Armstrong</span><span class="btb-tl-what">Born June 27 in Bellville. Daughter of John Armstrong and Hellen Nichols. Great-granddaughter of Easter Bell. Three generations from Piney Creek. She will make it to California.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1911</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">John Armstrong · Killed</span><span class="btb-tl-what">Shot by Jack Thompson at the Terminal Hotel, Fort Worth. Verdict: justifiable homicide. Eva is 11. Freedom was not safety. The pattern that may have taken Newton Ballard in 1870 takes John Armstrong in 1911.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1929</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">Margie Nell Ballard</span><span class="btb-tl-what">Born March 13 in Fort Worth. Daughter of Eva Armstrong and James Wilson Ballard Sr. She will reach California. She will raise seven children. She will stay.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1954</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">Eva Armstrong Ballard</span><span class="btb-tl-what">Officer O.R. Graves shoots John Wesley Caldwell dead in Eva's back office at The Spot, 1501 Burnet Street, San Antonio. Plants a knife on the body. Two officers confess. Graves is acquitted in 45 minutes. Two generations after slavery. The same violence. The same impunity.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">1982</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">Jasmine M. Lee</span><span class="btb-tl-what">Born January 25 in Orange County, California. Great-great-great-great-granddaughter of Easter Bell Nichols. Great-great-great-granddaughter of Newton Ballard and Dave Armstrong. She will find all of this. She will write it down.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">2006</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">The Land</span><span class="btb-tl-what">Sheriff's deed issued. The two acres that Easter Bell's family held for 141 years — acquired from the land where she was born enslaved — transferred to Bellville ISD for a tax debt. 141 years. Gone.</span></div></div>
+    <div class="btb-tl-item"><div class="btb-tl-year">2026</div><div class="btb-tl-line"></div><div class="btb-tl-dot"></div><div class="btb-tl-content"><span class="btb-tl-who">This Page</span><span class="btb-tl-what">Patience's name is documented. Clarissa's name is documented. Rendy Blayn's name is documented. Newton Ballard's name is documented. Dave Armstrong's name is documented. 46 living DNA matches confirm Clarissa. The family survived.</span></div></div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="btb-closing">
+  <span class="btb-closing-title">"You can't know where you're going unless you truly understand where you came from."</span>
+  <div class="btb-closing-body">
+    <div class="btb-closing-line"><span class="btb-closing-person"><em>Patience</em></span><span class="btb-closing-arrow">→</span><span class="btb-closing-person"><em>Clarissa</em></span><span class="btb-closing-arrow">→</span><span class="btb-closing-person"><em>Easter Bell</em></span><span class="btb-closing-arrow">→</span><span class="btb-closing-person"><em>Hellen</em></span><span class="btb-closing-arrow">→</span><span class="btb-closing-person"><em>Eva</em></span><span class="btb-closing-arrow">→</span><span class="btb-closing-person"><em>Margie</em></span><span class="btb-closing-arrow">→</span><span class="btb-closing-person"><em>Hjordis</em></span><span class="btb-closing-arrow">→</span><span class="btb-closing-person"><em>Jasmine</em></span></div>
+    <div class="btb-closing-year">ca. 1780s · South Carolina → 1982 · Orange County, California</div>
+    <p style="margin-top:24px;font-size:17px;line-height:1.85;">That is the distance this family has traveled. From a deed that named a woman as property to a researcher who named her back. From bondage to belonging — not given, not guaranteed, but built. Generation by generation. Name by name. Refused to be forgotten.</p>
+    <p style="margin-top:16px;font-size:15px;opacity:.7;">Research compiled by Jasmine M. Lee · Dock Ellis Foundation · jlee@dockellisfoundation.com</p>
+  </div>
+</div>
+
 </div>
 </div>
 

@@ -3851,8 +3851,13 @@ body{display:flex;flex-direction:row;margin:0;padding:0;}
 </div>
 
 <script>
-(function(){
-  var map = L.map('migmap3',{scrollWheelZoom:false}).setView([33,-95],5);
+function initDualMigMap(){
+  if(window._migMap) return; // already initialized
+  var el = document.getElementById('migmap3');
+  if(!el || el.offsetHeight === 0) return; // not visible yet
+  if(typeof L === 'undefined'){ console.error('Leaflet not loaded'); return; }
+  window._migMap = L.map('migmap3',{scrollWheelZoom:false}).setView([33,-95],5);
+  var map = window._migMap;
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
     attribution:'© OpenStreetMap',maxZoom:18
   }).addTo(map);
@@ -3938,7 +3943,14 @@ body{display:flex;flex-direction:row;margin:0;padding:0;}
     .bindPopup(popup('Fort Worth — The Lines Meet','Both Lines Converge','#888888','1924',
       'James Wilson Ballard Sr. (Ballard Line) married Eva Armstrong (Armstrong Line) in Fort Worth by 1924. Two families emerging from slavery — one from South Carolina through Bellville, one from Mississippi through East Texas — joined together at 905 East 2nd Street, Fort Worth, and began building the family that would eventually reach California.'),{maxWidth:320});
 
-})();
+}
+// Init when tab shown - called by show() function
+// Also try on load in case map tab is default
+document.addEventListener('DOMContentLoaded', function(){
+  if(document.getElementById('tab-map') && document.getElementById('tab-map').classList.contains('active')){
+    setTimeout(initDualMigMap, 300);
+  }
+});
 </script>
 
 <div class="prose">
@@ -4867,6 +4879,7 @@ function show(id,btn){
   if(btn){btn.classList.add("active");}
   window.scrollTo(0,0);
   if(id==='migration'){setTimeout(initMigMap,100);}
+  if(id==='map'){setTimeout(function(){if(!window._migMap){initDualMigMap();}else{window._migMap.invalidateSize();}},200);}
 }
 // Drag to scroll timeline
 (function(){

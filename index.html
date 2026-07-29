@@ -33,31 +33,33 @@ html{font-size:16px;-webkit-text-size-adjust:100%;}
 
 /* ── LIGHT THEME ── */
 :root{
-  --bg:#f8f9fb;
-  --bg2:#f0f2f7;
-  --bg3:#e4e8f0;
+  --bg:#f5f5f5;
+  --bg2:#efefef;
+  --bg3:#e5e5e5;
   --card:#ffffff;
-  --border:#d0d6e8;
-  --border2:#b0bcd8;
-  --ink:#1a1f36;
-  --ink2:#3a4060;
-  --ink3:#6b7294;
-  --gold:#2d5a9e;
-  --gold2:#1e3f7a;
-  --gold3:#4a7cc7;
-  --gold-bg:rgba(45,90,158,0.07);
-  --gold-bg2:rgba(45,90,158,0.13);
-  --rust:#7b2d5e;
-  --rust-bg:rgba(123,45,94,0.07);
-  --forest:#1a6b4a;
-  --forest-bg:rgba(26,107,74,0.07);
-  --blue:#1a5c8a;
-  --blue-bg:rgba(26,92,138,0.07);
-  --red:#c0392b;
-  --shadow:rgba(26,31,54,0.14);
-  --shadow2:rgba(26,31,54,0.06);
-  --accent:#e8b84b;
-  --accent2:#f0c96a;
+  --border:#d8d8d8;
+  --border2:#c0c0c0;
+  --ink:#111111;
+  --ink2:#333333;
+  --ink3:#777777;
+  --gold:#1a1a1a;
+  --gold2:#2a2a2a;
+  --gold3:#444444;
+  --gold-bg:rgba(0,0,0,0.04);
+  --gold-bg2:rgba(0,0,0,0.08);
+  --rust:#222222;
+  --rust-bg:rgba(0,0,0,0.05);
+  --forest:#1a1a1a;
+  --forest-bg:rgba(0,0,0,0.04);
+  --blue:#333333;
+  --blue-bg:rgba(0,0,0,0.05);
+  --red:#1a1a1a;
+  --shadow:rgba(0,0,0,0.18);
+  --shadow2:rgba(0,0,0,0.07);
+  --accent:#888888;
+  --accent2:#aaaaaa;
+  --white:#ffffff;
+  --black:#111111;
 }
 
 body{
@@ -83,7 +85,7 @@ body{display:flex;flex-direction:row;margin:0;padding:0;}
 .nav-brand{
   font-family:'Josefin Sans',sans-serif;
   font-size:11px;font-weight:700;letter-spacing:2px;
-  color:var(--accent);text-transform:uppercase;
+  color:#ffffff;text-transform:uppercase;
   padding:22px 18px 14px;
   border-bottom:1px solid rgba(255,255,255,.1);
   display:block;line-height:1.5;
@@ -107,7 +109,7 @@ body{display:flex;flex-direction:row;margin:0;padding:0;}
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .nb:hover{color:#fff;background:rgba(255,255,255,.07);border-left-color:rgba(255,255,255,.25);}
-.nb.active{color:var(--accent);background:rgba(232,184,75,.1);border-left-color:var(--accent);font-weight:600;}
+.nb.active{color:#ffffff;background:rgba(255,255,255,.15);border-left-color:#ffffff;font-weight:600;}
 /* MAIN CONTENT — offset by sidebar width */
 .main-content{margin-left:220px;flex:1;min-width:0;}
 /* MOBILE */
@@ -3819,35 +3821,130 @@ body{display:flex;flex-direction:row;margin:0;padding:0;}
 <!-- ═══ WHERE WE ARE ═══ -->
 <div class="sec" id="tab-map">
 <div class="shdr">
-  <span class="sey">The Family's Migration · South Carolina to California</span>
-  <span class="sttl">Where We <em>Are</em></span>
-  <span class="ssub">The Places This Family Has Lived — From Slavery Through Today</span>
+  <span class="sey">Two Families · Two Paths · One Destination</span>
+  <span class="sttl">The <em>Migration Map</em></span>
+  <span class="ssub">The Armstrong Line and the Ballard Line — Both Paths to California · Click Any Marker for the Family Story</span>
   <div class="srul"><div class="sdia"></div></div>
 </div>
 <div class="ctr">
-  <div class="prose"><p>This family's geography tells the story of American history. From the slave states of the Deep South to the plantations of Texas, from the post-war migrations north to the great movement to California — every place below is a chapter in this family's journey.</p></div>
-  <div class="div"></div>
 
-  <div class="map-card"><div class="map-num">1</div><div class="map-info"><span class="map-place">Newberry County, South Carolina</span><span class="map-dates">ca. 1780s–1839</span><div class="map-story">Where Patience was enslaved by the Waldrop family. Francis Davenport Sr. gave Patience to his daughter Patty Waldrop here on August 4, 1795. This is the starting point of the documented family history. Clarissa was born here around 1807.</div></div></div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-  <div class="map-card"><div class="map-num">2</div><div class="map-info"><span class="map-place">Rankin County, Mississippi</span><span class="map-dates">ca. 1820s–1839</span><div class="map-story">The Waldrop family migrated here from South Carolina through Georgia and Tennessee, bringing Patience and her children. Hezekiah Waldrop's 1839 estate deed, distributing Patience's children, was filed in Rankin County. This is where the family's documented paper trail continues after South Carolina.</div></div></div>
+<style>
+#migmap3{width:100%;height:540px;border-radius:6px;border:1px solid var(--border2);box-shadow:0 4px 20px var(--shadow);margin:20px 0;}
+.mig-legend{display:flex;flex-wrap:wrap;gap:16px;margin:16px 0 24px;padding:14px 18px;background:var(--bg2);border-radius:6px;border:1px solid var(--border);}
+.mig-leg-item{display:flex;align-items:center;gap:8px;font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--ink2);}
+.mig-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);}
+.mig-popup-title{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:700;color:#111;margin:0 0 3px;display:block;}
+.mig-popup-line{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;display:block;}
+.mig-popup-dates{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1px;color:#777;margin-bottom:8px;display:block;}
+.mig-popup-body{font-family:'Cormorant Garamond',serif;font-size:14px;line-height:1.6;color:#333;}
+</style>
 
-  <div class="map-card"><div class="map-num">3</div><div class="map-info"><span class="map-place">Bellville, Austin County, Texas</span><span class="map-dates">1834 – 2006</span><div class="map-story">The home of this family for over 140 years. John Nichols arrived in 1834. Easter Bell was born here in 1848. After emancipation, Easter Bell's family acquired two acres of land on the J. Nichols Survey and held it until 2006. Hellen Nichols Armstrong was born and died here. This is the geographic heart of this family's story.</div></div></div>
+<div id="migmap3"></div>
 
-  <div class="map-card"><div class="map-num">4</div><div class="map-info"><span class="map-place">Fort Worth, Tarrant County, Texas</span><span class="map-dates">ca. 1900s–1940s</span><div class="map-story">Hellen Nichols Armstrong and her husband John Armstrong moved here. John Armstrong was killed here in 1911. Eva Armstrong grew up here after her father's death. Hellen worked as a waitress here in the 1930s. Margie Nell Ballard was born here on March 13, 1929. The family's first major move away from Bellville.</div></div></div>
+<div class="mig-legend">
+  <div class="mig-leg-item"><div class="mig-dot" style="background:#111111;"></div>Armstrong Line — South Carolina → Bellville → Fort Worth → San Antonio → California</div>
+  <div class="mig-leg-item"><div class="mig-dot" style="background:#555555;"></div>Ballard Line — Mississippi → Smith County → Upshur County → Palestine → Waco → Fort Worth → California</div>
+  <div class="mig-leg-item"><div class="mig-dot" style="background:#888888;border:3px solid #111;"></div>Lines Converge</div>
+</div>
 
-  <div class="map-card"><div class="map-num">5</div><div class="map-info"><span class="map-place">Waco, McLennan County, Texas</span><span class="map-dates">ca. 1900s–1937</span><div class="map-story">Rev. George W. Ballard — James Wilson Ballard Sr.'s father and Eva's father-in-law — owned property here at 724 East Johnson Street. Rev. Ballard died in Waco on October 24, 1937. The property was lost to a tax sale in 2017.</div></div></div>
+<script>
+(function(){
+  var map = L.map('migmap3',{scrollWheelZoom:false}).setView([33,-95],5);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    attribution:'© OpenStreetMap',maxZoom:18
+  }).addTo(map);
 
-  <div class="map-card"><div class="map-num">6</div><div class="map-info"><span class="map-place">San Antonio, Bexar County, Texas</span><span class="map-dates">ca. 1940s–1957</span><div class="map-story">Eva Armstrong Ballard ran her Night Club and Cafe here. She owned property at Lot 13, Block 2, NCB 2924 — purchased April 22, 1944, sold January 22, 1957. Margie Nell Ballard was born in Fort Worth but the family was based in San Antonio during this period.</div></div></div>
+  function makeIcon(color, num, size){
+    size = size||16;
+    return L.divIcon({className:'',
+      html:'<div style="width:'+size+'px;height:'+size+'px;border-radius:50%;background:'+color+';border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:'+(size>14?'9':'7')+'px;font-family:sans-serif;">'+num+'</div>',
+      iconSize:[size,size],iconAnchor:[size/2,size/2]});
+  }
 
-  <div class="map-card"><div class="map-num">7</div><div class="map-info"><span class="map-place">Santa Ana, Orange County, California</span><span class="map-dates">ca. 1950s–Present</span><div class="map-story">Margie Nell Ballard Corbin settled here with Norman Caswell Corbin and raised seven children at 622 S. Townsend Street. Norman Corbin died here in 1974 and the Corbin Community Center at 2215 McFadden Avenue was named in his honor. This is where the California chapter of the family story begins.</div></div></div>
+  function popup(title, line, lineColor, dates, story){
+    return '<div style="max-width:300px;">'
+      +'<span class="mig-popup-title">'+title+'</span>'
+      +'<span class="mig-popup-line" style="color:'+lineColor+'">'+line+'</span>'
+      +'<span class="mig-popup-dates">'+dates+'</span>'
+      +'<div class="mig-popup-body">'+story+'</div></div>';
+  }
 
-  <div class="map-card"><div class="map-num">8</div><div class="map-info"><span class="map-place">Los Angeles → Orange County, California</span><span class="map-dates">1960–Present</span><div class="map-story">Hjordis L. Corbin was born in Los Angeles on January 20, 1960. Her daughter Jasmine M. Lee was born in Orange County on January 25, 1982. This is the current generation's home base and the place from which Jasmine conducted this research.</div></div></div>
+  // ── ARMSTRONG LINE (black markers) ──
+  var armStops = [
+    {lat:34.2,lng:-81.6,label:'Newberry County, South Carolina',dates:'1845 — enslaved',
+     story:'Dave Armstrong was born here around 1845 and enslaved by the John K. Armstrong household. He would take the Armstrong name from his enslaver after emancipation — the only surname the law had ever allowed him to use.'},
+    {lat:30.64,lng:-94.13,label:'Upshur County, Texas',dates:'ca. 1860s',
+     story:'Dave Armstrong was transported to Upshur County, Texas — the same county where Newton Ballard would later claim 160 acres of land. After emancipation Dave made his way to Austin County.'},
+    {lat:29.95,lng:-96.16,label:'Bellville, Austin County, Texas',dates:'1868 — 1910',
+     story:'On August 29, 1868, Dave Armstrong married Clarissa Ann Morgan in Bellville — the same freedmen's community where Easter Bell Nichols lived. Their son John Armstrong was born here in 1872. John married Easter Bell's daughter Hellen Nichols in 1899. Their daughter Eva Armstrong was born here on June 27, 1900.'},
+    {lat:32.75,lng:-97.33,label:'Fort Worth, Tarrant County, Texas',dates:'1899 — 1924',
+     story:'John Armstrong moved his family to Fort Worth, where he worked as a wagon driver. On August 30, 1911 he was shot and killed at the Terminal Hotel by Jack Thompson. The verdict: justifiable homicide. Eva Armstrong, age 11, grew up here without her father. By 1924 Eva had married James Wilson Ballard Sr. and was living at 905 East 2nd Street.'},
+    {lat:29.42,lng:-98.49,label:'San Antonio, Bexar County, Texas',dates:'1931 — 1957',
+     story:'Eva Armstrong Ballard established herself on San Antonio's East Side. She purchased 150 Paul Street in April 1944 and operated The Spot at 1501 Burnet Street. In February 1954 Officer O.R. Graves shot and killed John Wesley Caldwell in Eva's back office — planted a knife on his body — and was acquitted in 45 minutes. Eva was subpoenaed as a witness. Her son James Ballard Jr. made the front page of the San Antonio Light. Eva sold 150 Paul Street in January 1957.'},
+    {lat:33.75,lng:-117.87,label:'Orange County, California',dates:'1957 — Present',
+     story:'Eva Armstrong Ballard eventually made it to Garden Grove, Orange County, where she died on November 24, 1977 as Eva Green — having married Minor Allen Green. Her daughter Margie Nell Ballard settled at 622 South Townsend Street, Santa Ana. Margie died October 15, 1988. Jasmine M. Lee was born in Orange County on January 25, 1982.'}
+  ];
 
-  <div class="map-card"><div class="map-num">9</div><div class="map-info"><span class="map-place">Garden Grove, Orange County, California</span><span class="map-dates">1977</span><div class="map-story">Eva Armstrong Ballard died here on November 24, 1977, as Eva Green. She had traveled from Bellville, Texas to the Pacific coast in one lifetime. Three generations from slavery to Garden Grove.</div></div></div>
+  // ── BALLARD LINE (gray markers) ──
+  var balStops = [
+    {lat:32.3,lng:-89.8,label:'Mississippi',dates:'ca. 1830 — enslaved',
+     story:'Newton Ballard was born in Mississippi around 1830 and enslaved by the Ballard family. He appears in the 1850 slave schedule in Smith County, Texas — meaning he had already been transported west from Mississippi before then.'},
+    {lat:32.37,lng:-95.3,label:'Smith County, Texas',dates:'ca. 1840s — 1856',
+     story:'Newton Ballard was enslaved in Smith County, Texas by Lewis F. Ballard. On August 26, 1856 — while still legally enslaved — he somehow filed a land patent in Upshur County for 160 acres on Caney Creek. How he accomplished this has not been documented. He sold that land in 1873 for $250 in gold.'},
+    {lat:32.75,lng:-94.9,label:'Upshur County, Texas',dates:'1856 — ca. 1870',
+     story:'Newton Ballard's land patent — Texas GLO File No. 3378, 160 acres on Caney Creek — was here. By 1870 he was gone. His wife Rebecca was head of household with three children. Newton may have been one of hundreds of Black men murdered in Reconstruction-era East Texas. He was never found.'},
+    {lat:31.76,lng:-95.63,label:'Palestine, Anderson County, Texas',dates:'1897',
+     story:'Rev. George W. Ballard — Newton's son — had a son named James Wilson Ballard Sr. here on August 26, 1897. The same calendar date as Newton's 1856 land patent. Whether coincidence or family commemoration, the records cannot say.'},
+    {lat:31.55,lng:-97.14,label:'Waco, McLennan County, Texas',dates:'1915 — 1937',
+     story:'Rev. George W. Ballard settled in Waco at 724 Johnson Street around 1915 and died there on October 24, 1937. His death certificate named Newton Ballard as his father — with "No Record" for Newton's birthplace. Alberta Ballard signed the certificate. Rev. Ballard was buried at Greenwood Annex, Waco.'},
+    {lat:32.75,lng:-97.33,label:'Fort Worth, Tarrant County, Texas',dates:'1924 — 1942',
+     story:'James Wilson Ballard Sr. lived at 905 East 2nd Street, Fort Worth in 1924 with his wife Eva Armstrong. Their children Margie Nell and James Jr. were born here. By 1942 James had moved to San Antonio and listed Louis Durvin — not Eva — as his next of kin on his WWII draft card. The separation had begun.'},
+    {lat:30.27,lng:-97.74,label:'Austin State Hospital, Travis County, Texas',dates:'1948 — 1953',
+     story:'James Wilson Ballard Sr. was admitted to Austin State Hospital by June 1948 with psychosis caused by syphilitic meningoencephalitis. The 1950 census found him in Ward V32, Apartment Ma — a segregated Black ward. He died here on March 13, 1953 — Margie's 24th birthday. He had been institutionalized for at least five years and never left.'},
+    {lat:33.75,lng:-117.87,label:'Orange County, California',dates:'1957 — Present',
+     story:'Margie Nell Ballard — James Sr. and Eva's daughter — married Norman Caswell Corbin on March 17, 1957 at the R.H. Lutes Wedding Chapel in Yuma, Arizona, one block from the California state line. They settled at 622 South Townsend Street, Santa Ana. Norman died April 21, 1974. The Corbin Community Center at 2215 McFadden Avenue, Santa Ana was named in his honor. Margie died October 15, 1988.'}
+  ];
 
-  <div class="div"></div>
-  <div class="prose"><p>The family's migration follows the pattern of the Great Migration — the massive movement of Black Americans from the South to the North and West between 1910 and 1970. Bellville to Fort Worth. Fort Worth to San Antonio. San Antonio to California. Each move was driven by opportunity, necessity, and the desire to build something better than what the South allowed.</p></div>
+  // Draw Armstrong path
+  var armPath = armStops.map(function(s){return [s.lat,s.lng];});
+  L.polyline(armPath,{color:'#111111',weight:2.5,opacity:0.8,dashArray:'10,4'}).addTo(map);
+
+  // Draw Ballard path
+  var balPath = balStops.map(function(s){return [s.lat,s.lng];});
+  L.polyline(balPath,{color:'#666666',weight:2,opacity:0.7,dashArray:'6,5'}).addTo(map);
+
+  // Add Armstrong markers
+  armStops.forEach(function(s,i){
+    var size = (i===0||i===armStops.length-1) ? 22 : 16;
+    L.marker([s.lat,s.lng],{icon:makeIcon('#111111',i+1,size)})
+      .addTo(map)
+      .bindPopup(popup(s.label,'Armstrong Line','#111111',s.dates,s.story),{maxWidth:320});
+  });
+
+  // Add Ballard markers (offset slightly to avoid overlap with Armstrong)
+  balStops.forEach(function(s,i){
+    var size = (i===0||i===balStops.length-1) ? 22 : 16;
+    L.marker([s.lat+0.15,s.lng+0.15],{icon:makeIcon('#555555',i+1,size)})
+      .addTo(map)
+      .bindPopup(popup(s.label,'Ballard Line','#555555',s.dates,s.story),{maxWidth:320});
+  });
+
+  // Add convergence marker at Fort Worth
+  L.marker([32.78,-97.3],{icon:makeIcon('#888888','✦',20)})
+    .addTo(map)
+    .bindPopup(popup('Fort Worth — The Lines Meet','Both Lines Converge','#888888','1924',
+      'James Wilson Ballard Sr. (Ballard Line) married Eva Armstrong (Armstrong Line) in Fort Worth by 1924. Two families emerging from slavery — one from South Carolina through Bellville, one from Mississippi through East Texas — joined together at 905 East 2nd Street, Fort Worth, and began building the family that would eventually reach California.'),{maxWidth:320});
+
+})();
+</script>
+
+<div class="prose">
+  <p>This map traces two separate family lines — the Armstrong line and the Ballard line — from their enslaved origins through Texas to California. The black markers show the Armstrong path from South Carolina to Orange County. The gray markers show the Ballard path from Mississippi through East Texas, Waco, Fort Worth, and Austin. The two lines converged in Fort Worth in 1924 when James Wilson Ballard Sr. married Eva Armstrong Ballard. Click any numbered marker to read the family story at that location.</p>
+</div>
+
 </div>
 </div>
 
@@ -5159,49 +5256,34 @@ var SEARCH_INDEX = [
 ];
 
 function doSearch(q){
-  q = q.trim();
-  var hint = '<div class="srch-hint"><h3>Search the entire family history</h3><p>Try searching for a name, a year, a city, or any keyword.</p><div class="srch-pills"><button class="srch-pill" onclick="quickSearch('Easter Bell')">Easter Bell</button><button class="srch-pill" onclick="quickSearch('Eva Ballard')">Eva Ballard</button><button class="srch-pill" onclick="quickSearch('Margie')">Margie</button><button class="srch-pill" onclick="quickSearch('Caldwell')">Caldwell</button><button class="srch-pill" onclick="quickSearch('Ice Cream')">Ice Cream</button><button class="srch-pill" onclick="quickSearch('San Antonio')">San Antonio</button><button class="srch-pill" onclick="quickSearch('Fort Worth')">Fort Worth</button><button class="srch-pill" onclick="quickSearch('Bellville')">Bellville</button><button class="srch-pill" onclick="quickSearch('Nichols')">Nichols</button><button class="srch-pill" onclick="quickSearch('Armstrong')">Armstrong</button><button class="srch-pill" onclick="quickSearch('1954')">1954</button><button class="srch-pill" onclick="quickSearch('Graves')">Graves</button></div></div>';
-  
+  q = (q||'').trim();
+  var hint = '<div class="srch-hint"><h3>Search the entire family history</h3><p>Try a name, year, city, or keyword.</p><div class="srch-pills">' +
+    ['Easter Bell','Eva Ballard','Margie','Caldwell','Ice Cream','San Antonio','Fort Worth','Bellville','Nichols','Armstrong','1954','Graves']
+    .map(function(t){return '<button class="srch-pill" onclick="quickSearch(\''+t+'\')">'+t+'</button>';}).join('') +
+    '</div></div>';
   if(q.length < 2){
     document.getElementById('srchresults').innerHTML = hint;
     document.getElementById('srchcount').textContent = '';
     return;
   }
-  
   var ql = q.toLowerCase();
   var results = [];
-  
   SEARCH_INDEX.forEach(function(page){
-    // Also search live DOM text of visible sections
-    var el = document.getElementById('tab-'+page.id);
-    var liveText = el ? (el.textContent||'').toLowerCase() : '';
-    var combined = page.text.toLowerCase() + ' ' + liveText;
-    
+    var combined = (page.text||'').toLowerCase();
     if(combined.indexOf(ql) === -1) return;
-    
-    // Count occurrences
-    var count = 0;
-    var pos = 0;
+    var count = 0, pos = 0;
     while((pos = combined.indexOf(ql, pos)) !== -1){count++;pos+=ql.length;}
-    
-    // Get snippet from live text if available
-    var idx = liveText.indexOf(ql);
-    var snippet = '';
-    if(idx >= 0){
-      var start = Math.max(0, idx-60);
-      var end = Math.min(liveText.length, idx+180);
-      snippet = (start>0?'...':'')+liveText.slice(start,end).replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\]/g,'\$&')+')','gi'),'<mark>$1</mark>')+(end<liveText.length?'...':'');
-    } else {
-      snippet = page.text.slice(0,150)+'...';
-    }
-    
+    var idx = combined.indexOf(ql);
+    var start = Math.max(0, idx-60);
+    var end = Math.min(combined.length, idx+160);
+    var snippet = (start>0?'...':'')+page.text.slice(start,end)+(end<combined.length?'...':'');
+    var re2 = new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+    snippet = snippet.replace(re2,'<mark>$1</mark>');
     results.push({id:page.id, label:page.label, count:count, snippet:snippet});
   });
-  
   results.sort(function(a,b){return b.count-a.count;});
-  
   if(results.length===0){
-    document.getElementById('srchresults').innerHTML='<div class="srch-hint"><h3>No results for &ldquo;'+q+'&rdquo;</h3><p>Try a different spelling or related term.</p></div>';
+    document.getElementById('srchresults').innerHTML='<div class="srch-hint"><h3>No results for “'+q+'”</h3><p>Try a different spelling or related term.</p></div>';
     document.getElementById('srchcount').textContent='0 results';
   } else {
     document.getElementById('srchcount').textContent=results.length+' section'+(results.length===1?'':'s')+' found';
@@ -5327,27 +5409,30 @@ function submitRSVP(){
   var name = document.getElementById('rv-name').value.trim();
   var email = document.getElementById('rv-email').value.trim();
   if(!name || !email){alert('Please enter your name and email address.');return;}
-  
   var branches = [];
   ['br1','br2','br3','br4','br5','br6','br7','br8'].forEach(function(id){
     var el = document.getElementById(id);
     if(el && el.checked) branches.push(el.value);
   });
-  
-  var body = 'Family Reunion Registration\n\n'
-    + 'Name: ' + name + '\n'
-    + 'Email: ' + email + '\n'
-    + 'Location: ' + (document.getElementById('rv-city').value||'Not provided') + '\n'
-    + 'Household size: ' + (document.getElementById('rv-count').value||'Not provided') + '\n'
-    + 'Branch: ' + (branches.join(', ')||'Not specified') + '\n'
-    + 'Connection: ' + (document.getElementById('rv-connection').value||'Not provided') + '\n'
-    + 'Has photos/docs: ' + (document.getElementById('rv-photos').value||'Not provided') + '\n'
-    + 'Notes: ' + (document.getElementById('rv-notes').value||'None') + '\n';
-  
-  window.location.href = 'mailto:jlee@dockellisfoundation.com?subject=Family Reunion Registration — '+encodeURIComponent(name)+'&body='+encodeURIComponent(body);
-  
+  var lines = [
+    'Family Reunion Registration',
+    '',
+    'Name: '+name,
+    'Email: '+email,
+    'Location: '+(document.getElementById('rv-city').value||'Not provided'),
+    'Household size: '+(document.getElementById('rv-count').value||'Not provided'),
+    'Branch: '+(branches.join(', ')||'Not specified'),
+    'Connection: '+(document.getElementById('rv-connection').value||'Not provided'),
+    'Has photos/docs: '+(document.getElementById('rv-photos').value||'Not provided'),
+    'Notes: '+(document.getElementById('rv-notes').value||'None')
+  ];
+  var body = lines.join('%0D%0A');
+  var subject = 'Family+Reunion+Registration+%E2%80%94+'+encodeURIComponent(name);
+  var link = 'mailto:jlee@dockellisfoundation.com?subject='+subject+'&body='+body;
   document.getElementById('rsvpform').style.display='none';
-  document.getElementById('rsvpsuccess').style.display='block';
+  var s = document.getElementById('rsvpsuccess');
+  s.style.display='block';
+  s.innerHTML += '<br><a href="'+link+'" style="display:inline-block;padding:14px 28px;background:#111;color:#fff;font-family:sans-serif;font-size:12px;letter-spacing:2px;text-transform:uppercase;border-radius:4px;text-decoration:none;margin-top:12px;">Open Email to Send Registration</a><p style="font-family:serif;font-size:14px;color:#777;margin-top:8px;">If no email app opens, email manually to jlee@dockellisfoundation.com</p>';
 }
 </script>
 

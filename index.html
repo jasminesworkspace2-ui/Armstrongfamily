@@ -246,11 +246,12 @@ body {
   padding-left: 28px;
 }
 .drawer-link .icon {
-  width: 20px; height: 20px;
-  opacity: 0.5;
-  font-size: 14px;
+  width: 16px; height: 16px;
+  font-size: 16px;
+  color: var(--gold);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
+  opacity: 0.6;
 }
 .drawer-sep {
   height: 1px;
@@ -700,15 +701,20 @@ body {
 }
 
 /* ═══════════════════════════════════════════════
-   MODAL — FULL PERSON VIEW
+   MODAL — iOS SAFE ARCHITECTURE
+   Key rules:
+   - NO backdrop-filter (breaks iOS z-index)
+   - NO overflow:hidden on scrollable container
+   - NO position:sticky inside overflow scroll
+   - Close button is FIXED position, not sticky
 ═══════════════════════════════════════════════ */
 #modal-overlay {
   position: fixed; inset: 0;
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(0,0,0,0.88);
   z-index: 2000;
   opacity: 0; pointer-events: none;
-  transition: opacity 0.35s;
+  transition: opacity 0.3s;
+  -webkit-tap-highlight-color: transparent;
 }
 #modal-overlay.open { opacity: 1; pointer-events: all; }
 
@@ -716,59 +722,70 @@ body {
   position: fixed;
   inset: 0;
   z-index: 2001;
+  display: none;
+  pointer-events: none;
+}
+#modal.open {
+  display: block;
+  pointer-events: all;
+}
+
+/* The scrollable sheet — slides up from bottom on mobile */
+.modal-sheet {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  max-height: 92vh;
+  background: var(--surface);
+  border-radius: 20px 20px 0 0;
+  border: 1px solid var(--border2);
+  border-bottom: none;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-  padding: calc(20px + var(--safe-top)) 0 calc(20px + var(--safe-bot));
-  pointer-events: none;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  transform: translateY(100%);
+  transition: transform 0.38s cubic-bezier(0.16,1,0.3,1);
+  pointer-events: all;
 }
-#modal.open { pointer-events: all; }
-
-.modal-inner {
-  width: 100%;
-  max-width: 680px;
-  margin: 0 16px;
-  background: var(--surface);
-  border: 1px solid var(--border2);
-  border-radius: 20px;
-  overflow: hidden;
-  transform: translateY(32px);
-  transition: transform 0.4s var(--ease-out);
+#modal.open .modal-sheet {
+  transform: translateY(0);
 }
-#modal-overlay.open .modal-inner { transform: translateY(0); }
 
-.modal-top-bar {
+/* Fixed close button — positioned relative to the sheet, NOT sticky */
+.modal-close-wrap {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
+  z-index: 10;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  padding: 16px 20px;
+  padding: 14px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 100;
-  pointer-events: all;
+}
+
+.modal-inner {
+  /* legacy — no longer used for layout */
+  display: contents;
+}
+
+.modal-top-bar {
+  display: none; /* replaced by modal-close-wrap */
 }
 .modal-close {
-  width: 44px; height: 44px;
+  width: 48px; height: 48px;
   background: var(--card);
   border: 1px solid var(--border2);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 22px;
   color: var(--cream);
-  transition: color 0.2s, background 0.2s;
   flex-shrink: 0;
-  position: relative;
-  z-index: 20;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+  /* No z-index needed — parent handles stacking */
 }
-.modal-close:hover { color: white; background: var(--border2); }
-.modal-close:active { transform: scale(0.95); }
+.modal-close:active { opacity: 0.7; transform: scale(0.93); }
 .modal-bread {
   font-family: var(--f-mono);
   font-size: 10px;
@@ -1545,6 +1562,147 @@ footer {
   clip: rect(0,0,0,0);
   white-space: nowrap;
 }
+
+/* ═══════════════════════════════════════════════
+   FAMILY TREE
+═══════════════════════════════════════════════ */
+.ft-generation {
+  margin-bottom: 8px;
+}
+.ft-gen-label {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+.ft-couple {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ft-plus {
+  display: flex;
+  align-items: center;
+  color: var(--gold);
+  font-size: 20px;
+  font-weight: 300;
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+.ft-person {
+  flex: 1;
+  min-width: 200px;
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: left;
+  cursor: default;
+}
+.ft-person.ft-direct {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.06);
+}
+.ft-person.ft-enslaved {
+  border-color: #3A6B5A;
+  background: rgba(58,107,90,0.06);
+}
+.ft-person.ft-link {
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.ft-person.ft-link:hover { background: rgba(201,168,76,0.12); }
+.ft-person.ft-link:active { transform: scale(0.98); }
+.ft-name {
+  font-family: var(--f-display);
+  font-size: 16px;
+  color: var(--parchment);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+.ft-dates {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.ft-note {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.ft-gold-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  margin-bottom: 8px;
+  box-shadow: 0 0 6px var(--gold-glow);
+}
+.ft-connector {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(to bottom, var(--gold), var(--gold));
+  margin: 0 auto;
+  opacity: 0.4;
+}
+.ft-children {
+  margin: 4px 0 4px 16px;
+  padding-left: 16px;
+  border-left: 1px solid rgba(201,168,76,0.25);
+}
+.ft-children-label {
+  font-family: var(--f-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  margin-top: 4px;
+}
+.ft-children-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+@media (min-width: 600px) {
+  .ft-children-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+.ft-child {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  cursor: default;
+  text-align: left;
+}
+.ft-child .ft-name { font-size: 13px; }
+.ft-child .ft-dates { font-size: 9px; }
+.ft-child .ft-note { font-size: 10px; }
+.ft-child.ft-direct {
+  border-color: var(--gold);
+}
+.ft-child.ft-collateral {
+  border-color: var(--border);
+}
+.ft-child.ft-enslaved {
+  border-color: #3A6B5A;
+}
+.ft-child.ft-link {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: border-color 0.2s, background 0.2s;
+}
+.ft-child.ft-link:hover { border-color: var(--gold); background: rgba(201,168,76,0.06); }
+.ft-child.ft-link:active { transform: scale(0.97); }
+
 </style>
 </head>
 <body>
@@ -1577,79 +1735,84 @@ footer {
 
   <span class="drawer-group-label">Start Here</span>
   <a href="#letter" class="drawer-link" data-section="letter">
-    <span class="icon">✉</span> A Letter to Our Family
+    <span class="icon" aria-hidden="true">·</span> A Letter to Our Family
   </a>
   <a href="#direct-line" class="drawer-link" data-section="direct-line">
-    <span class="icon">🧵</span> The Direct Line
+    <span class="icon" aria-hidden="true">·</span> The Direct Line
   </a>
   <a href="#journey" class="drawer-link" data-section="journey">
-    <span class="icon">📍</span> Our Journey
+    <span class="icon" aria-hidden="true">·</span> Our Journey
   </a>
 
   <div class="drawer-sep"></div>
   <span class="drawer-group-label">The People</span>
   <a href="#person-easter" class="drawer-link person-link" data-person="easter">
-    <span class="icon">⭐</span> Easter Bell Nichols
+    <span class="icon" aria-hidden="true">·</span> Easter Bell Nichols
   </a>
   <a href="#person-hellen" class="drawer-link person-link" data-person="hellen">
-    <span class="icon">👤</span> Hellen Nichols Armstrong
+    <span class="icon" aria-hidden="true">·</span> Hellen Nichols Armstrong
   </a>
   <a href="#person-eva" class="drawer-link person-link" data-person="eva">
-    <span class="icon">👤</span> Eva Armstrong Ballard
+    <span class="icon" aria-hidden="true">·</span> Eva Armstrong Ballard
   </a>
   <a href="#person-james" class="drawer-link person-link" data-person="james">
-    <span class="icon">👤</span> James Wilson Ballard Sr.
+    <span class="icon" aria-hidden="true">·</span> James Wilson Ballard Sr.
   </a>
   <a href="#person-margie" class="drawer-link person-link" data-person="margie">
-    <span class="icon">🏠</span> Margie Nell Corbin
+    <span class="icon" aria-hidden="true">·</span> Margie Nell Corbin
   </a>
   <a href="#person-lois" class="drawer-link person-link" data-person="lois">
-    <span class="icon">👤</span> Lois Bradshaw
+    <span class="icon" aria-hidden="true">·</span> Lois Bradshaw
   </a>
   <a href="#people" class="drawer-link">
-    <span class="icon">👨‍👩‍👧‍👦</span> Children of James + Eva
+    <span class="icon" aria-hidden="true">·</span> Children of James + Eva
   </a>
 
   <div class="drawer-sep"></div>
   <span class="drawer-group-label">The Ancestors</span>
   <a href="#bondage-section" class="drawer-link">
-    <span class="icon">📜</span> Bondage to Belonging
+    <span class="icon" aria-hidden="true">·</span> Bondage to Belonging
   </a>
   <a href="#ballard-section" class="drawer-link">
-    <span class="icon">📜</span> The Ballard Line
+    <span class="icon" aria-hidden="true">·</span> The Ballard Line
   </a>
   <a href="#nichols-waldrop" class="drawer-link">
-    <span class="icon">📜</span> Nichols · Waldrop
+    <span class="icon" aria-hidden="true">·</span> Nichols · Waldrop
   </a>
 
   <div class="drawer-sep"></div>
   <span class="drawer-group-label">12182 Candy Lane</span>
   <a href="#candy-lane" class="drawer-link">
-    <span class="icon">🏡</span> Margie's House · The Full Story
+    <span class="icon" aria-hidden="true">·</span> Margie's House · The Full Story
   </a>
   <a href="#candy-memories" class="drawer-link">
-    <span class="icon">💭</span> Share a Memory
+    <span class="icon" aria-hidden="true">·</span> Share a Memory
   </a>
 
   <div class="drawer-sep"></div>
   <span class="drawer-group-label">DNA</span>
   <a href="#dna-section" class="drawer-link">
-    <span class="icon">🧬</span> DNA Evidence
+    <span class="icon" aria-hidden="true">·</span> DNA Evidence
   </a>
 
   <div class="drawer-sep"></div>
+  <span class="drawer-group-label">Family Tree</span>
+  <a href="#family-tree" class="drawer-link" data-section="family-tree">
+    <span class="icon" aria-hidden="true">·</span> Full Family Tree
+  </a>
+  <div class="drawer-sep"></div>
   <span class="drawer-group-label">Research + Tools</span>
   <a href="#research-section" class="drawer-link">
-    <span class="icon">🔬</span> Research Notes
+    <span class="icon" aria-hidden="true">·</span> Research Notes
   </a>
   <a href="#search-section" class="drawer-link">
-    <span class="icon">🔍</span> Search
+    <span class="icon" aria-hidden="true">·</span> Search
   </a>
   <a href="#photos-section" class="drawer-link">
-    <span class="icon">📷</span> Photos
+    <span class="icon" aria-hidden="true">·</span> Photos
   </a>
   <a href="#contact" class="drawer-link">
-    <span class="icon">📬</span> Contact Jasmine
+    <span class="icon" aria-hidden="true">·</span> Contact Jasmine
   </a>
 </aside>
 
@@ -2558,6 +2721,504 @@ footer {
   </div>
 </section>
 
+
+<!-- ══════════════════════════════════════════
+     FAMILY TREE — FULL BREAKDOWN
+══════════════════════════════════════════ -->
+<section id="family-tree" class="section" style="background:var(--black);" aria-label="Full family tree">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-eyebrow">Complete Family Tree</span>
+      <h2 class="section-title">Every <em>Known Name</em></h2>
+      <p class="section-sub">The full family — parents, children, grandchildren, and great-grandchildren — organized by family unit from the earliest known ancestor to the youngest generation. Your direct line is marked in gold.</p>
+    </div>
+  </div>
+
+  <div class="container-wide">
+
+    <!-- LEGEND -->
+    <div class="reveal" style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:40px;padding:16px;background:var(--surface);border-radius:12px;border:1px solid var(--border);">
+      <div style="display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:1px;color:var(--gold);">
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--gold);"></div> Direct Line
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:1px;color:#90C8B8;">
+        <div style="width:10px;height:10px;border-radius:50%;background:#3A6B5A;"></div> Enslaved Ancestor
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:1px;color:var(--muted);">
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--muted);"></div> Collateral Family
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:1px;color:var(--muted);">
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--border2);"></div> Died in Infancy
+      </div>
+    </div>
+
+    <!-- GEN 0: ROOT -->
+    <div class="ft-generation reveal">
+      <div class="ft-gen-label">Root Generation · Earliest Known Ancestor</div>
+      <div class="ft-person ft-direct ft-enslaved">
+        <div class="ft-name">Rendy Blayn</div>
+        <div class="ft-dates">ca. 1817 – after 1865 · Born North Carolina</div>
+        <div class="ft-note">Enslaved · Bellville TX · Mother of Easter Bell · Father not documented</div>
+      </div>
+    </div>
+
+    <div class="ft-connector"></div>
+
+    <!-- GEN 1: EASTER BELL + JOSEPH -->
+    <div class="ft-generation reveal">
+      <div class="ft-gen-label">Generation 1 · Your 3rd Great-Grandparents</div>
+      <div class="ft-couple">
+        <button class="ft-person ft-direct ft-link" onclick="openPersonModal('easter')" aria-label="Easter Bell Nichols — read full story">
+          <div class="ft-gold-dot"></div>
+          <div class="ft-name">Easter Bell Nichols ★</div>
+          <div class="ft-dates">July 4, 1848 – December 17, 1935</div>
+          <div class="ft-note">Bellville, Austin County TX · Born enslaved · Freed 1865</div>
+        </button>
+        <div class="ft-plus">+</div>
+        <div class="ft-person">
+          <div class="ft-name">Joseph Nichols</div>
+          <div class="ft-dates">ca. 1847 – ca. 1900–1910</div>
+          <div class="ft-note">Married December 18, 1865 · Austin County TX</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Easter Bell's children -->
+    <div class="ft-children reveal">
+      <div class="ft-children-label">Easter Bell &amp; Joseph's Children</div>
+      <div class="ft-children-grid">
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Katie Thornton</div>
+          <div class="ft-dates">1860 – May 11, 1923</div>
+          <div class="ft-note">Before emancipation</div>
+        </div>
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Annie Nichols</div>
+          <div class="ft-dates">1866 – unknown</div>
+        </div>
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Allen Nichols Sr.</div>
+          <div class="ft-dates">Feb 1, 1867 – Oct 1944</div>
+        </div>
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Josephine Nichols</div>
+          <div class="ft-dates">1868 – unknown</div>
+        </div>
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Oscar Nichols</div>
+          <div class="ft-dates">Jun 8, 1869 – Jun 24, 1949</div>
+        </div>
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Henry Nichols</div>
+          <div class="ft-dates">1870 – unknown</div>
+        </div>
+        <button class="ft-child ft-direct ft-link" onclick="openPersonModal('hellen')" aria-label="Hellen Nichols Armstrong">
+          <div class="ft-gold-dot"></div>
+          <div class="ft-name">Hellen Nichols Armstrong ★</div>
+          <div class="ft-dates">Sept 1870 – Dec 5, 1931</div>
+          <div class="ft-note">Your direct line</div>
+        </button>
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Clara Nichols / Nagy</div>
+          <div class="ft-dates">Mar 6, 1875 – Mar 1944</div>
+        </div>
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">William Nichols</div>
+          <div class="ft-dates">Jun 7, 1884 – Apr 29, 1956</div>
+        </div>
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Mabel Nichols</div>
+          <div class="ft-dates">ca. 1891 – unknown</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ft-connector"></div>
+
+    <!-- GEN 2: HELLEN + JOHN ARMSTRONG -->
+    <div class="ft-generation reveal">
+      <div class="ft-gen-label">Generation 2 · Your 2nd Great-Grandparents</div>
+      <div class="ft-couple">
+        <button class="ft-person ft-direct ft-link" onclick="openPersonModal('hellen')" aria-label="Hellen Nichols Armstrong">
+          <div class="ft-gold-dot"></div>
+          <div class="ft-name">Hellen Nichols Armstrong ★</div>
+          <div class="ft-dates">Sept 1870 – Dec 5, 1931</div>
+          <div class="ft-note">Daughter of Easter Bell</div>
+        </button>
+        <div class="ft-plus">+</div>
+        <button class="ft-person ft-link" onclick="openPersonModal('john')" aria-label="John Armstrong">
+          <div class="ft-name">John Armstrong</div>
+          <div class="ft-dates">ca. March 1872 – Aug 30, 1911</div>
+          <div class="ft-note">Shot &amp; killed · Fort Worth · never convicted</div>
+        </button>
+      </div>
+    </div>
+
+    <div class="ft-children reveal">
+      <div class="ft-children-label">Hellen &amp; John's Child · Your Great-Grandmother</div>
+      <div class="ft-children-grid">
+        <button class="ft-child ft-direct ft-link" onclick="openPersonModal('eva')" aria-label="Eva Armstrong Ballard">
+          <div class="ft-gold-dot"></div>
+          <div class="ft-name">Eva Armstrong Ballard ★</div>
+          <div class="ft-dates">ca. 1899 – Nov 24, 1977</div>
+          <div class="ft-note">Your direct line · Bellville TX → Garden Grove CA</div>
+        </button>
+      </div>
+      <div class="ft-children-label" style="margin-top:20px;">John Armstrong's Siblings</div>
+      <div class="ft-children-grid">
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Ida Armstrong</div>
+          <div class="ft-dates">Feb 28, 1875 – May 19, 1918</div>
+          <div class="ft-note">Bellville TX</div>
+        </div>
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Joshua Armstrong</div>
+          <div class="ft-dates">Mar 9, 1879 – Mar 1, 1957</div>
+          <div class="ft-note">Married Lula Lott · Fort Worth TX</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ft-connector"></div>
+
+    <!-- GEN 3: EVA + JAMES BALLARD -->
+    <div class="ft-generation reveal">
+      <div class="ft-gen-label">Generation 3 · Your Great-Grandparents</div>
+      <div class="ft-couple">
+        <button class="ft-person ft-direct ft-link" onclick="openPersonModal('eva')" aria-label="Eva Armstrong Ballard">
+          <div class="ft-gold-dot"></div>
+          <div class="ft-name">Eva Armstrong Ballard ★</div>
+          <div class="ft-dates">ca. 1899 – Nov 24, 1977</div>
+          <div class="ft-note">Nip and Sip Cafe · San Antonio</div>
+        </button>
+        <div class="ft-plus">+</div>
+        <button class="ft-person ft-link" onclick="openPersonModal('james')" aria-label="James Wilson Ballard Sr.">
+          <div class="ft-name">James Wilson Ballard Sr.</div>
+          <div class="ft-dates">Aug 26, 1897 – March 13, 1953</div>
+          <div class="ft-note">Son of Rev. George W. Ballard · Palestine TX</div>
+        </button>
+      </div>
+    </div>
+
+    <div class="ft-children reveal">
+      <div class="ft-children-label">Eva &amp; James's Children</div>
+      <div class="ft-children-grid">
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">James W. Ballard Jr.</div>
+          <div class="ft-dates">1926 – 1986</div>
+          <div class="ft-note">San Antonio Light front page · 1954</div>
+        </div>
+        <div class="ft-child ft-collateral" style="border:1px solid var(--border2);opacity:0.6;">
+          <div class="ft-name">James W. Ballard</div>
+          <div class="ft-dates">1928 – 1928</div>
+          <div class="ft-note">Died in infancy · remembered</div>
+        </div>
+        <button class="ft-child ft-direct ft-link" onclick="openPersonModal('margie')" aria-label="Margie Nell Ballard Corbin">
+          <div class="ft-gold-dot"></div>
+          <div class="ft-name">Margie Nell Ballard ★</div>
+          <div class="ft-dates">Mar 13, 1929 – Oct 15, 1988</div>
+          <div class="ft-note">Your direct line · NaNa</div>
+        </button>
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Charles Ray Ballard</div>
+          <div class="ft-dates">1933 – 2001</div>
+        </div>
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Bettie Jean Ballard</div>
+          <div class="ft-dates">1935 – 2002</div>
+        </div>
+        <button class="ft-child ft-link" onclick="openPersonModal('lois')" aria-label="Lois Bradshaw">
+          <div class="ft-name">Lois Marie Ballard (Bradshaw)</div>
+          <div class="ft-dates">May 24, 1931 – Living</div>
+          <div class="ft-note">Last living child of James + Eva · DNA confirmed</div>
+        </button>
+        <div class="ft-child ft-collateral" style="border:1px solid var(--border2);opacity:0.6;">
+          <div class="ft-name">Thelma Louise Ballard</div>
+          <div class="ft-dates">Dec 1938 – Mar 1939</div>
+          <div class="ft-note">Died in infancy · remembered</div>
+        </div>
+      </div>
+
+      <!-- Lois's children -->
+      <div class="ft-children-label" style="margin-top:24px;">Lois's Children</div>
+      <div class="ft-children-grid">
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Remetha Diane Pulley</div>
+          <div class="ft-dates">1947 – 2023</div>
+        </div>
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Larry Bradshaw</div>
+          <div class="ft-dates">b. 1953</div>
+        </div>
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Warren Bradshaw Jr.</div>
+          <div class="ft-dates">b. 1956</div>
+        </div>
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Kathy Crosby</div>
+          <div class="ft-dates">Living</div>
+        </div>
+      </div>
+      <div class="ft-children-label" style="margin-top:16px;">Larry Bradshaw's Children</div>
+      <div class="ft-children-grid">
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Jahna Bradshaw</div>
+          <div class="ft-dates">b. Oct 21, 1996</div>
+          <div class="ft-note">41 cM DNA match · confirmed Lois line</div>
+        </div>
+      </div>
+      <div class="ft-children-label" style="margin-top:16px;">Remetha's Children</div>
+      <div class="ft-children-grid">
+        <div class="ft-child ft-collateral"><div class="ft-name">Tammy Burrell</div><div class="ft-dates">Living</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Marve D. Burrell II</div><div class="ft-dates">b. 1976</div></div>
+      </div>
+
+      <!-- Other Eva children's descendants -->
+      <div class="ft-children-label" style="margin-top:24px;">Other Descendants · James Jr. · Charles Ray · Bettie Jean</div>
+      <div class="ft-children-grid">
+        <div class="ft-child ft-collateral"><div class="ft-name">James Ballard III</div><div class="ft-dates">Living</div><div class="ft-note">James Jr.'s child</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Michael Wallace</div><div class="ft-dates">Living</div><div class="ft-note">Charles Ray's child</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Donell R. Boyd</div><div class="ft-dates">1958 – 2021</div><div class="ft-note">Bettie Jean's child</div></div>
+      </div>
+    </div>
+
+    <div class="ft-connector"></div>
+
+    <!-- GEN 4: MARGIE + NORMAN -->
+    <div class="ft-generation reveal">
+      <div class="ft-gen-label">Generation 4 · Your Grandparents</div>
+      <div class="ft-couple">
+        <button class="ft-person ft-direct ft-link" onclick="openPersonModal('margie')" aria-label="Margie Nell Ballard Corbin">
+          <div class="ft-gold-dot"></div>
+          <div class="ft-name">Margie Nell Ballard Corbin ★</div>
+          <div class="ft-dates">Mar 13, 1929 – Oct 15, 1988</div>
+          <div class="ft-note">12182 Candy Lane · Garden Grove CA</div>
+        </button>
+        <div class="ft-plus">+</div>
+        <div class="ft-person">
+          <div class="ft-name">Norman Caswell Corbin</div>
+          <div class="ft-dates">Feb 10, 1921 – Apr 21, 1974</div>
+          <div class="ft-note">Married Mar 17, 1957 · Yuma AZ · Corbin Community Center named in his honor</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Margie's 7 children -->
+    <div class="ft-children reveal">
+      <div class="ft-children-label">Margie's Seven Children</div>
+      <div class="ft-children-grid">
+
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Michael E. Corbin Sr.</div>
+          <div class="ft-dates">Aug 26, 1951 – Nov 1, 2009</div>
+          <div class="ft-note">Father: Theodore Williams Jr.</div>
+        </div>
+
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Ronnie Leroy Ballard</div>
+          <div class="ft-dates">b. Nov 11, 1953</div>
+          <div class="ft-note">Father: Leroy "Icecream" Armstrong Jr.</div>
+        </div>
+
+        <button class="ft-child ft-direct ft-link" onclick="openPersonModal('hjordis')" aria-label="Hjordis L. Corbin">
+          <div class="ft-gold-dot"></div>
+          <div class="ft-name">Hjordis L. Corbin ★</div>
+          <div class="ft-dates">b. Jan 20, 1960</div>
+          <div class="ft-note">Your mother · Direct line</div>
+        </button>
+
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Deanna Denise Corbin</div>
+          <div class="ft-dates">b. Dec 28, 1961</div>
+        </div>
+
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Sonsorey Yevette Corbin</div>
+          <div class="ft-dates">b. Nov 29, 1962</div>
+        </div>
+
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Orngiel L. Corbin</div>
+          <div class="ft-dates">b. Dec 14, 1964</div>
+        </div>
+
+        <div class="ft-child ft-collateral">
+          <div class="ft-name">Se'Taun Corbin</div>
+          <div class="ft-dates">b. Apr 30, 1966</div>
+          <div class="ft-note">Drove a yellow Bug</div>
+        </div>
+
+      </div>
+
+      <!-- Michael's children -->
+      <div class="ft-children-label" style="margin-top:24px;">Michael E. Corbin Sr.'s Children</div>
+      <div class="ft-children-grid">
+        <div class="ft-child ft-collateral"><div class="ft-name">Darrell Devon Corbin</div><div class="ft-dates">b. Jan 23, 1970</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Brendyal Corbin</div><div class="ft-dates">b. Jan 24, 1972</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Quincy De'Von Young</div><div class="ft-dates">b. Dec 17, 1976</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Damien A. Price-Corbin</div><div class="ft-dates">b. Feb 18, 1979</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Deserae Charese Corbin</div><div class="ft-dates">b. Oct 9, 1982</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Dominique Corbin</div><div class="ft-dates">b. Mar 2, 1985</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Mychal Corbin</div><div class="ft-dates">b. Feb 8, 1990</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Jamie Richard Corbin</div><div class="ft-dates">b. Jan 6, 1996</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Fatisha Corbin</div><div class="ft-dates">b. Apr 1997</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Michael Eugene Corbin Jr.</div><div class="ft-dates">b. Nov 26, 1998</div></div>
+      </div>
+
+      <!-- Ronnie's children -->
+      <div class="ft-children-label" style="margin-top:16px;">Ronnie Leroy Ballard's Children</div>
+      <div class="ft-children-grid">
+        <div class="ft-child ft-collateral"><div class="ft-name">Shawntee R. Mitchell</div><div class="ft-dates">b. Aug 15, 1975</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Veronica Ler'a Amado</div><div class="ft-dates">b. Oct 22, 1980</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Stacey Austin</div><div class="ft-dates">dates unknown</div></div>
+      </div>
+
+      <!-- Deanna's children -->
+      <div class="ft-children-label" style="margin-top:16px;">Deanna Denise Corbin's Children</div>
+      <div class="ft-children-grid">
+        <div class="ft-child ft-collateral"><div class="ft-name">Jade Aureana Brandon</div><div class="ft-dates">b. Jun 3, 1989</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Lauryn Platkowski</div><div class="ft-dates">b. Oct 21, 1996</div></div>
+      </div>
+
+      <!-- Sonsorey's children -->
+      <div class="ft-children-label" style="margin-top:16px;">Sonsorey Yevette Corbin's Children</div>
+      <div class="ft-children-grid">
+        <div class="ft-child ft-collateral"><div class="ft-name">Alerick Jeron Olivier</div><div class="ft-dates">b. Oct 4, 1979</div></div>
+      </div>
+
+      <!-- Orngiel's children -->
+      <div class="ft-children-label" style="margin-top:16px;">Orngiel L. Corbin's Children</div>
+      <div class="ft-children-grid">
+        <div class="ft-child ft-collateral"><div class="ft-name">Brittany Hubert Corbin</div><div class="ft-dates">b. Dec 10, 1983</div></div>
+      </div>
+
+    </div>
+
+    <div class="ft-connector"></div>
+
+    <!-- GEN 5: HJORDIS -->
+    <div class="ft-generation reveal">
+      <div class="ft-gen-label">Generation 5 · Your Mother</div>
+      <div class="ft-couple">
+        <button class="ft-person ft-direct ft-link" onclick="openPersonModal('hjordis')" aria-label="Hjordis L. Corbin">
+          <div class="ft-gold-dot"></div>
+          <div class="ft-name">Hjordis L. Corbin ★</div>
+          <div class="ft-dates">b. January 20, 1960</div>
+          <div class="ft-note">DNA Kit SQ8499767</div>
+        </button>
+        <div class="ft-plus">+</div>
+        <button class="ft-person ft-link" onclick="openPersonModal('dock')" aria-label="Dock Ellis">
+          <div class="ft-name">Dock Phillip Ellis Jr.</div>
+          <div class="ft-dates">Mar 11, 1945 – Dec 19, 2008</div>
+          <div class="ft-note">MLB Pittsburgh Pirates · 1971 World Series Champion</div>
+        </button>
+      </div>
+    </div>
+
+    <div class="ft-children reveal">
+      <div class="ft-children-label">Hjordis's Children</div>
+      <div class="ft-children-grid">
+        <div class="ft-child ft-collateral" style="border:1px solid var(--border2);opacity:0.65;">
+          <div class="ft-name">Lakesha Setaun Demyers</div>
+          <div class="ft-dates">Sep 24, 1979 – Sep 24, 1979</div>
+          <div class="ft-note">Remembered</div>
+        </div>
+        <div class="ft-child ft-direct" style="border-color:var(--gold);background:rgba(201,168,76,0.06);">
+          <div class="ft-gold-dot"></div>
+          <div class="ft-name">Jasmine M. Lee ★</div>
+          <div class="ft-dates">b. January 25, 1982</div>
+          <div class="ft-note">You · Researcher · Founder, Dock Ellis Foundation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ft-connector"></div>
+
+    <!-- GREAT-GRANDCHILDREN OF MARGIE -->
+    <div class="ft-generation reveal">
+      <div class="ft-gen-label">Great-Grandchildren of Margie Nell Ballard Corbin</div>
+      <div class="ft-children-grid">
+        <div class="ft-child ft-collateral"><div class="ft-name">Brennan Corbin</div><div class="ft-dates">b. Dec 1997</div><div class="ft-note">Darrell's child</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Braylin Corbin</div><div class="ft-dates">dates unknown</div><div class="ft-note">Darrell's child</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Sennia Corbin</div><div class="ft-dates">dates unknown</div><div class="ft-note">Darrell's child</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Dmarje M. Morris</div><div class="ft-dates">b. Jul 1, 1991</div><div class="ft-note">Brendyal's child</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Malani Corbin</div><div class="ft-dates">b. Jan 27, 2023</div><div class="ft-note">Fatisha's child</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Kailyn Joseph</div><div class="ft-dates">dates unknown</div><div class="ft-note">Deserae's child</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Noah Josiah Gray</div><div class="ft-dates">b. Jul 4, 2023</div><div class="ft-note">Deserae's child</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Shawntasia Jordan</div><div class="ft-dates">b. Mar 29, 1994</div><div class="ft-note">Shawntee's child</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">William Corbin</div><div class="ft-dates">dates unknown</div><div class="ft-note">Shawntee's child</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Nahla Noelle Delhomme</div><div class="ft-dates">b. May 26, 2020</div><div class="ft-note">Lauryn's child</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">David Michael Carter</div><div class="ft-dates">b. May 25, 2023</div><div class="ft-note">Lauryn's child</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Bria Bailey</div><div class="ft-dates">dates unknown</div><div class="ft-note">Brittany's child</div></div>
+      </div>
+    </div>
+
+    <div class="ft-connector"></div>
+
+    <!-- GREAT-GREAT-GRANDCHILDREN -->
+    <div class="ft-generation reveal">
+      <div class="ft-gen-label">Great-Great-Grandchildren of Margie · Youngest Known Generation</div>
+      <div class="ft-children-grid">
+        <div class="ft-child ft-collateral"><div class="ft-name">Makai Morris</div><div class="ft-dates">dates unknown</div><div class="ft-note">Dmarje's child</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Travis Kailon Smith</div><div class="ft-dates">b. Jun 14, 2021</div><div class="ft-note">Kailyn's child</div></div>
+      </div>
+    </div>
+
+    <!-- BALLARD SIDEBAR -->
+    <div class="ft-generation reveal" style="margin-top:60px;border-top:2px solid var(--border);padding-top:40px;">
+      <div class="ft-gen-label">The Ballard Line · James Sr.'s Parents and Siblings</div>
+      <div class="ft-couple">
+        <div class="ft-person">
+          <div class="ft-name">Rev. George W. Ballard</div>
+          <div class="ft-dates">Sep 4, 1861 – Oct 24, 1937</div>
+          <div class="ft-note">Keller TX → Waco TX · Minister · TX File No. 51612</div>
+        </div>
+        <div class="ft-plus">+</div>
+        <div class="ft-person">
+          <div class="ft-name">Mary Ann Edwards Ballard</div>
+          <div class="ft-dates">Nov 4, 1870 – Mar 19, 1949</div>
+          <div class="ft-note">LaGrange TX · parents: Benjamin + Bettie Edwards · TX File No. 13962</div>
+        </div>
+      </div>
+      <div class="ft-children-label" style="margin-top:20px;">Rev. Ballard's Children</div>
+      <div class="ft-children-grid">
+        <div class="ft-child ft-collateral"><div class="ft-name">Lavinia Ballard</div><div class="ft-dates">b. 1888</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Lurania Ballard</div><div class="ft-dates">1889 – 1910</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Benjamin Ballard</div><div class="ft-dates">1890 – 1943</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Hallie Q. Ballard</div><div class="ft-dates">1892 – 1954</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Bettie May Ballard</div><div class="ft-dates">b. 1896</div></div>
+        <div class="ft-child ft-collateral" style="border-color:var(--gold);"><div class="ft-name">James Wilson Ballard Sr.</div><div class="ft-dates">Aug 26, 1897 – 1953</div><div class="ft-note">Eva's husband</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Mark Hanna Ballard</div><div class="ft-dates">Aug 16, 1900 – 1972</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">John Allen Ballard</div><div class="ft-dates">Nov 20, 1901 – 1973</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Moses E. Ballard</div><div class="ft-dates">Sep 22, 1903 – 1988</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Aleberta Kendle</div><div class="ft-dates">Oct 14, 1913 – Jun 14, 1977</div></div>
+        <div class="ft-child ft-collateral"><div class="ft-name">Birdie Ballard</div><div class="ft-dates">b. 1906</div></div>
+      </div>
+      <div class="ft-children-label" style="margin-top:20px;">Rev. Ballard's Parents · Newton &amp; Rebecca Ballard</div>
+      <div class="ft-couple">
+        <div class="ft-person ft-enslaved">
+          <div class="ft-name">Newton Ballard</div>
+          <div class="ft-dates">ca. 1830 – ca. 1870</div>
+          <div class="ft-note">Born Mississippi · Enslaved · TX GLO File No. 3378 · Louisa Hypothesis active</div>
+        </div>
+        <div class="ft-plus">+</div>
+        <div class="ft-person">
+          <div class="ft-name">Rebecca Ballard</div>
+          <div class="ft-dates">ca. 1835 – after 1870</div>
+          <div class="ft-note">Born Mississippi · Head of household 1870 Upshur County TX · origins permanently unresolvable</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact note -->
+    <div class="reveal" style="margin-top:40px;padding:20px;background:var(--surface);border-radius:12px;border:1px solid var(--border);text-align:center;">
+      <p style="font-family:var(--f-mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">This Tree Will Grow</p>
+      <p style="font-size:13px;color:var(--muted);line-height:1.6;">Know a name that's missing? Have a birth date, photo, or correction? Contact Jasmine — <a href="mailto:jlee@dockellisfoundation.com" style="color:var(--gold2);">jlee@dockellisfoundation.com</a></p>
+    </div>
+
+  </div>
+</section>
+
 <!-- ══════════════════════════════════════════
      RESEARCH NOTES
 ══════════════════════════════════════════ -->
@@ -2681,13 +3342,18 @@ footer {
   <img id="lightbox-img" src="" alt="">
 </div>
 
-<!-- MODAL OVERLAY -->
-<div id="modal-overlay" onclick="closeModal()" aria-hidden="true"></div>
+<!-- MODAL — iOS SAFE BOTTOM SHEET -->
+<div id="modal-overlay" aria-hidden="true"></div>
 <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-person-name">
-  <div class="modal-inner" id="modal-inner">
-    <div class="modal-top-bar">
-      <span class="modal-bread" id="modal-bread">The People</span>
-      <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+  <div class="modal-sheet" id="modal-sheet">
+    <!-- Drag handle -->
+    <div style="display:flex;justify-content:center;padding:10px 0 0;">
+      <div style="width:36px;height:4px;background:var(--border2);border-radius:2px;"></div>
+    </div>
+    <!-- Close bar -->
+    <div class="modal-close-wrap">
+      <span class="modal-bread" id="modal-bread" style="font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);"></span>
+      <button class="modal-close" id="modal-close-btn" aria-label="Close person detail">&#x2715;</button>
     </div>
     <div id="modal-content"></div>
   </div>
@@ -3244,24 +3910,52 @@ function openPersonModal(id) {
   html += '</div>';
   content.innerHTML = html;
   
-  modalOverlay.classList.add('open');
-  document.getElementById('modal').classList.add('open');
+  if (modalOverlay) {
+    modalOverlay.classList.add('open');
+  }
+  const modalEl = document.getElementById('modal');
+  if (modalEl) modalEl.classList.add('open');
   document.body.style.overflow = 'hidden';
   
-  // Scroll modal to top
-  document.getElementById('modal-inner').scrollTop = 0;
+  // Scroll sheet to top
+  const sheet = document.getElementById('modal-sheet');
+  if (sheet) sheet.scrollTop = 0;
   
-  // Focus management
+  // Focus the close button after animation
   setTimeout(() => {
-    document.querySelector('.modal-close')?.focus();
-  }, 150);
+    const btn = document.getElementById('modal-close-btn');
+    if (btn) btn.focus();
+  }, 400);
 }
 
 function closeModal() {
   if (modalOverlay) modalOverlay.classList.remove('open');
-  document.getElementById('modal').classList.remove('open');
+  const m = document.getElementById('modal');
+  if (m) m.classList.remove('open');
   document.body.style.overflow = '';
 }
+
+// Wire overlay tap to close
+if (modalOverlay) {
+  modalOverlay.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('touchend', function(e) {
+    e.preventDefault();
+    closeModal();
+  });
+}
+
+// Wire close button — both click and touchend for iOS
+(function wireCloseBtn() {
+  const btn = document.getElementById('modal-close-btn');
+  if (!btn) return;
+  function doClose(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    closeModal();
+  }
+  btn.addEventListener('click', doClose);
+  btn.addEventListener('touchend', doClose);
+})();
 
 function goToSection(id) {
   closeNav();
@@ -3446,4 +4140,3 @@ document.querySelectorAll('.journey-node').forEach(node => {
 </script>
 </body>
 </html>
-

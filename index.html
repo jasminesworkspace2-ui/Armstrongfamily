@@ -501,10 +501,15 @@ body {
   cursor: pointer;
   transition: background 0.2s;
   text-decoration: none;
-  color: inherit;
+  color: var(--cream);
+  background: var(--surface);
   -webkit-tap-highlight-color: transparent;
+  width: 100%;
+  border: none;
+  text-align: left;
 }
-.thread-person:hover { background: var(--gold-dim); }
+.thread-person:hover { background: rgba(201,168,76,0.08); }
+.thread-person + .thread-person { border-top: 1px solid var(--border); }
 .thread-person:last-child { border-bottom: none; }
 
 .thread-dot-wrap {
@@ -562,12 +567,16 @@ body {
 }
 .thread-status {
   font-size: 12px;
-  color: var(--cream);
+  color: #444444;
   line-height: 1.5;
   margin-top: 6px;
   padding-top: 6px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid #cccccc;
 }
+/* Override colors when thread is on dark bg */
+#direct-line .thread-status { color: var(--cream); border-top-color: var(--border); }
+#direct-line .thread-name { color: var(--parchment); }
+#direct-line .thread-dates { color: var(--muted); }
 .thread-arrow {
   color: var(--gold);
   opacity: 0.5;
@@ -708,13 +717,14 @@ body {
   inset: 0;
   z-index: 2001;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding: calc(20px + var(--safe-top)) 0 calc(20px + var(--safe-bot));
   pointer-events: none;
   display: flex;
   align-items: flex-start;
   justify-content: center;
 }
-#modal-overlay.open + #modal { pointer-events: all; }
+#modal.open { pointer-events: all; }
 
 .modal-inner {
   width: 100%;
@@ -738,21 +748,27 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 10;
+  z-index: 100;
+  pointer-events: all;
 }
 .modal-close {
-  width: 36px; height: 36px;
+  width: 44px; height: 44px;
   background: var(--card);
   border: 1px solid var(--border2);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer;
-  font-size: 18px;
-  color: var(--muted);
+  font-size: 20px;
+  color: var(--cream);
   transition: color 0.2s, background 0.2s;
   flex-shrink: 0;
+  position: relative;
+  z-index: 20;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
-.modal-close:hover { color: var(--cream); background: var(--border2); }
+.modal-close:hover { color: white; background: var(--border2); }
+.modal-close:active { transform: scale(0.95); }
 .modal-bread {
   font-family: var(--f-mono);
   font-size: 10px;
@@ -1645,7 +1661,7 @@ footer {
 ══════════════════════════════════════════ -->
 <section id="hero" aria-label="Family history introduction">
   <canvas id="hero-canvas" aria-hidden="true"></canvas>
-  <div class="hero-thread" aria-hidden="true"></div>
+  
   <div class="hero-content">
     <p class="hero-eyebrow">Seven Generations · One Family</p>
     <h1 class="hero-title">
@@ -2678,6 +2694,12 @@ footer {
 </div>
 
 <script>
+window.onerror = function(msg, src, line, col, err) {
+  // Always dismiss loader even on error
+  try { document.getElementById('loader').classList.add('hidden'); } catch(e) {}
+  console.warn('Site error:', msg, 'at line', line);
+  return false;
+};
 /* ═══════════════════════════════════════════════
    LOADER
 ═══════════════════════════════════════════════ */
@@ -3223,6 +3245,7 @@ function openPersonModal(id) {
   content.innerHTML = html;
   
   modalOverlay.classList.add('open');
+  document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
   
   // Scroll modal to top
@@ -3231,11 +3254,12 @@ function openPersonModal(id) {
   // Focus management
   setTimeout(() => {
     document.querySelector('.modal-close')?.focus();
-  }, 100);
+  }, 150);
 }
 
 function closeModal() {
-  modalOverlay.classList.remove('open');
+  if (modalOverlay) modalOverlay.classList.remove('open');
+  document.getElementById('modal').classList.remove('open');
   document.body.style.overflow = '';
 }
 

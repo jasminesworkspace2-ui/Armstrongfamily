@@ -2681,15 +2681,21 @@ footer {
 /* ═══════════════════════════════════════════════
    LOADER
 ═══════════════════════════════════════════════ */
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('loader').classList.add('hidden');
-  }, 3200);
-});
+// Loader - always dismiss, even if other JS errors occur
+function dismissLoader() {
+  try {
+    const loader = document.getElementById('loader');
+    if (loader) loader.classList.add('hidden');
+  } catch(e) {}
+}
+window.addEventListener('load', () => setTimeout(dismissLoader, 2800));
+// Failsafe: dismiss after 5s no matter what
+setTimeout(dismissLoader, 5000);
 
 /* ═══════════════════════════════════════════════
    NAVIGATION
 ═══════════════════════════════════════════════ */
+try {
 const menuBtn = document.getElementById('menu-btn');
 const navDrawer = document.getElementById('nav-drawer');
 const navOverlay = document.getElementById('nav-overlay');
@@ -2751,10 +2757,13 @@ function updateActiveNav() {
   });
 }
 
+} catch(e) { console.warn('Nav error:', e); }
+
 /* ═══════════════════════════════════════════════
    HERO PARTICLE CANVAS
 ═══════════════════════════════════════════════ */
 (function() {
+  try {
   const canvas = document.getElementById('hero-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
@@ -2838,12 +2847,14 @@ function updateActiveNav() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     cancelAnimationFrame(animId);
   }
+  } catch(e) { console.warn('Hero canvas error:', e); }
 })();
 
 /* ═══════════════════════════════════════════════
    DNA CONSTELLATION CANVAS
 ═══════════════════════════════════════════════ */
 (function() {
+  try {
   const canvas = document.getElementById('dna-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
@@ -2909,6 +2920,7 @@ function updateActiveNav() {
   });
   observer.observe(canvas);
   window.addEventListener('resize', draw, { passive: true });
+  } catch(e) { console.warn('DNA canvas error:', e); }
 })();
 
 /* ═══════════════════════════════════════════════
@@ -3069,7 +3081,7 @@ const PEOPLE = {
       ['Died', 'ca. 1953 · before records confirm location'],
       ['Ballard line', 'Traces to Rev. George W. Ballard → Newton Ballard → Louisa Hypothesis (Louisiana)'],
     ],
-    body: 'James Wilson Ballard Sr. was the husband of Eva Armstrong Ballard and the father of Margie Nell Ballard — who became NaNa. He was born approximately 1898 in Fort Worth, Texas, and appears in the 1900 Fort Bend County census.\n\nHe and Eva built their family across Fort Worth and San Antonio. His son James Wilson Ballard Jr. was prominent enough in San Antonio\'s East Side community to make the front page of the San Antonio Light in 1954 when he helped expose a police cover-up in the Johnie Caldwell murder case. James Jr. also appears in records as a federal gambling tax stamp agent at 207 N. Center Street — a legal IRS stamp required for what were effectively illegal gambling operations, context that reflects the economic realities of Black entrepreneurship in 1950s San Antonio.\n\nJames Sr.'s line traces back through Rev. George W. Ballard and Newton Ballard. The Louisa Hypothesis — connecting Newton to an enslaved woman named Louisa from the John Bullard estate in Louisiana — is the most promising open research avenue in the Ballard line.'
+    body: 'James Wilson Ballard Sr. was the husband of Eva Armstrong Ballard and the father of Margie Nell Ballard — who became NaNa. He was born approximately 1898 in Fort Worth, Texas, and appears in the 1900 Fort Bend County census.\n\nHe and Eva built their family across Fort Worth and San Antonio. His son James Wilson Ballard Jr. was prominent enough in San Antonio\'s East Side community to make the front page of the San Antonio Light in 1954 when he helped expose a police cover-up in the Johnie Caldwell murder case. James Jr. also appears in records as a federal gambling tax stamp agent at 207 N. Center Street — a legal IRS stamp required for what were effectively illegal gambling operations, context that reflects the economic realities of Black entrepreneurship in 1950s San Antonio.\n\nJames Sr.’s line traces back through Rev. George W. Ballard and Newton Ballard. The Louisa Hypothesis — connecting Newton to an enslaved woman named Louisa from the John Bullard estate in Louisiana — is the most promising open research avenue in the Ballard line.'
   },
   margie: {
     name: 'Margie Nell Ballard Corbin',
@@ -3147,7 +3159,8 @@ const PEOPLE = {
 /* ═══════════════════════════════════════════════
    PERSON MODAL — OPEN/CLOSE
 ═══════════════════════════════════════════════ */
-const modalOverlay = document.getElementById('modal-overlay');
+let modalOverlay;
+try { modalOverlay = document.getElementById('modal-overlay'); } catch(e) {}
 
 function openPersonModal(id) {
   const p = PEOPLE[id];

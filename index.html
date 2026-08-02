@@ -561,39 +561,44 @@ body{display:flex;flex-direction:row;margin:0;padding:0;}
   <div class="nav-brand">Our Family<small>Ballard · Corbin · Nichols · Armstrong</small></div>
 
   <span class="nav-section-label">Start Here</span>
-  <button class="nb active" onclick="show('timeline',this)">Family Timeline</button>
-  <button class="nb" onclick="show('familytree',this)">Family Tree</button>
   <button class="nb" onclick="show('letter',this)">Letter to Family</button>
+  <button class="nb" onclick="show('timeline',this)">Family Timeline</button>
   <button class="nb" onclick="show('whoiswho',this)">Who We Are</button>
+  <button class="nb" onclick="show('map',this)">Where We Are</button>
 
-  <span class="nav-section-label">Our Ancestors</span>
-  <button class="nb" onclick="show('bondage',this)">Bondage to Belonging</button>
-  <button class="nb" onclick="show('enslaved',this)">Enslaved Family</button>
-  <button class="nb" onclick="show('nichols',this)">Nichols · Waldrop</button>
+  <span class="nav-section-label">The People</span>
   <button class="nb" onclick="show('easter',this)">Easter Bell</button>
-  <button class="nb" onclick="show('juneteenth',this)">Juneteenth</button>
   <button class="nb" onclick="show('john_armstrong',this)">John Armstrong</button>
   <button class="nb" onclick="show('eva',this)">Eva Ballard</button>
-  <button class="nb" onclick="show('james_sr',this)">James W. Ballard Sr.</button>
+  <button class="nb" onclick="show('james_sr',this)">James Sr.</button>
+  <button class="nb" onclick="show('homage',this)">James + Eva's Children</button>
+  <button class="nb" onclick="show('descendants',this)">Margie Corbin</button>
+  <button class="nb" onclick="show('lois',this)">Lois Bradshaw</button>
 
-  <span class="nav-section-label">Family Charts</span>
+  <span class="nav-section-label">The Ancestors</span>
+  <button class="nb" onclick="show('bondage',this)">Bondage to Belonging</button>
+  <button class="nb" onclick="show('enslaved',this)">Enslaved Family</button>
+  <button class="nb" onclick="show('juneteenth',this)">Juneteenth</button>
+  <button class="nb" onclick="show('ballard_line',this)">Ballard Line</button>
   <button class="nb" onclick="show('ballard_chart',this)">Ballard Chart</button>
   <button class="nb" onclick="show('armstrong_chart',this)">Armstrong Chart</button>
-  <button class="nb" onclick="show('ballard_line',this)">Ballard Line Research</button>
-  <button class="nb" onclick="show('homage',this)">James + Eva's Children</button>
+  <button class="nb" onclick="show('nichols',this)">Nichols · Waldrop</button>
+  <button class="nb" onclick="show('land',this)">The Land</button>
+
+  <span class="nav-section-label">DNA</span>
+  <button class="nb" onclick="show('dna',this)">DNA Guide</button>
 
   <span class="nav-section-label">Research</span>
-  <button class="nb" onclick="show('land',this)">The Land</button>
-  <button class="nb" onclick="show('map',this)">Where We Are</button>
-  <button class="nb" onclick="show('descendants',this)">Margie Corbin</button>
-  <button class="nb" onclick="show('dna',this)">DNA Guide</button>
   <button class="nb" onclick="show('timeline_research',this)">Research Timeline</button>
   <button class="nb" onclick="show('research',this)">Research Notes</button>
   <button class="nb" onclick="show('archive',this)">Archive</button>
 
-  <span class="nav-section-label">New Features</span>
+  <span class="nav-section-label">Tools</span>
+  <button class="nb" onclick="show('familytree',this)">Family Tree</button>
+  <button class="nb" onclick="show('search',this)">Search</button>
+  <button class="nb" onclick="show('thisday',this)">On This Day</button>
   <button class="nb" onclick="show('reunion',this)">Family Reunion</button>
-<button class="nb" onclick="show('photos',this)">📷 Photos</button>
+  <button class="nb" onclick="show('photos',this)">📷 Photos</button>
 </nav>
 
 <!-- MAIN CONTENT -->
@@ -2520,402 +2525,13 @@ v class="prose">
     </table>
   </div>
 
-
-
   <div class="div"></div>
-  <span class="chd">ThruLines DNA Confirmation · Nichols · Armstrong</span>
-  <span class="cttl">How Living DNA Matches Connect Back Through Both Family Lines</span>
-
-  <div class="prose">
-    <p>These ThruLines maps from Ancestry show exactly how living DNA matches connect back through the Nichols and Armstrong lines. The marriage of <strong>John Armstrong</strong> and <strong>Hellen Nichols</strong> in 1899 united two formerly enslaved Bellville families — and their descendants on both sides show up in living DNA matches today.</p>
-    <p>The maps below are transcribed directly from Ancestry ThruLines as provided in July 2026. Each branch shows the exact path from a common ancestor down to a living DNA match.</p>
-  </div>
-
-<style>
-.tl-wrap{margin:24px 0;}
-.tl-ancestor{background:var(--ink);color:#fff;border-radius:8px 8px 0 0;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
-.tl-ancestor-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--accent);}
-.tl-ancestor-role{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);}
-.tl-body{border:1px solid var(--border);border-top:none;border-radius:0 0 8px 8px;padding:20px 24px;background:var(--card);}
-.tl-branches{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:16px 0;}
-.tl-branch{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:16px 18px;position:relative;}
-.tl-branch-label{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border2);}
-.tl-step{display:flex;gap:10px;margin:8px 0;align-items:flex-start;}
-.tl-step-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px;}
-.tl-step-dot.ancestor{background:var(--rust);}
-.tl-step-dot.family{background:var(--gold2);}
-.tl-step-dot.direct{background:var(--forest);}
-.tl-step-dot.match{background:var(--accent);box-shadow:0 0 0 3px rgba(232,184,75,.25);}
-.tl-step-info{flex:1;}
-.tl-step-name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--ink);display:block;line-height:1.2;}
-.tl-step-detail{font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:.5px;color:var(--ink3);display:block;margin-top:2px;}
-.tl-step-rel{font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gold);display:block;margin-top:2px;}
-.tl-arrow{font-size:11px;color:var(--border2);margin:0 0 0 18px;display:block;}
-.tl-match-badge{background:rgba(232,184,75,.15);border:1px solid rgba(232,184,75,.4);border-radius:4px;padding:8px 12px;margin-top:10px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
-.tl-match-cm{font-family:'Josefin Sans',sans-serif;font-size:22px;font-weight:700;color:var(--accent);}
-.tl-match-cm-lbl{font-family:'Josefin Sans',sans-serif;font-size:8px;letter-spacing:1px;color:var(--ink3);}
-.tl-confirms{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--ink2);line-height:1.65;padding:14px 18px;background:var(--gold-bg);border-radius:4px;border-left:3px solid var(--gold2);margin-top:14px;}
-</style>
-
-<!-- ── IMAGE 1: THRULINES MAP — JOSEPH NICHOLS AS TOP ANCESTOR ── -->
-<div class="tl-wrap">
-  <div class="tl-ancestor">
-    <div>
-      <span class="tl-ancestor-name">Joseph Nichols</span>
-      <span class="tl-ancestor-role">3rd Great-Grandfather · born 1847 · Top Ancestor in ThruLines Map</span>
-    </div>
-    <div style="font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.4);">ANCESTRY THRULINES · JULY 2026</div>
-  </div>
-  <div class="tl-body">
-    <div class="prose" style="font-size:15px;margin-bottom:16px;"><p>Ancestry ThruLines identifies Joseph Nichols as the common ancestor connecting Jasmine M. Lee to three living DNA matches across two separate branches — the Hellen Nichols line (your direct line) and the Annie Nichols line (through the King family).</p></div>
-
-    <div class="tl-branches">
-
-      <!-- BRANCH 1: HELLEN NICHOLS / YOUR LINE -->
-      <div class="tl-branch">
-        <span class="tl-branch-label">Branch 1 — Hellen Nichols Line · Your Direct Line + Lois Marie Ballard</span>
-
-        <div class="tl-step"><div class="tl-step-dot ancestor"></div><div class="tl-step-info"><span class="tl-step-name">Joseph Nichols</span><span class="tl-step-detail">1847– · 3rd great-grandfather · son of enslaver John Nichols by an enslaved woman</span></div></div>
-        <span class="tl-arrow">↓</span>
-        <div class="tl-step"><div class="tl-step-dot family"></div><div class="tl-step-info"><span class="tl-step-name">Hellen Nichols</span><span class="tl-step-detail">1870–1931 · 2nd great-grandmother · Easter Bell's daughter</span><span class="tl-step-rel">married John Armstrong 1899</span></div></div>
-        <span class="tl-arrow">↓</span>
-        <div class="tl-step"><div class="tl-step-dot family"></div><div class="tl-step-info"><span class="tl-step-name">Eva Armstrong Ballard</span><span class="tl-step-detail">1900–1977 · great-grandmother · born Bellville TX · died Garden Grove CA</span></div></div>
-        <span class="tl-arrow">↓ splits into two sub-branches ↓</span>
-
-        <div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:12px;margin:10px 0;">
-          <span style="font-family:'Josefin Sans',sans-serif;font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold2);display:block;margin-bottom:8px;">Sub-branch 1a — Your Direct Line</span>
-          <div class="tl-step"><div class="tl-step-dot direct"></div><div class="tl-step-info"><span class="tl-step-name">Margie Nell Ballard</span><span class="tl-step-detail">1929–1988 · maternal grandmother</span></div></div>
-          <span class="tl-arrow">↓</span>
-          <div class="tl-step"><div class="tl-step-dot direct"></div><div class="tl-step-info"><span class="tl-step-name">Hjordis Corbin</span><span class="tl-step-detail">Mother · shared 3,488 cM · 50%</span></div></div>
-          <span class="tl-arrow">↓</span>
-          <div class="tl-step"><div class="tl-step-dot match"></div><div class="tl-step-info"><span class="tl-step-name">Jasmine M. Lee</span><span class="tl-step-detail">YOU</span></div></div>
-        </div>
-
-        <div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:12px;margin:10px 0;">
-          <span style="font-family:'Josefin Sans',sans-serif;font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold2);display:block;margin-bottom:8px;">Sub-branch 1b — Lois Marie Ballard / Jahna Bradshaw</span>
-          <div class="tl-step"><div class="tl-step-dot family"></div><div class="tl-step-info"><span class="tl-step-name">Lois Marie Ballard</span><span class="tl-step-detail">Grandaunt · born May 24, 1931, San Antonio TX · Eva's fourth child · first born in San Antonio</span></div></div>
-          <span class="tl-arrow">↓</span>
-          <div class="tl-step"><div class="tl-step-dot family"></div><div class="tl-step-info"><span class="tl-step-name">Larry Bradshaw</span><span class="tl-step-detail">1st cousin 1x removed · son of Lois and Warren Bradshaw</span></div></div>
-          <span class="tl-arrow">↓</span>
-          <div class="tl-step"><div class="tl-step-dot match"></div><div class="tl-step-info"><span class="tl-step-name">Jahna Bradshaw</span><span class="tl-step-detail">Potential 2nd cousin · Evaluate</span></div></div>
-          <div class="tl-match-badge"><div><span class="tl-match-cm">41</span><span class="tl-match-cm-lbl">cM</span></div><div style="font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1px;color:var(--ink3);">Confirmed DNA Match<br>Through Eva Armstrong Ballard</div></div>
-        </div>
-      </div>
-
-      <!-- BRANCH 2: ANNIE NICHOLS / KING LINE -->
-      <div class="tl-branch">
-        <span class="tl-branch-label">Branch 2 — Annie Nichols / King Family Line · Two DNA Matches</span>
-
-        <div class="tl-step"><div class="tl-step-dot ancestor"></div><div class="tl-step-info"><span class="tl-step-name">Joseph Nichols</span><span class="tl-step-detail">1847– · 3rd great-grandfather</span></div></div>
-        <span class="tl-arrow">↓</span>
-        <div class="tl-step"><div class="tl-step-dot family"></div><div class="tl-step-info"><span class="tl-step-name">Annie Nichols</span><span class="tl-step-detail">1866– · 2nd great-grandaunt · Easter Bell's daughter · married into King family</span></div></div>
-        <span class="tl-arrow">↓ splits into two sub-branches ↓</span>
-
-        <div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:12px;margin:10px 0;">
-          <span style="font-family:'Josefin Sans',sans-serif;font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold2);display:block;margin-bottom:8px;">Sub-branch 2a — Charlie King → Raven Johnson</span>
-          <div class="tl-step"><div class="tl-step-dot family"></div><div class="tl-step-info"><span class="tl-step-name">Charlie King</span><span class="tl-step-detail">1887–1979 · Annie's son · 1st cousin 3x removed</span></div></div>
-          <span class="tl-arrow">↓</span>
-          <div class="tl-step"><div class="tl-step-dot family"></div><div class="tl-step-info"><span class="tl-step-name">Belinda F. King</span><span class="tl-step-detail">1952–2011 · Charlie's child · 2nd cousin 2x removed</span></div></div>
-          <span class="tl-arrow">↓</span>
-          <div class="tl-step"><div class="tl-step-dot match"></div><div class="tl-step-info"><span class="tl-step-name">Raven Johnson</span><span class="tl-step-detail">3rd cousin 1x removed</span></div></div>
-          <div class="tl-match-badge"><div><span class="tl-match-cm">12</span><span class="tl-match-cm-lbl">cM</span></div><div style="font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1px;color:var(--ink3);">DNA Match<br>Annie Nichols → Charlie King line</div></div>
-        </div>
-
-        <div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:12px;margin:10px 0;">
-          <span style="font-family:'Josefin Sans',sans-serif;font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold2);display:block;margin-bottom:8px;">Sub-branch 2b — Joseph King → HarryTree</span>
-          <div class="tl-step"><div class="tl-step-dot family"></div><div class="tl-step-info"><span class="tl-step-name">Joseph King</span><span class="tl-step-detail">1886–1967 · Annie's son · 1st cousin 3x removed</span></div></div>
-          <span class="tl-arrow">↓</span>
-          <div class="tl-step"><div class="tl-step-dot family"></div><div class="tl-step-info"><span class="tl-step-name">Alma King</span><span class="tl-step-detail">1918–2010 · 2nd cousin 2x removed</span></div></div>
-          <span class="tl-arrow">↓</span>
-          <div class="tl-step"><div class="tl-step-dot family"></div><div class="tl-step-info"><span class="tl-step-name">Mary Jean Bedford</span><span class="tl-step-detail">1936–2019 · potential 3rd cousin</span></div></div>
-          <span class="tl-arrow">↓</span>
-          <div class="tl-step"><div class="tl-step-dot match"></div><div class="tl-step-info"><span class="tl-step-name">HarryTree</span><span class="tl-step-detail">Potential 4th cousin</span></div></div>
-          <div class="tl-match-badge"><div><span class="tl-match-cm">10</span><span class="tl-match-cm-lbl">cM</span></div><div style="font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1px;color:var(--ink3);">DNA Match<br>Annie Nichols → Joseph King line</div></div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="tl-confirms">
-      <strong>What This ThruLines Map Confirms:</strong> Joseph Nichols is a verified DNA ancestor with living matches descending from two of his daughters — Hellen Nichols (your direct line through Eva Armstrong Ballard) and Annie Nichols (through the King family). Annie Nichols married into the King family and had at least two sons — Charlie King (1887–1979) and Joseph King (1886–1967) — whose descendants carry traceable DNA today. The marriage of John Armstrong and Hellen Nichols in 1899 connected the Armstrong and Nichols lines permanently — both formerly enslaved Bellville families now confirmed by DNA across four separate living matches.
-    </div>
-  </div>
-</div>
-
-
-<!-- ── HARRYTREE / POPPY + RAVEN JOHNSON — ANNIE NICHOLS LINE ── -->
-<div class="tl-wrap" style="margin-top:32px;">
-  <div class="tl-ancestor">
-    <div>
-      <span class="tl-ancestor-name">Annie Nichols → King Family — DNA Confirmed Line</span>
-      <span class="tl-ancestor-role">Easter Bell's Daughter · Common Ancestors: Joseph Nichols + Easter Bell · Two Living DNA Matches · Confirmed July 2026</span>
-    </div>
-  </div>
-  <div class="tl-body">
-
-    <div class="prose" style="font-size:15px;margin-bottom:20px;"><p><strong>Annie Nichols (1866–1930)</strong> — Easter Bell and Joseph Nichols's daughter, your 2nd great-grandaunt — married <strong>William King (1863–)</strong> and had at least 12 children. Two of those children's lines produced living DNA matches confirmed back to Joseph Nichols and Easter Bell. Ancestry has confirmed Joseph Nichols and Easter Bell as the common ancestors between Jasmine and Raven Johnson. HarryTree (Poppy) confirmed the same connection through direct communication in January 2022.</p>
-    <div style="background:var(--gold-bg);border:1px solid var(--border2);border-radius:4px;padding:10px 14px;margin-top:10px;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1px;color:var(--ink3);"><strong style="color:var(--gold);">⚠ RESEARCH NOTE:</strong> This tree is currently in Poppy's (HarryTree's) private Ancestry tree and is pending connection to Jasmine's tree. Individual records have active hints (🍃) and some dates are still being verified. Do not treat unconfirmed dates as final. Charlie King has TWO wives listed across different trees — Geneva J. King (1904–1998) and Geneva Harmon (1923–1985) — this discrepancy needs resolution.</div></div>
-
-    <span class="dnc-section-lbl">Ancestry Confirmed Common Ancestors — Jasmine + Raven Johnson</span>
-    <table class="shared-table">
-      <thead><tr><th>Ancestor</th><th>Relationship to Jasmine</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr class="fam"><td><b>Joseph Nichols</b> (1847–)</td><td class="rel">3rd great-grandfather</td><td class="rel">✅ Confirmed by Ancestry ThruLines · July 2026</td></tr>
-        <tr class="fam"><td><b>Easter Bell</b> (1848–1935)</td><td class="rel">3rd great-grandmother</td><td class="rel">✅ Confirmed by Ancestry ThruLines · July 2026</td></tr>
-      </tbody>
-    </table>
-
-    <span class="dnc-section-lbl">Great-Grandparents Generation — Annie Nichols's Parents</span>
-    <table class="shared-table">
-      <thead><tr><th>Person</th><th>Dates</th><th>Role</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr class="fam"><td><b>Joseph Nichols</b></td><td class="rel">1847–</td><td class="rel">Annie's father · your 3rd great-grandfather</td><td class="rel">✅ Confirmed · son of enslaver John Nichols</td></tr>
-        <tr class="fam"><td><b>Easter Bell</b></td><td class="rel">1848–1935</td><td class="rel">Annie's mother · your 3rd great-grandmother · labeled "Slave Ancestor" in Poppy's tree</td><td class="rel">✅ Confirmed · born enslaved Bellville TX</td></tr>
-        <tr><td><b>Tony King</b></td><td class="rel">1821–</td><td class="rel">William King's father · Annie's father-in-law</td><td class="rel">⚠️ Active hints · research ongoing</td></tr>
-        <tr><td><b>Rachael King</b></td><td class="rel">1840–</td><td class="rel">William King's mother · Annie's mother-in-law</td><td class="rel">⚠️ Active hints · research ongoing</td></tr>
-      </tbody>
-    </table>
-
-    <span class="dnc-section-lbl">Grandparents — Annie Nichols + William King</span>
-    <table class="shared-table">
-      <thead><tr><th>Person</th><th>Dates</th><th>Note</th></tr></thead>
-      <tbody>
-        <tr class="fam"><td><b>Annie Nichols</b></td><td class="rel">1866–1930</td><td class="rel">✅ Easter Bell's daughter · confirmed by Poppy's research through Joseph King's SSA application · active hints in tree</td></tr>
-        <tr class="fam"><td><b>William King</b></td><td class="rel">1863–</td><td class="rel">✅ Annie's husband · confirmed by Joseph King's SSA application naming Annie Nichols + William King as his parents · active hints in tree</td></tr>
-      </tbody>
-    </table>
-
-    <span class="dnc-section-lbl">Branch A — Joseph King Sr. → Alma Easter Bedford → Mary Brewer → HarryTree ✅ Fully Confirmed</span>
-
-    <div class="dnc-note" style="border-left:4px solid var(--forest);background:var(--forest-bg);">
-      <strong>Every link in this chain is now confirmed by primary source documents.</strong> The connection from Annie Nichols through Joseph King Sr. through Alma Easter Bedford to HarryTree/Poppy is documented across more than a dozen records — census, marriage, military, obituary, and Find A Grave — spanning six generations.
-    </div>
-
-    <table class="shared-table">
-      <thead><tr><th>Person</th><th>Dates / Location</th><th>Relationship</th><th>Primary Sources</th></tr></thead>
-      <tbody>
-        <tr class="fam"><td><b>Annie Nichols King</b></td><td class="rel">1866–1930 · born Bellville TX · died Pascoe, Okmulgee County OK</td><td class="rel">Alma's grandmother · your 2nd great-grandaunt</td><td class="rel">✅ 1870 census · 1884 marriage record · 1910 census</td></tr>
-        <tr class="fam"><td><b>William King</b></td><td class="rel">1863– · born Virginia · farmer · Okmulgee County OK</td><td class="rel">Alma's grandfather · Annie's husband</td><td class="rel">✅ 1910 census · SSA application</td></tr>
-        <tr class="fam"><td><b>Joseph King Sr.</b></td><td class="rel">January 25, 1886 – December 3, 1967 · born Bellville, Austin County TX · died Sulphur, Murray County OK · buried Oaklawn Cemetery Sulphur OK</td><td class="rel">Alma's father · Annie's son · your 3rd cousin 3x removed</td><td class="rel">✅ Find A Grave · WWII draft card · 1930 census · Kansas City Star obituary</td></tr>
-        <tr><td><b>Ollie Mae King</b></td><td class="rel">born ~1888 · Braxton, Simpson County, Mississippi · died Kansas City Kansas · age 89</td><td class="rel">Alma's mother · Joseph Sr.'s wife · lived with Alma at death</td><td class="rel">✅ 1930 census (mother birthplace Mississippi) · Kansas City Star obituary · WWII draft card (Mrs. Allie May King)</td></tr>
-        <tr><td><b>1930 Census — Coyle, Murray County, Oklahoma</b></td><td class="rel">Household: Jophas King (44) + Ollie King (38) · children: Zenoria (14) · William (12) · Alma (9) · Jessie Lee (7) · Sedalia (5) · Jophes (2)</td><td class="rel">Confirms family in Murray County OK · father born Texas · mother born Mississippi</td><td class="rel">✅ 1930 U.S. Federal Census</td></tr>
-        <tr class="fam"><td><b>Alma Esta / Easter King Bedford</b></td><td class="rel">July 29, 1918 – February 15, 2010 · born Jeter Township, Choctaw County OK · died Denver, Colorado · buried Fort Logan National Cemetery · Section S · Plot 1749</td><td class="rel">Poppy's grandmother · Joseph Sr.'s daughter · married Tommie Ross Bedford June 9, 1935 · Carter County OK</td><td class="rel">✅ Find A Grave · Veterans' Gravesites (US Navy WWII — husband Tommie R. Bedford) · Oklahoma marriage record · obituary naming child Mary Brewer</td></tr>
-        <tr><td><b>Tommie Ross Bedford</b></td><td class="rel">1915–2007</td><td class="rel">Alma's husband · US Navy WWII veteran · buried Fort Logan National Cemetery alongside Alma</td><td class="rel">✅ Veterans' Gravesites · Oklahoma marriage record June 9, 1935</td></tr>
-        <tr class="fam"><td><b>Mary Brewer</b> (née Bedford)</td><td class="rel">Living</td><td class="rel">Alma's daughter · Poppy's mother · "Brewer Family Tree" on Ancestry named after her married surname</td><td class="rel">✅ Alma's obituary listing child as Mary Brewer · explains Poppy's tree name</td></tr>
-        <tr class="fam"><td><b>HarryTree / Poppy</b></td><td class="rel">Living · Denver, Colorado area · contact: humanconstellation@gmail.com</td><td class="rel">Mary Brewer's son · Alma Easter's grandson · Joseph King Sr.'s great-grandson · Annie Nichols's great-great-grandson · Easter Bell's great-great-great-grandson · DNA MATCH 10 cM · 2 segments</td><td class="rel">✅ January 2022 Ancestry message · DNA match confirmed · Brewer Family Tree 3,412 people private</td></tr>
-      </tbody>
-    </table>
-
-    <span class="dnc-section-lbl">Annie Nichols Marriage — March 17, 1884 · Austin County Texas</span>
-    <table class="shared-table">
-      <thead><tr><th>Field</th><th>Detail</th><th>Source</th></tr></thead>
-      <tbody>
-        <tr><td><b>Bride</b></td><td class="rel">Joanna/Annie Nichols · age 18 · born 1866 Bellville TX</td><td class="rel">Texas Select County Marriage Index 1837–1965</td></tr>
-        <tr><td><b>Groom</b></td><td class="rel">William King · born 1863 Virginia</td><td class="rel">Texas Select County Marriage Index</td></tr>
-        <tr><td><b>Date</b></td><td class="rel">March 17, 1884</td><td class="rel">FHL Film No. 1019274</td></tr>
-        <tr><td><b>Place</b></td><td class="rel">Austin County, Texas — same county as Bellville where Annie grew up</td><td class="rel">Texas records</td></tr>
-        <tr><td><b>1870 Census</b></td><td class="rel">Anna Nichols age 4 · living with Joseph Nichols (27) + Easter Bell "Esther" (22) + Allen Nichols (5) + Henry Nichols (2 months) + Adolf Schultze + Ida Schultze (Prussian farm family) · Beat 1, Bellville</td><td class="rel">1870 U.S. Federal Census · confirms birth year 1866 in Easter Bell's household</td></tr>
-      </tbody>
-    </table>
-
-        <span class="dnc-section-lbl">Branch B — Annie Nichols + William King Siblings of Charlie</span>
-    <div class="dnc-note" style="border-left:4px solid var(--forest);background:var(--forest-bg);">
-      <strong>Geneva Harmon / Geneva J. King discrepancy — RESOLVED.</strong> All records confirm one woman: Geneva Harmon, born September 6, 1924 Texas, married Charlie King, died November 27, 1998 Holdenville Oklahoma. The name variation (Harmon vs J. King) and birth year slight differences (1923 vs 1924) were indexing variations across records. Coretha's 2014 obituary confirms her parents as "Charlie and Geneva (Harmon) King."
-    </div>
-
-    <span class="dnc-section-lbl">Branch C — Charlie King + Geneva Harmon King Children → Raven Johnson ✅ Confirmed</span>
-
-    <div class="dnc-note" style="border-left:4px solid var(--forest);background:var(--forest-bg);">
-      <strong>Geneva Harmon King — Fully Confirmed Across Three Primary Sources</strong><br>
-      Born September 6, 1924 · Texas · Died November 27, 1998 · Holdenville, Hughes County, Oklahoma<br>
-      Buried Buchner Memorial Cemetery · Holdenville · SSN: 448-20-8309 (issued Oklahoma before 1951)<br>
-      Sources: Find A Grave · Social Security Death Index · U.S. Census (Holdenville household) · Coretha King Bennett obituary May 2014
-    </div>
-
-    <div class="dnc-note" style="border-left:4px solid var(--gold2);background:var(--gold-bg);margin-top:12px;">
-      <p style="font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Coretha (King) Bennett Obituary · May 6, 2014 · Key Confirmed Facts</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.75;color:var(--ink2);">Coretha was born October 30, 1949 to <strong>Charlie King and Geneva (Harmon) King</strong> in Holdenville, Oklahoma. She married Charles Bennett on February 2, 1973 in Oklahoma City. She died May 6, 2014 at St. Anthony's Hospital, Oklahoma City, age 64. Buried Buchner Cemetery north of Holdenville — same cemetery as her mother Geneva.</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.75;color:var(--ink2);margin-top:8px;"><strong>Preceded in death by:</strong> parents Charlie and Geneva (Harmon) King · sisters Laura King and Belinda Olden · brother Willie King</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.75;color:var(--ink2);margin-top:8px;"><strong>Survived by:</strong> sisters Rosa Barnett · Marjorie Zolicoffer · Doretha King · Billie Louden · children Charlette Bennett-Milligan · Thersa Jaggers · Tiffany Bennett · grandchildren Tyran, Coreon, Tharija Bennett · Phillip and Michael Jaggers</p>
-    </div>
-
-    <table class="shared-table" style="margin-top:14px;">
-      <thead><tr><th>Name</th><th>Dates</th><th>Married Name</th><th>Status / Source</th></tr></thead>
-      <tbody>
-        <tr><td><b>Laura King</b></td><td class="rel">1946–2004 · died Feb 9, 2004</td><td class="rel">—</td><td class="rel">✅ Confirmed · SSA record · Coretha obituary lists her as deceased sister</td></tr>
-        <tr><td><b>Coretha "Chee-Chee" King</b></td><td class="rel">Oct 30, 1949 – May 6, 2014 · Oklahoma City OK</td><td class="rel">Bennett (married Feb 2, 1973)</td><td class="rel">✅ Confirmed · obituary · TWIN of Doretha (both born Oct 30, 1949) · called "Chee-Chee" · buried Buchner Cemetery Holdenville</td></tr>
-        <tr><td><b>Doretha "Peaches" King</b></td><td class="rel">October 30, 1949 – January 19, 2021 · Midwest City, Oklahoma</td><td class="rel">King</td><td class="rel">✅ Confirmed · obituary · twin sister of Coretha · both born October 30, 1949 · died at home · buried Buckner Cemetery north of Holdenville · member Garden Oaks Church of Christ</td></tr>
-        <tr><td><b>Marjorie King</b></td><td class="rel">1949–2023</td><td class="rel">Zolicoffer</td><td class="rel">✅ Confirmed · obituary · Find A Grave · census · survived Coretha</td></tr>
-        <tr><td><b>Rosa King</b></td><td class="rel">unknown</td><td class="rel">Barnett (married name)</td><td class="rel">✅ Confirmed · obituary names her "Rosa Barnett" as surviving sister · previously only found in census · full name now Rosa King Barnett</td></tr>
-        <tr><td><b>Willie King</b></td><td class="rel">unknown – before May 2014</td><td class="rel">—</td><td class="rel">✅ Confirmed deceased · obituary lists him as deceased brother — previously listed as "Living" — he predeceased Coretha who died May 2014</td></tr>
-        <tr><td><b>Billie Louden</b></td><td class="rel">Living</td><td class="rel">Louden (married name)</td><td class="rel">✅ Confirmed by both Coretha + Doretha obituaries · born King · son: <strong>Aaron Louden</strong> (served as pallbearer at Doretha's funeral Jan 2021) · research ongoing</td></tr>
-        <tr class="fam"><td><b>Belinda Faye King Olden</b></td><td class="rel">May 28, 1952 – Oct 3, 2011 · Holdenville OK → Denver/Aurora CO</td><td class="rel">Olden (married Sep 26, 2008)</td><td class="rel">✅ Confirmed · married <strong>Thurman Olden</strong> September 26, 2008 · Colorado marriage license No. 152648 · full name: Belinda Faye King · took Olden surname on marriage · died 3 years after marriage · Raven's mother</td></tr>
-        <tr class="fam"><td><b>Raven Johnson</b></td><td class="rel">Living</td><td class="rel">Johnson</td><td class="rel">✅ DNA MATCH · 12 cM · 3 segments · Belinda's living child · 3rd cousin 1x removed · Ancestry confirmed Joseph Nichols + Easter Bell as common ancestors</td></tr>
-      </tbody>
-    </table>
-
-    <div class="dnc-note" style="margin-top:12px;">
-      <strong>Three Important Corrections From This Obituary:</strong><br><br>
-      <strong>1. Willie King is deceased</strong> — previously listed as "Living" in the tree. Coretha's 2014 obituary lists him as a deceased brother. He died before May 6, 2014.<br><br>
-      <strong>2. Belinda used the name "Olden"</strong> — the obituary lists her as "Belinda Olden" not "Belinda King." Olden was the surname she used — consistent with her son being named Caleb Olden.<br><br>
-      <strong>3. Billie Louden is a previously unknown sister</strong> — listed as a surviving sister in Coretha's obituary. She was born King and married a man named Louden. She is not in any tree or record we had previously. Research ongoing.
-    </div>
-
-    <span class="dnc-section-lbl">Doretha "Peaches" King Obituary — January 19, 2021</span>
-    <div class="dnc-note" style="border-left:4px solid var(--gold2);background:var(--gold-bg);">
-      <p style="font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Doretha (Peaches) King · January 19, 2021 · Midwest City, Oklahoma</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.8;color:var(--ink2);">Doretha was born <strong>October 30, 1949</strong> — the same day as her twin sister Coretha — to <strong>Charlie King and Geneva (Harmon) King</strong> in Holdenville, Oklahoma. She died January 19, 2021 at home in Midwest City, Oklahoma at age 72. She was known as "Peaches." Her twin Coretha was known as "Chee-Chee." Both were members of Garden Oaks Church of Christ. Doretha was buried at Buckner Cemetery north of Holdenville — same cemetery as her mother Geneva and her sister Coretha.</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.8;color:var(--ink2);margin-top:8px;"><strong>Preceded in death by:</strong> parents Charlie and Geneva (Harmon) King · sisters Laura King and Belinda Olden · twin sister Coretha Bennett ("Chee-Chee") · brother Willie King</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.8;color:var(--ink2);margin-top:8px;"><strong>Survived by:</strong> sisters Rosa Barnett · Marjorie Zolicoffer · Billie Louden · nieces Hillary Barnett · Ayshjah Barnett · Adliyah Barnett</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.8;color:var(--ink2);margin-top:8px;"><strong>Pallbearers:</strong> Daniel Dindy · Aaron Louden · <strong>Charles Matthew Olden</strong> · Keith Florie</p>
-      <p style="font-family:'Josefin Sans',sans-serif;font-size:10px;letter-spacing:1px;color:var(--forest);margin-top:10px;font-weight:600;">CONFIRMED: Belinda Faye King married <strong>Thurman Olden</strong> on September 26, 2008 in Colorado (Marriage License No. 152648). She took the Olden surname — explaining "Belinda Olden" in Coretha's 2014 obituary. Charles Matthew Olden who served as pallbearer at Doretha's 2021 funeral is almost certainly Thurman Olden's son — Caleb's brother or half-brother. Caleb Olden (1998–2017) also carried the Olden name. Raven Johnson uses the Johnson surname — she is Belinda's child but may have a different father or married name. Research: find Thurman Olden to confirm his children.</p>
-    </div>
-
-    <span class="dnc-section-lbl">The Olden Family — Fully Confirmed by Caleb Olden's Obituary · December 2017</span>
-
-    <div class="dnc-note" style="border-left:4px solid var(--forest);background:var(--forest-bg);">
-      <p style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.8;color:var(--ink2);">Caleb Josiah Olden's December 2017 obituary answers every open question about the Olden family in one document. Caleb was born January 5, 1998 in Denver, Colorado to <strong>Meisha Twanette Olden</strong> and <strong>Donald Ray McDonald</strong>. His grandmother was listed as <strong>Belinda Faye Olden</strong> — confirming that Belinda was Meisha's mother, not Caleb's mother. Meisha is Belinda's daughter. Caleb's grandfather was listed as <strong>Thurman Franklin Olden Jr.</strong> of Denver, Colorado — confirming Thurman as Meisha's father. Raven Simone Johnson is named as Caleb's sibling — confirming she is Meisha's daughter and Belinda's granddaughter. Caleb was buried at <strong>Buckner Cemetery in Holdenville, Oklahoma</strong> — the same cemetery as his great-grandmother Geneva King and his great-aunts Coretha and Doretha.</p>
-    </div>
-
-    <span class="dnc-section-lbl">Critical Correction — Generational Shift</span>
-    <div class="dnc-note" style="border-left:4px solid var(--rust);background:var(--rust-bg);">
-      <strong>Belinda was Caleb's GRANDMOTHER — not his mother.</strong><br><br>
-      The obituary lists Belinda Faye Olden as Caleb's grandmother and Thurman Franklin Olden Jr. as his grandfather. Caleb's mother was <strong>Meisha Twanette Olden</strong> — Belinda and Thurman's daughter. This shifts the entire family structure by one generation. Raven Simone Johnson is also Meisha's daughter — making Raven Belinda's granddaughter, not her child directly. This changes Raven's relationship to Jasmine by one degree.
-    </div>
-
-    <table class="shared-table">
-      <thead><tr><th>Person</th><th>Relationship</th><th>Details</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr><td><b>Thurman Franklin Olden Jr.</b></td><td class="rel">Belinda's husband · Meisha's father · Caleb's grandfather</td><td class="rel">Denver, Colorado · living at time of Caleb's death 2017</td><td class="rel">✅ Confirmed · married Belinda Faye King Sep 26, 2008</td></tr>
-        <tr class="fam"><td><b>Meisha Twanette Olden</b></td><td class="rel">Belinda + Thurman's daughter · Caleb's mother · Raven's mother</td><td class="rel">Plano, Texas · living</td><td class="rel">✅ Confirmed · listed as Caleb's mother · Belinda's daughter</td></tr>
-        <tr><td><b>Donald Ray McDonald</b></td><td class="rel">Caleb's biological father</td><td class="rel">Mansfield, Texas</td><td class="rel">✅ Confirmed · Caleb's father</td></tr>
-        <tr><td><b>Danny Ray Norment</b></td><td class="rel">Second father figure listed for Caleb</td><td class="rel">Plano, Texas</td><td class="rel">✅ Confirmed · listed as father · Jaden Darae Norment is Meisha's child by Danny Norment</td></tr>
-        <tr><td><b>Caleb Josiah Olden</b></td><td class="rel">Belinda's grandson · Meisha's son</td><td class="rel">Born Jan 5, 1998 Denver CO · died Dec 1, 2017 Plano TX · age 19 · Plano West Senior High School graduate · buried Buckner Cemetery Holdenville OK</td><td class="rel">✅ Confirmed</td></tr>
-        <tr class="fam"><td><b>Raven Simone Johnson</b></td><td class="rel">Belinda's granddaughter · Meisha's daughter · Caleb's sister · DNA MATCH 12 cM</td><td class="rel">Las Colinas, Texas · living</td><td class="rel">✅ Confirmed · DNA MATCH 12 cM · 3 segments · listed as Caleb's sibling</td></tr>
-        <tr><td><b>Jaden Darae Norment</b></td><td class="rel">Meisha's child · Caleb's sibling</td><td class="rel">Plano, Texas</td><td class="rel">✅ Confirmed · child of Danny Ray Norment</td></tr>
-        <tr><td><b>Tyre Venious</b></td><td class="rel">Caleb's half sibling</td><td class="rel">San Diego, California</td><td class="rel">✅ Confirmed</td></tr>
-        <tr><td><b>Donovan McDonald</b></td><td class="rel">Caleb's half sibling · Donald McDonald's child</td><td class="rel">Irving, Texas</td><td class="rel">✅ Confirmed</td></tr>
-        <tr><td><b>Alexis Parker</b></td><td class="rel">Caleb's half sibling</td><td class="rel">Greenville, North Carolina</td><td class="rel">✅ Confirmed</td></tr>
-      </tbody>
-    </table>
-
-    <span class="dnc-section-lbl">Thurman Olden's Family — Confirmed by Caleb's Obituary</span>
-    <table class="shared-table">
-      <thead><tr><th>Name</th><th>Relationship to Thurman</th><th>Location</th></tr></thead>
-      <tbody>
-        <tr><td><b>Tara Olden</b></td><td class="rel">Thurman's daughter or sister · Caleb's aunt</td><td class="rel">Denver, Colorado</td></tr>
-        <tr><td><b>Cheryl Olden</b></td><td class="rel">Thurman's daughter or sister · Caleb's aunt</td><td class="rel">Denver, Colorado</td></tr>
-        <tr><td><b>Charles Matthew Olden</b></td><td class="rel">Thurman's son · Caleb's uncle · pallbearer at Doretha's 2021 funeral</td><td class="rel">Denver, Colorado</td></tr>
-        <tr><td><b>Asariya Olden</b></td><td class="rel">Caleb's cousin · Olden family</td><td class="rel">—</td></tr>
-        <tr><td><b>Aubrey Olden</b></td><td class="rel">Caleb's cousin · Olden family</td><td class="rel">—</td></tr>
-        <tr><td><b>Keiva Olden</b></td><td class="rel">Caleb's cousin · Olden family</td><td class="rel">—</td></tr>
-        <tr><td><b>Keivan Olden</b></td><td class="rel">Caleb's cousin · Olden family</td><td class="rel">—</td></tr>
-        <tr><td><b>Rashawna Lewis</b></td><td class="rel">Caleb's cousin</td><td class="rel">—</td></tr>
-        <tr><td><b>Jadazia Jones</b></td><td class="rel">Caleb's cousin</td><td class="rel">—</td></tr>
-      </tbody>
-    </table>
-
-    <span class="dnc-section-lbl">King Family Cousins Named in Caleb's Obituary</span>
-    <div class="dnc-note">These cousins connect back to the Charlie King family — confirming the extended King network through Coretha's children:</div>
-    <table class="shared-table">
-      <thead><tr><th>Name</th><th>Parent</th><th>Relationship to Caleb</th></tr></thead>
-      <tbody>
-        <tr><td><b>Charles Tyran Bennett</b></td><td class="rel">Son of Coretha King Bennett</td><td class="rel">Cousin — connects back to Charlie King line</td></tr>
-        <tr><td><b>Tiffany Bennett</b></td><td class="rel">Daughter of Coretha King Bennett</td><td class="rel">Cousin — confirms Coretha's children connect to Caleb as cousins</td></tr>
-        <tr><td><b>Coreon Bennett</b></td><td class="rel">Son of Coretha King Bennett</td><td class="rel">Cousin — same family confirmed in Coretha's 2014 obituary</td></tr>
-      </tbody>
-    </table>
-
-    <div class="tl-confirms" style="margin-top:16px;">
-      <strong>Updated Relationship: Raven Johnson to Jasmine M. Lee</strong><br><br>
-      Because Belinda was Caleb's grandmother (not mother), Raven Simone Johnson is Belinda's <strong>granddaughter</strong> — one generation further than previously understood. This means the DNA connection between Jasmine and Raven runs:<br><br>
-      <strong>Jasmine's line:</strong> Joseph Nichols → Hellen Nichols → Eva Armstrong → Margie Ballard → Hjordis Corbin → Jasmine<br>
-      <strong>Raven's line:</strong> Joseph Nichols → Annie Nichols → Charlie King → Belinda Faye King → Meisha Twanette Olden → Raven Simone Johnson<br><br>
-      That makes Raven Jasmine's <strong>4th cousin once removed</strong> — consistent with Ancestry's prediction of "4th cousin or half 3rd cousin 1x removed" and the 12 cM shared DNA. The one-generation shift explains the cM amount perfectly.
-    </div>
-
-    <span class="dnc-section-lbl">Coretha's Children and Grandchildren — For Future Research</span>
-    <table class="shared-table">
-      <thead><tr><th>Name</th><th>Note</th></tr></thead>
-      <tbody>
-        <tr><td><b>Charlette Bennett-Milligan</b></td><td class="rel">Oklahoma City OK · Coretha's daughter</td></tr>
-        <tr><td><b>Thersa Jaggers</b> (husband Phillip)</td><td class="rel">Dale City OK · Coretha's daughter</td></tr>
-        <tr><td><b>Tiffany Bennett</b></td><td class="rel">Oklahoma City OK · Coretha's daughter</td></tr>
-        <tr><td><b>Tyran Bennett</b></td><td class="rel">Coretha's grandchild</td></tr>
-        <tr><td><b>Coreon Bennett</b></td><td class="rel">Coretha's grandchild</td></tr>
-        <tr><td><b>Tharija Bennett</b></td><td class="rel">Coretha's grandchild</td></tr>
-        <tr><td><b>Phillip Jaggers Sr.</b></td><td class="rel">Coretha's grandchild</td></tr>
-        <tr><td><b>Michael Jaggers</b></td><td class="rel">Coretha's grandchild</td></tr>
-      </tbody>
-    </table>
-
-        <span class="dnc-section-lbl">All Children of Annie Nichols + William King — Full List</span>
-    <table class="shared-table">
-      <thead><tr><th>Name</th><th>Dates</th><th>DNA Connection</th></tr></thead>
-      <tbody>
-        <tr class="fam"><td><b>Joseph King Sr.</b></td><td class="rel">1886–1967</td><td class="rel" style="color:var(--gold);font-weight:600;">→ HarryTree 10 cM (through Alma King)</td></tr>
-        <tr class="fam"><td><b>Charlie King</b></td><td class="rel">1887–1979</td><td class="rel" style="color:var(--gold);font-weight:600;">→ Raven Johnson 12 cM (through Belinda F. King)</td></tr>
-        <tr><td><b>Frank King</b></td><td class="rel">1893/1894–1964</td><td class="rel">⚠️ Research ongoing · appears twice with slight date variation</td></tr>
-        <tr><td><b>Hattie King</b></td><td class="rel">1896–</td><td class="rel">⚠️ Research ongoing</td></tr>
-        <tr><td><b>William King</b></td><td class="rel">1898–1970</td><td class="rel">⚠️ Research ongoing</td></tr>
-        <tr><td><b>Rosa King</b></td><td class="rel">1900–</td><td class="rel">⚠️ Research ongoing</td></tr>
-        <tr><td><b>George King</b></td><td class="rel">1901–</td><td class="rel">⚠️ Research ongoing</td></tr>
-        <tr><td><b>Mirked L. Ellis</b></td><td class="rel">1903–</td><td class="rel">⚠️ Unusual surname — may be married name or transcription error · research ongoing</td></tr>
-        <tr><td><b>Andro King</b></td><td class="rel">1903–</td><td class="rel">⚠️ Research ongoing</td></tr>
-        <tr><td><b>H.L. King</b></td><td class="rel">1906–</td><td class="rel">⚠️ First name unknown · research ongoing</td></tr>
-        <tr><td><b>Gertrude King</b></td><td class="rel">1909–</td><td class="rel">⚠️ Previously listed as "Girltrude" — Gertrude is the corrected name</td></tr>
-      </tbody>
-    </table>
-
-    <span class="dnc-section-lbl">HarryTree / Poppy — Direct Communication January 2022</span>
-    <div class="dnc-note" style="border-left:4px solid var(--gold2);background:var(--gold-bg);">
-      <p style="font-family:'Josefin Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Poppy's Own Words · Ancestry Messaging · January 23, 2022</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.75;color:var(--ink2);font-style:italic;margin-bottom:12px;">"Hi Jasmine! I took a look at your tree and believe your ancestor Hellen Nichols and my Great-Great-Grandmother Annie Nichols were sisters. Annie was Helen's older sister."</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.75;color:var(--ink2);font-style:italic;margin-bottom:12px;">"I learned her name by ordering my grandfather Joseph's social security application where she is listed as Annie Nichols and her husband, my great, great grandfather, as William King."</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.75;color:var(--ink2);font-style:italic;margin-bottom:12px;">"My current supposition is that John Nichols, b. 1794 in Prosperity, Newberry, South Carolina and who died in Bellville, Austin County Texas was Joseph Nichols's father and that Clarissa, who was enslaved and who may be our 4X Great-Grandmother, was Joseph's mother."</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.75;color:var(--ink2);font-style:italic;">"I always wondered where my grandmother's middle name came from. She was Alma Easter. I was so excited to see the name Easter when I found those records!"</p>
-      <p style="font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1px;color:var(--ink3);margin-top:12px;">HarryTree signs as "Poppy" — his tree has 3,412 people and is private. Named after his cat. Contact: humanconstellation@gmail.com · Researching this line since at least 2021 · Independently confirmed the Waldrop-Davenport-Nichols chain through DNA surname analysis.</p>
-    </div>
-
-    <span class="dnc-section-lbl">Why Your Mother and Aunts Match Raven But Not HarryTree</span>
-    <div class="dnc-note">Raven Johnson (12 cM, 3 segments) is matched by Hjordis Corbin and all three Corbin aunts — that DNA segment passed down strongly through multiple family members. HarryTree (10 cM, 2 segments) matches only Jasmine — not Hjordis or the aunts. At 4th cousin distance approximately half of all relatives will not inherit the specific segment. This is completely normal. The connection is confirmed by documents and direct communication regardless of who carries which DNA segment.</div>
-
-    <div class="tl-confirms" style="margin-top:16px;">
-      <strong>What This Confirms:</strong> Annie Nichols — Easter Bell's daughter born 1866, died 1930 — married William King and had at least 11 children. Two of her sons' lines produced living DNA matches: Charlie King's line through Belinda F. King to Raven Johnson (12 cM), and Joseph King Sr.'s line through Alma Easter King to HarryTree/Poppy (10 cM). Ancestry confirmed Joseph Nichols and Easter Bell as common ancestors between Jasmine and Raven. Poppy confirmed the same independently through Joseph King's Social Security application. Alma King named her middle name "Easter" after Easter Bell — a family memory of an ancestor who died in 1935, carried forward in a name.
-    </div>
-  </div>
-</div>
-
-<!-- ── IMAGE 2: ANCESTOR TREE MAP ── -->
-<div class="tl-wrap" style="margin-top:32px;">
-  <div class="tl-ancestor">
-    <div>
-      <span class="tl-ancestor-name">Ancestor Tree — Armstrong · Nichols · Blayn</span>
-      <span class="tl-ancestor-role">All Ancestors View · Confirmed Relationships · Ancestry ThruLines · July 2026</span>
-    </div>
-  </div>
-  <div class="tl-body">
-    <div class="prose" style="font-size:15px;margin-bottom:16px;"><p>The second ThruLines image shows the full ancestor tree confirming how all lines connect. Every person below is confirmed by primary source documents and living DNA matches.</p></div>
-    <table class="shared-table">
-      <thead><tr><th>Person</th><th>Dates</th><th>Connection</th><th>Confirmed By</th></tr></thead>
-      <tbody>
-        <tr><td><b>Dave Armstrong</b></td><td class="rel">~1845–</td><td class="rel">Patriarch · born South Carolina · enslaved Upshur County TX · married Clarissa Ann Morgan 1868</td><td class="rel">John Armstrong death certificate · Debra Gholston DNA 42 cM</td></tr>
-        <tr><td><b>Clarissa Ann Morgan</b></td><td class="rel">1848–1918</td><td class="rel">Wife of Dave Armstrong · born North Carolina · died Fort Worth TX</td><td class="rel">Joshua Armstrong timeline · Debra Gholston DNA</td></tr>
-        <tr><td><b>John Armstrong</b></td><td class="rel">1872–1911</td><td class="rel">Son of Dave + Clarissa · married Hellen Nichols 1899 · killed Fort Worth · father of Eva</td><td class="rel">Death certificate · 1900 Bellville census</td></tr>
-        <tr><td><b>John S.O. Nichols</b></td><td class="rel">1794–1864</td><td class="rel">Enslaver · Piney Creek land grant · biological father of Joseph Nichols by an enslaved woman</td><td class="rel">1860 slave schedule · land grant records</td></tr>
-        <tr><td><b>Joseph Nichols</b></td><td class="rel">1847–</td><td class="rel">Son of John Nichols (enslaver) by unknown enslaved woman · married Easter Bell 1864</td><td class="rel">ThruLines DNA · 3 living matches confirmed</td></tr>
-        <tr><td><b>Easter Bell</b></td><td class="rel">1848–1935</td><td class="rel">Wife of Joseph Nichols · born enslaved Piney Creek · mother of Hellen and Annie and 9 others</td><td class="rel">Death certificate · 1860 slave schedule · 1900 census</td></tr>
-        <tr><td><b>Rendy Blayn</b></td><td class="rel">1817–</td><td class="rel">Mother of Easter Bell · born North Carolina · enslaved on Piney Creek · last seen 1865</td><td class="rel">Easter Bell death certificate field 15</td></tr>
-        <tr><td><b>Hellen Nichols</b></td><td class="rel">1870–1931</td><td class="rel">Daughter of Joseph Nichols + Easter Bell · married John Armstrong 1899 · mother of Eva</td><td class="rel">1900 census · death certificate · ThruLines</td></tr>
-        <tr class="fam"><td><b>Annie Nichols</b></td><td class="rel">1866–</td><td class="rel">Daughter of Joseph Nichols + Easter Bell · sister of Hellen · married into King family · mother of Charlie King and Joseph King</td><td class="rel">ThruLines · Raven Johnson 12 cM · HarryTree 10 cM</td></tr>
-      </tbody>
-    </table>
+  <div style="background:var(--bg2);border-left:3px solid var(--gold2);padding:14px 16px;border-radius:4px;font-family:'Josefin Sans',sans-serif;font-size:9px;letter-spacing:1px;color:var(--ink3);">
+    <strong style="color:var(--ink);">ThruLines DNA Confirmation</strong> — The full ThruLines analysis connecting living DNA matches back through the Nichols and Armstrong lines has been moved to the <strong>DNA Guide</strong> tab where all DNA evidence is consolidated in one place.
   </div>
 
 </div>
 </div>
-</div>
-
 <!-- ═══ BALLARD LINE ═══ -->
 <div class="sec" id="tab-ballard_line">
 <div class="shdr">
@@ -3049,7 +2665,7 @@ v class="prose">
 </div>
 </div>
 
-<!-- ═══ MARGIE'S FAMILY ═══ -->
+<!-- ═══ JAMES + EVA CHILDREN ═══ -->
 <div class="sec" id="tab-homage">
 <div class="shdr">
   <span class="sey">James Wilson Ballard Sr. + Eva Armstrong Ballard · Their Children · March 13, 1929 – October 15, 1988</span>
@@ -3203,7 +2819,7 @@ v class="prose">
 </div>
 </div>
 
-<!-- ═══ DNA COUSINS ═══ -->
+<!-- ═══ MARGIE CORBIN ═══ -->
 <div class="sec" id="tab-descendants">
 <div class="shdr">
   <span class="sey">Your Grandmother · March 13, 1929 – October 15, 1988 · Fort Worth to Santa Ana</span>
@@ -3212,6 +2828,12 @@ v class="prose">
   <div class="srul"><div class="sdia"></div></div>
 </div>
 <div class="ctr">
+
+  <div class="prose">
+    <p><strong>Margie Nell Ballard</strong> was born March 13, 1929 in Fort Worth, Texas — the daughter of James Wilson Ballard Sr. and Eva Armstrong Ballard. She grew up in Fort Worth and San Antonio, married Norman Caswell Corbin on March 17, 1957, and settled at 622 South Townsend Street in Santa Ana, California, where she built the home that her children and grandchildren still remember.</p>
+    <p>She died October 15, 1988 in Orange County, California. She was 59 years old. She is buried in California. She left behind seven children, and a licensed board and care home at 12182 Candy Lane, Garden Grove, that still operates under her name today.</p>
+    <p>She is the grandmother of Jasmine M. Lee — the center of this family's living memory, and the reason this research begins where it does.</p>
+  </div>
 
   <div class="fam-photo-wrap">
     <img class="fam-photo" src="https://raw.githubusercontent.com/jasminesworkspace2-ui/Armstrongfamily/main/Margie%20and%20Norman.png" alt="Margie Nell Ballard and Norman Caswell Corbin" onclick="openPhotoModal(this)">
@@ -3233,6 +2855,20 @@ v class="prose">
 
 
 
+
+  <div class="div"></div>
+  <span class="chd">Confirmed Facts</span>
+  <table class="ftbl">
+    <tr><td>Born</td><td>March 13, 1929 · Fort Worth, Tarrant County, Texas</td></tr>
+    <tr><td>Died</td><td>October 15, 1988 · Orange County, California · age 59</td></tr>
+    <tr><td>Father</td><td>James Wilson Ballard Sr. (1897–1953)</td></tr>
+    <tr><td>Mother</td><td>Eva Armstrong Ballard (ca. 1899–1977)</td></tr>
+    <tr><td>Marriage</td><td>Norman Caswell Corbin (February 10, 1921 – April 21, 1974) · March 17, 1957 · R.H. Lutes Wedding Chapel · Yuma, Arizona</td></tr>
+    <tr><td>Home</td><td>622 South Townsend Street · Santa Ana, California</td></tr>
+    <tr><td>Business</td><td>Corbin's Board and Care · 12182 Candy Lane · Garden Grove, California · still licensed and operating in 2025</td></tr>
+    <tr><td>Children</td><td>Michael E. Corbin (1951–2009) · Ronnie Leroy Ballard (b. 1953) · Hjordis L. Corbin (b. 1960) · Deanna Denise Corbin (b. 1961) · Sonsorey Yevette Corbin (b. 1962) · Orngiel L. Corbin (b. 1964) · Se'Taun Corbin (b. 1966)</td></tr>
+    <tr><td>Jasmine's relationship</td><td>Maternal grandmother · daughter of Hjordis L. Corbin</td></tr>
+  </table>
 
   <div class="div"></div>
   <span class="chd">In Her Own Words · Jasmine's Memory of NaNa</span>
@@ -4153,8 +3789,13 @@ function filterLine(line){
   <div class="srul"><div class="sdia"></div></div>
 </div>
 <div class="ctr">
-  <div class="prose"><p>DNA testing has been one of the most powerful tools in this research. But the numbers and terms can be confusing if you haven't encountered them before. This page explains everything in plain language — no science degree required.</p></div>
-  <div class="div"></div>
+
+  <div class="prose">
+    <p>This tab brings together all confirmed DNA evidence for the Nichols-Waldrop-Armstrong-Ballard family. DNA testing has been one of the most powerful tools in this research — confirming ancestors named in documents, connecting living cousins, and extending family lines that paper records alone cannot reach.</p>
+    <p>Three types of DNA evidence are documented here: the <strong>DNA Match Network</strong> (confirmed cousins who match our family and what their matches prove), the <strong>ThruLines</strong> confirmation (Ancestry's tool connecting living matches back to specific ancestors), and the <strong>Key DNA Matches</strong> section explaining what each confirmed match has contributed to the research.</p>
+  </div>
+
+<div class="div"></div>
 
   <span class="chd">What Is a DNA Test?</span>
   <span class="cttl">The Basics</span>
@@ -5836,6 +5477,7 @@ function doSearch(q){
 .rsvp-branch-opt:hover{border-color:var(--gold);background:var(--gold-bg);}
 .rsvp-branch-opt input{accent-color:var(--gold);}
 .rsvp-branch-opt label{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--ink2);cursor:pointer;}
+.nav-section-label{display:block;font-family:'Josefin Sans',sans-serif;font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--ink3);padding:14px 20px 4px;opacity:.55;pointer-events:none;}
 
 /* ── EMBEDDED FAMILY PHOTOS ── */
 .fam-photo-wrap{margin:20px 0;text-align:center;}

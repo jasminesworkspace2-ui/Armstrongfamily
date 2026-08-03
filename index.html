@@ -4636,6 +4636,25 @@ footer {
       </a>
     </div>
 
+    <!-- The Land Card -->
+    <div class="reveal" style="margin-bottom:12px;">
+      <button onclick="openLandModal()"
+              style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:22px 24px;text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:border-color 0.2s;"
+              aria-label="Read the full land history">
+        <div>
+          <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Property Records · 1856 &ndash; 2006 · Four Properties</p>
+          <p style="font-family:var(--f-display);font-size:22px;color:var(--parchment);margin-bottom:4px;font-style:italic;">The Land</p>
+          <p style="font-size:13px;color:var(--muted);line-height:1.5;">Newton&apos;s 160 acres &middot; Easter Bell&apos;s two acres &middot; Rev. Ballard&apos;s Waco home &middot; Eva&apos;s San Antonio properties &middot; 141 years on Piney Creek</p>
+        </div>
+        <div style="flex-shrink:0;width:48px;height:48px;background:var(--gold-dim);border-radius:12px;display:flex;align-items:center;justify-content:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+      </button>
+    </div>
+
     <!-- Ancestry Tree Link -->
     <div class="reveal" style="margin-bottom:12px;">
       <a href="https://www.ancestry.com/invite-ui/accept?token=N9N_CVOKSJ8QZwxJxG2n-smF_bAi_xTQ5bTKpFAmPf8=" target="_blank" rel="noopener"
@@ -4751,6 +4770,25 @@ footer {
 </div>
 
 <script>
+function openLandModal() {
+  var m = document.getElementById('land-modal');
+  if (m) {
+    m.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    m.scrollTop = 0;
+  }
+}
+function closeLandModal() {
+  var m = document.getElementById('land-modal');
+  if (m) {
+    m.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLandModal();
+});
+
 window.onerror = function(msg, src, line, col, err) {
   // Always dismiss loader even on error
   try { document.getElementById('loader').classList.add('hidden'); } catch(e) {}
@@ -5646,5 +5684,129 @@ document.querySelectorAll('.journey-node').forEach(node => {
   });
 });
 </script>
+
+<!-- ══════════════════════════════════════════
+     THE LAND · FULL MODAL
+══════════════════════════════════════════ -->
+<div id="land-modal" role="dialog" aria-modal="true" aria-label="The Land - Family Property History"
+     style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.92);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+  <div style="max-width:680px;margin:0 auto;padding:24px 20px 60px;">
+
+    <!-- Header -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 0 24px;position:sticky;top:0;background:rgba(0,0,0,0.95);z-index:1;">
+      <div>
+        <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Property Records · 1856 &ndash; 2006</p>
+        <h2 style="font-family:var(--f-display);font-size:28px;color:var(--parchment);font-style:italic;">The Land</h2>
+      </div>
+      <button onclick="closeLandModal()" aria-label="Close land history"
+              style="background:var(--card);border:1px solid var(--border);border-radius:50%;width:44px;height:44px;color:var(--cream);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;">
+        &#x2715;
+      </button>
+    </div>
+
+    <!-- Intro -->
+    <div style="background:var(--card);border:1px solid var(--gold);border-radius:16px;padding:22px;margin-bottom:20px;">
+      <p style="font-size:15px;line-height:1.9;color:var(--cream);margin-bottom:12px;">This family owned land. That statement carries weight that most people cannot fully appreciate &mdash; because for the generation before Easter Bell, owning land was not just unlikely. It was illegal. They were the land. They were property themselves.</p>
+      <p style="font-size:15px;line-height:1.9;color:var(--cream);">What follows is the documented record of every piece of land this family owned, fought for, built on, and in some cases lost. From Piney Creek in Bellville, Texas in 1865 to San Antonio in 1957 &mdash; four properties, four stories, one continuous act of refusal to disappear.</p>
+    </div>
+
+    <!-- PROPERTY 1: TWO ACRES · PINEY CREEK -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:20px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <div style="width:36px;height:36px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--f-mono);font-size:11px;color:var(--black);font-weight:700;">01</div>
+        <div>
+          <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);">The Two Acres</p>
+          <p style="font-family:var(--f-mono);font-size:10px;color:var(--muted);">Piney Creek &middot; Bellville, Austin County, Texas &middot; 1865&ndash;2006</p>
+        </div>
+      </div>
+      <p style="font-size:15px;line-height:1.9;color:var(--cream);margin-bottom:14px;">Six months after Juneteenth, Easter Bell Nichols &mdash; seventeen years old and newly free &mdash; married Joseph Nichols on December 18, 1865. They stayed in Bellville. They stayed on Piney Creek. They stayed on the same ground where Easter Bell had been born enslaved on July 4, 1848. And then they did something extraordinary.</p>
+      <p style="font-size:15px;line-height:1.9;color:var(--cream);margin-bottom:14px;">They bought it.</p>
+      <p style="font-size:15px;line-height:1.9;color:var(--cream);margin-bottom:14px;">Two acres in the <strong style="color:var(--parchment);">J. Nichols Survey</strong> &mdash; still bearing the enslaver&apos;s name on the survey map, because that is how Texas land worked &mdash; became theirs. Not rented. Not sharecropped. Owned. Deeded. Two acres of Piney Creek that had once worked Easter Bell&apos;s mother Rendy Blayn, that had worked Easter Bell herself from the time she could walk, that the John Nichols plantation had built its operation around &mdash; that ground became the Nichols family&apos;s ground.</p>
+      <p style="font-size:15px;line-height:1.9;color:var(--cream);margin-bottom:14px;">Easter Bell and Joseph had twelve children on that land. Hellen Nichols was born on that land. Eva Armstrong was born a few miles away, but grew up knowing that land as home. Three generations built their lives in its orbit.</p>
+      <div style="background:var(--surface);border-radius:10px;padding:14px 16px;margin-bottom:14px;font-family:var(--f-mono);font-size:10px;line-height:2.2;">
+        <div style="display:flex;gap:12px;border-bottom:1px solid var(--border);padding:3px 0;"><span style="color:var(--gold);min-width:120px;">Survey</span><span style="color:var(--cream);">J. Nichols Survey &middot; Piney Creek &middot; Austin County, Texas</span></div>
+        <div style="display:flex;gap:12px;border-bottom:1px solid var(--border);padding:3px 0;"><span style="color:var(--gold);min-width:120px;">Size</span><span style="color:var(--cream);">Two acres</span></div>
+        <div style="display:flex;gap:12px;border-bottom:1px solid var(--border);padding:3px 0;"><span style="color:var(--gold);min-width:120px;">Acquired</span><span style="color:var(--cream);">After emancipation &middot; ca. 1865&ndash;1870</span></div>
+        <div style="display:flex;gap:12px;border-bottom:1px solid var(--border);padding:3px 0;"><span style="color:var(--gold);min-width:120px;">Held</span><span style="color:var(--cream);">141 years in the family</span></div>
+        <div style="display:flex;gap:12px;padding:3px 0;"><span style="color:var(--gold);min-width:120px;">Left family</span><span style="color:var(--cream);">2006</span></div>
+      </div>
+      <p style="font-family:var(--f-display);font-size:16px;font-style:italic;color:var(--parchment);line-height:1.7;">141 years. Four generations. The land that enslaved Easter Bell became the land her family owned. That is not just property. That is a statement.</p>
+    </div>
+
+    <!-- PROPERTY 2: NEWTON BALLARD · 160 ACRES -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:20px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <div style="width:36px;height:36px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--f-mono);font-size:11px;color:var(--black);font-weight:700;">02</div>
+        <div>
+          <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);">The 160 Acres</p>
+          <p style="font-family:var(--f-mono);font-size:10px;color:var(--muted);">Upshur County, Texas &middot; 1856 &middot; Texas GLO File No. 3378</p>
+        </div>
+      </div>
+      <p style="font-size:15px;line-height:1.9;color:var(--cream);margin-bottom:14px;">Nine years before emancipation. Nine years before Juneteenth. Nine years before any law in Texas said Newton Ballard was a free man &mdash; Newton Ballard claimed 160 acres in Upshur County, Texas.</p>
+      <p style="font-size:15px;line-height:1.9;color:var(--cream);margin-bottom:14px;">The Texas General Land Office File No. 3378 documents it. An enslaved man, navigating a legal system designed entirely to exclude him, found a way to claim land. How exactly this happened &mdash; whether through a sympathetic white intermediary, through a legal technicality, through sheer determination that left no paper trail &mdash; is not yet fully known. What is known is that the land record exists. Newton Ballard is in it. And in 1870, when the census taker came to Pittsburg, Upshur County, Texas, a nine-year-old boy named George W. Ballard &mdash; Newton&apos;s son &mdash; was living right there.</p>
+      <p style="font-size:15px;line-height:1.9;color:var(--cream);margin-bottom:14px;">The family stayed on Newton&apos;s land after emancipation. They didn&apos;t leave. They had somewhere to be.</p>
+      <div style="background:var(--surface);border-radius:10px;padding:14px 16px;margin-bottom:14px;font-family:var(--f-mono);font-size:10px;line-height:2.2;">
+        <div style="display:flex;gap:12px;border-bottom:1px solid var(--border);padding:3px 0;"><span style="color:var(--gold);min-width:120px;">File</span><span style="color:var(--cream);">Texas GLO File No. 3378</span></div>
+        <div style="display:flex;gap:12px;border-bottom:1px solid var(--border);padding:3px 0;"><span style="color:var(--gold);min-width:120px;">Location</span><span style="color:var(--cream);">Upshur County, Texas &middot; near Pittsburg</span></div>
+        <div style="display:flex;gap:12px;border-bottom:1px solid var(--border);padding:3px 0;"><span style="color:var(--gold);min-width:120px;">Size</span><span style="color:var(--cream);">160 acres</span></div>
+        <div style="display:flex;gap:12px;border-bottom:1px solid var(--border);padding:3px 0;"><span style="color:var(--gold);min-width:120px;">Year</span><span style="color:var(--cream);">1856 &middot; nine years before emancipation</span></div>
+        <div style="display:flex;gap:12px;padding:3px 0;"><span style="color:var(--gold);min-width:120px;">1870 census</span><span style="color:var(--cream);">George W. Ballard (age 9) confirmed in Pittsburg, Upshur County &mdash; the family stayed on Newton&apos;s land</span></div>
+      </div>
+      <p style="font-family:var(--f-display);font-size:16px;font-style:italic;color:var(--parchment);line-height:1.7;">Newton Ballard was legally someone else&apos;s property in 1856. He claimed 160 acres anyway. That is the Ballard line in one sentence.</p>
+    </div>
+
+    <!-- PROPERTY 3: 724 EAST JOHNSON STREET · WACO -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:20px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <div style="width:36px;height:36px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--f-mono);font-size:11px;color:var(--black);font-weight:700;">03</div>
+        <div>
+          <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);">724 East Johnson Street</p>
+          <p style="font-family:var(--f-mono);font-size:10px;color:var(--muted);">Waco, McLennan County, Texas &middot; Rev. George W. Ballard &middot; Lost 2017</p>
+        </div>
+      </div>
+      <p style="font-size:15px;line-height:1.9;color:var(--cream);margin-bottom:14px;">Rev. George W. Ballard &mdash; son of Newton, father of James Wilson Ballard Sr. &mdash; owned a home at <strong style="color:var(--parchment);">724 East Johnson Street in Waco, Texas</strong>. He died there on October 24, 1937. The property stayed in the Ballard name after his death, deed recorded in McLennan County (Volume 289, Page 655).</p>
+      <p style="font-size:15px;line-height:1.9;color:var(--cream);margin-bottom:14px;">It stayed in the family for eighty years after his death. And then, on <strong style="color:var(--parchment);">November 7, 2017</strong>, it was lost to a Waco tax sale &mdash; Cause No. 2014-3167-4. A property that Newton&apos;s son had built and owned and died in, that had carried the Ballard name through three generations, was taken for unpaid taxes.</p>
+      <p style="font-size:15px;line-height:1.9;color:var(--cream);margin-bottom:14px;">This is an open research matter. Lone Star Legal Aid (713-652-0077) may be able to advise on whether any remedy exists. The full case record is on file.</p>
+      <div style="background:var(--surface);border-radius:10px;padding:14px 16px;margin-bottom:14px;font-family:var(--f-mono);font-size:10px;line-height:2.2;">
+        <div style="display:flex;gap:12px;border-bottom:1px solid var(--border);padding:3px 0;"><span style="color:var(--gold);min-width:140px;">Address</span><span style="color:var(--cream);">724 East Johnson Street &middot; Waco, McLennan County, TX</span></div>
+        <div style="display:flex;gap:12px;border-bottom:1px solid var(--border);padding:3px 0;"><span style="color:var(--gold);min-width:140px;">Owner</span><span style="color:var(--cream);">Rev. George W. Ballard (1861&ndash;1937)</span></div>
+        <div style="display:flex;gap:12px;border-bottom:1px solid var(--border);padding:3px 0;"><span style="color:var(--gold);min-width:140px;">Deed</span><span style="color:var(--cream);">McLennan County &middot; Volume 289 &middot; Page 655</span></div>
+        <div style="display:flex;gap:12px;border-bottom:1px solid var(--border);padding:3px 0;"><span style="color:var(--gold);min-width:140px;">Lost</span><span style="color:var(--cream);">November 7, 2017 &middot; Tax sale &middot; Cause No. 2014-3167-4</span></div>
+        <div style="display:flex;gap:12px;padding:3px 0;"><span style="color:var(--gold);min-width:140px;">Legal contact</span><span style="color:var(--cream);">Lone Star Legal Aid &middot; 713-652-0077</span></div>
+      </div>
+      <p style="font-family:var(--f-display);font-size:16px;font-style:italic;color:var(--parchment);line-height:1.7;">Newton claimed land in 1856. His son built a home. His grandson&apos;s family lost it in 2017. Three generations of holding on &mdash; and then a tax bill.</p>
+    </div>
+
+    <!-- PROPERTY 4: SAN ANTONIO · JAMES + EVA -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:20px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+        <div style="width:36px;height:36px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:var(--f-mono);font-size:11px;color:var(--black);font-weight:700;">04</div>
+        <div>
+          <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);">San Antonio · James + Eva Ballard</p>
+          <p style="font-family:var(--f-mono);font-size:10px;color:var(--muted);">Bexar County, Texas &middot; 1943&ndash;1957</p>
+        </div>
+      </div>
+      <p style="font-size:15px;line-height:1.9;color:var(--cream);margin-bottom:14px;">In 1943, James Wilson Ballard Sr. and Eva Armstrong Ballard were trying to buy a home in San Antonio. They had an active purchase contract on <strong style="color:var(--parchment);">Lot 1, Block 16, Boulevard Gardens Addition</strong> &mdash; a real neighborhood, a real house they were working toward. The property was swept into a federal receivership case &mdash; Schaefer vs. Milner, Cause No. F-8673, 73rd District Court, Bexar County &mdash; and a court ordered it sold to the United States of America.</p>
+      <p style="font-size:15px;line-height:1.9;color:var(--cream);margin-bottom:14px;">James and Eva appeared before a notary. Eva was examined separately &mdash; as Texas law required for married women &mdash; to confirm she signed willingly. They received <strong style="color:var(--parchment);">$175.00</strong>. The U.S. Government paid them $175 and took the property. This is the primary source that places both of them in San Antonio by 1943 &mdash; Bexar County Deed No. 295786, filed March 8, 1943.</p>
+      <p style="font-size:15px;line-height:1.9;color:var(--cream);margin-bottom:14px;">They kept building. On April 22, 1944, Eva purchased <strong style="color:var(--parchment);">150 Paul Street</strong> for $3,600. She ran her Night Club from that address. The 1950 census shows her there as head of household, proprietor, working 60 hours a week, own business. On January 22, 1957 &mdash; after the Caldwell trial, after everything &mdash; she sold 150 Paul Street and left Texas forever.</p>
+      <div style="background:var(--surface);border-radius:10px;padding:14px 16px;margin-bottom:14px;font-family:var(--f-mono);font-size:10px;line-height:2.2;">
+        <div style="display:flex;gap:12px;border-bottom:1px solid var(--border);padding:3px 0;"><span style="color:var(--gold);min-width:160px;">Property 1</span><span style="color:var(--cream);">Lot 1, Block 16, Boulevard Gardens Addition &middot; purchase contract 1943 &middot; taken by U.S. Govt for $175</span></div>
+        <div style="display:flex;gap:12px;border-bottom:1px solid var(--border);padding:3px 0;"><span style="color:var(--gold);min-width:160px;">Deed No.</span><span style="color:var(--cream);">Bexar County No. 295786 &middot; Filed March 8, 1943</span></div>
+        <div style="display:flex;gap:12px;border-bottom:1px solid var(--border);padding:3px 0;"><span style="color:var(--gold);min-width:160px;">Property 2</span><span style="color:var(--cream);">150 Paul Street &middot; purchased April 22, 1944 &middot; $3,600</span></div>
+        <div style="display:flex;gap:12px;padding:3px 0;"><span style="color:var(--gold);min-width:160px;">Sold</span><span style="color:var(--cream);">January 22, 1957 &middot; Eva left Texas</span></div>
+      </div>
+      <p style="font-family:var(--f-display);font-size:16px;font-style:italic;color:var(--parchment);line-height:1.7;">They lost their first home for $175. They bought another one anyway. That is Eva Armstrong Ballard in two sentences.</p>
+    </div>
+
+    <!-- CLOSING -->
+    <div style="background:var(--card);border:1px solid var(--gold);border-radius:16px;padding:22px;">
+      <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;">What The Land Means</p>
+      <p style="font-size:15px;line-height:1.9;color:var(--cream);margin-bottom:14px;">Newton Ballard in 1856. Easter Bell in 1865. Rev. George W. Ballard in Waco. James and Eva in San Antonio. Every generation of this family, as soon as the law allowed &mdash; and sometimes before it did &mdash; tried to own ground. Not rent it. Own it.</p>
+      <p style="font-size:15px;line-height:1.9;color:var(--cream);">Some of it was taken. The Boulevard Gardens house for $175. The Waco property in a 2017 tax sale. But two acres on Piney Creek stayed in the family for 141 years. And 12182 Candy Lane in Garden Grove, California &mdash; Margie&apos;s board and care home, the house Jasmine grew up around &mdash; still carries the Corbin name on its license in 2026. The thread never broke. They just kept finding new ground to stand on.</p>
+    </div>
+
+  </div>
+</div>
+
 </body>
 </html>

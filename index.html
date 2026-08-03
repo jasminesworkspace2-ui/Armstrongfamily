@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 <meta name="description" content="The Nichols-Waldrop Family Legacy — From Patience in South Carolina, 1780s, to Jasmine M. Lee in Nevada today. Seven generations of an African American family documented by Jasmine M. Lee, Dock Ellis Foundation.">
 <title>The Nichols-Waldrop Family Legacy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,9 +49,11 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
   background: var(--black);
   color: var(--cream);
   overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
@@ -730,37 +732,45 @@ body {
   pointer-events: all;
 }
 
-/* The scrollable sheet — slides up from bottom on mobile */
+/* Sheet wrapper — fixed at bottom, never exceeds screen */
 .modal-sheet {
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  max-height: 92vh;
+  height: 88vh;
+  max-height: 88vh;
   background: var(--surface);
   border-radius: 20px 20px 0 0;
   border: 1px solid var(--border2);
   border-bottom: none;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
   transform: translateY(100%);
   transition: transform 0.38s cubic-bezier(0.16,1,0.3,1);
   pointer-events: all;
+  overflow: hidden;
 }
 #modal.open .modal-sheet {
   transform: translateY(0);
 }
 
-/* Fixed close button — positioned relative to the sheet, NOT sticky */
+/* Close bar — NOT scrollable, always visible at top */
 .modal-close-wrap {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  flex-shrink: 0;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
   padding: 14px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 10;
+}
+
+/* Scrollable content inside sheet */
+.modal-scroll-body {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 .modal-inner {
@@ -1311,38 +1321,36 @@ body {
 ═══════════════════════════════════════════════ */
 #photos-section { background: var(--surface); }
 .photo-masonry {
-  columns: 2;
-  column-gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
-@media (min-width: 600px) { .photo-masonry { columns: 3; } }
 .photo-masonry-item {
-  break-inside: avoid;
-  margin-bottom: 10px;
-  border-radius: 10px;
+  width: 100%;
+  border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
   position: relative;
+  background: var(--card);
 }
 .photo-masonry-item img {
   width: 100%;
+  height: auto;
   display: block;
-  transition: transform 0.4s var(--ease-out);
+  object-fit: contain;
+  max-height: 80vw;
 }
-.photo-masonry-item:hover img { transform: scale(1.04); }
 .photo-masonry-caption {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-  padding: 24px 12px 10px;
+  display: block;
+  padding: 10px 14px;
   font-family: var(--f-mono);
   font-size: 9px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--gold);
-  opacity: 0;
-  transition: opacity 0.3s;
+  text-align: center;
+  background: var(--card);
 }
-.photo-masonry-item:hover .photo-masonry-caption { opacity: 1; }
 
 /* Lightbox */
 #lightbox {
@@ -1801,7 +1809,24 @@ footer {
     <span class="icon" aria-hidden="true">·</span> Full Family Tree
   </a>
   <div class="drawer-sep"></div>
+  <span class="drawer-group-label">The Stories</span>
+  <a href="#margies-children" class="drawer-link" data-section="margies-children">
+    <span class="icon" aria-hidden="true">·</span> Margie's Seven Children
+  </a>
+  <a href="#caldwell" class="drawer-link" data-section="caldwell">
+    <span class="icon" aria-hidden="true">·</span> The Caldwell Case · 1954
+  </a>
+  <a href="#san-antonio" class="drawer-link" data-section="san-antonio">
+    <span class="icon" aria-hidden="true">·</span> The San Antonio Years
+  </a>
+  <div class="drawer-sep"></div>
   <span class="drawer-group-label">Research + Tools</span>
+  <a href="#on-this-day" class="drawer-link" data-section="on-this-day">
+    <span class="icon" aria-hidden="true">·</span> On This Day
+  </a>
+  <a href="#dna-guide" class="drawer-link" data-section="dna-guide">
+    <span class="icon" aria-hidden="true">·</span> How to Read DNA
+  </a>
   <a href="#research-section" class="drawer-link">
     <span class="icon" aria-hidden="true">·</span> Research Notes
   </a>
@@ -2292,6 +2317,22 @@ footer {
         </div>
         <div class="card-footer">
           <span class="card-tag">DNA Confirmed · 41 cM</span>
+          <span class="card-read-more">Full Story ›</span>
+        </div>
+      </div>
+
+      <div class="person-card reveal reveal-delay-2" onclick="openPersonModal('norman')" role="button" tabindex="0" aria-label="Norman Caswell Corbin - read full story">
+        <div class="card-header">
+          <p class="card-role">Grandfather · Papa Russ</p>
+          <h3 class="card-name">Norman Caswell Corbin</h3>
+          <p class="card-dates">February 10, 1921 – April 21, 1974 · age 53</p>
+        </div>
+        <div class="card-body">
+          <p class="card-place">Cleveland, OH → Detroit, MI → Los Angeles, CA → Santa Ana, CA</p>
+          <p class="card-excerpt">Minister. Civic leader. Chauffeur who survived a crash that killed his first wife. Married Margie in Yuma in 1957. Died before his children could really know him. Santa Ana named a community center after him two months later.</p>
+        </div>
+        <div class="card-footer">
+          <span class="card-tag">LA Times · Apr 24, 1974</span>
           <span class="card-read-more">Full Story ›</span>
         </div>
       </div>
@@ -3220,6 +3261,248 @@ footer {
 </section>
 
 <!-- ══════════════════════════════════════════
+     MARGIE'S CHILDREN — THEIR STORIES
+══════════════════════════════════════════ -->
+<section id="margies-children" class="section" style="background:var(--surface);" aria-label="Margie's children — their stories">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-eyebrow">The Next Generation</span>
+      <h2 class="section-title">Margie's <em>Seven</em></h2>
+      <p class="section-sub">These are the people who grew up at 622 South Townsend Street and at 12182 Candy Lane. They carried Margie's story into the world. Most of your family knows these names. Here is who they actually are.</p>
+    </div>
+
+    <div style="display:grid;gap:16px;" class="reveal">
+
+      <div class="person-card" style="cursor:default;">
+        <div class="card-header">
+          <p class="card-role">Eldest · Michael E. Corbin Sr.</p>
+          <h3 class="card-name">Michael E. Corbin Sr.</h3>
+          <p class="card-dates">August 26, 1951 – November 1, 2009 · Las Vegas, NV</p>
+        </div>
+        <div class="card-body">
+          <p class="card-excerpt">Michael spent the majority of his life in Las Vegas, Nevada, raising his two daughters and a son — Jamie, and Tierra, whom he raised as his own even though DNA later revealed she was not his biological child. He loved her like she was. Michael worked for the telephone company for many years. He experienced alcoholism throughout his life and passed away from a rare disease. He died not long after Dock Ellis, and Shirley — his ex-wife — passed away shortly after him. Deserae speaks often about her dad and her memories of him. Dominique stayed with him in his last days. He always stayed in contact with his children even when distance made it hard. Because of where me and my mother lived most of my life after Nana died, we didn't get to spend as much time with Michael as we would have wanted. But he was always there on the phone.</p>
+        </div>
+      </div>
+
+      <div class="person-card" style="cursor:default;">
+        <div class="card-header">
+          <p class="card-role">Uncle · Ronnie Leroy Ballard</p>
+          <h3 class="card-name">Ronnie Leroy Ballard</h3>
+          <p class="card-dates">b. November 11, 1953 · Los Angeles, CA</p>
+        </div>
+        <div class="card-body">
+          <p class="card-excerpt">Uncle Ronnie lives in Los Angeles, California. About four years ago his significant other passed away, and he continues to support her children alongside his biological children — that's just who he is. He is the spunky one of the family. When he talks, he has a humorous stutter and speaks fast, and he will have you laughing before you know it. He holds the most memories of San Antonio — now that Uncle Michael is gone, Ronnie is the keeper of that chapter of the family's story. He grew up making himself a room in the garage at Candy Lane. He remembers Eva. He remembers San Antonio. He is the link.</p>
+        </div>
+      </div>
+
+      <div class="person-card" style="cursor:default;border-color:var(--gold);">
+        <div class="card-header">
+          <p class="card-role">Your Mother · Hjordis L. Corbin</p>
+          <h3 class="card-name">Hjordis L. Corbin</h3>
+          <p class="card-dates">b. January 20, 1960 · Las Vegas, NV</p>
+        </div>
+        <div class="card-body">
+          <p class="card-excerpt">Your mother. She lost Margie at 28 years old and kept going. She worked for American Airlines until September 11, 2001 changed that. She went back to school, became a substance abuse counselor — the same path Dock had walked. She and Dock raised Jasmine across Florida, Arizona, and Texas before eventually landing in Las Vegas. She and Sonsorey both live in Las Vegas now. She is the reason this research exists. She is the thread.</p>
+        </div>
+      </div>
+
+      <div class="person-card" style="cursor:default;">
+        <div class="card-header">
+          <p class="card-role">Aunt · Deanna Denise Corbin</p>
+          <h3 class="card-name">Deanna Denise Corbin · "Auntie Deanna"</h3>
+          <p class="card-dates">b. December 28, 1961 · Orange County, CA · Las Vegas frequent</p>
+        </div>
+        <div class="card-body">
+          <p class="card-excerpt">Auntie Deanna has two beautiful daughters. Jade works in social services and has been at her company over seven years — and Auntie Deanna has been at hers for over twenty. They actually work for partnered companies. Jade also lived with Jasmine and Dock growing up, and she looks at Dock like a father figure. Lauryn, Deanna's youngest, lives in Las Vegas with her three children — the third just arrived, less than two months ago as of this writing. Deanna comes to Las Vegas often because her grandchildren are here, and because Hjordis and Sonsorey are here too. She is the Betty Crocker of the family — into cooking, home making, and DIY projects that actually turn out beautifully.</p>
+        </div>
+      </div>
+
+      <div class="person-card" style="cursor:default;">
+        <div class="card-header">
+          <p class="card-role">Aunt · Sonsorey Yevette Corbin</p>
+          <h3 class="card-name">Sonsorey Yevette Corbin · "Auntie Sonsorey"</h3>
+          <p class="card-dates">b. November 29, 1962 · Las Vegas, NV</p>
+        </div>
+        <div class="card-body">
+          <p class="card-excerpt">Career-minded. Executive-level. She has been in Las Vegas for about six or seven years now. Her son Alerick experienced a serious health event — a heart situation — and she spends a lot of her time praying and hoping he finds his way. Alerick never really left Orange County, and we believe a lot of that has to do with Nana's passing. He was the oldest grandchild of the girls, he spent so much of his time at Nana's house, and when she was gone something shifted in him. Auntie Sonsorey is a deeply faithful Christian who prays over this family and speaks openly about breaking generational curses. She holds the family spiritually in a way no one else does.</p>
+        </div>
+      </div>
+
+      <div class="person-card" style="cursor:default;">
+        <div class="card-header">
+          <p class="card-role">Aunt · Orngiel L. Corbin · "Auntie Jill"</p>
+          <h3 class="card-name">Orngiel L. Corbin · "Auntie Jill"</h3>
+          <p class="card-dates">b. December 14, 1964 · Los Angeles, CA</p>
+        </div>
+        <div class="card-body">
+          <p class="card-excerpt">Auntie Jill lives in Los Angeles — meaning she made the move from Orange County to LA, which for that family is a whole life change. She spent a lot of time with us when Dock was alive. During those Apple Valley years — when Jasmine and Hjordis were living out there in the high desert — Auntie Jill would drive from Orange County to Apple Valley to spend time with the family. She was working as a drug and alcohol counselor during that time, which was its own kind of beautiful given what Dock was doing with his life. The whole family was in that space of healing, in one way or another.</p>
+        </div>
+      </div>
+
+      <div class="person-card" style="cursor:default;">
+        <div class="card-header">
+          <p class="card-role">Aunt · Se'Taun Corbin</p>
+          <h3 class="card-name">Se'Taun Corbin</h3>
+          <p class="card-dates">b. April 30, 1966 · Fullerton, CA</p>
+        </div>
+        <div class="card-body">
+          <p class="card-excerpt">Se'Taun lives in Fullerton, California with her husband Dave — who we have known as Uncle Dave most of our lives. She has no biological children. She and Dave have a daughter named Daiquiri — Cri Cri is what the family calls her. Se'Taun has been in Fullerton most of her life after Nana passed away. She and Dave have a lake house where they spend a lot of time out on the water, enjoying their boat. She drove a yellow Bug when she was young, which is one of those Candy Lane details that never leaves you once you hear it.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     JOHNIE CALDWELL CHAPTER
+══════════════════════════════════════════ -->
+<section id="caldwell" class="section" aria-label="The Johnie Caldwell case">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-eyebrow">San Antonio · 1954 · Police Brutality</span>
+      <h2 class="section-title">The <em>Caldwell Case</em></h2>
+      <p class="section-sub">The night a man was killed in Eva's back office — and your great-grandmother told the truth when she didn't have to.</p>
+    </div>
+
+    <div class="reveal" style="background:var(--card);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:20px 20px 20px 24px;margin-bottom:24px;">
+      <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">What Happened · San Antonio, Texas · 1954–1955</p>
+      <p style="font-size:15px;line-height:1.8;color:var(--cream);">Johnie W. Caldwell was shot and killed by San Antonio police officer O.R. Graves in the back office of Eva Armstrong Ballard's establishment on the East Side. The officers who responded claimed Caldwell had been armed and threatening. Eva gave investigators the key to the office. She cooperated fully. She told the truth about what she saw.</p>
+    </div>
+
+    <div class="reveal" style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;">
+      <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">The Cover-Up · What the Officers Did</p>
+      <p style="font-size:14px;line-height:1.75;color:var(--cream);margin-bottom:12px;">Two officers later confessed to planting a knife on Caldwell's body after the shooting. The knife was used to justify the killing — planted evidence to make a murdered man look dangerous. When that came out, the case became front-page news.</p>
+      <p style="font-size:14px;line-height:1.75;color:var(--cream);">No charges were filed against Eva. She had done nothing wrong. But being a Black woman who ran a business on San Antonio's East Side and was subpoenaed to testify in a police brutality case in 1955 — and who told the truth on that stand — was not nothing. That took something.</p>
+    </div>
+
+    <div class="reveal" style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;">
+      <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">James Wilson Ballard Jr. · Front Page · San Antonio Light</p>
+      <p style="font-size:14px;line-height:1.75;color:var(--cream);">Eva's son James Wilson Ballard Jr. was also connected to the case — he lived with Eva at 150 Paul Street and was listed on the federal gambling tax stamp records at the establishment at 207 N. Center Street. He made the front page of the San Antonio Light in 1954. He was part of breaking open the cover-up.</p>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px;font-family:var(--f-mono);">Note on the gambling tax stamp: This was an IRS tax under the Revenue Act of 1951 on what were effectively illegal gambling operations. It was not a voting record or a criminal conviction — it was a federal tax stamp required to operate. Many Black-owned East Side businesses held these. It reflects the economic reality of Black entrepreneurship in 1950s San Antonio, not a moral failing.</p>
+    </div>
+
+    <div class="reveal" style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px;">
+      <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">San Antonio Collage · Caldwell Case · Primary Source</p>
+      <img src="https://raw.githubusercontent.com/jasminesworkspace2-ui/Armstrongfamily/main/San%20Antonio%20collage%20Caldwell%20case.png" alt="San Antonio collage showing Caldwell case newspaper coverage" style="width:100%;border-radius:8px;margin-bottom:12px;" loading="lazy">
+      <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">Primary source · San Antonio Light coverage · Caldwell case documents</p>
+    </div>
+
+    <div class="reveal" style="background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;">
+      <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">January 22, 1957 · Eva Leaves San Antonio</p>
+      <p style="font-size:14px;line-height:1.75;color:var(--muted);">On January 22, 1957 — two years after the trial — Eva Armstrong Ballard sold 150 Paul Street in San Antonio and left Texas forever. She moved west. She settled in Garden Grove, California. She never looked back. Whether the Caldwell case was part of why she left, we cannot say for certain. What we know is that she had testified in a police brutality case, told the truth, and two years later she was gone.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SAN ANTONIO YEARS
+══════════════════════════════════════════ -->
+<section id="san-antonio" class="section" style="background:var(--surface);" aria-label="The San Antonio years">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-eyebrow">San Antonio, Texas · 1930s–1957</span>
+      <h2 class="section-title">The <em>East Side</em></h2>
+      <p class="section-sub">Before California, this family built something in San Antonio. The East Side was the center of Black life in that city — and Eva Armstrong Ballard was in the middle of it.</p>
+    </div>
+
+    <div class="reveal" style="display:grid;gap:12px;">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;">
+        <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Eva's Business · The Nip and Sip Cafe</p>
+        <p style="font-size:14px;line-height:1.75;color:var(--cream);">Eva ran the Nip and Sip Cafe on San Antonio's East Side. She was named proprietor of record in the 1954 San Antonio Light coverage. Her establishment was at 1501 Burnet Street, at Nolan and N. New Braunfels Avenue. She also had the property at 150 Paul Street — purchased April 22, 1944 for $3,600 and sold January 22, 1957 when she left Texas.</p>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;">
+        <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">The 1954 Beer License · Eva Smith</p>
+        <p style="font-size:14px;line-height:1.75;color:var(--cream);">A March 8, 1954 San Antonio Light article places Eva operating under the name "Eva Smith" for a beer license in Bexar County. Witness Siebrecht named Margie Ballard directly in connection with bootlegging activity at the time. This document expanded the known family geography and confirmed that Margie was in San Antonio alongside her mother in 1954.</p>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;">
+        <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">James Ballard Jr. · Federal Tax Stamp · 207 N. Center St.</p>
+        <p style="font-size:14px;line-height:1.75;color:var(--cream);">James Wilson Ballard Jr. served as Agent on a federal gambling tax stamp at 207 N. Center Street. Bellinger served as Principal. James Wilson Ballard Jr. and his brother were listed on these records. Under the IRS Revenue Act of 1951, these stamps were required taxes on gambling operations — not indictments but business records. They place the Ballard family at the center of Black economic life on San Antonio's East Side during the 1950s.</p>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;">
+        <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">1957 Estate Affidavit · Eva's Five Children Sign</p>
+        <p style="font-size:14px;line-height:1.75;color:var(--cream);">On January 16, 1957 — six days before Eva sold 150 Paul Street — all five of her surviving children signed a Bexar County estate affidavit (Instrument 86820), transferring the property to Eva. This document confirms Eva's children: James Jr., Margie Nell, Lois, Betty, and Charles Ray. It is one of the most important family documents in the collection.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     HOW TO READ DNA
+══════════════════════════════════════════ -->
+<section id="dna-guide" class="section" aria-label="How to read DNA matches">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-eyebrow">DNA Made Simple</span>
+      <h2 class="section-title">How to Read <em>a DNA Match</em></h2>
+      <p class="section-sub">Most of what we proved about this family came from DNA. Here is what it actually means — explained for someone who has never thought about it before.</p>
+    </div>
+
+    <div style="display:grid;gap:12px;" class="reveal">
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;">
+        <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">What is a DNA Test?</p>
+        <p style="font-size:14px;line-height:1.8;color:var(--cream);">You spit in a tube, mail it to AncestryDNA, and they analyze your genetic material. They compare it to millions of other people who have tested. When you share a significant amount of DNA with someone, it means you and that person have a common ancestor. The more DNA you share, the more closely related you are.</p>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;">
+        <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">What is a centiMorgan (cM)?</p>
+        <p style="font-size:14px;line-height:1.8;color:var(--cream);">The number you see next to a DNA match — like "41 cM" — is called a centiMorgan. Think of it as a unit of genetic closeness. The higher the number, the more closely related you are.</p>
+        <div style="margin-top:12px;font-family:var(--f-mono);font-size:11px;line-height:2.2;">
+          <div style="display:flex;gap:12px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="color:var(--gold);min-width:80px;">3,400+ cM</span><span style="color:var(--cream);">Parent or child — you share about half your DNA</span></div>
+          <div style="display:flex;gap:12px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="color:var(--gold);min-width:80px;">1,700 cM</span><span style="color:var(--cream);">Grandparent or grandchild</span></div>
+          <div style="display:flex;gap:12px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="color:var(--gold);min-width:80px;">850 cM</span><span style="color:var(--cream);">Aunt, uncle, or half-sibling</span></div>
+          <div style="display:flex;gap:12px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="color:var(--gold);min-width:80px;">425 cM</span><span style="color:var(--cream);">First cousin</span></div>
+          <div style="display:flex;gap:12px;padding:6px 0;border-bottom:1px solid var(--border);"><span style="color:var(--gold);min-width:80px;">106 cM</span><span style="color:var(--cream);">Second cousin</span></div>
+          <div style="display:flex;gap:12px;padding:6px 0;"><span style="color:var(--gold);min-width:80px;">41 cM</span><span style="color:var(--cream);">Third cousin range — like Jahna Bradshaw, who confirmed Lois Ballard's place in the tree</span></div>
+        </div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;">
+        <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">What is ThruLines?</p>
+        <p style="font-size:14px;line-height:1.8;color:var(--cream);">ThruLines is Ancestry's tool that connects your DNA matches back to a specific ancestor you both share. When it says "46 ThruLines matches through Clarissa" — that means 46 living people have tested their DNA and they all trace back to the same ancestor: Clarissa, your 4th great-grandmother, born enslaved around 1807. That many independent matches pointing to the same person is about as close to proof as genealogy gets.</p>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--gold);border-radius:12px;padding:20px;">
+        <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">What Did DNA Actually Prove for This Family?</p>
+        <div style="font-size:14px;line-height:1.9;color:var(--cream);">
+          <p style="margin-bottom:10px;"><strong style="color:var(--parchment);">It confirmed Easter Bell's line goes back to Clarissa.</strong> 46 living people match through Joseph Nichols as the common ancestor. This connects to the 1839 Waldrop estate deed that names Clarissa as a daughter of Patience.</p>
+          <p style="margin-bottom:10px;"><strong style="color:var(--parchment);">It found Lois Ballard.</strong> A match of 41 cM to Jahna Bradshaw led us to Jahna's grandmother — Lois Bradshaw, born Elois Maud Ballard — the last living child of James Wilson Ballard Sr. and Eva Armstrong Ballard. She is 93 years old and confirmed living in 2023.</p>
+          <p><strong style="color:var(--parchment);">It confirmed Hellen Nichols Armstrong and Helen Reese are the same person.</strong> A 53.5 cM match to the Helen Reese connection supported the documentary evidence and the profiles were merged in July 2026.</p>
+        </div>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;">
+        <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Want to Help?</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;">If any family member takes an AncestryDNA test and connects to this tree, it could answer open questions we have been researching for years. Contact Jasmine at <a href="mailto:jlee@dockellisfoundation.com" style="color:var(--gold2);">jlee@dockellisfoundation.com</a> with your kit number.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ON THIS DAY
+══════════════════════════════════════════ -->
+<section id="on-this-day" class="section" style="background:var(--surface);" aria-label="On this day in family history">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-eyebrow" id="today-label">Today</span>
+      <h2 class="section-title">On <em>This Day</em></h2>
+      <p class="section-sub">Family birthdays, anniversaries, and events that happened on today's date in our history.</p>
+    </div>
+    <div id="on-this-day-results" class="reveal" style="display:grid;gap:12px;"></div>
+    <div id="on-this-day-empty" style="display:none;padding:32px 0;text-align:center;">
+      <p style="font-family:var(--f-mono);font-size:11px;letter-spacing:2px;color:var(--muted);">No recorded family events on this date.</p>
+      <p style="font-size:13px;color:var(--muted);margin-top:8px;">If you know of an event that should be here, contact Jasmine.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
      RESEARCH NOTES
 ══════════════════════════════════════════ -->
 <section id="research-section" class="section" style="background:var(--surface);" aria-label="Research notes">
@@ -3355,7 +3638,9 @@ footer {
       <span class="modal-bread" id="modal-bread" style="font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);"></span>
       <button class="modal-close" id="modal-close-btn" aria-label="Close person detail">&#x2715;</button>
     </div>
-    <div id="modal-content"></div>
+    <div class="modal-scroll-body" id="modal-scroll-body">
+      <div id="modal-content"></div>
+    </div>
   </div>
 </div>
 
@@ -3785,7 +4070,7 @@ const PEOPLE = {
       ['Norman born', 'February 10, 1921 · died April 21, 1974 · married 17 years'],
       ['Home', '622 South Townsend Street · Santa Ana, California'],
       ['Business', 'Corbin\'s Board and Care · 12182 Candy Lane · Garden Grove, CA · purchased April 7, 1977 · $55,000'],
-      ['Children', '7 children: Michael E. Corbin, Ronnie Leroy Ballard, Hjordis L. Corbin, Deanna Denise Corbin, Sonsorey Yevette Corbin, Orngiel L. Corbin, Se\'Taun Corbin'],
+      ['Children', '7 children: Michael E. Corbin, Ronnie Leroy Ballard, Hjordis L. Corbin, Deanna Denise Corbin, Sonsorey Yevette Corbin, Orngiel L. Corbin, Se’Taun Corbin'],
       ['Died', 'October 15, 1988 · Orange County, California · age 59'],
       ['Legacy', 'Corbin\'s Guest Home still operating at 12182 Candy Lane in 2025 · Oselia Maldonado kept her name for 36 years'],
     ],
@@ -3824,6 +4109,42 @@ const PEOPLE = {
     ],
     body: 'Hjordis L. Corbin was born January 20, 1960 in Santa Ana, California — the daughter of Margie Nell Ballard Corbin and Norman Caswell Corbin. She grew up at 622 South Townsend Street in Santa Ana and later at 12182 Candy Lane in Garden Grove — the home where Jasmine has her earliest memories of NaNa.\n\nHjordis lost her mother when she was 28 years old. Nobody explained the probate to her. The house was gone. The safe was gone. She navigated all of it and kept going.\n\nShe met Dock Phillip Ellis Jr. at Margie\'s house in 1985. They were together through the end of Margie\'s life, through the probate, through everything. She worked for American Airlines until September 11, 2001 changed that life. She later returned to school and became a substance abuse counselor — following the same path of service and recovery that had defined Dock\'s post-baseball life.\n\nThe DNA testing at the center of this research is done on her kit: AncestryDNA SQ8499767 · GEDmatch QW8418781. She is the thread that connects Jasmine to Easter Bell, to Clarissa, to Patience. She is the reason any of this was possible to find.'
   },
+  norman: {
+    name: 'Norman Caswell Corbin',
+    role: 'Your Grandfather · Papa Russ',
+    dates: 'February 10, 1921 – April 21, 1974 · age 53',
+    place: 'Cleveland, OH → Detroit, MI → Los Angeles, CA → Santa Ana, CA',
+    facts: [
+      ['Born', 'February 10, 1921 · Cleveland, Cuyahoga County, Ohio · father Earl Russell Corbin, age 28 · mother Mattie Lou Simpson, age 38'],
+      ['Parents', 'Earl Russell Corbin (1892–1959) · Mattie Lou Simpson'],
+      ['Detroit years', '1930s–1950s · lived with family in Paris, Kentucky as a child · moved to Detroit by 1935 · Occupation: Clothing Finisher · 1950 census'],
+      ['Military', 'Served November 11, 1942 · age 21'],
+      ['First family', 'Three children with Estella Dolores Richards in Detroit · Norma Delores (1942), Matta Carol (1944), Marvin Darrel (1949)'],
+      ['Ophelia', 'Also had children with Ophelia Pure · Ophelia died October 2, 1955 · Los Angeles · car crash into light standard near St. Matthias Episcopal Church · Norman suffered skull fracture · manslaughter charges later dismissed for lack of witnesses'],
+      ['Marriage to Margie', 'March 17, 1957 · R.H. Lutes Wedding Chapel · Yuma, Arizona · note: Ancestry shows 1956 date on license — confirm against original document'],
+      ['California children', 'Hjordis L. (1960), Deanna Denise (1961), Sonsorey Yevette (1962), Orngiel L. (1964), Se’Taun (1966) · all born Orange County, CA'],
+      ['Civic leader', 'Named to Santa Ana College Community Relations Advisory Council · listed as “Norman Corbin, minister” · advising college on minority student needs, ethnic curriculum, and community services · Los Angeles Times, April 24, 1974'],
+      ['Died', 'April 21, 1974 · Orange County, California · age 53'],
+      ['Buried', 'Santa Ana, California'],
+      ['Honor', 'Corbin Community Center · 2215 McFadden Avenue · Santa Ana, CA · named in his honor after his death'],
+    ],
+    timeline: [
+      ['Feb 10, 1921', 'Born in Cleveland, Ohio · son of Earl Russell Corbin and Mattie Lou Simpson'],
+      ['1930', 'Living in Paris, Kentucky with family · listed as nephew in household'],
+      ['1935–1950', 'Detroit, Michigan · working as clothing finisher · building his first family'],
+      ['Nov 11, 1942', 'Military service · age 21'],
+      ['1942–1949', 'Three children born in Detroit with Estella Richards · Norma, Matta Carol, Marvin Darrel'],
+      ['Oct 2, 1955', 'His wife Ophelia dies in car crash in Los Angeles · Norman seriously injured · skull fracture · manslaughter charges later dismissed'],
+      ['1954–1956', 'Moves to Los Angeles · working as chauffeur'],
+      ['Mar 17, 1957', 'Marries Margie Nell Ballard · Yuma, Arizona'],
+      ['1960–1966', 'Six children born with Margie in Orange County, California'],
+      ['Late 1960s', 'Established in Santa Ana community · civic leader · minister'],
+      ['1974', 'Named to Santa Ana College Community Relations Advisory Council advising on minority student needs'],
+      ['Apr 21, 1974', 'Dies in Orange County, California · age 53'],
+      ['1974', 'Corbin Community Center named in his honor · 2215 McFadden Avenue · Santa Ana'],
+    ],
+    body: 'Norman Caswell Corbin was born February 10, 1921 in Cleveland, Ohio — the son of Earl Russell Corbin and Mattie Lou Simpson. He grew up partly in Paris, Kentucky, and came of age in Detroit, Michigan, during the 1930s and 1940s. He served in the military in 1942 and built his first family in Detroit.\n\nBy the mid-1950s he had moved to Los Angeles, working as a chauffeur. On October 2, 1955, his wife Ophelia was killed when their car struck a light standard feet from the front door of St. Matthias Episcopal Church on Normandie Avenue. Norman suffered a skull fracture. Manslaughter charges were later dismissed for lack of witnesses. He lost his wife and nearly his life in a single moment. He was 34 years old.\n\nHe met Margie Nell Ballard and they married on March 17, 1957 in Yuma, Arizona. They settled in Orange County, California, where they built a family together — six children born between 1960 and 1966. He and Margie made a home at 622 South Townsend Street in Santa Ana.\n\nNorman became a minister and a civic leader in Santa Ana. In the spring of 1974 he was named to the Santa Ana College Community Relations Advisory Council — a group charged with advising the college on minority student needs, ethnic curriculum, and community programs. He was one of seventeen people named, listed simply as “Norman Corbin, minister.” Three days later, he was dead. He died April 21, 1974 — he was 53 years old.\n\nThe City of Santa Ana named the Corbin Community Center at 2215 McFadden Avenue in his honor. The family did not get to know him the way they should have. He died before most of his children were old enough to remember who he really was. What they have is the name on that community center, the marriage license from Yuma, and the photographs. Papa Russ. He was real, and he mattered.',
+  },
   dock: {
     name: 'Dock Phillip Ellis Jr.',
     role: 'Stepfather · Named Jasmine as his child',
@@ -3840,7 +4161,7 @@ const PEOPLE = {
       ['Later life', 'Became a substance abuse counselor · advocated for recovery and community'],
       ['Died', 'December 19, 2008 · liver failure'],
     ],
-    body: 'Dock Phillip Ellis Jr. was one of the most electric pitchers of his era — and one of the most human. He pitched for the Pittsburgh Pirates through their 1971 World Series championship year. He was an All-Star. He threw a no-hitter on June 12, 1970. He was also deeply, publicly honest about addiction and recovery in ways that changed how athletes talked about these things.\n\nHe met Hjordis L. Corbin in 1985, at Margie\'s house in Santa Ana. He was part of the family through the end of Margie\'s life, through the probate, through everything that came after. He and Hjordis married in 1992.\n\nHe named Jasmine Marie Lee as his child in his will. She carries his name forward through the Dock Ellis Foundation — an organization that works in recovery and community, continuing the advocacy work he began in his later life.\n\nDock Ellis died December 19, 2008. He was 63 years old. His name is on this family\'s research because he chose this family, and they chose him back.'
+    body: 'Dock Phillip Ellis Jr. was one of the most electric pitchers of his era — and the only father Jasmine ever really knew. He came into her life when she was very young. He was strict, present, bigger than life, and a big reason she became who she is today.\n\nHe pitched for the Pittsburgh Pirates through their 1971 World Series championship year. He was an All-Star. He threw a no-hitter on June 12, 1970. But what defined Dock off the field was his honesty about addiction and recovery. He became a substance abuse counselor after baseball. Hjordis later walked the same path. Dock had that effect on people around him.\n\nHe met Hjordis at Margie\'s house in Santa Ana in 1985. He was there through the end of Margie\'s life, through the probate, through all of it. He and Hjordis raised Jasmine together — living in Florida, Arizona, and Texas. Fort Worth is where Jasmine spent most of her childhood, not knowing yet that her grandmother Margie had been born in that exact city.\n\nIn Texas they connected with the Clemons side of the family — a line not yet fully researched. Dock helped several of Margie\'s siblings get clean and sober. Jade — Deanna\'s daughter — lived with them for much of Jasmine\'s childhood and looks at Dock like a father.\n\nThe last trip Jasmine took with Dock was to Pittsburgh for All-Star weekend. Her first time in the city. He took her to hole-in-the-wall spots, juke joints, showed her where he played, told her stories. She didn\'t know it would be the last time.\n\nHe died December 19, 2008 of cirrhosis of the liver. He was 63 years old. It was one of the hardest losses Jasmine and Hjordis ever faced. He named Jasmine Marie Lee as his daughter in his will. The foundation carries his name.'
   }
 };
 
@@ -3918,8 +4239,8 @@ function openPersonModal(id) {
   document.body.style.overflow = 'hidden';
   
   // Scroll sheet to top
-  const sheet = document.getElementById('modal-sheet');
-  if (sheet) sheet.scrollTop = 0;
+  const scrollBody = document.getElementById('modal-scroll-body');
+  if (scrollBody) scrollBody.scrollTop = 0;
   
   // Focus the close button after animation
   setTimeout(() => {
@@ -4115,6 +4436,83 @@ function submitMemory() {
   const body = encodeURIComponent(`From: ${name}\n\nMemory:\n${text}\n\n---\nSent from the Nichols-Waldrop Family Legacy website`);
   window.open(`mailto:jlee@dockellisfoundation.com?subject=${subject}&body=${body}`, '_blank');
 }
+
+
+/* ═══════════════════════════════════════════════
+   ON THIS DAY
+═══════════════════════════════════════════════ */
+const FAMILY_EVENTS = [
+  // Format: { month, day, year, name, event, type }
+  { month:7,  day:4,  year:1848, name:'Easter Bell Nichols',        event:'Born enslaved on Independence Day · Bellville, Austin County, Texas', type:'birth' },
+  { month:6,  day:19, year:1865, name:'Juneteenth',                  event:'Easter Bell freed at 17 · Bellville, Texas · six months later she married Joseph Nichols', type:'milestone' },
+  { month:12, day:18, year:1865, name:'Easter Bell + Joseph Nichols', event:'Married · Austin County, Texas · six months after Juneteenth', type:'marriage' },
+  { month:9,  day:1,  year:1870, name:'Hellen Nichols Armstrong',    event:'Born · Bellville, Austin County, Texas · daughter of Easter Bell', type:'birth' },
+  { month:8,  day:30, year:1911, name:'John Armstrong',               event:'Shot and killed near the Terminal Hotel · Fort Worth, Texas · Eva was 11 years old', type:'death' },
+  { month:12, day:17, year:1935, name:'Easter Bell Nichols',          event:'Died at 87 years old · Bellville, Texas · died free on the same land where she was born enslaved', type:'death' },
+  { month:12, day:5,  year:1931, name:'Hellen Nichols Armstrong',     event:'Died of Pellagra · TX State File No. 54237 · age approximately 61', type:'death' },
+  { month:2,  day:10, year:1921, name:'Norman Caswell Corbin',        event:'Born · Cleveland, Cuyahoga County, Ohio · son of Earl Russell Corbin and Mattie Lou Simpson', type:'birth' },
+  { month:3,  day:17, year:1957, name:'Margie Nell Ballard + Norman Caswell Corbin', event:'Married · R.H. Lutes Wedding Chapel · Yuma, Arizona', type:'marriage' },
+  { month:3,  day:13, year:1929, name:'Margie Nell Ballard Corbin',   event:'Born · Fort Worth, Tarrant County, Texas · daughter of James and Eva Ballard', type:'birth' },
+  { month:4,  day:21, year:1974, name:'Norman Caswell Corbin',        event:'Died · Orange County, California · age 53 · Corbin Community Center named in his honor', type:'death' },
+  { month:10, day:15, year:1988, name:'Margie Nell Ballard Corbin',   event:'Died · Orange County, California · age 59 · left behind 12182 Candy Lane and seven children', type:'death' },
+  { month:4,  day:7,  year:1977, name:'12182 Candy Lane',             event:'Margie Nell Ballard Corbin purchases 12182 Candy Lane · Garden Grove, CA · $55,000', type:'milestone' },
+  { month:4,  day:27, year:1989, name:'12182 Candy Lane',             event:'Estate sells to Oselia and Rigoberto Maldonado · $175,000 · probate closed · Candy Lane chapter ends', type:'milestone' },
+  { month:1,  day:20, year:1960, name:'Hjordis L. Corbin',            event:'Born · Los Angeles, California · daughter of Margie and Norman', type:'birth' },
+  { month:1,  day:25, year:1982, name:'Jasmine M. Lee',               event:'Born · Garden Grove, California · daughter of Hjordis L. Corbin', type:'birth' },
+  { month:3,  day:11, year:1945, name:'Dock Phillip Ellis Jr.',        event:'Born · Los Angeles, California · future MLB pitcher and father of Jasmine', type:'birth' },
+  { month:12, day:19, year:2008, name:'Dock Phillip Ellis Jr.',        event:'Died of cirrhosis of the liver · age 63 · Pittsburgh All-Star weekend was their last trip together', type:'death' },
+  { month:6,  day:12, year:1970, name:'Dock Ellis',                    event:'Threw a no-hitter for the Pittsburgh Pirates', type:'milestone' },
+  { month:11, day:11, year:1953, name:'Ronnie Leroy Ballard',          event:'Born · Bexar County, Texas · son of Margie Nell Ballard', type:'birth' },
+  { month:12, day:28, year:1961, name:'Deanna Denise Corbin',          event:'Born · Orange County, California', type:'birth' },
+  { month:11, day:29, year:1962, name:'Sonsorey Yevette Corbin',       event:'Born · Orange County, California', type:'birth' },
+  { month:12, day:14, year:1964, name:'Orngiel L. Corbin',             event:'Born · Orange County, California', type:'birth' },
+  { month:4,  day:30, year:1966, name:"Se’Taun Corbin",               event:'Born · Orange County, California', type:'birth' },
+  { month:8,  day:26, year:1951, name:'Michael E. Corbin Sr.',         event:'Born · son of Margie Nell Ballard Corbin', type:'birth' },
+  { month:11, day:1,  year:2009, name:'Michael E. Corbin Sr.',         event:'Died · Las Vegas, Nevada · age 58', type:'death' },
+  { month:5,  day:24, year:1931, name:'Elois Maud Ballard (Lois Bradshaw)', event:'Born · San Antonio, Texas · daughter of James and Eva Ballard · last living child of that generation', type:'birth' },
+  { month:11, day:24, year:1977, name:'Eva Armstrong Ballard',         event:'Died · Garden Grove, California · the woman your family actually remembers', type:'death' },
+  { month:8,  day:2,  year:2026, name:'Margie Corbin Estate Research', event:'Jasmine orders the OC Superior Court estate paperwork for Margie Corbin · ROA 14 and ROA 55 requested · this research session', type:'milestone' },
+  { month:10, day:2,  year:1955, name:'Ophelia Pure Corbin',           event:'Died in car crash · Los Angeles · Norman\'s first wife · age 26 · manslaughter charges later dismissed', type:'death' },
+  { month:7,  day:30, year:1914, name:'Easter Bell Nichols',           event:'Marries Hannibal Pink · her second marriage · she outlived him too', type:'marriage' },
+];
+
+function initOnThisDay() {
+  const now = new Date();
+  const m = now.getMonth() + 1;
+  const d = now.getDate();
+  
+  const todayLabel = document.getElementById('today-label');
+  if (todayLabel) {
+    const months = ['','January','February','March','April','May','June','July','August','September','October','November','December'];
+    todayLabel.textContent = months[m] + ' ' + d;
+  }
+  
+  const matches = FAMILY_EVENTS.filter(e => e.month === m && e.day === d);
+  const container = document.getElementById('on-this-day-results');
+  const empty = document.getElementById('on-this-day-empty');
+  if (!container) return;
+  
+  if (matches.length === 0) {
+    container.style.display = 'none';
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+  
+  const typeColors = { birth: '#3A6B5A', death: '#6B3A3A', marriage: '#C9A84C', milestone: '#4A5A8A' };
+  const typeLabels = { birth: 'Birthday', death: 'Passed', marriage: 'Anniversary', milestone: 'Milestone' };
+  
+  matches.forEach(ev => {
+    const div = document.createElement('div');
+    div.style.cssText = 'background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;border-left:4px solid ' + (typeColors[ev.type] || 'var(--gold)') + ';';
+    div.innerHTML = '<p style="font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:' + (typeColors[ev.type] || 'var(--gold)') + ';margin-bottom:6px;">' + (typeLabels[ev.type] || 'Event') + (ev.year ? ' · ' + ev.year : '') + '</p>' +
+      '<p style="font-family:var(\'--f-display\');font-size:18px;color:var(--parchment);margin-bottom:6px;">' + ev.name + '</p>' +
+      '<p style="font-size:13px;color:var(--cream);line-height:1.6;">' + ev.event + '</p>';
+    container.appendChild(div);
+  });
+}
+
+// Run on load
+window.addEventListener('load', initOnThisDay);
 
 /* ═══════════════════════════════════════════════
    KEYBOARD ACCESSIBILITY

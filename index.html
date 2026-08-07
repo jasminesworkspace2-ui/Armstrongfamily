@@ -1870,6 +1870,9 @@ footer {
   <a href="papertrail.html" target="_blank" class="drawer-link" style="color:var(--gold2);">
     <span class="icon" aria-hidden="true">·</span> The Paper Trail · Patience
   </a>
+  <a href="familytime.html" target="_blank" class="drawer-link" style="color:var(--gold2);">
+    <span class="icon" aria-hidden="true">·</span> Family Time · Our Dates in History
+  </a>
   <a href="#ballard-section" class="drawer-link">
     <span class="icon" aria-hidden="true">·</span> The Ballard Line
   </a>
@@ -2352,7 +2355,7 @@ footer {
         <div class="card-header">
           <p class="card-role">2nd Great-Grandfather</p>
           <h3 class="card-name">John Armstrong</h3>
-          <p class="card-dates">ca. 1877 – August 30, 1911</p>
+          <p class="card-dates">ca. 1878 – August 30, 1911</p>
         </div>
         <div class="card-body">
           <p class="card-place">Bellville, TX → Fort Worth, TX</p>
@@ -3249,6 +3252,10 @@ footer {
           <img src="https://raw.githubusercontent.com/jasminesworkspace2-ui/Armstrongfamily/main/Thelma%20birth%20certificate.jpeg" alt="Thelma Louise Ballard birth and death certificate 1938" loading="lazy">
           <p class="gallery-item-caption">Thelma Louise Ballard · Born December 3, 1938 · Died March 16, 1939 · San Antonio · 107 Ezell St</p>
         </div>
+        <div class="gallery-item tall" onclick="openLightbox(this)">
+          <img src="https://raw.githubusercontent.com/jasminesworkspace2-ui/Armstrongfamily/main/Betty%20birth%20cerificate.jpeg" alt="Bettie Jean Ballard birth certificate 1935" loading="lazy">
+          <p class="gallery-item-caption">Bettie Jean Ballard (Betty Berry) · December 13, 1935 · San Antonio · Delayed birth certificate · Midwife Ida Green · 203 Pearl St</p>
+        </div>
       </div>
     </div>
 
@@ -3711,7 +3718,7 @@ footer {
       <!-- Margie relationship note -->
       <div style="background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:14px 16px;margin-top:16px;margin-bottom:4px;">
         <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Margie's Relationships · What Is Known</p>
-        <p style="font-size:12px;color:var(--muted);line-height:1.6;">The 1950 Bexar County census confirms Margie's first marriage. She appears as <strong style="color:var(--cream);">Marjie N. Coco</strong>, age 21, with husband <strong style="color:var(--cream);">Isaac Coco</strong>, age 23, living in Eva's household at 150 Paul Street, San Antonio. Her confirmed relationship timeline: <strong style="color:var(--cream);">Isaac Coco</strong> — first husband, married before 1950, in Eva's household together · <strong style="color:var(--cream);">Theodore Williams Jr.</strong> — father of Michael E. Corbin Sr. (b. 1951) · <strong style="color:var(--cream);">Leroy Armstrong Jr. "Icecream"</strong> — believed father of Ronnie Leroy Ballard (b. Nov 1953), hypothesis unconfirmed · <strong style="color:var(--cream);">Norman Caswell Corbin</strong> — married March 17, 1957, Yuma AZ, father of the five youngest (Hjordis, Deanna, Sonsorey, Orngiel, Se&apos;Taun). <strong style="color:var(--cream);">Charles R. Baker</strong> has not yet been traced.</p>
+        <p style="font-size:12px;color:var(--muted);line-height:1.6;">The 1950 Bexar County census confirms Margie's first marriage. She appears as <strong style="color:var(--cream);">Marjie N. Coco</strong>, age 21, with husband <strong style="color:var(--cream);">Isaac Coco</strong>, age 23, living in Eva's household at 150 Paul Street, San Antonio. Her confirmed relationship timeline: <strong style="color:var(--cream);">Charles R. Baker</strong> — first husband · married October 8, 1946 · Bexar County, Texas · Certificate #174146 · marriage and divorce confirmed · Baker's subsequent whereabouts not yet traced · <strong style="color:var(--cream);">Isaac Coco</strong> — second husband · married February 1, 1949 · Bexar County · <strong style="color:var(--cream);">Theodore Williams Jr.</strong> — father of Michael E. Corbin Sr. (b. 1951) · <strong style="color:var(--cream);">Leroy Armstrong Jr. "Icecream"</strong> — believed father of Ronnie Leroy Ballard (b. Nov 1953), hypothesis unconfirmed · <strong style="color:var(--cream);">Norman Caswell Corbin</strong> — married March 17, 1957, Yuma AZ, father of the five youngest (Hjordis, Deanna, Sonsorey, Orngiel, Se&apos;Taun). <strong style="color:var(--cream);">Charles R. Baker</strong> has not yet been traced.</p>
       </div>
 
       <!-- Michael's children -->
@@ -5146,7 +5153,8 @@ const PEOPLE = {
       ['Mother', 'Rendy Blayn (b. ca. 1817, North Carolina) · confirmed by death certificate Field 15'],
       ['First child', 'Katie Thornton · born ca. March 1860 · Easter Bell approximately 11 years old · conceived in bondage'],
       ['Freed', 'Juneteenth 1865 · age 17'],
-      ['Marriage 1', 'Joseph Nichols · December 18, 1865 · Austin County, TX · 8 children together'],
+      ['Marriage 1', 'Joseph Nichols · December 18, 1865 · Austin County, TX · Joseph died 1905 · buried Jeff Cemetery Bellville alongside Easter Bell'],
+      ['Children', 'Katie Thornton (March 25 1860 · born enslaved) · Allen (June 1865) · Annie (1866) · Oscar (1869) · Hellen/Hellen Nichols Armstrong (Sept 1870) · Clara Nazy (March 6 1875) · Willie (June 7 1884) · Helen Reese (ca. 1884) · Mabel (1891) · confirmed by Jeff Cemetery index'],
       ['Marriage 2', 'Hannibal Pink · July 30, 1914 · she outlived him too'],
       ['Died', 'December 17, 1935 · Bellville, TX · fell, fractured left femur · age 87'],
       ['Buried', 'Jeff Cemetery · Bellville, Austin County, Texas'],
@@ -5167,53 +5175,54 @@ const PEOPLE = {
   hellen: {
     name: 'Hellen Nichols Armstrong',
     role: 'Your 2nd Great-Grandmother',
-    dates: 'September 1870 – December 5, 1931',
+    dates: 'September 1870 – unknown · last confirmed 1930',
     place: 'Bellville, TX → Fort Worth, TX',
     facts: [
       ['Born', 'September 1870 · Bellville, Austin County, Texas'],
       ['Parents', 'Easter Bell Nichols + Joseph Nichols · confirmed via DNA and census records'],
       ['Marriage', 'John Armstrong · ca. 1898 · Austin County, TX'],
       ['Husband killed', 'August 30, 1911 · Fort Worth · Eva was 11 years old'],
-      ['Second husband', 'Albert Reese · married ca. 1912–1920 · she filed Eva\'s death certificate as "Helen Reese"'],
-      ['Died', 'December 5, 1931 · cause: Pellagra · TX State File No. 54237 [NOTE: This certificate belongs to Helen Nichols Reese — Hellen Armstrong\'s death certificate has not yet been located]'],
-      ['Filed by', 'Eva Armstrong · her daughter · confirmed same person as Helen Reese'],
+      ['After John\'s death', 'Widowed 1911 · ran Ice Cream Parlor in Fort Worth 1911-1912 · documented in Fort Worth city directories 1909, 1912, 1920'],
+      ['1930', 'Living with Eva and James Ballard at 1121 Pulaski Avenue, Fort Worth · listed in census as Helen Gilbert · surname unexplained · last confirmed record'],
+      ['Death', 'Not yet confirmed · death certificate not yet located · last confirmed record April 1930 Fort Worth census'],
+      ['Note', 'Helen Nichols Reese (b. ca. 1884) is a separate person — Easter Bell\'s younger daughter — who died December 5 1931 in Bellville · cert 54237 belongs to her'],
     ],
     timeline: [
       ['September 1870', 'Born in Bellville, Austin County, Texas — daughter of Easter Bell Nichols and Joseph Nichols'],
       ['June 1900', 'Found in Austin County Jail census with husband John Armstrong and baby Eva (4 months)'],
       ['ca. 1899', 'Eva Armstrong born — her daughter'],
       ['August 30, 1911', 'John Armstrong shot and killed in Fort Worth — Eva is 11 years old'],
-      ['ca. 1912–1920', 'Marries Albert Reese — she becomes Helen Reese in later records'],
-      ['December 5, 1931', 'Dies of Pellagra at approximately 61 years old · TX State File No. 54237 [NOTE: This certificate belongs to Helen Nichols Reese — Hellen Armstrong\'s death certificate has not yet been located] · Eva filed the certificate'],
+      ['1912–1920', 'Documented in Fort Worth city directories · 1232 E. Hattie St (1912) · 1010 E. 4th St (1920) · building her life as a widow in Fort Worth'],
+      ['After 1930', 'Death certificate not yet located · research ongoing · Helen Nichols Reese (Easter Bell\'s younger daughter) died December 5 1931 in Bellville · cert 54237 belongs to her not to Hellen Armstrong'],
     ],
     body: 'Hellen Nichols Armstrong was the daughter of Easter Bell Nichols. She was born in September 1870 in Bellville, Texas — the same land where her mother had been enslaved. She appears in the 1900 census as an inmate in the Austin County Jail — not a criminal, but a resident of the county jail building, where she and her husband John Armstrong and their infant daughter Eva (four months old) were counted.\n\nWhen Eva was 11 years old, John Armstrong was shot and killed near the entrance of the Terminal Hotel in Fort Worth by a white transfer line operator named Jack Thompson. Thompson was never convicted. Hellen was left to raise Eva alone.\n\nShe eventually married a man named Albert Reese, and appears in her daughter Eva\'s death certificate as "Helen Reese" — the same person confirmed by DNA evidence. She died December 5, 1931 of Pellagra — a nutritional deficiency disease common in the South, caused by niacin deficiency often linked to poverty. She was approximately 61 years old.'
   },
   john: {
     name: 'John Armstrong',
     role: 'Your 2nd Great-Grandfather',
-    dates: 'ca. 1877 – August 30, 1911',
+    dates: 'ca. 1878 – August 30, 1911',
     place: 'Bellville, TX → Fort Worth, TX',
     facts: [
       ['Born', 'ca. 1877 · Austin County, Texas'],
       ['Marriage', 'Hellen Nichols · ca. 1898 · Austin County, TX'],
       ['Daughter', 'Eva Armstrong · born ca. 1899'],
-      ['1900 census', 'Listed as "inmate" in Austin County Jail with Hellen and baby Eva'],
+      ['1900 census', 'Family listed at Bellville address under "Inmate of Jail" classification · John\'s occupation column is blank — no job recorded · In Austin County Texas in 1900, this classification carried the full weight of the convict leasing system that had re-enslaved tens of thousands of Black Texans after emancipation · From 1870 to 1912, 60 percent of Texas prisoners were Black · Whether John was held under that system, living in labor camp housing near railroad work, or navigating debt peonage — his occupation being blank and the family listed at an institutional address is not a clerical error · it is a reflection of what Jim Crow Texas looked like for a 22-year-old Black man with a wife and a 4-month-old daughter in 1900 · Also in the household: John age 19 (boarder) — possibly John Armstrong\'s brother'],
       ['Death', 'August 30, 1911 · shot dead near Terminal Hotel · East Front Street · Fort Worth, TX'],
       ['Killed by', 'Jack Thompson · white transfer line operator · claimed Armstrong had assaulted his son'],
       ['How', 'Bullet entered Armstrong\'s mouth, came out the top of his head · Thompson released on $3,000 bond'],
       ['Verdict', 'Thompson waived preliminary trial · never convicted'],
     ],
-    body: 'John Armstrong was shot and killed on August 30, 1911, near the East Front Street entrance to the Terminal Hotel in Fort Worth, Texas. He was approximately 34 years old. His daughter Eva was 11.\n\nThe man who killed him, Jack Thompson — a white transfer line operator — claimed that Armstrong had assaulted his son earlier that day. Thompson surrendered to police, was released on a $3,000 bond, waived his preliminary hearing, and was never convicted of any crime.\n\nThe bullet entered John Armstrong\'s mouth and came out the top of his head. Hellen was left a widow. Eva and her siblings were left without a father. This was one of thousands of such cases across the South in the early twentieth century where the killing of a Black man by a white man was answered with nothing.\n\nEva and Hellen appear in the 1900 census living in the Austin County Jail — not as criminals but as residents counted in the jail building on census day. This is one of the documentary facts that makes Eva Armstrong\'s survival story so remarkable.'
+    body: 'In the 1900 census, John Armstrong and his family — wife Hellen and 4-month-old Eva — are listed at a Bellville address classified as \'Inmate of Jail\' with John\'s occupation left blank. In Austin County, Texas in 1900, this was not a clerical error. It was a reflection of the convict leasing system that criminalized Black men for vagrancy, debt, and minor offenses, then leased them as labor to railroads and plantations. Whether John was held under that system or living in institutional housing connected to his railroad work, the blank occupation and institutional classification tell a story about what Jim Crow Texas meant for a young Black family in 1900.\n\nJohn Armstrong was shot and killed on August 30, 1911, near the East Front Street entrance to the Terminal Hotel in Fort Worth, Texas. He was approximately 34 years old. His daughter Eva was 11.\n\nThe man who killed him, Jack Thompson — a white transfer line operator — claimed that Armstrong had assaulted his son earlier that day. Thompson surrendered to police, was released on a $3,000 bond, waived his preliminary hearing, and was never convicted of any crime.\n\nThe bullet entered John Armstrong\'s mouth and came out the top of his head. Hellen was left a widow. Eva and her siblings were left without a father. This was one of thousands of such cases across the South in the early twentieth century where the killing of a Black man by a white man was answered with nothing.\n\nEva and Hellen appear in the 1900 census living in the Austin County Jail — not as criminals but as residents counted in the jail building on census day. This is one of the documentary facts that makes Eva Armstrong\'s survival story so remarkable.'
   },
   eva: {
     name: 'Eva Armstrong Ballard',
     role: 'Your Great-Grandmother',
-    dates: 'ca. 1899 – November 24, 1977',
+    dates: 'ca. June 1900 – November 24, 1977',
     place: 'Bellville, TX → Fort Worth, TX → San Antonio, TX → Orange County, CA',
     photo: 'https://plain-wnam-prod-public.komododecks.com/202608/02/ghwYo1iRMTdHfznKiFsX/image.png',
-    photoCaption: 'Eva Armstrong Ballard with James Wilson Ballard and Leroy · San Antonio · Expires Sept 1 2026 — upload to GitHub',
+    photoCaption: 'Eva Armstrong Ballard · San Antonio era',
     facts: [
-      ['Born', 'ca. early 1899 · Bellville, Austin County, Texas · James Ballard Sr. listed Fort Worth on a 1939 death certificate but the 1900 census places the family in Bellville when Eva was 4 months old'],
+      ['Born', 'ca. June 1900 · Bellville, Austin County, Texas · confirmed by 1900 census showing her as 4 months old in June 1900 · multiple birth certificates for her children confirm Bellville as her birthplace · Thelma Louise death cert lists Fort Worth (conflict noted)'],
       ['Parents', 'Hellen Nichols Armstrong + John Armstrong'],
       ['June 1900', 'Age 4 months · listed in Bellville, Austin County census with parents · family had moved for John Armstrong\'s work'],
       ['Marriage', 'James Wilson Ballard Sr. · ca. 1925–1928 · Fort Worth, TX'],
@@ -5256,13 +5265,13 @@ const PEOPLE = {
     facts: [
       ['Born', 'August 26, 1897 · Palestine, Anderson County, Texas · confirmed WWII draft card · Serial T-1649 · medium build, medium height, black hair, brown eyes'],
       ['Marriage', 'Eva Armstrong Ballard · Fort Worth, TX'],
-      ['Children', 'At least 5 confirmed: Margie Nell, Elois Maud (Lois), James Jr., Thelma Louise, + others'],
+      ['Children', '7 confirmed in birth order: James Jr. (June 17 1926), unnamed James (April 9 1928 · premature death), Margie Nell (March 13 1929), Eloise Maud/Lois (May 24 1931), Charles Ray (March 5 1933), Bettie Jean/Betty (December 13 1935), Thelma Louise (December 3 1938 · died March 16 1939)'],
       ['San Antonio', 'Active in East Side community · business interests'],
       ['Son', 'James Wilson Ballard Jr. · made San Antonio Light front page 1954 · police cover-up case'],
-      ['Died', 'ca. 1953 · before records confirm location'],
+      ['Died', 'March 13, 1953 · Austin State Hospital · Texas State File No. 16556 · cause: tuberculosis and psychosis'],
       ['Ballard line', 'Traces to Rev. George W. Ballard → Newton Ballard → Louisa Hypothesis (Louisiana)'],
     ],
-    body: 'James Wilson Ballard Sr. was the husband of Eva Armstrong Ballard and the father of Margie Nell Ballard — who became NaNa. He was born approximately 1898 in Fort Worth, Texas, and appears in the 1900 Fort Bend County census.\n\nHe and Eva built their family across Fort Worth and San Antonio. Their addresses chart the physical movement of the family through Fort Worth\'s historic Black communities during the Great Depression — from Ward 5 east of downtown in 1910, through the Historic Southside along E. Annie Street and E. Magnolia Avenue, and the East Side along Pulaski Avenue, before eventually moving southwest to San Antonio by December 1935. Their seven confirmed children in birth order: James Wilson Ballard Jr. (June 17, 1926 · Missouri Ave), an unnamed James (April 9, 1928 · died premature), Margie Nell (March 13, 1929 · E. Annie St), Eloise Maud/Lois (May 24, 1931 · E. Magnolia), Charles Ray (March 5, 1933 · City-County Hospital), Bettie Jean/Betty (December 13, 1935 · San Antonio), and Thelma Louise (December 3, 1938 · San Antonio · died March 16, 1939). His son James Wilson Ballard Jr. was prominent enough in San Antonio\'s East Side community to make the front page of the San Antonio Light in 1954 when he helped expose a police cover-up in the Johnie Caldwell murder case. James Jr. also appears in records as a federal gambling tax stamp agent at 207 N. Center Street — a legal IRS stamp required for what were effectively illegal gambling operations, context that reflects the economic realities of Black entrepreneurship in 1950s San Antonio.\n\nJames Sr.’s line traces back through Rev. George W. Ballard and Newton Ballard. The Louisa Hypothesis — connecting Newton to an enslaved woman named Louisa from the John Bullard estate in Louisiana — is the most promising open research avenue in the Ballard line.'
+    body: 'James Wilson Ballard Sr. was the husband of Eva Armstrong Ballard and the father of Margie Nell Ballard — who became NaNa. He was born August 26, 1897 in Palestine, Anderson County, Texas, confirmed by his WWI draft card (Serial T-1649).\n\nHe and Eva built their family across Fort Worth and San Antonio. Their addresses chart the physical movement of the family through Fort Worth\'s historic Black communities during the Great Depression — from Ward 5 east of downtown in 1910, through the Historic Southside along E. Annie Street and E. Magnolia Avenue, and the East Side along Pulaski Avenue, before eventually moving southwest to San Antonio by December 1935. Their seven confirmed children in birth order: James Wilson Ballard Jr. (June 17, 1926 · Missouri Ave), an unnamed James (April 9, 1928 · died premature), Margie Nell (March 13, 1929 · E. Annie St), Eloise Maud/Lois (May 24, 1931 · E. Magnolia), Charles Ray (March 5, 1933 · City-County Hospital), Bettie Jean/Betty (December 13, 1935 · San Antonio), and Thelma Louise (December 3, 1938 · San Antonio · died March 16, 1939). His son James Wilson Ballard Jr. was prominent enough in San Antonio\'s East Side community to make the front page of the San Antonio Light in 1954 when he helped expose a police cover-up in the Johnie Caldwell murder case. James Jr. also appears in records as a federal gambling tax stamp agent at 207 N. Center Street — a legal IRS stamp required for what were effectively illegal gambling operations, context that reflects the economic realities of Black entrepreneurship in 1950s San Antonio.\n\nJames Sr.’s line traces back through Rev. George W. Ballard and Newton Ballard. The Louisa Hypothesis — connecting Newton to an enslaved woman named Louisa from the John Bullard estate in Louisiana — is the most promising open research avenue in the Ballard line.'
   },
   margie: {
     name: 'Margie Nell Ballard Corbin',

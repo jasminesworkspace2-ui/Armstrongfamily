@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Easter Bell · Armstrong Family Archive</title>
+<style>
+  :root {
+    --deep: #080604;
+    --gold: #c9a84c;
+    --gold2: #e8c96a;
+    --cream: #ede0c8;
+    --parchment: #d4bf9a;
+    --aged: #a89878;
+    --muted: #6a5c42;
+    --border: rgba(201,168,76,0.15);
+    --f-display: 'Georgia', 'Times New Roman', serif;
+    --f-body: 'Georgia', serif;
+    --f-mono: 'Courier New', monospace;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--deep);
+    color:var(--cream);
+    font-family:var(--f-body);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  .nav {
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(8,6,4,0.96);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-back { font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none; }
+  .nav-title { font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted); }
+
+  /* OPENING */
+  .opening {
+    min-height:100vh;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    padding:100px 24px 80px;text-align:center;
+    position:relative;
+    background:radial-gradient(ellipse at center, rgba(139,105,20,0.08) 0%, transparent 65%);
+  }
+
+  .opening-label { font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px; }
+
+  .opening-dates-top {
+    font-family:var(--f-mono);font-size:11px;letter-spacing:3px;
+    color:var(--muted);margin-bottom:32px;
+  }
+
+  .opening-name {
+    font-family:var(--f-display);
+    font-size:clamp(64px,14vw,140px);
+    font-style:italic;color:var(--parchment);
+    line-height:0.9;letter-spacing:-2px;
+    margin-bottom:12px;
+  }
+
+  .opening-name-sub {
+    font-family:var(--f-display);
+    font-size:clamp(28px,6vw,56px);
+    font-style:italic;color:var(--gold);
+    letter-spacing:-1px;margin-bottom:40px;
+  }
+
+  .opening-stats {
+    display:flex;gap:48px;justify-content:center;
+    flex-wrap:wrap;margin-bottom:48px;
+  }
+
+  .opening-stat {
+    text-align:center;
+  }
+
+  .opening-stat-number {
+    font-family:var(--f-display);
+    font-size:clamp(40px,7vw,72px);
+    font-style:italic;color:var(--parchment);
+    line-height:1;display:block;margin-bottom:6px;
+  }
+
+  .opening-stat-label {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--muted);
+  }
+
+  .opening-statement {
+    max-width:580px;
+    font-size:clamp(15px,2.5vw,17px);
+    line-height:1.9;color:var(--aged);font-style:italic;
+  }
+
+  .opening-statement em { color:var(--cream);font-style:normal; }
+
+  .scroll-down {
+    position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+    font-family:var(--f-mono);font-size:9px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--muted);
+    animation:breathe 3s ease-in-out infinite;
+  }
+  @keyframes breathe { 0%,100%{opacity:0.3;}50%{opacity:0.8;} }
+
+  /* STORY */
+  .story { max-width:680px;margin:0 auto;padding:0 24px; }
+
+  .chapter { padding:80px 0;border-top:1px solid var(--border); }
+
+  .chapter-date {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:32px;display:block;
+  }
+
+  .chapter-title {
+    font-family:var(--f-display);font-size:clamp(28px,5vw,42px);
+    font-style:italic;color:var(--parchment);
+    line-height:1.15;margin-bottom:40px;letter-spacing:-0.5px;
+  }
+
+  .chapter p {
+    font-size:clamp(15px,2.2vw,17px);line-height:2;
+    color:var(--aged);margin-bottom:28px;
+  }
+
+  .chapter p strong { color:var(--cream);font-weight:normal; }
+  .chapter p em { color:var(--parchment);font-style:italic; }
+
+  .doc-pull {
+    margin:48px 0;padding:28px 32px;
+    border-left:2px solid var(--gold);
+    background:rgba(10,8,5,0.6);
+  }
+  .doc-pull-label {
+    font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:14px;display:block;
+  }
+  .doc-pull-text {
+    font-family:var(--f-mono);font-size:13px;
+    line-height:1.9;color:var(--parchment);
+  }
+  .doc-pull-text strong { color:var(--gold2); }
+  .doc-pull-source {
+    font-family:var(--f-mono);font-size:9px;
+    color:var(--muted);margin-top:14px;display:block;
+  }
+
+  .pause {
+    text-align:center;padding:48px 0;
+    font-family:var(--f-display);
+    font-size:clamp(17px,3vw,22px);font-style:italic;
+    color:var(--parchment);line-height:1.9;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    margin:48px 0;
+  }
+
+  /* DATES TIMELINE */
+  .timeline {
+    padding:80px 0;border-top:1px solid var(--border);
+  }
+  .timeline-label {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:48px;text-align:center;display:block;
+  }
+  .timeline-entry {
+    display:grid;grid-template-columns:100px 1fr;
+    gap:24px;padding:24px 0;
+    border-bottom:1px solid var(--border);
+    align-items:start;
+  }
+  .timeline-entry:last-child { border-bottom:none; }
+  .timeline-year {
+    font-family:var(--f-display);
+    font-size:clamp(22px,3vw,32px);
+    font-style:italic;color:rgba(201,168,76,0.4);
+    line-height:1;padding-top:4px;
+  }
+  .timeline-year.gold { color:var(--gold); }
+  .timeline-content-title {
+    font-family:var(--f-display);font-size:17px;
+    font-style:italic;color:var(--parchment);
+    display:block;margin-bottom:6px;
+  }
+  .timeline-content-text {
+    font-size:14px;line-height:1.8;color:var(--aged);
+  }
+  .timeline-content-text strong { color:var(--cream);font-weight:normal; }
+
+  /* LAND SECTION */
+  .land-section {
+    padding:80px 0;border-top:1px solid var(--border);
+    text-align:center;
+  }
+  .land-label {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:24px;display:block;
+  }
+  .land-title {
+    font-family:var(--f-display);font-size:clamp(28px,5vw,48px);
+    font-style:italic;color:var(--parchment);
+    line-height:1.2;margin-bottom:40px;
+  }
+  .land-number {
+    font-family:var(--f-display);
+    font-size:clamp(80px,18vw,180px);
+    font-style:italic;color:rgba(201,168,76,0.15);
+    line-height:0.8;display:block;margin-bottom:16px;
+    position:relative;
+  }
+  .land-number-label {
+    font-family:var(--f-mono);font-size:11px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    display:block;margin-bottom:40px;
+  }
+  .land-body {
+    max-width:560px;margin:0 auto;
+    font-size:clamp(15px,2.2vw,17px);
+    line-height:2;color:var(--aged);
+  }
+  .land-body strong { color:var(--cream);font-weight:normal; }
+
+  /* CHILDREN GRID */
+  .children-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+    gap:12px;margin:40px 0;
+  }
+  .child-card {
+    padding:16px;border:1px solid var(--border);
+    background:rgba(10,8,5,0.4);
+  }
+  .child-name {
+    font-family:var(--f-display);font-size:16px;
+    font-style:italic;color:var(--parchment);
+    display:block;margin-bottom:4px;
+  }
+  .child-dates {
+    font-family:var(--f-mono);font-size:9px;
+    color:var(--muted);letter-spacing:1px;
+  }
+  .child-card.direct { border-color:rgba(201,168,76,0.4);background:rgba(201,168,76,0.04); }
+  .child-card.direct .child-name { color:var(--gold2); }
+
+  /* THE LINE */
+  .the-line { padding:80px 0;border-top:1px solid var(--border); }
+  .line-label {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:40px;text-align:center;display:block;
+  }
+  .line-chain { display:flex;flex-direction:column;gap:0;max-width:520px;margin:0 auto; }
+  .line-link {
+    display:flex;gap:20px;align-items:flex-start;
+    padding:20px 0;border-bottom:1px solid var(--border);
+  }
+  .line-link:last-child { border-bottom:none; }
+  .line-dot {
+    width:20px;height:20px;border-radius:50%;
+    border:1px solid var(--gold);background:var(--deep);
+    flex-shrink:0;margin-top:3px;
+  }
+  .line-dot.highlight { background:rgba(201,168,76,0.2); }
+  .line-name {
+    font-family:var(--f-display);font-size:18px;font-style:italic;
+    color:var(--parchment);display:block;margin-bottom:3px;
+  }
+  .line-name.gold { color:var(--gold2); }
+  .line-detail {
+    font-family:var(--f-mono);font-size:10px;
+    color:var(--muted);line-height:1.6;
+  }
+
+  /* CLOSING */
+  .closing {
+    padding:80px 0 120px;text-align:center;
+    border-top:1px solid var(--border);
+  }
+  .closing-title {
+    font-family:var(--f-display);font-size:clamp(24px,4vw,40px);
+    font-style:italic;color:var(--parchment);
+    margin-bottom:32px;line-height:1.3;
+  }
+  .closing-body {
+    font-size:clamp(14px,2vw,16px);line-height:2;color:var(--aged);
+    max-width:540px;margin:0 auto 48px;
+  }
+  .closing-body strong { color:var(--cream);font-weight:normal; }
+  .back-link {
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--f-mono);font-size:10px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gold);text-decoration:none;
+    border:1px solid var(--border);padding:14px 28px;border-radius:2px;
+    margin:0 8px 12px;transition:border-color 0.2s;
+  }
+  .back-link:hover { border-color:var(--gold); }
+
+  @media(max-width:600px) {
+    .opening-stats { gap:28px; }
+    .timeline-entry { grid-template-columns:70px 1fr;gap:16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-back">← Back to Family Archive</a>
+  <span class="nav-title">Easter Bell · Her Story</span>
+</nav>
+
+<!-- OPENING -->
+<section class="opening">
+  <p class="opening-label">Daughter of Rendy Blayn · Wife of Joseph Nichols · Mother of Nine</p>
+  <p class="opening-dates-top">July 4, 1838 · Bellville, Austin County, Texas</p>
+  <h1 class="opening-name">Easter</h1>
+  <p class="opening-name-sub">Bell</p>
+
+  <div class="opening-stats">
+    <div class="opening-stat">
+      <span class="opening-stat-number">97</span>
+      <span class="opening-stat-label">Years she lived</span>
+    </div>
+    <div class="opening-stat">
+      <span class="opening-stat-number">27</span>
+      <span class="opening-stat-label">Years enslaved</span>
+    </div>
+    <div class="opening-stat">
+      <span class="opening-stat-number">141</span>
+      <span class="opening-stat-label">Years the family held the land</span>
+    </div>
+    <div class="opening-stat">
+      <span class="opening-stat-number">9</span>
+      <span class="opening-stat-label">Children</span>
+    </div>
+  </div>
+
+  <p class="opening-statement">
+    She was born enslaved on <em>the Fourth of July.</em><br>
+    She was freed on <em>Juneteenth.</em><br>
+    She married six months later.<br>
+    She died at 97 on the same land where she was born.<br><br>
+    <em>This is built entirely from what the documents confirm.</em>
+  </p>
+  <p class="scroll-down">her story ↓</p>
+</section>
+
+<div class="story">
+
+  <!-- CHAPTER 1: BORN -->
+  <div class="chapter">
+    <span class="chapter-date">July 4, 1838 · Bellville, Austin County, Texas</span>
+    <h2 class="chapter-title">Born on Independence Day</h2>
+
+    <p>She was born on the Fourth of July, 1838. In Bellville, Austin County, Texas — on the land that John Nichols had received as a grant from the Mexican government in 1832. The town being built around that land was named after the Bell brothers — Thomas Bell and James Bell — who had purchased part of the Nichols grant and donated 145 acres to establish the county seat.</p>
+
+    <p>The date is confirmed. Her death certificate — filed December 17, 1935 — states her birth as July 4, 1838. She was born on the same day the United States celebrated its independence. <strong>She was not free.</strong></p>
+
+    <p>Her mother was <strong>Rendy Blayn</strong> — born ca. 1817 in North Carolina, held by John Nichols in Bellville by 1860. Rendy had been sold from Jacob Blane's household in Halifax County, Virginia sometime between 1850 and 1860 — transported more than a thousand miles from Virginia to Texas. Easter was born on that Texas land approximately two years before her mother appears in the documentary record in Texas, which means Rendy arrived in Bellville before 1838.</p>
+
+    <p>Her father is listed as Unknown on her death certificate. He was never named in any document that has survived.</p>
+
+    <p>The household she was born into was John Nichols' plantation on Piney Creek near Bellville. John Nichols was 39 years old when Easter was born. His wife Fanny Waldrop Nichols — daughter of Hezekiah Waldrop, who had held Patience and Clarissa — was approximately 36 years old. <strong>The two enslaved family lines that would eventually become one were already living in the same household.</strong> Clarissa's descendants were in that house. Easter was in that house. They grew up together without knowing they would one day become family.</p>
+  </div>
+
+  <!-- CHAPTER 2: TWENTY-SEVEN YEARS -->
+  <div class="chapter">
+    <span class="chapter-date">1838 — 1865 · Bellville, Austin County, Texas</span>
+    <h2 class="chapter-title">Twenty-Seven Years</h2>
+
+    <p>Easter Bell was enslaved for twenty-seven years. From birth to freedom. The entire first chapter of her documented life happened inside captivity on the Nichols plantation in Bellville.</p>
+
+    <p>What those twenty-seven years looked like — what she learned, what she believed, what she called herself before she chose her own name, what she understood about the family that held her — the documents do not say. The 1860 slave schedule records her only as a female age 22. No name. No history. A number in a column.</p>
+
+    <div class="doc-pull">
+      <span class="doc-pull-label">1860 U.S. Federal Census · Slave Schedule · Bellville, Austin County, Texas</span>
+      <div class="doc-pull-text">John Nichols · Bellville · 9 enslaved people:<br>
+      · <strong>Female · age 43 — Rendy Blayn (Easter's mother)</strong><br>
+      · <strong>Female · age 22 — Easter Bell</strong><br>
+      · Male · age 22 · Male · age 18<br>
+      · Female · age 13 · Female · age 11 · Male · age 11<br>
+      · Female · age 4 · Female · age 2</div>
+      <span class="doc-pull-source">1860 U.S. Federal Census Slave Schedule · Bellville, Austin County, Texas · John Nichols household · page 032</span>
+    </div>
+
+    <p>She was 22 years old in 1860. Her mother Rendy was 43 — listed directly above her in the same household. They were together. Whatever the twenty-seven years of enslavement held, they held it together.</p>
+
+    <p>John Nichols died on <strong>March 3, 1864</strong> — one year and three months before Juneteenth. He was 65 years old. The household was dissolving. The Civil War was in its final year. Easter was 26 years old. She had been alive for twenty-six years and had never been free.</p>
+
+    <p>Then — on <strong>April 9, 1865</strong> — the war ended at Appomattox. And on <strong>June 19, 1865</strong> — General Gordon Granger arrived in Galveston, Texas and read General Order No. 3. The enslaved people of Texas were free.</p>
+
+    <p>Easter Bell was 27 years old. She had been born on the Fourth of July. She was freed on Juneteenth. <strong>The two most important dates in American freedom — and she had lived inside the contradiction between them for twenty-seven years.</strong></p>
+  </div>
+
+  <!-- CHAPTER 3: KATIE -->
+  <div class="chapter">
+    <span class="chapter-date">March 25, 1860 · Texas</span>
+    <h2 class="chapter-title">Katie</h2>
+
+    <p>Before emancipation. Before marriage. Before any of what came after — Easter Bell had a daughter.</p>
+
+    <p><strong>Katie</strong> was born March 25, 1860. Easter was 22 years old. Katie's death certificate — filed May 11, 1923 in Texarkana, Texas — lists her mother's maiden name as Easter Bell and her father as Don't Know.</p>
+
+    <p>The documents do not name Katie's father. They cannot. An enslaved woman in 1860 had no legal standing to name a father, no legal marriage, no legal protection. Whatever the circumstances of Katie's birth — and the documents deliberately offer nothing — Katie was born enslaved on the Nichols plantation in Bellville on March 25, 1860.</p>
+
+    <p>She was five years old when Juneteenth came. She grew up free. She moved to Texarkana, Texas. She died there on May 11, 1923 — buried at Domino, Texas. Her informant was her son Charley Thornton.</p>
+
+    <p>She was Easter Bell's firstborn. The document that names her is the one that names her mother's maiden name — <em>Easter Bell</em> — and in doing so confirms forever what Easter called herself.</p>
+  </div>
+
+  <!-- CHAPTER 4: SIX MONTHS -->
+  <div class="chapter">
+    <span class="chapter-date">December 18, 1865 · Bellville, Austin County, Texas</span>
+    <h2 class="chapter-title">Six Months After Juneteenth</h2>
+
+    <p>Six months after Juneteenth. Six months of freedom. And on December 18, 1865 — <strong>Easter Bell married Joseph Nichols</strong> in Bellville, Austin County, Texas.</p>
+
+    <p>Joseph Nichols was born ca. 1847 in Texas. He had been enslaved in the same John Nichols household. He took the Nichols surname — the name of the family that had held him — as many formerly enslaved people did. Easter took the Bell surname — the name of the Bell family whose land surrounded the town, whose name was on the buildings, whose presence was everywhere in Bellville.</p>
+
+    <p>Two formerly enslaved people. Two different surnames. One family.</p>
+
+    <p>Joseph was DNA-confirmed as a descendant of Clarissa — Patience's daughter — through Amanda or Harriet, Clarissa's confirmed children. Easter was the daughter of Rendy Blayn. <strong>When Easter Bell married Joseph Nichols on December 18, 1865, two enslaved family lines that had been building toward each other across seventy years finally became one.</strong></p>
+
+    <div class="pause">
+      Patience was given to the Waldrop family in 1795.<br>
+      Clarissa was born into that family ca. 1807.<br>
+      Amanda or Harriet — Clarissa's daughter — was born into captivity.<br>
+      Joseph Nichols was born from that line in 1847.<br><br>
+      Rendy Blayn was born in North Carolina ca. 1817.<br>
+      Easter Bell was born from Rendy in 1838.<br><br>
+      On December 18, 1865 — six months after Juneteenth —<br>
+      <em>seventy years of two families</em><br>
+      became one.
+    </div>
+
+    <p>They had nine children. They built a life in Bellville. And at some point after emancipation — the exact date and circumstances not yet confirmed by primary source — <strong>Easter Bell and Joseph Nichols acquired 2 acres of the John Nichols Survey land in Austin County, Texas.</strong> The same land where Easter had been born enslaved. The same land grant that John Nichols had received from the Mexican government in 1832. The same ground.</p>
+
+    <p>They owned it. Their names were on the deed. Volume 209, Page 228, Austin County deed records.</p>
+  </div>
+
+  <!-- CHAPTER 5: NINE CHILDREN -->
+  <div class="chapter">
+    <span class="chapter-date">1860 — 1891 · Bellville, Austin County, Texas</span>
+    <h2 class="chapter-title">Nine Children</h2>
+
+    <p>Easter Bell had nine children across thirty-one years. The first was born enslaved. The rest were born free. All of them were born in Austin County, Texas — on or near the same land where Easter had been born.</p>
+
+    <div class="children-grid">
+      <div class="child-card">
+        <span class="child-name">Katie Thornton</span>
+        <span class="child-dates">March 25, 1860 – May 11, 1923 · Texarkana</span>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Allen Nichols</span>
+        <span class="child-dates">June 1865 – December 13, 1944</span>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Annie Nichols</span>
+        <span class="child-dates">1866 – 1930</span>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Oscar Nichols</span>
+        <span class="child-dates">1869 – 1949</span>
+      </div>
+      <div class="child-card direct">
+        <span class="child-name">Hellen Nichols Armstrong</span>
+        <span class="child-dates">September 1870 – unknown · Eva's mother · our direct line</span>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Clara Nichols Nazy</span>
+        <span class="child-dates">March 6, 1875 – 1944 · Easter's death informant</span>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Willie Nichols</span>
+        <span class="child-dates">June 7, 1884 – 1956</span>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Helen Nichols Reese</span>
+        <span class="child-dates">ca. 1884 – December 5, 1931 · Bellville</span>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Mabel Nichols</span>
+        <span class="child-dates">1891 – 1956</span>
+      </div>
+    </div>
+
+    <p style="font-size:13px;font-style:italic;color:var(--muted);margin-top:8px;">Note: Hellen Nichols Armstrong and Helen Nichols Reese are two different daughters. Hellen Armstrong born September 1870 is our direct line — Eva's mother. Helen Reese born ca. 1884 died December 5 1931 in Bellville. These are not the same person.</p>
+
+    <p>Joseph Nichols died in 1905 per Jeff Cemetery records. Easter had been married to him for forty years. She was 67 years old when he died. She had thirty more years to live.</p>
+
+    <p>On July 30, 1914 — Easter Bell was 76 years old — she married <strong>Hannibal Pink</strong>. She died as Ester Pinks. The woman who had been Easter Bell, then Easter Bell Nichols, then Ester Pinks — the names accumulated across ninety-seven years of a life that refused to end.</p>
+  </div>
+
+  <!-- CHAPTER 6: THE LAND -->
+  <div class="land-section">
+    <span class="land-label">The John Nichols Survey · Abstract 73 · Austin County, Texas</span>
+    <h2 class="land-title">The Land</h2>
+    <span class="land-number">141</span>
+    <span class="land-number-label">Years the family held the land · 1865–2006</span>
+    <p class="land-body">
+      John Nichols received a land grant from the Mexican government on April 25, 1830. The town of Bellville was built on land he sold to the Bell brothers. Easter Bell was born enslaved on what remained of that grant in 1838.
+    </p>
+    <p class="land-body" style="margin-top:24px;">
+      After emancipation, <strong>Easter Bell and Joseph Nichols acquired 2 acres of the John Nichols Survey</strong> — Abstract 73, Austin County, Texas. Volume 209, Page 228, Austin County deed records. The same ground. Their names on a deed where once only John Nichols' name had been.
+    </p>
+    <p class="land-body" style="margin-top:24px;">
+      Easter died December 17, 1935. The land stayed in the family. Allen, Oscar, Willie, Clara, Helen, Mabel — Easter's children and their descendants — held that 2 acres through the Great Depression, through World War II, through the Great Migration that took Margie and her children to California.
+    </p>
+    <p class="land-body" style="margin-top:24px;">
+      <strong>In 1997, Austin County filed a tax suit</strong> — Cause No. 97V-003. The named defendants included Easter Pink — dead for sixty-two years — alongside her children and grandchildren. Easter's name was still on the land. The county sued a dead woman because her name was still on the title.
+    </p>
+    <p class="land-body" style="margin-top:24px;">
+      <strong>On August 1, 2006 — the land was taken.</strong> Tax sale. Conveyed to Austin County for Bellville Independent School District. One hundred and forty-one years after Easter Bell was freed on that same ground, the last 2 acres of the John Nichols Survey that her family had held were gone.
+    </p>
+  </div>
+
+  <!-- CHAPTER 7: THE DEATH CERTIFICATE -->
+  <div class="chapter">
+    <span class="chapter-date">December 17, 1935 · Bellville, Austin County, Texas</span>
+    <h2 class="chapter-title">Ninety-Seven Years</h2>
+
+    <p>She fell at home. July 9, 1935. Fracture of the left femur. She was 97 years old and she fell on the floor of her home in Bellville and she lay there with a broken leg for five months before she died.</p>
+
+    <p>December 17, 1935. Ester Pinks. Widow of Hannibal Pinks. Ninety-seven years old. The doctor was O.E. Steen of Bellville. The undertaker was Ben F. Davis of Columbus, Texas. She was buried in Bellville.</p>
+
+    <div class="doc-pull">
+      <span class="doc-pull-label">State of Texas · Certificate of Death · State File No. 54496 · December 17, 1935</span>
+      <div class="doc-pull-text">Full Name: <strong>Ester Pinks</strong> · Wife of: Hannable Pinks<br>
+      Date of Birth: <strong>July 4, 1838</strong> · Age: 97 years<br>
+      Birthplace: Texas<br>
+      Occupation: House wife at home<br>
+      Name of Father: <strong>Unknown</strong><br>
+      Mother's Maiden Name: <strong>Rendy Blayn</strong> (written as Candy Blayn)<br>
+      Mother's Birthplace: Unknown<br>
+      Informant: <strong>Clara Nezy · Bellville, Texas</strong> (Easter's daughter, born Clara Nichols)<br>
+      Principal Cause of Death: Fracture of Left Femur · Date of onset: 7/9/35<br>
+      Other contributory causes: Senility<br>
+      Where did injury occur: At home, Bellville, Austin County, Texas<br>
+      Manner of injury: Fell on floor · Nature of injury: Fracture left femur</div>
+      <span class="doc-pull-source">Texas Certificate of Death · State File No. 54496 · Austin County · Signed O.E. Steen M.D. · Ben F. Davis Undertaker · Columbus Texas</span>
+    </div>
+
+    <p>Clara Nezy — Easter's daughter, born Clara Nichols in 1875 — was the informant. She was 60 years old when her mother died. She sat with the death certificate and answered the questions. When they asked for her mother's maiden name she said what she had heard Easter say across sixty years of living: <em>Rendy Blayn.</em> The death certificate wrote it as Candy Blayn. The name survived phonetically — the way it had always survived — because Easter carried it and Clara carried it after her.</p>
+
+    <p>Easter Bell was born enslaved on July 4 1838. She died free on December 17 1935. She was 97 years old. She had outlasted everyone who had ever held power over her. She had outlasted the plantation, the enslavers, the Civil War, Reconstruction, Jim Crow's worst decades, her husband, most of her children. <strong>She outlasted nearly a century and died in her own home on land her family had held since emancipation.</strong></p>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline">
+    <span class="timeline-label">The Life of Easter Bell · Confirmed by Primary Source</span>
+
+    <div class="timeline-entry">
+      <div class="timeline-year gold">1838</div>
+      <div>
+        <span class="timeline-content-title">Born July 4, 1838 · Bellville, Texas</span>
+        <p class="timeline-content-text">Born enslaved on the Fourth of July on John Nichols' Piney Creek plantation. Mother: Rendy Blayn. Father: unknown.</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">1860</div>
+      <div>
+        <span class="timeline-content-title">Katie born · March 25, 1860</span>
+        <p class="timeline-content-text">Easter's first child. Father unknown. Born enslaved on the Nichols plantation. Confirmed by Katie's 1923 death certificate listing mother as Easter Bell.</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">1860</div>
+      <div>
+        <span class="timeline-content-title">1860 Slave Schedule · female age 22</span>
+        <p class="timeline-content-text">Confirmed in John Nichols' Bellville household alongside her mother Rendy (female age 43). 9 enslaved people total. Page 032, Austin County Texas.</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">1864</div>
+      <div>
+        <span class="timeline-content-title">John Nichols dies · March 3, 1864</span>
+        <p class="timeline-content-text">The man who held Easter died one year before emancipation. Easter was 26 years old.</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year gold">1865</div>
+      <div>
+        <span class="timeline-content-title">Juneteenth · June 19, 1865</span>
+        <p class="timeline-content-text">General Order No. 3 read in Galveston. Easter Bell was 27 years old. Free for the first time in her life.</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year gold">1865</div>
+      <div>
+        <span class="timeline-content-title">Married Joseph Nichols · December 18, 1865</span>
+        <p class="timeline-content-text">Six months after Juneteenth. Bellville, Austin County, Texas. Two enslaved family lines — Patience's through Clarissa through Joseph, and Rendy's through Easter — became one family.</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">1865–1891</div>
+      <div>
+        <span class="timeline-content-title">Nine children born in Bellville</span>
+        <p class="timeline-content-text">Allen (1865), Annie (1866), Oscar (1869), Hellen (1870), Clara (1875), Willie (1884), Helen Reese (1884), Mabel (1891). All born free. All born on the same Austin County ground.</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">1870</div>
+      <div>
+        <span class="timeline-content-title">Hellen Nichols born · September 1870</span>
+        <p class="timeline-content-text">Our direct line. Hellen Nichols Armstrong — Eva's mother — born five years after emancipation in Bellville. Confirmed by 1900 census.</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">after 1865</div>
+      <div>
+        <span class="timeline-content-title">2 acres acquired · John Nichols Survey · Abstract 73</span>
+        <p class="timeline-content-text">Easter and Joseph acquired 2 acres of the same land where Easter was born enslaved. Volume 209, Page 228, Austin County deed records. Exact date of acquisition not yet confirmed by primary source.</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">1905</div>
+      <div>
+        <span class="timeline-content-title">Joseph Nichols dies</span>
+        <p class="timeline-content-text">Confirmed by Jeff Cemetery records. Easter was 67 years old. Widowed after forty years of marriage.</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">1914</div>
+      <div>
+        <span class="timeline-content-title">Married Hannibal Pink · July 30, 1914</span>
+        <p class="timeline-content-text">Easter was 76 years old. She died as Ester Pinks.</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">1997</div>
+      <div>
+        <span class="timeline-content-title">Tax suit filed · Cause No. 97V-003</span>
+        <p class="timeline-content-text">Austin County sued Easter Pink — dead for 62 years — and her descendants over the 2 acres. Easter's name was still on the title.</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year gold">1935</div>
+      <div>
+        <span class="timeline-content-title">Died December 17, 1935 · Age 97</span>
+        <p class="timeline-content-text">Cause: fracture of left femur — fell at home July 9 1935. Contributory: senility. Informant: Clara Nezy. Buried Jeff Cemetery, Bellville, Texas. State File No. 54496.</p>
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">2006</div>
+      <div>
+        <span class="timeline-content-title">Land taken · August 1, 2006</span>
+        <p class="timeline-content-text">Tax sale. The 2 acres of the John Nichols Survey conveyed to Austin County for Bellville ISD. 141 years after emancipation. The family was in California.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- THE LINE -->
+  <div class="the-line">
+    <span class="line-label">The Two Lines That Became One · From Easter to Now</span>
+
+    <div class="line-chain">
+
+      <div class="line-link">
+        <div class="line-dot highlight"></div>
+        <div class="line-content">
+          <span class="line-name gold">Rendy Blayn</span>
+          <span class="line-detail">born ca. 1817 · North Carolina · held by Jacob Blane in Halifax County Virginia · sold to Texas before 1838 · Easter's mother · one document · one name</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot highlight"></div>
+        <div class="line-content">
+          <span class="line-name gold">Easter Bell Nichols</span>
+          <span class="line-detail">born July 4 1838 · Bellville Texas · enslaved 27 years · freed June 19 1865 · married December 18 1865 · nine children · 2 acres · 141 years · died December 17 1935 · age 97 · Jeff Cemetery · Bellville Texas</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot highlight"></div>
+        <div class="line-content">
+          <span class="line-name gold">Hellen Nichols Armstrong</span>
+          <span class="line-detail">born September 1870 · Bellville Texas · Easter's daughter · married John Armstrong ca. 1898 · last confirmed record April 1930 Fort Worth · mother of Eva</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot"></div>
+        <div class="line-content">
+          <span class="line-name">Eva Armstrong Ballard</span>
+          <span class="line-detail">born June 27 1900 · Bellville Texas · ran the Nip and Sip · testified and told the truth · died November 24 1977 · Garden Grove California</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot highlight"></div>
+        <div class="line-content">
+          <span class="line-name gold">Margie Nell Ballard Corbin</span>
+          <span class="line-detail">born March 13 1929 · Fort Worth Texas · NaNa · 12182 Candy Lane · died October 15 1988 · Garden Grove California</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot"></div>
+        <div class="line-content">
+          <span class="line-name">Hjordis L. Corbin</span>
+          <span class="line-detail">born January 20 1960 · daughter of Margie · mother of Jasmine</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot highlight"></div>
+        <div class="line-content">
+          <span class="line-name gold">Jasmine M. Lee</span>
+          <span class="line-detail">born January 25 1982 · Orange County California · founder, Dock Ellis Foundation · the researcher who found these documents · Easter Bell's great-great-granddaughter</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <h2 class="closing-title">She Was Born Enslaved<br>on the Fourth of July.<br>She Died Free at 97<br>on the Same Ground.</h2>
+
+    <p class="closing-body">
+      The date of her birth was not an accident of history. It was an insult that became a defiance. Born on the day the country celebrated its freedom — while she had none. Freed on Juneteenth twenty-seven years later. Married six months after that. Built a family. Acquired land. Raised nine children free. Outlived nearly everyone.
+    </p>
+
+    <p class="closing-body">
+      <strong>The land was taken in 2006.</strong> But Easter Bell was already buried at Jeff Cemetery in Bellville — the town built on John Nichols' land, the town she was born enslaved in, the town she died free in at ninety-seven years old.
+    </p>
+
+    <p class="closing-body">
+      She kept her mother's name alive. She kept the land. She kept the family together across a century that tried everything to break them. <strong>This page exists because she did.</strong>
+    </p>
+
+    <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:32px;">
+      Research by Jasmine M. Lee · Dock Ellis Foundation · Seven years · 2019–2026
+    </p>
+
+    <div>
+      <a href="rendy_story.html" class="back-link">← Rendy · Her Story</a>
+      <a href="clarissa_story.html" class="back-link">← Clarissa · Her Story</a>
+      <a href="patience_story.html" class="back-link">← Patience · Her Story</a>
+      <a href="index.html" class="back-link">← Return to Archive</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

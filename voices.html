@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Family Voices · Armstrong Family Archive</title>
+<style>
+  :root {
+    --deep: #080604;
+    --gold: #c9a84c;
+    --gold2: #e8c96a;
+    --cream: #ede0c8;
+    --parchment: #d4bf9a;
+    --aged: #a89878;
+    --muted: #6a5c42;
+    --border: rgba(201,168,76,0.15);
+    --f-display: 'Georgia', 'Times New Roman', serif;
+    --f-body: 'Georgia', serif;
+    --f-mono: 'Courier New', monospace;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--deep);
+    color:var(--cream);
+    font-family:var(--f-body);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    overflow-y:auto;
+  }
+
+  .nav {
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(8,6,4,0.96);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-back { font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none; }
+  .nav-title { font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted); }
+
+  /* HERO */
+  .hero {
+    min-height:60vh;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    padding:100px 24px 60px;text-align:center;
+    border-bottom:1px solid var(--border);
+    background:radial-gradient(ellipse at center, rgba(139,105,20,0.07) 0%, transparent 65%);
+  }
+
+  .hero-label { font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:block; }
+  .hero-title { font-family:var(--f-display);font-size:clamp(40px,8vw,80px);font-style:italic;color:var(--parchment);line-height:1;margin-bottom:20px;letter-spacing:-1px; }
+  .hero-sub { font-family:var(--f-display);font-size:clamp(16px,3vw,22px);font-style:italic;color:var(--gold);margin-bottom:32px; }
+  .hero-desc {
+    max-width:580px;font-size:clamp(14px,2vw,16px);
+    line-height:1.9;color:var(--aged);
+  }
+  .hero-desc em { color:var(--cream);font-style:normal; }
+
+  /* MAIN */
+  .main { max-width:720px;margin:0 auto;padding:0 24px 120px; }
+
+  /* MEMORY ENTRY */
+  .memory {
+    padding:72px 0;
+    border-bottom:1px solid var(--border);
+  }
+  .memory:last-child { border-bottom:none; }
+
+  .memory-meta {
+    display:flex;flex-wrap:wrap;gap:12px;
+    align-items:center;margin-bottom:32px;
+  }
+  .memory-date {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);
+  }
+  .memory-tellers {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--muted);
+  }
+
+  .memory-title {
+    font-family:var(--f-display);font-size:clamp(26px,5vw,40px);
+    font-style:italic;color:var(--parchment);
+    line-height:1.2;margin-bottom:40px;letter-spacing:-0.5px;
+  }
+
+  .memory p {
+    font-size:clamp(15px,2.2vw,17px);line-height:2.1;
+    color:var(--aged);margin-bottom:28px;
+  }
+  .memory p strong { color:var(--cream);font-weight:normal; }
+  .memory p em { color:var(--parchment);font-style:italic; }
+
+  /* SCENE BREAK */
+  .scene-break {
+    text-align:center;padding:32px 0;
+    font-family:var(--f-mono);font-size:9px;
+    letter-spacing:4px;text-transform:uppercase;color:var(--muted);
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    margin:40px 0;
+  }
+
+  /* PULL QUOTE */
+  .pull {
+    margin:40px 0;padding:28px 32px;
+    border-left:2px solid var(--gold);
+    background:rgba(10,8,5,0.5);
+  }
+  .pull-text {
+    font-family:var(--f-display);font-size:clamp(17px,3vw,22px);
+    font-style:italic;color:var(--parchment);line-height:1.7;
+  }
+  .pull-attr {
+    font-family:var(--f-mono);font-size:9px;color:var(--muted);
+    margin-top:12px;display:block;letter-spacing:2px;
+  }
+
+  /* MESSAGE BLOCK */
+  .message-block {
+    margin:40px 0;
+    border:1px solid var(--border);
+    background:rgba(10,8,5,0.4);
+    padding:28px 32px;
+  }
+  .message-label {
+    font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);
+    display:block;margin-bottom:16px;
+  }
+  .message-bubble {
+    padding:16px 20px;border-radius:8px;
+    font-size:14px;line-height:1.8;
+    margin-bottom:12px;
+  }
+  .message-bubble.them {
+    background:rgba(201,168,76,0.08);
+    border:1px solid rgba(201,168,76,0.15);
+    color:var(--parchment);
+    margin-right:40px;
+  }
+  .message-bubble.me {
+    background:rgba(201,168,76,0.15);
+    border:1px solid rgba(201,168,76,0.25);
+    color:var(--cream);
+    margin-left:40px;
+    text-align:right;
+  }
+  .message-name {
+    font-family:var(--f-mono);font-size:8px;letter-spacing:1px;
+    text-transform:uppercase;color:var(--muted);
+    display:block;margin-bottom:6px;
+  }
+
+  /* CLOSING */
+  .page-closing {
+    padding:60px 0;text-align:center;
+    border-top:1px solid var(--border);
+  }
+  .page-closing-title {
+    font-family:var(--f-display);font-size:clamp(22px,4vw,36px);
+    font-style:italic;color:var(--parchment);
+    margin-bottom:24px;line-height:1.3;
+  }
+  .page-closing-body {
+    font-size:14px;line-height:1.9;color:var(--aged);
+    max-width:500px;margin:0 auto 32px;
+  }
+  .back-link {
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--f-mono);font-size:10px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gold);text-decoration:none;
+    border:1px solid var(--border);padding:14px 28px;border-radius:2px;
+    margin:0 8px 12px;transition:border-color 0.2s;
+  }
+  .back-link:hover { border-color:var(--gold); }
+
+  @media(max-width:600px) {
+    .message-bubble.me { margin-left:20px; }
+    .message-bubble.them { margin-right:20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-back">← Back to Family Archive</a>
+  <span class="nav-title">Family Voices · Oral History</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-label">Armstrong Family Archive · Living Memory</span>
+  <h1 class="hero-title">Family Voices</h1>
+  <p class="hero-sub">The stories that don't live in documents</p>
+  <p class="hero-desc">
+    Seven years of research found the deeds, the death certificates, the slave schedules, the voter registrations. But some things only exist in the voices of the people who were there — or who heard it from someone who was. <em>This page holds those things.</em> The stories that get told at family gatherings. The memories that make everyone laugh and cry at the same time. The conversations that prove the family is still alive and still talking to each other.
+  </p>
+</section>
+
+<div class="main">
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- MEMORY 1: TWO CHRISTMASES -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="memory">
+    <div class="memory-meta">
+      <span class="memory-date">Garden Grove, California · ca. 1976 & December 1977</span>
+      <span class="memory-tellers">· Told by Sonsery · Hjordis · Warren · Deanna</span>
+    </div>
+
+    <h2 class="memory-title">Two Christmases</h2>
+
+    <p>When Warren and them tell these stories, they start laughing before they even get to the part that is funny. That is how you know the memory is real — when the person telling it can barely get through it.</p>
+
+    <p>There were two Christmases that defined that era of the family. One at Candy Lane. One at Diane's house. One that made everyone crack up. One that made everyone cry. And somehow they belong together, because that is how the Ballard family works — the funny and the heartbreaking always arrive in the same season.</p>
+
+    <div class="scene-break">The First Christmas · Candy Lane · ca. 1976</div>
+
+    <p>Warren was about twenty years old — maybe twenty-one — the Christmas it happened. The whole family was at Candy Lane the way they always were at Christmas. Food everywhere. The house full. <strong>Eva sitting in her chair the way Eva always sat</strong> — unbothered by everything going on around her the way only a woman who had lived through what she had lived through could be unbothered.</p>
+
+    <p>Uncle Charles had brought his girlfriend.</p>
+
+    <p>Nobody is going to say exactly what started it. The woman had been drinking. Something got into her. And then — in the middle of Christmas dinner, in Margie's house, at Candy Lane — <strong>she threw food on the floor.</strong></p>
+
+    <p>The room went quiet the way rooms go quiet when something has happened that cannot be taken back.</p>
+
+    <p>Eva did not move. Eva did not flinch. Eva sat exactly where she was — <em>unbothered</em> — as if she had seen this before. Which, having lived 77 years through everything she had lived through, she probably had.</p>
+
+    <div class="pull">
+      <p class="pull-text">"What happened next is the part Warren and them still tell."</p>
+    </div>
+
+    <p>Margie and Betty looked at each other. They didn't say a word. They got up together, calmly, the way sisters move when they have already decided something, and they walked around the corner.</p>
+
+    <p>They came back with a knife.</p>
+
+    <p>Eloise was right there too — and they will tell you <strong>Eloise was not any joke either.</strong> The Ballard women were ready. All of them. To defend their brother. On Christmas. At Candy Lane.</p>
+
+    <p>Margie looked at the woman and told her, plainly, that she would unalive her.</p>
+
+    <p>The woman understood.</p>
+
+    <p>The situation resolved itself.</p>
+
+    <p>It was only later — with some distance between that moment and the retelling — that it became one of the funniest stories in the family. Warren tells it and you can see the whole thing. The food hitting the floor. The silence. Eva sitting there completely unbothered like a woman who has decided none of this concerns her. Margie and Betty disappearing around the corner with a shared understanding that required no words. Coming back with the knife. The calm with which the message was delivered.</p>
+
+    <p><em>Christmas at Candy Lane. Nobody threw food twice.</em></p>
+
+    <div class="scene-break">The Second Christmas · Diane's House · December 1977</div>
+
+    <p>Mother had just passed.</p>
+
+    <p>Eva Armstrong Ballard died on November 24, 1977 — at Candy Lane, where she had spent her last years with Margie. The family could not go back to Candy Lane for Christmas that year. So they gathered at <strong>Diane's house</strong> instead. Remetha Diane Pulley. Margie's daughter. They brought Christmas to a new address because the old one held too much.</p>
+
+    <p>And that was the night they finally met Michael.</p>
+
+    <p>Charles Ray Ballard's son. Eva's grandson. The one his mother had kept from the family for years — and then finally, that Christmas, decided it was time. She let him come. She let him meet his people.</p>
+
+    <p><strong>He walked in and the room stopped.</strong></p>
+
+    <p>Michael Ballard was twenty-one years old and he was looking at a roomful of strangers who had his face. The Ballard line — clear as anything — written all over him. Charles Ray's twin. Identical to his father in a way that made people catch their breath. He stood there baffled. Not because he was unwelcome. Because he was finally seeing the people he resembled and understanding for the first time that he had always looked like someone. He had always belonged somewhere. He just hadn't been allowed to know it yet.</p>
+
+    <div class="pull">
+      <p class="pull-text">"He was finally seeing the people he resembled."</p>
+      <span class="pull-attr">— Family memory · Christmas 1977</span>
+    </div>
+
+    <p>And somewhere in that room — in the laughter and the catching up on twenty-one years of a family he had never met — someone had to tell him.</p>
+
+    <p>His grandmother had just passed. <strong>Thirty days ago.</strong> Eva Armstrong Ballard — the woman he would have called mother the way everyone else did — was gone before he could meet her. She never got to meet him. He never got to meet her.</p>
+
+    <p>That is the story they tell when they talk about Michael. Not with bitterness — though there is every right to feel it. They tell it the way families tell the stories that hold both things at once. The joy of him walking through that door. The grief of what he missed by thirty days.</p>
+
+    <p><em>Eva would have loved him. He looks just like her son.</em></p>
+
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- MEMORY 2: TUFFY'S MESSAGE -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="memory">
+    <div class="memory-meta">
+      <span class="memory-date">2022</span>
+      <span class="memory-tellers">· A message from Tuffy</span>
+    </div>
+
+    <h2 class="memory-title">Life Only Gets Lonelier</h2>
+
+    <p>In 2022 Jasmine reached out to Tuffy to tell him about the research. He had lost Darnell — the closest person he had from that side of the family. Here is what he said.</p>
+
+    <div class="message-block">
+      <span class="message-label">Text exchange · 2022</span>
+
+      <div class="message-bubble them">
+        <span class="message-name">Tuffy</span>
+        LIFE ONLY BECAME LONELIER AND LONELIER, EACH TIME ONE OF THEM PASSED FROM BOTH OF MY PARENTS SIDES!!
+      </div>
+
+      <div class="message-bubble me">
+        <span class="message-name">Jasmine</span>
+        I been working on our family tree and found so much stuff! I'll put a memory book together for you
+      </div>
+
+      <div class="message-bubble them">
+        <span class="message-name">Tuffy</span>
+        DARNELL WAS THE CLOSEST PERSON I HAD FROM THAT SIDE, HIS DEATH HAS DEFINITELY BROKE ME UP
+      </div>
+
+      <div class="message-bubble them">
+        <span class="message-name">Tuffy</span>
+        REALLY!! Thank you. I would love that.
+      </div>
+    </div>
+
+    <p>This archive is part of that promise. Every document found, every name confirmed, every story preserved — it is the memory book Jasmine told Tuffy she would make.</p>
+
+    <p>The family got lonelier as people passed. That is true. But the record of who they were — the Candy Lane Christmases, the knife, Eva sitting unbothered in her chair, Michael walking through the door at Diane's house — <strong>that does not pass.</strong> That is what this archive is for.</p>
+
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- ═══════════════════════════════════ -->
+  <!-- MEMORY 3: TUFFY AND AUNT MARGIE -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="memory">
+    <div class="memory-meta">
+      <span class="memory-date">Told recently · Sonsery laughing the whole time</span>
+      <span class="memory-tellers">· A memory about Tuffy · preserved by Sonsery</span>
+    </div>
+
+    <h2 class="memory-title">The Lunchpail · What Tuffy Remembered</h2>
+
+    <p>Sonsery was laughing telling this story. That is how you know it is a good one.</p>
+
+    <p>Tuffy used to spend time at Aunt Margie's. And he has said it plainly — <strong>he always felt safe there.</strong> He always knew he was safe. That was what Aunt Margie's meant to him. Peace and comfort and stability. Safety. A place where a child could just be a child and not worry about anything.</p>
+
+    <p>But here is the part that made Sonsery crack up.</p>
+
+    <p>Margie bought Tuffy a lunchpail. Brand new. And in Tuffy's mind — as a little boy — that lunchpail meant the world. She bought him brand new clothes and shoes too. Like he was somebody. Like he mattered. Like getting him ready was just what you did.</p>
+
+    <div class="pull">
+      <p class="pull-text">"He thought Aunt Margie was rich."</p>
+      <span class="pull-attr">— Sonsery · laughing</span>
+    </div>
+
+    <p>He was so young. He did not know Margie was running a board and care home — that the house being full of people and food and activity was her work, not just her abundance. All he knew was that when he was at Aunt Margie's, there was enough. Brand new lunchpail. Brand new clothes and shoes. Enough food. Enough room. Enough warmth.</p>
+
+    <p>To a child, that is what rich looks like.</p>
+
+    <p>And in the ways that actually matter — <strong>Margie was.</strong> Rich in the sense that she could make a child feel safe. Rich in the sense that she noticed what a child needed and got it for him without being asked. Rich in the sense that Tuffy carried that lunchpail and those shoes and that feeling of being cared for in his heart for the rest of his life.</p>
+
+    <p>He still talks about it. The lunchpail. The clothes. Walking in there and knowing he was safe.</p>
+
+    <p><em>That is what Aunt Margie gave him. That is what he remembers. That is enough.</em></p>
+
+  </div>
+
+  <!-- MEMORY 4: THE PHOTOGRAPHS -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="memory">
+    <div class="memory-meta">
+      <span class="memory-date">Recent · Family group conversation</span>
+      <span class="memory-tellers">· Warren · Deanna · family</span>
+    </div>
+
+    <h2 class="memory-title">Oh My God. No.</h2>
+
+    <p>When Jasmine sent the photographs to Deanna — the old family pictures, the ones nobody had seen in years — Deanna's reaction said everything.</p>
+
+    <div class="pull">
+      <p class="pull-text">"Oh my god. No. The pictures are like amazing... the pictures will take you back. Man, wait — back."</p>
+      <span class="pull-attr">— Deanna · on seeing the family photographs</span>
+    </div>
+
+    <p>Warren agreed.</p>
+
+    <div class="pull">
+      <p class="pull-text">"Those days was good."</p>
+      <span class="pull-attr">— Warren Bradshaw · born June 1, 1956</span>
+    </div>
+
+    <p>That is what this archive does at its best. Not just preserve the history. Not just document the names and the dates and the primary sources. But give the family back something they thought they had lost — the faces, the houses, the Christmases, the years when everyone was still here.</p>
+
+    <p>The photographs will take you back. That is the whole point.</p>
+
+    <p><em>Those days was good.</em></p>
+
+  </div>
+
+  <!-- CLOSING -->
+  <div class="page-closing">
+    <h2 class="page-closing-title">More Stories Are Coming</h2>
+    <p class="page-closing-body">
+      This page will grow as family members share their memories. If you have a story — a Christmas, a person, a moment, something someone said — contact Jasmine. Every voice belongs here.
+    </p>
+    <p style="font-family:var(--f-mono);font-size:10px;letter-spacing:2px;color:var(--gold);margin-bottom:24px;">
+      jlee@dockellisfoundation.com
+    </p>
+    <div>
+      <a href="photos.html" class="back-link">← The Photos</a>
+      <a href="index.html" class="back-link">← Return to Archive</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

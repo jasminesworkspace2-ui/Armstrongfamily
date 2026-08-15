@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eva Armstrong Ballard · Armstrong Family Archive</title>
+<style>
+  :root {
+    --deep: #080604;
+    --gold: #c9a84c;
+    --gold2: #e8c96a;
+    --cream: #ede0c8;
+    --parchment: #d4bf9a;
+    --aged: #a89878;
+    --muted: #6a5c42;
+    --border: rgba(201,168,76,0.15);
+    --f-display: 'Georgia', 'Times New Roman', serif;
+    --f-body: 'Georgia', serif;
+    --f-mono: 'Courier New', monospace;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--deep);
+    color:var(--cream);
+    font-family:var(--f-body);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  .nav {
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(8,6,4,0.96);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-back { font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none; }
+  .nav-title { font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted); }
+
+  /* OPENING — the inheritance */
+  .opening {
+    min-height:100vh;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    padding:100px 24px 80px;text-align:center;
+    position:relative;
+    background:radial-gradient(ellipse at center, rgba(139,105,20,0.07) 0%, transparent 65%);
+  }
+
+  .opening-label { font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:40px; }
+
+  .inheritance {
+    max-width:580px;margin:0 auto 48px;
+    font-family:var(--f-display);
+    font-size:clamp(14px,2.2vw,17px);
+    font-style:italic;color:var(--muted);
+    line-height:2;text-align:center;
+  }
+  .inheritance strong { color:var(--parchment);font-style:normal; }
+  .inheritance .divider-line {
+    display:block;width:40px;height:1px;
+    background:rgba(201,168,76,0.3);
+    margin:20px auto;
+  }
+
+  .opening-name {
+    font-family:var(--f-display);
+    font-size:clamp(56px,12vw,120px);
+    font-style:italic;color:var(--parchment);
+    line-height:0.9;letter-spacing:-2px;
+    margin-bottom:8px;
+  }
+
+  .opening-surname {
+    font-family:var(--f-display);
+    font-size:clamp(32px,7vw,72px);
+    font-style:italic;color:var(--gold);
+    line-height:1;letter-spacing:-1px;
+    margin-bottom:32px;
+  }
+
+  .opening-dates { font-family:var(--f-mono);font-size:11px;letter-spacing:3px;color:var(--muted);margin-bottom:40px; }
+
+  .opening-statement {
+    max-width:520px;font-size:clamp(15px,2.5vw,17px);
+    line-height:1.9;color:var(--aged);font-style:italic;
+  }
+  .opening-statement em { color:var(--cream);font-style:normal; }
+
+  .scroll-down {
+    position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+    font-family:var(--f-mono);font-size:9px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--muted);
+    animation:breathe 3s ease-in-out infinite;
+  }
+  @keyframes breathe { 0%,100%{opacity:0.3;}50%{opacity:0.8;} }
+
+  /* STORY */
+  .story { max-width:680px;margin:0 auto;padding:0 24px; }
+
+  .chapter { padding:80px 0;border-top:1px solid var(--border); }
+  .chapter-date { font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:32px;display:block; }
+  .chapter-title { font-family:var(--f-display);font-size:clamp(28px,5vw,42px);font-style:italic;color:var(--parchment);line-height:1.15;margin-bottom:40px;letter-spacing:-0.5px; }
+  .chapter p { font-size:clamp(15px,2.2vw,17px);line-height:2;color:var(--aged);margin-bottom:28px; }
+  .chapter p strong { color:var(--cream);font-weight:normal; }
+  .chapter p em { color:var(--parchment);font-style:italic; }
+
+  .doc-pull { margin:48px 0;padding:28px 32px;border-left:2px solid var(--gold);background:rgba(10,8,5,0.6); }
+  .doc-pull-label { font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block; }
+  .doc-pull-text { font-family:var(--f-mono);font-size:13px;line-height:1.9;color:var(--parchment); }
+  .doc-pull-text strong { color:var(--gold2); }
+  .doc-pull-source { font-family:var(--f-mono);font-size:9px;color:var(--muted);margin-top:14px;display:block; }
+
+  .pause {
+    text-align:center;padding:48px 0;
+    font-family:var(--f-display);font-size:clamp(17px,3vw,22px);font-style:italic;
+    color:var(--parchment);line-height:1.9;
+    border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:48px 0;
+  }
+
+  /* PHOTO BLOCK */
+  .photo-block {
+    margin:48px 0;
+    border:1px solid var(--border);
+    overflow:hidden;
+  }
+  .photo-block img {
+    width:100%;display:block;
+    max-height:520px;object-fit:cover;object-position:center top;
+    filter:sepia(8%) contrast(1.02);
+  }
+  .photo-block-caption {
+    padding:16px 20px;border-top:1px solid var(--border);
+    background:rgba(10,8,5,0.6);
+  }
+  .photo-block-caption-title { font-family:var(--f-display);font-size:15px;font-style:italic;color:var(--parchment);display:block;margin-bottom:4px; }
+  .photo-block-caption-meta { font-family:var(--f-mono);font-size:9px;color:var(--muted);letter-spacing:1px; }
+
+  /* CHILDREN GRID */
+  .children-section { padding:80px 0;border-top:1px solid var(--border); }
+  .children-label { font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:40px;display:block;text-align:center; }
+  .children-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px; }
+  .child-card { padding:16px;border:1px solid var(--border);background:rgba(10,8,5,0.4); }
+  .child-name { font-family:var(--f-display);font-size:15px;font-style:italic;color:var(--parchment);display:block;margin-bottom:4px; }
+  .child-dates { font-family:var(--f-mono);font-size:9px;color:var(--muted);letter-spacing:1px;line-height:1.5; }
+  .child-card.direct { border-color:rgba(201,168,76,0.4);background:rgba(201,168,76,0.04); }
+  .child-card.direct .child-name { color:var(--gold2); }
+
+  /* THE LINE */
+  .the-line { padding:80px 0;border-top:1px solid var(--border); }
+  .line-label { font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:40px;text-align:center;display:block; }
+  .line-chain { display:flex;flex-direction:column;gap:0;max-width:520px;margin:0 auto; }
+  .line-link { display:flex;gap:20px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--border); }
+  .line-link:last-child { border-bottom:none; }
+  .line-dot { width:20px;height:20px;border-radius:50%;border:1px solid var(--gold);background:var(--deep);flex-shrink:0;margin-top:3px; }
+  .line-dot.highlight { background:rgba(201,168,76,0.2); }
+  .line-name { font-family:var(--f-display);font-size:18px;font-style:italic;color:var(--parchment);display:block;margin-bottom:3px; }
+  .line-name.gold { color:var(--gold2); }
+  .line-detail { font-family:var(--f-mono);font-size:10px;color:var(--muted);line-height:1.6; }
+
+  .closing { padding:80px 0 120px;text-align:center;border-top:1px solid var(--border); }
+  .closing-title { font-family:var(--f-display);font-size:clamp(24px,4vw,40px);font-style:italic;color:var(--parchment);margin-bottom:32px;line-height:1.3; }
+  .closing-body { font-size:clamp(14px,2vw,16px);line-height:2;color:var(--aged);max-width:540px;margin:0 auto 48px; }
+  .closing-body strong { color:var(--cream);font-weight:normal; }
+  .back-link { display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--border);padding:14px 28px;border-radius:2px;margin:0 8px 12px;transition:border-color 0.2s; }
+  .back-link:hover { border-color:var(--gold); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-back">← Back to Family Archive</a>
+  <span class="nav-title">Eva Armstrong Ballard · Her Story</span>
+</nav>
+
+<!-- OPENING -->
+<section class="opening">
+  <p class="opening-label">Daughter of Hellen Nichols Armstrong · Great-Granddaughter of Easter Bell</p>
+
+  <div class="inheritance">
+    She was born carrying all of this:<br><br>
+    <strong>Patience</strong> — given away in 1795 · never chose a single thing that happened to her<span class="divider-line"></span>
+    <strong>Clarissa</strong> — who didn't know her own birthplace · who survived to 1870 anyway<span class="divider-line"></span>
+    <strong>Rendy Blayn</strong> — one name on one document · sold from Virginia to Texas · disappeared after 1865<span class="divider-line"></span>
+    <strong>Easter Bell</strong> — born enslaved on the Fourth of July · freed at 27 · held the land for 141 years<span class="divider-line"></span>
+    <strong>Joseph Nichols</strong> — Line No. 1802 · could not read · could not write · voted anyway<span class="divider-line"></span>
+    <strong>Hellen Nichols Armstrong</strong> — first generation born free · widowed at 41 · rebuilt anyway<span class="divider-line"></span>
+    She didn't choose any of it.<br>
+    <em>She was born with it on June 27, 1900 in Bellville, Texas.</em>
+  </div>
+
+  <h1 class="opening-name">Eva</h1>
+  <p class="opening-surname">Armstrong Ballard</p>
+  <p class="opening-dates">June 27, 1900 · Bellville, Texas — November 24, 1977 · Garden Grove, California</p>
+
+  <p class="opening-statement">
+    She ran a bar called the Nip and Sip.<br>
+    She was subpoenaed to testify in a police brutality case.<br>
+    <em>She told the truth.</em><br>
+    She moved her family to California.<br>
+    She died at 77 and left behind six children<br>
+    and everything that came after them.
+  </p>
+
+  <p class="scroll-down">her story ↓</p>
+</section>
+
+<div class="story">
+
+  <!-- CHAPTER 1 -->
+  <div class="chapter">
+    <span class="chapter-date">June 27, 1900 · Bellville, Austin County, Texas</span>
+    <h2 class="chapter-title">Born on the John Nichols Survey</h2>
+
+    <p>Eva Armstrong was born on June 27, 1900 in Bellville, Austin County, Texas. She was the daughter of <strong>Hellen Nichols Armstrong</strong> and <strong>John Armstrong</strong> — and through them the granddaughter of Easter Bell Nichols and Joseph Nichols, the great-granddaughter of Rendy Blayn and of Clarissa's line through whatever generation connected to Joseph.</p>
+
+    <p>She was born on the same ground where Easter Bell had been born enslaved sixty-two years earlier. The John Nichols Survey — Abstract 73 — was the land her great-grandparents had acquired after emancipation. It was the land the family had held since 1865. Eva was born free, on land her family owned, in a town that had been built on the grant that once belonged to the man who had held her grandmother in bondage.</p>
+
+    <p>Her father John Armstrong was 22 years old. Her mother Hellen was approximately 30. They were renting a home in Bellville in 1900 — confirmed by the census which shows no home ownership for their household. They were working people in a working town.</p>
+
+    <div class="doc-pull">
+      <span class="doc-pull-label">1900 U.S. Federal Census · Bellville, Austin County, Texas · June 1900</span>
+      <div class="doc-pull-text">John Armstrong · Head · Black · Male · age 22 · born ca. 1878 · Texas<br>
+      Hellen Armstrong · Wife · Black · Female · born September 1870<br>
+      <strong>Eva Armstrong · Daughter · age 4/12 · born June 1900 · Texas</strong><br>
+      Occupation: John Armstrong — truck driver / transfer line operator<br>
+      Home ownership: Renting</div>
+      <span class="doc-pull-source">1900 U.S. Federal Census · Bellville, Austin County, Texas · June 1900</span>
+    </div>
+
+    <p>She was four months old when that census was taken. She would not remember Bellville. But Bellville would always be in her — in the land her family came from, in the name Easter Bell had carried forward from the Bell family whose land built the town, in the 2 acres that would eventually go back to Austin County in 2006 long after Eva was gone.</p>
+  </div>
+
+  <!-- CHAPTER 2 -->
+  <div class="chapter">
+    <span class="chapter-date">August 30, 1911 · Fort Worth, Tarrant County, Texas</span>
+    <h2 class="chapter-title">Eleven Years Old<br>When Her Father Was Killed</h2>
+
+    <p>Eva Armstrong was eleven years old when Jack Thompson shot her father dead.</p>
+
+    <p>John Armstrong was working as a delivery wagon driver for the Denver News Service in Fort Worth. On the evening of August 30, 1911 — at 6:30 p.m. — he was shot at three feet near the entrance of the Terminal Hotel on East Front Street. The bullet entered his mouth and exited through the top of his head. He was dead within three minutes.</p>
+
+    <p>Jack Thompson walked free on a $3,000 bond signed within hours by prominent white Fort Worth citizens including former police commissioner George H. Mulkey. The plea was self-defense. He was never convicted.</p>
+
+    <p>Eva was eleven years old. Her mother Hellen was approximately 41. They were alone in Fort Worth. The family had been living at <strong>921 Arizona Avenue</strong>. After John's death they stayed — they had nowhere else to go and no resources to go anywhere.</p>
+
+    <div class="pause">
+      She was eleven years old.<br>
+      She watched her mother rebuild.<br>
+      She watched her mother become Helen Gilbert.<br>
+      She watched her mother keep going.<br><br>
+      <em>And then Eva kept going too.</em>
+    </div>
+
+    <p>The 1930 census finds Eva as the <strong>head of her own household</strong> at 1121 Pulaski Avenue in Fort Worth. She is 29 years old. Her mother Helen Gilbert — widowed — is living with her. James Ballard is 3 years old. Margie Ballard is 1 year old. Eva is the head of the household. She is holding everything together the same way her mother had held everything together after 1911.</p>
+  </div>
+
+  <!-- CHAPTER 3 -->
+  <div class="chapter">
+    <span class="chapter-date">Fort Worth · San Antonio · 1920s–1950s</span>
+    <h2 class="chapter-title">James Wilson Ballard Sr.<br>and the San Antonio Years</h2>
+
+    <p>Eva Armstrong married <strong>James Wilson Ballard Sr.</strong> — born August 26, 1897 in Palestine, Texas — the son of O.C. Ballard and Mary Ann Edwards Ballard, grandson of Rev. George W. Ballard, great-grandson of Newton Ballard who had been enslaved by Lewis F. Ballard in Smith County Texas.</p>
+
+    <p>Together they had six children — confirmed by birth certificates and death records. They moved from Fort Worth to San Antonio. They built a life on the East Side. James ran operations at 207 N. Center Street. Eva ran the <strong>Nip and Sip</strong>.</p>
+
+    <div class="photo-block">
+      <img src="https://raw.githubusercontent.com/jasminesworkspace2-ui/Armstrongfamily/main/Eva%20and%20Minor%20Green.jpeg"
+           alt="Eva Armstrong Ballard and Minor A. Green"
+           loading="lazy">
+      <div class="photo-block-caption">
+        <span class="photo-block-caption-title">Eva Armstrong Ballard & Minor A. Green</span>
+        <span class="photo-block-caption-meta">Minor Green knew the family since 1922 · later married Eva · witness on 1957 estate affidavit</span>
+      </div>
+    </div>
+
+    <p>The Nip and Sip was a bar and social gathering place on San Antonio's East Side. Eva ran it. She knew every family in that community. She knew the police. She knew the politicians. She knew who was honest and who wasn't.</p>
+
+    <p>The man in the photograph with Eva and James Wilson Ballard Jr. is <strong>Cornelius "Ice Cream" Armstrong Sr.</strong> — one of the most well-known figures on San Antonio's East Side. Orphaned at age three and raised by his mother's white employer, he got the nickname Ice Cream as a child because he ate so much of it. At 14 he went to work for <strong>Charles Bellinger</strong> — the powerful Black political boss of San Antonio's East Side — and spent the rest of his life in the Bellinger family's orbit, continuing under Valmo Bellinger after Charles died. Ice Cream was not a blood relative of Eva's — he shared the Armstrong surname by coincidence. He was a community figure in the same East Side world Eva and James operated in, connected through the Bellinger network that also touched 207 N. Center Street.</p>
+
+    <p>James Wilson Ballard Sr. died March 13, 1953 at Austin State Hospital. Eva had already been holding the family together for years before his death. After it, she continued.</p>
+
+    <p>A <em>San Antonio Light</em> newspaper article from March 8, 1954 names Eva Ballard in connection with a business license held under "Eva Smith" and names Margie Ballard regarding activity at 207 N. Center Street. Federal Gambling Tax Stamps — IRS Revenue Act 1951 — placed John Armstrong and James Ballard Jr. as Agents at that address with Bellinger as Principal. Eva was operating in a world where survival required navigating systems that were not designed for Black women on the East Side of San Antonio in the 1950s. <strong>She navigated them.</strong></p>
+  </div>
+
+  <!-- CHAPTER 4 -->
+  <div class="chapter">
+    <span class="chapter-date">1955 · San Antonio, Texas</span>
+    <h2 class="chapter-title">She Was Subpoenaed.<br>She Told the Truth.</h2>
+
+    <p>In 1955 Eva Armstrong Ballard was subpoenaed to testify in a police brutality case in San Antonio. She was a witness. She knew what she had seen. She told the truth.</p>
+
+    <p>This is the sentence that has been in the archive from the beginning. It does not have a long explanation because it does not need one. A Black woman in San Antonio Texas in 1955 — one year after Brown v. Board of Education, the same year Emmett Till was murdered — was called to testify against the police. And she told the truth.</p>
+
+    <div class="pause">
+      Her grandmother Easter Bell was born enslaved on the Fourth of July.<br>
+      Her grandfather Joseph could not read or write but voted anyway.<br>
+      Her father was shot dead by a white man who walked free.<br><br>
+      Eva Armstrong Ballard stood in a courtroom in San Antonio<br>
+      in 1955 and told the truth about what the police had done.<br><br>
+      <em>She knew exactly what she was doing.<br>
+      She did it anyway.</em>
+    </div>
+
+    <p>The case involved seven witnesses and a grand jury. The newspaper documented it. Eva was named. She testified. The outcome of the case has not been confirmed by primary source — but Eva's presence and testimony is confirmed.</p>
+  </div>
+
+  <!-- CHAPTER 5 -->
+  <div class="chapter">
+    <span class="chapter-date">1950s–1960s · San Antonio to Garden Grove, California</span>
+    <h2 class="chapter-title">California</h2>
+
+    <p>At some point in the late 1950s or early 1960s Eva Armstrong Ballard moved her family from San Antonio to California. The exact year has not been confirmed by primary source. What is confirmed is that by the mid-1960s the family was in Orange County, California — Garden Grove specifically.</p>
+
+    <p>She had six children. She brought them west the same way thousands of Black families from Texas were moving west during the Great Migration — toward California's defense industry jobs, toward less explicit segregation, toward something that might be better.</p>
+
+    <div class="photo-block">
+      <img src="https://raw.githubusercontent.com/jasminesworkspace2-ui/Armstrongfamily/main/Betty%20Elois%20Eva%20Magie%20James%20Jr.webp"
+           alt="Betty Eloise Eva Margie James Jr — the Ballard children with Eva"
+           loading="lazy">
+      <div class="photo-block-caption">
+        <span class="photo-block-caption-title">Betty · Eloise · Eva · Margie · James Jr.</span>
+        <span class="photo-block-caption-meta">The Ballard children with their mother Eva Armstrong Ballard · California</span>
+      </div>
+    </div>
+
+    <p>She also married again. <strong>Minor A. Green</strong> — who had known the family since 1922 — became her husband. He appeared as a witness on her 1957 estate affidavit. He is in the photographs. He was part of the family's California life.</p>
+
+    <p>Eva Armstrong Ballard died on <strong>November 24, 1977</strong> in Garden Grove, California. She was 77 years old. She had outlived her first husband, her second, most of her siblings, and a century's worth of everything that had been done to her family before she was born.</p>
+
+    <p>She was buried in Santa Ana, California.</p>
+  </div>
+
+  <!-- CHAPTER 6: THE CHILDREN -->
+  <div class="children-section">
+    <span class="children-label">Eva Armstrong Ballard's Six Children</span>
+    <div class="children-grid">
+      <div class="child-card">
+        <span class="child-name">James Wilson Ballard Jr.</span>
+        <span class="child-dates">Born June 17, 1926 · Fort Worth<br>1165 Missouri Ave · Fort Worth</span>
+      </div>
+      <div class="child-card direct">
+        <span class="child-name">Margie Nell Ballard</span>
+        <span class="child-dates">Born March 13, 1929 · Fort Worth<br>306½ E. Annie St · File #26658<br>Our direct line · NaNa</span>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Eloise Maud Ballard</span>
+        <span class="child-dates">Born May 24, 1931 · Fort Worth<br>1021 E. Magnolia · Bradshaw line</span>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Charles Ray Ballard</span>
+        <span class="child-dates">Born March 5, 1933 · Fort Worth<br>City-County Hospital · WWI Veteran<br>Buried VA Riverside National Cemetery</span>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Bettie Jean Ballard</span>
+        <span class="child-dates">Born December 13, 1935 · San Antonio<br>203 Pearl St · Midwife Ida Green<br>Boyd line</span>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Thelma Louise Ballard</span>
+        <span class="child-dates">Born December 3, 1938 · San Antonio<br>Died March 16, 1939 · age 103 days<br>Buried EastView Cemetery · San Antonio</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE LINE -->
+  <div class="the-line">
+    <span class="line-label">Eva's Line · What She Carried · What She Left</span>
+    <div class="line-chain">
+
+      <div class="line-link">
+        <div class="line-dot"></div>
+        <div class="line-content">
+          <span class="line-name">Patience</span>
+          <span class="line-detail">born ca. 1765 South Carolina · given away 1795 · the beginning</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot"></div>
+        <div class="line-content">
+          <span class="line-name">Clarissa</span>
+          <span class="line-detail">born ca. 1807 South Carolina · didn't know her own birthplace · survived to 1870</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot"></div>
+        <div class="line-content">
+          <span class="line-name">Rendy Blayn</span>
+          <span class="line-detail">born ca. 1817 North Carolina · one name on one document · sold from Virginia to Texas · disappeared after 1865</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot"></div>
+        <div class="line-content">
+          <span class="line-name">Easter Bell Nichols</span>
+          <span class="line-detail">born July 4 1838 · enslaved 27 years · freed 1865 · 141 years of land · died age 97</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot"></div>
+        <div class="line-content">
+          <span class="line-name">Joseph Nichols</span>
+          <span class="line-detail">born February 1845 · Line No. 1802 · owned his land free of mortgage · died 1905</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot"></div>
+        <div class="line-content">
+          <span class="line-name">Hellen Nichols Armstrong</span>
+          <span class="line-detail">born September 1870 · first generation born free · widowed 1911 · last confirmed 1930</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot highlight"></div>
+        <div class="line-content">
+          <span class="line-name gold">Eva Armstrong Ballard</span>
+          <span class="line-detail">born June 27 1900 · Bellville Texas · ran the Nip and Sip · testified 1955 · moved to California · died November 24 1977 · Garden Grove California · six children · everything that came after</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot highlight"></div>
+        <div class="line-content">
+          <span class="line-name gold">Margie Nell Ballard Corbin</span>
+          <span class="line-detail">born March 13 1929 · Fort Worth Texas · NaNa · 12182 Candy Lane · died October 15 1988 · Garden Grove California</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot"></div>
+        <div class="line-content">
+          <span class="line-name">Hjordis L. Corbin</span>
+          <span class="line-detail">born January 20 1960 · daughter of Margie · mother of Jasmine</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot highlight"></div>
+        <div class="line-content">
+          <span class="line-name gold">Jasmine M. Lee</span>
+          <span class="line-detail">born January 25 1982 · Orange County California · founder Dock Ellis Foundation · Eva's great-granddaughter · the researcher who built this archive</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <h2 class="closing-title">She Ran a Bar.<br>She Testified.<br>She Moved Her Family West.<br>She Left Six Children Behind.</h2>
+
+    <p class="closing-body">
+      Eva Armstrong Ballard was born carrying 105 years of her family's history. She did not choose Patience's enslavement or Clarissa's displacement or Rendy's sale or Easter's captivity or her father's murder or the Jim Crow world she grew up in. She was born with all of it already behind her.
+    </p>
+
+    <p class="closing-body">
+      What she chose was the Nip and Sip. The testimony. The move to California. The six children. The life she built from Fort Worth to San Antonio to Garden Grove across 77 years of the twentieth century.
+    </p>
+
+    <p class="closing-body">
+      <strong>She smelled amazing and she made pudding for dinner.</strong> That is what Jasmine wrote about her in the archive. After everything — after all the history and the documents and the primary sources — that is the sentence that belongs here too. She was a real person who smelled amazing and made pudding for dinner. The archive holds both things at once.
+    </p>
+
+    <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:32px;">
+      Research by Jasmine M. Lee · Dock Ellis Foundation · Seven years · 2019–2026
+    </p>
+
+    <div>
+      <a href="hellen_story.html" class="back-link">← Hellen · Her Story</a>
+      <a href="easter_story.html" class="back-link">← Easter Bell · Her Story</a>
+      <a href="papertrail.html" class="back-link">Read the Documents →</a>
+      <a href="index.html" class="back-link">← Return to Archive</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

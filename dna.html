@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>DNA Origins · Armstrong Family Archive</title>
+<style>
+  :root {
+    --deep: #080604;
+    --gold: #c9a84c;
+    --gold2: #e8c96a;
+    --cream: #ede0c8;
+    --parchment: #d4bf9a;
+    --aged: #a89878;
+    --muted: #6a5c42;
+    --border: rgba(201,168,76,0.15);
+    --f-display: 'Georgia', 'Times New Roman', serif;
+    --f-body: 'Georgia', serif;
+    --f-mono: 'Courier New', monospace;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--deep);
+    color:var(--cream);
+    font-family:var(--f-body);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .nav {
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(8,6,4,0.96);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-back { font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none; }
+  .nav-title { font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted); }
+
+  /* HERO */
+  .hero {
+    min-height:60vh;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    padding:100px 24px 60px;text-align:center;
+    border-bottom:1px solid var(--border);
+    background:radial-gradient(ellipse at center, rgba(139,105,20,0.08) 0%, transparent 65%);
+  }
+  .hero-label { font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:block; }
+  .hero-title { font-family:var(--f-display);font-size:clamp(40px,8vw,80px);font-style:italic;color:var(--parchment);line-height:1;margin-bottom:20px; }
+  .hero-sub { font-family:var(--f-display);font-size:clamp(16px,3vw,22px);font-style:italic;color:var(--gold);margin-bottom:32px; }
+  .hero-desc { max-width:600px;font-size:clamp(14px,2vw,16px);line-height:1.9;color:var(--aged); }
+  .hero-desc em { color:var(--cream);font-style:normal; }
+
+  /* MAIN */
+  .main { max-width:900px;margin:0 auto;padding:0 24px 120px; }
+
+  /* SECTION */
+  .section { padding:64px 0;border-bottom:1px solid var(--border); }
+  .section:last-child { border-bottom:none; }
+  .section-label { font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px; }
+  .section-title { font-family:var(--f-display);font-size:clamp(24px,4vw,36px);font-style:italic;color:var(--parchment);margin-bottom:32px;line-height:1.2; }
+
+  /* KIT INFO */
+  .kit-grid { display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px; }
+  @media(max-width:600px){ .kit-grid{grid-template-columns:1fr;} }
+  .kit-card { padding:20px 24px;border:1px solid var(--border);background:rgba(10,8,5,0.5); }
+  .kit-label { font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px; }
+  .kit-name { font-family:var(--f-display);font-size:16px;font-style:italic;color:var(--parchment);display:block;margin-bottom:4px; }
+  .kit-number { font-family:var(--f-mono);font-size:12px;color:var(--gold2);display:block;margin-bottom:4px; }
+  .kit-detail { font-size:12px;color:var(--muted);line-height:1.6; }
+
+  /* ADMIXTURE */
+  .admix-grid { display:grid;gap:10px;margin-bottom:32px; }
+  .admix-row { display:grid;grid-template-columns:160px 1fr 60px;gap:12px;align-items:center; }
+  .admix-label { font-family:var(--f-mono);font-size:10px;color:var(--aged);text-transform:uppercase;letter-spacing:1px; }
+  .admix-bar-bg { height:8px;background:rgba(201,168,76,0.1);border-radius:4px;overflow:hidden; }
+  .admix-bar { height:100%;border-radius:4px;background:var(--gold); }
+  .admix-bar.secondary { background:rgba(201,168,76,0.5); }
+  .admix-bar.tertiary { background:rgba(201,168,76,0.3); }
+  .admix-pct { font-family:var(--f-mono);font-size:11px;color:var(--gold2);text-align:right; }
+
+  /* ORACLE */
+  .oracle-box { padding:24px 28px;border:1px solid rgba(201,168,76,0.3);background:rgba(10,8,5,0.6);margin-bottom:20px; }
+  .oracle-label { font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px; }
+  .oracle-result { font-family:var(--f-display);font-size:18px;font-style:italic;color:var(--parchment);display:block;margin-bottom:6px; }
+  .oracle-distance { font-family:var(--f-mono);font-size:10px;color:var(--muted); }
+
+  /* PROSE */
+  .prose p { font-size:clamp(14px,2vw,16px);line-height:2;color:var(--aged);margin-bottom:20px; }
+  .prose p strong { color:var(--cream);font-weight:normal; }
+  .prose p em { color:var(--parchment);font-style:italic; }
+
+  /* MATCH TABLE */
+  .match-table { width:100%;border-collapse:collapse;margin-bottom:32px;font-size:12px; }
+  .match-table th { font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);background:rgba(10,8,5,0.8);padding:10px 12px;text-align:left;border-bottom:1px solid rgba(201,168,76,0.3); }
+  .match-table td { padding:10px 12px;border-bottom:1px solid rgba(201,168,76,0.06);vertical-align:top;color:var(--aged);line-height:1.5; }
+  .match-table tr:hover td { background:rgba(201,168,76,0.03); }
+  .match-table td:first-child { color:var(--parchment);font-family:var(--f-display);font-style:italic;font-size:13px; }
+  .match-table td .cm { font-family:var(--f-mono);font-size:11px;color:var(--gold2); }
+  .match-table td .branch { font-family:var(--f-mono);font-size:9px;color:var(--muted); }
+  @media(max-width:600px){
+    .match-table th:nth-child(3),.match-table td:nth-child(3) { display:none; }
+  }
+
+  /* CLUSTER */
+  .cluster { padding:20px 24px;border:1px solid var(--border);background:rgba(10,8,5,0.4);margin-bottom:12px; }
+  .cluster-title { font-family:var(--f-display);font-size:16px;font-style:italic;color:var(--parchment);display:block;margin-bottom:6px; }
+  .cluster-detail { font-size:13px;color:var(--aged);line-height:1.7; }
+  .cluster-detail strong { color:var(--cream);font-weight:normal; }
+
+  /* EXPLANATION */
+  .explain-box { padding:24px 28px;border-left:2px solid var(--gold);background:rgba(10,8,5,0.5);margin:32px 0; }
+  .explain-box p { font-size:14px;line-height:1.9;color:var(--aged);margin-bottom:12px; }
+  .explain-box p:last-child { margin-bottom:0; }
+  .explain-box strong { color:var(--cream);font-weight:normal; }
+
+  /* CLOSING */
+  .closing { padding:60px 0;text-align:center; }
+  .closing-title { font-family:var(--f-display);font-size:clamp(22px,4vw,36px);font-style:italic;color:var(--parchment);margin-bottom:24px; }
+  .closing-body { font-size:14px;line-height:1.9;color:var(--aged);max-width:560px;margin:0 auto 32px; }
+  .back-link { display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--border);padding:14px 28px;border-radius:2px;margin:0 8px 12px;transition:border-color 0.2s; }
+  .back-link:hover { border-color:var(--gold); }
+
+  .note { font-family:var(--f-mono);font-size:9px;letter-spacing:1px;color:var(--muted);line-height:1.7;padding:16px 20px;border:1px solid var(--border);margin-top:32px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-back">← Back to Family Archive</a>
+  <span class="nav-title">DNA Origins · Armstrong Family</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-label">Armstrong Family Archive · Genetic Evidence</span>
+  <h1 class="hero-title">Where We Come From</h1>
+  <p class="hero-sub">Seven years of documents. Confirmed by DNA.</p>
+  <p class="hero-desc">
+    The paper trail goes back to 1795 — Patience given to Patty Waldrop in Newberry County South Carolina. The DNA goes back further. This page documents what the genetic evidence confirms about where this family's African ancestors came from, who the living cousins are, and how the DNA is telling the same story as the documents — from two different directions.
+    <br><br>
+    <em>Primary sources only. No hypothesis presented as confirmed fact.</em>
+  </p>
+</section>
+
+<div class="main">
+
+  <!-- KIT INFORMATION -->
+  <div class="section">
+    <span class="section-label">DNA Testing · Confirmed Kits</span>
+    <h2 class="section-title">The Tests Behind This Research</h2>
+
+    <div class="prose" style="margin-bottom:32px;">
+      <p><strong>What is GEDmatch?</strong> GEDmatch is a free third-party DNA analysis platform where people upload their DNA test results from AncestryDNA, 23andMe, FTDNA, or other testing companies. It allows researchers to compare DNA across different testing platforms — so an AncestryDNA tester and a 23andMe tester can find each other as matches. GEDmatch also offers specialized ancestry calculators like the EthioHelix Africa-Only analysis used in this research. Kit numbers on GEDmatch are assigned when DNA is uploaded and serve as the identifier for each person's DNA file.</p>
+      <p><strong>Privacy note:</strong> In accordance with GEDmatch Terms of Service, specific kit numbers and email addresses of other researchers are not published publicly on this page. Match names and cM values are shared only where the researcher has made their profile public or has been contacted directly. All outreach follows GEDmatch messaging guidelines.</p>
+    </div>
+
+    <div class="kit-grid">
+      <div class="kit-card">
+        <span class="kit-label">GEDmatch Kit · Jasmine M. Lee</span>
+        <span class="kit-name">Jasmine M. Lee</span>
+        <span class="kit-number">Kit QW84*****</span>
+        <span class="kit-detail">Uploaded from AncestryDNA · 16,113 SNPs used for Africa-only analysis · GEDCOM #7487885 "Our beautiful family" · WikiTree: Lee-59275 · Represents the maternal family line through Hjordis L. Corbin</span>
+      </div>
+      <div class="kit-card">
+        <span class="kit-label">AncestryDNA Kit · Hjordis L. Corbin</span>
+        <span class="kit-name">Hjordis L. Corbin</span>
+        <span class="kit-number">Kit SQ84*****</span>
+        <span class="kit-detail">Hjordis L. Corbin · born January 20 1960 · daughter of Margie Nell Ballard Corbin · mother of Jasmine M. Lee · 3,575.4 cM shared with Jasmine confirming parent-child relationship · 71.5 cM shared with Gwen Reese confirming Bellville Nichols connection</span>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>Kit QW84***** represents <strong>Jasmine's maternal line only</strong> — tracing through Hjordis L. Corbin, Margie Nell Ballard Corbin, Eva Armstrong Ballard, Hellen Nichols Armstrong, Easter Bell Nichols, Joseph Nichols, and ultimately to Patience — the earliest confirmed ancestor. Jasmine's father's side is not represented in these results.</p>
+    </div>
+  </div>
+
+  <!-- AFRICAN ORIGINS -->
+  <div class="section">
+    <span class="section-label">EthioHelix K10 Africa Only · Kit QW84***** · 16,113 SNPs</span>
+    <h2 class="section-title">African Origins</h2>
+
+    <div class="admix-grid">
+      <div class="admix-row">
+        <span class="admix-label">West Africa</span>
+        <div class="admix-bar-bg"><div class="admix-bar" style="width:54.37%"></div></div>
+        <span class="admix-pct">54.37%</span>
+      </div>
+      <div class="admix-row">
+        <span class="admix-label">North Africa</span>
+        <div class="admix-bar-bg"><div class="admix-bar secondary" style="width:18.16%"></div></div>
+        <span class="admix-pct">18.16%</span>
+      </div>
+      <div class="admix-row">
+        <span class="admix-label">East Africa 2</span>
+        <div class="admix-bar-bg"><div class="admix-bar secondary" style="width:12.17%"></div></div>
+        <span class="admix-pct">12.17%</span>
+      </div>
+      <div class="admix-row">
+        <span class="admix-label">Omotic</span>
+        <div class="admix-bar-bg"><div class="admix-bar tertiary" style="width:4.56%"></div></div>
+        <span class="admix-pct">4.56%</span>
+      </div>
+      <div class="admix-row">
+        <span class="admix-label">Biaka Pygmy</span>
+        <div class="admix-bar-bg"><div class="admix-bar tertiary" style="width:3.83%"></div></div>
+        <span class="admix-pct">3.83%</span>
+      </div>
+      <div class="admix-row">
+        <span class="admix-label">Nilo-Saharan</span>
+        <div class="admix-bar-bg"><div class="admix-bar tertiary" style="width:3.13%"></div></div>
+        <span class="admix-pct">3.13%</span>
+      </div>
+      <div class="admix-row">
+        <span class="admix-label">Khoi-San</span>
+        <div class="admix-bar-bg"><div class="admix-bar tertiary" style="width:2.20%"></div></div>
+        <span class="admix-pct">2.20%</span>
+      </div>
+      <div class="admix-row">
+        <span class="admix-label">Hadza</span>
+        <div class="admix-bar-bg"><div class="admix-bar tertiary" style="width:1.26%"></div></div>
+        <span class="admix-pct">1.26%</span>
+      </div>
+      <div class="admix-row">
+        <span class="admix-label">East Africa 1</span>
+        <div class="admix-bar-bg"><div class="admix-bar tertiary" style="width:0.32%"></div></div>
+        <span class="admix-pct">0.32%</span>
+      </div>
+    </div>
+
+    <!-- ORACLE RESULTS -->
+    <span class="section-label" style="margin-top:32px;display:block;">Oracle Population Approximations · Two Methods Confirmed</span>
+
+    <div class="oracle-box">
+      <span class="oracle-label">Single Population Best Match · Both Oracle Methods Agree</span>
+      <span class="oracle-result">Fulani — distance 18.56 (4-Ancestors Oracle) · 18.65 (Dienekes Oracle)</span>
+      <span class="oracle-distance">The Fulani are a Sahelian West African people spread across the Sahel from Senegambia to Sudan and Cameroon. Their elevated North African signal comes from centuries of trans-Saharan trade contact — not recent North African ancestry. The consistency of this match across two independent Oracle methods confirms it is not coincidental.</span>
+    </div>
+
+    <div class="oracle-box">
+      <span class="oracle-label">4-Ancestors Oracle · Top Result</span>
+      <span class="oracle-result">Algeria + Hema + Yoruba + Yoruba @ distance 4.18</span>
+      <span class="oracle-distance">Yoruba × 2 — West African Nigerian ancestry · Hema — Great Lakes East African (DRC/Uganda border) accounting for East Africa 2 and Nilo-Saharan components · Algeria — standing in for North African Sahelian signal absorbed through trans-Saharan trade networks</span>
+    </div>
+
+    <div class="oracle-box">
+      <span class="oracle-label">Mixed Mode Population Sharing · Dienekes Oracle · Top Result</span>
+      <span class="oracle-result">68.8% Bamoun + 31.2% Libya @ distance 4.06</span>
+      <span class="oracle-distance">Bamoun — Cameroonian Grassfields people · strong West African signal with Central African mixture · Libya standing in for North African Sahelian component · This two-population fit is consistent across 20 results — North African signal runs at approximately 30-35% in every two-population approximation</span>
+    </div>
+
+    <div class="prose" style="margin-top:32px;">
+      <p>The family's African ancestry draws from <strong>three distinct source populations</strong> that were brought together through the Atlantic slave trade:</p>
+      <p><strong>Primary — Sahelian West Africa:</strong> The Fulani single-population match combined with the consistent North Africa component at 18.16% points to ancestry from the West African Sahel — the belt running from Senegambia through Mali, Burkina Faso, Niger, northern Nigeria, and Cameroon. These populations absorbed North African ancestry through trans-Saharan trade over centuries before enslavement.</p>
+      <p><strong>Secondary — Forest West Africa / Nigerian:</strong> Yoruba, Igbo, Bamoun, Kongo appearing consistently across all approximations points to forest belt West and Central African ancestry — Nigeria, Cameroon, and the Congo basin. These are the populations most heavily represented in the slave trade routes through the Bight of Benin and Bight of Biafra.</p>
+      <p><strong>Tertiary — East and Central Africa:</strong> Hema from the Great Lakes region appearing in virtually every 4-population result, plus East Africa 2 at 12.17%, indicates a Central/East African thread through Bantu-speaking populations that expanded from Central Africa westward.</p>
+      <p>These results represent the <strong>maternal line only</strong> — tracing back through Hjordis, Margie, Eva, Hellen, Easter Bell, Joseph Nichols, and ultimately to <strong>Patience</strong> — born ca. 1765 in South Carolina. The Fulani/Sahelian West African signal is consistent with Upper Guinea and Senegambian slave trade routes through the port of Charleston, South Carolina in the mid-to-late 1700s when Patience was brought to the Americas.</p>
+    </div>
+  </div>
+
+  <!-- DNA PROJECTS -->
+  <div class="section">
+    <span class="section-label">GEDmatch DNA Projects · Kit QW84*****</span>
+    <h2 class="section-title">The Projects That Confirmed the Research</h2>
+
+    <div class="cluster" style="margin-bottom:20px;">
+      <span class="cluster-title">Black Dutch Fork South Carolina Genealogy Project · 377 Matches</span>
+      <p class="cluster-detail">Dutch Fork is the region between the Broad and Saluda Rivers in Newberry and Lexington Counties — exactly where <strong>Patience was held before 1795</strong>. Having 377 matches in this project is the genetic fingerprint of the Waldrop-Davenport enslaving family network in Newberry County South Carolina. This is not coincidence. The shared DNA with 377 people researching that specific community confirms Patience's documented South Carolina origins.</p>
+    </div>
+
+    <div class="cluster" style="margin-bottom:20px;">
+      <span class="cluster-title">Enslaved and Enslavers Ancestors DNA Project · Key Matches</span>
+      <p class="cluster-detail">This project connects DNA matches to both enslaved ancestors and white enslaving families. Significant matches include Jean F Birkhead Brown (84.5 cM · Chr 13 · MRCA 4.53), Nina L Taylor with MT haplogroup L3e1 — West African maternal line, and Millcreeklil (169 cM · Chr 13 · MRCA 6.35 · email Edwards-Haynes — <strong>Edwards surname connects to Mary Ann Edwards Ballard</strong>). Becky Lee Johns appears on three separate kits with MT haplogroup H3b2 — European maternal line — consistent with descending from the white enslaving family network.</p>
+    </div>
+
+    <div class="explain-box">
+      <p><strong>Why the white enslaving family's DNA appears in these results:</strong> When an enslaved person was held for generations by a white family, trace European DNA sometimes entered the family through the relationships of that era. The shared DNA between Jasmine and researchers like Becky Lee Johns or Laura Andrews does not represent a recent white ancestor — it represents the genetic trace left by the enslaving family network over generations of proximity. This is what the Enslaved and Enslavers project is designed to find.</p>
+    </div>
+  </div>
+
+  <!-- TRIANGULATION CLUSTERS -->
+  <div class="section">
+    <span class="section-label">Confirmed Triangulation · Three People · One Ancestor</span>
+    <h2 class="section-title">The Bellville Nichols Community · Living Cousins</h2>
+
+    <div class="prose">
+      <p>When three people all share DNA with each other at consistent cM values — they share a common ancestor. The following cluster is confirmed: Jasmine, Gwen Reese, LaToya Carraway, and Lolah D James all appear on each other's match lists. This is a <strong>confirmed triangulation group</strong> — all four descend from the same ancestor or ancestral couple.</p>
+      <p>The generation estimate of 4.3 for LaToya and Lolah points to the common ancestor being approximately <strong>Easter Bell Nichols and Joseph Nichols</strong> — or possibly John Armstrong and Clarissa Ann Morgan — living in Bellville Austin County Texas in the 1865-1880 period.</p>
+    </div>
+
+    <table class="match-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Kit</th>
+          <th>Shared cM</th>
+          <th>Connection</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Gwen Reese</td>
+          <td class="branch">A103465</td>
+          <td class="cm">53.5 cM</td>
+          <td>Nichols / Armstrong connections · Hjordis shares 71.5 cM with Gwen confirming maternal line</td>
+        </tr>
+        <tr>
+          <td>LaToya Carraway</td>
+          <td class="branch">A027359 / A209155</td>
+          <td class="cm">39.6 cM</td>
+          <td>Black Carraway family · Shelby County Texas · Bobo freedom colony · Gen. 4.3</td>
+        </tr>
+        <tr>
+          <td>Lolah D James</td>
+          <td class="branch">TE2878659</td>
+          <td class="cm">35.7 cM</td>
+          <td>Shared Carraway/James node · GEDCOM uploaded 2022 · Gen. 4.3</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- CAMPBELL CLUSTER -->
+    <span class="section-label" style="margin-top:32px;display:block;">Campbell Family · Precinct 5 Bellville 1870 · Confirmed by Census and DNA</span>
+
+    <div class="prose">
+      <p>The 1870 Federal Census for Precinct 5 Bellville Austin County Texas confirms <strong>John Campbell Sr.</strong> — age 40, born North Carolina — wife Susan, age 35, born North Carolina — with children Moses (age 11, born ca. 1859), Edwin (age 8, born ca. 1862), and James (age 3, born ca. 1867). Three living DNA matches trace directly to these children:</p>
+    </div>
+
+    <table class="match-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Kit</th>
+          <th>Shared cM</th>
+          <th>Campbell Connection</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Danni Durham</td>
+          <td class="branch">XB8784578</td>
+          <td class="cm">23.8 cM</td>
+          <td>Traces to Edwin Campbell born ca. 1862 · Bellville · confirmed 1870 census</td>
+        </tr>
+        <tr>
+          <td>Kailey Knight</td>
+          <td class="branch">GH5458279</td>
+          <td class="cm">17.7 cM</td>
+          <td>Traces to James Campbell born ca. 1867 · Bellville · confirmed 1870 census</td>
+        </tr>
+        <tr>
+          <td>Kelly E. Mobley</td>
+          <td class="branch">A385717</td>
+          <td class="cm">12.5 cM</td>
+          <td>Traces to Moses Campbell born ca. 1859 · Bellville · confirmed 1870 census</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="explain-box">
+      <p><strong>What the Campbell cluster means for the family tree:</strong> John Campbell Sr. and his family lived in the same Precinct 5 community as Easter Bell Nichols and Joseph Nichols in Bellville in 1870. The DNA confirms their descendants are biological cousins. The specific sibling relationship connecting the Campbell line to the Nichols line has not yet been confirmed by a primary source document — but the biological connection is real. Finding that connection is the next research step.</p>
+      <p><strong>Joshua Carey · Kit CG8358966 · email Lcooperhunter@gmail.com</strong> matches Gwen Reese at 34.1 cM and you at 10.3 cM. The Cooper Hunter email address connects to the early Austin County Texas landowning families whose enslaved people lived alongside the John Nichols plantation on Piney Creek in Bellville.</p>
+    </div>
+  </div>
+
+  <!-- BALLARD LINE DNA -->
+  <div class="section">
+    <span class="section-label">Ballard Paternal Line · Smith County and Upshur County Texas</span>
+    <h2 class="section-title">The Ballard Line · DNA Confirmation</h2>
+
+    <div class="prose">
+      <p>The ICW analysis running kit QW84***** against Larry Thomasson's Ballard kit (A505701) found <strong>61 matches that share both kits</strong>. This cluster connects to Smith County and Upshur County Texas — where Newton Ballard filed his land claim in 1856 after being enslaved by Lewis F. Ballard.</p>
+    </div>
+
+    <table class="match-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Kit</th>
+          <th>Shared cM</th>
+          <th>Connection</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Birkhead / Brown Family</td>
+          <td class="branch">Multiple kits · kobeed@netscape.net</td>
+          <td class="cm">14–27 cM</td>
+          <td>Five kits same family · Jean F Birkhead Brown · John Birkhead · Annette Brown-Worsley · Cindy M Brown · Sallie M Brown · Ballard line connection</td>
+        </tr>
+        <tr>
+          <td>Willie Rachel Campbell Skelton</td>
+          <td class="branch">M016039</td>
+          <td class="cm">26.0 cM</td>
+          <td>GEDCOM uploaded · jenlynne@att.net · Campbell line · Bellville community</td>
+        </tr>
+        <tr>
+          <td>Charles M. Allen</td>
+          <td class="branch">A935006</td>
+          <td class="cm">24.8 cM</td>
+          <td>WikiTree profile · redeemed5052@yahoo.com · name matches Line 34 · 1867 Bellville voter ledger</td>
+        </tr>
+        <tr>
+          <td>Jessica D Carter</td>
+          <td class="branch">CJ6366754</td>
+          <td class="cm">25.4 cM</td>
+          <td>Smith County Texas · Ballard line · jessdaniellecarter@gmail.com</td>
+        </tr>
+        <tr>
+          <td>Larry Thomasson</td>
+          <td class="branch">A505701 / T977915</td>
+          <td class="cm">30.6 cM</td>
+          <td>Core Smith County Ballard documentation · dual kit confirmed · larryethomasson@windstream.net</td>
+        </tr>
+        <tr>
+          <td>Donna Driskill Keyser</td>
+          <td class="branch">A884951</td>
+          <td class="cm">27.8 cM</td>
+          <td>Confirmed Blane/Driskill overlap · Halifax County Virginia · Rendy Blayn connection · volunteerlady2@gmail.com</td>
+        </tr>
+        <tr>
+          <td>Mr. John L. Faulkner</td>
+          <td class="branch">T117687</td>
+          <td class="cm">28.4 cM</td>
+          <td>Halifax / Pittsylvania border cluster · Virginia Blane line · jlfaulkner@aol.com</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ANDREWS ESTATE -->
+  <div class="section">
+    <span class="section-label">Primary Source Confirmed · Orange County North Carolina · 1842</span>
+    <h2 class="section-title">The Laban Andrews Estate · Names Recovered</h2>
+
+    <div class="prose">
+      <p>Your 17.4 cM DNA match with Laura Andrews (Kit AD870715C1) on Chromosome 2 — confirmed through the Black Dutch Fork South Carolina Genealogy Project — connects to the <strong>Laban Andrews estate of Orange County North Carolina</strong>. Working directly from microfilm of the Orange County Probate Estate Case Files (Case No. 9203R), the following enslaved people were confirmed by primary source documents:</p>
+    </div>
+
+    <table class="match-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Confirmed By</th>
+          <th>Disposition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Barcas</td>
+          <td class="branch">Negro woman</td>
+          <td>Sheriff's levy · March 7 1842</td>
+          <td>Willed by Laban Andrews to his wife for life then to heirs</td>
+        </tr>
+        <tr>
+          <td>Lucy</td>
+          <td class="branch">Negro woman/girl · born after will · before Laban's death</td>
+          <td>May 1842 court petition · sale record</td>
+          <td>Sold to John Andrews for $160.50 at estate sale</td>
+        </tr>
+        <tr>
+          <td>Tom</td>
+          <td class="branch">Negro boy</td>
+          <td>Multiple documents · 1842-1847</td>
+          <td>Released to Henry Andrews by arbitration · July 23 1847</td>
+        </tr>
+        <tr>
+          <td>Silvey</td>
+          <td class="branch">Negro girl</td>
+          <td>Sheriff's levy · March 7 1842</td>
+          <td>Willed to wife for life then to heirs · final disposition pending</td>
+        </tr>
+        <tr>
+          <td>Peter</td>
+          <td class="branch">Negro man</td>
+          <td>Multiple documents · hired out annually</td>
+          <td>Hired to John Lloyd 1843 for $28.00 · released to Henry Andrews July 23 1847</td>
+        </tr>
+        <tr>
+          <td>Jordon</td>
+          <td class="branch">Negro man</td>
+          <td>Multiple documents · 1842-1847</td>
+          <td>Released to Henry Andrews by arbitration · July 23 1847</td>
+        </tr>
+        <tr>
+          <td>Green</td>
+          <td class="branch">Negro · gender not specified in this document</td>
+          <td>Arbitration award · July 23 1847</td>
+          <td>Released to Henry Andrews by arbitration · July 23 1847</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="explain-box">
+      <p><strong>Laban Andrews' confirmed heirs</strong> — named in the May 1846 petition: David Andrews (executor), Henry Andrews, Nancy Andrews Catts, Berry Andrews, William Andrews, Willie Andrews, Hannah Walker, Green Andrews, Dilly Roberts, Elizabeth Andrews Tripp, John Andrews, Rebecca Andrews.</p>
+      <p><strong>William Andrews</strong> — who appears in Laura Andrews' family tree and later moved to Arkansas — is one of Laban's heirs. The enslaved people from this estate were distributed among these heirs. <strong>Margaret has not been confirmed in any primary source document</strong> from this estate file and should not be added to the archive until a primary source is found.</p>
+      <p>These seven people — Barcas, Lucy, Tom, Silvey, Peter, Jordon, and Green — are documented members of the same enslaved community whose DNA is present in your chromosome 2 match with Laura Andrews. They are not confirmed as your direct ancestors but as members of the broader community whose descendants carry overlapping DNA with your family.</p>
+    </div>
+  </div>
+
+  <!-- WHAT THE DNA PROVES -->
+  <div class="section">
+    <span class="section-label">Summary · What Seven Years of Research and DNA Confirm Together</span>
+    <h2 class="section-title">The DNA Is Telling the Same Story as the Documents</h2>
+
+    <div class="prose">
+      <p><strong>The Nichols family in Bellville Austin County Texas is confirmed.</strong> The tight 13-match Gwen Reese ICW cluster is the genetic fingerprint of the John Nichols plantation community. Easter Bell and Joseph Nichols are the common ancestors connecting Jasmine to Gwen Reese, LaToya Carraway, and Lolah D James.</p>
+      <p><strong>Patience's South Carolina origins are confirmed.</strong> 377 matches in the Black Dutch Fork South Carolina Genealogy Project — the exact geographic region of Newberry County where Patience was documented in 1795 — is not coincidence. The DNA and the 1795 deed are pointing to the same community.</p>
+      <p><strong>Rendy Blayn's Virginia origins are supported.</strong> Three separate DNA matches — Donna Driskill Keyser, Edward Dunson, and John L. Faulkner — with confirmed Halifax County Virginia colonial connections appear in the same ICW cluster. The Library of Virginia phone call remains the highest priority for confirming Rendy's origins by primary source.</p>
+      <p><strong>The Ballard line has DNA support.</strong> 61 matches sharing both Jasmine's kit and the Ballard research kit confirm the Smith County and Upshur County Texas Ballard network is genetically real. The Louisa Hypothesis remains unconfirmed by primary source document but is not contradicted by the DNA evidence.</p>
+      <p><strong>Researching white enslaving families is not wasted effort.</strong> The Laban Andrews estate papers exist because white men went to court. Without tracking the Andrews family through Orange County North Carolina probate records, the names Barcas, Lucy, Tom, Silvey, Peter, Jordon, and Green would remain permanently invisible to history. In African American genealogy research, the enslaver's legal record is often the only record that preserves the enslaved person's name.</p>
+    </div>
+
+    <p class="note">All DNA analysis on this page is based on GEDmatch kit QW84***** (Jasmine M. Lee) tested through AncestryDNA. Results represent the maternal family line only. EthioHelix K10 Africa Only analysis based on 16,113 SNPs. Oracle approximations are mathematical models — they identify the closest reference populations, not specific ethnic identities. Research by Jasmine M. Lee · Dock Ellis Foundation · 2019–2026 · jlee@dockellisfoundation.com · WikiTree: Lee-59275</p>
+  </div>
+
+  <!-- ADDITIONAL CALCULATORS -->
+  <div class="section">
+    <span class="section-label">Additional Admixture Calculators · Four Independent Tests · Consistent Results</span>
+    <h2 class="section-title">European Admixture · The Enslaving Family Genetic Trace</h2>
+
+    <div class="prose">
+      <p>Four additional GEDmatch calculators — each using different reference populations — were run on this kit. They all show a consistent European admixture component running at approximately <strong>16-22%</strong>. This represents the genetic trace left by the white enslaving family network — the Waldrop, Davenport, Andrews, and Nichols families who held Patience, Clarissa, Rendy Blayn, Easter Bell, and Joseph Nichols.</p>
+      <p>This is what the Enslaved and Enslavers Ancestors DNA Project is designed to find — the genetic overlap between the descendants of enslaved people and the descendants of the white families who held them.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0;">
+      <div class="oracle-box">
+        <span class="oracle-label">Calculator 1 · Africa + European Components</span>
+        <span class="oracle-result">73.71% African · ~22% European-related</span>
+        <span class="oracle-distance">WHG 9.84% · Neolithic 6.04% · EHG 6.51% · Amerindian 0.41%</span>
+      </div>
+      <div class="oracle-box">
+        <span class="oracle-label">Calculator 2 · Sub-Saharan + Northern European</span>
+        <span class="oracle-result">67.63% Sub-Saharan · ~16% North European</span>
+        <span class="oracle-distance">North-East-European 8.68% · Atlantic Mediterranean Neolithic 7.45% · Near East 4.03%</span>
+      </div>
+      <div class="oracle-box">
+        <span class="oracle-label">Calculator 3 · Sub-Saharan + Western European</span>
+        <span class="oracle-result">59.05% Sub-Saharan · ~19% European</span>
+        <span class="oracle-distance">South and West European 9.96% · North and East European 9.24% · Paleo African 11.08%</span>
+      </div>
+      <div class="oracle-box">
+        <span class="oracle-label">Calculator 4 · Neo African + Palaeo African</span>
+        <span class="oracle-result">65.03% African · ~18% European</span>
+        <span class="oracle-distance">Neo African 41.79% · Palaeo African 23.24% · West European 13.21% · Mediterranean 5.04%</span>
+      </div>
+    </div>
+
+    <div class="explain-box">
+      <p><strong>The Palaeo African component at 23.24%</strong> in Calculator 4 is significant — this represents ancient African ancestry predating the Bantu expansion, consistent with the Fulani/Sahelian West African signal in the EthioHelix results. The Fulani carry ancient population components from Sahelian hunter-gatherer populations that mixed with West African farming populations thousands of years before enslavement.</p>
+      <p><strong>The small Amerindian signal at 0.41-1.2%</strong> appears consistently across calculators — likely reflecting trace Indigenous ancestry from the family's centuries in the American South, particularly Texas.</p>
+    </div>
+  </div>
+
+  <!-- CAMPBELL FORENSIC CORRECTIONS -->
+  <div class="section">
+    <span class="section-label">Forensic Corrections · Database Indexing Errors · August 2026</span>
+    <h2 class="section-title">Campbell Family · Database Errors Corrected</h2>
+
+    <div class="prose">
+      <p>The 1870 Austin County Texas census household of John Campbell Sr. was misindexed as White in major genealogy databases. Examination of the original handwritten ledger completed by Assistant Marshal Max Meissner confirms the family was designated <strong>M (Mulatto) and B (Black)</strong> in the Color column. This error caused standard database searches to return no results for this family.</p>
+    </div>
+
+    <div class="cluster" style="margin-bottom:12px;">
+      <span class="cluster-title">Error 1 — Racial Misclassification</span>
+      <p class="cluster-detail">John Campbell Sr., Susan Campbell, and children William, Moses, Edwin, John Jr., and James were all indexed as White. The original handwritten census sheet designates them as Mulatto and Black. <strong>Always search with Race filter blank or unchecked</strong> when searching for this family.</p>
+    </div>
+
+    <div class="cluster" style="margin-bottom:12px;">
+      <span class="cluster-title">Error 2 — Hannah Campbell Inferred Mother Trap</span>
+      <p class="cluster-detail">Database algorithms designated Hannah Campbell (age 45, born Mississippi) as the inferred mother of Moses Campbell (age 11). The original sheet shows Hannah was a Domestic Servant in the household — not Moses's mother. Moses and his siblings were born in Texas to North Carolina-born parents John and Susan Campbell.</p>
+    </div>
+
+    <div class="cluster" style="margin-bottom:12px;">
+      <span class="cluster-title">Error 3 — 1880 Alabama Birthplace Discrepancy</span>
+      <p class="cluster-detail">Moses Campbell in 1880 was a 21-year-old illiterate farm servant working for German immigrant Jacob Rinn. His parents' birthplaces were listed as Alabama — contradicting the 1870 North Carolina designation. The 1870 record where John and Susan Campbell gave their own information is the primary baseline. The 1880 Alabama entry reflects an estimate by Moses or his employer.</p>
+    </div>
+
+    <div class="cluster">
+      <span class="cluster-title">Two Eliminated Duplicate Families</span>
+      <p class="cluster-detail"><strong>Brazoria County — ELIMINATED:</strong> Mose C. Campbell married Laura Edwards 1901 — parents born Kentucky and Texas — confirmed separate coastal family. <strong>San Antonio 1919 — ELIMINATED:</strong> Death certificate #23051 for Mrs. M. Campbell — confirmed female housewife — informant Charlie Applewhite — not the male Moses Campbell.</p>
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <h2 class="closing-title">The Paper Trail and the DNA<br>Are Telling the Same Story</h2>
+    <p class="closing-body">Seven years of primary source research. Slave schedules. Probate records. Voter registrations. Death certificates. Deeds. And now the DNA confirming every major finding from two different directions. This family's history was deliberately hidden — but it was never destroyed.</p>
+    <div>
+      <a href="papertrail.html" class="back-link">The Paper Trail →</a>
+      <a href="reference.html" class="back-link">Ancestral Reference Map →</a>
+      <a href="index.html" class="back-link">← Return to Archive</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

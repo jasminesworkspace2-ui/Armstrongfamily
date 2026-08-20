@@ -9,10 +9,10 @@
     --deep: #080604;
     --gold: #c9a84c;
     --gold2: #e8c96a;
-    --cream: #ede0c8;
-    --parchment: #d4bf9a;
-    --aged: #a89878;
-    --muted: #6a5c42;
+    --cream: #f5f2ec;
+    --parchment: #f0ead8;
+    --aged: #e4dcd0;
+    --muted: #a8a090;
     --border: rgba(201,168,76,0.15);
     --f-display: 'Georgia', 'Times New Roman', serif;
     --f-body: 'Georgia', serif;
@@ -284,6 +284,32 @@
     margin:0 8px 12px;transition:border-color 0.2s;
   }
   .back-link:hover { border-color:var(--gold); }
+
+  /* ACCESSIBILITY UPDATE: Improved contrast for readability */
+  .prose p, .story p, p { color: #e8e2d8; line-height: 2.1; }
+  .chapter-title, .section-title, .opening-name { color: #f5f0e8 !important; }
+  .chapter-label, .section-label, .opening-label { color: rgba(255,255,255,0.80) !important; }
+  .fact-key { color: rgba(255,255,255,0.65) !important; }
+  .fact-val { color: #e0d8cc !important; }
+  .child-note { color: #c8c0b4 !important; }
+  .aged, .muted { color: #d8d0c4 !important; }
+  table th { color: rgba(255,255,255,0.85) !important; }
+  table td { color: #d8d0c4 !important; }
+  .pull-quote p { color: #f0ead8 !important; }
+  .opening-statement { color: #d8d0c4 !important; }
+  .inheritance { color: #c8c0b4 !important; }
+  .inheritance strong { color: #f5f0e8 !important; }
+  .opening-dates { color: rgba(255,255,255,0.70) !important; }
+  .nav-title { color: rgba(255,255,255,0.60) !important; }
+  .sources ol li { color: #c0b8ac !important; }
+  .explain-box p, .cluster-detail { color: #d8d0c4 !important; }
+  .oracle-distance { color: #c0b8ac !important; }
+  .kit-detail { color: #c8c0b4 !important; }
+  .admix-label { color: #d0c8bc !important; }
+  .admix-pct { color: #f0d870 !important; }
+  li { color: #d8d0c4; }
+  strong { color: #f5f0e8 !important; }
+
 </style>
 </head>
 <body>

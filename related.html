@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>How We Are All Related · Armstrong Family Archive</title>
+<style>
+  :root {
+    --deep:#080604;--gold:#c9a84c;--gold2:#e8c96a;--cream:#f5f2ec;
+    --parchment:#f0ead8;--aged:#e4dcd0;--muted:#a8a090;
+    --border:rgba(201,168,76,0.15);
+    --f-display:'Georgia','Times New Roman',serif;
+    --f-body:'Georgia',serif;--f-mono:'Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  strong{color:#f5f0e8!important;font-weight:normal;}
+
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,6,4,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
+  .nav-back{font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;}
+  .nav-title{font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+
+  .hero{min-height:45vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 24px 60px;text-align:center;border-bottom:1px solid var(--border);background:radial-gradient(ellipse at center,rgba(139,105,20,0.05) 0%,transparent 65%);}
+  .hero-label{font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.50);margin-bottom:24px;display:block;}
+  .hero-title{font-family:var(--f-display);font-size:clamp(40px,9vw,88px);font-style:italic;color:var(--parchment);line-height:0.95;letter-spacing:-2px;margin-bottom:16px;}
+  .hero-sub{font-family:var(--f-mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-bottom:28px;}
+  .hero-body{max-width:520px;font-size:clamp(14px,2vw,16px);line-height:1.9;color:rgba(218,210,198,0.82);font-style:italic;}
+
+  /* MAIN */
+  .main{max-width:900px;margin:0 auto;padding:60px 24px 100px;}
+
+  /* INTRO NOTE */
+  .intro-note{background:rgba(10,8,5,0.5);border:1px solid var(--border);padding:20px 24px;margin-bottom:48px;}
+  .intro-note p{font-size:13px;line-height:1.8;color:#c8c0b4;}
+  .intro-note strong{color:#f0ead8!important;}
+
+  /* GENERATION LABEL */
+  .gen-label{font-family:var(--f-mono);font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.40);display:block;text-align:center;margin-bottom:12px;}
+
+  /* PERSON CARDS */
+  .person{
+    display:inline-flex;flex-direction:column;align-items:center;
+    padding:14px 18px;min-width:160px;max-width:200px;
+    border:1px solid var(--border);background:rgba(10,8,5,0.5);
+    text-align:center;vertical-align:top;
+  }
+  .person.root{border-color:rgba(201,168,76,0.50);background:rgba(201,168,76,0.06);}
+  .person.you{border-color:rgba(201,168,76,0.80);background:rgba(201,168,76,0.10);}
+  .person.living{border-color:rgba(255,255,255,0.15);}
+  .person.deceased{opacity:0.75;}
+  .person-name{font-family:var(--f-display);font-size:13px;font-style:italic;color:#f0ead8;display:block;margin-bottom:3px;line-height:1.3;}
+  .person-dates{font-family:var(--f-mono);font-size:9px;color:rgba(255,255,255,0.35);display:block;margin-bottom:4px;}
+  .person-rel{font-family:var(--f-mono);font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);display:block;}
+
+  /* CONNECTOR LINES */
+  .connector{display:flex;align-items:center;justify-content:center;padding:8px 0;}
+  .line-down{width:1px;height:28px;background:rgba(201,168,76,0.25);margin:0 auto;}
+  .line-h{height:1px;background:rgba(201,168,76,0.20);flex:1;}
+  .line-branch{display:flex;align-items:flex-start;justify-content:center;gap:0;padding-bottom:0;}
+
+  /* ROW LAYOUTS */
+  .row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:0;}
+  .row.spaced{gap:16px;}
+  .centered{display:flex;justify-content:center;}
+
+  /* SECTION DIVIDER */
+  .section-divider{margin:64px 0 48px;padding-top:48px;border-top:1px solid var(--border);}
+  .section-divider-title{font-family:var(--f-display);font-size:clamp(22px,4vw,32px);font-style:italic;color:var(--parchment);margin-bottom:8px;}
+  .section-divider-sub{font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.38);}
+
+  /* EXPLANATION BOX */
+  .explain{margin:32px 0;padding:20px 24px;border-left:2px solid var(--gold);background:rgba(10,8,5,0.4);}
+  .explain p{font-size:13px;line-height:1.8;color:#c8c0b4;}
+
+  /* RELATIONSHIP TABLE */
+  .rel-table{width:100%;border-collapse:collapse;margin:24px 0;}
+  .rel-table th{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.50);padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);}
+  .rel-table td{font-size:13px;line-height:1.6;color:#d0c8bc;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .rel-table td strong{color:#f0ead8!important;}
+  .rel-table tr:hover td{background:rgba(201,168,76,0.03);}
+
+  /* CLOSING */
+  .closing{text-align:center;padding:60px 0 80px;border-top:1px solid var(--border);}
+  .closing-title{font-family:var(--f-display);font-size:clamp(20px,3.5vw,28px);font-style:italic;color:var(--parchment);margin-bottom:16px;line-height:1.3;}
+  .closing-body{font-size:14px;line-height:1.9;color:#b8b0a8;max-width:480px;margin:0 auto 32px;}
+  .back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--border);padding:13px 22px;margin:0 6px 10px;transition:border-color 0.2s;}
+  .back-link:hover{border-color:var(--gold);}
+
+  @media(max-width:640px){
+    .person{min-width:130px;padding:10px 12px;}
+    .person-name{font-size:12px;}
+    .row{gap:8px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="family_tree.html" class="nav-back">← Back to Archive</a>
+  <span class="nav-title">How We Are All Related</span>
+</nav>
+
+<section class="hero">
+  <span class="hero-label">Armstrong Family Archive · The Living Family</span>
+  <h1 class="hero-title">How We Are<br>All Related</h1>
+  <p class="hero-sub">Margie Nell Ballard Corbin · Her Seven Children · The Next Generation</p>
+  <p class="hero-body">If you found this archive and you are part of this family — this page shows you where you fit and how everyone connects to everyone else.</p>
+</section>
+
+<div class="main">
+
+  <div class="intro-note">
+    <p>This page focuses on the living generation — the children and grandchildren of <strong>Margie Nell Ballard Corbin</strong> and <strong>Norman Caswell Corbin</strong> — and how they connect to the confirmed historical line. Every person shown here is confirmed by primary source or family oral history. Dates marked <strong>Living</strong> are intentionally omitted for privacy.</p>
+  </div>
+
+  <!-- THE CONFIRMED HISTORICAL LINE -->
+  <span class="gen-label">The Confirmed Historical Line · From Patience to Margie</span>
+
+  <div class="centered" style="margin-bottom:4px;">
+    <div class="person deceased">
+      <span class="person-name">Patience</span>
+      <span class="person-dates">ca. 1765 – after 1839</span>
+      <span class="person-rel">Great × 5 Grandmother</span>
+    </div>
+  </div>
+  <div class="line-down"></div>
+
+  <div class="centered" style="margin-bottom:4px;">
+    <div class="person deceased">
+      <span class="person-name">Clarissa</span>
+      <span class="person-dates">ca. 1807 – ca. 1870s</span>
+      <span class="person-rel">Great × 4 Grandmother</span>
+    </div>
+  </div>
+  <div class="line-down"></div>
+
+  <div class="centered" style="margin-bottom:4px;">
+    <div class="person deceased">
+      <span class="person-name">Easter Bell Nichols</span>
+      <span class="person-dates">Jul 4, 1838 – Dec 17, 1935</span>
+      <span class="person-rel">Great × 3 Grandmother</span>
+    </div>
+  </div>
+  <div class="line-down"></div>
+
+  <div class="centered" style="margin-bottom:4px;">
+    <div class="person deceased">
+      <span class="person-name">Hellen Nichols Armstrong</span>
+      <span class="person-dates">Sep 1870 – unknown</span>
+      <span class="person-rel">Great × 2 Grandmother</span>
+    </div>
+  </div>
+  <div class="line-down"></div>
+
+  <div class="centered" style="margin-bottom:4px;">
+    <div class="person deceased">
+      <span class="person-name">Eva Armstrong Ballard</span>
+      <span class="person-dates">Jun 27, 1900 – Nov 24, 1977</span>
+      <span class="person-rel">Great Grandmother</span>
+    </div>
+  </div>
+  <div class="line-down"></div>
+
+  <!-- MARGIE + NORMAN -->
+  <div style="margin-bottom:4px;">
+    <div class="row">
+      <div class="person root deceased">
+        <span class="person-name">Margie Nell Ballard</span>
+        <span class="person-dates">Mar 13, 1929 – Oct 15, 1988</span>
+        <span class="person-rel">Grandmother</span>
+      </div>
+      <div style="display:flex;align-items:center;padding:0 8px;">
+        <span style="font-family:var(--f-mono);font-size:10px;color:rgba(255,255,255,0.25);">married</span>
+      </div>
+      <div class="person root deceased">
+        <span class="person-name">Norman Caswell Corbin</span>
+        <span class="person-dates">1921 – Apr 21, 1974</span>
+        <span class="person-rel">Grandfather</span>
+      </div>
+    </div>
+  </div>
+  <div class="line-down"></div>
+
+  <!-- THE SEVEN CHILDREN -->
+  <span class="gen-label" style="margin-top:8px;">The Seven Children of Margie and Norman</span>
+
+  <div class="row spaced" style="margin-bottom:32px;">
+
+    <div class="person living">
+      <span class="person-name">Michael E. Corbin Sr.</span>
+      <span class="person-dates">1951 – 2009</span>
+      <span class="person-rel">Uncle</span>
+    </div>
+
+    <div class="person living">
+      <span class="person-name">Ronnie Leroy Ballard</span>
+      <span class="person-dates">1953 – Living</span>
+      <span class="person-rel">Uncle</span>
+    </div>
+
+    <div class="person root">
+      <span class="person-name">Hjordis L. Corbin</span>
+      <span class="person-dates">Jan 20, 1960 – Living</span>
+      <span class="person-rel">Your Mother ★</span>
+    </div>
+
+    <div class="person living">
+      <span class="person-name">Deanna Denise Corbin</span>
+      <span class="person-dates">1961 – Living</span>
+      <span class="person-rel">Aunt</span>
+    </div>
+
+    <div class="person living">
+      <span class="person-name">Sonsorey Yevette Corbin</span>
+      <span class="person-dates">1962 – Living</span>
+      <span class="person-rel">Aunt</span>
+    </div>
+
+    <div class="person living">
+      <span class="person-name">Orngiel L. Corbin</span>
+      <span class="person-dates">1964 – Living</span>
+      <span class="person-rel">Aunt</span>
+    </div>
+
+    <div class="person living">
+      <span class="person-name">Se'Taun Corbin</span>
+      <span class="person-dates">1966 – Living</span>
+      <span class="person-rel">Aunt</span>
+    </div>
+
+  </div>
+
+  <div class="line-down"></div>
+
+  <!-- JASMINE -->
+  <div class="centered" style="margin-top:4px;">
+    <div class="person you">
+      <span class="person-name">Jasmine M. Lee</span>
+      <span class="person-dates">Jan 25, 1982 – Living</span>
+      <span class="person-rel">You Are Here ★</span>
+    </div>
+  </div>
+
+  <!-- RELATIONSHIP EXPLANATION -->
+  <div class="section-divider">
+    <h2 class="section-divider-title">How Each Person Relates to Jasmine</h2>
+    <p class="section-divider-sub">Relationships explained plainly</p>
+  </div>
+
+  <table class="rel-table">
+    <thead>
+      <tr>
+        <th>Person</th>
+        <th>Relationship to Jasmine</th>
+        <th>How the Connection Works</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Margie Nell Ballard Corbin</strong></td>
+        <td>Grandmother</td>
+        <td>Mother of Hjordis · Jasmine's mother's mother</td>
+      </tr>
+      <tr>
+        <td><strong>Norman Caswell Corbin</strong></td>
+        <td>Grandfather</td>
+        <td>Father of Hjordis · Jasmine's mother's father</td>
+      </tr>
+      <tr>
+        <td><strong>Hjordis L. Corbin</strong></td>
+        <td>Mother</td>
+        <td>Margie and Norman's daughter · Jasmine's direct mother · DNA confirmed 3,575.4 cM</td>
+      </tr>
+      <tr>
+        <td><strong>Michael E. Corbin Sr.</strong></td>
+        <td>Uncle</td>
+        <td>Margie's son · Hjordis's brother</td>
+      </tr>
+      <tr>
+        <td><strong>Ronnie Leroy Ballard</strong></td>
+        <td>Uncle</td>
+        <td>Margie's son · Hjordis's brother · carries the Ballard surname</td>
+      </tr>
+      <tr>
+        <td><strong>Deanna Denise Corbin</strong></td>
+        <td>Aunt</td>
+        <td>Margie's daughter · Hjordis's sister</td>
+      </tr>
+      <tr>
+        <td><strong>Sonsorey Yevette Corbin</strong></td>
+        <td>Aunt</td>
+        <td>Margie's daughter · Hjordis's sister</td>
+      </tr>
+      <tr>
+        <td><strong>Orngiel L. Corbin</strong></td>
+        <td>Aunt</td>
+        <td>Margie's daughter · Hjordis's sister</td>
+      </tr>
+      <tr>
+        <td><strong>Se'Taun Corbin</strong></td>
+        <td>Aunt</td>
+        <td>Margie's daughter · Hjordis's sister · DNA confirmed 1,746 cM to Jasmine</td>
+      </tr>
+      <tr>
+        <td><strong>Eva Armstrong Ballard</strong></td>
+        <td>Great Grandmother</td>
+        <td>Margie's mother · born Bellville Texas · died Garden Grove California</td>
+      </tr>
+      <tr>
+        <td><strong>James Wilson Ballard Sr.</strong></td>
+        <td>Great Grandfather</td>
+        <td>Margie's father · born Palestine Texas · died March 13 1953 — Margie's 24th birthday</td>
+      </tr>
+      <tr>
+        <td><strong>Hellen Nichols Armstrong</strong></td>
+        <td>Great × 2 Grandmother</td>
+        <td>Eva's mother · Easter Bell's daughter · born Bellville September 1870</td>
+      </tr>
+      <tr>
+        <td><strong>Easter Bell Nichols</strong></td>
+        <td>Great × 3 Grandmother</td>
+        <td>Hellen's mother · born enslaved July 4 1838 · died free December 17 1935 · age 97</td>
+      </tr>
+      <tr>
+        <td><strong>Joseph Nichols</strong></td>
+        <td>Great × 3 Grandfather</td>
+        <td>Easter Bell's husband · registered to vote January 27 1868 · couldn't read or write · voted anyway</td>
+      </tr>
+      <tr>
+        <td><strong>Rendy Blayn</strong></td>
+        <td>Great × 4 Grandmother</td>
+        <td>Easter Bell's mother · enslaved in Virginia · sold to Texas · her name survived only through Easter Bell's death certificate</td>
+      </tr>
+      <tr>
+        <td><strong>Clarissa</strong></td>
+        <td>Great × 4 Grandmother</td>
+        <td>Patience's daughter · named in an 1839 Mississippi deed · the link between South Carolina and Texas</td>
+      </tr>
+      <tr>
+        <td><strong>Patience</strong></td>
+        <td>Great × 5 Grandmother</td>
+        <td>Our oldest confirmed ancestor · born ca. 1765 South Carolina · first documented in 1795 · she is where this family's confirmed history begins</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- THE BALLARD LINE -->
+  <div class="section-divider">
+    <h2 class="section-divider-title">The Ballard Paternal Line</h2>
+    <p class="section-divider-sub">Eva's husband's family · How the Ballard line connects</p>
+  </div>
+
+  <div class="explain">
+    <p>Eva Armstrong married <strong>James Wilson Ballard Sr.</strong> — connecting the Nichols-Armstrong line from Bellville to the Ballard line from East Texas. James Wilson Ballard Sr. was the grandson of <strong>Newton Ballard</strong> — a formerly enslaved man who filed for 160 acres of land in Upshur County Texas on August 26 1856 while his enslaver was still alive. That act of claiming land is the founding document of the Ballard family's freedom.</p>
+  </div>
+
+  <table class="rel-table">
+    <thead>
+      <tr>
+        <th>Person</th>
+        <th>Relationship to Jasmine</th>
+        <th>How the Connection Works</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>James Wilson Ballard Sr.</strong></td>
+        <td>Great Grandfather</td>
+        <td>Margie's father · married Eva Armstrong · died March 13 1953 on Margie's 24th birthday</td>
+      </tr>
+      <tr>
+        <td><strong>Rev. George W. Ballard</strong></td>
+        <td>Great × 2 Grandfather</td>
+        <td>James Sr.'s father · born September 4 1861 · minister · Waco Texas · died October 24 1937</td>
+      </tr>
+      <tr>
+        <td><strong>Newton Ballard</strong></td>
+        <td>Great × 3 Grandfather</td>
+        <td>Rev. George's father · born ca. 1830 Mississippi · enslaved by Lewis F. Ballard Sr. · filed freedom land claim August 26 1856</td>
+      </tr>
+      <tr>
+        <td><strong>Mary Ann Edwards Ballard</strong></td>
+        <td>Great × 2 Grandmother</td>
+        <td>Rev. George's wife · born November 4 1870 Texas · died March 19 1949 Fort Worth</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- DNA NOTE -->
+  <div class="section-divider">
+    <h2 class="section-divider-title">What the DNA Confirms</h2>
+    <p class="section-divider-sub">Science confirming what the documents show</p>
+  </div>
+
+  <div class="explain">
+    <p><strong>Hjordis L. Corbin</strong> — AncestryDNA kit SQ8499767 — shares <strong>3,575.4 cM</strong> with Jasmine M. Lee (GEDmatch kit QW84*****). That number confirms a parent-child relationship with scientific certainty. <strong>Se'Taun Corbin</strong> shares <strong>1,746 cM</strong> with Jasmine — confirming an aunt-niece relationship consistent with Se'Taun being Hjordis's sister. The DNA confirms what the documents show: this is the family.</p>
+  </div>
+
+  <div class="closing">
+    <h2 class="closing-title">Every person on this page<br>is part of the same story.</h2>
+    <p class="closing-body">From Patience in South Carolina in 1795 to the living family today. Two hundred and thirty years. One family. Documented.</p>
+    <div>
+      <a href="family_tree.html" class="back-link">← Full Family Tree</a>
+      <a href="margie_story.html" class="back-link">Margie's Story →</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

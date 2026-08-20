@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Margie Nell Ballard Corbin · Armstrong Family Archive</title>
+<style>
+  :root {
+    --deep: #080604;
+    --gold: #c9a84c;
+    --gold2: #e8c96a;
+    --cream: #ede0c8;
+    --parchment: #d4bf9a;
+    --aged: #a89878;
+    --muted: #6a5c42;
+    --border: rgba(201,168,76,0.15);
+    --f-display: 'Georgia', 'Times New Roman', serif;
+    --f-body: 'Georgia', serif;
+    --f-mono: 'Courier New', monospace;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--deep);
+    color:var(--cream);
+    font-family:var(--f-body);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  .nav {
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(8,6,4,0.96);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-back { font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none; }
+  .nav-title { font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted); }
+
+  /* OPENING */
+  .opening {
+    min-height:100vh;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    padding:100px 24px 80px;text-align:center;
+    position:relative;
+    background:radial-gradient(ellipse at center, rgba(139,105,20,0.07) 0%, transparent 65%);
+  }
+
+  .opening-label { font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:40px; }
+
+  .inheritance {
+    max-width:580px;margin:0 auto 48px;
+    font-family:var(--f-display);
+    font-size:clamp(14px,2.2vw,17px);
+    font-style:italic;color:var(--muted);
+    line-height:2;text-align:center;
+  }
+  .inheritance strong { color:var(--parchment);font-style:normal; }
+  .inheritance .divider-line {
+    display:block;width:40px;height:1px;
+    background:rgba(201,168,76,0.3);
+    margin:20px auto;
+  }
+
+  .opening-name {
+    font-family:var(--f-display);
+    font-size:clamp(56px,12vw,120px);
+    font-style:italic;color:var(--parchment);
+    line-height:0.9;letter-spacing:-2px;
+    margin-bottom:8px;
+  }
+
+  .opening-surname {
+    font-family:var(--f-display);
+    font-size:clamp(28px,6vw,64px);
+    font-style:italic;color:var(--gold);
+    line-height:1;letter-spacing:-1px;
+    margin-bottom:32px;
+  }
+
+  .opening-dates { font-family:var(--f-mono);font-size:11px;letter-spacing:3px;color:var(--muted);margin-bottom:40px; }
+
+  .opening-statement {
+    max-width:520px;font-size:clamp(15px,2.5vw,17px);
+    line-height:1.9;color:var(--aged);font-style:italic;
+  }
+  .opening-statement em { color:var(--cream);font-style:normal; }
+
+  .scroll-down {
+    position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+    font-family:var(--f-mono);font-size:9px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--muted);
+    animation:breathe 3s ease-in-out infinite;
+  }
+  @keyframes breathe { 0%,100%{opacity:0.3;}50%{opacity:0.8;} }
+
+  /* STORY */
+  .story { max-width:680px;margin:0 auto;padding:0 24px; }
+
+  .chapter {
+    padding:80px 0;
+    border-top:1px solid var(--border);
+  }
+  .chapter:first-child { border-top:none; }
+
+  .chapter-label {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    display:block;margin-bottom:24px;
+  }
+
+  .chapter-title {
+    font-family:var(--f-display);
+    font-size:clamp(28px,5vw,42px);
+    font-style:italic;color:var(--parchment);
+    line-height:1.15;margin-bottom:40px;
+  }
+
+  .prose p {
+    font-size:clamp(15px,2.2vw,17px);
+    line-height:2;color:var(--aged);
+    margin-bottom:28px;
+  }
+  .prose p strong { color:var(--cream);font-weight:normal; }
+  .prose p em { color:var(--parchment); }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    margin:56px 0;
+    padding:32px 40px;
+    border-left:3px solid var(--gold);
+    background:rgba(10,8,5,0.5);
+  }
+  .pull-quote p {
+    font-family:var(--f-display);
+    font-size:clamp(18px,3vw,24px);
+    font-style:italic;color:var(--parchment);
+    line-height:1.6;
+  }
+
+  /* FACT TABLE */
+  .fact-block {
+    margin:48px 0;
+    border:1px solid var(--border);
+  }
+  .fact-block-label {
+    font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);
+    display:block;padding:14px 20px;
+    border-bottom:1px solid var(--border);
+    background:rgba(10,8,5,0.6);
+  }
+  .fact-row {
+    display:grid;grid-template-columns:140px 1fr;
+    border-bottom:1px solid rgba(201,168,76,0.07);
+  }
+  .fact-row:last-child { border-bottom:none; }
+  .fact-key {
+    font-family:var(--f-mono);font-size:10px;letter-spacing:1px;
+    text-transform:uppercase;color:var(--muted);
+    padding:14px 20px;border-right:1px solid rgba(201,168,76,0.07);
+  }
+  .fact-val {
+    font-size:13px;line-height:1.7;color:var(--aged);
+    padding:14px 20px;
+  }
+  .fact-val strong { color:var(--cream);font-weight:normal; }
+
+  /* CHILDREN GRID */
+  .children-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+    gap:16px;
+    margin:40px 0;
+  }
+  .child-card {
+    padding:20px 24px;
+    border:1px solid var(--border);
+    background:rgba(10,8,5,0.4);
+  }
+  .child-name {
+    font-family:var(--f-display);font-size:16px;font-style:italic;
+    color:var(--parchment);display:block;margin-bottom:4px;
+  }
+  .child-dates {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:1px;
+    color:var(--gold);display:block;margin-bottom:8px;
+  }
+  .child-note { font-size:12px;line-height:1.6;color:var(--muted); }
+
+  /* LINE */
+  .line-display {
+    margin:56px 0;
+    text-align:center;
+  }
+  .line-display .line-item {
+    font-family:var(--f-display);font-size:clamp(13px,2vw,15px);
+    font-style:italic;color:var(--muted);
+    display:block;line-height:2;
+  }
+  .line-display .line-item.active {
+    color:var(--parchment);font-size:clamp(16px,2.5vw,19px);
+  }
+  .line-display .line-arrow {
+    display:block;color:rgba(201,168,76,0.4);
+    font-size:18px;line-height:1.5;
+  }
+
+  /* SOURCES */
+  .sources {
+    margin:80px 0 40px;
+    padding:32px;
+    border:1px solid var(--border);
+    background:rgba(10,8,5,0.4);
+  }
+  .sources-label {
+    font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);
+    display:block;margin-bottom:20px;
+  }
+  .sources ol {
+    padding-left:20px;
+    list-style:decimal;
+  }
+  .sources ol li {
+    font-size:11px;line-height:1.8;color:var(--muted);
+    margin-bottom:8px;font-family:var(--f-mono);letter-spacing:0.3px;
+  }
+
+  /* CLOSING */
+  .closing {
+    padding:80px 0 120px;
+    text-align:center;
+    border-top:1px solid var(--border);
+  }
+  .closing-title {
+    font-family:var(--f-display);
+    font-size:clamp(24px,4vw,36px);
+    font-style:italic;color:var(--parchment);
+    margin-bottom:24px;line-height:1.3;
+  }
+  .back-link {
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--f-mono);font-size:10px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gold);text-decoration:none;
+    border:1px solid var(--border);padding:14px 28px;border-radius:2px;
+    margin:0 8px 12px;transition:border-color 0.2s;
+  }
+  .back-link:hover { border-color:var(--gold); }
+
+  @media(max-width:600px){
+    .fact-row { grid-template-columns:1fr; }
+    .fact-key { border-right:none;border-bottom:1px solid rgba(201,168,76,0.07);padding-bottom:4px; }
+    .pull-quote { padding:24px; }
+    .children-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-back">← Back to Family Archive</a>
+  <span class="nav-title">Margie Nell Ballard Corbin · 1929–1988</span>
+</nav>
+
+<!-- OPENING -->
+<section class="opening">
+  <span class="opening-label">Armstrong Family Archive · Your Grandmother</span>
+
+  <div class="inheritance">
+    <strong>Patience</strong> · South Carolina · ca. 1765
+    <span class="divider-line"></span>
+    Clarissa · Easter Bell · Joseph Nichols
+    <span class="divider-line"></span>
+    Hellen · Eva · James Wilson Ballard Sr.
+    <span class="divider-line"></span>
+    <strong>Margie Nell Ballard</strong>
+    <span class="divider-line"></span>
+    Hjordis · <strong>Jasmine</strong>
+  </div>
+
+  <h1 class="opening-name">Margie</h1>
+  <p class="opening-surname">Nell Ballard Corbin</p>
+  <p class="opening-dates">March 13, 1929 — October 15, 1988 · Garden Grove, California</p>
+
+  <p class="opening-statement">
+    She was born on a Tuesday in the middle of the Great Depression,
+    the daughter of a sick man and a woman who had survived everything.
+    She carried <em>one hundred and sixty years</em> of this family's story
+    without knowing she was carrying it.
+    She held the line. She held it until you could hold it yourself.
+  </p>
+
+  <span class="scroll-down">scroll</span>
+</section>
+
+<!-- STORY -->
+<div class="story">
+
+  <!-- CHAPTER 1 — CONFIRMED FACTS -->
+  <div class="chapter">
+    <span class="chapter-label">What the records confirm</span>
+    <h2 class="chapter-title">March 13, 1929 · Fort Worth, Texas</h2>
+
+    <div class="prose">
+      <p>Margie Nell Ballard was born on March 13 1929 in Fort Worth, Texas — the third child of <strong>James Wilson Ballard Sr.</strong> and <strong>Eva Armstrong Ballard</strong>. The birth certificate places the family at 306½ East Annie Street, Fort Worth. File No. 26658.</p>
+      <p>She was born in the first months of the Great Depression. Her father had been born in Palestine, Anderson County, Texas in 1897 — the grandson of Newton Ballard, a formerly enslaved man who had claimed 160 acres in Upshur County Texas in 1856. Her mother Eva had been born in Bellville, Austin County, Texas in 1900 — the granddaughter of Easter Bell Nichols, who had lived through enslavement and emancipation and had died at age 97 in December 1935, when Margie was six years old.</p>
+      <p>Two lines of this family — the Ballard line from Smith County and Upshur County Texas and the Nichols-Armstrong line from Bellville Austin County Texas — came together in Margie Nell Ballard.</p>
+    </div>
+
+    <div class="fact-block">
+      <span class="fact-block-label">Confirmed Facts · Primary Source</span>
+      <div class="fact-row">
+        <span class="fact-key">Born</span>
+        <span class="fact-val"><strong>March 13, 1929</strong> · Fort Worth, Tarrant County, Texas · 306½ East Annie Street · File No. 26658</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Father</span>
+        <span class="fact-val"><strong>James Wilson Ballard Sr.</strong> · born August 26 1897 · Palestine, Anderson County, Texas · died March 13 1953 · Austin State Hospital · Travis County, Texas — on Margie's 24th birthday</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Mother</span>
+        <span class="fact-val"><strong>Eva Armstrong Ballard</strong> · born June 27 1900 · Bellville, Austin County, Texas · died November 24 1977 · Garden Grove, California</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Husband</span>
+        <span class="fact-val"><strong>Norman Caswell Corbin</strong> · born 1921 · Cleveland, Ohio · died April 21 1974 · Santa Ana, California</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Died</span>
+        <span class="fact-val"><strong>October 15, 1988</strong> · Garden Grove, California · age 59</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Buried</span>
+        <span class="fact-val">Garden Grove, California</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Residence</span>
+        <span class="fact-val">Fort Worth, Texas · San Antonio, Texas · Garden Grove, California</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 2 — HER PARENTS -->
+  <div class="chapter">
+    <span class="chapter-label">Where she came from</span>
+    <h2 class="chapter-title">Two Lines Meeting in Fort Worth</h2>
+
+    <div class="prose">
+      <p>Her father James Wilson Ballard Sr. was a sick man for much of Margie's childhood. He suffered from tuberculosis and the complications that came with it. By 1950 he was a patient at Austin State Hospital in Austin, Texas — confined there in the years when Margie was becoming an adult. He died on March 13 1953 — her twenty-fourth birthday. The date is its own kind of record.</p>
+      <p>Her mother Eva Armstrong Ballard was the survivor. Eva had grown up in the shadow of her own father's violent death — John Armstrong, shot by a white man in Fort Worth in 1911 when Eva was eleven years old and the killer walked free. Eva raised her children in Fort Worth and then in San Antonio. She outlived her husband by twenty-four years and eventually moved to California to be near her children. She died November 24 1977, the grandmother of fifteen.</p>
+      <p>The 1930 census shows the family at 1121 Pulaski Avenue in Fort Worth — Eva as head of household with her mother Helen Gilbert living with them and the children James Jr. age 3 and Margie age 1. James Wilson Ballard Sr. is present but Eva is listed as head — a detail that tells its own story about who was holding the family together.</p>
+    </div>
+
+    <div class="pull-quote">
+      <p>"She was born on her father's twenty-fourth birthday. He died on her twenty-fourth birthday. Between those two dates was a family."</p>
+    </div>
+
+    <div class="prose">
+      <p>The family moved to San Antonio, Texas. In December 1938 Eva and James had another child — <strong>Thelma Louise Ballard</strong> — who died on March 16 1939 at three months old of malnutrition and dehydration. Texas death certificate No. 11120. She was buried at EastView Cemetery in San Antonio. James Ballard filed the death certificate from 107 Earl Street San Antonio. Margie was nine years old when her infant sister died.</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 3 — HER OWN LIFE -->
+  <div class="chapter">
+    <span class="chapter-label">Her own story</span>
+    <h2 class="chapter-title">Norman Corbin · Santa Ana · A Man the Community Mourned</h2>
+
+    <div class="prose">
+      <p>Margie Nell Ballard married <strong>Norman Caswell Corbin</strong> — born 1921 in <strong>Cleveland, Ohio</strong>. He was a non-denominational minister, a newspaper publisher, a school district liaison, an NAACP vice president, a city council candidate, and the man 1,500 people came to mourn when he died. He was fifty-three years old.</p>
+      <p>Norman and Margie lived in Santa Ana, California — in the Black community of southwest Santa Ana that Norman served for fourteen years. Their address at his death was <strong>622 S. Townsend, Santa Ana</strong>. Before that they lived at 617 Shelley Street, also in Santa Ana.</p>
+      <p>Norman published the <strong>Orange County Star Review</strong> — a weekly newspaper. He served as vice chairman of the Orange County Human Relations Commission and as intercultural specialist for the Santa Ana Unified School District — a liaison between the school district and the community. He was vice president and board member of the Orange County Chapter of the NAACP. He spearheaded the formation of the Sunset Little League and the Senior Citizens Southwest Community Center. He ran for Santa Ana City Council Ward 2 in the April 1971 election as a Democrat.</p>
+      <p>In 1974 Norman traveled to Kentucky to visit a sick aunt. He became ill there and died on April 21 at Riverview Hospital. He carried no life insurance. His riches — as the newspaper noted — were not in the form of money.</p>
+      <p>The Orange County newspaper published this about him after he died: <em>"People with problems came to him seven days a week at all hours of the day and night. He gave them the feeling that everything would be well, a feeling of security. He didn't stop until he'd done his best to solve their problems."</em></p>
+      <p>Fifteen hundred people came to his funeral.</p>
+    </div>
+
+    <div class="pull-quote">
+      <p>"If he had a dollar in his pocket and somebody's welfare check was late, he gave away the dollar. If somebody was hungry, he fed them."<br><span style="font-family:var(--f-mono);font-size:10px;letter-spacing:2px;color:var(--muted);display:block;margin-top:12px;">— Margie Nell Corbin · quoted in Orange County newspaper · 1974</span></p>
+    </div>
+
+    <div class="fact-block">
+      <span class="fact-block-label">Norman C. Corbin · Confirmed by Primary Source Newspaper Records · 1974</span>
+      <div class="fact-row">
+        <span class="fact-key">Born</span>
+        <span class="fact-val"><strong>1921 · Cleveland, Ohio</strong></span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Died</span>
+        <span class="fact-val"><strong>April 21 1974</strong> · Riverview Hospital · age 53 · pneumonia · became ill while visiting sick aunt in Kentucky</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Address</span>
+        <span class="fact-val">622 S. Townsend · Santa Ana, California · also 617 Shelley Street Santa Ana</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Mother</span>
+        <span class="fact-val"><strong>Mattie Lou Simpson</strong> · of Santa Ana at time of his death · confirmed survivor in obituary</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Sisters</span>
+        <span class="fact-val">Helen R. Bishop · Kentucky · Mary F. Clark · Detroit</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Career</span>
+        <span class="fact-val">Publisher · Orange County Star Review (weekly newspaper) · Intercultural specialist · Santa Ana Unified School District · Non-denominational minister</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Civic roles</span>
+        <span class="fact-val">Vice chairman · Orange County Human Relations Commission · Vice president · Orange County NAACP · Member · Santa Ana College Community Relations Advisory Council · City Council candidate Ward 2 · April 1971 election · Democrat</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Founded</span>
+        <span class="fact-val">Sunset Little League · Senior Citizens Southwest Community Center · Active in PTA and Head Start pre-school program</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Mourners</span>
+        <span class="fact-val">1,500 people at his funeral · six-hour benefit jazz and rock concert held at City Hall Annex Santa Ana to raise money for his family and establish a scholarship fund</span>
+      </div>
+    </div>
+
+    <div style="border:1px solid var(--border);padding:28px 32px;margin:40px 0;background:rgba(10,8,5,0.5);">
+      <span style="font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px;">Norman Corbin's Poem · Found in His Desk After His Death · "The Success Family"</span>
+      <p style="font-family:var(--f-display);font-size:15px;font-style:italic;color:var(--parchment);line-height:2;">
+        The father of success is work.<br>
+        The mother of success is ambition.<br>
+        The oldest son is common sense.<br>
+        Some of the other boys are perseverance, honesty, thoroughness and cooperation.<br><br>
+        The oldest daughter is character.<br>
+        Some of her sisters are cheerfulness, loyalty, courtesy, care, economy, sincerity and harmony.<br>
+        The baby is opportunity.<br>
+        Get acquainted with the old man<br>
+        And you will be able to get along pretty well with all of the family.<br><br>
+        Yesterday is gone and belongs to eternity.<br>
+        Tomorrow may never come and is God's.
+      </p>
+    </div>
+
+    <div class="prose">
+      <p>Margie was left with seven children ranging in age from 7 to 21. The community held a six-hour benefit concert — jazz and rock — at the City Hall Annex in Santa Ana to raise money for the family and establish a scholarship fund in Norman's name.</p>
+      <p>She was forty-five years old when he died. She would live fourteen more years — the same number of years Norman had lived in Orange County. She died October 15 1988 in Garden Grove, California. She was fifty-nine years old.</p>
+    </div>
+
+    <div class="pull-quote">
+      <p>"She carried memory when the world forgot to ask. That is not a small thing. It is everything."</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 4 — HER CHILDREN -->
+  <div class="chapter">
+    <span class="chapter-label">The next generation</span>
+    <h2 class="chapter-title">Margie's Seven Children</h2>
+
+    <div class="prose">
+      <p>Margie Nell Ballard and Norman Caswell Corbin had seven children. Every one of them carries the Nichols-Waldrop-Armstrong-Ballard inheritance.</p>
+    </div>
+
+    <div class="children-grid">
+      <div class="child-card">
+        <span class="child-name">Michael E. Corbin Sr.</span>
+        <span class="child-dates">1951 – 2009</span>
+        <p class="child-note">Eldest son · Biological father unidentified · Michael's paternal line remains an active research thread</p>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Ronnie Leroy Ballard</span>
+        <span class="child-dates">1953 –</span>
+        <p class="child-note">Son · carries the Ballard surname</p>
+      </div>
+      <div class="child-card" style="border-color:rgba(201,168,76,0.4);">
+        <span class="child-name" style="color:var(--gold);">Hjordis L. Corbin ★</span>
+        <span class="child-dates">January 20, 1960 –</span>
+        <p class="child-note">Your mother · AncestryDNA kit SQ8499767 · 3,575.4 cM shared with Jasmine M. Lee confirming parent-child relationship · born January 20 1960</p>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Deanna Denise Corbin</span>
+        <span class="child-dates">1961 –</span>
+        <p class="child-note">Daughter</p>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Sonsorey Yevette Corbin</span>
+        <span class="child-dates">1962 –</span>
+        <p class="child-note">Daughter</p>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Orngiel L. Corbin</span>
+        <span class="child-dates">1964 –</span>
+        <p class="child-note">Daughter</p>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Se'Taun Corbin</span>
+        <span class="child-dates">1966 –</span>
+        <p class="child-note">Daughter · AncestryDNA confirms 1,746 cM shared with Jasmine M. Lee — aunt relationship</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 5 — THE LINE -->
+  <div class="chapter">
+    <span class="chapter-label">The inheritance she carried</span>
+    <h2 class="chapter-title">One Hundred and Sixty Years</h2>
+
+    <div class="prose">
+      <p>Margie Nell Ballard Corbin was born 164 years after Patience was given to Patty Waldrup in Newberry County South Carolina. She never knew that. She never knew the name Patience, or Clarissa, or Rendy Blayn, or Easter Bell Nichols — the woman who lived to 97 and died when Margie was six years old. She may have met Easter Bell once. She almost certainly did not know she was in the presence of someone who had been born enslaved and had lived into the twentieth century.</p>
+      <p>She carried it anyway. That is what this family does. The women in this line carry what they were never told. Patience carried her children through bondage. Clarissa carried the family from South Carolina to Mississippi. Easter Bell carried freedom into a community that built itself out of nothing on the land where it had been enslaved. Hellen Armstrong carried the Armstrong-Nichols line to Fort Worth. Eva carried it to California against grief and violence and loss. And Margie Nell carried it through the Great Depression and San Antonio and Garden Grove without ever knowing she was part of a chain that went back to the 1790s.</p>
+      <p>She died at fifty-nine. It was not enough time. But the line continued.</p>
+    </div>
+
+    <div class="line-display">
+      <span class="line-item">Patience · South Carolina · ca. 1765</span>
+      <span class="line-arrow">↓</span>
+      <span class="line-item">Clarissa · ca. 1807</span>
+      <span class="line-arrow">↓</span>
+      <span class="line-item">Amanda or Harriet · before 1839</span>
+      <span class="line-arrow">↓</span>
+      <span class="line-item">Joseph Nichols · February 1845 · Bellville Texas</span>
+      <span class="line-arrow">↓</span>
+      <span class="line-item">Easter Bell Nichols · July 4 1838 · Rendy Blayn's daughter</span>
+      <span class="line-arrow">↓</span>
+      <span class="line-item">Hellen Nichols Armstrong · September 1870 · Bellville Texas</span>
+      <span class="line-arrow">↓</span>
+      <span class="line-item">Eva Armstrong Ballard · June 27 1900 · Bellville Texas</span>
+      <span class="line-arrow">↓</span>
+      <span class="line-item active">Margie Nell Ballard Corbin · March 13 1929 · Fort Worth Texas</span>
+      <span class="line-arrow">↓</span>
+      <span class="line-item">Hjordis L. Corbin · January 20 1960</span>
+      <span class="line-arrow">↓</span>
+      <span class="line-item">Jasmine M. Lee · January 25 1982</span>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="sources">
+    <span class="sources-label">Primary Sources · Confirmed · No Hypothesis Presented as Fact</span>
+    <ol>
+      <li>Texas Birth Certificate File No. 26658 · Margie Nell Ballard · March 13 1929 · Fort Worth Tarrant County Texas · 306½ East Annie Street · Father: James Ballard · Mother: Eva Armstrong</li>
+      <li>Texas Death Certificate · James Wilson Ballard Sr. · died March 13 1953 · Austin State Hospital · Travis County Texas · Broncho-pneumonia · bilateral tuberculosis · psychosis with syphilitic meningoencephalitis · last address 1224 Verbena Street Fort Worth</li>
+      <li>Texas Birth Certificate File No. 26658 — confirms mother Eva Armstrong · father James W. Ballard · address 306½ E. Annie Street Fort Worth</li>
+      <li>1930 U.S. Federal Census · Fort Worth Tarrant County Texas · Eva Ballard head of household · 1121 Pulaski Avenue · with Helen Gilbert (mother) · James Jr. age 3 · Margie age 1</li>
+      <li>Texas State Death Certificate No. 11120 · Thelma Louise Ballard · born December 3 1938 · died March 16 1939 · San Antonio · cause: malnutrition and dehydration · buried EastView Cemetery San Antonio · informant: James Ballard · 107 Earl Street San Antonio</li>
+      <li>San Antonio Light · March 8 1954 · names Eva Ballard · 207 N. Center Street San Antonio · Federal Gambling Tax Stamps IRS Revenue Act 1951 · James Ballard Jr. as Agent · Bellinger as Principal</li>
+      <li>Corpus Christi Times · November 4 1953 · names James Wilson Ballard in connection with gambling tax matter</li>
+      <li>1950 U.S. Federal Census · Austin State Hospital · Travis County Texas · James Ballard confirmed as patient</li>
+      <li>Texas State Death Certificate State File No. 54496 · Easter Bell Nichols · died December 17 1935 · Bellville Austin County Texas · born July 4 1838 · informant Clara Nezy</li>
+      <li>AncestryDNA kit SQ8499767 (Hjordis L. Corbin) · 3,575.4 cM shared with kit QW8418781 (Jasmine M. Lee) · confirms parent-child relationship</li>
+      <li>GEDmatch kit QW8418781 (Jasmine M. Lee) · Se'Taun Corbin 1,746 cM shared · confirms aunt-niece relationship consistent with Se'Taun as Hjordis's sister</li>
+      <li>Family oral history · Margie Nell Ballard Corbin died October 15 1988 · Garden Grove California · age 59 · confirmed by Hjordis Corbin · Sonsery Corbin · Warren Bradshaw · Deanna Corbin</li>
+      <li>McLennan County Death Certificate Volume 4 Page 483 · Rev. George W. Ballard · died October 24 1937 · Waco Texas · names Newton Ballard as father</li>
+      <li>Texas State Death Certificate No. 18682 · John Armstrong · died August 30 1911 · Fort Worth · shot by Jack Thompson · father Dave Armstrong · mother Clara Morgan</li>
+      <li>Orange County California newspaper obituary · Norman C. Corbin · died April 21 1974 · age 53 · Riverview Hospital · 622 S. Townsend Santa Ana · survived by wife Margie · children Michael · Ronnie · Hordis · Deanne · Sonsorey · Orngiel · Se Taun · mother Mattie Lou Simpson · sisters Helen R. Bishop of Kentucky and Mary F. Clark of Detroit</li>
+      <li>Orange County California newspaper · "A Man for All People" by Richard Buffum · 1974 · quotes Margie Nell Corbin · confirms Norman's biography and civic roles</li>
+      <li>Orange County California newspaper · "Tribute Planned for Late Black Leader" · 1974 · confirms Norman born Cleveland Ohio · 14 years in Orange County · benefit concert details</li>
+      <li>Orange County California newspaper · "Commission Elects Two to Offices" · confirms Norman Corbin elected vice chairman of Santa Ana Human Relations Commission</li>
+      <li>Orange County California newspaper · "Race Draws Field of 15" · confirms Norman C. Corbin · 617 Shelley St. Santa Ana · candidate Ward 2 Santa Ana City Council · April 6 1971 election · Democrat</li>
+      <li>Orange County California newspaper · "New SAC Council" · confirms Norman Corbin listed as minister on Santa Ana College Community Relations Advisory Council</li>
+      <li>Orange County California newspaper · "Tale of 2 Troops" · quotes Norman Corbin on scouting · confirms member Orange County Human Relations Commission</li>
+      <li>Orange County California newspaper photograph · Norman Corbin of Human Relations Commission handing keys to Jose Hernandez family · first subsidized residents of Santa Ana Housing Authority</li>
+    </ol>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <h2 class="closing-title">She held the line<br>until you could hold it yourself.</h2>
+    <div>
+      <a href="eva_story.html" class="back-link">← Eva Armstrong Ballard</a>
+      <a href="index.html" class="back-link">← Return to Archive</a>
+      <a href="papertrail.html" class="back-link">The Paper Trail →</a>
+    </div>
+  </div>
+
+</div><!-- /story -->
+</body>
+</html>

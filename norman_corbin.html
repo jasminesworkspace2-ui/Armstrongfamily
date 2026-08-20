@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Norman Caswell Corbin · Armstrong Family Archive</title>
+<style>
+  :root {
+    --deep:#080604;--gold:#c9a84c;--gold2:#e8c96a;--cream:#f5f2ec;
+    --parchment:#f0ead8;--aged:#e4dcd0;--muted:#a8a090;
+    --border:rgba(201,168,76,0.15);
+    --f-display:'Georgia','Times New Roman',serif;
+    --f-body:'Georgia',serif;--f-mono:'Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  strong{color:#f5f0e8!important;font-weight:normal;}
+  em{color:var(--parchment);font-style:italic;}
+
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,6,4,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
+  .nav-back{font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;}
+  .nav-title{font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+
+  /* OPENING */
+  .opening{min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 24px 80px;text-align:center;border-bottom:1px solid var(--border);background:radial-gradient(ellipse at center,rgba(139,105,20,0.06) 0%,transparent 65%);position:relative;}
+  .opening-label{font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.50);margin-bottom:40px;display:block;}
+  .opening-name{font-family:var(--f-display);font-size:clamp(52px,11vw,110px);font-style:italic;color:var(--parchment);line-height:0.9;letter-spacing:-2px;margin-bottom:8px;}
+  .opening-surname{font-family:var(--f-display);font-size:clamp(26px,5vw,56px);font-style:italic;color:var(--gold);line-height:1;letter-spacing:-1px;margin-bottom:28px;}
+  .opening-dates{font-family:var(--f-mono);font-size:11px;letter-spacing:3px;color:rgba(255,255,255,0.40);margin-bottom:40px;}
+  .opening-statement{max-width:540px;font-size:clamp(15px,2.2vw,17px);line-height:1.9;color:rgba(228,220,208,0.88);font-style:italic;}
+  .scroll-down{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);animation:breathe 3s ease-in-out infinite;}
+  @keyframes breathe{0%,100%{opacity:0.2;}50%{opacity:0.7;}}
+
+  /* STORY */
+  .story{max-width:700px;margin:0 auto;padding:0 24px;}
+  .chapter{padding:80px 0;border-top:1px solid var(--border);}
+  .chapter:first-child{border-top:none;}
+  .chapter-label{font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.60);display:block;margin-bottom:20px;}
+  .chapter-title{font-family:var(--f-display);font-size:clamp(26px,5vw,40px);font-style:italic;color:var(--parchment);margin-bottom:36px;line-height:1.15;}
+  .prose p{font-size:clamp(15px,2.2vw,17px);line-height:2.1;color:#e4dcd0;margin-bottom:26px;}
+
+  /* FACT BLOCK */
+  .fact-block{margin:36px 0;border:1px solid var(--border);background:rgba(10,8,5,0.4);}
+  .fact-block-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.65);display:block;padding:12px 18px;border-bottom:1px solid var(--border);background:rgba(10,8,5,0.5);}
+  .fact-row{display:grid;grid-template-columns:150px 1fr;border-bottom:1px solid rgba(201,168,76,0.06);}
+  .fact-row:last-child{border-bottom:none;}
+  .fact-key{font-family:var(--f-mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.50);padding:12px 16px;border-right:1px solid rgba(201,168,76,0.06);}
+  .fact-val{font-size:13px;line-height:1.7;color:#d8d0c4;padding:12px 16px;}
+
+  /* PULL QUOTE */
+  .pull{margin:48px 0;padding:28px 36px;border-left:3px solid var(--gold);background:rgba(10,8,5,0.5);}
+  .pull p{font-family:var(--f-display);font-size:clamp(17px,2.8vw,22px);font-style:italic;color:var(--parchment);line-height:1.65;margin-bottom:0!important;}
+  .pull-attr{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.40);display:block;margin-top:12px;}
+
+  /* POEM */
+  .poem{margin:48px 0;padding:32px 40px;border:1px solid rgba(201,168,76,0.25);background:rgba(10,8,5,0.6);text-align:center;}
+  .poem-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.55);display:block;margin-bottom:24px;}
+  .poem-title{font-family:var(--f-display);font-size:18px;font-style:italic;color:var(--gold2);display:block;margin-bottom:20px;}
+  .poem-body{font-family:var(--f-display);font-size:15px;font-style:italic;color:var(--parchment);line-height:2.2;}
+  .poem-footer{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.35);display:block;margin-top:20px;}
+
+  /* CIVIC GRID */
+  .civic-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:32px 0;}
+  .civic-card{padding:18px 20px;border:1px solid var(--border);background:rgba(10,8,5,0.4);}
+  .civic-title{font-family:var(--f-display);font-size:14px;font-style:italic;color:#f0ead8;display:block;margin-bottom:4px;}
+  .civic-detail{font-size:12px;line-height:1.6;color:#b0a898;}
+
+  /* CHILDREN */
+  .children-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:32px 0;}
+  .child-card{padding:16px 20px;border:1px solid var(--border);background:rgba(10,8,5,0.4);}
+  .child-name{font-family:var(--f-display);font-size:14px;font-style:italic;color:#f0ead8;display:block;margin-bottom:3px;}
+  .child-dates{font-family:var(--f-mono);font-size:9px;letter-spacing:1px;color:var(--gold);display:block;margin-bottom:5px;}
+  .child-note{font-size:11px;line-height:1.5;color:#a0988c;}
+
+  /* SOURCES */
+  .sources{margin:48px 0;padding:24px 28px;border:1px solid var(--border);background:rgba(10,8,5,0.4);}
+  .sources-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.60);display:block;margin-bottom:16px;}
+  .sources ol{padding-left:18px;}
+  .sources ol li{font-family:var(--f-mono);font-size:10px;line-height:1.8;color:#a8a090;margin-bottom:6px;}
+
+  /* CLOSING */
+  .closing{padding:72px 0 100px;text-align:center;border-top:1px solid var(--border);}
+  .closing-title{font-family:var(--f-display);font-size:clamp(22px,4vw,34px);font-style:italic;color:var(--parchment);margin-bottom:20px;line-height:1.3;}
+  .closing-body{font-size:14px;line-height:1.9;color:#c0b8b0;max-width:460px;margin:0 auto 36px;}
+  .back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--border);padding:13px 22px;margin:0 6px 10px;transition:border-color 0.2s;}
+  .back-link:hover{border-color:var(--gold);}
+
+  @media(max-width:600px){
+    .fact-row{grid-template-columns:1fr;}
+    .fact-key{border-right:none;border-bottom:1px solid rgba(201,168,76,0.06);}
+    .civic-grid{grid-template-columns:1fr;}
+    .pull{padding:20px 24px;}
+    .poem{padding:24px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="margie_story.html" class="nav-back">← Margie's Story</a>
+  <span class="nav-title">Norman Caswell Corbin · 1921–1974</span>
+</nav>
+
+<!-- OPENING -->
+<section class="opening">
+  <span class="opening-label">Armstrong Family Archive · Margie's Husband · Your Grandfather</span>
+  <h1 class="opening-name">Norman</h1>
+  <p class="opening-surname">Caswell Corbin</p>
+  <p class="opening-dates">1921 · Cleveland, Ohio — April 21, 1974 · Santa Ana, California</p>
+  <p class="opening-statement">He called himself a people's person. Fifteen hundred people came to his funeral to confirm it. He left seven children, no life insurance, and a poem in his desk that said everything about who he was.</p>
+  <span class="scroll-down">scroll</span>
+</section>
+
+<!-- STORY -->
+<div class="story">
+
+  <!-- CHAPTER 1: WHO HE WAS -->
+  <div class="chapter">
+    <span class="chapter-label">Confirmed by primary source newspaper records · Orange County California · 1974</span>
+    <h2 class="chapter-title">A Man for All People</h2>
+
+    <div class="prose">
+      <p>Norman Caswell Corbin was born in <strong>1921 in Cleveland, Ohio</strong>. He came to Orange County, California sometime in the late 1950s or early 1960s — fourteen years before his death. He settled in the Black community of southwest Santa Ana, and he never left. He built his life there. The community built itself around him.</p>
+
+      <p>He married <strong>Margie Nell Ballard</strong> — the granddaughter of Easter Bell Nichols, the great-great-granddaughter of Patience. They had seven children and lived first at <strong>617 Shelley Street</strong> and later at <strong>622 South Townsend Street, Santa Ana</strong>. Their home was open seven days a week at all hours of the day and night to anyone who needed help.</p>
+
+      <p>Norman was a <strong>non-denominational minister</strong>, a <strong>newspaper publisher</strong>, a <strong>school district liaison</strong>, an <strong>NAACP vice president</strong>, and a <strong>city council candidate</strong>. He spearheaded the formation of the Sunset Little League and the Senior Citizens Southwest Community Center. He served on the Santa Ana College Community Relations Advisory Council. He ran for Santa Ana City Council Ward 2 in the April 1971 election as a Democrat.</p>
+
+      <p>He published the <strong>Orange County Star Review</strong> — a weekly newspaper serving the Black community of Orange County. He served as intercultural specialist for the Santa Ana Unified School District — a liaison between the school district and the community it was failing to serve. He served as vice chairman of the Orange County Human Relations Commission and was photographed handing over the keys to the first subsidized housing unit to a family named Hernandez — the Human Relations Commission making good on its name.</p>
+
+      <p>He carried no life insurance. His riches were not in the form of money. When someone's welfare check was late he gave away his last dollar. When someone was hungry he fed them. When people came to him with problems at two in the morning he answered the door.</p>
+    </div>
+
+    <div class="pull">
+      <p>"People with problems came to him seven days a week at all hours of the day and night. He gave them the feeling that everything would be well, a feeling of security. He didn't stop until he'd done his best to solve their problems."</p>
+      <span class="pull-attr">— Margie Nell Corbin · quoted in Orange County newspaper · 1974</span>
+    </div>
+  </div>
+
+  <!-- CHAPTER 2: CIVIC RECORD -->
+  <div class="chapter">
+    <span class="chapter-label">Confirmed roles · Orange County California</span>
+    <h2 class="chapter-title">What He Built</h2>
+
+    <div class="prose">
+      <p>Norman Corbin's civic record in Orange County spans fourteen years — from his arrival in the late 1950s to his death on April 21 1974. Every role listed below is confirmed by primary source newspaper records.</p>
+    </div>
+
+    <div class="civic-grid">
+      <div class="civic-card">
+        <span class="civic-title">Orange County Star Review</span>
+        <span class="civic-detail">Publisher · weekly newspaper · serving the Black community of Orange County California</span>
+      </div>
+      <div class="civic-card">
+        <span class="civic-title">Santa Ana Unified School District</span>
+        <span class="civic-detail">Intercultural specialist · liaison between the school district and community ethnic groups</span>
+      </div>
+      <div class="civic-card">
+        <span class="civic-title">Orange County Human Relations Commission</span>
+        <span class="civic-detail">Vice chairman · elected alongside Zeke Hernandez as chairman · reappointed by City Council</span>
+      </div>
+      <div class="civic-card">
+        <span class="civic-title">Orange County NAACP</span>
+        <span class="civic-detail">Vice president and board member · Orange County Chapter</span>
+      </div>
+      <div class="civic-card">
+        <span class="civic-title">Santa Ana City Council</span>
+        <span class="civic-detail">Candidate · Ward 2 · April 6 1971 election · Democrat · address 617 Shelley Street</span>
+      </div>
+      <div class="civic-card">
+        <span class="civic-title">Santa Ana College</span>
+        <span class="civic-detail">Community Relations Advisory Council member · listed as minister · advising the college on ethnic community needs</span>
+      </div>
+      <div class="civic-card">
+        <span class="civic-title">Sunset Little League</span>
+        <span class="civic-detail">Founder · brought organized youth baseball to southwest Santa Ana</span>
+      </div>
+      <div class="civic-card">
+        <span class="civic-title">Senior Citizens Southwest Community Center</span>
+        <span class="civic-detail">Founder · established community support for elderly residents in southwest Santa Ana</span>
+      </div>
+      <div class="civic-card">
+        <span class="civic-title">Head Start · PTA</span>
+        <span class="civic-detail">Active in pre-school Head Start program and Parent Teacher Association</span>
+      </div>
+      <div class="civic-card">
+        <span class="civic-title">Non-Denominational Minister</span>
+        <span class="civic-detail">Ordained minister · served his community across denominational lines</span>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>On scouting — which had historically excluded Black families from southwest Santa Ana — Norman said plainly: <em>"I never got into the scouts, never put my sons in it. It was an organization that never seemed real to me. Scouting never had a policy of excluding Blacks. But at the same time, they never exactly welcomed us with open arms. Now, all of a sudden, they're really out to win and woo us. But it can't be done overnight."</em></p>
+      <p>He was photographed by an Orange County newspaper handing the keys of the first subsidized housing unit to Jose Hernandez and his family — the Santa Ana Housing Authority and the Human Relations Commission working together to house a family. Norman Corbin is in the photograph, on the left, handing over the keys.</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 3: THE POEM -->
+  <div class="chapter">
+    <span class="chapter-label">Found in his desk after his death · Santa Ana Unified School District office · 1974</span>
+    <h2 class="chapter-title">The Poem in His Desk</h2>
+
+    <div class="prose">
+      <p>After Norman Corbin died on April 21 1974, the people who cleaned out his desk at the Santa Ana Unified School District found a poem he had written. The newspaper published it in his obituary. It is the only piece of writing confirmed to be in his own words. It is titled <em>The Success Family.</em></p>
+    </div>
+
+    <div class="poem">
+      <span class="poem-label">Norman Caswell Corbin · Written before April 21 1974 · Found in his desk after his death</span>
+      <span class="poem-title">The Success Family</span>
+      <div class="poem-body">
+        The father of success is work.<br>
+        The mother of success is ambition.<br>
+        The oldest son is common sense.<br>
+        Some of the other boys are perseverance,<br>
+        honesty, thoroughness and cooperation.<br><br>
+        The oldest daughter is character.<br>
+        Some of her sisters are cheerfulness,<br>
+        loyalty, courtesy, care,<br>
+        economy, sincerity and harmony.<br>
+        The baby is opportunity.<br><br>
+        Get acquainted with the old man<br>
+        and you will be able to get along pretty well<br>
+        with all of the family.<br><br>
+        Yesterday is gone and belongs to eternity.<br>
+        Tomorrow may never come and is God's.
+      </div>
+      <span class="poem-footer">Published in Orange County California newspaper obituary · April 1974</span>
+    </div>
+
+    <div class="prose">
+      <p>The journalist who covered his death — Richard Buffum — wrote: <em>"I'm sorry I didn't know him. Good men like him are hard to come by anywhere. I just thought you'd like to know that Norman Corbin was here."</em></p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 4: HIS DEATH -->
+  <div class="chapter">
+    <span class="chapter-label">April 21 1974 · Santa Ana California</span>
+    <h2 class="chapter-title">How He Died and What Happened After</h2>
+
+    <div class="prose">
+      <p>In April 1974 Norman Caswell Corbin traveled to Kentucky to visit a sick aunt. He became ill while he was there. He was brought to <strong>Riverview Hospital in Santa Ana</strong> and died on <strong>April 21 1974</strong> of pneumonia. He was fifty-three years old.</p>
+
+      <p>He carried no life insurance. He had spent fourteen years giving away what he had. Margie was left with seven children — the youngest was eight years old, the oldest was twenty-one.</p>
+
+      <p>The community responded. A <strong>six-hour benefit jazz and rock concert</strong> — billed as a Conglomeration of Stars — was held at the City Hall Annex on Santa Ana Boulevard at Ross Street from 1 to 7 p.m. Tickets were $2 at the door. Every cent went to Margie and the children and to establish a scholarship fund in Norman's name. The performers included Art Robinson and Soul Providers, Johnny Adams, Hank Alexander, North Wind, Black Gold, Just Funk, Bertha Eason, Billy Higgins, and others.</p>
+
+      <p><strong>1,500 people came to his funeral.</strong> Visitation was held at Winbigler Family Mortuary on North Grand Avenue. The funeral service was at Jerome Park at 2100 West McFadden. Interment followed at Fairhaven Memorial Park.</p>
+
+      <p>He was survived by his wife Margie, his mother <strong>Mattie Lou Simpson</strong> of Santa Ana, his sister <strong>Helen R. Bishop</strong> of Kentucky, his sister <strong>Mary F. Clark</strong> of Detroit, and his seven children.</p>
+    </div>
+
+    <div class="fact-block">
+      <span class="fact-block-label">Norman Caswell Corbin · Confirmed Facts</span>
+      <div class="fact-row">
+        <span class="fact-key">Born</span>
+        <span class="fact-val"><strong>1921 · Cleveland, Ohio</strong></span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Died</span>
+        <span class="fact-val"><strong>April 21 1974</strong> · Riverview Hospital · Santa Ana California · pneumonia · became ill visiting sick aunt in Kentucky · age 53</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Wife</span>
+        <span class="fact-val">Margie Nell Ballard Corbin · March 13 1929 – October 15 1988</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Addresses</span>
+        <span class="fact-val">617 Shelley Street, Santa Ana · 622 South Townsend Street, Santa Ana</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Mother</span>
+        <span class="fact-val"><strong>Mattie Lou Simpson</strong> · of Santa Ana at time of death · confirmed by obituary</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Sisters</span>
+        <span class="fact-val">Helen R. Bishop · Kentucky · Mary F. Clark · Detroit</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Funeral</span>
+        <span class="fact-val">Jerome Park · 2100 West McFadden · Santa Ana · 1,500 mourners · Fairhaven Memorial Park interment</span>
+      </div>
+      <div class="fact-row">
+        <span class="fact-key">Benefit concert</span>
+        <span class="fact-val">Six-hour jazz and rock concert · City Hall Annex · Santa Ana Boulevard at Ross Street · $2.50 at door · all proceeds to family and scholarship fund</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 5: HIS CHILDREN -->
+  <div class="chapter">
+    <span class="chapter-label">Confirmed by obituary and family oral history</span>
+    <h2 class="chapter-title">His Seven Children</h2>
+
+    <div class="prose">
+      <p>Norman and Margie had seven children. The obituary named them: <strong>Michael, Ronnie, Hordis, Deanne, Sonsorey, Orngiel, and Se Taun.</strong> At the time of Norman's death in April 1974 they ranged in age from 8 to 21.</p>
+    </div>
+
+    <div class="children-grid">
+      <div class="child-card">
+        <span class="child-name">Michael E. Corbin Sr.</span>
+        <span class="child-dates">1951 – 2009</span>
+        <span class="child-note">Eldest son · named in obituary as Michael</span>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Ronnie Leroy Ballard</span>
+        <span class="child-dates">1953 –</span>
+        <span class="child-note">Son · carries the Ballard surname</span>
+      </div>
+      <div class="child-card" style="border-color:rgba(201,168,76,0.4);">
+        <span class="child-name" style="color:var(--gold2);">Hjordis L. Corbin</span>
+        <span class="child-dates">January 20 1960 –</span>
+        <span class="child-note">Named Hordis in obituary · Jasmine's mother · AncestryDNA kit SQ8499767</span>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Deanna Denise Corbin</span>
+        <span class="child-dates">1961 –</span>
+        <span class="child-note">Named Deanne in obituary</span>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Sonsorey Yevette Corbin</span>
+        <span class="child-dates">1962 –</span>
+        <span class="child-note">Named Sonsorey in obituary</span>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Orngiel L. Corbin</span>
+        <span class="child-dates">1964 –</span>
+        <span class="child-note">Named Orngiel in obituary</span>
+      </div>
+      <div class="child-card">
+        <span class="child-name">Se'Taun Corbin</span>
+        <span class="child-dates">1966 –</span>
+        <span class="child-note">Named Se Taun in obituary · DNA confirmed 1,746 cM to Jasmine</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCES -->
+  <div class="sources">
+    <span class="sources-label">Primary Sources · Confirmed · No Hypothesis Presented as Fact</span>
+    <ol>
+      <li>Orange County California newspaper · "A Man for All People" by Richard Buffum · 1974 · quotes Margie Nell Corbin · confirms Norman's biography and civic roles · includes poem found in his desk</li>
+      <li>Orange County California newspaper obituary · Norman C. Corbin · died April 21 1974 · age 53 · Riverview Hospital · survived by wife Margie · children Michael · Ronnie · Hordis · Deanne · Sonsorey · Orngiel · Se Taun · mother Mattie Lou Simpson · sisters Helen R. Bishop of Kentucky and Mary F. Clark of Detroit</li>
+      <li>Orange County California newspaper · "Tribute Planned for Late Black Leader" · 1974 · confirms Norman born Cleveland Ohio · 14 years in Orange County · benefit concert details · children ages 7 to 21</li>
+      <li>Orange County California newspaper · "Commission Elects Two to Offices" · confirms Norman Corbin elected vice chairman Santa Ana Human Relations Commission alongside Zeke Hernandez as chairman</li>
+      <li>Orange County California newspaper · "Race Draws Field of 15" · confirms Norman C. Corbin · 617 Shelley Street Santa Ana · candidate Ward 2 Santa Ana City Council · April 6 1971 · Democrat</li>
+      <li>Orange County California newspaper · "New SAC Council" · confirms Norman Corbin listed as minister on Santa Ana College Community Relations Advisory Council</li>
+      <li>Orange County California newspaper · "Tale of 2 Troops" · quotes Norman Corbin on scouting · confirms member Orange County Human Relations Commission</li>
+      <li>Orange County California newspaper photograph · Norman Corbin of Human Relations Commission handing keys to Jose Hernandez family · first subsidized residents of Santa Ana Housing Authority</li>
+    </ol>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <h2 class="closing-title">"Good men like him<br>are hard to come by anywhere."</h2>
+    <p class="closing-body">Richard Buffum wrote those words in an Orange County newspaper in 1974 after Norman Corbin died. Fifteen hundred people came to the funeral to say the same thing without words.</p>
+    <div>
+      <a href="margie_story.html" class="back-link">← Margie's Story</a>
+      <a href="family_tree.html" class="back-link">← Back to Archive</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

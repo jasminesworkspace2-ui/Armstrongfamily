@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Ballard Family Research · Armstrong Family Archive</title>
+<style>
+  :root {
+    --deep: #080604;
+    --gold: #c9a84c;
+    --gold2: #e8c96a;
+    --cream: #f5f2ec;
+    --parchment: #f0ead8;
+    --aged: #e4dcd0;
+    --muted: #a8a090;
+    --border: rgba(201,168,76,0.15);
+    --border-bright: rgba(201,168,76,0.35);
+    --red-border: rgba(180,60,60,0.5);
+    --red-bg: rgba(180,60,60,0.05);
+    --f-display: 'Georgia', 'Times New Roman', serif;
+    --f-body: 'Georgia', serif;
+    --f-mono: 'Courier New', monospace;
+  }
+
+  /* ACCESSIBILITY */
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--deep);
+    color:var(--cream);
+    font-family:var(--f-body);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  strong { color:#f5f0e8 !important; font-weight:normal; }
+  em { color:var(--parchment); }
+
+  /* NAV */
+  .nav {
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(8,6,4,0.96);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-back { font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none; }
+  .nav-title { font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.55); }
+
+  /* HERO */
+  .hero {
+    min-height:70vh;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    padding:100px 24px 60px;text-align:center;
+    background:radial-gradient(ellipse at 50% 60%, rgba(139,105,20,0.06) 0%, transparent 70%);
+    border-bottom:1px solid var(--border);
+  }
+
+  .hero-label {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+    text-transform:uppercase;color:rgba(255,255,255,0.70);
+    margin-bottom:32px;display:block;
+  }
+
+  .hero-eyebrow {
+    font-family:var(--f-display);font-size:clamp(14px,2vw,16px);
+    font-style:italic;color:rgba(255,255,255,0.50);
+    margin-bottom:16px;
+  }
+
+  .hero-title {
+    font-family:var(--f-display);
+    font-size:clamp(48px,10vw,96px);
+    font-style:italic;color:var(--parchment);
+    line-height:0.95;letter-spacing:-2px;
+    margin-bottom:20px;
+  }
+
+  .hero-subtitle {
+    font-family:var(--f-mono);font-size:11px;letter-spacing:3px;
+    text-transform:uppercase;color:rgba(255,255,255,0.55);
+    margin-bottom:40px;
+  }
+
+  .hero-statement {
+    max-width:560px;
+    font-size:clamp(14px,2vw,16px);
+    line-height:1.9;color:rgba(232,224,216,0.85);
+    font-style:italic;
+  }
+
+  /* TAB NAVIGATION */
+  .tab-nav {
+    position:sticky;top:49px;z-index:90;
+    display:flex;gap:0;
+    background:rgba(8,6,4,0.98);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+    overflow-x:auto;-webkit-overflow-scrolling:touch;
+  }
+  .tab-nav::-webkit-scrollbar { display:none; }
+  .tab-btn {
+    flex-shrink:0;
+    padding:14px 20px;
+    font-family:var(--f-mono);font-size:9px;letter-spacing:2px;
+    text-transform:uppercase;color:rgba(255,255,255,0.45);
+    background:none;border:none;cursor:pointer;
+    border-bottom:2px solid transparent;
+    transition:all 0.2s;white-space:nowrap;
+  }
+  .tab-btn:hover { color:rgba(255,255,255,0.75); }
+  .tab-btn.active {
+    color:var(--gold2);
+    border-bottom-color:var(--gold);
+  }
+
+  /* SECTIONS */
+  .section {
+    display:none;
+    max-width:860px;margin:0 auto;
+    padding:60px 24px 100px;
+  }
+  .section.active { display:block; }
+
+  /* SECTION HEADERS */
+  .sec-label {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+    text-transform:uppercase;color:rgba(255,255,255,0.70);
+    display:block;margin-bottom:16px;
+  }
+  .sec-title {
+    font-family:var(--f-display);font-size:clamp(28px,5vw,44px);
+    font-style:italic;color:var(--parchment);
+    margin-bottom:40px;line-height:1.15;
+  }
+  .sub-title {
+    font-family:var(--f-display);font-size:clamp(20px,3vw,26px);
+    font-style:italic;color:var(--parchment);
+    margin:48px 0 20px;line-height:1.2;
+    padding-top:40px;border-top:1px solid var(--border);
+  }
+  .sub-title:first-of-type { border-top:none; padding-top:0; }
+
+  /* PROSE */
+  .prose p {
+    font-size:clamp(14px,2vw,16px);
+    line-height:2.1;color:#e4dcd0;
+    margin-bottom:24px;
+  }
+
+  /* HYPOTHESIS BOX */
+  .hypothesis {
+    margin:40px 0;padding:28px 32px;
+    border:1px solid rgba(201,168,76,0.4);
+    border-left:3px solid var(--gold);
+    background:rgba(10,8,5,0.6);
+  }
+  .hypothesis-label {
+    font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold2);
+    display:block;margin-bottom:12px;
+  }
+  .hypothesis p {
+    font-size:14px;line-height:1.9;color:#d8d0c4;
+    margin-bottom:12px;
+  }
+  .hypothesis p:last-child { margin-bottom:0; }
+
+  /* WARNING BOX */
+  .warning {
+    margin:32px 0;padding:24px 28px;
+    border:1px solid var(--red-border);
+    background:var(--red-bg);
+  }
+  .warning-label {
+    font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+    text-transform:uppercase;color:#d47070;
+    display:block;margin-bottom:10px;
+  }
+  .warning p {
+    font-size:13px;line-height:1.8;color:#c8beb4;
+    margin-bottom:8px;
+  }
+  .warning p:last-child { margin-bottom:0; }
+
+  /* CONFIRMED BOX */
+  .confirmed {
+    margin:32px 0;padding:24px 28px;
+    border:1px solid rgba(60,140,60,0.4);
+    background:rgba(60,140,60,0.04);
+  }
+  .confirmed-label {
+    font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+    text-transform:uppercase;color:#80c080;
+    display:block;margin-bottom:10px;
+  }
+  .confirmed p {
+    font-size:13px;line-height:1.8;color:#c8c4b8;
+  }
+
+  /* FACT TABLE */
+  .fact-block {
+    margin:32px 0;border:1px solid var(--border);
+    background:rgba(10,8,5,0.4);
+  }
+  .fact-block-label {
+    font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+    text-transform:uppercase;color:rgba(255,255,255,0.70);
+    display:block;padding:12px 20px;
+    border-bottom:1px solid var(--border);
+    background:rgba(10,8,5,0.5);
+  }
+  .fact-row {
+    display:grid;grid-template-columns:160px 1fr;
+    border-bottom:1px solid rgba(201,168,76,0.06);
+  }
+  .fact-row:last-child { border-bottom:none; }
+  .fact-key {
+    font-family:var(--f-mono);font-size:10px;letter-spacing:1px;
+    text-transform:uppercase;color:rgba(255,255,255,0.55);
+    padding:12px 16px;
+    border-right:1px solid rgba(201,168,76,0.06);
+  }
+  .fact-val {
+    font-size:13px;line-height:1.7;color:#d8d0c4;
+    padding:12px 16px;
+  }
+
+  /* TIMELINE */
+  .timeline { margin:40px 0; }
+  .tl-item {
+    display:grid;grid-template-columns:80px 1fr;
+    gap:20px;margin-bottom:24px;
+    align-items:start;
+  }
+  .tl-year {
+    font-family:var(--f-mono);font-size:11px;letter-spacing:1px;
+    color:var(--gold2);text-align:right;
+    padding-top:2px;
+  }
+  .tl-content {
+    padding-left:20px;
+    border-left:1px solid rgba(201,168,76,0.3);
+  }
+  .tl-title {
+    font-family:var(--f-display);font-size:15px;font-style:italic;
+    color:#f0ead8;display:block;margin-bottom:4px;
+  }
+  .tl-detail {
+    font-size:13px;line-height:1.7;color:#c0b8ac;
+  }
+
+  /* FAMILY TREE DISPLAY */
+  .tree-display {
+    margin:40px 0;text-align:center;
+  }
+  .tree-person {
+    display:inline-block;
+    padding:16px 24px;
+    border:1px solid var(--border);
+    background:rgba(10,8,5,0.5);
+    margin:0 auto 8px;
+    min-width:200px;
+  }
+  .tree-person.direct {
+    border-color:rgba(201,168,76,0.4);
+    background:rgba(10,8,5,0.7);
+  }
+  .tree-person.enslaver {
+    border-color:var(--red-border);
+    background:var(--red-bg);
+  }
+  .tree-name {
+    font-family:var(--f-display);font-size:15px;font-style:italic;
+    color:#f0ead8;display:block;margin-bottom:4px;
+  }
+  .tree-dates {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:1px;
+    color:rgba(255,255,255,0.50);display:block;
+  }
+  .tree-arrow {
+    display:block;color:rgba(201,168,76,0.5);
+    font-size:20px;line-height:1.5;margin:4px 0;
+  }
+
+  /* SOURCES */
+  .sources-list {
+    margin:40px 0;padding:28px 32px;
+    border:1px solid var(--border);
+    background:rgba(10,8,5,0.4);
+  }
+  .sources-label {
+    font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+    text-transform:uppercase;color:rgba(255,255,255,0.65);
+    display:block;margin-bottom:20px;
+  }
+  .sources-list ol {
+    padding-left:20px;list-style:decimal;
+  }
+  .sources-list ol li {
+    font-family:var(--f-mono);font-size:10px;letter-spacing:0.3px;
+    line-height:1.8;color:#b8b0a4;margin-bottom:8px;
+  }
+
+  /* PENDING */
+  .pending {
+    margin:32px 0;padding:24px 28px;
+    border:1px solid rgba(100,140,200,0.3);
+    background:rgba(100,140,200,0.04);
+  }
+  .pending-label {
+    font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+    text-transform:uppercase;color:rgba(140,180,240,0.80);
+    display:block;margin-bottom:12px;
+  }
+  .pending ul { padding-left:20px; }
+  .pending ul li {
+    font-size:13px;line-height:1.9;color:#c0b8b0;
+    margin-bottom:4px;
+  }
+
+  @media(max-width:600px){
+    .fact-row { grid-template-columns:1fr; }
+    .fact-key { border-right:none;border-bottom:1px solid rgba(201,168,76,0.06); }
+    .tl-item { grid-template-columns:60px 1fr;gap:12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-back">← Back to Archive</a>
+  <span class="nav-title">Ballard Family Research</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-label">Armstrong Family Archive · Ballard Line</span>
+  <p class="hero-eyebrow">The Paternal Sub-Line of Eva Armstrong Ballard</p>
+  <h1 class="hero-title">Ballard</h1>
+  <p class="hero-subtitle">Mississippi · Smith County Texas · Upshur County Texas · Waco · Fort Worth · 1830 – 1953</p>
+  <p class="hero-statement">
+    This page documents two separate but connected stories — the white Ballard family whose records carry the only paper trail that confirms Newton Ballard existed, and the Black Ballard family line from Newton through Rev. George W. Ballard to James Wilson Ballard Sr. The enslaver's records are the vehicle. The family is the destination.
+  </p>
+</section>
+
+<!-- TAB NAVIGATION -->
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" onclick="showTab('direct')" role="tab">Direct Ballard Line</button>
+  <button class="tab-btn" onclick="showTab('newton')" role="tab">Newton Ballard</button>
+  <button class="tab-btn" onclick="showTab('enslaving')" role="tab">The Enslaving Family</button>
+  <button class="tab-btn" onclick="showTab('louisiana')" role="tab">Louisa Hypothesis</button>
+  <button class="tab-btn" onclick="showTab('dna')" role="tab">DNA Evidence</button>
+  <button class="tab-btn" onclick="showTab('pending')" role="tab">Pending Research</button>
+</nav>
+
+<!-- TAB 1: DIRECT BALLARD LINE -->
+<div id="direct" class="section active">
+  <span class="sec-label">Confirmed by Primary Source · Every Generation</span>
+  <h2 class="sec-title">The Direct Ballard Line</h2>
+
+  <div class="tree-display">
+    <div class="tree-person">
+      <span class="tree-name">Newton Ballard</span>
+      <span class="tree-dates">ca. 1830 Mississippi — ca. before 1886</span>
+    </div>
+    <span class="tree-arrow">↓</span>
+    <div class="tree-person direct">
+      <span class="tree-name">Rev. George W. Ballard</span>
+      <span class="tree-dates">September 4 1861 — October 24 1937 · Waco Texas</span>
+    </div>
+    <span class="tree-arrow">↓</span>
+    <div class="tree-person direct">
+      <span class="tree-name">James Wilson Ballard Sr.</span>
+      <span class="tree-dates">August 26 1897 Palestine TX — March 13 1953 Austin State Hospital</span>
+    </div>
+    <span class="tree-arrow">↓</span>
+    <div class="tree-person direct">
+      <span class="tree-name">Eva Armstrong Ballard</span>
+      <span class="tree-dates">June 27 1900 Bellville TX — November 24 1977 Garden Grove CA</span>
+    </div>
+    <span class="tree-arrow">↓</span>
+    <div class="tree-person direct">
+      <span class="tree-name">Margie Nell Ballard Corbin</span>
+      <span class="tree-dates">March 13 1929 Fort Worth — October 15 1988 Garden Grove</span>
+    </div>
+    <span class="tree-arrow">↓</span>
+    <div class="tree-person direct">
+      <span class="tree-name">Hjordis L. Corbin</span>
+      <span class="tree-dates">January 20 1960 — AncestryDNA kit SQ8499767</span>
+    </div>
+    <span class="tree-arrow">↓</span>
+    <div class="tree-person direct">
+      <span class="tree-name">Jasmine M. Lee ★</span>
+      <span class="tree-dates">January 25 1982 — GEDmatch kit QW84*****</span>
+    </div>
+  </div>
+
+  <h3 class="sub-title">Rev. George W. Ballard</h3>
+
+  <div class="prose">
+    <p>Rev. George W. Ballard was born September 4 1861 — the son of Newton Ballard and Rebecca Ballard — in Smith or Upshur County Texas. He became an ordained minister and lived the second half of his life in Waco, McLennan County Texas. He owned property at <strong>724 East Johnson Street, Waco</strong> — recorded in McLennan County deed records Volume 289 Page 655. That property was lost to a tax sale on November 7 2017 under Cause No. 2014-3167-4 — more than 80 years after Rev. Ballard's death.</p>
+    <p>He married <strong>Mary Ann Edwards Ballard</strong> — born November 4 1870 Texas — died March 19 1949 Fort Worth. Mary Ann's parents have been identified through AncestryDNA ThruLines as Benjamin Edwards born 1848 and Bettie Edwards born 1849 — but this has not been confirmed by primary source document.</p>
+    <p>Rev. George W. Ballard did not know his parents' exact origins. His parental birthplace data varied across four census years — a documented pattern for formerly enslaved people and their children who did not have reliable records of where their parents were born. This is not an error — it is an honest reflection of what was lost during enslavement.</p>
+  </div>
+
+  <div class="fact-block">
+    <span class="fact-block-label">Rev. George W. Ballard · Confirmed Facts</span>
+    <div class="fact-row">
+      <span class="fact-key">Born</span>
+      <span class="fact-val">September 4 1861 · Smith or Upshur County Texas</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Died</span>
+      <span class="fact-val">October 24 1937 · Waco · McLennan County Texas</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Death cert</span>
+      <span class="fact-val">McLennan County Death Certificate · Volume 4 Page 483 · Document No. 3493 · names Newton Ballard as father</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Wife</span>
+      <span class="fact-val">Mary Ann Edwards Ballard · born November 4 1870 Texas · died March 19 1949 Fort Worth</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Property</span>
+      <span class="fact-val">724 East Johnson Street · Waco Texas · McLennan County Deed Records Volume 289 Page 655 · lost to tax sale November 7 2017 · Cause No. 2014-3167-4</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Children</span>
+      <span class="fact-val">Benjamin (1890) · Hallie Q (1892) · James Wilson Sr. (1897) · Mark Hanna (1900) · John Allen (1901) · Aleberta (1906) · Blancherie (1910) · believed 11 total · 4 still unidentified</span>
+    </div>
+  </div>
+
+  <h3 class="sub-title">James Wilson Ballard Sr.</h3>
+
+  <div class="prose">
+    <p>James Wilson Ballard Sr. was born August 26 1897 in Palestine, Anderson County, Texas — the son of Rev. George W. Ballard and Mary Ann Edwards Ballard. He married <strong>Eva Armstrong Ballard</strong> — daughter of Hellen Nichols Armstrong and John Armstrong of Bellville — uniting the Ballard line from East Texas with the Nichols-Armstrong line from Austin County.</p>
+    <p>James Wilson Ballard Sr. spent his final years as a patient at Austin State Hospital in Austin, Texas — confirmed by the 1950 Federal Census. He died on March 13 1953 — his daughter Margie Nell's twenty-fourth birthday. The date is its own kind of record.</p>
+  </div>
+
+  <div class="fact-block">
+    <span class="fact-block-label">James Wilson Ballard Sr. · Confirmed Facts</span>
+    <div class="fact-row">
+      <span class="fact-key">Born</span>
+      <span class="fact-val">August 26 1897 · Palestine · Anderson County Texas</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Died</span>
+      <span class="fact-val">March 13 1953 · Austin State Hospital · Travis County Texas — Margie Nell's 24th birthday</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Cause</span>
+      <span class="fact-val">Broncho-pneumonia · bilateral pulmonary tuberculosis · psychosis with syphilitic meningoencephalitis</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Last address</span>
+      <span class="fact-val">1224 Verbena Street · Fort Worth Texas</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Children confirmed</span>
+      <span class="fact-val">James Wilson Jr. (June 17 1926) · Margie Nell (March 13 1929 · File No. 26658) · Eloise Maud (May 24 1931) · Charles Ray (March 5 1933) · Bettie Jean (December 13 1935) · Thelma Louise (December 3 1938 – March 16 1939 · Cert No. 11120)</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Other records</span>
+      <span class="fact-val">Federal Gambling Tax Stamps IRS 1951 · 207 N. Center Street San Antonio · San Antonio Light March 8 1954 · Corpus Christi Times November 4 1953 · 1950 census Austin State Hospital patient</span>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 2: NEWTON BALLARD -->
+<div id="newton" class="section">
+  <span class="sec-label">Highest Priority Research Thread · Death Date and Origins Unknown</span>
+  <h2 class="sec-title">Newton Ballard</h2>
+
+  <div class="prose">
+    <p>Newton Ballard is the foundation of the Ballard family line — the formerly enslaved man whose freedom claim on 160 acres of Upshur County Texas in 1856 is the earliest independent primary source record connecting this family to freedom. Everything else in the Ballard research builds from him.</p>
+    <p>Newton Ballard was born approximately 1830 in Mississippi — almost certainly in <strong>Copiah County or Washington County Mississippi</strong> — the counties where Lewis F. Ballard Sr. held land and lived before migrating to Texas. He was enslaved by Lewis F. Ballard Sr. in Smith County Texas by 1850 — appearing as an unnamed male approximately age 20 born Mississippi in Ballard's slave schedule on Page 458.</p>
+    <p>On <strong>August 26 1856</strong> Newton Ballard filed a land claim for 160 acres in Upshur County Texas — Texas GLO File No. 3378 · Survey No. 124 · Abstract 131. That date — August 26 — is the same calendar date as James Wilson Ballard Sr.'s birth year in 1897 — forty-one years apart. Newton named his son George Washington Ballard — born September 4 1861 — who confirmed Newton as his father on his 1937 McLennan County death certificate.</p>
+    <p>Newton Ballard's land went delinquent on Upshur County tax rolls by 1886 — Abstract 131 appearing as unrendered and unclaimed in 1886 and again in 1891. He was almost certainly dead or gone from Upshur County by the early 1880s. His death date, death location, and burial place remain unconfirmed by any primary source document found to date.</p>
+  </div>
+
+  <div class="fact-block">
+    <span class="fact-block-label">Newton Ballard · Confirmed Facts</span>
+    <div class="fact-row">
+      <span class="fact-key">Born</span>
+      <span class="fact-val">ca. 1830 · Mississippi · almost certainly Copiah County or Washington County</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Enslaved by</span>
+      <span class="fact-val">Lewis F. Ballard Sr. · Smith County Texas · confirmed 1850 slave schedule Page 458 · unnamed male age 20 born Mississippi</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Land claim</span>
+      <span class="fact-val">August 26 1856 · 160 acres · Upshur County Texas · Texas GLO File No. 3378 · Survey No. 124 · Abstract 131 · Certificate No. 131262</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Land delinquent</span>
+      <span class="fact-val">Abstract 131 unrendered on tax rolls 1886 and 1891 · $320 valuation 1886 · processed through Henderson and Gilmer recording offices</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Wife</span>
+      <span class="fact-val">Rebecca Ballard · born ca. 1835 Mississippi · head of household 1870 Upshur County Texas after Newton left · maiden name unknown · post-1870 record not found</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Son confirmed</span>
+      <span class="fact-val">Rev. George W. Ballard · named Newton Ballard as father on 1937 McLennan County death certificate · Volume 4 Page 483</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Died</span>
+      <span class="fact-val">Unknown · likely before 1886 · no death record found</span>
+    </div>
+  </div>
+
+  <div class="warning">
+    <span class="warning-label">⚠ Confirmed Separate Person — Do Not Conflate</span>
+    <p>Texas GLO File No. 3378 · Survey No. 124 · 160 acres · Upshur County — this record has been confirmed through five independent record types as belonging to a <strong>white Newton Bullard</strong> — son of John William Bullard and Rebecca Fortenberry Bumgarner — born 1832 Tennessee. This is a completely different person from Newton Ballard. The website's Property Records section must not include this record under Newton Ballard's profile.</p>
+  </div>
+
+  <div class="timeline">
+    <span class="sec-label" style="margin-bottom:24px;display:block;">Newton Ballard · Confirmed Timeline</span>
+    <div class="tl-item">
+      <span class="tl-year">ca. 1830</span>
+      <div class="tl-content">
+        <span class="tl-title">Born · Mississippi</span>
+        <span class="tl-detail">Almost certainly Copiah County or Washington County — where Lewis F. Ballard Sr. held land and lived. Lewis F. Ballard Jr. also born ca. 1830 Mississippi — same year and state.</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1840</span>
+      <div class="tl-content">
+        <span class="tl-title">Lewis F. Ballard Sr. purchases Mississippi land</span>
+        <span class="tl-detail">December 10 1840 · Mt. Salus Land Office · 196.6 acres · Washington County Mississippi. Newton approximately age 10 — in Ballard household in Mississippi.</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1841</span>
+      <div class="tl-content">
+        <span class="tl-title">Lewis F. Ballard Sr. in Copiah County</span>
+        <span class="tl-detail">Confirmed by 1841 Mississippi state census. Newton in this household — approximately age 11.</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1850</span>
+      <div class="tl-content">
+        <span class="tl-title">Smith County Texas · Slave Schedule · Page 458</span>
+        <span class="tl-detail">Newton appears as unnamed male age approximately 20 born Mississippi in Lewis F. Ballard Sr.'s household. New Hope Missionary Baptist Church history independently confirms Aaron and Emaline as enslaved people in Ballard's household.</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1856</span>
+      <div class="tl-content">
+        <span class="tl-title">Freedom Land Claim · August 26 · Upshur County Texas</span>
+        <span class="tl-detail">Newton Ballard files for 160 acres · Texas GLO File No. 3378 · Survey No. 124 · Abstract 131. One year before Lewis F. Ballard Sr.'s death on February 18 1857.</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1861</span>
+      <div class="tl-content">
+        <span class="tl-title">Son George Washington Ballard born · September 4</span>
+        <span class="tl-detail">Rev. George W. Ballard born in Smith or Upshur County Texas. Wife Rebecca Ballard confirmed.</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1870</span>
+      <div class="tl-content">
+        <span class="tl-title">Rebecca Ballard head of household · Upshur County</span>
+        <span class="tl-detail">Newton absent from the 1870 census household. Rebecca Ballard heads the family. Newton's whereabouts in 1870 are unknown.</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1886</span>
+      <div class="tl-content">
+        <span class="tl-title">Abstract 131 delinquent · $320 value</span>
+        <span class="tl-detail">Newton Ballard's 160-acre claim appears on the Upshur County unrendered property roll. Nobody is paying taxes. Newton is almost certainly dead or permanently gone from the county by this date.</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1891</span>
+      <div class="tl-content">
+        <span class="tl-title">Abstract 131 still unrendered · Certificate No. 131262</span>
+        <span class="tl-detail">Five years after the first delinquency — the land remains unclaimed. No heir has stepped forward to pay the taxes.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 3: THE ENSLAVING FAMILY -->
+<div id="enslaving" class="section">
+  <span class="sec-label">Research Context · The Enslaver's Records Carry Newton's History</span>
+  <h2 class="sec-title">The White Ballard Family</h2>
+
+  <div class="prose">
+    <p>In African American genealogy research the paper trail of the enslaving family is often the only vehicle that carries records of the enslaved person. The white Ballard family's land patents, tax assessments, census records, and slave schedules are the documents that confirm Newton Ballard existed before emancipation. This section documents that family as research context — not as ancestors — but as the framework that preserved Newton's history.</p>
+  </div>
+
+  <div class="warning">
+    <span class="warning-label">Important Framing</span>
+    <p>Lewis F. Ballard Sr. and his family are documented here because their records are the primary sources for Newton Ballard's pre-emancipation history. They are not your ancestors. They are the people whose records confirm your ancestor existed.</p>
+  </div>
+
+  <h3 class="sub-title">Lewis F. Ballard Sr. — Confirmed</h3>
+
+  <div class="fact-block">
+    <span class="fact-block-label">Lewis F. Ballard Sr. · 1850 Smith County Texas Household</span>
+    <div class="fact-row">
+      <span class="fact-key">Head</span>
+      <span class="fact-val">Lewis F. Ballard Sr. · age 58 · born ca. 1792 · Florida · white</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Wife</span>
+      <span class="fact-val">Mary Ballard · age 37 · born ca. 1813 · South Carolina</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Children</span>
+      <span class="fact-val">Susan C. Ballard (1828 MS) · Lewis F. Ballard Jr. (1830 MS) · James M. Ballard (1834 MS) · Charles C. Ballard (1836 MS)</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Note</span>
+      <span class="fact-val">Lewis F. Ballard Jr. born ca. 1830 Mississippi — same birth year and state as Newton Ballard</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Died</span>
+      <span class="fact-val">February 18 1857 · confirmed by New Hope Missionary Baptist Church history · Smith County Texas</span>
+    </div>
+  </div>
+
+  <h3 class="sub-title">Land Holdings · Confirmed by Primary Source</h3>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="tl-year">1840</span>
+      <div class="tl-content">
+        <span class="tl-title">Washington County Mississippi · 196.6 acres</span>
+        <span class="tl-detail">Document No. 23028 · 156.25 acres · and Document No. 23029 · 40.35 acres · both December 10 1840 · Mt. Salus Land Office · Township 10N Range 8E</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1841</span>
+      <div class="tl-content">
+        <span class="tl-title">Copiah County Mississippi · State Census</span>
+        <span class="tl-detail">L.F. Ballard confirmed in Copiah County Mississippi 1841 state census · Line 117607</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1845</span>
+      <div class="tl-content">
+        <span class="tl-title">Robertson District · Ellis County Texas · 1,476.13 acres</span>
+        <span class="tl-detail">Patent No. 303 · Volume 1 · File 86 · April 7 1845 · Robertson District covered McLennan County area — where Rev. George W. Ballard later lived in Waco</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1850</span>
+      <div class="tl-content">
+        <span class="tl-title">Smith County Texas · Slave Schedule · Page 458</span>
+        <span class="tl-detail">Newton Ballard — unnamed male age 20 born Mississippi — confirmed in Lewis F. Ballard's enslaved household</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1855</span>
+      <div class="tl-content">
+        <span class="tl-title">Upshur County Texas · Tax Assessment</span>
+        <span class="tl-detail">L.F. Ballard · F. Ballard · J. Ballard · and E.J. Ballard (320 acres J. Nichols Survey) all assessed in Upshur County · Charles Davenport also holds one league (4,428 acres) in same county same year</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1857</span>
+      <div class="tl-content">
+        <span class="tl-title">Death · February 18 1857</span>
+        <span class="tl-detail">Confirmed by New Hope Missionary Baptist Church history · Smith County Texas · Aaron and Emaline confirmed as enslaved people in his household by the church record</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-year">1859</span>
+      <div class="tl-content">
+        <span class="tl-title">Upshur County Texas · 160 acres · filed posthumously</span>
+        <span class="tl-detail">Patent No. 210 · Volume 25 · File 3726 · Register No. 1007 · March 8 1859 · Nacogdoches 3rd Class · land later held by Mrs. J.J. Shrum of Marion County Texas and E.M. Seago of Louisiana</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sub-title">The Copiah County Mississippi Community</h3>
+
+  <div class="prose">
+    <p>Lewis F. Ballard Sr. lived in Copiah County Mississippi in 1841 — confirmed by the state census. The Copiah County deed records from 1825 document the community he was part of — the Byrd family, the Boyd family, the Blount family, and the Smiley family all appear in Copiah County deed records in the 1820s. The same Byrd and Boyd families appear in the 1855 Upshur County Texas tax assessment alongside the Ballard family — confirming these were connected planter communities that migrated together from Mississippi to Texas.</p>
+    <p>The name Newton appears in Copiah County Mississippi deed records as early as August 31 1825 — when Margaret Byrd transferred a nine-year-old enslaved boy named Newton to her daughter. This Newton is too old to be your Newton Ballard — born approximately 1815-1816 versus Newton Ballard born ca. 1830 — but confirms the name Newton was used for enslaved people in Copiah County in the generation before Newton Ballard's birth.</p>
+  </div>
+
+  <div class="confirmed">
+    <span class="confirmed-label">Davenport-Ballard Connection · Upshur County 1855</span>
+    <p>Charles Davenport appears in the 1855 Upshur County Texas tax assessment holding a full league — 4,428 acres — in the same county and year as Lewis F. Ballard Sr. The Davenport family gave Patience to Patty Waldrup in Newberry County South Carolina in 1795. A Davenport in Upshur County Texas in 1855 alongside the Ballard family confirms the geographic overlap of these two enslaving family networks in East Texas — the same two families that appear at the origins of both your maternal and paternal lines.</p>
+  </div>
+</div>
+
+<!-- TAB 4: LOUISA HYPOTHESIS -->
+<div id="louisiana" class="section">
+  <span class="sec-label">Unconfirmed Hypothesis · Clearly Labeled · August 2026</span>
+  <h2 class="sec-title">The Louisa Hypothesis</h2>
+
+  <div class="hypothesis">
+    <span class="hypothesis-label">⚠ Hypothesis Status — Not Confirmed by Primary Source</span>
+    <p>The Louisa Hypothesis proposes connecting Newton Ballard to an enslaved woman named Louisa from the John Bullard estate in Ouachita Parish Louisiana. This is a research hypothesis — not a confirmed fact. It is presented here clearly labeled as such. Nothing in this section should be added to the family tree or described as confirmed ancestry.</p>
+  </div>
+
+  <h3 class="sub-title">What the Documents Show</h3>
+
+  <div class="prose">
+    <p>Two Ouachita Parish Louisiana deeds — one from 1839 and one from 1856 — both signed by <strong>John T. Faulk</strong> — connect to the Bullard family of Louisiana and document enslaved people including a woman named Louisa.</p>
+    <p>The <strong>1856 deed</strong> — dated July 30 1856 — names John T. Sheppard and his wife Nancy Bullard — daughter of the late John Bullard — transferring property that included enslaved people from the John Bullard estate. Nancy Bullard had inherited an estate labor force from her father. In May 1854 John T. Sheppard sold a stake in this property to John T. Faulk without Nancy's consent — the 1856 deed corrected this title defect for $2,000.</p>
+    <p>The enslaved people documented in the John Bullard estate deed include <strong>Louisa · Hester · Jesse · Green · Texana · Harriett · and an unnamed infant child</strong>. The official recorder was Benjamin D. Sheppard acting as Parish Recorder and Ex-Officio Notary Public for Ouachita Parish Louisiana.</p>
+  </div>
+
+  <div class="fact-block">
+    <span class="fact-block-label">Ouachita Parish Louisiana · 1856 Deed · Confirmed Details</span>
+    <div class="fact-row">
+      <span class="fact-key">Deed date</span>
+      <span class="fact-val">July 30 1856</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Parties</span>
+      <span class="fact-val">John T. Sheppard and wife Nancy Bullard (daughter of late John Bullard) to John T. Faulk (John Tillman Faulk 1784-1871)</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Amount</span>
+      <span class="fact-val">$2,000 · correcting a title defect from May 1854 sale</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Enslaved people named</span>
+      <span class="fact-val">Louisa · Hester · Jesse · Green · Texana · Harriett · unnamed infant child</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Recorder</span>
+      <span class="fact-val">Benjamin D. Sheppard · Parish Recorder and Ex-Officio Notary Public · Ouachita Parish Louisiana</span>
+    </div>
+  </div>
+
+  <h3 class="sub-title">Why This Hypothesis Exists</h3>
+
+  <div class="prose">
+    <p>The hypothesis connects to Newton Ballard through two threads. First — the Bullard/Ballard surname variant. The John Bullard family of Ouachita Parish Louisiana shares a surname variant with the Ballard family that enslaved Newton — Bullard and Ballard are the same name spelled differently across records of this era. Second — the geographic corridor. Louisiana to East Texas was a well-documented migration path for both free and enslaved people in the 1840s-1860s. The Louisa from John Bullard's estate could theoretically have been sold or moved to Texas after the estate was dispersed — which would place her in the same East Texas corridor where Newton Ballard was living after emancipation.</p>
+    <p>The J.T. Sheppard who appears in the 1867 Texas voter registration in Bell County — confirmed on Line 1 registered July 17 1867 — may be the same John T. Sheppard from the 1856 Louisiana deed, which would confirm the Louisiana-to-Texas migration of this family network.</p>
+  </div>
+
+  <div class="warning">
+    <span class="warning-label">What Has Not Been Confirmed</span>
+    <p>No primary source document has been found connecting Louisa from the John Bullard Louisiana estate to Newton Ballard. No marriage record, no shared census entry, no deed, no church record, no Freedmen's Bureau record connects these two people. The hypothesis is supported by circumstantial geographic and surname evidence — not by a primary source chain of custody.</p>
+    <p>Researcher Norris Douglas was contacted to search Anson County North Carolina Ballard/Bullard probate records that might provide a connecting link. Those results are still pending.</p>
+  </div>
+
+  <div class="pending">
+    <span class="pending-label">Pending — Louisa Hypothesis</span>
+    <ul>
+      <li>Follow up with Norris Douglas on Anson County North Carolina Ballard/Bullard probate records</li>
+      <li>Search Rankin County Mississippi 1839 deed certified copy — original deed that first surfaced the Bullard Louisiana connection</li>
+      <li>Search DeSoto Parish Courthouse 318-872-0858 — Claiborne Waldrop 1872 probate</li>
+      <li>Contact E.M. Seago of Louisiana — heir to Lewis F. Ballard's Upshur County land — to establish whether Louisiana Ballard/Bullard families are connected</li>
+    </ul>
+  </div>
+</div>
+
+<!-- TAB 5: DNA EVIDENCE -->
+<div id="dna" class="section">
+  <span class="sec-label">GEDmatch · AncestryDNA · Confirmed Matches</span>
+  <h2 class="sec-title">DNA Evidence · Ballard Line</h2>
+
+  <div class="prose">
+    <p>The DNA evidence for the Ballard line comes primarily from the ICW (In Common With) analysis running kit QW84***** against Larry Thomasson's Ballard research kit (A505701). This analysis found 61 matches that share both kits — confirming a genuine shared ancestral network pointing to Smith County and Upshur County East Texas.</p>
+  </div>
+
+  <div class="fact-block">
+    <span class="fact-block-label">Key Ballard Line DNA Matches · Confirmed from GEDmatch</span>
+    <div class="fact-row">
+      <span class="fact-key">Larry Thomasson</span>
+      <span class="fact-val">Kit A505701 / T977915 · 30.6 cM · dual kit submission confirmed · Smith County Texas Ballard documentation · larryethomasson@windstream.net</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">gedbohannon</span>
+      <span class="fact-val">Kit M022233 · 29.1 cM · Upshur County Texas connections</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Jessica D Carter</span>
+      <span class="fact-val">Kit CJ6366754 · 25.4 cM · Smith County Texas · jessdaniellecarter@gmail.com</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Donna Driskill Keyser</span>
+      <span class="fact-val">Kit A884951 · 27.8 cM · confirmed Blane/Driskill overlap · Halifax County Virginia · volunteerlady2@gmail.com</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Birkhead/Brown family</span>
+      <span class="fact-val">Five kits · kobeed@netscape.net · Jean F Birkhead Brown · John Birkhead · Annette Brown-Worsley · Cindy M Brown · Sallie M Brown · 14-27 cM each · appear in both Ballard ICW and Enslaved and Enslavers project</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Willie Rachel Campbell Skelton</span>
+      <span class="fact-val">Kit M016039 · 26.0 cM · GEDCOM uploaded · jenlynne@att.net · Campbell line · Bellville community</span>
+    </div>
+    <div class="fact-row">
+      <span class="fact-key">Charles M. Allen</span>
+      <span class="fact-val">Kit A935006 · 24.8 cM · WikiTree profile · redeemed5052@yahoo.com · name matches 1867 Bellville voter ledger</span>
+    </div>
+  </div>
+
+  <div class="hypothesis">
+    <span class="hypothesis-label">Ballard-Carraway Segment Test · Not Yet Run</span>
+    <p>Running a One-to-One comparison between the Ballard research kit and LaToya Carraway (Kit A027359) would determine whether the Ballard and Carraway family lines share an overlapping DNA segment — which would suggest intermarriage between the two families in the East Texas freedom colony networks. This test has not yet been run.</p>
+  </div>
+</div>
+
+<!-- TAB 6: PENDING RESEARCH -->
+<div id="pending" class="section">
+  <span class="sec-label">Open Research Threads · August 2026</span>
+  <h2 class="sec-title">What Still Needs to Be Found</h2>
+
+  <div class="pending">
+    <span class="pending-label">Highest Priority · Phone Calls</span>
+    <ul>
+      <li><strong>McLennan County Clerk · 254-757-5078</strong> — Rev. George W. Ballard death certificate · Volume 4 Page 483 · Document No. 3493 — needed for certified copy for WikiTree and archive</li>
+      <li><strong>Lone Star Legal Aid</strong> — consultation regarding 2017 Waco tax sale of Rev. Ballard's property at 724 East Johnson Street · Cause No. 2014-3167-4</li>
+    </ul>
+  </div>
+
+  <div class="pending">
+    <span class="pending-label">Newton Ballard · Unresolved Questions</span>
+    <ul>
+      <li>Death date and location — not found in any primary source</li>
+      <li>Rebecca Ballard maiden name — not confirmed</li>
+      <li>Rebecca Ballard post-1870 record — not found</li>
+      <li>Newton's presence or absence in 1870 Upshur County census — needs verification</li>
+      <li>Search Copiah County Mississippi deed books C and D (1826-1845) for Lewis F. Ballard Sr. entries that might name enslaved people including Newton</li>
+      <li>Search 1840 Mississippi Federal Census for Lewis F. Ballard Sr. — should show Newton as a child approximately age 10 in his household</li>
+      <li>Search 1830 Mississippi Federal Census for Lewis F. Ballard Sr. — would show Newton as an infant</li>
+    </ul>
+  </div>
+
+  <div class="pending">
+    <span class="pending-label">Rev. George W. Ballard · Unresolved</span>
+    <ul>
+      <li>Four unidentified children of Rev. George W. Ballard and Mary Ann Edwards — 11 total believed, 7 confirmed</li>
+      <li>Mary Ann Edwards Ballard's parents — Benjamin and Bettie Edwards identified via ThruLines but not confirmed by primary source document</li>
+      <li>Search 1900 and 1910 census for Rev. George W. Ballard household in McLennan County</li>
+    </ul>
+  </div>
+
+  <div class="pending">
+    <span class="pending-label">Louisa Hypothesis · Pending</span>
+    <ul>
+      <li>Follow up with Norris Douglas — Anson County North Carolina Ballard/Bullard probate records</li>
+      <li>Search Rankin County Mississippi Chancery Court 601-825-1469 — 1839 deed certified copy</li>
+      <li>Search DeSoto Parish Courthouse 318-872-0858 — Claiborne Waldrop 1872 probate</li>
+    </ul>
+  </div>
+
+  <div class="pending">
+    <span class="pending-label">DNA · Actions Not Yet Taken</span>
+    <ul>
+      <li>Contact Willie Rachel Campbell Skelton · jenlynne@att.net — has GEDCOM uploaded</li>
+      <li>Contact Birkhead/Brown family cluster · kobeed@netscape.net — five kits — largest Ballard cluster</li>
+      <li>Run One-to-One between Ballard kit A505701 and LaToya Carraway A027359 — Ballard-Carraway segment test</li>
+      <li>Contact Francis H. Matthews Jr. · frankhm2@yahoo.com — Black Dutch Fork South Carolina project · 21.7 cM</li>
+    </ul>
+  </div>
+
+  <div class="sources-list">
+    <span class="sources-label">Confirmed Primary Sources · Ballard Research</span>
+    <ol>
+      <li>McLennan County Death Certificate · Volume 4 Page 483 · Document No. 3493 · Rev. George W. Ballard · died October 24 1937 · Waco Texas · names Newton Ballard as father</li>
+      <li>Texas GLO File No. 3378 · Survey No. 124 · Abstract 131 · Certificate No. 131262 · Newton Ballard · 160 acres · Upshur County Texas · August 26 1856</li>
+      <li>United States Federal Census Slave Schedule 1850 · Smith County Texas · Page 458 · Lewis F. Ballard enslaver · unnamed male age 20 born Mississippi</li>
+      <li>New Hope Missionary Baptist Church history · txgenwebcounties.org · Lewis F. Ballard died February 18 1857 · Aaron and Emaline confirmed as enslaved in his household</li>
+      <li>Mississippi Land Patent · Document No. 23028 · Lewis F. Ballard · 156.25 acres · Washington County Mississippi · December 10 1840 · Mt. Salus Land Office</li>
+      <li>Mississippi Land Patent · Document No. 23029 · Lewis F. Ballard · 40.35 acres · Washington County Mississippi · December 10 1840 · Mt. Salus Land Office</li>
+      <li>Mississippi 1841 State Census · L.F. Ballard · Copiah County Mississippi · Line 117607</li>
+      <li>Texas Land Title Abstract · Lewis Ballard · 1,476.13 acres · Robertson District · Ellis County Texas · April 7 1845 · Patent No. 303 Volume 1</li>
+      <li>Texas Land Title Abstract · Lewis F. Ballard · 160 acres · Upshur County Texas · March 8 1859 · Patent No. 210 Volume 25 · File 3726</li>
+      <li>Upshur County Texas Tax Assessment 1855 · L.F. Ballard · F. Ballard · J. Ballard · E.J. Ballard (320 acres J. Nichols Survey) · Charles Davenport (4,428 acres)</li>
+      <li>Upshur County Texas Unrendered Property Roll 1886 · Newton Ballard · Abstract 131 · $320 delinquent value</li>
+      <li>Upshur County Texas Unrendered Property Roll 1891 · Newton Ballard · Abstract 131 · Certificate No. 131262 · unrendered</li>
+      <li>United States Federal Census 1850 · Smith County Texas · Household 181 · Lewis F. Ballard Sr. age 58 born Florida · wife Mary born South Carolina · children Susan C., Lewis F. Jr., James M., Charles C. · all born Mississippi</li>
+      <li>Copiah County Mississippi Deed Book B Page 74 · August 31 1825 · Margaret Byrd transfers enslaved boy Newton age 9-10 to daughter · confirms name Newton used in Copiah County community</li>
+      <li>Ouachita Parish Louisiana Deed · July 30 1856 · John T. Sheppard and Nancy Bullard to John T. Faulk · names Louisa · Hester · Jesse · Green · Texana · Harriett · unnamed infant</li>
+      <li>Texas Birth Certificate File No. 26658 · Margie Nell Ballard · March 13 1929 · father James Ballard · mother Eva Armstrong</li>
+      <li>Texas Death Certificate · James Wilson Ballard Sr. · March 13 1953 · Austin State Hospital · cause: broncho-pneumonia · bilateral tuberculosis · psychosis with syphilitic meningoencephalitis</li>
+    </ol>
+  </div>
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>

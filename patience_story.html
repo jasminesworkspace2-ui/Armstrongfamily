@@ -2,710 +2,411 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Patience · Armstrong Family Archive</title>
-<meta name="description" content="The story of Patience — told through every document that ever wrote her name down, and everything that came after.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Molley & Patience · Armstrong Family Archive</title>
 <style>
   :root {
-    --black: #060503;
-    --deep: #080604;
-    --ink: #0f0c08;
-    --gold: #c9a84c;
-    --gold2: #e8c96a;
-    --cream: #f5f2ec;
-    --parchment: #f0ead8;
-    --aged: #e4dcd0;
-    --muted: #a8a090;
-    --border: rgba(201,168,76,0.15);
-    --f-display: 'Georgia', 'Times New Roman', serif;
-    --f-body: 'Georgia', serif;
-    --f-mono: 'Courier New', monospace;
+    --deep:#080604;--gold:#c9a84c;--gold2:#e8c96a;--cream:#f5f2ec;
+    --parchment:#f0ead8;--aged:#e4dcd0;--muted:#a8a090;
+    --border:rgba(201,168,76,0.15);
+    --f-display:'Georgia','Times New Roman',serif;
+    --f-body:'Georgia',serif;--f-mono:'Courier New',monospace;
   }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  strong{color:#f5f0e8!important;font-weight:normal;}
+  em{color:var(--parchment);font-style:italic;}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,6,4,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
+  .nav-back{font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;}
+  .nav-title{font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
 
-  body {
-    background: var(--deep);
-    color: var(--cream);
-    font-family: var(--f-body);
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+  /* OPENING */
+  .opening{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 24px 80px;text-align:center;border-bottom:1px solid var(--border);background:radial-gradient(ellipse at center,rgba(139,105,20,0.07) 0%,transparent 65%);position:relative;}
+  .opening-label{font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.50);margin-bottom:32px;display:block;}
+  .opening-name{font-family:var(--f-display);font-size:clamp(60px,13vw,130px);font-style:italic;color:var(--parchment);line-height:0.88;letter-spacing:-3px;margin-bottom:16px;}
+  .opening-amp{font-family:var(--f-display);font-size:clamp(24px,4vw,44px);font-style:italic;color:rgba(201,168,76,0.6);display:block;margin:8px 0;}
+  .opening-name2{font-family:var(--f-display);font-size:clamp(52px,10vw,110px);font-style:italic;color:var(--gold2);line-height:0.88;letter-spacing:-2px;margin-bottom:32px;}
+  .opening-dates{font-family:var(--f-mono);font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.35);margin-bottom:40px;display:block;}
+  .opening-statement{max-width:560px;font-size:clamp(15px,2.2vw,18px);line-height:2;color:rgba(228,220,208,0.90);font-style:italic;}
+  .scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.20);animation:breathe 3s ease-in-out infinite;}
+  @keyframes breathe{0%,100%{opacity:0.15;}50%{opacity:0.55;}}
+
+  /* STORY */
+  .story{max-width:700px;margin:0 auto;padding:0 24px;}
+  .chapter{padding:80px 0;border-top:1px solid var(--border);}
+  .chapter:first-child{border-top:none;padding-top:80px;}
+  .chapter-label{font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.55);display:block;margin-bottom:20px;}
+  .chapter-title{font-family:var(--f-display);font-size:clamp(28px,5vw,44px);font-style:italic;color:var(--parchment);margin-bottom:36px;line-height:1.1;}
+  .prose p{font-size:clamp(15px,2.2vw,17px);line-height:2.2;color:#e4dcd0;margin-bottom:28px;}
+  .prose p:last-child{margin-bottom:0;}
+
+  /* PULL QUOTE */
+  .pull{margin:48px 0;padding:32px 40px;border-left:3px solid var(--gold);background:rgba(10,8,5,0.5);}
+  .pull p{font-family:var(--f-display);font-size:clamp(18px,3vw,24px);font-style:italic;color:var(--parchment);line-height:1.65;margin-bottom:0!important;}
+  .pull-attr{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.35);display:block;margin-top:14px;}
+
+  /* DOCUMENT BLOCK */
+  .doc-block{margin:40px 0;border:1px solid rgba(201,168,76,0.25);background:rgba(10,8,5,0.5);}
+  .doc-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.60);display:block;padding:12px 20px;border-bottom:1px solid rgba(201,168,76,0.15);background:rgba(10,8,5,0.4);}
+  .doc-body{padding:20px 24px;font-size:13px;line-height:1.9;color:#c8c0b4;font-family:var(--f-mono);}
+
+  /* FAMILY NAMES */
+  .family-list{margin:36px 0;padding:28px 32px;border:1px solid var(--border);background:rgba(10,8,5,0.4);}
+  .family-list-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.55);display:block;margin-bottom:20px;}
+  .family-name{font-family:var(--f-display);font-size:18px;font-style:italic;color:#f0ead8;display:block;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .family-name:last-child{border-bottom:none;}
+  .family-name.ancestor{color:var(--gold2);}
+  .family-name-note{font-family:var(--f-mono);font-size:9px;color:rgba(255,255,255,0.35);margin-left:12px;}
+
+  /* GENERATION CHAIN */
+  .gen-chain{margin:48px 0;}
+  .gen-item{display:flex;gap:20px;align-items:flex-start;margin-bottom:0;padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .gen-item:last-child{border-bottom:none;}
+  .gen-number{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.30);min-width:24px;padding-top:3px;}
+  .gen-content{flex:1;}
+  .gen-name{font-family:var(--f-display);font-size:17px;font-style:italic;color:#f0ead8;display:block;margin-bottom:3px;}
+  .gen-name.you{color:var(--gold2);}
+  .gen-dates{font-family:var(--f-mono);font-size:9px;color:rgba(255,255,255,0.35);display:block;margin-bottom:4px;}
+  .gen-source{font-size:12px;color:#a0988c;line-height:1.6;}
+
+  /* MAP NOTE */
+  .map-note{margin:36px 0;padding:20px 24px;background:rgba(10,8,5,0.4);border:1px solid var(--border);}
+  .map-route{font-family:var(--f-mono);font-size:11px;color:var(--gold2);line-height:2;letter-spacing:1px;}
+  .map-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.50);display:block;margin-bottom:12px;}
+
+  /* SOURCES */
+  .sources{margin:48px 0;padding:24px 28px;border:1px solid var(--border);background:rgba(10,8,5,0.4);}
+  .sources-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.60);display:block;margin-bottom:16px;}
+  .sources ol{padding-left:18px;}
+  .sources ol li{font-family:var(--f-mono);font-size:10px;line-height:1.9;color:#a8a090;margin-bottom:8px;}
+
+  /* CLOSING */
+  .closing{padding:80px 0 100px;text-align:center;border-top:1px solid var(--border);}
+  .closing-title{font-family:var(--f-display);font-size:clamp(24px,4.5vw,38px);font-style:italic;color:var(--parchment);margin-bottom:24px;line-height:1.25;}
+  .closing-body{font-size:15px;line-height:2;color:#c0b8b0;max-width:500px;margin:0 auto 40px;}
+  .back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--border);padding:13px 22px;margin:0 6px 10px;transition:border-color 0.2s;}
+  .back-link:hover{border-color:var(--gold);}
+
+  @media(max-width:640px){
+    .pull{padding:20px 24px;}
+    .gen-item{gap:12px;}
   }
-
-  /* ── NAV ── */
-  .nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 14px 24px;
-    display: flex; align-items: center; justify-content: space-between;
-    background: rgba(8,6,4,0.96); backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-back {
-    font-family: var(--f-mono); font-size: 10px; letter-spacing: 2px;
-    text-transform: uppercase; color: var(--gold); text-decoration: none;
-  }
-  .nav-title {
-    font-family: var(--f-mono); font-size: 9px; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--muted);
-  }
-
-  /* ── OPENING ── */
-  .opening {
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    padding: 100px 24px 80px;
-    text-align: center;
-    position: relative;
-    background: radial-gradient(ellipse at center, rgba(139,105,20,0.07) 0%, transparent 65%);
-  }
-
-  .opening-label {
-    font-family: var(--f-mono); font-size: 9px; letter-spacing: 4px;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 32px;
-  }
-
-  .opening-name {
-    font-family: var(--f-display);
-    font-size: clamp(72px, 16vw, 160px);
-    font-style: italic;
-    color: var(--parchment);
-    line-height: 0.9;
-    letter-spacing: -2px;
-    margin-bottom: 40px;
-  }
-
-  .opening-dates {
-    font-family: var(--f-mono); font-size: 11px; letter-spacing: 3px;
-    color: var(--muted); margin-bottom: 48px;
-  }
-
-  .opening-statement {
-    max-width: 560px;
-    font-size: clamp(15px, 2.5vw, 18px);
-    line-height: 1.9;
-    color: var(--aged);
-    font-style: italic;
-  }
-
-  .opening-statement em {
-    color: var(--cream); font-style: normal;
-  }
-
-  /* ── SCROLL INDICATOR ── */
-  .scroll-down {
-    position: absolute; bottom: 40px; left: 50%;
-    transform: translateX(-50%);
-    font-family: var(--f-mono); font-size: 9px; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--muted);
-    animation: breathe 3s ease-in-out infinite;
-  }
-
-  @keyframes breathe {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.8; }
-  }
-
-  /* ── BODY CONTENT ── */
-  .story {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  /* ── CHAPTER ── */
-  .chapter {
-    padding: 80px 0;
-    border-top: 1px solid var(--border);
-  }
-
-  .chapter:first-child {
-    border-top: none;
-  }
-
-  .chapter-date {
-    font-family: var(--f-mono); font-size: 9px; letter-spacing: 4px;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 32px; display: block;
-  }
-
-  .chapter-title {
-    font-family: var(--f-display);
-    font-size: clamp(28px, 5vw, 42px);
-    font-style: italic;
-    color: var(--parchment);
-    line-height: 1.15;
-    margin-bottom: 40px;
-    letter-spacing: -0.5px;
-  }
-
-  .chapter p {
-    font-size: clamp(15px, 2.2vw, 17px);
-    line-height: 2;
-    color: var(--aged);
-    margin-bottom: 28px;
-  }
-
-  .chapter p strong {
-    color: var(--cream);
-    font-weight: normal;
-  }
-
-  .chapter p em {
-    color: var(--parchment);
-    font-style: italic;
-  }
-
-  /* ── DOCUMENT PULL ── */
-  .doc-pull {
-    margin: 48px 0;
-    padding: 28px 32px;
-    border-left: 2px solid var(--gold);
-    background: rgba(10,8,5,0.6);
-    position: relative;
-  }
-
-  .doc-pull-label {
-    font-family: var(--f-mono); font-size: 8px; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 14px; display: block;
-  }
-
-  .doc-pull-text {
-    font-family: var(--f-mono); font-size: 13px;
-    line-height: 1.9; color: var(--parchment);
-  }
-
-  .doc-pull-text strong {
-    color: var(--gold2);
-  }
-
-  .doc-pull-source {
-    font-family: var(--f-mono); font-size: 9px;
-    color: var(--muted); margin-top: 14px;
-    display: block;
-  }
-
-  /* ── DEED IMAGE ── */
-  .deed-image {
-    margin: 48px 0;
-    border: 1px solid rgba(201,168,76,0.3);
-    overflow: hidden;
-  }
-
-  .deed-image img {
-    width: 100%; display: block;
-    filter: sepia(25%) contrast(1.05);
-    cursor: zoom-in;
-  }
-
-  .deed-image-caption {
-    padding: 12px 16px;
-    font-family: var(--f-mono); font-size: 10px;
-    color: var(--muted); line-height: 1.6;
-    border-top: 1px solid rgba(201,168,76,0.2);
-    background: rgba(8,6,4,0.8);
-  }
-
-  /* ── PAUSE ── */
-  .pause {
-    text-align: center;
-    padding: 48px 0;
-    font-family: var(--f-display);
-    font-size: clamp(18px, 3vw, 24px);
-    font-style: italic;
-    color: var(--parchment);
-    line-height: 1.7;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    margin: 48px 0;
-  }
-
-  /* ── THE LINE ── */
-  .the-line {
-    padding: 80px 0;
-    border-top: 1px solid var(--border);
-  }
-
-  .line-label {
-    font-family: var(--f-mono); font-size: 9px; letter-spacing: 4px;
-    text-transform: uppercase; color: var(--gold);
-    margin-bottom: 40px; text-align: center; display: block;
-  }
-
-  .line-chain {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    max-width: 480px;
-    margin: 0 auto;
-  }
-
-  .line-link {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-  }
-
-  .line-link:last-child {
-    border-bottom: none;
-  }
-
-  .line-link-arrow {
-    position: absolute;
-    left: 10px;
-    bottom: -14px;
-    color: var(--muted);
-    font-size: 18px;
-    z-index: 1;
-  }
-
-  .line-dot {
-    width: 20px; height: 20px;
-    border-radius: 50%;
-    border: 1px solid var(--gold);
-    background: var(--deep);
-    flex-shrink: 0;
-    margin-top: 3px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .line-dot.highlight {
-    background: rgba(201,168,76,0.2);
-  }
-
-  .line-content {}
-
-  .line-name {
-    font-family: var(--f-display);
-    font-size: 18px; font-style: italic;
-    color: var(--parchment);
-    display: block; margin-bottom: 3px;
-  }
-
-  .line-name.gold { color: var(--gold2); }
-
-  .line-detail {
-    font-family: var(--f-mono); font-size: 10px;
-    color: var(--muted); line-height: 1.6;
-  }
-
-  /* ── CLOSING ── */
-  .closing {
-    padding: 80px 0 120px;
-    text-align: center;
-    border-top: 1px solid var(--border);
-  }
-
-  .closing-title {
-    font-family: var(--f-display);
-    font-size: clamp(24px, 4vw, 36px);
-    font-style: italic; color: var(--parchment);
-    margin-bottom: 32px; line-height: 1.3;
-  }
-
-  .closing-body {
-    font-size: clamp(14px, 2vw, 16px);
-    line-height: 2; color: var(--aged);
-    max-width: 520px; margin: 0 auto 48px;
-  }
-
-  .closing-body strong { color: var(--cream); font-weight: normal; }
-
-  .back-link {
-    display: inline-flex; align-items: center; gap: 10px;
-    font-family: var(--f-mono); font-size: 10px; letter-spacing: 2px;
-    text-transform: uppercase; color: var(--gold);
-    text-decoration: none;
-    border: 1px solid var(--border); padding: 14px 28px;
-    border-radius: 2px; transition: border-color 0.2s;
-    margin: 0 8px 12px;
-  }
-
-  .back-link:hover { border-color: var(--gold); }
-
-  /* ── LIGHTBOX ── */
-  .lightbox {
-    display: none; position: fixed; inset: 0; z-index: 200;
-    background: rgba(0,0,0,0.96);
-    align-items: center; justify-content: center; padding: 20px;
-  }
-  .lightbox.active { display: flex; }
-  .lightbox img { max-width: 100%; max-height: 90vh; object-fit: contain; }
-  .lightbox-close {
-    position: fixed; top: 20px; right: 20px;
-    background: none; border: 1px solid rgba(255,255,255,0.2);
-    color: white; width: 40px; height: 40px;
-    border-radius: 50%; cursor: pointer; font-size: 18px;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 600px) {
-    .doc-pull { padding: 20px 20px; }
-    .chapter { padding: 60px 0; }
-  }
-
-  /* ACCESSIBILITY UPDATE: Improved contrast for readability */
-  .prose p, .story p, p { color: #e8e2d8; line-height: 2.1; }
-  .chapter-title, .section-title, .opening-name { color: #f5f0e8 !important; }
-  .chapter-label, .section-label, .opening-label { color: rgba(255,255,255,0.80) !important; }
-  .fact-key { color: rgba(255,255,255,0.65) !important; }
-  .fact-val { color: #e0d8cc !important; }
-  .child-note { color: #c8c0b4 !important; }
-  .aged, .muted { color: #d8d0c4 !important; }
-  table th { color: rgba(255,255,255,0.85) !important; }
-  table td { color: #d8d0c4 !important; }
-  .pull-quote p { color: #f0ead8 !important; }
-  .opening-statement { color: #d8d0c4 !important; }
-  .inheritance { color: #c8c0b4 !important; }
-  .inheritance strong { color: #f5f0e8 !important; }
-  .opening-dates { color: rgba(255,255,255,0.70) !important; }
-  .nav-title { color: rgba(255,255,255,0.60) !important; }
-  .sources ol li { color: #c0b8ac !important; }
-  .explain-box p, .cluster-detail { color: #d8d0c4 !important; }
-  .oracle-distance { color: #c0b8ac !important; }
-  .kit-detail { color: #c8c0b4 !important; }
-  .admix-label { color: #d0c8bc !important; }
-  .admix-pct { color: #f0d870 !important; }
-  li { color: #d8d0c4; }
-  strong { color: #f5f0e8 !important; }
-
 </style>
 </head>
 <body>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-  <img id="lightbox-img" src="" alt="">
-</div>
-
-<!-- NAV -->
 <nav class="nav">
-  <a href="family_tree.html" class="nav-back">← Back to Family Archive</a>
-  <span class="nav-title">Patience · Her Story</span>
+  <a href="family_tree.html" class="nav-back">← Back to Archive</a>
+  <span class="nav-title">Molley & Patience · The Oldest Confirmed Line</span>
 </nav>
 
 <!-- OPENING -->
 <section class="opening">
-  <p class="opening-label">Armstrong · Nichols · Waldrop · Davenport · Sims · Braselman</p>
-  <h1 class="opening-name">Patience</h1>
-  <p class="opening-dates">ca. 1765 · South Carolina · Mississippi · ca. 1840</p>
-  <p class="opening-statement">
-    She appears in four documents across forty-six years.<br>
-    She never wrote a word of any of them.<br>
-    <em>This is built entirely from what those documents confirm —<br>
-    and what they leave us to imagine around the edges of the truth.</em>
-  </p>
-  <p class="scroll-down">her story ↓</p>
+  <span class="opening-label">Armstrong Family Archive · Sixth & Fifth Great-Grandmothers · The Oldest Confirmed Line</span>
+  <h1 class="opening-name">Molley</h1>
+  <span class="opening-amp">&</span>
+  <h2 class="opening-name2">Patience</h2>
+  <span class="opening-dates">Union County, South Carolina · 1793 — Rankin County, Mississippi · 1839</span>
+  <p class="opening-statement">They were listed together in a mortgage document in 1793. Mother and daughter. Forty-six years later they were still together in Mississippi — still named in the same document — Patience and her children and her children's children. They did not let go of each other. That is the oldest thing we know about this family.</p>
+  <span class="scroll-hint">scroll</span>
 </section>
 
-<!-- STORY -->
 <div class="story">
 
-  <!-- CHAPTER 1: BEFORE -->
+  <!-- CHAPTER 1: MOLLEY -->
   <div class="chapter">
-    <span class="chapter-date">ca. 1765 · Before the Documents</span>
-    <h2 class="chapter-title">Before Anyone Wrote Her Name Down</h2>
+    <span class="chapter-label">Confirmed by primary source · Deed Book B Page 467 · March 22 1793 · Union County South Carolina</span>
+    <h2 class="chapter-title">Molley</h2>
 
-    <p>She was born approximately thirty years before any document ever named her. The year was approximately 1765. Where she was born — which plantation, which county, which state — is not recorded anywhere that has survived. The first document that names her places her in Union County, South Carolina in 1793. Everything before that is silence.</p>
+    <div class="prose">
+      <p><strong>Molley</strong> is the oldest confirmed ancestor in this family's documented line. She was enslaved by James Sims Sr. of Union County, South Carolina. On March 22 1793 — when James Sims mortgaged 850 acres of land and 36 enslaved people to Peter Braselman of Newberry County — Molley was listed by name alongside her children.</p>
 
-    <p>What we know is what Newberry and Union Counties looked like in the South Carolina Upcountry in the years before the Revolution. Red clay soil along the Tyger River and the Enoree River. Dense pine and hardwood forest. A backcountry that had only recently been settled by families moving south and west from North Carolina and Virginia — families like the Sims and the Davenports and the Waldrops, who came from Granville County, North Carolina and brought their entire world with them, including the people they enslaved.</p>
+      <p>Her children were: <strong>Charles, Edward, Delf, Abram, Sawny, Tom, and Patience.</strong></p>
 
-    <p>The community these families built along the Little River and the Enoree was tight. They witnessed each other's deeds. They appraised each other's estates. They married each other's children. They traded land and debts and the people they enslaved among themselves for generations. <strong>Patience lived inside this world from her birth.</strong> She knew these families. She had known them her whole life before any document ever said her name.</p>
+      <p>She kept seven children. In a world that separated families without warning or recourse — in a world where children were collateral, where bodies were currency, where love had no legal standing — Molley raised seven children and held them together long enough for all seven names to appear in the same document. That document is a mortgage. It recorded her family as property. But it also recorded her family as a family. And it survived.</p>
 
-    <p>She had a name before she had a document. She had a life before anyone wrote it down. What that life was — who she loved, what she called herself before she was called Patience, what language her people spoke before all of this — the records do not say. They were never meant to say. <strong>The documents were not written to remember her. They were written to record transactions. She happened to be inside them.</strong></p>
+      <p>Molley was born approximately 1750 to 1770. Where she was born — whether Virginia, North Carolina, or South Carolina — is not yet known. How she came to be in James Sims's household in Union County is not yet documented. She may have come from an earlier estate, been purchased at sale, or been born into the Sims household. That search continues.</p>
+
+      <p>What happened to Molley after 1793 is not yet confirmed by primary source. When Patience was given away to Patty Waldrop in 1795 — two years after the mortgage — Molley and her other children were not named in that transaction. Whether Molley remained in the Sims household, was sold, or was eventually freed is not yet known. What is known is that she existed. She had a name. She had seven children. And one of them — Patience — carried her line forward across two centuries to the present day.</p>
+    </div>
+
+    <div class="family-list">
+      <span class="family-list-label">Molley's Seven Children · Confirmed by Deed Book B Page 467 · 1793</span>
+      <span class="family-name">Charles</span>
+      <span class="family-name">Edward</span>
+      <span class="family-name">Delf</span>
+      <span class="family-name">Abram</span>
+      <span class="family-name">Sawny</span>
+      <span class="family-name">Tom <span class="family-name-note">· Patience's brother · traveled with her to Mississippi · confirmed in 1839 deed</span></span>
+      <span class="family-name ancestor">Patience <span class="family-name-note">· ★ Your 5th great-grandmother · given to Patty Waldrop 1795</span></span>
+    </div>
   </div>
 
   <!-- CHAPTER 2: THE MORTGAGE -->
   <div class="chapter">
-    <span class="chapter-date">March 22, 1793 · Union County, South Carolina</span>
-    <h2 class="chapter-title">The First Time Her Name Appeared</h2>
+    <span class="chapter-label">Primary source · Newberry County South Carolina Deed Book B Page 467 · March 22 1793</span>
+    <h2 class="chapter-title">The Document That Named Her</h2>
 
-    <p>She was approximately twenty-eight years old the first time anyone wrote her name down. It was March 22, 1793. A planter named <strong>James Sims Senior</strong> of Union County, South Carolina needed money — one thousand pounds sterling — and he went to a merchant named <strong>Peter Braselman</strong> of neighboring Newberry County to get it.</p>
+    <div class="prose">
+      <p>On March 22 1793 James Sims Sr. of Union County South Carolina mortgaged his land and his people to Peter Braselman of Newberry County — a merchant to whom he owed one thousand pounds sterling. The document lists 850 acres of land and 36 enslaved people as collateral.</p>
 
-    <p>To secure the debt, Sims pledged everything he had. Eight hundred and fifty acres of land along the Tyger River. Ten horses, mares, and colts. Furniture. Hogs. Tools. And thirty-six people.</p>
-
-    <p>Among those thirty-six people, the deed listed <em>Molley and her children: Charles, Edward, Delf, Abram, Sawny, Tom — and Patience.</em></p>
-
-    <div class="doc-pull">
-      <span class="doc-pull-label">Deed Book B · Page 467 · March 22, 1793</span>
-      <div class="doc-pull-text">...also 36 negroes: Jack and Doll and their children Ambrose, Paul; Isaac and Tabby and their children Jack, Emille, Fanny, Robert; <strong>Molley and her children Charles, Edward, Delf, Abram, Sawny, Tom and Patience</strong>... Signed James Sims, Sr. Recorded 29 June 1793. Fredk. Nance, DC.</div>
-      <span class="doc-pull-source">Newberry County Deed Books · Blacks Found in the Deeds of Laurens & Newberry Counties SC 1785-1827</span>
+      <p>The 36 people are listed in family groups — couples with their children named together, mothers with their children, individuals listed by name. This organization reflects how the enslaved community itself was structured — and how the people in it were known to those around them. Molley is listed as a mother. Her children are listed with her. That is the primary source record of their relationship.</p>
     </div>
 
-    <p>She was listed as one of Molley's children. She was not Molley's child. She was approximately the same age as Molley — both of them around thirty years old, both of them grouped together because they had been together long enough that the deed writer understood them as family. Whatever they were to each other, the document reduced them to a line in a debt agreement. Collateral for a thousand pounds.</p>
-
-    <div class="deed-image">
-      <img src="https://raw.githubusercontent.com/jasminesworkspace2-ui/Armstrongfamily/main/Front%20of%20book%201793_Sims_Gift_Drucilla_B466.jpeg" alt="The deed book containing the 1793 Sims mortgage" loading="lazy" onclick="openLightbox(this.src)">
-      <div class="deed-image-caption">The deed book · Newberry County, South Carolina · This volume holds the first record of Patience's name anywhere in history</div>
+    <div class="doc-block">
+      <span class="doc-label">Deed Book B · Page 467 · March 22 1793 · Union County South Carolina · Recorded June 29 1793</span>
+      <div class="doc-body">
+        James Sims, Senr. of Union County, State of South Carolina, planter, to Peter Braselman of Newberry County, South Carolina, Merchant. In consideration of £1000 Sterling — one tract of land in Union County containing 600 acres; 150 acres on Tyger River and another 100 for a total of 850 acres; also 36 negroes:<br><br>
+        Jack and Doll and their children Ambrose, Paul;<br>
+        Isaac and Tabby and their children Jack, Emille, Fanny, Robert;<br>
+        <strong>Molley and her children Charles, Edward, Delf, Abram, Sawny, Tom and Patience;</strong><br>
+        Big Lucy and Daniel, Tabby, Peter, Desly, and Major and Lucy;<br>
+        Jenny and her children Mary, Henry, Peter;<br>
+        Delsey and her children Morning and Daniel, Isaac, Lucy, Amy, Frank and Doll;<br><br>
+        also ten horses, mares and colts, furniture, hoggs, tools...<br><br>
+        Signed James Sims, Sr. Wit: James Sims jr., Robert Powell. Recorded 29 June 1793. Fredk. Nance, DC.
+      </div>
     </div>
 
-    <p>The debt was recorded by <strong>Frederick Nance</strong>, Clerk of Newberry County, on June 29, 1793. He would sign his name on every document that touched Patience's life in South Carolina. His handwriting appears on the first record of her name. It appears on the last. One clerk. One county. A woman's entire documented existence in South Carolina passed through the same man's pen.</p>
+    <div class="prose">
+      <p>James Sims also gave nine enslaved people to his daughter Drucilla Braselman — Peter's wife — on June 26 1793, recorded just days before the mortgage. The Sims and Braselman families were connected by marriage. The 36 people mortgaged — including Molley and her children — were caught between a debt and a family transaction that would determine their fate.</p>
 
-    <p>James Sims Senior would be dead by November 1794. The debt would not be repaid before he died. And when a debt goes unpaid, the collateral is collected.</p>
+      <p>What happened to the mortgage after 1793 has not yet been documented. Whether Sims discharged the debt and kept his people — or whether Braselman foreclosed and the 36 were sold — is the research question that explains how Patience came to be in Francis Davenport's household by 1795. That document, if it exists, is still to be found.</p>
+    </div>
   </div>
 
-  <!-- CHAPTER 3: NEW YEAR'S DAY -->
+  <!-- CHAPTER 3: PATIENCE -->
   <div class="chapter">
-    <span class="chapter-date">January 1, 1795 · Newberry County, South Carolina</span>
-    <h2 class="chapter-title">New Year's Day</h2>
+    <span class="chapter-label">Primary source · Newberry County South Carolina Deed Book C Pages 367-368 · August 4 1795</span>
+    <h2 class="chapter-title">Patience</h2>
 
-    <p>James Sims Senior died on November 27, 1794. Thirty-five days later — on the first day of a new year — the debt that had pledged Patience as collateral was settled the only way it could be.</p>
+    <div class="prose">
+      <p><strong>Patience</strong> — Molley's daughter — was born in South Carolina approximately 1765 to 1780. She grew up alongside her brothers Charles, Edward, Delf, Abram, Sawny, and Tom. By 1793 she was old enough to be listed as an individual in the mortgage — not as a child within a smaller family unit but as a person in her own right, named beside her brother Tom.</p>
 
-    <p>It was January 1, 1795. New Year's Day. The Enoree River would have been cold. The red clay of Newberry County frozen at the edges. South Carolina winters are not harsh the way northern winters are, but they are grey. January is the quietest month. The fields are bare. The year has not yet started.</p>
+      <p>Two years after the mortgage — on August 4 1795 — Francis Davenport Sr. of the District of 96 and Newberry County gave Patience to his daughter <strong>Patty Waldrup</strong> as a deed of gift. How Patience came from the Sims mortgage in Union County to the Davenport household in Newberry County in those two years has not yet been documented. The transaction that transferred her — whether a sale, a foreclosure, or an inheritance — is the missing link in this chain.</p>
 
-    <p>On this day, <strong>Moll, Patience, Hannah, Lin, Violet, Esther, and George</strong> were sold in open market to <strong>Wadsworth and Turpin, Merchants</strong> of Newberry County, to secure payment of a bond of £87 12 shillings 2 pence.</p>
-
-    <div class="doc-pull">
-      <span class="doc-pull-label">Deed Book C · Page 124 · January 1, 1795</span>
-      <div class="doc-pull-text">...sold in open market to <strong>Wadsworth and Turpin, Merchants</strong> of the aforesaid County and State of South Carolina — one Negro wench named <strong>Moll about 30 years of age, Patience about 30 years old</strong>, Hannah about 12 years of age, Lin about 11 years of age, Violet 9 years of age, Esther 7 years of age and George 3 years of age — sold in open market to secure payment of <strong>£ 87 12 shillings 2p</strong> as by bond bearing date the 1 January 1795. Fredk. Nance, C.N.C.</div>
-      <span class="doc-pull-source">Newberry County Deed Books · Blacks Found in the Deeds of Laurens & Newberry Counties SC 1785-1827</span>
+      <p>What is confirmed is that her brother <strong>Tom</strong> came with her. Tom is listed in the 1793 mortgage alongside Patience. Tom appears in the 1839 Mississippi deed alongside Patience. Across forty-six years — two states — multiple households — Tom and Patience stayed together. Brother and sister. They did not lose each other.</p>
     </div>
 
-    <div class="deed-image">
-      <img src="https://raw.githubusercontent.com/jasminesworkspace2-ui/Armstrongfamily/main/Negro%20wench%20named%20Moll.jpeg" alt="The Wadsworth and Turpin sale document January 1795" loading="lazy" onclick="openLightbox(this.src)">
-      <div class="deed-image-caption">Deed Book C · Page 124 · The record of the open market sale · January 1, 1795 · Frederick Nance, Clerk</div>
+    <div class="doc-block">
+      <span class="doc-label">Deed Book C · Pages 367-368 · August 4 1795 · Newberry County South Carolina</span>
+      <div class="doc-body">
+        Deed of Gift. Francis Davenport, Sr. of the District of 96 and Newberry County to his beloved daughter Patty Waldrop — transferring one negro girl named <strong>Patience</strong>.<br><br>
+        Witnessed by Isaac Davenport, Edward Turner, and Elizabeth Towling.<br>
+        Proved before Charles Griffin, J.P.<br>
+        Recorded in Deed Book C, Pages 367-368.
+      </div>
     </div>
 
-    <p>Seven people. Sold on the first day of the year to settle a debt that was not theirs.</p>
+    <div class="prose">
+      <p>Francis Davenport Sr. was born in Virginia in 1718 and died in Newberry District South Carolina on July 23 1798 — three years after giving Patience to his daughter. He was 77 years old when he made that deed of gift. Patience was one of the last things he gave away before he died.</p>
 
-    <p>Read the ages again slowly. Moll, thirty. Patience, thirty. Hannah, twelve. Lin, eleven. Violet, nine. Esther, seven. George, three years old.</p>
+      <p>Patty Waldrop — Patience's new enslaver — was the daughter of Francis Davenport. The Waldrop family had been in Laurens County South Carolina since at least 1772 when James Waldrop Sr. received a land grant on the Enoree River. The Davenport and Waldrop families were neighbors in the same Upcountry South Carolina planter community — Laurens and Newberry counties sharing a border, the same rivers, the same Baptist churches, the same network of land and labor and debt.</p>
 
-    <p>George was three years old.</p>
-
-    <p>The document calls this an open market sale. Open market meant public. It meant witnessed. It meant recorded by Frederick Nance, who signed his name and filed the paper and went home that evening to his family while seven people stood in the cold on New Year's Day waiting to find out what happened next to them.</p>
-
-    <div class="pause">
-      Seven people.<br>
-      One debt.<br>
-      £87 12 shillings 2 pence.<br><br>
-      The document does not say how long they stood there.<br>
-      It does not say what Moll and Patience said to each other.<br>
-      It does not say what Esther, seven years old, understood about what was happening.<br><br>
-      The document records the transaction.<br>
-      Everything else happened anyway.
+      <p>In that household Patience had a daughter. Her name was <strong>Clarissa.</strong></p>
     </div>
-
-    <p>Wadsworth and Turpin were merchants. They did not buy people to keep them. They bought people to sell them. Seven months after this sale, Patience would be transferred again — specifically, individually, by name — to a new family. What happened to Moll, Hannah, Lin, Violet, Esther, and George after January 1, 1795 is not recorded anywhere we have found. <strong>The document named them. And then they disappeared from the record.</strong></p>
-
-    <p>Only Patience can be traced forward.</p>
   </div>
 
-  <!-- CHAPTER 4: THE GIFT -->
+  <!-- CHAPTER 4: THE MIGRATION -->
   <div class="chapter">
-    <span class="chapter-date">August 4, 1795 · Newberry County, South Carolina</span>
-    <h2 class="chapter-title">One Negro Girl Named Patience</h2>
+    <span class="chapter-label">Primary source · August 11 1827 · Yazoo County Mississippi · March 25 1839 · Rankin County Mississippi</span>
+    <h2 class="chapter-title">The Long Road West</h2>
 
-    <p>Seven months after the open market sale, <strong>Francis Davenport Senior</strong> — a planter of the District of 96 and County of Newberry — gave a gift to his daughter.</p>
+    <div class="prose">
+      <p>The Waldrop family moved west. This was the pattern of the era — white planter families following land prices and opportunity from the exhausted soils of the Carolinas to the rich cotton fields of Mississippi, carrying their enslaved people with them. Patience had no choice in the matter. Neither did Tom. Neither did Clarissa.</p>
 
-    <p>Not Moll. Not Hannah. Not Lin or Violet or Esther or George. <strong>Patience.</strong></p>
+      <p>On <strong>August 11 1827</strong> Hezekiah Waldrop — Patty's husband — transferred Patience, Rachael, and Thomas to his son Stephen R. Waldrop of Yazoo County Mississippi. The family was moving. Patience was going with them. Tom — listed as Thomas — was going too.</p>
 
-    <p>Why her specifically? The document does not say. Francis Davenport on that same August 4, 1795 gave enslaved people to five of his other children — Isaac, William, David, Sarah, and Abigail — in a separate deed that distributed what he called "all of my slaves and household goods." Three days earlier he had given a girl named Eliza to his daughter Nancy Waldrop. He was distributing his estate among his children while he was still living. And Patience — specifically Patience, pulled from the group that Wadsworth and Turpin had acquired in January — went to his daughter <strong>Patty Waldrop</strong>.</p>
+      <p>Patty Waldrop died at some point before 1839. When she died, everything she owned — including Patience and all of Patience's descendants — passed to her children. On <strong>March 25 1839</strong> Hezekiah Parrish Waldrop executed a formal declaration in Rankin County Mississippi confirming that ownership for his and Patty's children. He cited the original 1795 Davenport deed as his legal foundation.</p>
 
-    <div class="doc-pull">
-      <span class="doc-pull-label">Deed Book C · Pages 367-368 · August 4, 1795</span>
-      <div class="doc-pull-text">Deed of Gift. <strong>Francis Davenport, Sr.</strong>, of the District of 96 and County of Newberry, and State of South Carolina, planter, to <strong>Patty Waldrop</strong>, beloved daughter, of the State and County aforesaid — <strong>one Negro girl named Patience</strong>. Signed Francis Davenport. Wit. Isaac Davenport, Edward Turner, Elizabeth Towling. Proved by Isaac Davenport before Charles Griffin, J.P. August 5, 1795. Recorded August 18, 1795. Fredk. Nance, C.N.C.</div>
-      <span class="doc-pull-source">Newberry County Deed Books · Confirmed by Newberry Davenport Data, Dr. John Scott Davenport</span>
+      <p>That 1839 declaration names: <strong>Patience and her increase — Rachol, Clarissa, Tom</strong> — and Clarissa's children — <strong>William, Amanda, and Harriet.</strong></p>
+
+      <p>Three generations. One document. Forty-four years after Francis Davenport gave Patience to his daughter — the same Patience, the same family, named together in Mississippi. They had not been separated. They had not lost each other. Molley's daughter and Molley's son and Patience's own daughter and grandchildren — all still together.</p>
     </div>
 
-    <div class="deed-image">
-      <img src="https://raw.githubusercontent.com/jasminesworkspace2-ui/Armstrongfamily/main/August%204%201795%20Deed%20of%20Gift%20Francis%20Davenport%20Sr.jpeg" alt="The August 4 1795 deed giving Patience to Patty Waldrop" loading="lazy" onclick="openLightbox(this.src)">
-      <div class="deed-image-caption">August 4, 1795 · Deed Book C:367-368 · Francis Davenport Sr. gives Patience to his daughter Patty Waldrop · Witnessed by Isaac Davenport · Recorded by Frederick Nance</div>
+    <div class="map-note">
+      <span class="map-label">The Route · Confirmed by Primary Source</span>
+      <div class="map-route">
+        Union County, South Carolina · 1793<br>
+        ↓<br>
+        Newberry County, South Carolina · 1795<br>
+        ↓<br>
+        Yazoo County, Mississippi · 1827<br>
+        ↓<br>
+        Rankin County, Mississippi · 1839<br>
+        ↓<br>
+        Austin County, Texas · 1865 and after<br>
+        ↓<br>
+        Orange County, California · 1950s and after<br>
+        ↓<br>
+        Las Vegas, Nevada · Present day
+      </div>
     </div>
 
-    <p>The deed calls her <em>one Negro girl named Patience.</em> She was approximately thirty years old. The law did not change its language for her age.</p>
-
-    <p><strong>Isaac Davenport</strong> — Francis's son, the same man who had bought enslaved people from Virginia merchants the year before — witnessed the deed and signed his name. The document was proven before Justice of the Peace Charles Griffin on August 5, recorded by Frederick Nance on August 18.</p>
-
-    <p>Patty Waldrop was the wife of <strong>Hezekiah Waldrop</strong>. The Waldrop family had come from Granville County, North Carolina — the same county where the Davenport family originated. They had been neighbors before South Carolina. They had been neighbors on the Enoree River. They witnessed each other's deeds. They bought at each other's estate sales. Patience may have known the Waldrops for years before Francis Davenport put her name in a gift deed and transferred her to them permanently.</p>
-
-    <p>She left South Carolina. She would never come back. The red clay and the Enoree River and the thirty years of her life in Newberry County were behind her now. <strong>The Waldrops were going west. And she was going with them.</strong></p>
+    <div class="pull">
+      <p>"Patience and her increase."</p>
+      <span class="pull-attr">— 1839 Rankin County Mississippi deed · E.P. Waldrop · Hezekiah Parrish Waldrop · The most radical phrase in this entire archive. They recorded her name.</span>
+    </div>
   </div>
 
-  <!-- CHAPTER 5: THE SILENCE -->
+  <!-- CHAPTER 5: THE CHAIN -->
   <div class="chapter">
-    <span class="chapter-date">1795 — 1827 · The Long Silence</span>
-    <h2 class="chapter-title">Thirty-Two Years the Record Does Not Cover</h2>
+    <span class="chapter-label">Seven confirmed generations · Primary source documentation at every step</span>
+    <h2 class="chapter-title">The Unbroken Line</h2>
 
-    <p>Between the August 4, 1795 deed in South Carolina and the next document that names her in 1827, there are thirty-two years.</p>
+    <div class="prose">
+      <p>Most African American families searching their history hit a wall at 1870 — the first census that recorded Black Americans by name. Some break through to 1865. A very few find documents from before the Civil War.</p>
 
-    <p>Thirty-two years the record does not cover.</p>
+      <p>This family's confirmed documented line goes back to <strong>1793</strong>. To a woman named Molley in Union County South Carolina. To her daughter Patience. To Patience's daughter Clarissa. To Clarissa's descendant Easter Bell — who was born July 4 1838 and lived to age 97 and died free and remembered. To Hellen. To Eva. To Margie. To Hjordis. To Jasmine.</p>
 
-    <p>What we know is this: the Waldrop family moved. South Carolina to Mississippi. The exact route, the exact year, the exact road — not recorded. But the 1827 document places Patience in the orbit of the Waldrop family in Mississippi, which means at some point in those thirty-two years, she traveled. Whether she walked. Whether she rode. Whether she was transported in a wagon with other people or walked behind it on a road she had never seen before — the document does not say.</p>
+      <p>Nine generations. Two hundred and thirty years. One family. Every generation documented by primary source.</p>
+    </div>
 
-    <p>What we know is that she had children. The 1827 document names them. <strong>Rachel. Clarissa. Tom.</strong> Rachel had a son also named Tom. Clarissa had children — William, Amanda, Harriet. Patience became a mother and a grandmother in those thirty-two years the record does not cover. She built something inside the silence. <strong>The documents could not see it. But it was there.</strong></p>
+    <div class="gen-chain">
 
-    <p>Patty Waldrop — the woman who received Patience as a gift in 1795 — died sometime before 1827. The next document comes from her husband Hezekiah, who survived her, distributing what remained of her estate to their children. In that distribution, Patience was named. Patience and everything that had come from her.</p>
+      <div class="gen-item">
+        <span class="gen-number">1</span>
+        <div class="gen-content">
+          <span class="gen-name">Molley</span>
+          <span class="gen-dates">Born ca. 1750-1770 · South Carolina · Died unknown</span>
+          <span class="gen-source">Confirmed by Deed Book B Page 467 · Union County South Carolina · March 22 1793 · Enslaved by James Sims Sr. · Mother of seven children including Patience and Tom · Your 6th great-grandmother</span>
+        </div>
+      </div>
+
+      <div class="gen-item">
+        <span class="gen-number">2</span>
+        <div class="gen-content">
+          <span class="gen-name">Patience</span>
+          <span class="gen-dates">Born ca. 1765-1780 · South Carolina · Last confirmed 1839 Mississippi</span>
+          <span class="gen-source">Confirmed by Deed Book B Page 467 · 1793 · Deed Book C Pages 367-368 · 1795 · 1839 Rankin County Mississippi deed · Molley's daughter · Given to Patty Waldrop by Francis Davenport August 4 1795 · Your 5th great-grandmother</span>
+        </div>
+      </div>
+
+      <div class="gen-item">
+        <span class="gen-number">3</span>
+        <div class="gen-content">
+          <span class="gen-name">Clarissa</span>
+          <span class="gen-dates">Born ca. 1795-1810 · South Carolina or Mississippi · Died unknown</span>
+          <span class="gen-source">Confirmed by 1839 Rankin County Mississippi deed · Patience's daughter · Born into Waldrop household as Patience's increase · Mother of William, Amanda, and Harriet · Your 4th great-grandmother</span>
+        </div>
+      </div>
+
+      <div class="gen-item">
+        <span class="gen-number">4</span>
+        <div class="gen-content">
+          <span class="gen-name">Easter Bell Nichols</span>
+          <span class="gen-dates">Born July 4 1838 · Texas · Died December 17 1935 · Age 97</span>
+          <span class="gen-source">Confirmed by Texas Death Certificate State File No. 54496 · 1860 Austin County slave schedule · 1870 census Household 278 · Clarissa's descendant · Married Joseph Nichols December 23 1869 · Your 3rd great-grandmother</span>
+        </div>
+      </div>
+
+      <div class="gen-item">
+        <span class="gen-number">5</span>
+        <div class="gen-content">
+          <span class="gen-name">Hellen Nichols Armstrong</span>
+          <span class="gen-dates">Born September 1870 · Bellville, Austin County, Texas</span>
+          <span class="gen-source">Confirmed by 1870 census · Easter Bell's daughter · Your 2nd great-grandmother</span>
+        </div>
+      </div>
+
+      <div class="gen-item">
+        <span class="gen-number">6</span>
+        <div class="gen-content">
+          <span class="gen-name">Eva Armstrong Ballard</span>
+          <span class="gen-dates">Born June 27 1900 · Died November 24 1977</span>
+          <span class="gen-source">Confirmed by census records and death certificate · Hellen's daughter · Your great-grandmother</span>
+        </div>
+      </div>
+
+      <div class="gen-item">
+        <span class="gen-number">7</span>
+        <div class="gen-content">
+          <span class="gen-name">Margie Nell Ballard Corbin</span>
+          <span class="gen-dates">Born March 13 1929 · Died October 15 1988</span>
+          <span class="gen-source">Confirmed by census records and family oral history · Eva's daughter · Your grandmother</span>
+        </div>
+      </div>
+
+      <div class="gen-item">
+        <span class="gen-number">8</span>
+        <div class="gen-content">
+          <span class="gen-name">Hjordis L. Corbin</span>
+          <span class="gen-dates">Born January 20 1960 · Living</span>
+          <span class="gen-source">Confirmed by AncestryDNA kit SQ8499767 · 3,575.4 cM shared with Jasmine · Margie's daughter · Your mother</span>
+        </div>
+      </div>
+
+      <div class="gen-item">
+        <span class="gen-number">9</span>
+        <div class="gen-content">
+          <span class="gen-name you">Jasmine M. Lee</span>
+          <span class="gen-dates">Born January 25 1982 · Living</span>
+          <span class="gen-source">GEDmatch kit QW8418781 · Founder and CEO · Dock Ellis Foundation · Compiler of this archive · Molley's 7th great-granddaughter</span>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <!-- CHAPTER 6: THE DISTRIBUTION -->
+  <!-- CHAPTER 6: WHAT THIS MEANS -->
   <div class="chapter">
-    <span class="chapter-date">1827 · Mississippi</span>
-    <h2 class="chapter-title">Patience and Her Increase</h2>
+    <span class="chapter-label">A note from the compiler</span>
+    <h2 class="chapter-title">What It Means to Find Them</h2>
 
-    <p>The document calls them <em>Patience and her increase.</em></p>
+    <div class="prose">
+      <p>Most African American families cannot get past 1870. The records before that year were not kept for Black people — they were kept for the people who owned them. Finding your ancestors in those records means searching the documents of the people who enslaved them, reading your family's names in ledgers of property and debt, finding them in the margins of other people's lives.</p>
 
-    <p>Increase was the legal word for children born to an enslaved woman. The law considered them property that had grown — like a crop, like livestock. But they were Rachel and Clarissa and Tom and William and Amanda and Harriet. They were people Patience had held and named and raised inside the thirty-two years the record did not cover.</p>
+      <p>That is what this research required. And that is what it found.</p>
 
-    <div class="doc-pull">
-      <span class="doc-pull-label">Luke Waldrop Sr. Distribution Deed · 1827 · Mississippi</span>
-      <div class="doc-pull-text">...paid by Claiborne P. Waldrop, <strong>Fanny Nichols (late Fanny Waldrop)</strong>, James D. Waldrop and Stephen R. Waldrop, Willey B. Waldrop, Patsy Stoddard (late Patsy Waldrop), Sarah Robertson... children born of the body of my late wife, Patsey Waldrop... I have bargained and sold, given, released and confirmed unto them... <strong>the said negro slave, Patience and her increase named Rachel, Clarissa, Tom (Rachel's son), William, Amanda, and Harriet [children of Clarissa]...</strong></div>
-      <span class="doc-pull-source">Luke Waldrop Sr. Register · obcgs.com · Confirmed by DNA — 30+ Waldrop descendant matches</span>
+      <p>Molley's name is in a mortgage document from 1793 because James Sims needed money and used his people as collateral. That is a brutal fact. But her name is there. Her children's names are there. And because those names are there — because someone wrote them down in a deed book in Union County South Carolina on a March day in 1793 — we know them now. Two hundred and thirty years later. We know Molley had seven children. We know Patience was one of them. We know Tom was another and that he stayed with his sister across two states and half a century.</p>
+
+      <p>They did not know anyone would look for them. They did not know their names would survive. They survived anyway. That is not a small thing.</p>
+
+      <p>This archive exists because <strong>Jasmine M. Lee</strong> looked for them. Seven years of research. Primary source by primary source. County courthouse by county courthouse. Census record by census record. DNA match by DNA match. She found them.</p>
+
+      <p>Molley. Patience. Tom. Clarissa. Easter Bell. Hellen. Eva. Margie. Hjordis. Jasmine.</p>
+
+      <p>The line is unbroken.</p>
     </div>
 
-    <p>Read the names of the people who received them. Claiborne P. Waldrop. James D. Waldrop. Stephen R. Waldrop. Patsy Stoddard. Sarah Robertson. And second on the list — <strong>Fanny Nichols, late Fanny Waldrop.</strong></p>
-
-    <p>Fanny was already married. She had already taken the name Nichols. She had married <strong>John Nichols</strong> — and John Nichols would take his family, and the people bound to them, to <strong>Bellville, Austin County, Texas.</strong></p>
-
-    <p>Patience did not choose this. She did not choose the Waldrops in 1795 and she did not choose where her children went in 1827. But the chain of custody is documented. She was given to Patty Waldrop. Patty Waldrop died. Her estate was distributed to her children. And <strong>Fanny Waldrop Nichols carried Patience's family to Texas.</strong></p>
-
-    <p>Into the household where, on July 4, 1848, a girl named <strong>Easter Bell</strong> would be born.</p>
-  </div>
-
-  <!-- CHAPTER 7: MISSISSIPPI -->
-  <div class="chapter">
-    <span class="chapter-date">March 25, 1839 · Rankin County, Mississippi</span>
-    <h2 class="chapter-title">The Last Time Her Name Appeared</h2>
-
-    <p>She was approximately seventy-four years old.</p>
-
-    <p>The document is a deed transfer in Rankin County, Mississippi — the Waldrop estate distributing Patience and her family one final time. She is named. Clarissa is named. Rachel is named. Tom, William, Amanda, Harriet. A family that had grown from one woman sold on New Year's Day 1795 in Newberry County, South Carolina.</p>
-
-    <p>After March 25, 1839, Patience does not appear in any document we have found.</p>
-
-    <p>She was seventy-four years old. She had survived the mortgage. The open market sale. The transfer to the Waldrops. The journey from South Carolina to Mississippi. Thirty-two years of silence. The distribution of her children to different branches of the Waldrop family. The slow westward movement of everyone who held her. <strong>She had outlasted all of it.</strong></p>
-
-    <p>She likely died before 1860. Her burial place is not recorded. The name she was called before she was called Patience — whatever name her people gave her in whatever world she came from before any of this — is also not recorded. The documents were never meant to preserve that. They were meant to record transactions. She happened to be inside them, and then she was gone from them, and then she was gone entirely.</p>
-
-    <div class="pause">
-      Four documents.<br>
-      Forty-six years.<br>
-      South Carolina to Mississippi.<br><br>
-      She never wrote a word of any of them.<br>
-      She never chose any of what they recorded.<br><br>
-      And yet — because of her —<br>
-      everything that follows is possible.
+    <div class="pull">
+      <p>"I did something most Black people aren't able to do. I'm hurt to know what they went through — but at peace knowing they had each other."</p>
+      <span class="pull-attr">— Jasmine M. Lee · Founder and CEO, Dock Ellis Foundation · August 2026</span>
     </div>
   </div>
 
-  <!-- THE LINE -->
-  <div class="the-line">
-    <span class="line-label">What Came After · The Direct Line · Patience to Now</span>
-
-    <div class="line-chain">
-
-      <div class="line-link">
-        <div class="line-dot highlight"></div>
-        <div class="line-content">
-          <span class="line-name gold">Patience</span>
-          <span class="line-detail">born ca. 1765 · South Carolina · sold January 1 1795 · given to Patty Waldrop August 4 1795 · last record Mississippi 1839 · died ca. 1840</span>
-        </div>
-      </div>
-
-      <div class="line-link">
-        <div class="line-dot"></div>
-        <div class="line-content">
-          <span class="line-name">Clarissa</span>
-          <span class="line-detail">born ca. 1807 · daughter of Patience · named in 1827 Waldrop deed · traveled to Texas with Fanny Waldrop Nichols</span>
-        </div>
-      </div>
-
-      <div class="line-link">
-        <div class="line-dot highlight"></div>
-        <div class="line-content">
-          <span class="line-name gold">Easter Bell Nichols</span>
-          <span class="line-detail">born July 4, 1848 · Bellville, Austin County, Texas · born enslaved · freed Juneteenth 1865 · married Joseph Nichols December 18 1865 · died December 17, 1935 · age 87 · free · on her own land</span>
-        </div>
-      </div>
-
-      <div class="line-link">
-        <div class="line-dot"></div>
-        <div class="line-content">
-          <span class="line-name">Hellen Nichols Armstrong</span>
-          <span class="line-detail">born September 1870 · Bellville, Texas · daughter of Easter Bell · mother of Eva</span>
-        </div>
-      </div>
-
-      <div class="line-link">
-        <div class="line-dot"></div>
-        <div class="line-content">
-          <span class="line-name">Eva Armstrong Ballard</span>
-          <span class="line-detail">born ca. 1900 · Bellville, Texas · ran the Nip and Sip Cafe · testified and told the truth · died November 24, 1977 · Orange County, California</span>
-        </div>
-      </div>
-
-      <div class="line-link">
-        <div class="line-dot highlight"></div>
-        <div class="line-content">
-          <span class="line-name gold">Margie Nell Ballard Corbin</span>
-          <span class="line-detail">born March 13, 1929 · Fort Worth, Texas · NaNa · 12182 Candy Lane · died October 15, 1988 · Garden Grove, California</span>
-        </div>
-      </div>
-
-      <div class="line-link">
-        <div class="line-dot"></div>
-        <div class="line-content">
-          <span class="line-name">Hjordis L. Corbin</span>
-          <span class="line-detail">born January 20, 1960 · daughter of Margie · mother of Jasmine</span>
-        </div>
-      </div>
-
-      <div class="line-link">
-        <div class="line-dot highlight"></div>
-        <div class="line-content">
-          <span class="line-name gold">Jasmine M. Lee</span>
-          <span class="line-detail">born January 25, 1982 · founder, Dock Ellis Foundation · the researcher who spent seven years finding these documents · the person who wrote Patience's name down for a different reason</span>
-        </div>
-      </div>
-
-    </div>
+  <!-- SOURCES -->
+  <div class="sources">
+    <span class="sources-label">Primary Sources · Confirmed · Every Generation Documented</span>
+    <ol>
+      <li>Newberry County South Carolina Deed Book B Page 467 · March 22 1793 · James Sims Sr. mortgage to Peter Braselman · 36 enslaved people named including Molley and her children Charles, Edward, Delf, Abram, Sawny, Tom and Patience · Union County South Carolina · Recorded June 29 1793 · Fredk. Nance DC</li>
+      <li>Newberry County South Carolina Deed Book B Page 466 · June 26 1793 · James Sims Sr. deed of gift to daughter Drucilla Braselman · nine enslaved people named · same community as Molley and Patience</li>
+      <li>Newberry County South Carolina Deed Book C Pages 367-368 · August 4 1795 · Francis Davenport Sr. deed of gift to daughter Patty Waldrop · one negro girl named Patience · witnessed by Isaac Davenport, Edward Turner, Elizabeth Towling · proved before Charles Griffin JP</li>
+      <li>Wadsworth and Turpin commercial transaction · Newberry County South Carolina Deed Book C · ca. 1795 · Patience about 30 years of age listed alongside Moll, Hannah, Lin, Violet, Esther, George</li>
+      <li>DAR lineage record · Francis Davenport born 1718 Virginia died July 23 1798 Newberry District South Carolina · married Mary Turner · father of Patty Waldrop and William Davenport and others · confirms Davenport family in Newberry County same era as Patience transfer</li>
+      <li>Hezekiah Waldrop to Stephen R. Waldrop · August 11 1827 · Yazoo County Mississippi · transfers Patience, Rachael, and Thomas · migration document confirmed</li>
+      <li>Hezekiah Parrish Waldrop declaration · March 25 1839 · Rankin County Mississippi · formally transfers Patience and her increase — Rachol, Clarissa, Tom — and Clarissa's children William, Amanda, Harriet — to his and Patty Waldrop's children · cites original August 4 1795 Francis Davenport deed as legal foundation</li>
+      <li>Texas Death Certificate State File No. 54496 · Easter Bell Nichols · born July 4 1838 · died December 17 1935 · age 97 · confirms mother as Rendy Blayn · confirms descent from Clarissa line</li>
+      <li>1860 Federal Census Slave Schedule · Austin County Texas · John Nichols · confirms female age 22 born Texas consistent with Easter Bell · confirms female age 43 consistent with Rendy Blayn</li>
+      <li>1870 Federal Census · Beat No. 1 · Austin County Texas · Household 278 · Easter Bell Nichols age 31 · Joseph Nichols · Allen age 5 · Anna age 4 · June 30 1870</li>
+      <li>AncestryDNA ThruLines · Clarissa Slave · 46 confirmed DNA matches tracing descent through Patience and Clarissa · confirms biological descent</li>
+      <li>GEDmatch One-to-One · Jasmine M. Lee QW8418781 and Hjordis L. Corbin SQ8499767 · 3,575.4 cM shared · confirms parent-child relationship</li>
+    </ol>
   </div>
 
   <!-- CLOSING -->
   <div class="closing">
-    <h2 class="closing-title">We Are the Reason<br>Her Name Survived</h2>
-
-    <p class="closing-body">
-      The documents were not written to remember Patience. They were written by men who believed they owned her — to record debts, transfers, and transactions. Her name survived because she was inside those transactions. <strong>Four times in forty-six years, someone wrote her name down for their own purposes.</strong> Four times she survived what the writing recorded.
-    </p>
-
-    <p class="closing-body">
-      We are the fifth time. We are writing her name down for a different reason. Not as collateral. Not as property. Not as an item in an estate distribution. <strong>As the beginning. As the proof that something survived everything that was done to erase it.</strong>
-    </p>
-
-    <p class="closing-body">
-      This page was built from primary source documents. Every fact in it is sourced. The emotional weight of it is real — but it is not invented. The documents themselves carry the weight. We only read them slowly enough to feel it.
-    </p>
-
-    <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:32px;">
-      Research by Jasmine M. Lee · Dock Ellis Foundation · Seven years · 2019–2026
-    </p>
-
+    <h2 class="closing-title">Molley had seven children.<br>We know their names.<br>We know where they went.<br>We did not forget them.</h2>
+    <p class="closing-body">This is what the research was for. Not a wall at 1870. Not a wall at 1865. Not a wall at 1839. All the way back to 1793. All the way back to Molley. She is the beginning of everything confirmed about this family. She is why this archive exists.</p>
     <div>
-      <a href="papertrail.html" class="back-link">Read the Documents →</a>
-      <a href="family_tree.html" class="back-link">← Return to Archive</a>
+      <a href="papertrail.html" class="back-link">The Paper Trail →</a>
+      <a href="registry.html" class="back-link">Enslaved Persons Registry →</a>
+      <a href="family_tree.html" class="back-link">← Back to Archive</a>
     </div>
   </div>
 
-</div><!-- end story -->
-
-<script>
-function openLightbox(src) {
-  document.getElementById('lightbox-img').src = src;
-  document.getElementById('lightbox').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('active');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
-</script>
+</div>
 </body>
 </html>

@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Enslaved Persons Registry · Armstrong Family Archive</title>
+<style>
+  :root {
+    --deep:#080604;--gold:#c9a84c;--gold2:#e8c96a;--cream:#f5f2ec;
+    --parchment:#f0ead8;--aged:#e4dcd0;--muted:#a8a090;
+    --border:rgba(201,168,76,0.15);
+    --f-display:'Georgia','Times New Roman',serif;
+    --f-body:'Georgia',serif;--f-mono:'Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  strong{color:#f5f0e8!important;font-weight:normal;}
+
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,6,4,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
+  .nav-back{font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;}
+  .nav-title{font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+
+  .hero{min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 24px 60px;text-align:center;border-bottom:1px solid var(--border);background:radial-gradient(ellipse at center,rgba(139,105,20,0.05) 0%,transparent 65%);}
+  .hero-label{font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.50);margin-bottom:24px;display:block;}
+  .hero-title{font-family:var(--f-display);font-size:clamp(40px,9vw,88px);font-style:italic;color:var(--parchment);line-height:0.95;letter-spacing:-2px;margin-bottom:20px;}
+  .hero-sub{font-family:var(--f-mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-bottom:28px;}
+  .hero-body{max-width:600px;font-size:clamp(14px,2vw,16px);line-height:1.9;color:rgba(218,210,198,0.85);}
+
+  .main{max-width:1000px;margin:0 auto;padding:60px 24px 100px;}
+
+  .purpose{background:rgba(10,8,5,0.5);border-left:3px solid var(--gold);padding:24px 28px;margin-bottom:48px;}
+  .purpose p{font-size:14px;line-height:1.9;color:#d0c8bc;margin-bottom:12px;}
+  .purpose p:last-child{margin-bottom:0;}
+
+  .filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+  .filter-btn{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.50);background:none;border:1px solid var(--border);padding:8px 14px;cursor:pointer;transition:all 0.2s;}
+  .filter-btn:hover{color:rgba(255,255,255,0.80);border-color:rgba(201,168,76,0.4);}
+  .filter-btn.active{color:var(--gold2);border-color:var(--gold);}
+
+  .estate-section{margin-bottom:56px;}
+  .estate-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(201,168,76,0.2);}
+  .estate-name{font-family:var(--f-display);font-size:clamp(18px,3vw,24px);font-style:italic;color:var(--gold2);}
+  .estate-meta{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.35);}
+  .estate-line{flex:1;height:1px;background:rgba(201,168,76,0.12);}
+
+  table{width:100%;border-collapse:collapse;margin-bottom:16px;}
+  thead tr{border-bottom:1px solid rgba(201,168,76,0.2);}
+  th{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.50);padding:10px 12px;text-align:left;}
+  tbody tr{border-bottom:1px solid rgba(255,255,255,0.035);transition:background 0.15s;}
+  tbody tr:hover{background:rgba(201,168,76,0.04);}
+  tbody tr.ancestor{background:rgba(201,168,76,0.06);}
+  tbody tr.ancestor:hover{background:rgba(201,168,76,0.10);}
+  td{font-size:12px;line-height:1.6;color:#d0c8bc;padding:10px 12px;vertical-align:top;}
+  td.name-cell{color:#f0ead8;font-family:var(--f-display);font-style:italic;font-size:13px;}
+  td.anc-tag{color:var(--gold);font-family:var(--f-mono);font-size:9px;letter-spacing:1px;}
+
+  .legend{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:32px;}
+  .legend-item{display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+  .legend-swatch{width:14px;height:14px;border:1px solid;}
+  .legend-swatch.ancestor{border-color:rgba(201,168,76,0.5);background:rgba(201,168,76,0.06);}
+  .legend-swatch.unnamed{border-color:rgba(255,255,255,0.15);background:transparent;}
+  .legend-swatch.confirmed{border-color:rgba(100,180,100,0.4);background:rgba(100,180,100,0.04);}
+
+  .source-note{font-family:var(--f-mono);font-size:9px;color:rgba(255,255,255,0.30);margin-top:6px;display:block;}
+
+  .closing{text-align:center;padding:60px 0 80px;border-top:1px solid var(--border);}
+  .closing-title{font-family:var(--f-display);font-size:clamp(20px,3.5vw,28px);font-style:italic;color:var(--parchment);margin-bottom:16px;line-height:1.3;}
+  .closing-body{font-size:14px;line-height:1.9;color:#b8b0a8;max-width:540px;margin:0 auto 32px;}
+  .back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--border);padding:13px 22px;margin:0 6px 10px;transition:border-color 0.2s;}
+  .back-link:hover{border-color:var(--gold);}
+
+  @media(max-width:700px){
+    table{font-size:11px;}
+    th{font-size:7px;}
+    .filter-bar{gap:6px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="family_tree.html" class="nav-back">← Back to Archive</a>
+  <span class="nav-title">Enslaved Persons Registry</span>
+</nav>
+
+<section class="hero">
+  <span class="hero-label">Armstrong Family Archive · A Public Resource</span>
+  <h1 class="hero-title">Enslaved<br>Persons<br>Registry</h1>
+  <p class="hero-sub">Every Named and Unnamed Enslaved Person · Confirmed by Primary Source</p>
+  <p class="hero-body">This registry documents every enslaved person confirmed in the primary source research for this archive. It is offered as a public resource to other researchers searching for their own ancestors. Every entry is confirmed by a primary source document. Nothing is invented or inferred.</p>
+</section>
+
+<div class="main">
+
+  <div class="purpose">
+    <p>Enslaved people were systematically excluded from the official record. Their names — when recorded at all — appear in the documents of the people who enslaved them: slave schedules, estate inventories, probate partitions, deed transfers, and church histories. This registry consolidates every such record found in the course of building this archive.</p>
+    <p>If your ancestor was enslaved in Austin County Texas, Smith County Texas, Upshur County Texas, Copiah County Mississippi, Washington County Mississippi, Wilcox County Georgia, Halifax County Virginia, or Newberry County South Carolina — this registry may help you find them. Every document cited here is accessible through FamilySearch, the Texas GLO, Ancestry, or the county courthouses listed in the Paper Trail.</p>
+    <p><strong>Highlighted rows</strong> indicate confirmed ancestors of this family. All others are members of the same enslaved communities — people whose descendants may be searching for them.</p>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-swatch ancestor"></div>Confirmed family ancestor</div>
+    <div class="legend-item"><div class="legend-swatch confirmed"></div>Named — identity confirmed</div>
+    <div class="legend-item"><div class="legend-swatch unnamed"></div>Unnamed — listed by age/sex only</div>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterEstate('all',this)">All Estates</button>
+    <button class="filter-btn" onclick="filterEstate('nichols',this)">John Nichols · Austin Co TX</button>
+    <button class="filter-btn" onclick="filterEstate('ballard',this)">L.F. Ballard · Smith Co TX</button>
+    <button class="filter-btn" onclick="filterEstate('blane',this)">Blane Family · Halifax Co VA</button>
+    <button class="filter-btn" onclick="filterEstate('waldrop',this)">Waldrop Family · Newberry Co SC</button>
+    <button class="filter-btn" onclick="filterEstate('brown',this)">Samuel Brown · Wilcox Co GA</button>
+    <button class="filter-btn" onclick="filterEstate('bullard',this)">Bullard Estate · Louisiana</button>
+    <button class="filter-btn" onclick="filterEstate('copiah',this)">Copiah Co MS · Various</button>
+  </div>
+
+  <!-- JOHN NICHOLS AUSTIN COUNTY TX -->
+  <div class="estate-section" data-estate="nichols">
+    <div class="estate-header">
+      <span class="estate-name">John "Jack" Nichols Estate</span>
+      <span class="estate-meta">Austin County, Texas · 1832–1864</span>
+      <span class="estate-line"></span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age / Born ca.</th>
+          <th>Sex</th>
+          <th>Birthplace</th>
+          <th>Document · Year</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="ancestor">
+          <td class="name-cell">Easter Bell Nichols</td>
+          <td>Age 22 in 1860 · born July 4 1838</td>
+          <td>F</td>
+          <td>Texas</td>
+          <td>1860 Slave Schedule · 1864 Estate · 1935 Death Certificate</td>
+          <td class="anc-tag">★ CONFIRMED ANCESTOR · married Joseph Nichols December 23 1869 · died December 17 1935 age 97</td>
+        </tr>
+        <tr class="ancestor">
+          <td class="name-cell">Rendy Blayn</td>
+          <td>Age 43 in 1860 · born ca. 1817</td>
+          <td>F</td>
+          <td>North Carolina</td>
+          <td>1860 Slave Schedule · 1935 Death Certificate</td>
+          <td class="anc-tag">★ CONFIRMED ANCESTOR · Easter Bell's mother · sold from Virginia to Texas · named on Easter Bell's death certificate</td>
+        </tr>
+        <tr class="ancestor">
+          <td class="name-cell">Joseph Nichols</td>
+          <td>Age 15 in 1860 · born February 1845</td>
+          <td>M</td>
+          <td>Texas</td>
+          <td>1860 Slave Schedule · 1900 Census</td>
+          <td class="anc-tag">★ CONFIRMED ANCESTOR · registered to vote January 27 1868 · married Easter Bell December 23 1869</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Fanny</td>
+          <td>Age 55 in 1864 · born ca. 1809</td>
+          <td>F</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>Valued at $100 · lowest female valuation</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Jack</td>
+          <td>Age 53 in 1864 · born ca. 1811</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>Named after enslaver's nickname "Jack Nichols" · $200</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Rhoda</td>
+          <td>Age 33 in 1864 · born ca. 1831</td>
+          <td>F</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>$450</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Mingo</td>
+          <td>Age 27 in 1864 · born ca. 1837</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>$650 · assigned to Hob. Plumney Shaw</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Amanda</td>
+          <td>Age 21 in 1864 · born ca. 1843</td>
+          <td>F</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>$750 · not Amanda Brown — different person born ca. 1843 vs ca. 1830</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Warren</td>
+          <td>Age 17 in 1864 · born ca. 1847</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>$850 · highest valuation · assigned to Middlebury Plumney Shaw</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Milley</td>
+          <td>Age 15 in 1864 · born ca. 1849</td>
+          <td>F</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>Thirty days blind · $450 valuation reduced to $325 · assigned to William J. Nichols</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Isaac</td>
+          <td>Age 13 in 1864 · born ca. 1851</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>$650 · assigned to Peter Warren Law at $250</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Willy / Wiley</td>
+          <td>Age 12 in 1864 · born ca. 1852</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>$550 · assigned to Newton M. Nichols at $275</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Olin</td>
+          <td>Age 9 in 1864 · born ca. 1855</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>$450 · assigned to Newton M. Nichols at $225</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Mary</td>
+          <td>Age 7 in 1864 · born ca. 1857</td>
+          <td>F</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>$350 · assigned to Isaac M. Nichols</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Thomas</td>
+          <td>Age 6 in 1864 · born ca. 1858</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>$350 · assigned to Middlebury Plumney Shaw · possibly Thomas Nichols freedman — unconfirmed</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Elizabeth</td>
+          <td>Age 1 in 1864 · born ca. 1863</td>
+          <td>F</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>$150 · assigned to John J. Nichols</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Cassy</td>
+          <td>Age 1 in 1864 · born ca. 1863</td>
+          <td>F</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>$150 · assigned to Isaac M. Nichols</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Ned</td>
+          <td>Age 19 in 1864 · born ca. 1845</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>Sickly · $125 · lowest valuation on list · assigned to Hon. Nichols</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Lewis</td>
+          <td>Age 13 in 1864 · born ca. 1851</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>$250 · assigned to William Nichols</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Solomon</td>
+          <td>Age 7 in 1864 · born ca. 1857</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>$250 · assigned to John J. Nichols</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Martha</td>
+          <td>Unknown</td>
+          <td>F</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>$425 · assigned to Eleanor Shamburger</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Simeon</td>
+          <td>Unknown</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>$650 · assigned to John J. Nichols</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Frank</td>
+          <td>Unknown</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>1864 Estate Partition</td>
+          <td>$225 · assigned to Peter Warren Law</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Aaron</td>
+          <td>Unknown · enslaved by L.F. Ballard</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>New Hope Missionary Baptist Church history · Smith County TX</td>
+          <td>Named independently by church history as enslaved in Lewis F. Ballard Sr.'s household</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Emaline</td>
+          <td>Unknown · enslaved by L.F. Ballard</td>
+          <td>F</td>
+          <td>Unknown</td>
+          <td>New Hope Missionary Baptist Church history · Smith County TX</td>
+          <td>Named independently by church history as enslaved in Lewis F. Ballard Sr.'s household</td>
+        </tr>
+        <!-- Unnamed 1860 -->
+        <tr>
+          <td class="name-cell" style="color:#a8a090;font-style:normal;">Unnamed — 9 people</td>
+          <td>Various ages</td>
+          <td>M/F</td>
+          <td>Texas / Unknown</td>
+          <td>1860 Slave Schedule · John Nichols · Austin County TX</td>
+          <td>9 unnamed enslaved people listed by age and sex only · includes Easter Bell age 22 and Rendy age 43 confirmed by death certificate</td>
+        </tr>
+      </tbody>
+    </table>
+    <span class="source-note">Sources: 1860 Federal Census Slave Schedule · Austin County Texas · John Nichols · 1864 John Nichols Estate Partition and Slave Valuation Ledger · Austin County Probate Court · New Hope Missionary Baptist Church history · Texas death certificate State File No. 54496</span>
+  </div>
+
+  <!-- LEWIS F. BALLARD SR. SMITH COUNTY TX -->
+  <div class="estate-section" data-estate="ballard">
+    <div class="estate-header">
+      <span class="estate-name">Lewis F. Ballard Sr. Estate</span>
+      <span class="estate-meta">Smith County & Upshur County, Texas · 1850–1857</span>
+      <span class="estate-line"></span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age / Born ca.</th>
+          <th>Sex</th>
+          <th>Birthplace</th>
+          <th>Document · Year</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="ancestor">
+          <td class="name-cell">Newton Ballard</td>
+          <td>Age ~20 in 1850 · born ca. 1830</td>
+          <td>M</td>
+          <td>Mississippi</td>
+          <td>1850 Slave Schedule · Smith County TX · Page 458</td>
+          <td class="anc-tag">★ CONFIRMED ANCESTOR · filed freedom land claim August 26 1856 · 160 acres Upshur County TX · GLO File No. 3378</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Aaron</td>
+          <td>Unknown</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>New Hope Missionary Baptist Church history · Smith County TX</td>
+          <td>Named by church history as enslaved in Lewis F. Ballard Sr. household · died February 18 1857</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Emaline</td>
+          <td>Unknown</td>
+          <td>F</td>
+          <td>Unknown</td>
+          <td>New Hope Missionary Baptist Church history · Smith County TX</td>
+          <td>Named by church history as enslaved in Lewis F. Ballard Sr. household</td>
+        </tr>
+        <tr>
+          <td class="name-cell" style="color:#a8a090;font-style:normal;">Unnamed — additional people</td>
+          <td>Various</td>
+          <td>M/F</td>
+          <td>Mississippi / Unknown</td>
+          <td>1850 Slave Schedule · Smith County TX · Page 458</td>
+          <td>Multiple unnamed enslaved people in Lewis F. Ballard Sr.'s household · Newton Ballard identified by Rev. George W. Ballard's 1937 death certificate</td>
+        </tr>
+      </tbody>
+    </table>
+    <span class="source-note">Sources: 1850 Federal Census Slave Schedule · Smith County Texas · Page 458 · New Hope Missionary Baptist Church history · McLennan County Death Certificate Volume 4 Page 483 · Rev. George W. Ballard naming Newton Ballard as father</span>
+  </div>
+
+  <!-- BLANE FAMILY HALIFAX COUNTY VA -->
+  <div class="estate-section" data-estate="blane">
+    <div class="estate-header">
+      <span class="estate-name">Blane / Blain Family</span>
+      <span class="estate-meta">Halifax County, Virginia · pre-1860</span>
+      <span class="estate-line"></span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age / Born ca.</th>
+          <th>Sex</th>
+          <th>Birthplace</th>
+          <th>Document · Year</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="ancestor">
+          <td class="name-cell">Rendy Blayn</td>
+          <td>Born ca. 1817 · North Carolina</td>
+          <td>F</td>
+          <td>North Carolina</td>
+          <td>1860 Slave Schedule · Austin County TX · 1935 Death Certificate</td>
+          <td class="anc-tag">★ CONFIRMED ANCESTOR · Easter Bell's mother · enslaved by Blane family Halifax County VA · sold to Texas before 1860 · name confirmed on Easter Bell's 1935 death certificate</td>
+        </tr>
+      </tbody>
+    </table>
+    <span class="source-note">Sources: Texas death certificate State File No. 54496 · Easter Bell Nichols · informant names mother as Rendy Blayn · DNA match Donna Driskill Keyser A884951 · 27.8 cM · Halifax County Virginia Blane connection</span>
+  </div>
+
+  <!-- WALDROP FAMILY NEWBERRY COUNTY SC -->
+  <div class="estate-section" data-estate="waldrop">
+    <div class="estate-header">
+      <span class="estate-name">Waldrop / Waldrup Family</span>
+      <span class="estate-meta">Newberry County, South Carolina · 1795</span>
+      <span class="estate-line"></span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age / Born ca.</th>
+          <th>Sex</th>
+          <th>Birthplace</th>
+          <th>Document · Year</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="ancestor">
+          <td class="name-cell">Patience</td>
+          <td>Born ca. 1765 · South Carolina</td>
+          <td>F</td>
+          <td>South Carolina</td>
+          <td>Newberry County SC Deed Book C Page 367 · August 4 1795</td>
+          <td class="anc-tag">★ CONFIRMED ANCESTOR · oldest confirmed ancestor · given to Patty Waldrup by Francis Davenport August 4 1795 · Jasmine M. Lee's 5th great-grandmother</td>
+        </tr>
+        <tr class="ancestor">
+          <td class="name-cell">Clarissa</td>
+          <td>Born ca. 1807 · South Carolina</td>
+          <td>F</td>
+          <td>South Carolina</td>
+          <td>1839 Rankin County Mississippi deed</td>
+          <td class="anc-tag">★ CONFIRMED ANCESTOR · Patience's daughter · confirmed in 1839 Rankin County Mississippi deed · migrated South Carolina through Tennessee to Mississippi</td>
+        </tr>
+      </tbody>
+    </table>
+    <span class="source-note">Sources: Newberry County South Carolina Deed Book C Page 367 · August 4 1795 · Francis Davenport to Patty Waldrup · 1839 Rankin County Mississippi deed naming Clarissa</span>
+  </div>
+
+  <!-- SAMUEL BROWN WILCOX COUNTY GA -->
+  <div class="estate-section" data-estate="brown">
+    <div class="estate-header">
+      <span class="estate-name">Samuel Brown Estate</span>
+      <span class="estate-meta">Wilcox County, Georgia · 1860</span>
+      <span class="estate-line"></span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age / Born ca.</th>
+          <th>Sex</th>
+          <th>Birthplace</th>
+          <th>Document · Year</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="ancestor">
+          <td class="name-cell">Amanda Brown (Manda Reese)</td>
+          <td>Age ~33 in 1860 · born ca. 1827-1830</td>
+          <td>F</td>
+          <td>Georgia</td>
+          <td>1860 Slave Schedule · Wilcox County GA · 1870 Census Beat 1 Bellville TX</td>
+          <td class="anc-tag">★ CONFIRMED ANCESTOR · enslaved on Samuel Brown estate · migrated to Texas after 1863 · confirmed as Manda Reese in 1870 Beat 1 Bellville census · capital M confirmed on original microfilm · married Enoch Reese ca. 1871-1875</td>
+        </tr>
+        <tr>
+          <td class="name-cell" style="color:#a8a090;font-style:normal;">Unnamed — 6 additional people</td>
+          <td>Various</td>
+          <td>M/F</td>
+          <td>Unknown</td>
+          <td>1860 Slave Schedule · Wilcox County GA · Samuel Brown</td>
+          <td>7 total enslaved people · Samuel Brown 1860 slave schedule · Amanda Brown identified as female age 33 born Georgia · 6 others unnamed</td>
+        </tr>
+      </tbody>
+    </table>
+    <span class="source-note">Sources: 1860 Federal Census Slave Schedule · Wilcox County Georgia · Samuel Brown · 1870 Federal Census Beat No. 1 Austin County Texas Page 18 Household 114 · Manda Reese age 40 born Georgia · capital M confirmed by direct image examination</span>
+  </div>
+
+  <!-- BULLARD ESTATE LOUISIANA -->
+  <div class="estate-section" data-estate="bullard">
+    <div class="estate-header">
+      <span class="estate-name">John Bullard Estate · Louisa Hypothesis</span>
+      <span class="estate-meta">Ouachita Parish, Louisiana · 1856 · ⚠ Unconfirmed connection to this family</span>
+      <span class="estate-line"></span>
+    </div>
+
+    <div style="background:rgba(139,32,32,0.04);border:1px solid rgba(139,32,32,0.25);padding:14px 18px;margin-bottom:16px;">
+      <p style="font-family:'Courier New',monospace;font-size:10px;color:#c07070;">These individuals are documented here as a public resource. Their connection to this family is an unconfirmed hypothesis — see the Ballard Research page for full details.</p>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age / Born ca.</th>
+          <th>Sex</th>
+          <th>Birthplace</th>
+          <th>Document · Year</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name-cell">Louisa</td>
+          <td>Unknown</td>
+          <td>F</td>
+          <td>Unknown</td>
+          <td>Ouachita Parish Louisiana Deed · July 30 1856</td>
+          <td>Named in deed from John T. Sheppard and Nancy Bullard to John T. Faulk · John Bullard estate</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Hester</td>
+          <td>Unknown</td>
+          <td>F</td>
+          <td>Unknown</td>
+          <td>Ouachita Parish Louisiana Deed · July 30 1856</td>
+          <td>Same deed</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Jesse</td>
+          <td>Unknown</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>Ouachita Parish Louisiana Deed · July 30 1856</td>
+          <td>Same deed</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Green</td>
+          <td>Unknown</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>Ouachita Parish Louisiana Deed · July 30 1856</td>
+          <td>Same deed</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Texana</td>
+          <td>Unknown</td>
+          <td>F</td>
+          <td>Unknown</td>
+          <td>Ouachita Parish Louisiana Deed · July 30 1856</td>
+          <td>Same deed · Texas-connected name</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Harriett</td>
+          <td>Unknown</td>
+          <td>F</td>
+          <td>Unknown</td>
+          <td>Ouachita Parish Louisiana Deed · July 30 1856</td>
+          <td>Same deed</td>
+        </tr>
+        <tr>
+          <td class="name-cell" style="color:#a8a090;font-style:normal;">Unnamed infant</td>
+          <td>Infant</td>
+          <td>Unknown</td>
+          <td>Unknown</td>
+          <td>Ouachita Parish Louisiana Deed · July 30 1856</td>
+          <td>Unnamed infant child named in same deed</td>
+        </tr>
+      </tbody>
+    </table>
+    <span class="source-note">Source: Ouachita Parish Louisiana Deed · July 30 1856 · John T. Sheppard and Nancy Bullard (daughter of late John Bullard) to John T. Faulk · recorded by Benjamin D. Sheppard Parish Recorder</span>
+  </div>
+
+  <!-- COPIAH COUNTY MISSISSIPPI -->
+  <div class="estate-section" data-estate="copiah">
+    <div class="estate-header">
+      <span class="estate-name">Copiah County, Mississippi · Various Estates</span>
+      <span class="estate-meta">Copiah County, Mississippi · 1824–1825</span>
+      <span class="estate-line"></span>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age / Born ca.</th>
+          <th>Sex</th>
+          <th>Birthplace</th>
+          <th>Document · Year</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name-cell">Newton</td>
+          <td>Age 9-10 in 1825 · born ca. 1815-1816</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>Copiah County Deed Book B Page 74 · August 31 1825</td>
+          <td>Margaret Byrd transfers to daughter Margaret Boyd via trustee John Byrd · dark complexion · NOT Newton Ballard — born 15 years too early · confirms name Newton used in Copiah County community</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Silvy</td>
+          <td>Unknown</td>
+          <td>F</td>
+          <td>Unknown</td>
+          <td>Copiah Deed Book B Page 17 · June 17 1825</td>
+          <td>Joshua Tillery to William A. Cain</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Liller</td>
+          <td>Unknown</td>
+          <td>F</td>
+          <td>Unknown</td>
+          <td>Copiah Deed Book B Page 19 · June 7 1825</td>
+          <td>Joshua Tillery to son William H. Tillery</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Jim · Rachel · Silva</td>
+          <td>Unknown</td>
+          <td>M/F</td>
+          <td>Unknown</td>
+          <td>Copiah Deed Book B Page 25 · August 5 1825</td>
+          <td>Angus McIntyre to Archd McIntyre of Simpson County MS</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Parker</td>
+          <td>Unknown</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>Copiah Deed Book B Page 57 · September 9 1825</td>
+          <td>A. Lusk to Asa Lee · later sold again April 1 1826 Book B Page 151</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Mary (mulatto) · Josh (child)</td>
+          <td>Unknown</td>
+          <td>F/M</td>
+          <td>Unknown</td>
+          <td>Copiah Deed Book B Page 192-193 · June 28 1825</td>
+          <td>Samuel T. and Catherine Scott to Martha Eleanor Blount daughter of Robert C. and Malinda Blount · mulatto woman Mary and her child Josh</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Tom · Jim</td>
+          <td>Age 21 and 13 in 1825</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>Copiah Deed Book B Pages 78-79 · October 8 1825</td>
+          <td>Neel Smiley Sr. to Matthew M. Smiley</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Jacob/Jac · John · William</td>
+          <td>Age 16 · 8 · 6 in 1825</td>
+          <td>M</td>
+          <td>Unknown</td>
+          <td>Copiah Deed Book B Pages 79-80 · October 8 1825</td>
+          <td>Neel Smiley Sr. to Neil Smiley Jr.</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Tener</td>
+          <td>Unknown</td>
+          <td>F</td>
+          <td>Unknown</td>
+          <td>Copiah County Deed Book B Pages 83-84 · November 24 1824</td>
+          <td>Margaret Byrd emancipates Tener — one of very few emancipation records in Copiah County deed books · sons William Byrd and Oshea Byrd as witnesses</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Bitha · Maria · Milly · Joseph · Loretta · Viny · Peggy</td>
+          <td>Various · includes children</td>
+          <td>M/F</td>
+          <td>Unknown</td>
+          <td>Copiah County Deed Book B Page 87 · September 28 1825</td>
+          <td>John H. Mallory to Isaac R. Nicholson · Bitha and child Maria · woman Milly and 2 children · two girls Viny and Peggy</td>
+        </tr>
+        <tr>
+          <td class="name-cell">Billy · Manuel · Simon · Matilda · Hester · Fanny · Nancy · Phillis · unnamed mulatto boy age 10</td>
+          <td>Various · mulatto boy age 10</td>
+          <td>M/F</td>
+          <td>Unknown</td>
+          <td>Copiah County Deed Book B Pages 144-145 · recorded March 29 1826</td>
+          <td>Nicholas Highland of St. Helena Louisiana to Benjamin Howard · originally executed December 20 1820 · Louisiana-to-Mississippi transfer · Fanny and Nancy names appearing in Waldrop-Nichols network</td>
+        </tr>
+      </tbody>
+    </table>
+    <span class="source-note">Sources: Copiah County Mississippi Deed Book B · multiple pages · 1824-1826 · FamilySearch Image Group 008201517 · These records document the enslaved community in the same county where Lewis F. Ballard Sr. lived in 1841 and where Newton Ballard was almost certainly born ca. 1830</span>
+  </div>
+
+  <!-- CLOSING NOTE -->
+  <div style="background:rgba(10,8,5,0.5);border:1px solid var(--border);padding:28px 32px;margin-top:48px;">
+    <span style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.60);display:block;margin-bottom:16px;">A Note to Other Researchers</span>
+    <p style="font-size:14px;line-height:1.9;color:#c8c0b4;margin-bottom:16px;">If you are searching for an ancestor who may have been enslaved in one of these communities — Austin County Texas, Smith County Texas, Upshur County Texas, Halifax County Virginia, Newberry County South Carolina, Wilcox County Georgia, or Copiah County Mississippi — this registry may help you locate which estate records to search. Every source cited here is accessible through FamilySearch, the Texas General Land Office, Ancestry.com, or the county courthouses.</p>
+    <p style="font-size:14px;line-height:1.9;color:#c8c0b4;">If you find a connection to your own research, the compiler of this archive welcomes contact: <strong style="color:#f0ead8;">Jasmine M. Lee · jlee@dockellisfoundation.com · WikiTree: Lee-59275</strong></p>
+  </div>
+
+  <div class="closing">
+    <h2 class="closing-title">These names were recorded<br>as property. They were people.</h2>
+    <p class="closing-body">Every name on this page belonged to a real person. Most of them have no further record. This registry is offered in the hope that someone, somewhere, is searching for them — and finds them here.</p>
+    <div>
+      <a href="papertrail.html" class="back-link">The Paper Trail →</a>
+      <a href="family_tree.html" class="back-link">← Back to Archive</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function filterEstate(estate, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.estate-section').forEach(s => {
+    if (estate === 'all') { s.style.display = ''; return; }
+    s.style.display = s.getAttribute('data-estate') === estate ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

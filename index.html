@@ -263,12 +263,12 @@
     font-size:clamp(15px,2.2vw,18px);
   }
   .line-arrow-sm {
-    display:block;color:rgba(201,168,76,0.35);
+    display:block;color:rgba(201,168,76,0.60);
     font-size:14px;line-height:1.8;
   }
   .line-dates {
     font-family:var(--f-mono);font-size:9px;letter-spacing:1px;
-    color:rgba(255,255,255,0.30);
+    color:rgba(255,255,255,0.65);
   }
 
   /* STANDARDS */
@@ -316,6 +316,14 @@
     transition:background 0.2s;
   }
   .enter-btn-sm:hover { background:var(--gold2); }
+
+  /* CONFIRMED LINE - HIGH CONTRAST FIX */
+  .line-item { color:rgba(240,234,216,0.85) !important; }
+  .line-item.current { color:var(--parchment) !important; }
+  .line-item.you { color:var(--gold2) !important; }
+  .line-dates { color:rgba(255,255,255,0.70) !important; }
+  .line-arrow-sm { color:rgba(201,168,76,0.55) !important; }
+
 </style>
 </head>
 <body>

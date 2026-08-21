@@ -1,1 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clarissa · Armstrong Family Archive</title>
+<style>
+  :root {
+    --deep: #080604;
+    --ink: #0f0c08;
+    --gold: #c9a84c;
+    --gold2: #e8c96a;
+    --cream: #f5f2ec;
+    --parchment: #f0ead8;
+    --aged: #e4dcd0;
+    --muted: #a8a090;
+    --border: rgba(201,168,76,0.15);
+    --f-display: 'Georgia', 'Times New Roman', serif;
+    --f-body: 'Georgia', serif;
+    --f-mono: 'Courier New', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep);
+    color: var(--cream);
+    font-family: var(--f-body);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(8,6,4,0.96); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-back { font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none; }
+  .nav-title { font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted); }
+
+  /* OPENING */
+  .opening {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 100px 24px 80px;
+    text-align: center;
+    position: relative;
+    background: radial-gradient(ellipse at center, rgba(139,105,20,0.06) 0%, transparent 65%);
+  }
+
+  .opening-label {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);margin-bottom:16px;
+  }
+
+  .opening-connection {
+    font-family:var(--f-display);font-size:clamp(14px,2.5vw,18px);
+    font-style:italic;color:var(--muted);margin-bottom:32px;
+    line-height:1.6;
+  }
+
+  .opening-connection strong { color:var(--parchment);font-style:normal; }
+
+  .opening-name {
+    font-family:var(--f-display);
+    font-size:clamp(72px,16vw,160px);
+    font-style:italic;
+    color:var(--parchment);
+    line-height:0.9;
+    letter-spacing:-2px;
+    margin-bottom:40px;
+  }
+
+  .opening-dates {
+    font-family:var(--f-mono);font-size:11px;letter-spacing:3px;
+    color:var(--muted);margin-bottom:48px;
+  }
+
+  .opening-statement {
+    max-width:560px;
+    font-size:clamp(15px,2.5vw,17px);
+    line-height:1.9;color:var(--aged);font-style:italic;
+  }
+
+  .opening-statement em { color:var(--cream);font-style:normal; }
+
+  .scroll-down {
+    position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+    font-family:var(--f-mono);font-size:9px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--muted);
+    animation:breathe 3s ease-in-out infinite;
+  }
+
+  @keyframes breathe { 0%,100%{opacity:0.3;}50%{opacity:0.8;} }
+
+  /* STORY */
+  .story { max-width:680px;margin:0 auto;padding:0 24px; }
+
+  /* CHAPTER */
+  .chapter { padding:80px 0;border-top:1px solid var(--border); }
+
+  .chapter-date {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:32px;display:block;
+  }
+
+  .chapter-title {
+    font-family:var(--f-display);font-size:clamp(28px,5vw,42px);
+    font-style:italic;color:var(--parchment);
+    line-height:1.15;margin-bottom:40px;letter-spacing:-0.5px;
+  }
+
+  .chapter p {
+    font-size:clamp(15px,2.2vw,17px);line-height:2;
+    color:var(--aged);margin-bottom:28px;
+  }
+
+  .chapter p strong { color:var(--cream);font-weight:normal; }
+  .chapter p em { color:var(--parchment);font-style:italic; }
+
+  /* DOC PULL */
+  .doc-pull {
+    margin:48px 0;padding:28px 32px;
+    border-left:2px solid var(--gold);
+    background:rgba(10,8,5,0.6);
+  }
+
+  .doc-pull-label {
+    font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:14px;display:block;
+  }
+
+  .doc-pull-text {
+    font-family:var(--f-mono);font-size:13px;
+    line-height:1.9;color:var(--parchment);
+  }
+
+  .doc-pull-text strong { color:var(--gold2); }
+
+  .doc-pull-source {
+    font-family:var(--f-mono);font-size:9px;
+    color:var(--muted);margin-top:14px;display:block;
+  }
+
+  /* PAUSE */
+  .pause {
+    text-align:center;padding:48px 0;
+    font-family:var(--f-display);
+    font-size:clamp(17px,3vw,22px);font-style:italic;
+    color:var(--parchment);line-height:1.8;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    margin:48px 0;
+  }
+
+  /* SIGNATURE ELEMENT — THE FIVE DOCUMENTS */
+  .five-docs {
+    padding:80px 0;
+    border-top:1px solid var(--border);
+  }
+
+  .five-docs-label {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:48px;text-align:center;display:block;
+  }
+
+  .doc-entry {
+    display:grid;grid-template-columns:80px 1fr;
+    gap:24px;padding:32px 0;
+    border-bottom:1px solid var(--border);
+    align-items:start;
+  }
+
+  .doc-entry:last-child { border-bottom:none; }
+
+  .doc-year {
+    font-family:var(--f-display);
+    font-size:clamp(28px,4vw,40px);
+    font-style:italic;color:rgba(201,168,76,0.3);
+    line-height:1;padding-top:4px;
+  }
+
+  .doc-content {}
+
+  .doc-content-title {
+    font-family:var(--f-display);font-size:18px;
+    font-style:italic;color:var(--parchment);
+    display:block;margin-bottom:8px;
+  }
+
+  .doc-content-place {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gold);
+    display:block;margin-bottom:12px;
+  }
+
+  .doc-content-text {
+    font-size:14px;line-height:1.8;color:var(--aged);
+  }
+
+  .doc-content-text strong { color:var(--cream);font-weight:normal; }
+
+  /* THE LINE */
+  .the-line { padding:80px 0;border-top:1px solid var(--border); }
+
+  .line-label {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:40px;text-align:center;display:block;
+  }
+
+  .line-chain { display:flex;flex-direction:column;gap:0;max-width:520px;margin:0 auto; }
+
+  .line-link {
+    display:flex;gap:20px;align-items:flex-start;
+    padding:20px 0;border-bottom:1px solid var(--border);
+  }
+
+  .line-link:last-child { border-bottom:none; }
+
+  .line-dot {
+    width:20px;height:20px;border-radius:50%;
+    border:1px solid var(--gold);background:var(--deep);
+    flex-shrink:0;margin-top:3px;
+  }
+
+  .line-dot.highlight { background:rgba(201,168,76,0.2); }
+
+  .line-name {
+    font-family:var(--f-display);font-size:18px;font-style:italic;
+    color:var(--parchment);display:block;margin-bottom:3px;
+  }
+
+  .line-name.gold { color:var(--gold2); }
+
+  .line-detail {
+    font-family:var(--f-mono);font-size:10px;
+    color:var(--muted);line-height:1.6;
+  }
+
+  /* TWO LINES */
+  .two-lines {
+    padding:80px 0;border-top:1px solid var(--border);
+  }
+
+  .two-lines-label {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:40px;text-align:center;display:block;
+  }
+
+  .lines-grid {
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:32px;margin-bottom:40px;
+  }
+
+  @media(max-width:580px){ .lines-grid{grid-template-columns:1fr;} }
+
+  .line-col {
+    padding:24px;
+    border:1px solid var(--border);
+    background:rgba(10,8,5,0.4);
+  }
+
+  .line-col-label {
+    font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);
+    display:block;margin-bottom:16px;
+  }
+
+  .line-col-name {
+    font-family:var(--f-display);font-size:22px;font-style:italic;
+    color:var(--parchment);display:block;margin-bottom:8px;
+  }
+
+  .line-col-desc {
+    font-size:13px;line-height:1.8;color:var(--aged);
+  }
+
+  .merge-point {
+    text-align:center;padding:24px;
+    border:1px solid rgba(201,168,76,0.4);
+    background:rgba(201,168,76,0.05);
+  }
+
+  .merge-date {
+    font-family:var(--f-mono);font-size:10px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px;
+  }
+
+  .merge-text {
+    font-family:var(--f-display);font-size:18px;font-style:italic;
+    color:var(--parchment);line-height:1.5;
+  }
+
+  /* CLOSING */
+  .closing {
+    padding:80px 0 120px;text-align:center;
+    border-top:1px solid var(--border);
+  }
+
+  .closing-title {
+    font-family:var(--f-display);font-size:clamp(24px,4vw,36px);
+    font-style:italic;color:var(--parchment);
+    margin-bottom:32px;line-height:1.3;
+  }
+
+  .closing-body {
+    font-size:clamp(14px,2vw,16px);line-height:2;color:var(--aged);
+    max-width:520px;margin:0 auto 48px;
+  }
+
+  .closing-body strong { color:var(--cream);font-weight:normal; }
+
+  .back-link {
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--f-mono);font-size:10px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gold);text-decoration:none;
+    border:1px solid var(--border);padding:14px 28px;border-radius:2px;
+    margin:0 8px 12px;transition:border-color 0.2s;
+  }
+
+  .back-link:hover { border-color:var(--gold); }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display:none;position:fixed;inset:0;z-index:200;
+    background:rgba(0,0,0,0.96);
+    align-items:center;justify-content:center;padding:20px;
+  }
+  .lightbox.active{display:flex;}
+  .lightbox img{max-width:100%;max-height:90vh;object-fit:contain;}
+  .lightbox-close{
+    position:fixed;top:20px;right:20px;
+    background:none;border:1px solid rgba(255,255,255,0.2);
+    color:white;width:40px;height:40px;
+    border-radius:50%;cursor:pointer;font-size:18px;
+  }
+
+  /* ACCESSIBILITY UPDATE: Improved contrast for readability */
+  .prose p, .story p, p { color: #e8e2d8; line-height: 2.1; }
+  .chapter-title, .section-title, .opening-name { color: #f5f0e8 !important; }
+  .chapter-label, .section-label, .opening-label { color: rgba(255,255,255,0.80) !important; }
+  .fact-key { color: rgba(255,255,255,0.65) !important; }
+  .fact-val { color: #e0d8cc !important; }
+  .child-note { color: #c8c0b4 !important; }
+  .aged, .muted { color: #d8d0c4 !important; }
+  table th { color: rgba(255,255,255,0.85) !important; }
+  table td { color: #d8d0c4 !important; }
+  .pull-quote p { color: #f0ead8 !important; }
+  .opening-statement { color: #d8d0c4 !important; }
+  .inheritance { color: #c8c0b4 !important; }
+  .inheritance strong { color: #f5f0e8 !important; }
+  .opening-dates { color: rgba(255,255,255,0.70) !important; }
+  .nav-title { color: rgba(255,255,255,0.60) !important; }
+  .sources ol li { color: #c0b8ac !important; }
+  .explain-box p, .cluster-detail { color: #d8d0c4 !important; }
+  .oracle-distance { color: #c0b8ac !important; }
+  .kit-detail { color: #c8c0b4 !important; }
+  .admix-label { color: #d0c8bc !important; }
+  .admix-pct { color: #f0d870 !important; }
+  li { color: #d8d0c4; }
+  strong { color: #f5f0e8 !important; }
+
+</style>
+</head>
+<body>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<nav class="nav">
+  <a href="family_tree.html" class="nav-back">← Back to Family Archive</a>
+  <span class="nav-title">Clarissa · Her Story</span>
+</nav>
+
+<!-- OPENING -->
+<section class="opening">
+  <p class="opening-label">Daughter of Patience · Mother of William, Amanda, Harriet</p>
+  <p class="opening-connection">She was <strong>Patience's daughter.</strong><br>Everything else the documents tell us about her<br>begins and ends with that sentence.</p>
+  <h1 class="opening-name">Clarissa</h1>
+  <p class="opening-dates">ca. 1807 · South Carolina · Mississippi · Louisiana · ca. 1872</p>
+  <p class="opening-statement">
+    She appears in five documents across sixty-three years.<br>
+    She was moved three times across three states.<br>
+    By the end she did not know where she had been born.<br>
+    <em>This is built entirely from what those documents confirm —<br>
+    and what they leave us to hold honestly in the silence.</em>
+  </p>
+  <p class="scroll-down">her story ↓</p>
+</section>
+
+<!-- STORY -->
+<div class="story">
+
+  <!-- CHAPTER 1 -->
+  <div class="chapter">
+    <span class="chapter-date">ca. 1807 · Newberry County, South Carolina</span>
+    <h2 class="chapter-title">Born Into the Same World as Her Mother</h2>
+
+    <p>She was born approximately two years after her mother Patience was given to Patty Waldrop as a gift. The year was approximately 1807. The place was almost certainly Newberry County, South Carolina — the same red clay country along the Enoree River where Patience had spent the last twelve years of her life in the Waldrop household.</p>
+
+    <p>Clarissa did not come into the world as a free person. She was born enslaved, into a household that already held her mother. <strong>From the first day of her life, the Waldrop family had legal claim to her.</strong> She had not yet drawn her first breath before she was property.</p>
+
+    <p>What her childhood looked like — what Patience called her in their private language, what she learned from her mother, what she understood about her own situation — the documents do not say. They were never meant to say. The records that survive from this period are deed books and estate inventories. They named people when they were transferred. They did not record childhoods.</p>
+
+    <p>What we know is that she had a sister. <strong>Rachel.</strong> Both daughters of Patience. Both enslaved in the Waldrop household. They grew up together in Newberry County — and then they were moved together, from South Carolina to Mississippi, at some point in the years after 1807.</p>
+
+    <p>The exact year the Waldrop family left South Carolina is not recorded. But by 1827 — when the first document names Clarissa — she was in Mississippi. She had made that journey. And she had children of her own.</p>
+  </div>
+
+  <!-- CHAPTER 2 -->
+  <div class="chapter">
+    <span class="chapter-date">1827 · Mississippi</span>
+    <h2 class="chapter-title">The First Time Her Name Appeared</h2>
+
+    <p>She was approximately twenty years old the first time any document ever wrote her name down. It was 1827. She was in Mississippi — in the Waldrop household that had moved west from South Carolina years before. And she already had children.</p>
+
+    <p>The document was a distribution deed — Luke Waldrop Sr. dividing the people he held among his children. Patience, Rachel, Clarissa, Tom, William, Amanda, Harriet. Named and distributed like livestock or land.</p>
+
+    <div class="doc-pull">
+      <span class="doc-pull-label">Luke Waldrop Sr. Distribution Deed · 1827 · Mississippi</span>
+      <div class="doc-pull-text">...the said negro slave, Patience and her increase named Rachel, Clarissa, Tom (Rachel's son), <strong>Rachel's son William and Amanda and Harriet [children of Clarissa]</strong>... distributed to the children of the late Patsey Waldrop including <strong>Fanny Nichols (late Fanny Waldrop)</strong> and Claiborne P. Waldrop and James D. Waldrop and others...</div>
+      <span class="doc-pull-source">Luke Waldrop Sr. Distribution Deed · 1827 · Mississippi · confirmed by DNA — 46 Waldrop descendant matches</span>
+    </div>
+
+    <p>Read the names carefully. <strong>William. Amanda. Harriet.</strong> These are Clarissa's children — named in a legal document not to honor them, but to distribute them as property. They were listed alongside their mother and their grandmother and their aunt Rachel as items to be divided.</p>
+
+    <p>Clarissa had three confirmed children by 1827. She was approximately twenty years old. <strong>She had already built a family inside captivity — and that family had already been named in a deed before any of her children were old enough to understand what that meant.</strong></p>
+
+    <p>The deed distributed Clarissa and her children to <strong>Claiborne Parrish Waldrop</strong> — one of Patty Waldrop's sons, born 1798 in South Carolina. He would hold Clarissa and her family for the next thirty-eight years.</p>
+  </div>
+
+  <!-- CHAPTER 3 -->
+  <div class="chapter">
+    <span class="chapter-date">1839 · Rankin County, Mississippi</span>
+    <h2 class="chapter-title">The Last Mississippi Record</h2>
+
+    <p>Twelve years after the 1827 distribution deed, Clarissa's name appeared in Mississippi one final time. It was March 25, 1839 — a Rankin County estate transfer, Hezekiah Waldrop settling his affairs before his death.</p>
+
+    <div class="doc-pull">
+      <span class="doc-pull-label">Rankin County Mississippi · Deed Book 4 Page 435 · March 25, 1839</span>
+      <div class="doc-pull-text">...Patience and her children — Rachel, <strong>Clarissa</strong>, Tom, William, Amanda, Harriet... Signed <strong>Hezekiah Waldrop</strong>. The deed references the original August 4, 1795 Francis Davenport deed of gift. Recorded Rankin County Mississippi.</div>
+      <span class="doc-pull-source">Rankin County Mississippi Deed Book 4:435 · Certified copy pending — Rankin County Chancery Court 601-825-1469</span>
+    </div>
+
+    <p>This document traces Clarissa's family line all the way back to 1795 — to the deed that gave Patience to Patty Waldrop. Forty-four years of one family holding another family. Named and transferred and named again.</p>
+
+    <p>After March 25, 1839, Clarissa does not appear in any Mississippi record. <strong>The Waldrop family was moving west.</strong> Claiborne Waldrop — who held Clarissa — would leave Mississippi and settle in Sabine Parish, Louisiana by approximately 1841. His youngest child was born in Louisiana in 1841, confirming the family had moved by then.</p>
+
+    <p>Clarissa went with them. She had no choice.</p>
+  </div>
+
+  <!-- CHAPTER 4 -->
+  <div class="chapter">
+    <span class="chapter-date">1841 — 1865 · Sabine Parish, Louisiana</span>
+    <h2 class="chapter-title">Twenty-Four Years in Louisiana</h2>
+
+    <p><strong>Claiborne Parrish Waldrop</strong> settled his family near Pleasant Hill — a town on the border between Sabine Parish and DeSoto Parish in northwest Louisiana, roughly twelve miles from the Texas state line. He acquired land. He built a plantation. And by 1850 he held nineteen enslaved people — Clarissa among them.</p>
+
+    <p>The 1850 federal census slave schedule recorded her without her name — as it recorded every enslaved person — only by age and gender. But the ages are consistent. And the household is Claiborne Waldrop's.</p>
+
+    <div class="doc-pull">
+      <span class="doc-pull-label">1850 U.S. Federal Census · Slave Schedule · Sabine Parish, Louisiana</span>
+      <div class="doc-pull-text">C Waldroope · Sabine Parish, Louisiana · 6 enslaved people:<br>
+      · Female · age 63 · born ca. 1787 — <em>Rachel (Patience's daughter)</em><br>
+      · <strong>Female · age 48 · born ca. 1802 — Clarissa</strong><br>
+      · Female · age 30 · born ca. 1820 — Amanda or Harriet<br>
+      · Male · age 25 · born ca. 1825 — William<br>
+      · Male · age 21<br>
+      · Male · age 2</div>
+      <span class="doc-pull-source">1850 U.S. Federal Census Slave Schedule · Sabine Parish, Louisiana · C Waldroope household</span>
+    </div>
+
+    <p>Ten years later, in 1860, the census taker came again. Claiborne Waldrop's household had grown from six enslaved people to eighteen. Children had been born in Sabine Parish. A decade of life had happened in those cabins near Pleasant Hill — births, deaths, bonds formed and broken — none of it recorded anywhere except in the count of bodies.</p>
+
+    <div class="doc-pull">
+      <span class="doc-pull-label">1860 U.S. Federal Census · Slave Schedule · Sabine Parish, Louisiana</span>
+      <div class="doc-pull-text">C P Waldrope · Sabine Parish, Louisiana · Page 2, Line 33 · 18 enslaved people:<br>
+      · Male · 55 · Female · <strong>51</strong> · Female · 50 · Male · 45<br>
+      · Males ages 30, 25, 15, 13, 9 · Females ages 25, 23, 20<br>
+      · 3 infants born 1860 · Male 1 · Female 1 · Male 0<br><br>
+      <strong>Female age 51 — Clarissa. Consistent with age 48 in 1850.</strong></div>
+      <span class="doc-pull-source">1860 U.S. Federal Census Slave Schedule · Sabine Parish Louisiana · FamilySearch ark:/61903/1:1:WK2J-2CPZ</span>
+    </div>
+
+    <p>She was 51 years old. She had been enslaved for her entire life. She had been moved from South Carolina to Mississippi to Louisiana across five decades. She had watched her children grow up enslaved. She had watched grandchildren born into the same captivity.</p>
+
+    <p>And then the war came.</p>
+
+    <p>On April 9, 1864 — one year before emancipation — the <strong>Battle of Pleasant Hill</strong> was fought near the Waldrop plantation. Union troops came through Sabine Parish. The plantation world was disrupted. <strong>Claiborne Waldrop held 19 people in 1861.</strong> By the time the war ended, everything he had built was in collapse.</p>
+
+    <p>On April 9, 1865 — exactly one year after the Battle of Pleasant Hill — the war ended in the east. On June 19, 1865 — Juneteenth — the enslaved people of Texas were freed. Louisiana's liberation had come even earlier. <strong>Clarissa was free.</strong></p>
+
+    <p>She was approximately fifty-eight years old. She had never been free before in her life.</p>
+  </div>
+
+  <!-- CHAPTER 5 -->
+  <div class="chapter">
+    <span class="chapter-date">1870 · Fort Jesup, Ward 4, Sabine Parish, Louisiana</span>
+    <h2 class="chapter-title">Unknown to Herself</h2>
+
+    <p>Five years after emancipation, a census taker walked through Ward 4 of Sabine Parish — the area around Fort Jesup, directly on the road between Many and Pleasant Hill. He was recording the first census in which the formerly enslaved people of Louisiana would be listed by name.</p>
+
+    <p>He came to household 118. He wrote down four names.</p>
+
+    <div class="doc-pull">
+      <span class="doc-pull-label">1870 U.S. Federal Census · Ward 4 · Sabine Parish, Louisiana · Household 118 · Rows 33–36</span>
+      <div class="doc-pull-text">Madison Godwin — 34 — Male — Black — farm laborer — born Louisiana<br>
+      Peter Godwin — 80 — Male — Black — at home (helpless) — born Georgia<br>
+      <strong>Clarcy Godwin — 60 — Female — Black — keeping house — BIRTHPLACE: UNKNOWN TO HERSELF</strong><br>
+      Elzena Godwin — 10 — Female — Black — at home — born Louisiana</div>
+      <span class="doc-pull-source">1870 U.S. Federal Census · Sabine Parish Louisiana Ward 4 · Household 118 · Page 15</span>
+    </div>
+
+    <p>Her name — written as the census taker heard it — was <em>Clarcy.</em></p>
+
+    <p>Clarissa. Clarcy. The same name compressed by an ear that wrote what it heard and moved on.</p>
+
+    <p>She was sixty years old. She was keeping house. She had taken the surname Godwin — possibly from Peter, possibly from the Godwin family who were slaveholders in the same Sabine Parish community as the Waldrops, possibly from a reason the record never explains. She could not read. She could not write.</p>
+
+    <p>And when the census taker asked where she was born — the question that would have placed her in South Carolina, would have traced her back to Newberry County, to the household of Francis Davenport, to the red clay country along the Enoree River where Patience first held her — <strong>she said she did not know.</strong></p>
+
+    <p>The census taker wrote what she told him: <em>Unknown to herself.</em></p>
+
+    <div class="pause">
+      She had been moved from South Carolina to Mississippi to Louisiana<br>
+      across sixty years.<br><br>
+      She had been sold, transferred, distributed, and moved<br>
+      so many times that she lost her own origin.<br><br>
+      The place where she was born<br>
+      had been taken from her<br>
+      along with everything else.<br><br>
+      She did not know where she came from.<br>
+      She told him so.<br>
+      He wrote it down.<br><br>
+      <em>Unknown to herself.</em>
+    </div>
+
+    <p>After 1870, Clarissa does not appear in any record we have found. She would have been approximately seventy years old in 1880 — if she survived. She does not appear in the 1880 Sabine Parish census. Madison Godwin, who was thirty-four in 1870, also disappears. Peter Godwin, who was eighty, almost certainly died before 1880.</p>
+
+    <p><strong>Clarissa died sometime in the early 1870s.</strong> In Sabine Parish, Louisiana, near Pleasant Hill — not far from the plantation where she had spent twenty-four years of her life. Her burial place is not recorded anywhere we have found. Her last document is a single line in a census book, written by a man who did not know her name and did not know her story and moved on to the next household before she had finished telling him what she could not remember.</p>
+  </div>
+
+  <!-- THE FIVE DOCUMENTS -->
+  <div class="five-docs">
+    <span class="five-docs-label">Five Documents · Sixty-Three Years · Three States</span>
+
+    <div class="doc-entry">
+      <div class="doc-year">1827</div>
+      <div class="doc-content">
+        <span class="doc-content-title">The Distribution Deed</span>
+        <span class="doc-content-place">Mississippi</span>
+        <p class="doc-content-text">Luke Waldrop Sr. names Clarissa as Patience's daughter. Her children William, Amanda, and Harriet are named. She is distributed to Claiborne Waldrop. This is the first document that writes her name.</p>
+      </div>
+    </div>
+
+    <div class="doc-entry">
+      <div class="doc-year">1839</div>
+      <div class="doc-content">
+        <span class="doc-content-title">The Rankin County Deed</span>
+        <span class="doc-content-place">Rankin County, Mississippi</span>
+        <p class="doc-content-text">Hezekiah Waldrop's final estate transfer. Clarissa named again alongside Patience and Rachel. This is the last Mississippi record. <strong>Certified copy still pending — Rankin County Chancery Court 601-825-1469.</strong></p>
+      </div>
+    </div>
+
+    <div class="doc-entry">
+      <div class="doc-year">1850</div>
+      <div class="doc-content">
+        <span class="doc-content-title">The Sabine Parish Slave Schedule</span>
+        <span class="doc-content-place">Sabine Parish, Louisiana</span>
+        <p class="doc-content-text">Female age 48 in Claiborne Waldrop's household. No name — the law did not require names. But the age is consistent. Clarissa is here. Also present: Rachel (age 63), William (age 25), and younger family members born in Louisiana.</p>
+      </div>
+    </div>
+
+    <div class="doc-entry">
+      <div class="doc-year">1860</div>
+      <div class="doc-content">
+        <span class="doc-content-title">The Second Slave Schedule</span>
+        <span class="doc-content-place">Sabine Parish, Louisiana</span>
+        <p class="doc-content-text">Female age 51. Consistent with age 48 in 1850. The household has grown from 6 to 18 people across one decade. Three infants were born in 1860 alone. <strong>FamilySearch ark:/61903/1:1:WK2J-2CPZ.</strong></p>
+      </div>
+    </div>
+
+    <div class="doc-entry">
+      <div class="doc-year">1870</div>
+      <div class="doc-content">
+        <span class="doc-content-title">The Last Record</span>
+        <span class="doc-content-place">Ward 4 · Fort Jesup · Sabine Parish, Louisiana</span>
+        <p class="doc-content-text">Clarcy Godwin. Age 60. Keeping house. Birthplace: <strong>unknown to herself.</strong> Household 118, Rows 33–36. This is the last document that names her. She does not appear in the 1880 census. She died in the early 1870s, near the land where she had been held for twenty-four years.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TWO LINES -->
+  <div class="two-lines">
+    <span class="two-lines-label">How Clarissa Connects to Easter Bell · Two Lines · One Family</span>
+
+    <p style="font-size:15px;line-height:2;color:var(--aged);margin-bottom:32px;">This is the part that confuses people — and it is important to hold clearly. <strong style="color:var(--cream);font-weight:normal;">Clarissa is not Easter Bell's grandmother in the direct line.</strong> Easter Bell came from a separate enslaved family line. The two lines merged when Joseph Nichols married Easter Bell on December 18, 1865 — six months after Juneteenth.</p>
+
+    <div class="lines-grid">
+      <div class="line-col">
+        <span class="line-col-label">Line One · The Waldrop-Nichols Line</span>
+        <span class="line-col-name">Clarissa's Line</span>
+        <p class="line-col-desc">Patience → Clarissa → one of her children (William, Amanda, or Harriet) → <strong>Joseph Nichols</strong> — born ca. 1847, enslaved by John Nichols in Bellville Texas, DNA-confirmed descendant of Clarissa. Took the Nichols surname at emancipation.</p>
+      </div>
+      <div class="line-col">
+        <span class="line-col-label">Line Two · The Bell-Blayn Line</span>
+        <span class="line-col-name">Easter's Line</span>
+        <p class="line-col-desc"><strong>Rendy Blayn</strong> (born 1817, North Carolina) → <strong>Easter Bell</strong> (born July 4, 1838, Texas) — enslaved in John Nichols' household in Bellville. Took the Bell surname — likely from Thomas Bell, John Nichols' closest business associate.</p>
+      </div>
+    </div>
+
+    <div class="merge-point">
+      <span class="merge-date">December 18, 1865 · Bellville, Austin County, Texas</span>
+      <p class="merge-text">Joseph Nichols married Easter Bell.<br>Clarissa's line and Rendy Blayn's line<br>became one family.</p>
+    </div>
+
+    <p style="font-size:14px;line-height:2;color:var(--muted);margin-top:32px;font-style:italic;text-align:center;">The exact connection between Clarissa's confirmed children — Amanda and Harriet — and Joseph Nichols remains unresolved. William is Rachel's son per the 1839 primary source deed. The John Nichols 1864 probate record at Austin County Clerk (979-865-5911) is the document most likely to answer this question.</p>
+  </div>
+
+  <!-- THE LINE -->
+  <div class="the-line">
+    <span class="line-label">What Came After · From Clarissa to Now</span>
+
+    <div class="line-chain">
+
+      <div class="line-link">
+        <div class="line-dot highlight"></div>
+        <div class="line-content">
+          <span class="line-name gold">Patience</span>
+          <span class="line-detail">born ca. 1765 · South Carolina · Clarissa's mother · sold January 1 1795 · given to Patty Waldrop August 4 1795 · last record Mississippi 1839</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot highlight"></div>
+        <div class="line-content">
+          <span class="line-name gold">Clarissa</span>
+          <span class="line-detail">born ca. 1807 · South Carolina · Patience's daughter · moved SC → MS → LA · last record 1870 Fort Jesup · birthplace unknown to herself · died ca. early 1870s</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot"></div>
+        <div class="line-content">
+          <span class="line-name">Amanda · Harriet</span>
+          <span class="line-detail">Clarissa's confirmed children · named in 1839 Rankin County deed · William belongs to Rachel's line · exact birth years unknown · connection to Joseph Nichols pending Austin County probate</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot highlight"></div>
+        <div class="line-content">
+          <span class="line-name gold">Joseph Nichols</span>
+          <span class="line-detail">born ca. 1847 · Bellville Texas · enslaved by John Nichols · DNA-confirmed descendant of Clarissa · free by 1865 · married Easter Bell December 18 1865</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot"></div>
+        <div class="line-content">
+          <span class="line-name">Hellen Nichols Armstrong</span>
+          <span class="line-detail">born September 1870 · Bellville Texas · daughter of Joseph and Easter Bell · married John Armstrong · mother of Eva</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot"></div>
+        <div class="line-content">
+          <span class="line-name">Eva Armstrong Ballard</span>
+          <span class="line-detail">born June 27 1900 · Bellville Texas · died November 24 1977 · Garden Grove California · ran the Nip and Sip · told the truth</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot highlight"></div>
+        <div class="line-content">
+          <span class="line-name gold">Margie Nell Ballard Corbin</span>
+          <span class="line-detail">born March 13 1929 · Fort Worth Texas · NaNa · died October 15 1988 · Garden Grove California</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot"></div>
+        <div class="line-content">
+          <span class="line-name">Hjordis L. Corbin</span>
+          <span class="line-detail">born January 20 1960 · Los Angeles · daughter of Margie · mother of Jasmine</span>
+        </div>
+      </div>
+
+      <div class="line-link">
+        <div class="line-dot highlight"></div>
+        <div class="line-content">
+          <span class="line-name gold">Jasmine M. Lee</span>
+          <span class="line-detail">born January 25 1982 · Orange County California · founder, Dock Ellis Foundation · the researcher who spent seven years finding these documents · the person who wrote Clarissa's name down for a different reason</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <h2 class="closing-title">She Did Not Know<br>Where She Came From.<br>We Do.</h2>
+
+    <p class="closing-body">
+      When the census taker asked Clarissa where she was born, she told him she did not know. Sixty years of being moved and sold and transferred had taken that from her. The place where she came from — Newberry County, South Carolina, the household of Patty and Hezekiah Waldrop — had been erased from her own memory by the system that held her.
+    </p>
+
+    <p class="closing-body">
+      <strong>We know.</strong> We found the deeds. We found the slave schedules. We found the census entry that named her Clarcy and wrote down what she said about herself. We traced her from Newberry County South Carolina in 1807 to Fort Jesup Louisiana in 1870. We found her mother and her sister and her children and her grandchildren and the line that runs unbroken from her to the person reading this page.
+    </p>
+
+    <p class="closing-body">
+      She spent her whole life without knowing her own origins. This page exists so that her descendants never have to say the same thing about her.
+    </p>
+
+    <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:32px;">
+      Research by Jasmine M. Lee · Dock Ellis Foundation · Seven years · 2019–2026
+    </p>
+
+    <div>
+      <a href="patience_story.html" class="back-link">← Patience · Her Story</a>
+      <a href="papertrail.html" class="back-link">Read the Documents →</a>
+      <a href="family_tree.html" class="back-link">← Return to Archive</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
+</script>
+</body>
+</html>
 

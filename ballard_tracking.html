@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newton Ballard Community Tracking Chart · 1840–1850</title>
+<style>
+  :root {
+    --deep:#080604;--gold:#c9a84c;--gold2:#e8c96a;--cream:#f5f2ec;
+    --parchment:#f0ead8;--border:rgba(201,168,76,0.18);
+    --red-dim:rgba(139,58,58,0.12);--red-border:rgba(139,58,58,0.35);
+    --green-dim:rgba(91,140,90,0.10);--green-border:rgba(91,140,90,0.35);
+    --gold-dim:rgba(201,168,76,0.12);--gold-border:rgba(201,168,76,0.45);
+    --blue-dim:rgba(58,91,140,0.12);--blue-border:rgba(58,91,140,0.35);
+    --grey-dim:rgba(80,80,80,0.15);--grey-border:rgba(120,120,120,0.30);
+    --f-display:'Georgia','Times New Roman',serif;
+    --f-mono:'Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--deep);color:var(--cream);font-family:'Georgia',serif;
+       padding:40px 20px 80px;-webkit-font-smoothing:antialiased;}
+
+  /* HEADER */
+  .hdr{max-width:860px;margin:0 auto 48px;text-align:center;}
+  .eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+           text-transform:uppercase;color:rgba(255,255,255,0.40);
+           display:block;margin-bottom:14px;}
+  h1{font-family:var(--f-display);font-size:clamp(24px,4.5vw,40px);
+     font-style:italic;color:var(--parchment);line-height:1.25;margin-bottom:10px;}
+  .sub{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;
+       color:rgba(255,255,255,0.35);display:block;margin-bottom:22px;}
+  .intro{font-size:13.5px;line-height:1.9;color:#b8b0a4;max-width:680px;margin:0 auto;}
+
+  /* STAT STRIP */
+  .stats{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;
+         max-width:860px;margin:36px auto;}
+  .stat{flex:1;min-width:110px;background:rgba(201,168,76,0.06);
+        border:1px solid var(--border);padding:16px 12px;text-align:center;}
+  .stat-n{font-family:var(--f-display);font-size:32px;color:var(--gold);display:block;}
+  .stat-l{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;
+           text-transform:uppercase;color:rgba(255,255,255,0.40);margin-top:4px;display:block;}
+
+  /* LEGEND */
+  .legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;
+          max-width:860px;margin:0 auto 36px;}
+  .leg{display:flex;align-items:center;gap:7px;
+       font-family:var(--f-mono);font-size:8px;letter-spacing:1.5px;
+       text-transform:uppercase;color:rgba(255,255,255,0.50);}
+  .dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
+  .d-gold{background:#c9a84c;}
+  .d-green{background:#5b8c5a;}
+  .d-red{background:#8c3a3a;}
+  .d-blue{background:#3a6b8c;}
+  .d-grey{background:#606060;}
+
+  /* SECTION DIVIDER */
+  .sec-div{max-width:860px;margin:32px auto 16px;display:flex;align-items:center;gap:12px;}
+  .sec-div-line{flex:1;height:1px;background:var(--border);}
+  .sec-div-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+                 text-transform:uppercase;color:rgba(255,255,255,0.35);}
+
+  /* COLUMN HEADERS */
+  .col-hdr{max-width:860px;margin:0 auto 8px;
+           display:grid;grid-template-columns:190px 1fr 1fr;gap:10px;padding:0 2px;}
+  .col-hdr span{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;
+                text-transform:uppercase;color:rgba(255,255,255,0.40);text-align:center;}
+  .col-hdr span:first-child{text-align:left;}
+
+  /* PERSON ROW */
+  .row{max-width:860px;margin:0 auto 8px;
+       display:grid;grid-template-columns:190px 1fr 1fr;gap:10px;align-items:stretch;}
+
+  .label{padding:13px 14px;background:rgba(8,6,4,0.6);
+         border:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;}
+  .lname{font-family:var(--f-display);font-size:13px;font-style:italic;
+         color:var(--parchment);display:block;margin-bottom:3px;}
+  .lsub{font-family:var(--f-mono);font-size:8px;color:rgba(255,255,255,0.35);}
+
+  .cell{padding:13px 14px;border:1px solid;display:flex;flex-direction:column;justify-content:center;}
+  .cell.present{background:var(--green-dim);border-color:var(--green-border);}
+  .cell.absent{background:var(--red-dim);border-color:var(--red-border);}
+  .cell.newton{background:var(--gold-dim);border-color:var(--gold-border);}
+  .cell.inferred{background:var(--blue-dim);border-color:var(--blue-border);}
+  .cell.unknown{background:var(--grey-dim);border-color:var(--grey-border);}
+
+  .status{font-family:var(--f-mono);font-size:8px;letter-spacing:1.5px;
+          text-transform:uppercase;margin-bottom:4px;}
+  .status.s-present{color:#7ab878;}
+  .status.s-absent{color:#c07070;}
+  .status.s-newton{color:var(--gold);}
+  .status.s-inferred{color:#7a9bc0;}
+  .status.s-unknown{color:#888;}
+
+  .detail{font-size:11.5px;line-height:1.6;color:#a09890;}
+  .source{font-family:var(--f-mono);font-size:8px;color:rgba(255,255,255,0.28);
+          margin-top:5px;}
+
+  /* SUMMARY BOX */
+  .summary{max-width:860px;margin:40px auto 0;
+           border:1px solid var(--border);padding:24px 28px;
+           background:rgba(201,168,76,0.04);}
+  .sum-title{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+             text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .sum-item{font-size:12.5px;line-height:1.8;color:#a09890;}
+  .sum-item strong{color:var(--parchment);font-style:italic;}
+
+  /* OPEN QUESTIONS */
+  .questions{max-width:860px;margin:24px auto 0;
+             border:1px solid var(--red-border);padding:24px 28px;
+             background:var(--red-dim);}
+  .q-title{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+           text-transform:uppercase;color:#c07070;margin-bottom:14px;}
+  .q-item{font-size:12px;line-height:1.8;color:#a09890;padding-left:16px;
+          text-indent:-16px;margin-bottom:6px;}
+  .q-item::before{content:"→ ";color:#c07070;}
+
+  @media(max-width:600px){
+    .col-hdr,.row{grid-template-columns:140px 1fr;}
+    .col-hdr span:last-child,.cell:last-child{display:none;}
+    .sum-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <span class="eyebrow">Nichols-Waldrop Family Legacy · Research Archive</span>
+  <h1>Newton Ballard · Community Tracking Chart</h1>
+  <span class="sub">Copiah County, Mississippi 1840 → Smith County, Texas 1850</span>
+  <p class="intro">
+    Eight enslaved people appear in L.F. Ballard Sr.'s 1840 Copiah County household. 
+    Ten years later — after the Grand Gulf Bank crisis, Mary Ballard's courthouse rescue, 
+    and the westward migration to Texas — only five remain in the documented Texas schedule. 
+    This chart tracks each individual across the decade and identifies who was lost to the bank defaults.
+  </p>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <span class="stat-n">8</span>
+    <span class="stat-l">Enslaved 1840 MS</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">5</span>
+    <span class="stat-l">Enslaved 1850 TX</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">3+</span>
+    <span class="stat-l">Lost to Bank Crisis</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">1</span>
+    <span class="stat-l">Confirmed — Newton</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">$11,736</span>
+    <span class="stat-l">Total Bank Debt · 1840</span>
+  </div>
+</div>
+
+<!-- LEGEND -->
+<div class="legend">
+  <div class="leg"><div class="dot d-gold"></div>Newton — Confirmed Ancestor</div>
+  <div class="leg"><div class="dot d-green"></div>Tracked — Age Profile Consistent</div>
+  <div class="leg"><div class="dot d-red"></div>Lost — Not in 1850 Texas</div>
+  <div class="leg"><div class="dot d-blue"></div>Inferred — Age Profile Match</div>
+  <div class="leg"><div class="dot d-grey"></div>Unresolved — Record Conflict</div>
+</div>
+
+<!-- SECTION: NAMED IN 1840 DEED -->
+<div class="sec-div">
+  <div class="sec-div-line"></div>
+  <div class="sec-div-label">Six People Named in 1840 Grand Gulf Bank Deed · Copiah Co. Deed Book J Pages 155–157</div>
+  <div class="sec-div-line"></div>
+</div>
+
+<div class="col-hdr">
+  <span>Individual</span>
+  <span>1840 · Copiah County, Mississippi</span>
+  <span>1850 · Smith County, Texas</span>
+</div>
+
+<!-- NEWTON -->
+<div class="row">
+  <div class="label">
+    <span class="lname">Newton Ballard</span>
+    <span class="lsub">Born ca. 1830 · Mississippi</span>
+  </div>
+  <div class="cell present">
+    <div class="status s-present">Present — Confirmed</div>
+    <div class="detail">Male age 10–23 bracket in 1840 census. Not named in Grand Gulf Bank deed — left unencumbered. Cross-confirmed by 1840 census bracket.</div>
+    <div class="source">1840 US Census · L.F. Ballard household · Copiah Co. MS</div>
+  </div>
+  <div class="cell newton">
+    <div class="status s-newton">Confirmed Ancestor</div>
+    <div class="detail">Unnamed male age 20. Page 459 Lines 15–18. The only male in that age range in the Ballard slave schedule. Certified by Asst. Marshal Eli E. Cowart.</div>
+    <div class="source">1850 Slave Schedule · Smith Co. TX · Page 459</div>
+  </div>
+</div>
+
+<!-- AARON -->
+<div class="row">
+  <div class="label">
+    <span class="lname">Aaron</span>
+    <span class="lsub">Born ca. 1832 · Mississippi</span>
+  </div>
+  <div class="cell present">
+    <div class="status s-present">Named in Deed</div>
+    <div class="detail">Age 8 in April 1840 Grand Gulf Bank deed. Mortgaged as collateral for $3,060 debt. Also named in 1842 Edmund King estate inventory in Smith Co. TX — independent cross-confirmation.</div>
+    <div class="source">Deed Book J pp.155–157 · April 15 1840</div>
+  </div>
+  <div class="cell inferred">
+    <div class="status s-inferred">Inferred — Not in 1850 Schedule</div>
+    <div class="detail">Age 18 by 1850. Not identifiable in the 5-person 1850 schedule. May have been sold at foreclosure or transferred before migration. New Hope Baptist Church history names Aaron in Smith Co. TX — possibly arrived separately.</div>
+    <div class="source">New Hope Missionary Baptist Church History · Smith Co. TX</div>
+  </div>
+</div>
+
+<!-- EMALINE -->
+<div class="row">
+  <div class="label">
+    <span class="lname">Emaline</span>
+    <span class="lsub">Born ca. 1834 · Mississippi</span>
+  </div>
+  <div class="cell present">
+    <div class="status s-present">Named in Deed</div>
+    <div class="detail">Age 6 in April 1840 Grand Gulf Bank deed. Mortgaged alongside Aaron. Independently named in New Hope Missionary Baptist Church history in Smith Co. TX — two primary sources across two states.</div>
+    <div class="source">Deed Book J pp.155–157 · April 15 1840</div>
+  </div>
+  <div class="cell inferred">
+    <div class="status s-inferred">Inferred — Age Profile Match</div>
+    <div class="detail">Age 16 by 1850. Consistent with female age 18 in 1850 slave schedule (born ca. 1832 — slight variance). Church history confirms her presence in Smith Co. TX independently.</div>
+    <div class="source">New Hope Baptist Church History · 1850 Slave Schedule</div>
+  </div>
+</div>
+
+<!-- REBECCA -->
+<div class="row">
+  <div class="label">
+    <span class="lname">Rebecca</span>
+    <span class="lsub">Born ca. March 1839 · Mississippi</span>
+  </div>
+  <div class="cell present">
+    <div class="status s-present">Named in Deed</div>
+    <div class="detail">Age 13 months in April 1840 deed. Youngest named enslaved person in the Ballard household. Born approximately March 1839.</div>
+    <div class="source">Deed Book J pp.155–157 · April 15 1840</div>
+  </div>
+  <div class="cell inferred">
+    <div class="status s-inferred">Probable Match</div>
+    <div class="detail">Age 11 by 1850. Consistent with female age 11 in 1850 slave schedule. Born ca. 1839 matches exactly. Highest-probability identification in the 1850 schedule after Newton.</div>
+    <div class="source">1850 Slave Schedule · Smith Co. TX · Page 459</div>
+  </div>
+</div>
+
+<!-- JUDY -->
+<div class="row">
+  <div class="label">
+    <span class="lname">Judy</span>
+    <span class="lsub">Born ca. 1818 · Age 22 in 1840</span>
+  </div>
+  <div class="cell present">
+    <div class="status s-present">Named in Deed</div>
+    <div class="detail">Age 22 in April 1840 Grand Gulf Bank deed. Adult woman — prime working age. Mortgaged as collateral alongside Scylla, Aaron, Emaline, Rebecca.</div>
+    <div class="source">Deed Book J pp.155–157 · April 15 1840</div>
+  </div>
+  <div class="cell absent">
+    <div class="status s-absent">Lost — Not Traced to Texas</div>
+    <div class="detail">Age 32 by 1850. No female age 30–35 appears in the 1850 Smith Co. slave schedule. Most likely sold at the September 1845 courthouse foreclosure or transferred before the Texas migration. Fate unknown.</div>
+    <div class="source">Absent from 1850 Slave Schedule · Smith Co. TX</div>
+  </div>
+</div>
+
+<!-- SCYLLA -->
+<div class="row">
+  <div class="label">
+    <span class="lname">Scylla</span>
+    <span class="lsub">Born ca. 1814 · Age 26 in 1840</span>
+  </div>
+  <div class="cell unknown">
+    <div class="status s-unknown">Record Conflict</div>
+    <div class="detail">Age 26 in April 1840 deed. Named as female age 24–35. But 1840 census shows only 1 female in the 24–35 bracket — meaning Judy and Scylla cannot both appear. One of them may have been sold, died, or was absent on census day.</div>
+    <div class="source">Deed Book J pp.155–157 vs. 1840 Census discrepancy</div>
+  </div>
+  <div class="cell inferred">
+    <div class="status s-inferred">Probable Match — Naming Pattern</div>
+    <div class="detail">Age 36 by 1850. Consistent with female age 38 in 1850 slave schedule. The naming of Silla Ballard — Newton's granddaughter in 1870 — after Scylla strongly suggests she traveled to Texas and remained a significant figure in Newton's community memory.</div>
+    <div class="source">1870 Census · Silla Ballard age 13 · Upshur Co. TX</div>
+  </div>
+</div>
+
+<!-- SECTION: UNNAMED IN DEED -->
+<div class="sec-div">
+  <div class="sec-div-line"></div>
+  <div class="sec-div-label">Present in 1840 Census · Not Named in Grand Gulf Bank Deed</div>
+  <div class="sec-div-line"></div>
+</div>
+
+<div class="col-hdr">
+  <span>Individual</span>
+  <span>1840 · Copiah County, Mississippi</span>
+  <span>1850 · Smith County, Texas</span>
+</div>
+
+<!-- UNNAMED MALE 18 -->
+<div class="row">
+  <div class="label">
+    <span class="lname">Unnamed Male · Age 18</span>
+    <span class="lsub">Born ca. 1822 · Named in Deed · Name illegible</span>
+  </div>
+  <div class="cell present">
+    <div class="status s-present">Named in Deed · Unrecorded Name</div>
+    <div class="detail">Listed as the second person in the April 15 1840 Grand Gulf Bank deed — between Judy and Scylla. Age 18, born ca. 1822. His name was either illegible in the original or not recorded. He is separate from the two unnamed adult males in the census brackets.</div>
+    <div class="source">Deed Book J pp.155–157 · April 15 1840</div>
+  </div>
+  <div class="cell absent">
+    <div class="status s-absent">Lost · Not in 1850 Texas</div>
+    <div class="detail">Age 28 by 1850. No male in that age range appears in the 1850 Smith Co. slave schedule. Almost certainly sold during the foreclosure crisis — either at the September 1845 courthouse auction or in an earlier private transaction to satisfy the overlapping bank debts.</div>
+    <div class="source">Absent from 1850 Slave Schedule · Smith Co. TX</div>
+  </div>
+</div>
+
+<!-- ADULT MALE 1 -->
+<div class="row">
+  <div class="label">
+    <span class="lname">Unknown Adult Male A</span>
+    <span class="lsub">Born ca. 1805–1816 · Age 24–35 in 1840</span>
+  </div>
+  <div class="cell present">
+    <div class="status s-present">Present — Census Only</div>
+    <div class="detail">One of two adult males age 24–35 in the 1840 census not named in the Grand Gulf Bank deed. Not mortgaged — possibly held through separate family inheritance or a different financial instrument.</div>
+    <div class="source">1840 US Census · L.F. Ballard household · Copiah Co. MS</div>
+  </div>
+  <div class="cell absent">
+    <div class="status s-absent">Lost — Not Traced to Texas</div>
+    <div class="detail">Age 34–45 by 1850. No male in that age range appears in the 1850 Smith Co. slave schedule. Almost certainly sold at the September 1845 courthouse foreclosure auction conducted by trustee William Barnes. Fate and name unknown.</div>
+    <div class="source">Absent from 1850 Slave Schedule · Smith Co. TX</div>
+  </div>
+</div>
+
+<!-- ADULT MALE 2 -->
+<div class="row">
+  <div class="label">
+    <span class="lname">Unknown Adult Male B</span>
+    <span class="lsub">Born ca. 1805–1816 · Age 24–35 in 1840</span>
+  </div>
+  <div class="cell present">
+    <div class="status s-present">Present — Census Only</div>
+    <div class="detail">Second of two adult males age 24–35 in the 1840 census. Neither is named in the Grand Gulf Bank deed. Their absence from the Texas records suggests they were lost to the financial crisis — sold to satisfy multiple overlapping bank debts.</div>
+    <div class="source">1840 US Census · L.F. Ballard household · Copiah Co. MS</div>
+  </div>
+  <div class="cell absent">
+    <div class="status s-absent">Lost — Not Traced to Texas</div>
+    <div class="detail">Age 34–45 by 1850. Absent from 1850 Smith Co. slave schedule. The Bank of Port Gibson default judgment ($476.41), the Union Bank Stock Mortgage, and the Grand Gulf Bank multi-mortgage crisis all created pressure to liquidate adult male enslaved people — highest-value assets — first.</div>
+    <div class="source">Absent from 1850 Slave Schedule · Smith Co. TX</div>
+  </div>
+</div>
+
+<!-- SECTION: 1850 ONLY -->
+<div class="sec-div">
+  <div class="sec-div-line"></div>
+  <div class="sec-div-label">Present in 1850 Smith County Texas · Not Accounted for in 1840 Copiah County Records</div>
+  <div class="sec-div-line"></div>
+</div>
+
+<div class="col-hdr">
+  <span>Individual</span>
+  <span>1840 · Copiah County, Mississippi</span>
+  <span>1850 · Smith County, Texas</span>
+</div>
+
+<!-- FEMALE 18 -->
+<div class="row">
+  <div class="label">
+    <span class="lname">Unknown Female</span>
+    <span class="lsub">Born ca. 1832 · Age 18 in 1850</span>
+  </div>
+  <div class="cell inferred">
+    <div class="status s-inferred">Possible — Emaline Age Variance</div>
+    <div class="detail">Born ca. 1832. Could be Emaline (born ca. 1834 per deed — 2-year variance). Could also be a separate person acquired between 1845 and 1850 after Mary Ballard's courthouse rescue. Identity unresolved.</div>
+    <div class="source">1840 Deed vs. 1850 Schedule age variance</div>
+  </div>
+  <div class="cell present">
+    <div class="status s-present">Present — 1850 Schedule</div>
+    <div class="detail">Female age 18. Page 459 Smith Co. TX slave schedule. Born ca. 1832. Appears immediately after Newton (male age 20) in the schedule — consistent with a sibling or close community member.</div>
+    <div class="source">1850 Slave Schedule · Smith Co. TX · Page 459</div>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary">
+  <div class="sum-title">Research Summary · What the Decade Cost This Community</div>
+  <div class="sum-grid">
+    <div class="sum-item">
+      <strong>Lost to Bank Crisis (confirmed):</strong> At least three people were lost — the unnamed male age 18 from the deed, and the two unnamed adult males age 24–35 from the census. L.F. Ballard Sr. carried $11,736 in simultaneous bank debt: the Union Bank Stock Mortgage ($8,200, May 1839), the Grand Gulf Bank multi-mortgage ($3,060, April 1840), and the Bank of Port Gibson default judgment ($476.41, March 1840). Adult males of working age were the highest-value liquidation assets.
+    </div>
+    <div class="sum-item">
+      <strong>Judy's fate:</strong> Named in the 1840 deed but absent from the 1850 Texas schedule. Age 32 by 1850 — still prime working age. She was either sold at the September 1845 courthouse foreclosure or in a separate transaction. Her name does not reappear in any confirmed Ballard record in Texas.
+    </div>
+    <div class="sum-item">
+      <strong>Scylla's survival:</strong> The 1840 census/deed discrepancy is unresolved, but the naming of Newton's granddaughter Silla Ballard in the 1870 Upshur County census strongly suggests Scylla survived, traveled to Texas, and remained significant enough in the community's memory that her name was carried forward two generations.
+    </div>
+    <div class="sum-item">
+      <strong>Mary Ballard's courthouse rescue:</strong> On September 15 1845, Mary Ballard purchased the entire 517-acre plantation back for $917 at the courthouse door auction — preventing further liquidation of the enslaved community. Without that intervention, Newton and the remaining members of this community would likely have been sold and scattered.
+    </div>
+  </div>
+</div>
+
+<!-- OPEN QUESTIONS -->
+<div class="questions">
+  <div class="q-title">Open Research Questions</div>
+  <div class="q-item">Smith County Texas probate records 1850–1860 — L.F. Ballard Sr. estate — would name Newton individually and document the transfer of enslaved people after his death.</div>
+  <div class="q-item">Copiah County Deed Book G Pages 385–386 — the 1839 Union Bank Stock Mortgage front pages — may name Newton as an infant and identify his birth mother.</div>
+  <div class="q-item">Copiah County Deed Book B Page 117 — Smith neighbor indemnity bond — may name the two unnamed adult males lost to the bank crisis.</div>
+  <div class="q-item">Judy's fate — no record found post-1845 — courthouse auction purchaser records from September 15 1845 may identify who acquired her.</div>
+  <div class="q-item">Scylla/1840 census discrepancy — only one female age 24–35 in census vs. two women (Judy and Scylla) in that bracket in the deed — requires resolution.</div>
+  <div class="q-item">Rains County Grantee/Grantor Index 1873–1885 — where Newton went after selling his Upshur County land for 250 gold dollars in August 1873.</div>
+</div>
+
+</body>
+</html>

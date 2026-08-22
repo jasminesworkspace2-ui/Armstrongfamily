@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newton Ballard · Primary Source Record · Nichols-Waldrop Family Legacy</title>
+<meta name="description" content="The complete primary source record of Newton Ballard — born enslaved ca. 1830 in Copiah County Mississippi, 160-acre land claim Upshur County Texas 1856, father of Rev. George W. Ballard. Research by Jasmine M. Lee, Dock Ellis Foundation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep:#080604;--surface:#0e0b08;--card:#141009;
+    --gold:#c9a84c;--gold2:#e8c96a;
+    --cream:#f5f2ec;--parchment:#f0ead8;
+    --muted:rgba(245,242,236,0.45);
+    --border:rgba(201,168,76,0.15);
+    --f-display:'DM Serif Display',Georgia,serif;
+    --f-body:'Inter',sans-serif;
+    --f-mono:'Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);
+       -webkit-font-smoothing:antialiased;padding-bottom:80px;}
+
+  /* NAV */
+  .nav{padding:16px 24px;border-bottom:1px solid var(--border);
+       display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;
+            text-transform:uppercase;color:var(--muted);text-decoration:none;}
+  .nav-back:hover{color:var(--gold);}
+  .nav-title{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;
+             text-transform:uppercase;color:rgba(255,255,255,0.25);}
+
+  /* HERO */
+  .hero{max-width:760px;margin:64px auto 56px;padding:0 24px;text-align:center;}
+  .eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+           text-transform:uppercase;color:rgba(255,255,255,0.35);
+           display:block;margin-bottom:16px;}
+  h1{font-family:var(--f-display);font-size:clamp(32px,6vw,52px);
+     font-style:italic;color:var(--parchment);line-height:1.15;margin-bottom:14px;}
+  .hero-sub{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;
+            text-transform:uppercase;color:var(--muted);margin-bottom:28px;display:block;}
+  .hero-intro{font-size:15px;line-height:1.9;color:#c0b8b0;max-width:640px;margin:0 auto;}
+
+  /* STATS */
+  .stats{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;
+         max-width:760px;margin:0 auto 56px;padding:0 24px;}
+  .stat{flex:1;min-width:100px;background:rgba(201,168,76,0.05);
+        border:1px solid var(--border);padding:16px 12px;text-align:center;}
+  .stat-n{font-family:var(--f-display);font-size:28px;color:var(--gold);display:block;}
+  .stat-l{font-family:var(--f-mono);font-size:7px;letter-spacing:1.5px;
+          text-transform:uppercase;color:var(--muted);margin-top:4px;display:block;}
+
+  /* CONTAINER */
+  .container{max-width:760px;margin:0 auto;padding:0 24px;}
+
+  /* SECTION DIVIDER */
+  .sec{display:flex;align-items:center;gap:14px;margin:48px 0 20px;}
+  .sec-line{flex:1;height:1px;background:var(--border);}
+  .sec-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+             text-transform:uppercase;color:rgba(255,255,255,0.30);white-space:nowrap;}
+
+  /* NARRATIVE */
+  .narrative{margin-bottom:40px;}
+  .narrative p{font-size:15px;line-height:1.95;color:#c0b8b0;margin-bottom:18px;}
+  .narrative p:last-child{margin-bottom:0;}
+  .narrative strong{color:var(--parchment);font-weight:500;}
+
+  /* DOCUMENT CARDS */
+  .doc-card{background:var(--card);border-left:3px solid var(--gold);
+            padding:18px 20px;margin-bottom:10px;}
+  .doc-date{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;
+            text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block;}
+  .doc-title{font-size:14px;font-weight:500;color:var(--parchment);
+             margin-bottom:8px;line-height:1.4;}
+  .doc-body{font-size:13px;line-height:1.75;color:#a8a098;}
+  .doc-source{font-family:var(--f-mono);font-size:8px;color:rgba(255,255,255,0.25);
+              margin-top:8px;border-top:1px solid var(--border);padding-top:8px;}
+
+  /* COMMUNITY TABLE */
+  .table-wrap{overflow-x:auto;margin-bottom:10px;}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;}
+  th{font-family:var(--f-mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;
+     color:var(--muted);padding:10px 12px;text-align:left;
+     border-bottom:1px solid var(--border);}
+  td{padding:10px 12px;border-bottom:1px solid rgba(201,168,76,0.07);
+     color:#a8a098;vertical-align:top;line-height:1.5;}
+  td:first-child{color:var(--parchment);font-style:italic;}
+  tr.newton-row td{background:rgba(201,168,76,0.06);color:var(--cream);}
+  tr.newton-row td:first-child{color:var(--gold);}
+  tr.lost-row td{color:rgba(168,160,152,0.5);}
+  tr.lost-row td:first-child{color:rgba(200,112,112,0.7);font-style:italic;}
+
+  .tag{display:inline-block;font-family:var(--f-mono);font-size:7px;
+       letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;
+       border-radius:3px;margin-top:4px;}
+  .tag-confirmed{background:rgba(91,140,90,0.15);color:#7ab878;border:1px solid rgba(91,140,90,0.3);}
+  .tag-lost{background:rgba(139,58,58,0.15);color:#c07070;border:1px solid rgba(139,58,58,0.3);}
+  .tag-inferred{background:rgba(58,91,140,0.15);color:#7a9bc0;border:1px solid rgba(58,91,140,0.3);}
+  .tag-unresolved{background:rgba(80,80,80,0.2);color:#888;border:1px solid rgba(120,120,120,0.3);}
+  .tag-newton{background:rgba(201,168,76,0.12);color:var(--gold);border:1px solid rgba(201,168,76,0.35);}
+
+  /* HYPOTHESIS BOX */
+  .hypothesis{border:1px solid var(--border);padding:20px 24px;
+              background:rgba(201,168,76,0.03);margin-bottom:10px;}
+  .hyp-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+             text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;}
+  .hyp-body{font-size:13px;line-height:1.8;color:#a8a098;}
+
+  /* OPEN QUESTIONS */
+  .questions{border:1px solid rgba(139,58,58,0.35);padding:20px 24px;
+             background:rgba(139,58,58,0.06);}
+  .q-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+           text-transform:uppercase;color:#c07070;margin-bottom:12px;display:block;}
+  .q-item{font-size:12.5px;line-height:1.8;color:#a8a098;
+          padding-left:16px;text-indent:-16px;margin-bottom:8px;}
+  .q-item::before{content:"→ ";color:#c07070;}
+
+  /* FOOTER */
+  .footer{max-width:760px;margin:56px auto 0;padding:24px 24px 0;
+          border-top:1px solid var(--border);display:flex;
+          align-items:center;justify-content:space-between;flex-wrap:gap;}
+  .footer-credit{font-family:var(--f-mono);font-size:8px;letter-spacing:1.5px;
+                 color:rgba(255,255,255,0.25);}
+  .footer-link{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;
+               text-transform:uppercase;color:var(--muted);text-decoration:none;}
+  .footer-link:hover{color:var(--gold);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="family_tree.html" class="nav-back">&#8592; Back to Family Tree</a>
+  <span class="nav-title">Nichols-Waldrop Family Legacy</span>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="eyebrow">Primary Source Research Record · 3rd Great-Grandfather</span>
+  <h1>Newton Ballard</h1>
+  <span class="hero-sub">ca. 1830 Mississippi · Copiah Co. MS → Smith Co. TX → Upshur Co. TX → Rains Co. TX · ca. 1880</span>
+  <p class="hero-intro">
+    Born into enslavement. Survived a financial crisis that scattered two members of his community forever. 
+    Traveled from Mississippi to Texas in 1850 as an unnamed 20-year-old on a slave schedule. 
+    Filed his own 160-acre land claim in 1856 — before emancipation — and signed his own sworn affidavit. 
+    Father of Rev. George Washington Ballard. Confirmed by primary source across twelve documents spanning 1832 to 1937.
+  </p>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <span class="stat-n">ca. 1830</span>
+    <span class="stat-l">Born · Copiah Co. MS</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">8</span>
+    <span class="stat-l">In 1840 Community</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">160</span>
+    <span class="stat-l">Acres Claimed 1856</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">250</span>
+    <span class="stat-l">Gold Dollars · 1873</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">12</span>
+    <span class="stat-l">Primary Sources</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- NARRATIVE -->
+  <div class="sec"><div class="sec-line"></div><div class="sec-label">The Story</div><div class="sec-line"></div></div>
+  <div class="narrative">
+    <p>Newton Ballard was born around 1830 in Copiah County, Mississippi — held by a man named <strong>Lewis F. Ballard Sr.</strong>, who had been born in Pensacola, Florida around 1792, the son of a Revolutionary War veteran from Nash County, North Carolina named Francis Ballard. Lewis F. Ballard Sr. came to Mississippi with his family, acquired land, and built what appeared to be a stable plantation life. By 1840 he held 517 acres and eight enslaved people. Newton was one of them — approximately ten years old.</p>
+    <p>That stability was already crumbling. Lewis F. Ballard Sr. had taken out three overlapping bank debts: a Union Bank Stock Mortgage in May 1839, a $3,060 Deed of Trust to the Grand Gulf Railroad and Banking Company in April 1840, and a default judgment from the Bank of Port Gibson of $476.41 in March 1840. The Panic of 1837 had done its work. In April 1840 five of the eight enslaved people in the household were mortgaged as collateral — <strong>Judy</strong>, <strong>Scylla</strong>, <strong>Aaron</strong>, <strong>Emaline</strong>, and <strong>Rebecca</strong>. Newton, approximately ten years old, was not among those mortgaged.</p>
+    <p>In September 1845 the foreclosure came. Trustee William Barnes — the same William Barnes who had witnessed a dower release in this county in 1832 — put the plantation up for auction at the courthouse door in Gallatin, Mississippi. It was <strong>Mary Ballard</strong>, Lewis's wife, who stepped forward and purchased the entire 517-acre estate back for $917. That act kept Newton and the surviving members of his community intact. At least two of the adult men in the household — unnamed, unrecorded beyond the bracket of the 1840 census — were almost certainly lost in the years of financial crisis. They do not appear in Texas.</p>
+    <p>In 1850 the family sold their Mississippi land and joined the westward migration to East Texas, settling in Smith County. Newton appears on the September 25 1850 slave schedule as an unnamed male age 20. The other four enslaved people in the household match the age profiles of Scylla (now approximately 36), Emaline (approximately 16), and Rebecca (approximately 11) — the women and children who had survived the Mississippi crisis alongside him.</p>
+    <p>Then Newton did something remarkable. In August 1856 — six years before emancipation, while still legally enslaved — he walked into the Upshur County land office and filed a 160-acre preemption homestead claim. In February 1857 he signed a sworn Settler's Affidavit stating he was the bona fide occupant, clearing the timber, working the land. The white county clerk spelled his name Newton Bullard in the file jacket — a vowel shift that would cause modern search engines to miss him entirely. But the 1859 tax roll tells the truth: in the column for who rendered the property, the clerk wrote <strong>Ballard</strong>, with an A, exactly as the family carried the name forward.</p>
+    <p>By 1870 Newton is absent from the Upshur County census. His wife <strong>Rebecca Ballard</strong> heads the household — age 35, born Mississippi — raising their three children: <strong>Silla</strong> age 13, <strong>Sandy</strong> age 10, and <strong>George Washington Ballard</strong> age 8. The name Silla is not accidental. It carries Scylla forward — the woman from the 1840 Mississippi deed, the elder of Newton's plantation community, honored in the naming of his granddaughter two generations later.</p>
+    <p>In August 1873 Newton comes forward one last time. He signs a deed transferring his 160-acre preemption survey to E.G. Horn for 250 gold dollars. He does not sign it in Gilmer — he signs it before a notary in Rains County, the newly formed territory to the west. He walks away with 250 gold dollars and disappears from the primary source record. The Upshur County assessor moves Abstract 131 to the unrendered roll, marks the owner as Unknown, and alternates between the two spellings — Ballard and Bullard — until the land is absorbed by the state. Newton's death date and burial location have not been found.</p>
+    <p>On September 4 1937, his son George Washington Ballard died in Waco, McLennan County, Texas at age 76. His death certificate — McLennan County Volume 4, Page 483 — formally names <strong>Newton Ballard</strong> as his father. That document closes a century of distance between an unnamed child on a Mississippi plantation and the family that carries his name today.</p>
+  </div>
+
+  <!-- ENSLAVED COMMUNITY -->
+  <div class="sec"><div class="sec-line"></div><div class="sec-label">The 1840 Community · Copiah County Mississippi</div><div class="sec-line"></div></div>
+  <p style="font-size:13px;line-height:1.8;color:var(--muted);margin-bottom:16px;">Eight enslaved people in Lewis F. Ballard Sr.'s household in 1840. Five were named in the Grand Gulf Bank deed. Three appear only in the census brackets. This table tracks each individual across the decade to Texas.</p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age 1840</th>
+          <th>Source</th>
+          <th>1850 Texas</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="newton-row">
+          <td>Newton Ballard</td>
+          <td>~10 · male</td>
+          <td>1840 Census bracket · not mortgaged</td>
+          <td>Unnamed male age 20 · Page 459</td>
+          <td><span class="tag tag-newton">Confirmed Ancestor</span></td>
+        </tr>
+        <tr>
+          <td>Aaron</td>
+          <td>8 · male</td>
+          <td>Grand Gulf Bank Deed · April 15 1840</td>
+          <td>Not in 1850 schedule · confirmed in Smith Co. TX by church history</td>
+          <td><span class="tag tag-inferred">Cross-Confirmed</span></td>
+        </tr>
+        <tr>
+          <td>Emaline</td>
+          <td>6 · female</td>
+          <td>Grand Gulf Bank Deed · April 15 1840</td>
+          <td>Probable match · female age 18 (2-yr variance)</td>
+          <td><span class="tag tag-inferred">Probable Match</span></td>
+        </tr>
+        <tr>
+          <td>Rebecca</td>
+          <td>13 months · female</td>
+          <td>Grand Gulf Bank Deed · April 15 1840</td>
+          <td>Probable match · female age 11 · born ca. 1839 exact</td>
+          <td><span class="tag tag-confirmed">Probable Match</span></td>
+        </tr>
+        <tr>
+          <td>Scylla</td>
+          <td>26 · female</td>
+          <td>Grand Gulf Bank Deed · April 15 1840</td>
+          <td>Probable match · female age 38 · naming pattern: Silla 1870</td>
+          <td><span class="tag tag-inferred">Naming Pattern</span></td>
+        </tr>
+        <tr class="lost-row">
+          <td>Judy</td>
+          <td>22 · female</td>
+          <td>Grand Gulf Bank Deed · April 15 1840</td>
+          <td>Not traced to Texas · fate unknown</td>
+          <td><span class="tag tag-lost">Lost · Not Traced</span></td>
+        </tr>
+        <tr class="lost-row">
+          <td>Unknown Adult Male A</td>
+          <td>24–35 · male</td>
+          <td>1840 Census bracket only · not in deed</td>
+          <td>Absent from 1850 Texas schedule</td>
+          <td><span class="tag tag-lost">Lost · Bank Crisis</span></td>
+        </tr>
+        <tr class="lost-row">
+          <td>Unknown Adult Male B</td>
+          <td>24–35 · male</td>
+          <td>1840 Census bracket only · not in deed</td>
+          <td>Absent from 1850 Texas schedule</td>
+          <td><span class="tag tag-lost">Lost · Bank Crisis</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-family:var(--f-mono);font-size:8px;color:rgba(255,255,255,0.25);margin-top:8px;margin-bottom:40px;">Sources: 1840 US Federal Census · L.F. Ballard household · Copiah Co. MS · Grand Gulf Bank Deed of Trust · Copiah Co. Deed Book J Pages 155–157 · April 15 1840 · 1850 US Federal Slave Schedule · Smith Co. TX · Page 459 · New Hope Missionary Baptist Church History · Smith Co. TX</p>
+
+  <!-- NEIGHBORING COMMUNITY -->
+  <div class="sec"><div class="sec-line"></div><div class="sec-label">Newton's Neighbors · Edmund King Estate · Copiah County 1842</div><div class="sec-line"></div></div>
+  <p style="font-size:13px;line-height:1.8;color:var(--muted);margin-bottom:16px;">Lewis F. Ballard Sr. signed as official court appraiser for the Edmund King estate in August 1842. The inventory names the enslaved people on the neighboring plantation — the community Newton grew up alongside.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px;">
+    <span style="font-family:var(--f-mono);font-size:10px;color:var(--cream);background:rgba(201,168,76,0.08);border:1px solid var(--border);padding:6px 12px;">George</span>
+    <span style="font-family:var(--f-mono);font-size:10px;color:var(--cream);background:rgba(201,168,76,0.08);border:1px solid var(--border);padding:6px 12px;">Nancy</span>
+    <span style="font-family:var(--f-mono);font-size:10px;color:var(--cream);background:rgba(201,168,76,0.08);border:1px solid var(--border);padding:6px 12px;">Coleman</span>
+    <span style="font-family:var(--f-mono);font-size:10px;color:var(--cream);background:rgba(201,168,76,0.08);border:1px solid var(--border);padding:6px 12px;">Patsey</span>
+    <span style="font-family:var(--f-mono);font-size:10px;color:var(--cream);background:rgba(201,168,76,0.08);border:1px solid var(--border);padding:6px 12px;">Reubin</span>
+    <span style="font-family:var(--f-mono);font-size:10px;color:var(--cream);background:rgba(201,168,76,0.08);border:1px solid var(--border);padding:6px 12px;">Sinney</span>
+    <span style="font-family:var(--f-mono);font-size:10px;color:var(--cream);background:rgba(201,168,76,0.08);border:1px solid var(--border);padding:6px 12px;">Matt</span>
+    <span style="font-family:var(--f-mono);font-size:10px;color:var(--cream);background:rgba(201,168,76,0.08);border:1px solid var(--border);padding:6px 12px;">John</span>
+    <span style="font-family:var(--f-mono);font-size:10px;color:var(--cream);background:rgba(201,168,76,0.08);border:1px solid var(--border);padding:6px 12px;">Phil</span>
+    <span style="font-family:var(--f-mono);font-size:10px;color:var(--cream);background:rgba(201,168,76,0.08);border:1px solid var(--border);padding:6px 12px;">Martha</span>
+  </div>
+
+  <!-- PRIMARY SOURCE TIMELINE -->
+  <div class="sec"><div class="sec-line"></div><div class="sec-label">Primary Source Documents · 1832–1937</div><div class="sec-line"></div></div>
+
+  <div class="doc-card">
+    <span class="doc-date">December 12 1832 · Copiah County Mississippi</span>
+    <div class="doc-title">William Barnes Dower Release</div>
+    <p class="doc-body">Handwritten dower release certified by local magistrate William Barnes — establishing his presence in the county 13 years before he conducted the 1845 foreclosure auction as trustee for the Ballard estate. Newton is not yet born, but his world is being built around him.</p>
+  </div>
+
+  <div class="doc-card">
+    <span class="doc-date">June 19 1838 · Copiah County Mississippi</span>
+    <div class="doc-title">Benjamin Chance Estate Appraisal</div>
+    <p class="doc-body">Sworn probate appraisal of the Benjamin Chance estate carrying the personal handwritten signature of Lewis F. Ballard Sr. as an official court appraiser. Confirms his standing and reputation in Copiah County before the financial collapse.</p>
+  </div>
+
+  <div class="doc-card">
+    <span class="doc-date">May 22 1839 · Copiah County Mississippi</span>
+    <div class="doc-title">Union Bank Stock Mortgage</div>
+    <p class="doc-body">State-backed high-stakes mortgage signed by Lewis F. Ballard and his wife Mary Ballard — the first domino. This document eventually triggered their financial collapse. Front pages of Deed Book G Pages 385–386 have not yet been pulled — they may name Newton as an infant.</p>
+    <div class="doc-source">Copiah County Deed Book G · Pages 385–386 · Open Research Target</div>
+  </div>
+
+  <div class="doc-card">
+    <span class="doc-date">March 9 1840 · Copiah County Circuit Court</span>
+    <div class="doc-title">Bank of Port Gibson Default Judgment</div>
+    <p class="doc-body">Default judgment of $476.41 against Lewis F. Ballard and B. Scott brought by the Bank of Port Gibson. One of three simultaneous bank crises — Union Bank, Grand Gulf Bank, and Bank of Port Gibson — collapsing at once.</p>
+  </div>
+
+  <div class="doc-card">
+    <span class="doc-date">April 15 1840 · Copiah County Mississippi</span>
+    <div class="doc-title">Grand Gulf Bank Deed of Trust · Deed Book J Pages 155–157</div>
+    <p class="doc-body">Deed of Trust worth $3,060 mortgaging the plantation, livestock, bank stock, and five enslaved people — Judy, Scylla, Aaron, Emaline, and Rebecca — to the Grand Gulf Railroad and Banking Company under trustee William Barnes. Newton, approximately age 10, is not among those mortgaged. The 1840 census confirms 8 total enslaved people in the household — meaning three people, including Newton, were held separately from this mortgage.</p>
+    <div class="doc-source">Filed April 15 1840 · Recorded April 17 1840 · FamilySearch Image 84–85 of 685 · Image Group 008562625</div>
+  </div>
+
+  <div class="doc-card">
+    <span class="doc-date">August 15 1842 · Copiah County Mississippi</span>
+    <div class="doc-title">Edmund King Estate Inventory</div>
+    <p class="doc-body">Handwritten probate ledger for the Edmund King estate carrying Lewis F. Ballard's signature as appraiser. Names Newton's neighboring community — George, Nancy, Coleman, Patsey, Reubin, Sinney, Matt, John, Phil, and Martha.</p>
+  </div>
+
+  <div class="doc-card">
+    <span class="doc-date">September 15 1845 · Copiah County Mississippi</span>
+    <div class="doc-title">Courthouse Door Foreclosure Sale · Deed Book K Pages 216–217</div>
+    <p class="doc-body">Trustee William Barnes advertises the plantation for auction. Mary Ballard steps forward as the highest bidder and purchases the entire 517-acre estate back for $917 — preventing the bank from breaking up the enslaved community. Newton and the surviving members of his household remain intact.</p>
+    <div class="doc-source">Copiah County Transcribed Deed Record Book K · Pages 216–217 · Executed September 15 1845</div>
+  </div>
+
+  <div class="doc-card">
+    <span class="doc-date">September 25 1850 · Smith County Texas</span>
+    <div class="doc-title">U.S. Federal Slave Schedule · Page 459 · Lines 15–18</div>
+    <p class="doc-body">Newton Ballard documented as an unnamed male age 20 in Lewis F. Ballard's household. Certified by Assistant Marshal Eli E. Cowart on September 25 1850. He is one of five enslaved people — the others consistent in age with Scylla (age 36), Emaline (age 16), and Rebecca (age 11) from the 1840 Mississippi deed.</p>
+    <div class="doc-source">1850 US Federal Census Schedule 2 · Smith County Texas · Page 459 Lines 15–18</div>
+  </div>
+
+  <div class="doc-card">
+    <span class="doc-date">August 26 1856 · Upshur County Texas</span>
+    <div class="doc-title">Texas GLO Preemption Claim · File No. 3378 · Survey 124 · Abstract 131 · Certificate No. 131262</div>
+    <p class="doc-body">Newton files a 160-acre preemption homestead claim in Upshur County, Texas — bordering the John Bullard survey. In February 1857 he signs a sworn Settler's Affidavit proving he is the bona fide occupant clearing the timber. White county clerks file the jacket under the misspelled name Newton Bullard — creating the identity trap that would cause automated search engines to miss him for over 150 years.</p>
+    <div class="doc-source">Texas General Land Office · Preemption File No. 3378 · Survey No. 124 · Abstract 131</div>
+  </div>
+
+  <div class="doc-card">
+    <span class="doc-date">1859 · Upshur County Texas</span>
+    <div class="doc-title">Assessment Roll of Property Rendered by Citizens · Lines 13–14</div>
+    <p class="doc-body">Two years before the Civil War, Newton is documented as a property-owning resident. The By Whom Rendered column lists his name as Ballard — with an A. The underlying state land title carries the original clerk's misspelling, Bullard. Same man. Two spellings. One truth. Certified by Assessor and Collector A.P. Sullivan.</p>
+  </div>
+
+  <div class="doc-card">
+    <span class="doc-date">July 1867 · Upshur County Texas</span>
+    <div class="doc-title">Texas Voter Registration Rolls · Reel 3570</div>
+    <p class="doc-body">Adam Ballard and C.H. Ballard register to vote in Upshur County during Reconstruction. Almost certainly Newton's brothers or close relatives — confirming a broader Ballard family network in this county, not just Newton alone.</p>
+  </div>
+
+  <div class="doc-card">
+    <span class="doc-date">1870 · Upshur County Texas · Precinct 3 · Page 103</span>
+    <div class="doc-title">U.S. Federal Census Population Schedule · Lines 7–10</div>
+    <p class="doc-body">Rebecca Ballard, age 35, heads the household. Her children: Silla age 13, Sandy age 10, George Washington Ballard age 8. Newton is absent — laboring elsewhere or already in Rains County. The name Silla carries Scylla forward across two generations. Certified by Enumerator J.D. Rains.</p>
+  </div>
+
+  <div class="doc-card">
+    <span class="doc-date">August 9 1873 · Rains County Texas</span>
+    <div class="doc-title">Notarized Land Deed · GLO Case File 3378 Page 13</div>
+    <p class="doc-body">Newton Ballard permanently liquidates his Upshur County holdings — signing his 160-acre preemption survey over to E.G. Horn for 250 gold dollars. He signs not in Gilmer but inside the newly formed Rains County — marking the exact moment the family moves west. Certified by Rains County Notary S.K. McGowen.</p>
+  </div>
+
+  <div class="doc-card">
+    <span class="doc-date">1880 · 1886 · 1891 · 1894 · Upshur County Texas</span>
+    <div class="doc-title">Unrendered Property Tax Rolls · Abstract 131</div>
+    <p class="doc-body">After Newton's departure the land is marked as owner Unknown. The assessor alternates between spellings — Bullard in 1880, Ballard in 1886, Bullard again in 1891 and 1894 — until absorbed by state tax sale at $2.90 total delinquency. The land is gone. The name survives in the family.</p>
+  </div>
+
+  <div class="doc-card">
+    <span class="doc-date">September 4 1937 · Waco · McLennan County Texas</span>
+    <div class="doc-title">Texas State Death Certificate · Vol. 4 Page 483 · State File No. 32057</div>
+    <p class="doc-body">Rev. George Washington Ballard dies in Waco at age 76. His death certificate formally verifies his race as Colored and certifies Newton Ballard as his father. This is the document that closes the century — an enslaved child born in 1830 confirmed by name in a 1937 vital record.</p>
+    <div class="doc-source">Texas Department of Health Bureau of Vital Statistics · McLennan County · Vol. 4 Page 483</div>
+  </div>
+
+  <!-- LOUISA HYPOTHESIS -->
+  <div class="sec"><div class="sec-line"></div><div class="sec-label">The Louisa Hypothesis · Research Status</div><div class="sec-line"></div></div>
+  <div class="hypothesis">
+    <span class="hyp-label">Substantially Supported · Not Yet Confirmed by Primary Source</span>
+    <p class="hyp-body">Three primary source documents place the John Bullard estate enslaved community in Upshur County Texas at the same time Newton filed his land claim — the 1854 Faulk Donation Deed (Ouachita Parish, Louisiana) transferring Louiza and her family from the John Bullard estate to Texas; the July 30 1856 Louisiana Sheriff's Deed explicitly confirming this family descended from the estate of her father John Bullard, executed 27 days before Newton's land claim; and the 1860 Upshur County slave schedule showing William Shepperd holding a family group consistent with Louiza's children's ages. Newton's land bordered the John Bullard survey. The Anson County North Carolina Bullard family has been documented continuously from 1778 through 1893 — with consistent Bullard/Ballard surname fluidity matching what Newton's records show in Texas. However, the connection between Newton's enslaver Lewis F. Ballard Sr. — whose family originated in Nash County North Carolina, not Anson County — and the John Bullard family has not been confirmed by primary source. The geographic convergence is documented. The biological or community origin connection remains an open research question.</p>
+  </div>
+
+  <!-- OPEN QUESTIONS -->
+  <div class="sec" style="margin-top:36px;"><div class="sec-line"></div><div class="sec-label">Open Research Questions</div><div class="sec-line"></div></div>
+  <div class="questions">
+    <span class="q-label">Active Research Targets</span>
+    <div class="q-item">Smith County Texas probate records 1850–1860 — Lewis F. Ballard Sr. estate — would name Newton individually and document the transfer of enslaved people after his death.</div>
+    <div class="q-item">Copiah County Deed Book G Pages 385–386 — the 1839 Union Bank Stock Mortgage front pages — highest probability location to find Newton's birth mother or his name recorded as an infant.</div>
+    <div class="q-item">Copiah County Deed Book B Page 117 — Smith neighbor indemnity bond — may name the two unnamed adult males lost to the bank crisis.</div>
+    <div class="q-item">Rains County Grantee/Grantor Index 1873–1885 — where Newton went after selling his land for 250 gold dollars — search under both Ballard and Bullard spellings.</div>
+    <div class="q-item">Newton Ballard death record — date and location of death unconfirmed. No death certificate or burial record found in any Texas county.</div>
+    <div class="q-item">Judy's fate — named in 1840 Grand Gulf Bank deed, not traced to Texas. Courthouse auction purchaser records September 15 1845 may identify who acquired her.</div>
+    <div class="q-item">Scylla / 1840 census discrepancy — deed names both Judy and Scylla as females age 24–35 but census shows only one female in that bracket. Requires resolution.</div>
+    <div class="q-item">Ouachita Parish Louisiana succession records for John Bullard — would confirm his origin and connect the Louisiana estate to Anson County North Carolina.</div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span class="footer-credit">Researched and compiled by Jasmine M. Lee · Dock Ellis Foundation · jlee@dockellisfoundation.com</span>
+  <a href="family_tree.html" class="footer-link">&#8592; Family Tree</a>
+</div>
+
+</body>
+</html>

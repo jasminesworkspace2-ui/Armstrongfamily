@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Here · Nichols-Waldrop Family Legacy</title>
+<meta name="description" content="New to this archive? Start here. A plain-language guide to every page and how to find what you are looking for.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep:#080604;--surface:#0e0b08;--card:#141009;
+    --gold:#c9a84c;--cream:#f5f2ec;--parchment:#f0ead8;
+    --muted:rgba(245,242,236,0.45);--border:rgba(201,168,76,0.15);
+    --f-display:'DM Serif Display',Georgia,serif;
+    --f-body:'Inter',sans-serif;--f-mono:'Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);
+       -webkit-font-smoothing:antialiased;padding-bottom:80px;}
+  .nav{padding:16px 24px;border-bottom:1px solid var(--border);
+       display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;
+            text-transform:uppercase;color:var(--muted);text-decoration:none;}
+  .nav-back:hover{color:var(--gold);}
+  .nav-title{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;
+             text-transform:uppercase;color:rgba(255,255,255,0.25);}
+
+  .hero{max-width:720px;margin:56px auto 48px;padding:0 24px;text-align:center;}
+  .eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+           text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:14px;}
+  h1{font-family:var(--f-display);font-size:clamp(32px,6vw,52px);font-style:italic;
+     color:var(--parchment);line-height:1.15;margin-bottom:16px;}
+  .hero-sub{font-size:15px;line-height:1.9;color:#b0a89e;max-width:600px;margin:0 auto 32px;}
+
+  .container{max-width:900px;margin:0 auto;padding:0 24px;}
+
+  /* QUICK ANSWER BOXES */
+  .quick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:48px;}
+  .quick-box{background:var(--card);border:1px solid var(--border);padding:20px 22px;
+             text-decoration:none;display:block;transition:border-color 0.2s;}
+  .quick-box:hover{border-color:rgba(201,168,76,0.4);}
+  .quick-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+               text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px;}
+  .quick-title{font-family:var(--f-display);font-size:18px;font-style:italic;
+               color:var(--parchment);margin-bottom:8px;}
+  .quick-desc{font-size:12.5px;line-height:1.75;color:#a0988e;}
+  .quick-arrow{font-family:var(--f-mono);font-size:10px;color:var(--gold);
+               display:block;margin-top:10px;}
+
+  /* SECTION DIVIDER */
+  .sec{display:flex;align-items:center;gap:14px;margin:44px 0 24px;}
+  .sec-line{flex:1;height:1px;background:var(--border);}
+  .sec-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+             text-transform:uppercase;color:rgba(255,255,255,0.30);white-space:nowrap;}
+
+  /* TABLE OF CONTENTS */
+  .toc-group{margin-bottom:36px;}
+  .toc-group-title{font-family:var(--f-mono);font-size:9px;letter-spacing:3px;
+                   text-transform:uppercase;color:var(--gold);margin-bottom:16px;
+                   padding-bottom:8px;border-bottom:1px solid var(--border);}
+  .toc-item{display:grid;grid-template-columns:200px 1fr;gap:16px;
+            padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.04);
+            align-items:start;text-decoration:none;}
+  .toc-item:hover .toc-name{color:var(--gold);}
+  .toc-name{font-family:var(--f-display);font-size:15px;font-style:italic;
+            color:var(--parchment);transition:color 0.2s;}
+  .toc-desc{font-size:12.5px;line-height:1.75;color:#a0988e;}
+  .toc-tag{display:inline-block;font-family:var(--f-mono);font-size:7px;
+           letter-spacing:1px;padding:2px 5px;margin-left:8px;
+           border:1px solid rgba(201,168,76,0.3);color:var(--gold);
+           text-transform:uppercase;vertical-align:middle;}
+
+  /* PLAIN LANGUAGE BOX */
+  .plain-box{background:rgba(201,168,76,0.04);border:1px solid var(--border);
+             padding:24px 28px;margin-bottom:32px;}
+  .plain-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+               text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px;}
+  .plain-body{font-size:14px;line-height:1.95;color:#b0a89e;}
+  .plain-body strong{color:var(--parchment);}
+
+  /* DNA ENTRY POINT */
+  .dna-box{background:rgba(122,184,122,0.05);border:1px solid rgba(122,184,122,0.2);
+           padding:20px 24px;margin-bottom:16px;}
+  .dna-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+             text-transform:uppercase;color:#7ab87a;display:block;margin-bottom:10px;}
+
+  .footer{max-width:900px;margin:56px auto 0;padding:24px 24px 0;
+          border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .footer-credit{font-family:var(--f-mono);font-size:8px;letter-spacing:1px;color:rgba(255,255,255,0.25);}
+  .footer-link{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;
+               text-transform:uppercase;color:var(--muted);text-decoration:none;}
+  .footer-link:hover{color:var(--gold);}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="family_tree.html" class="nav-back">&#8592; Back to Archive</a>
+  <span class="nav-title">Nichols-Waldrop Family Legacy</span>
+</nav>
+
+<div class="hero">
+  <span class="eyebrow">New Here? · Start With This Page</span>
+  <h1>You Found<br><em>Your Family.</em></h1>
+  <p class="hero-sub">This archive documents nine generations of one African American family — from an enslaved woman named Patience in South Carolina in 1795 to the present day. Every name here was a real person. Every date was confirmed by a primary source document. This page will help you find what you are looking for.</p>
+</div>
+
+<div class="container">
+
+  <!-- PLAIN LANGUAGE SUMMARY -->
+  <div class="plain-box">
+    <span class="plain-label">In Plain Language · What This Archive Is</span>
+    <p class="plain-body">In 1795 a man named Francis Davenport gave his daughter Patty Waldrop an enslaved girl named <strong>Patience</strong> in Newberry County, South Carolina. That transaction was recorded in a deed book. That deed book survived. Because of that document — and hundreds of others found over seven years of research — we can trace Patience's descendants by name from 1795 all the way to today.</p>
+    <p class="plain-body" style="margin-top:12px;">Patience had a daughter named <strong>Clarissa</strong>. Clarissa was the mother of <strong>Easter Bell Nichols</strong> — born enslaved on July 4 1838 in Bellville, Texas. Easter Bell lived 97 years. She had a daughter named <strong>Hellen</strong>. Hellen had a daughter named <strong>Eva</strong>. Eva had a daughter named <strong>Margie</strong>. Margie had a daughter named <strong>Hjordis</strong>. Hjordis had a daughter named <strong>Jasmine</strong> — who built this archive.</p>
+    <p class="plain-body" style="margin-top:12px;">Nine generations. One unbroken line. All confirmed by primary source documents — deeds, death certificates, census records, voter registrations, slave schedules, and court filings. No guessing. No family tree websites. Only documents.</p>
+  </div>
+
+  <!-- QUICK START BOXES -->
+  <div class="sec"><div class="sec-line"></div><div class="sec-label">Where Do You Want to Start?</div><div class="sec-line"></div></div>
+
+  <div class="quick-grid">
+    <a href="family_tree.html" class="quick-box">
+      <span class="quick-label">The Full Picture</span>
+      <p class="quick-title">I want to see the whole family tree</p>
+      <p class="quick-desc">The complete archive — every generation, every branch, photos, DNA connections, and research notes. This is the main page.</p>
+      <span class="quick-arrow">→ Family Tree</span>
+    </a>
+
+    <a href="patience_story.html" class="quick-box">
+      <span class="quick-label">The Beginning</span>
+      <p class="quick-title">I want to start at the beginning</p>
+      <p class="quick-desc">Start with Patience — the oldest confirmed ancestor — born ca. 1765. Her story begins in South Carolina and ends in Texas.</p>
+      <span class="quick-arrow">→ Patience · Her Story</span>
+    </a>
+
+    <a href="easter_story.html" class="quick-box">
+      <span class="quick-label">The Heart of the Archive</span>
+      <p class="quick-title">I want to read one person's full story</p>
+      <p class="quick-desc">Easter Bell Nichols — born enslaved July 4 1838 — lived 97 years — held title to the same land she was born enslaved on for 140 years after emancipation.</p>
+      <span class="quick-arrow">→ Easter Bell · Her Story</span>
+    </a>
+
+    <a href="contact.html" class="quick-box">
+      <span class="quick-label">DNA Match or Family Connection</span>
+      <p class="quick-title">I think I might be related</p>
+      <p class="quick-desc">If your family has connections to Bellville Texas, Austin County, Newberry County South Carolina, or any of the surnames listed here — you may be family.</p>
+      <span class="quick-arrow">→ Contact · DNA Matches Welcome</span>
+    </a>
+
+    <a href="registry.html" class="quick-box">
+      <span class="quick-label">Looking for a Specific Name</span>
+      <p class="quick-title">I am searching for a specific ancestor</p>
+      <p class="quick-desc">The Ancestral Registry lists every confirmed person in this archive alphabetically with their sources. Search here first.</p>
+      <span class="quick-arrow">→ Ancestral Registry</span>
+    </a>
+
+    <a href="glossary.html" class="quick-box">
+      <span class="quick-label">New to Genealogy</span>
+      <p class="quick-title">I don't understand the terminology</p>
+      <p class="quick-desc">The glossary explains every term used in this archive in plain language — slave schedule, deed of gift, ThruLines, cM, and more.</p>
+      <span class="quick-arrow">→ Glossary</span>
+    </a>
+  </div>
+
+  <!-- DNA ENTRY POINT -->
+  <div class="dna-box">
+    <span class="dna-label">Did a DNA Test Lead You Here?</span>
+    <p style="font-size:13.5px;line-height:1.85;color:#b0a89e;margin-bottom:10px;">If you matched this family on AncestryDNA, 23andMe, or GEDmatch — your common ancestor is most likely in the Bellville, Austin County Texas community (the Nichols, Armstrong, Ballard, or Pink families) or in the Newberry County South Carolina community (the Waldrop, Davenport, or Sims families).</p>
+    <p style="font-size:13.5px;line-height:1.85;color:#b0a89e;">Active DNA kits: <strong style="color:#f0ead8;">AncestryDNA SQ8499767</strong> (Hjordis L. Corbin) · <strong style="color:#f0ead8;">GEDmatch QW8418781</strong> (Jasmine M. Lee). Go to the <a href="dna.html" style="color:var(--gold);">DNA Research page</a> for cluster analysis and known matches — or go to the <a href="contact.html" style="color:var(--gold);">Contact page</a> to reach the researcher directly.</p>
+  </div>
+
+  <!-- FULL TABLE OF CONTENTS -->
+  <div class="sec"><div class="sec-line"></div><div class="sec-label">Every Page · What It Contains</div><div class="sec-line"></div></div>
+
+  <!-- GROUP 1: THE FAMILY STORIES -->
+  <div class="toc-group">
+    <p class="toc-group-title">The Family Stories · One Page Per Person</p>
+
+    <a href="patience_story.html" class="toc-item">
+      <span class="toc-name">Patience <span class="toc-tag">ca. 1765</span></span>
+      <span class="toc-desc">The oldest confirmed ancestor. Born ca. 1765. Given as property to Patty Waldrop in Newberry County South Carolina on August 4 1795 — confirmed by a primary source deed (Deed Book C: 367–368). Her story begins the chain that leads to every person in this archive.</span>
+    </a>
+
+    <a href="molley.html" class="toc-item">
+      <span class="toc-name">Molley <span class="toc-tag">Before Patience</span></span>
+      <span class="toc-desc">The ancestor before Patience. Documented in Union County South Carolina in 1793. Her origin traces to the West African Bight of Benin — consistent with the Rainbow 1758 transatlantic voyage confirmed in the slave trade database. She is the bridge to Africa.</span>
+    </a>
+
+    <a href="clarissa_story.html" class="toc-item">
+      <span class="toc-name">Clarissa <span class="toc-tag">ca. 1807</span></span>
+      <span class="toc-desc">Patience's daughter. Confirmed in South Carolina and Mississippi deed records. She traveled with the Waldrop family from South Carolina to Mississippi — documented in the 1839 Rankin County Mississippi deed that distributed her to a new household.</span>
+    </a>
+
+    <a href="rendy_story.html" class="toc-item">
+      <span class="toc-name">Rendy Blayn <span class="toc-tag">ca. 1817</span></span>
+      <span class="toc-desc">Easter Bell's mother. Confirmed in the 1860 John Nichols slave schedule as a Black female age 43. Her surname Blayn traces to the Blain/Bland enslaving family of Fayette County Texas — adjacent to Austin County where she was held. Born in Arkansas or North Carolina — the two census records conflict.</span>
+    </a>
+
+    <a href="easter_story.html" class="toc-item">
+      <span class="toc-name">Easter Bell Nichols <span class="toc-tag">1838–1935</span></span>
+      <span class="toc-desc">Born enslaved July 4 1838 in Bellville Texas. Died December 17 1935 age 97. Held legal title to a piece of the John Nichols Survey land — the same land she was born enslaved on — for 140 years after emancipation. The land was foreclosed by Austin County in 2006. Her daughter Hellen is the direct ancestor of this family's living descendants.</span>
+    </a>
+
+    <a href="hellen_story.html" class="toc-item">
+      <span class="toc-name">Hellen Nichols Armstrong <span class="toc-tag">1870–1931</span></span>
+      <span class="toc-desc">Easter Bell's daughter. Born September 1870 in Bellville. Died December 5 1931. Confirmed as Helen Armstrong and Helen Gilbert by three independent primary sources — her death certificate, a cemetery record, and a 2006 court filing. She married twice — first to John Armstrong, then to Albert Reese after John Armstrong's murder in 1911.</span>
+    </a>
+
+    <a href="eva_story.html" class="toc-item">
+      <span class="toc-name">Eva Armstrong Ballard <span class="toc-tag">ca. 1899</span></span>
+      <span class="toc-desc">Hellen's daughter. Married James Wilson Ballard Sr. Eva's story connects the Armstrong/Nichols line from Bellville Texas to the Ballard family line documented from Newton Ballard through Rev. George W. Ballard.</span>
+    </a>
+
+    <a href="margie_story.html" class="toc-item">
+      <span class="toc-name">Margie Nell Ballard Corbin <span class="toc-tag">1929</span></span>
+      <span class="toc-desc">Eva's daughter. Married Norman Corbin. Margie's story bridges the Texas Ballard family to the next generation.</span>
+    </a>
+
+    <a href="hjordis.html" class="toc-item">
+      <span class="toc-name">Hjordis L. Corbin <span class="toc-tag">1960</span></span>
+      <span class="toc-desc">Margie's daughter. The 8th generation in the confirmed chain. AncestryDNA kit SQ8499767. Her DNA confirms the maternal line connection to every ancestor documented in this archive.</span>
+    </a>
+
+    <a href="joseph_story.html" class="toc-item">
+      <span class="toc-name">Joseph Nichols <span class="toc-tag">ca. 1843</span></span>
+      <span class="toc-desc">Easter Bell's husband. Born ca. 1843 in Bellville Texas. Registered to vote on January 27 1868 in Bellville — less than three years after emancipation. Married Easter Bell December 23 1869. Their children held the John Nichols Survey land for 140 years.</span>
+    </a>
+  </div>
+
+  <!-- GROUP 2: THE BALLARD LINE -->
+  <div class="toc-group">
+    <p class="toc-group-title">The Ballard Family Line</p>
+
+    <a href="newton_ballard.html" class="toc-item">
+      <span class="toc-name">Newton Ballard</span>
+      <span class="toc-desc">The earliest confirmed Ballard ancestor. Appears in the 1850 Smith County Texas census and on Rev. George W. Ballard's 1937 death certificate as "father, no record of birthplace." His origins are unresolvable from existing records — the death certificate permanently closes the search for his birthplace.</span>
+    </a>
+
+    <a href="ballard.html" class="toc-item">
+      <span class="toc-name">Ballard Family History</span>
+      <span class="toc-desc">The complete Ballard family documentation — Newton Ballard through Rev. George W. Ballard through James Wilson Ballard Sr. through Eva Armstrong Ballard. Includes the Union Bank debt records, the 1840 Grand Gulf Bank deed naming six enslaved people, and the Fayette County Texas connections.</span>
+    </a>
+
+    <a href="ballard_tracking.html" class="toc-item">
+      <span class="toc-name">Ballard Research Tracker</span>
+      <span class="toc-desc">A running record of every confirmed source for the Ballard line and every open research question. Updated as new documents are found. Useful for researchers who want to know exactly what has been confirmed and what remains open.</span>
+    </a>
+  </div>
+
+  <!-- GROUP 3: THE COMMUNITY -->
+  <div class="toc-group">
+    <p class="toc-group-title">The Bellville Community · The People Around Them</p>
+
+    <a href="john_nichols_community.html" class="toc-item">
+      <span class="toc-name">John Nichols · Enslaved Community <span class="toc-tag">New 2026</span></span>
+      <span class="toc-desc">A reconstruction of every person held in the John Nichols household in Bellville from 1827 through 1864 — drawn from the 1860 slave schedule, the Stephen F. Austin Register of Families, and post-emancipation census records. Includes the 2006 and 2014 tax foreclosures that took the land. Includes Emeline Nickols — the oldest confirmed survivor of the household — still living in Bellville in 1930 at age 83. Also documents the Waldrop family connection confirmed across three states.</span>
+    </a>
+
+    <a href="freedom.html" class="toc-item">
+      <span class="toc-name">Freedom</span>
+      <span class="toc-desc">What happened after emancipation in Bellville. The community that was enslaved together stayed together — documented in census records from 1870 through 1940 in the same Bellville neighborhood. Includes voter registrations, land ownership records, and the post-emancipation lives of Easter Bell's community.</span>
+    </a>
+
+    <a href="voices.html" class="toc-item">
+      <span class="toc-name">Voices</span>
+      <span class="toc-desc">Primary source quotes — the words of people who were there. Includes WPA slave narratives from the 1930s, newspaper accounts from the Bellville Countryman, and the Katie Darling interview documenting conditions in Austin County during slavery.</span>
+    </a>
+  </div>
+
+  <!-- GROUP 4: RESEARCH TOOLS -->
+  <div class="toc-group">
+    <p class="toc-group-title">Research Tools · For Researchers and Family Members</p>
+
+    <a href="registry.html" class="toc-item">
+      <span class="toc-name">Ancestral Registry</span>
+      <span class="toc-desc">Every confirmed person in this archive listed in a searchable table with their sources, dates, and relationship to the direct line. Start here if you are looking for a specific name.</span>
+    </a>
+
+    <a href="timeline.html" class="toc-item">
+      <span class="toc-name">Timeline</span>
+      <span class="toc-desc">Every confirmed date in chronological order — from the 1792 South Carolina deed naming an enslaved girl called Easther through the 2014 Austin County tax foreclosure. Useful for understanding how events connect across time.</span>
+    </a>
+
+    <a href="papertrail.html" class="toc-item">
+      <span class="toc-name">The Paper Trail</span>
+      <span class="toc-desc">Every primary source document used in this research — deeds, death certificates, census records, slave schedules, voter registrations, court filings, and newspaper articles. With full citations for every document.</span>
+    </a>
+
+    <a href="dna.html" class="toc-item">
+      <span class="toc-name">DNA Research</span>
+      <span class="toc-desc">GEDmatch segment analysis for kit QW8418781 (Jasmine Lee) and AncestryDNA ThruLines for kit SQ8499767 (Hjordis Corbin). Documents two confirmed DNA clusters connecting this family to the Pontotoc County Mississippi community and the Bellville Austin County Texas community. Includes the Coffin, Pulliam, Gilmore, Barksdale, and Bell enslaving family connections.</span>
+    </a>
+
+    <a href="reference.html" class="toc-item">
+      <span class="toc-name">Reference</span>
+      <span class="toc-desc">Supporting research documents, notes, and supplementary sources used in building this archive.</span>
+    </a>
+
+    <a href="related.html" class="toc-item">
+      <span class="toc-name">Related Families</span>
+      <span class="toc-desc">Other families documented in connection with this research — the Waldrop, Davenport, Bell, Manning, Blain, Bland, Pink, Reese, and other families whose records intersect with the direct line.</span>
+    </a>
+  </div>
+
+  <!-- GROUP 5: UNDERSTAND THE RESEARCH -->
+  <div class="toc-group">
+    <p class="toc-group-title">Understanding This Research · For New Readers</p>
+
+    <a href="glossary.html" class="toc-item">
+      <span class="toc-name">Glossary</span>
+      <span class="toc-desc">Plain language definitions of every genealogy term used in this archive. If you do not know what a slave schedule is, what cM means, or what a deed of gift was — start here. No prior knowledge required.</span>
+    </a>
+
+    <a href="methodology.html" class="toc-item">
+      <span class="toc-name">Research Methodology</span>
+      <span class="toc-desc">How this research was conducted. What counts as evidence and what does not. Why some conclusions are labeled confirmed and others are labeled hypothesis. The difference between a primary source and a researcher annotation.</span>
+    </a>
+
+    <a href="photos.html" class="toc-item">
+      <span class="toc-name">Photos</span>
+      <span class="toc-desc">Family photographs and historical images — faces behind the names in the documents.</span>
+    </a>
+  </div>
+
+  <!-- GROUP 6: CONTACT -->
+  <div class="toc-group">
+    <p class="toc-group-title">Connect · If You Think You May Be Related</p>
+
+    <a href="contact.html" class="toc-item">
+      <span class="toc-name">Contact · DNA Matches Welcome</span>
+      <span class="toc-desc">If your family has connections to any of these surnames — Nichols, Armstrong, Ballard, Waldrop, Davenport, Blain, Bland, Pink, Reese, Corbin, or any family from Bellville Austin County Texas or Newberry County South Carolina — you may be family. This page lists the surnames being researched, the DNA kits to compare against, and how to reach the researcher.</span>
+    </a>
+  </div>
+
+  <!-- RELATIONSHIP CALCULATOR -->
+  <div class="sec"><div class="sec-line"></div><div class="sec-label">How Are You Related? · Find Your Connection</div><div class="sec-line"></div></div>
+
+  <div style="background:var(--card);border:1px solid var(--border);padding:28px;margin-bottom:48px;">
+    <p style="font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Relationship Calculator</p>
+    <p style="font-size:13.5px;line-height:1.85;color:#b0a89e;margin-bottom:24px;">Select your name or generation below. The tool will show you exactly how many generations back you need to go to reach each ancestor — and what that ancestor is called in plain family terms.</p>
+
+    <div style="margin-bottom:20px;">
+      <label style="font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px;">Step 1 — Who are you?</label>
+      <select id="who-selector" style="background:#1a1410;border:1px solid rgba(201,168,76,0.3);color:var(--parchment);font-family:var(--f-body);font-size:14px;padding:10px 14px;width:100%;max-width:480px;appearance:none;-webkit-appearance:none;cursor:pointer;outline:none;" onchange="calculateRelationship()">
+        <option value="">— Select your name or generation —</option>
+
+        <optgroup label="Direct Line — Confirmed Ancestors">
+          <option value="10">Jasmine M. Lee (Generation 10 · The Researcher)</option>
+          <option value="9">Hjordis L. Corbin (Generation 9 · Jasmine's Mother)</option>
+          <option value="8">Margie Nell Ballard Corbin (Generation 8 · Jasmine's Grandmother)</option>
+          <option value="7">Eva Armstrong Ballard (Generation 7 · Jasmine's Great-Grandmother)</option>
+          <option value="6">Hellen Nichols Armstrong (Generation 6 · Jasmine's 2nd Great-Grandmother)</option>
+          <option value="5">Easter Bell Nichols (Generation 5 · Jasmine's 3rd Great-Grandmother)</option>
+        </optgroup>
+
+        <optgroup label="Margie's Siblings' Descendants — 1st Cousins &amp; Beyond">
+          <option value="margie_sibling_child">I am a child of one of Margie's siblings (1st cousin to Jasmine)</option>
+          <option value="margie_sibling_grandchild">I am a grandchild of one of Margie's siblings (1st cousin once removed to Jasmine)</option>
+          <option value="margie_sibling_greatgrand">I am a great-grandchild of one of Margie's siblings (2nd cousin to Jasmine)</option>
+        </optgroup>
+
+        <optgroup label="Eva's Other Children's Descendants — Margie's Siblings' Line">
+          <option value="eva_other_child">I am a child of Eva but not Margie (Jasmine's aunt or uncle generation)</option>
+          <option value="eva_other_grandchild">I am a grandchild of Eva but not through Margie (1st cousin to Jasmine)</option>
+          <option value="eva_other_greatgrand">I am a great-grandchild of Eva but not through Margie (1st cousin once removed)</option>
+        </optgroup>
+
+        <optgroup label="Hellen's Other Children's Descendants — Eva's Siblings' Line">
+          <option value="hellen_other_child">I descend from one of Hellen's other children — not Eva (great-aunt/uncle line to Jasmine)</option>
+          <option value="hellen_other_grandchild">I am a grandchild of one of Hellen's other children (2nd cousin to Jasmine)</option>
+          <option value="hellen_other_greatgrand">I am a great-grandchild of one of Hellen's other children (2nd cousin once removed)</option>
+        </optgroup>
+
+        <optgroup label="Easter Bell's Other Children's Descendants — Hellen's Siblings' Line">
+          <option value="easter_allen">I descend from Allen Nichols Sr. (Easter Bell's son · born 1867)</option>
+          <option value="easter_oscar">I descend from Oscar Nichols (Easter Bell's son · born 1869)</option>
+          <option value="easter_clara">I descend from Clara Nichols Nazy (Easter Bell's daughter · born 1875)</option>
+          <option value="easter_willie">I descend from Willie Nichols (Easter Bell's son · born 1884)</option>
+          <option value="easter_annie">I descend from Annie Nichols King (Easter Bell's daughter)</option>
+        </optgroup>
+
+        <optgroup label="DNA Match — Not Sure of the Connection">
+          <option value="dna">I matched this family on a DNA test</option>
+        </optgroup>
+      </select>
+    </div>
+
+    <div id="result-box" style="display:none;border-top:1px solid var(--border);padding-top:20px;margin-top:4px;">
+    </div>
+  </div>
+
+  <script>
+  const ancestors = [
+    { gen: 1, name: "Molley", dates: "born ca. 1750–1770", place: "Union County, South Carolina", note: "The ancestor before Patience — documented 1793 — DNA points to the Bight of Benin in West Africa as her origin." },
+    { gen: 2, name: "Patience", dates: "born ca. 1765", place: "Newberry County, South Carolina", note: "Given as property by Francis Davenport to his daughter Patty Waldrop on August 4 1795 — confirmed by primary source deed." },
+    { gen: 3, name: "Clarissa", dates: "born ca. 1807", place: "South Carolina → Mississippi", note: "Patience's daughter — confirmed in the 1839 Rankin County Mississippi deed." },
+    { gen: 4, name: "Rendy Blayn", dates: "born ca. 1817", place: "Bellville, Austin County, Texas", note: "Clarissa's daughter — Easter Bell's mother — confirmed in the 1860 John Nichols slave schedule." },
+    { gen: 5, name: "Easter Bell Nichols", dates: "July 4 1838 – December 17 1935", place: "Bellville, Texas", note: "Born enslaved. Lived 97 years. Held title to the John Nichols Survey land for 140 years after emancipation." },
+    { gen: 6, name: "Hellen Nichols Armstrong", dates: "September 1870 – December 5 1931", place: "Bellville, Texas", note: "Easter Bell's daughter. Confirmed by three independent primary sources." },
+    { gen: 7, name: "Eva Armstrong Ballard", dates: "born ca. 1899", place: "Texas", note: "Hellen's daughter. Married James Wilson Ballard Sr." },
+    { gen: 8, name: "Margie Nell Ballard Corbin", dates: "born 1929", place: "Texas", note: "Eva's daughter. Married Norman Corbin." },
+    { gen: 9, name: "Hjordis L. Corbin", dates: "born 1960", place: "Texas", note: "Margie's daughter. AncestryDNA kit SQ8499767." },
+    { gen: 10, name: "Jasmine M. Lee", dates: "born 1982", place: "The Researcher", note: "GEDmatch kit QW8418781. Built this archive over seven years." }
+  ];
+
+  // Shared ancestor labels for collateral lines
+  const sharedAncestorNote = {
+    'margie_sibling_child': { sharedAt: 7, sharedName: 'Eva Armstrong Ballard', cousinage: '1st cousin to Jasmine' },
+    'margie_sibling_grandchild': { sharedAt: 7, sharedName: 'Eva Armstrong Ballard', cousinage: '1st cousin once removed from Jasmine' },
+    'margie_sibling_greatgrand': { sharedAt: 7, sharedName: 'Eva Armstrong Ballard', cousinage: '2nd cousin to Jasmine' },
+    'eva_other_child': { sharedAt: 7, sharedName: 'Eva Armstrong Ballard', cousinage: 'aunt or uncle generation to Jasmine' },
+    'eva_other_grandchild': { sharedAt: 7, sharedName: 'Eva Armstrong Ballard', cousinage: '1st cousin to Jasmine' },
+    'eva_other_greatgrand': { sharedAt: 7, sharedName: 'Eva Armstrong Ballard', cousinage: '1st cousin once removed from Jasmine' },
+    'hellen_other_child': { sharedAt: 6, sharedName: 'Hellen Nichols Armstrong', cousinage: 'great-aunt/uncle generation to Jasmine' },
+    'hellen_other_grandchild': { sharedAt: 6, sharedName: 'Hellen Nichols Armstrong', cousinage: '2nd cousin to Jasmine' },
+    'hellen_other_greatgrand': { sharedAt: 6, sharedName: 'Hellen Nichols Armstrong', cousinage: '2nd cousin once removed from Jasmine' },
+    'easter_allen': { sharedAt: 5, sharedName: 'Easter Bell Nichols', cousinage: '3rd cousin range to Jasmine' },
+    'easter_oscar': { sharedAt: 5, sharedName: 'Easter Bell Nichols', cousinage: '3rd cousin range to Jasmine' },
+    'easter_clara': { sharedAt: 5, sharedName: 'Easter Bell Nichols', cousinage: '3rd cousin range to Jasmine' },
+    'easter_willie': { sharedAt: 5, sharedName: 'Easter Bell Nichols', cousinage: '3rd cousin range to Jasmine' },
+    'easter_annie': { sharedAt: 5, sharedName: 'Easter Bell Nichols', cousinage: '3rd cousin range to Jasmine' },
+  };
+
+  function getRelationshipTerm(generationsBack, fromGen) {
+    if (generationsBack === 0) return "This is you";
+    if (generationsBack === 1) return "Your mother";
+    if (generationsBack === 2) return "Your grandmother";
+    if (generationsBack === 3) return "Your great-grandmother";
+    if (generationsBack === 4) return "Your 2nd great-grandmother";
+    if (generationsBack === 5) return "Your 3rd great-grandmother";
+    if (generationsBack === 6) return "Your 4th great-grandmother";
+    if (generationsBack === 7) return "Your 5th great-grandmother";
+    if (generationsBack === 8) return "Your 6th great-grandmother";
+    if (generationsBack === 9) return "Your 7th great-grandmother";
+    return `Your ${generationsBack - 2}${generationsBack === 3 ? 'rd' : 'th'} great-grandmother`;
+  }
+
+  function calculateRelationship() {
+    const sel = document.getElementById('who-selector').value;
+    const box = document.getElementById('result-box');
+
+    if (!sel) { box.style.display = 'none'; return; }
+
+    box.style.display = 'block';
+
+    let yourGen = 10;
+    let introText = '';
+    let showDNA = false;
+
+    if (sel === '9') { yourGen = 10; introText = 'You are <strong style="color:#f0ead8;">Jasmine M. Lee</strong> — the researcher who built this archive. Here is every ancestor in your direct maternal line:'; }
+    else if (sel === '8') { yourGen = 9; introText = 'You are <strong style="color:#f0ead8;">Hjordis L. Corbin</strong> — Jasmine\'s mother. Here is your direct maternal line:'; }
+    else if (sel === '7') { yourGen = 8; introText = 'You are <strong style="color:#f0ead8;">Margie Nell Ballard Corbin</strong> — Jasmine\'s grandmother. Here is your direct maternal line:'; }
+    else if (sel === '6') { yourGen = 7; introText = 'You are <strong style="color:#f0ead8;">Eva Armstrong Ballard</strong> — Jasmine\'s great-grandmother. Here is your direct maternal line:'; }
+    else if (sel === '5') { yourGen = 6; introText = 'You are <strong style="color:#f0ead8;">Hellen Nichols Armstrong</strong> — Jasmine\'s 2nd great-grandmother. Here is your direct maternal line:'; }
+    else if (sel === '4') { yourGen = 5; introText = 'You are <strong style="color:#f0ead8;">Easter Bell Nichols</strong> — Jasmine\'s 3rd great-grandmother. Here is your direct maternal line:'; }
+    else if (sel === 'child_of_9') { yourGen = 11; introText = 'You are <strong style="color:#f0ead8;">Jasmine\'s child</strong> — the 10th generation. Here is your direct maternal line:'; }
+    else if (sel === 'child_of_8') { yourGen = 10; introText = 'You are <strong style="color:#f0ead8;">a child of Hjordis / sibling of Jasmine</strong>. Here is your direct maternal line:'; }
+    else if (sel === 'child_of_7') { yourGen = 10; introText = 'You are <strong style="color:#f0ead8;">a grandchild of Margie / first cousin of Jasmine</strong>. Here is your shared maternal line:'; }
+    else if (sel === 'cousin_1') { yourGen = 10; introText = 'You share <strong style="color:#f0ead8;">Hellen Nichols Armstrong</strong> as a great-grandparent — making you a 2nd cousin (or cousin once removed) to Jasmine. Here is your shared line:'; }
+    else if (sel === 'cousin_2') { yourGen = 10; introText = 'You share <strong style="color:#f0ead8;">Easter Bell Nichols</strong> or one of her siblings as an ancestor — making you a 3rd cousin or further to Jasmine. Here is the shared line:'; }
+    else if (sel === 'dna') {
+      showDNA = true;
+      yourGen = 10;
+      introText = 'You matched this family on a DNA test. Your common ancestor is likely in the <strong style="color:#f0ead8;">Bellville Texas community</strong> (Nichols, Armstrong, Ballard, Pink families) or the <strong style="color:#f0ead8;">South Carolina community</strong> (Waldrop, Davenport, Sims families). See the <a href="dna.html" style="color:var(--gold);">DNA Research page</a> and the <a href="contact.html" style="color:var(--gold);">Contact page</a> to reach the researcher directly.';
+    }
+
+    let html = `<p style="font-size:13.5px;line-height:1.85;color:#b0a89e;margin-bottom:20px;">${introText}</p>`;
+
+    if (!showDNA) {
+      html += `<div style="display:flex;flex-direction:column;gap:0;">`;
+
+      // For collateral lines - show ancestors up to the shared connection point
+    const sharedInfo = sharedAncestorNote[sel];
+    const maxGen = sharedInfo ? sharedInfo.sharedAt : yourGen;
+    const relevantAncestors = ancestors.filter(a => a.gen <= maxGen).reverse();
+    
+    // Add shared ancestor callout for collateral lines
+    if (sharedInfo) {
+      html += `<div style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3);padding:12px 16px;margin-bottom:16px;">
+        <p style="font-family:monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Your shared connection to Jasmine</p>
+        <p style="font-size:13px;color:#f0ead8;"><strong>${sharedInfo.sharedName}</strong> is your shared ancestor — making you a <strong style="color:#c9a84c;">${sharedInfo.cousinage}</strong>.</p>
+      </div>`;
+    }
+
+      relevantAncestors.forEach((anc, i) => {
+        const genBack = yourGen - anc.gen;
+        const relTerm = getRelationshipTerm(genBack, yourGen);
+        const isYou = genBack === 0;
+        const isClose = genBack <= 2;
+
+        html += `
+        <div style="display:grid;grid-template-columns:1fr auto;gap:12px;padding:14px 16px;
+                    border-bottom:1px solid rgba(255,255,255,0.05);
+                    background:${isYou ? 'rgba(201,168,76,0.08)' : isClose ? 'rgba(201,168,76,0.03)' : 'transparent'};">
+          <div>
+            <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px;">
+              <span style="font-family:var(--f-display);font-size:16px;font-style:italic;color:${isYou ? 'var(--gold)' : 'var(--parchment)'};">${anc.name}</span>
+              <span style="font-size:11px;color:#a0988e;">${anc.dates}</span>
+            </div>
+            <div style="font-size:11.5px;color:#7a7068;margin-bottom:4px;">${anc.place}</div>
+            <div style="font-size:11px;color:#6a6058;line-height:1.6;">${anc.note}</div>
+          </div>
+          <div style="text-align:right;min-width:140px;">
+            <div style="font-family:var(--f-mono);font-size:8px;letter-spacing:1px;text-transform:uppercase;
+                        color:${isYou ? 'var(--gold)' : 'var(--muted)'};margin-bottom:4px;">
+              ${genBack === 0 ? 'You' : genBack + ' generation' + (genBack === 1 ? '' : 's') + ' back'}
+            </div>
+            <div style="font-size:11.5px;color:${isYou ? 'var(--gold)' : '#a0988e'};font-weight:${isYou ? '500' : '400'};">
+              ${relTerm}
+            </div>
+          </div>
+        </div>`;
+      });
+
+      html += `</div>`;
+
+      html += `
+      <div style="margin-top:16px;padding:12px 16px;background:rgba(201,168,76,0.04);border:1px solid var(--border);">
+        <p style="font-size:12px;line-height:1.75;color:#a0988e;">
+          <strong style="color:var(--parchment);">What does "generations back" mean?</strong> Each generation is roughly 25–30 years. Your mother is 1 generation back. Your grandmother is 2. Your great-grandmother is 3. Every "great" adds one more generation. A 3rd great-grandmother is 5 generations back — she was born approximately 125–150 years before you.
+        </p>
+      </div>`;
+    }
+
+    box.innerHTML = html;
+  }
+  </script>
+
+<!-- THE NINE GENERATIONS -->
+  <div class="sec"><div class="sec-line"></div><div class="sec-label">The Nine Generations · At a Glance</div><div class="sec-line"></div></div>
+
+  <div style="max-width:600px;margin:0 auto 48px;">
+    <div style="display:flex;flex-direction:column;gap:0;">
+
+      <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);">
+        <span style="font-family:var(--f-mono);font-size:9px;color:var(--gold);min-width:32px;padding-top:3px;">1</span>
+        <div>
+          <span style="font-family:var(--f-display);font-size:16px;font-style:italic;color:var(--parchment);">Patience</span>
+          <span style="font-size:12px;color:#a0988e;margin-left:10px;">born ca. 1765 · Newberry County South Carolina · confirmed 1795</span>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);">
+        <span style="font-family:var(--f-mono);font-size:9px;color:var(--gold);min-width:32px;padding-top:3px;">2</span>
+        <div>
+          <span style="font-family:var(--f-display);font-size:16px;font-style:italic;color:var(--parchment);">Clarissa</span>
+          <span style="font-size:12px;color:#a0988e;margin-left:10px;">born ca. 1807 · South Carolina · confirmed Mississippi 1839</span>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);">
+        <span style="font-family:var(--f-mono);font-size:9px;color:var(--gold);min-width:32px;padding-top:3px;">3</span>
+        <div>
+          <span style="font-family:var(--f-display);font-size:16px;font-style:italic;color:var(--parchment);">Rendy Blayn</span>
+          <span style="font-size:12px;color:#a0988e;margin-left:10px;">born ca. 1817 · Bellville Texas confirmed 1860</span>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);background:rgba(201,168,76,0.03);">
+        <span style="font-family:var(--f-mono);font-size:9px;color:var(--gold);min-width:32px;padding-top:3px;">4</span>
+        <div>
+          <span style="font-family:var(--f-display);font-size:16px;font-style:italic;color:var(--parchment);">Easter Bell Nichols</span>
+          <span style="font-size:12px;color:#a0988e;margin-left:10px;">born July 4 1838 · died December 17 1935 · Bellville Texas · age 97</span>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);">
+        <span style="font-family:var(--f-mono);font-size:9px;color:var(--gold);min-width:32px;padding-top:3px;">5</span>
+        <div>
+          <span style="font-family:var(--f-display);font-size:16px;font-style:italic;color:var(--parchment);">Hellen Nichols Armstrong</span>
+          <span style="font-size:12px;color:#a0988e;margin-left:10px;">born September 1870 · died December 5 1931 · Bellville Texas</span>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);">
+        <span style="font-family:var(--f-mono);font-size:9px;color:var(--gold);min-width:32px;padding-top:3px;">6</span>
+        <div>
+          <span style="font-family:var(--f-display);font-size:16px;font-style:italic;color:var(--parchment);">Eva Armstrong Ballard</span>
+          <span style="font-size:12px;color:#a0988e;margin-left:10px;">born ca. 1899 · Texas</span>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);">
+        <span style="font-family:var(--f-mono);font-size:9px;color:var(--gold);min-width:32px;padding-top:3px;">7</span>
+        <div>
+          <span style="font-family:var(--f-display);font-size:16px;font-style:italic;color:var(--parchment);">Margie Nell Ballard Corbin</span>
+          <span style="font-size:12px;color:#a0988e;margin-left:10px;">born 1929</span>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);">
+        <span style="font-family:var(--f-mono);font-size:9px;color:var(--gold);min-width:32px;padding-top:3px;">8</span>
+        <div>
+          <span style="font-family:var(--f-display);font-size:16px;font-style:italic;color:var(--parchment);">Hjordis L. Corbin</span>
+          <span style="font-size:12px;color:#a0988e;margin-left:10px;">born 1960 · AncestryDNA SQ8499767</span>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;">
+        <span style="font-family:var(--f-mono);font-size:9px;color:var(--gold);min-width:32px;padding-top:3px;">9</span>
+        <div>
+          <span style="font-family:var(--f-display);font-size:16px;font-style:italic;color:var(--parchment);">Jasmine M. Lee</span>
+          <span style="font-size:12px;color:#a0988e;margin-left:10px;">GEDmatch QW8418781 · Dock Ellis Foundation · built this archive</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <span class="footer-credit">Nichols-Waldrop Family Legacy · Research by Jasmine M. Lee · Dock Ellis Foundation · Seven years · 2019–2026</span>
+  <a href="family_tree.html" class="footer-link">&#8592; Full Archive</a>
+</div>
+
+</body>
+</html>

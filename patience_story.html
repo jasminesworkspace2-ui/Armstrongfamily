@@ -2,486 +2,422 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Molley & Patience · Armstrong Family Archive</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>John Nichols · Enslaved Community Reconstruction · Bellville, Austin County, Texas</title>
+<meta name="description" content="Primary source reconstruction of the enslaved community held by John Nichols in Bellville, Austin County, Texas — 1827 through 1864 — including Rendy Blayn and Easter Bell Nichols.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --deep:#080604;--gold:#c9a84c;--gold2:#e8c96a;--cream:#f5f2ec;
-    --parchment:#f0ead8;--aged:#e4dcd0;--muted:#a8a090;
-    --border:rgba(201,168,76,0.15);
-    --f-display:'Georgia','Times New Roman',serif;
-    --f-body:'Georgia',serif;--f-mono:'Courier New',monospace;
+    --deep:#080604;--surface:#0e0b08;--card:#141009;
+    --gold:#c9a84c;--cream:#f5f2ec;--parchment:#f0ead8;
+    --muted:rgba(245,242,236,0.45);--border:rgba(201,168,76,0.15);
+    --f-display:'DM Serif Display',Georgia,serif;
+    --f-body:'Inter',sans-serif;--f-mono:'Courier New',monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-  strong{color:#f5f0e8!important;font-weight:normal;}
-  em{color:var(--parchment);font-style:italic;}
+  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);
+       -webkit-font-smoothing:antialiased;padding-bottom:80px;}
+  .nav{padding:16px 24px;border-bottom:1px solid var(--border);
+       display:flex;align-items:center;justify-content:space-between;}
+  .nav-back{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;
+            text-transform:uppercase;color:var(--muted);text-decoration:none;}
+  .nav-back:hover{color:var(--gold);}
+  .nav-title{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;
+             text-transform:uppercase;color:rgba(255,255,255,0.25);}
+  .hero{max-width:900px;margin:56px auto 40px;padding:0 24px;text-align:center;}
+  .eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+           text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:14px;}
+  h1{font-family:var(--f-display);font-size:clamp(28px,5vw,44px);font-style:italic;
+     color:var(--parchment);line-height:1.2;margin-bottom:12px;}
+  .hero-sub{font-size:14px;line-height:1.9;color:#b0a89e;max-width:680px;margin:0 auto;}
+  .container{max-width:980px;margin:0 auto;padding:0 24px;}
+  .sec{display:flex;align-items:center;gap:14px;margin:44px 0 18px;}
+  .sec-line{flex:1;height:1px;background:var(--border);}
+  .sec-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+             text-transform:uppercase;color:rgba(255,255,255,0.30);white-space:nowrap;}
+  .prose p{font-size:14px;line-height:1.95;color:#b0a89e;margin-bottom:16px;}
+  .prose strong{color:var(--parchment);font-weight:500;}
+  .explain-box{background:rgba(201,168,76,0.04);border:1px solid var(--border);
+               padding:20px 24px;margin-bottom:24px;}
+  .explain-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+                 text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;}
+  .explain-body{font-size:13px;line-height:1.85;color:#a0988e;}
+  .timeline-entry{border-left:2px solid var(--border);padding:0 0 24px 20px;position:relative;}
+  .timeline-entry::before{content:'';position:absolute;left:-5px;top:4px;
+                          width:8px;height:8px;border-radius:50%;background:var(--gold);}
+  .timeline-year{font-family:var(--f-mono);font-size:9px;letter-spacing:3px;
+                 text-transform:uppercase;color:var(--gold);margin-bottom:6px;display:block;}
+  .timeline-title{font-family:var(--f-display);font-size:17px;font-style:italic;
+                  color:var(--parchment);margin-bottom:8px;}
+  .timeline-body{font-size:13px;line-height:1.85;color:#a0988e;}
+  .timeline-source{font-family:var(--f-mono);font-size:8px;color:rgba(255,255,255,0.25);
+                   margin-top:8px;line-height:1.6;}
 
-  .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,6,4,0.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
-  .nav-back{font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;}
-  .nav-title{font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.45);}
+  /* MAIN TABLE */
+  .table-wrap{overflow-x:auto;margin-bottom:16px;}
+  table{width:100%;border-collapse:collapse;font-size:11.5px;}
+  thead tr{border-bottom:2px solid var(--gold);}
+  th{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;
+     color:var(--gold);padding:10px 10px;text-align:left;white-space:nowrap;
+     background:rgba(201,168,76,0.04);}
+  tbody tr{border-bottom:1px solid var(--border);}
+  tbody tr:hover{background:rgba(201,168,76,0.03);}
+  tbody tr.highlight{background:rgba(201,168,76,0.06);}
+  td{padding:10px 10px;color:#b0a89e;vertical-align:top;line-height:1.6;}
+  td.name-cell{font-family:var(--f-display);font-size:14px;font-style:italic;color:var(--parchment);}
+  td.year-cell{font-family:var(--f-mono);font-size:10px;color:var(--gold);white-space:nowrap;}
+  td.record-cell{font-family:var(--f-mono);font-size:9px;color:var(--muted);}
+  td.value-cell{font-family:var(--f-mono);font-size:10px;color:#a0988e;}
+  .conf-badge{display:inline-block;font-family:var(--f-mono);font-size:8px;
+              letter-spacing:1px;padding:2px 6px;margin-top:4px;}
+  .conf-confirmed{background:rgba(122,184,122,0.12);color:#7ab87a;border:1px solid rgba(122,184,122,0.3);}
+  .conf-hypothesis{background:rgba(201,168,76,0.08);color:var(--gold);border:1px solid rgba(201,168,76,0.3);}
+  .conf-unknown{background:rgba(255,255,255,0.04);color:var(--muted);border:1px solid var(--border);}
 
-  /* OPENING */
-  .opening{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 24px 80px;text-align:center;border-bottom:1px solid var(--border);background:radial-gradient(ellipse at center,rgba(139,105,20,0.07) 0%,transparent 65%);position:relative;}
-  .opening-label{font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.50);margin-bottom:32px;display:block;}
-  .opening-name{font-family:var(--f-display);font-size:clamp(60px,13vw,130px);font-style:italic;color:var(--parchment);line-height:0.88;letter-spacing:-3px;margin-bottom:16px;}
-  .opening-amp{font-family:var(--f-display);font-size:clamp(24px,4vw,44px);font-style:italic;color:rgba(201,168,76,0.6);display:block;margin:8px 0;}
-  .opening-name2{font-family:var(--f-display);font-size:clamp(52px,10vw,110px);font-style:italic;color:var(--gold2);line-height:0.88;letter-spacing:-2px;margin-bottom:32px;}
-  .opening-dates{font-family:var(--f-mono);font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.35);margin-bottom:40px;display:block;}
-  .opening-statement{max-width:560px;font-size:clamp(15px,2.2vw,18px);line-height:2;color:rgba(228,220,208,0.90);font-style:italic;}
-  .scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.20);animation:breathe 3s ease-in-out infinite;}
-  @keyframes breathe{0%,100%{opacity:0.15;}50%{opacity:0.55;}}
-
-  /* STORY */
-  .story{max-width:700px;margin:0 auto;padding:0 24px;}
-  .chapter{padding:80px 0;border-top:1px solid var(--border);}
-  .chapter:first-child{border-top:none;padding-top:80px;}
-  .chapter-label{font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.55);display:block;margin-bottom:20px;}
-  .chapter-title{font-family:var(--f-display);font-size:clamp(28px,5vw,44px);font-style:italic;color:var(--parchment);margin-bottom:36px;line-height:1.1;}
-  .prose p{font-size:clamp(15px,2.2vw,17px);line-height:2.2;color:#e4dcd0;margin-bottom:28px;}
-  .prose p:last-child{margin-bottom:0;}
-
-  /* PULL QUOTE */
-  .pull{margin:48px 0;padding:32px 40px;border-left:3px solid var(--gold);background:rgba(10,8,5,0.5);}
-  .pull p{font-family:var(--f-display);font-size:clamp(18px,3vw,24px);font-style:italic;color:var(--parchment);line-height:1.65;margin-bottom:0!important;}
-  .pull-attr{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.35);display:block;margin-top:14px;}
-
-  /* DOCUMENT BLOCK */
-  .doc-block{margin:40px 0;border:1px solid rgba(201,168,76,0.25);background:rgba(10,8,5,0.5);}
-  .doc-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.60);display:block;padding:12px 20px;border-bottom:1px solid rgba(201,168,76,0.15);background:rgba(10,8,5,0.4);}
-  .doc-body{padding:20px 24px;font-size:13px;line-height:1.9;color:#c8c0b4;font-family:var(--f-mono);}
-
-  /* FAMILY NAMES */
-  .family-list{margin:36px 0;padding:28px 32px;border:1px solid var(--border);background:rgba(10,8,5,0.4);}
-  .family-list-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.55);display:block;margin-bottom:20px;}
-  .family-name{font-family:var(--f-display);font-size:18px;font-style:italic;color:#f0ead8;display:block;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
-  .family-name:last-child{border-bottom:none;}
-  .family-name.ancestor{color:var(--gold2);}
-  .family-name-note{font-family:var(--f-mono);font-size:9px;color:rgba(255,255,255,0.35);margin-left:12px;}
-
-  /* GENERATION CHAIN */
-  .gen-chain{margin:48px 0;}
-  .gen-item{display:flex;gap:20px;align-items:flex-start;margin-bottom:0;padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
-  .gen-item:last-child{border-bottom:none;}
-  .gen-number{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.30);min-width:24px;padding-top:3px;}
-  .gen-content{flex:1;}
-  .gen-name{font-family:var(--f-display);font-size:17px;font-style:italic;color:#f0ead8;display:block;margin-bottom:3px;}
-  .gen-name.you{color:var(--gold2);}
-  .gen-dates{font-family:var(--f-mono);font-size:9px;color:rgba(255,255,255,0.35);display:block;margin-bottom:4px;}
-  .gen-source{font-size:12px;color:#a0988c;line-height:1.6;}
-
-  /* MAP NOTE */
-  .map-note{margin:36px 0;padding:20px 24px;background:rgba(10,8,5,0.4);border:1px solid var(--border);}
-  .map-route{font-family:var(--f-mono);font-size:11px;color:var(--gold2);line-height:2;letter-spacing:1px;}
-  .map-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.50);display:block;margin-bottom:12px;}
-
-  /* SOURCES */
-  .sources{margin:48px 0;padding:24px 28px;border:1px solid var(--border);background:rgba(10,8,5,0.4);}
-  .sources-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.60);display:block;margin-bottom:16px;}
-  .sources ol{padding-left:18px;}
-  .sources ol li{font-family:var(--f-mono);font-size:10px;line-height:1.9;color:#a8a090;margin-bottom:8px;}
-
-  /* CLOSING */
-  .closing{padding:80px 0 100px;text-align:center;border-top:1px solid var(--border);}
-  .closing-title{font-family:var(--f-display);font-size:clamp(24px,4.5vw,38px);font-style:italic;color:var(--parchment);margin-bottom:24px;line-height:1.25;}
-  .closing-body{font-size:15px;line-height:2;color:#c0b8b0;max-width:500px;margin:0 auto 40px;}
-  .back-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--border);padding:13px 22px;margin:0 6px 10px;transition:border-color 0.2s;}
-  .back-link:hover{border-color:var(--gold);}
-
-  @media(max-width:640px){
-    .pull{padding:20px 24px;}
-    .gen-item{gap:12px;}
-  }
+  .pending{background:rgba(139,58,58,0.08);border:1px solid rgba(139,58,58,0.25);
+           padding:16px 20px;margin-top:24px;}
+  .pending-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+                 text-transform:uppercase;color:#c07070;margin-bottom:8px;display:block;}
+  .dna-note{background:var(--card);border:1px solid var(--border);padding:20px 24px;margin-top:8px;}
+  .dna-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+             text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:block;}
+  .footer{max-width:980px;margin:56px auto 0;padding:24px 24px 0;
+          border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .footer-credit{font-family:var(--f-mono);font-size:8px;letter-spacing:1px;color:rgba(255,255,255,0.25);}
+  .footer-link{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;
+               text-transform:uppercase;color:var(--muted);text-decoration:none;}
+  .footer-link:hover{color:var(--gold);}
 </style>
 </head>
 <body>
 
 <nav class="nav">
-  <a href="family_tree.html" class="nav-back">← Back to Archive</a>
-  <span class="nav-title">Molley & Patience · The Oldest Confirmed Line</span>
+  <a href="family_tree.html" class="nav-back">&#8592; Back to Family Tree</a>
+  <span class="nav-title">Nichols-Waldrop Family Legacy</span>
 </nav>
 
-<!-- OPENING -->
-<section class="opening">
-  <span class="opening-label">Armstrong Family Archive · Sixth & Fifth Great-Grandmothers · The Oldest Confirmed Line</span>
-  <h1 class="opening-name">Molley</h1>
-  <span class="opening-amp">&</span>
-  <h2 class="opening-name2">Patience</h2>
-  <span class="opening-dates">Union County, South Carolina · 1793 — Rankin County, Mississippi · 1839</span>
-  <p class="opening-statement">They were listed together in a mortgage document in 1793. Mother and daughter. Forty-six years later they were still together in Mississippi — still named in the same document — Patience and her children and her children's children. They did not let go of each other. That is the oldest thing we know about this family.</p>
-  <span class="scroll-hint">scroll</span>
-</section>
-
-<div class="story">
-
-  <!-- CHAPTER 1: MOLLEY -->
-  <div class="chapter">
-    <span class="chapter-label">Confirmed by primary source · Deed Book B Page 467 · March 22 1793 · Union County South Carolina</span>
-    <h2 class="chapter-title">Molley</h2>
-
-    <div class="prose">
-      <p><strong>Molley</strong> is the oldest confirmed ancestor in this family's documented line. She was enslaved by James Sims Sr. of Union County, South Carolina. On March 22 1793 — when James Sims mortgaged 850 acres of land and 36 enslaved people to Peter Braselman of Newberry County — Molley was listed by name alongside her children.</p>
-
-      <p>Her children were: <strong>Charles, Edward, Delf, Abram, Sawny, Tom, and Patience.</strong></p>
-
-      <p>She kept seven children. In a world that separated families without warning or recourse — in a world where children were collateral, where bodies were currency, where love had no legal standing — Molley raised seven children and held them together long enough for all seven names to appear in the same document. That document is a mortgage. It recorded her family as property. But it also recorded her family as a family. And it survived.</p>
-
-      <p>A note on the DNA: This family carries 16–22% European ancestry in DNA testing results. That ancestry did not come through Molley — it came through the Waldrop household, where Patience and her daughter Clarissa were held after 1795. Molley was in the Sims household in Union County. The Waldrop DNA — the European admixture — entered the line through Patience's children and grandchildren who were born and raised in the Waldrop household across South Carolina and Mississippi. This is documented history. It is recorded here because the record should be complete and honest.</p>
-
-      <p>Molley was born approximately 1750 to 1770. Where she was born — whether Virginia, North Carolina, or South Carolina — is not yet known. How she came to be in James Sims's household in Union County is not yet documented. She may have come from an earlier estate, been purchased at sale, or been born into the Sims household. That search continues.</p>
-
-      <p>What happened to Molley after 1793 is not yet confirmed by primary source. When Patience was given away to Patty Waldrop in 1795 — two years after the mortgage — Molley and her other children were not named in that transaction. Whether Molley remained in the Sims household, was sold, or was eventually freed is not yet known. What is known is that she existed. She had a name. She had seven children. And one of them — Patience — carried her line forward across two centuries to the present day.</p>
-    </div>
-
-    <div class="family-list">
-      <span class="family-list-label">Molley's Seven Children · Confirmed by Deed Book B Page 467 · 1793</span>
-      <span class="family-name">Charles</span>
-      <span class="family-name">Edward</span>
-      <span class="family-name">Delf</span>
-      <span class="family-name">Abram</span>
-      <span class="family-name">Sawny</span>
-      <span class="family-name">Tom <span class="family-name-note">· Patience's brother · traveled with her to Mississippi · confirmed in 1839 deed</span></span>
-      <span class="family-name ancestor">Patience <span class="family-name-note">· ★ Your 5th great-grandmother · given to Patty Waldrop 1795</span></span>
-    </div>
-  </div>
-
-  <!-- CHAPTER 2: THE MORTGAGE -->
-  <div class="chapter">
-    <span class="chapter-label">Primary source · Newberry County South Carolina Deed Book B Page 467 · March 22 1793</span>
-    <h2 class="chapter-title">The Document That Named Her</h2>
-
-    <div class="prose">
-      <p>On March 22 1793 James Sims Sr. of Union County South Carolina mortgaged his land and his people to Peter Braselman of Newberry County — a merchant to whom he owed one thousand pounds sterling. The document lists 850 acres of land and 36 enslaved people as collateral.</p>
-
-      <p>The 36 people are listed in family groups — couples with their children named together, mothers with their children, individuals listed by name. This organization reflects how the enslaved community itself was structured — and how the people in it were known to those around them. Molley is listed as a mother. Her children are listed with her. That is the primary source record of their relationship.</p>
-    </div>
-
-    <div class="doc-block">
-      <span class="doc-label">Deed Book B · Page 467 · March 22 1793 · Union County South Carolina · Recorded June 29 1793</span>
-      <div class="doc-body">
-        James Sims, Senr. of Union County, State of South Carolina, planter, to Peter Braselman of Newberry County, South Carolina, Merchant. In consideration of £1000 Sterling — one tract of land in Union County containing 600 acres; 150 acres on Tyger River and another 100 for a total of 850 acres; also 36 negroes:<br><br>
-        Jack and Doll and their children Ambrose, Paul;<br>
-        Isaac and Tabby and their children Jack, Emille, Fanny, Robert;<br>
-        <strong>Molley and her children Charles, Edward, Delf, Abram, Sawny, Tom and Patience;</strong><br>
-        Big Lucy and Daniel, Tabby, Peter, Desly, and Major and Lucy;<br>
-        Jenny and her children Mary, Henry, Peter;<br>
-        Delsey and her children Morning and Daniel, Isaac, Lucy, Amy, Frank and Doll;<br><br>
-        also ten horses, mares and colts, furniture, hoggs, tools...<br><br>
-        Signed James Sims, Sr. Wit: James Sims jr., Robert Powell. Recorded 29 June 1793. Fredk. Nance, DC.
-      </div>
-    </div>
-
-    <div class="prose">
-      <p>James Sims also gave nine enslaved people to his daughter Drucilla Braselman — Peter's wife — on June 26 1793, recorded just days before the mortgage. The Sims and Braselman families were connected by marriage. The 36 people mortgaged — including Molley and her children — were caught between a debt and a family transaction that would determine their fate.</p>
-
-      <p>What happened to the mortgage after 1793 has not yet been documented. Whether Sims discharged the debt and kept his people — or whether Braselman foreclosed and the 36 were sold — is the research question that explains how Patience came to be in Francis Davenport's household by 1795. That document, if it exists, is still to be found.</p>
-    </div>
-  </div>
-
-  <!-- CHAPTER 3: PATIENCE -->
-  <div class="chapter">
-    <span class="chapter-label">Primary source · Newberry County South Carolina Deed Book C Pages 367-368 · August 4 1795</span>
-    <h2 class="chapter-title">Patience</h2>
-
-    <div class="prose">
-      <p><strong>Patience</strong> — Molley's daughter — was born in South Carolina approximately 1765 to 1780. She grew up alongside her brothers Charles, Edward, Delf, Abram, Sawny, and Tom. By 1793 she was old enough to be listed as an individual in the mortgage — not as a child within a smaller family unit but as a person in her own right, named beside her brother Tom.</p>
-
-      <p>Two years after the mortgage — on August 4 1795 — Francis Davenport Sr. of the District of 96 and Newberry County gave Patience to his daughter <strong>Patty Waldrup</strong> as a deed of gift. How Patience came from the Sims mortgage in Union County to the Davenport household in Newberry County in those two years has not yet been documented. The transaction that transferred her — whether a sale, a foreclosure, or an inheritance — is the missing link in this chain.</p>
-
-      <p>What is confirmed is that her brother <strong>Tom</strong> came with her. Tom is listed in the 1793 mortgage alongside Patience. Tom appears in the 1839 Mississippi deed alongside Patience. Across forty-six years — two states — multiple households — Tom and Patience stayed together. Brother and sister. They did not lose each other.</p>
-    </div>
-
-    <div class="doc-block">
-      <span class="doc-label">Deed Book C · Pages 367-368 · August 4 1795 · Newberry County South Carolina</span>
-      <div class="doc-body">
-        Deed of Gift. Francis Davenport, Sr. of the District of 96 and Newberry County to his beloved daughter Patty Waldrop — transferring one negro girl named <strong>Patience</strong>.<br><br>
-        Witnessed by Isaac Davenport, Edward Turner, and Elizabeth Towling.<br>
-        Proved before Charles Griffin, J.P.<br>
-        Recorded in Deed Book C, Pages 367-368.
-      </div>
-    </div>
-
-    <div class="prose">
-      <p>Francis Davenport Sr. was born in Virginia in 1718 and died in Newberry District South Carolina on July 23 1798 — three years after giving Patience to his daughter. He was 77 years old when he made that deed of gift. Patience was one of the last things he gave away before he died.</p>
-
-      <p>Patty Waldrop — Patience's new enslaver — was the daughter of Francis Davenport. The Waldrop family had been in Laurens County South Carolina since at least 1772 when James Waldrop Sr. received a land grant on the Enoree River. The Davenport and Waldrop families were neighbors in the same Upcountry South Carolina planter community — Laurens and Newberry counties sharing a border, the same rivers, the same Baptist churches, the same network of land and labor and debt.</p>
-
-      <p>In that household Patience had a daughter. Her name was <strong>Clarissa.</strong></p>
-    </div>
-  </div>
-
-  <!-- CHAPTER 4: THE MIGRATION -->
-  <div class="chapter">
-    <span class="chapter-label">Primary source · August 11 1827 · Yazoo County Mississippi · March 25 1839 · Rankin County Mississippi</span>
-    <h2 class="chapter-title">The Long Road West</h2>
-
-    <div class="prose">
-      <p>The Waldrop family moved west. This was the pattern of the era — white planter families following land prices and opportunity from the exhausted soils of the Carolinas to the rich cotton fields of Mississippi, carrying their enslaved people with them. Patience had no choice in the matter. Neither did Tom. Neither did Clarissa.</p>
-
-      <p>On <strong>August 11 1827</strong> Hezekiah Waldrop — Patty's husband — transferred Patience, Rachael, and Thomas to his son Stephen R. Waldrop of Yazoo County Mississippi. The family was moving. Patience was going with them. Tom — listed as Thomas — was going too.</p>
-
-      <p>Patty Waldrop died at some point before 1839. When she died, everything she owned — including Patience and all of Patience's descendants — passed to her children. On <strong>March 25 1839</strong> Hezekiah Parrish Waldrop executed a formal declaration in Rankin County Mississippi confirming that ownership for his and Patty's children. He cited the original 1795 Davenport deed as his legal foundation.</p>
-
-      <p>That 1839 declaration names: <strong>Patience and her increase — Rachol, Clarissa, Tom</strong> — and Clarissa's children — <strong>William, Amanda, and Harriet.</strong></p>
-
-      <p>Three generations. One document. Forty-four years after Francis Davenport gave Patience to his daughter — the same Patience, the same family, named together in Mississippi. They had not been separated. They had not lost each other. Molley's daughter and Molley's son and Patience's own daughter and grandchildren — all still together.</p>
-
-      <div style="background:rgba(139,58,58,0.08);border:1px solid rgba(139,58,58,0.2);padding:16px 20px;margin:16px 0;">
-        <p style="font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#c07070;margin-bottom:8px;">Critical Clarification · This Is Not A Freedom Document</p>
-        <p style="font-size:13px;line-height:1.85;color:#a0988e;">The 1839 deed has sometimes been read as granting Patience's family their freedom. It does not. The phrase "free from the claim of myself and of all persons claiming by or under me" means E.P. Waldrop is releasing his personal claim and transferring Patience and her family as property to Patty Waldrop's eight children. They were not liberated. They were transferred. The eight recipients named in the deed include <strong style="color:#f0ead8;">Fanny Micholes — Fanny Waldrop who had already married John Nichols in Austin County Texas on October 14 1837</strong> — two years before this deed was signed. Patience's descendants, including Rendy Blayn and Easter Bell Nichols, came to Texas as Fanny's portion of this transfer.</p>
-      </div>
-
-      <div style="background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);padding:16px 20px;margin:16px 0;">
-        <p style="font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Researcher Notes · Kathryn R. Bonner · Typed on the Original Document</p>
-        <p style="font-size:13px;line-height:1.85;color:#a0988e;font-style:italic;">"FANNY MICHOLES is really NICHOLS. FANNY WALDROP married in Austin Co., TEXAS, 14 Oct., 1837. JOHN NICHOLS — I have had this mar. rec. for many years… krb"</p>
-        <p style="font-size:12px;color:#808078;margin-top:8px;">— Kathryn R. Bonner (Mrs. W.G.), Marianna AR · her ancestor is Wiley B. Waldrop · document shared by Ray Settles, Tyler TX · whose ancestor is Claiborne P. Waldrop · both siblings of Fanny Waldrop Nichols · all named in this deed · received by this archive August 2026</p>
-      </div>
-
-    </div>
-
-    <div class="map-note">
-      <span class="map-label">The Route · Confirmed by Primary Source</span>
-      <div class="map-route">
-        Union County, South Carolina · 1793<br>
-        ↓<br>
-        Newberry County, South Carolina · 1795<br>
-        ↓<br>
-        Yazoo County, Mississippi · 1827<br>
-        ↓<br>
-        Rankin County, Mississippi · 1839<br>
-        ↓<br>
-        Austin County, Texas · 1865 and after<br>
-        ↓<br>
-        Orange County, California · 1950s and after<br>
-        ↓<br>
-        Las Vegas, Nevada · Present day
-      </div>
-    </div>
-
-    <div class="pull">
-      <p>"Patience and her increase."</p>
-      <span class="pull-attr">— 1839 Rankin County Mississippi deed · E.P. Waldrop · Hezekiah Parrish Waldrop · The most radical phrase in this entire archive. They recorded her name.</span>
-    </div>
-  </div>
-
-  <!-- CHAPTER 5: THE CHAIN -->
-  <div class="chapter">
-    <span class="chapter-label">Seven confirmed generations · Primary source documentation at every step</span>
-    <h2 class="chapter-title">The Unbroken Line</h2>
-
-    <div class="prose">
-      <p>Most African American families searching their history hit a wall at 1870 — the first census that recorded Black Americans by name. Some break through to 1865. A very few find documents from before the Civil War.</p>
-
-      <p>This family's confirmed documented line goes back to <strong>1793</strong>. To a woman named Molley in Union County South Carolina. To her daughter Patience. To Patience's daughter Clarissa. To Clarissa's descendant Easter Bell — who was born July 4 1838 and lived to age 97 and died free and remembered. To Hellen. To Eva. To Margie. To Hjordis. To Jasmine.</p>
-
-      <p>Nine generations. Two hundred and thirty years. One family. Every generation documented by primary source.</p>
-    </div>
-
-    <div class="gen-chain">
-
-      <div class="gen-item">
-        <span class="gen-number">1</span>
-        <div class="gen-content">
-          <span class="gen-name">Molley</span>
-          <span class="gen-dates">Born ca. 1750-1770 · South Carolina · Died unknown</span>
-          <span class="gen-source">Confirmed by Deed Book B Page 467 · Union County South Carolina · March 22 1793 · Enslaved by James Sims Sr. · Mother of seven children including Patience and Tom · Your 6th great-grandmother</span>
-        </div>
-      </div>
-
-      <div class="gen-item">
-        <span class="gen-number">2</span>
-        <div class="gen-content">
-          <span class="gen-name">Patience</span>
-          <span class="gen-dates">Born ca. 1765-1780 · South Carolina · Last confirmed 1839 Mississippi</span>
-          <span class="gen-source">Confirmed by Deed Book B Page 467 · 1793 · Deed Book C Pages 367-368 · 1795 · 1839 Rankin County Mississippi deed · Molley's daughter · Given to Patty Waldrop by Francis Davenport August 4 1795 · Your 5th great-grandmother</span>
-        </div>
-      </div>
-
-      <div class="gen-item">
-        <span class="gen-number">3</span>
-        <div class="gen-content">
-          <span class="gen-name">Clarissa</span>
-          <span class="gen-dates">Born ca. 1795-1810 · South Carolina or Mississippi · Died unknown</span>
-          <span class="gen-source">Confirmed by 1839 Rankin County Mississippi deed · Patience's daughter · Born into Waldrop household as Patience's increase · Mother of William, Amanda, and Harriet · Your 4th great-grandmother</span>
-        </div>
-      </div>
-
-      <div class="gen-item">
-        <span class="gen-number">4</span>
-        <div class="gen-content">
-          <span class="gen-name">Easter Bell Nichols</span>
-          <span class="gen-dates">Born July 4 1838 · Texas · Died December 17 1935 · Age 97</span>
-          <span class="gen-source">Confirmed by Texas Death Certificate State File No. 54496 · 1860 Austin County slave schedule · 1870 census Household 278 · Clarissa's descendant · Married Joseph Nichols December 23 1869 · Your 3rd great-grandmother</span>
-        </div>
-      </div>
-
-      <div class="gen-item">
-        <span class="gen-number">5</span>
-        <div class="gen-content">
-          <span class="gen-name">Hellen Nichols Armstrong</span>
-          <span class="gen-dates">Born September 1870 · Bellville, Austin County, Texas</span>
-          <span class="gen-source">Confirmed by 1870 census · Easter Bell's daughter · Your 2nd great-grandmother</span>
-        </div>
-      </div>
-
-      <div class="gen-item">
-        <span class="gen-number">6</span>
-        <div class="gen-content">
-          <span class="gen-name">Eva Armstrong Ballard</span>
-          <span class="gen-dates">Born June 27 1900 · Died November 24 1977</span>
-          <span class="gen-source">Confirmed by census records and death certificate · Hellen's daughter · Your great-grandmother</span>
-        </div>
-      </div>
-
-      <div class="gen-item">
-        <span class="gen-number">7</span>
-        <div class="gen-content">
-          <span class="gen-name">Margie Nell Ballard Corbin</span>
-          <span class="gen-dates">Born March 13 1929 · Died October 15 1988</span>
-          <span class="gen-source">Confirmed by census records and family oral history · Eva's daughter · Your grandmother</span>
-        </div>
-      </div>
-
-      <div class="gen-item">
-        <span class="gen-number">8</span>
-        <div class="gen-content">
-          <span class="gen-name">Hjordis L. Corbin</span>
-          <span class="gen-dates">Born January 20 1960 · Living</span>
-          <span class="gen-source">Confirmed by AncestryDNA kit SQ8499767 · 3,575.4 cM shared with Jasmine · Margie's daughter · Your mother</span>
-        </div>
-      </div>
-
-      <div class="gen-item">
-        <span class="gen-number">9</span>
-        <div class="gen-content">
-          <span class="gen-name you">Jasmine M. Lee</span>
-          <span class="gen-dates">Born January 25 1982 · Living</span>
-          <span class="gen-source">GEDmatch kit QW8418781 · Founder and CEO · Dock Ellis Foundation · Compiler of this archive · Molley's 7th great-granddaughter</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- CHAPTER 6: WHAT THIS MEANS -->
-  <div class="chapter">
-    <span class="chapter-label">A note from the compiler</span>
-    <h2 class="chapter-title">What It Means to Find Them</h2>
-
-    <div class="prose">
-      <p>Most African American families cannot get past 1870. The records before that year were not kept for Black people — they were kept for the people who owned them. Finding your ancestors in those records means searching the documents of the people who enslaved them, reading your family's names in ledgers of property and debt, finding them in the margins of other people's lives.</p>
-
-      <p>That is what this research required. And that is what it found.</p>
-
-      <p>Molley's name is in a mortgage document from 1793 because James Sims needed money and used his people as collateral. That is a brutal fact. But her name is there. Her children's names are there. And because those names are there — because someone wrote them down in a deed book in Union County South Carolina on a March day in 1793 — we know them now. Two hundred and thirty years later. We know Molley had seven children. We know Patience was one of them. We know Tom was another and that he stayed with his sister across two states and half a century.</p>
-
-      <p>They did not know anyone would look for them. They did not know their names would survive. They survived anyway. That is not a small thing.</p>
-
-      <p>This archive exists because <strong>Jasmine M. Lee</strong> looked for them. Seven years of research. Primary source by primary source. County courthouse by county courthouse. Census record by census record. DNA match by DNA match. She found them.</p>
-
-      <p>Molley. Patience. Tom. Clarissa. Easter Bell. Hellen. Eva. Margie. Hjordis. Jasmine.</p>
-
-      <p>The line is unbroken.</p>
-    </div>
-
-    <div class="pull">
-      <p>"I did something most Black people aren't able to do. I'm hurt to know what they went through — but at peace knowing they had each other."</p>
-      <span class="pull-attr">— Jasmine M. Lee · Founder and CEO, Dock Ellis Foundation · August 2026</span>
-    </div>
-  </div>
-
-  <!-- SOURCES -->
-  <div class="sources">
-    <span class="sources-label">Primary Sources · Confirmed · Every Generation Documented</span>
-    <ol>
-      <li>Newberry County South Carolina Deed Book B Page 467 · March 22 1793 · James Sims Sr. mortgage to Peter Braselman · 36 enslaved people named including Molley and her children Charles, Edward, Delf, Abram, Sawny, Tom and Patience · Union County South Carolina · Recorded June 29 1793 · Fredk. Nance DC</li>
-      <li>Newberry County South Carolina Deed Book B Page 466 · June 26 1793 · James Sims Sr. deed of gift to daughter Drucilla Braselman · nine enslaved people named · same community as Molley and Patience</li>
-      <li>Newberry County South Carolina Deed Book C Pages 367-368 · August 4 1795 · Francis Davenport Sr. deed of gift to daughter Patty Waldrop · one negro girl named Patience · witnessed by Isaac Davenport, Edward Turner, Elizabeth Towling · proved before Charles Griffin JP</li>
-      <li>Wadsworth and Turpin commercial transaction · Newberry County South Carolina Deed Book C · ca. 1795 · Patience about 30 years of age listed alongside Moll, Hannah, Lin, Violet, Esther, George</li>
-      <li>DAR lineage record · Francis Davenport born 1718 Virginia died July 23 1798 Newberry District South Carolina · married Mary Turner · father of Patty Waldrop and William Davenport and others · confirms Davenport family in Newberry County same era as Patience transfer</li>
-      <li>Hezekiah Waldrop to Stephen R. Waldrop · August 11 1827 · Yazoo County Mississippi · transfers Patience, Rachael, and Thomas · migration document confirmed</li>
-      <li>Hezekiah Parrish Waldrop declaration · March 25 1839 · Rankin County Mississippi · formally transfers Patience and her increase — Rachol, Clarissa, Tom — and Clarissa's children William, Amanda, Harriet — to his and Patty Waldrop's children · cites original August 4 1795 Francis Davenport deed as legal foundation</li>
-      <li>Texas Death Certificate State File No. 54496 · Easter Bell Nichols · born July 4 1838 · died December 17 1935 · age 97 · confirms mother as Rendy Blayn · confirms descent from Clarissa line</li>
-      <li>1860 Federal Census Slave Schedule · Austin County Texas · John Nichols · confirms female age 22 born Texas consistent with Easter Bell · confirms female age 43 consistent with Rendy Blayn</li>
-      <li>1870 Federal Census · Beat No. 1 · Austin County Texas · Household 278 · Easter Bell Nichols age 31 · Joseph Nichols · Allen age 5 · Anna age 4 · June 30 1870</li>
-      <li>AncestryDNA ThruLines · Clarissa Slave · 46 confirmed DNA matches tracing descent through Patience and Clarissa · confirms biological descent</li>
-      <li>GEDmatch One-to-One · Jasmine M. Lee QW8418781 and Hjordis L. Corbin SQ8499767 · 3,575.4 cM shared · confirms parent-child relationship</li>
-    </ol>
-  </div>
-
-  <!-- CLOSING -->
-  <div class="closing">
-    <h2 class="closing-title">Molley had seven children.<br>We know their names.<br>We know where they went.<br>We did not forget them.</h2>
-    <p class="closing-body">This is what the research was for. Not a wall at 1870. Not a wall at 1865. Not a wall at 1839. All the way back to 1793. All the way back to Molley. She is the beginning of everything confirmed about this family. She is why this archive exists.</p>
-    <div>
-
-<!-- HEZEKIAH WALDROP MIGRATION - CONFIRMED 2026 -->
-<div style="background:rgba(201,168,76,0.03);border:1px solid rgba(201,168,76,0.15);padding:24px;margin:0 auto 32px;max-width:680px;">
-  <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;">2026 Research Update · Hezekiah Waldrop Migration Confirmed</p>
-  <p style="font-size:13.5px;line-height:1.9;color:#b0a89e;margin-bottom:12px;">The migration of Hezekiah Waldrop — who held Patience and Clarissa — has now been confirmed across three states by primary source documents:</p>
-  <p style="font-size:13.5px;line-height:1.9;color:#b0a89e;margin-bottom:8px;"><strong style="color:#f0ead8;">1795</strong> — Hezekiah receives Patience from Francis Davenport Sr. in Newberry County South Carolina. Three days later Francis Davenport also gives enslaved girl Eliza to his daughter Nancy Waldrop (Deed Book C: 369 · August 1 1795). Both of Davenport's daughters receive enslaved girls simultaneously.</p>
-  <p style="font-size:13.5px;line-height:1.9;color:#b0a89e;margin-bottom:8px;"><strong style="color:#f0ead8;">1836</strong> — Hezekiah Waldrop executes a Deed of Gift in Hinds County Mississippi — adjacent to Rankin County where the 1839 deed distributed Patience and Clarissa.</p>
-  <p style="font-size:13.5px;line-height:1.9;color:#b0a89e;margin-bottom:8px;"><strong style="color:#f0ead8;">1857–1863</strong> — Hezekiah Waldrop purchases and sells land in Williamson County Texas — adjacent to Austin County Texas where John Nichols held Rendy Blayn and Easter Bell. John Nichols was born in <strong style="color:#f0ead8;">Louisiana ca. 1797</strong> — confirmed by the 1860 Austin County census — and married Frances Fanny Waldrop — who was born in <strong style="color:#f0ead8;">South Carolina ca. 1802</strong>, also confirmed by the 1860 census. Fanny Waldrop's South Carolina birthplace places her in the same Newberry County geography as Patience and Clarissa — she grew up in the Waldrop household that held your ancestors before coming to Texas in 1827.</p>
-  <p style="font-size:13.5px;line-height:1.9;color:#b0a89e;">The community that began with Patience in Newberry County South Carolina in 1795 traveled the same migration corridor as the Waldrop family — South Carolina → Mississippi → Texas — across sixty-eight years.</p>
+<div class="hero">
+  <span class="eyebrow">Primary Source Reconstruction · Bellville · Austin County · Texas · 1827–1864</span>
+  <h1>John Nichols · <em>Enslaved Community</em></h1>
+  <p class="hero-sub">A primary source reconstruction of the enslaved community held by John Nichols in Austin County, Texas — from his 1827 arrival through his 1864 death. This household contained our confirmed ancestors Rendy Blayn and Easter Bell Nichols.</p>
 </div>
 
+<div class="container">
 
-<!-- ═══════════════════════════════════════════════════
-     VOICES FROM THE SAME ROAD
-═══════════════════════════════════════════════════ -->
-<div class="story" style="background:var(--surface, #0e0b08);">
-  <div class="story-inner" style="max-width:720px;margin:0 auto;padding:60px 24px;">
-
-    <div style="text-align:center;margin-bottom:48px;">
-      <span style="font-family:var(--f-mono,'Courier New',monospace);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,0.35);display:block;margin-bottom:14px;">Historical Context · South Carolina · Mississippi · Texas · The Migration</span>
-      <h2 style="font-family:var(--f-display,'Georgia',serif);font-size:clamp(26px,5vw,40px);font-style:italic;color:#f0ead8;line-height:1.2;margin-bottom:16px;">Someone Walked <em>That Road</em></h2>
-      <p style="font-size:14px;line-height:1.9;color:rgba(245,242,236,0.55);max-width:580px;margin:0 auto;">Between 1936 and 1938, the United States government sent writers across the South to record the testimony of formerly enslaved people before those voices were gone. Most Americans have never heard of this collection. One woman they interviewed had walked a version of the same road Patience walked — from the old South, through Mississippi, into Texas. She remembered what it felt like. She put it into words. Here is what she said.</p>
-    </div>
-
-    <!-- SARAH FORD -->
-    <div style="border-left:3px solid #c9a84c;padding:0 0 0 24px;margin-bottom:48px;">
-      <p style="font-family:var(--f-mono,'Courier New',monospace);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#c9a84c;margin-bottom:12px;">WPA Slave Narrative · Sarah Ford · Austin & Washington Counties · Texas</p>
-      <h3 style="font-family:var(--f-display,'Georgia',serif);font-size:22px;font-style:italic;color:#f0ead8;margin-bottom:20px;">"They Walked Behind the Wagons for Hundreds of Miles"</h3>
-
-      <p style="font-size:14.5px;line-height:1.95;color:#c0b8b0;margin-bottom:16px;">Sarah Ford was enslaved on a large plantation along the Austin and Washington County line — the Brazos River corridor in Central Texas. The same geography where Easter Bell Nichols would be born. The same soil that Patience and Clarissa's descendants would eventually call home.</p>
-
-      <p style="font-size:14.5px;line-height:1.95;color:#c0b8b0;margin-bottom:16px;">In her WPA interview, Sarah described something historians call the Second Middle Passage — the forced migration of hundreds of thousands of enslaved people from the original slave states of Virginia, South Carolina, and Georgia into the cotton frontier of Mississippi, Alabama, Louisiana, and Texas. This was not a journey people chose. It was a march.</p>
-
-      <div style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);padding:20px 24px;margin:24px 0;">
-        <p style="font-family:var(--f-display,'Georgia',serif);font-size:17px;font-style:italic;color:#f0ead8;line-height:1.7;">Sarah described the overland drive — how women and children walked behind wagon trains for hundreds of miles. She remembered how enslaved mothers hid food in their clothing to make sure their children had something to eat at the end of each day. She described arriving in Texas exhausted, in a place where nothing was familiar and no one was kin.</p>
-        <p style="font-family:var(--f-mono,'Courier New',monospace);font-size:9px;color:rgba(255,255,255,0.35);margin-top:10px;">Paraphrased from Sarah Ford's WPA Slave Narrative · Federal Writers' Project · Texas Collection · Vol. 16 · 1936–1938</p>
-      </div>
-
-      <p style="font-size:14.5px;line-height:1.95;color:#c0b8b0;margin-bottom:16px;">Patience's journey was not exactly this journey. She was transferred to Patty Waldrop in 1795 in South Carolina — before the mass westward migration of the 1820s and 1830s. But Patience and her children traveled with the Waldrop family across South Carolina, into Mississippi, across decades. Clarissa — Patience's daughter, born into the Waldrop household — made part of that journey too. The primary source documents confirm it. What the documents cannot tell us is what it felt like to walk.</p>
-
-      <p style="font-size:14.5px;line-height:1.95;color:#c0b8b0;margin-bottom:16px;">Sarah Ford can tell us something about that. Not Patience's specific story — but the texture of it. The weight of it. The way a mother moving through unfamiliar country keeps her children close and hides what little she has so they do not go hungry. That part does not change with the names or the dates.</p>
-
-      <p style="font-size:14.5px;line-height:1.95;color:#c0b8b0;">The document that confirms Patience was given as property to Patty Waldrop in 1795 uses six words: <em>"Patience, a negro woman, and her increase."</em> Sarah Ford's testimony is what lives inside those six words. It is what <em>increase</em> actually meant to the woman carrying it.</p>
-    </div>
-
-    <!-- WHAT THIS MEANS -->
-    <div style="background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);padding:24px 28px;margin-bottom:32px;">
-      <p style="font-family:var(--f-mono,'Courier New',monospace);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#c9a84c;margin-bottom:12px;">Why This Matters For This Family</p>
-      <p style="font-size:14px;line-height:1.9;color:#b0a89e;margin-bottom:14px;">The WPA Slave Narratives were collected because the government recognized that the people who had lived through American slavery were dying. By 1936, most of them were in their 80s and 90s. Within another decade, their firsthand testimony would be gone forever.</p>
-      <p style="font-size:14px;line-height:1.9;color:#b0a89e;margin-bottom:14px;">Most Americans — including most Black Americans — have never read a single word from this collection. It exists. It is free. It is at the Library of Congress. And it describes, in the words of people who were actually there, the world that Patience, Clarissa, Easter Bell, and every ancestor in this family line navigated.</p>
-      <p style="font-size:14px;line-height:1.9;color:#b0a89e;">This research exists to make sure this family knows who they come from. The WPA narratives exist to make sure anyone who wants to understand can feel what the documents alone cannot convey. Both things are true at the same time. Neither one is enough without the other.</p>
-    </div>
-
-    <!-- NOTE -->
-    <div style="border-top:1px solid rgba(201,168,76,0.15);padding-top:24px;text-align:center;">
-      <p style="font-family:var(--f-mono,'Courier New',monospace);font-size:9px;line-height:1.9;color:rgba(255,255,255,0.30);">The WPA Slave Narratives are available in full through the Library of Congress · Born in Slavery: Slave Narratives from the Federal Writers' Project, 1936–1938 · Texas Collection, Vol. 16 · loc.gov/collections/slave-narratives-from-the-federal-writers-project-1936-to-1938</p>
-    </div>
-
+  <!-- WHO WAS JOHN NICHOLS -->
+  <div class="sec"><div class="sec-line"></div><div class="sec-label">Who Was John Nichols</div><div class="sec-line"></div></div>
+  <div class="prose">
+    <p>John Nichols was born in <strong>Louisiana ca. 1797</strong> — confirmed by the 1860 Austin County free population census which records him as born in Louisiana. An earlier web-sourced family tree showing Mississippi 1799 has been superseded by this primary source. He arrived in Texas in <strong>1827</strong> — confirmed by the Stephen F. Austin Register of Families (Page 80) which records him as: John Nicholls, age 33, wife Fanny age 31, two children, <strong>one other dependent</strong>, farmer, origin Sabine, arrival 1827. That one dependent is the unnamed enslaved person who became the first member of the Nichols enslaved community in Austin County Texas.</p>
+    <p>He was granted one league and one labor of land by the Mexican government on <strong>October 20 1832</strong>. That land grant is not recorded in Austin County deed books — it originates in Mexican colonial records. He subsequently sold portions of his original grant to James and Thomas Bell — the Bell family whose name became attached to the town of Bellville. The 1837–1866 Austin County deed books and the 1825–1835 Spanish deeds are active research targets that may document transfers of enslaved people into and out of the Nichols household.</p>
+    <p>John Nichols died <strong>March 3 1864</strong> — one year before emancipation. His children were Ellen, Sarah Jane, James William, Frances Elizabeth, Samuel Houston, and Caroline Mary. His wife was <strong>Frances Fanny Waldrop</strong> — daughter of <strong>Hezekiah Waldrop</strong> — whose family had held Patience and Clarissa in Newberry County South Carolina before migrating to Hinds County Mississippi and eventually to Williamson County Texas. The Waldrop family connection is the most significant finding in this research — documented across three states spanning 1795 to 1863.</p>
+    <p>His son <strong>Joseph Nichols</strong> married <strong>Easter Bell Nichols</strong> after emancipation. Both Joseph and Easter — and all of their children Allen, Josephine, Oscar, and Clara — are consistently recorded as <strong>Mulatto</strong> in post-emancipation census records. This reflects the documented reality of sexual violence by John Nichols against the enslaved women in his household — the census recorded the result as a Mulatto designation without naming what produced it.</p>
   </div>
-</div>
 
-      <a href="papertrail.html" class="back-link">The Paper Trail →</a>
-      <a href="registry.html" class="back-link">Enslaved Persons Registry →</a>
-      <a href="family_tree.html" class="back-link">← Back to Archive</a>
+  <!-- WALDROP CONNECTION -->
+  <div class="explain-box" style="margin-bottom:24px;border-color:rgba(201,168,76,0.4);">
+    <span class="explain-label" style="color:var(--gold);">The Waldrop Connection · Three States · Seventy Years</span>
+    <p class="explain-body">Fanny Waldrop Nichols was born in <strong>South Carolina ca. 1802</strong> — confirmed by the 1860 Austin County free population census which records her birthplace as South Carolina. This is the most significant finding in this research. Fanny Waldrop was born in South Carolina in 1802 — five years after Hezekiah Waldrop is documented in Newberry County South Carolina in 1797. She was born into the same South Carolina Waldrop household that held Patience and Clarissa. She grew up in that household. She married John Nichols on <strong>October 14 1837</strong> in Austin County Texas — confirmed by researcher Kathryn R. Bonner who held the primary source marriage record — and came to Texas in 1827 — bringing enslaved people from that same community with her. The 1839 Rankin County Mississippi deed (Deed Book 4 Page 435) names Fanny Micholes — Fanny Waldrop Nichols — as one of eight recipients of Patience and her increase. That deed transferred Patience's family as property to Patty Waldrop's children. It did not free them. Fanny's share of that transfer is how Rendy Blayn and Easter Bell came to be in the John Nichols household in Bellville. The 1870 census records her birthplace as Tennessee — but the 1860 census is the stronger primary source being closer to the period of documentation. Her connection to the Newberry County South Carolina Waldrop family is now confirmed by primary source. The documented migration of the Waldrop family runs directly from South Carolina to Mississippi to Texas:</p>
+    <p class="explain-body" style="margin-top:10px;"><strong style="color:var(--parchment);">1792</strong> — Francis Davenport sells an enslaved girl named <strong>Easther</strong> to James Davenport in Newberry County SC — witnessed by <strong>Richard Henderson Waldrop</strong> (Deed Book B: 629). The name Easter appears in the Davenport-Waldrop community 46 years before Easter Bell's birth.</p>
+    <p class="explain-body" style="margin-top:8px;"><strong style="color:var(--parchment);">1795</strong> — Francis Davenport Sr. gives enslaved girl <strong>Patience</strong> to his daughter <strong>Patty Waldrop</strong> (Deed Book C: 367–368). Three days later he gives enslaved girl <strong>Eliza</strong> to his daughter <strong>Nancy Waldrop</strong> (Deed Book C: 369). Both deeds certified by Charles Griffin J.P. and Frederick Nance C.N.C.</p>
+    <p class="explain-body" style="margin-top:8px;"><strong style="color:var(--parchment);">1797</strong> — Hezekiah Waldrop witnesses a Davenport deed in Newberry County SC — placing him in the same community as Patience and Clarissa.</p>
+    <p class="explain-body" style="margin-top:8px;"><strong style="color:var(--parchment);">1836</strong> — Hezekiah Waldrop executes a Deed of Gift in <strong>Hinds County Mississippi</strong> — adjacent to Rankin County where the 1839 Waldrop deed distributed Patience and Clarissa.</p>
+    <p class="explain-body" style="margin-top:8px;"><strong style="color:var(--parchment);">1857–1863</strong> — Hezekiah Waldrop purchases and sells land in <strong>Williamson County Texas</strong> — adjacent to Austin County where John Nichols held Rendy Blayn and Easter Bell.</p>
+    <p class="explain-body" style="margin-top:10px;">The enslaved community that began with Patience in Newberry County South Carolina in 1795 — held by the Waldrop family — traveled the same migration corridor as the Waldrop family itself: South Carolina → Mississippi → Texas. Rendy Blayn and Easter Bell in the Bellville Nichols household in 1860 are the Texas endpoint of that journey.</p>
+  </div>
+
+  <!-- EXPLAIN BOX -->
+  <div class="explain-box">
+    <span class="explain-label">How to Read This Reconstruction</span>
+    <p class="explain-body">Slave schedules did not record names — only age, sex, and color. This table cross-references the 1860 slave schedule with post-emancipation census records to make the best possible identifications. Every row is labeled with a confidence level. <strong style="color:#7ab87a;">Confirmed Hypothesis</strong> means multiple primary sources support the identification. <strong style="color:var(--gold);">Hypothesis</strong> means the identification is plausible but not yet confirmed. <strong style="color:var(--muted);">Unknown</strong> means no identification has been made. No identification is presented as certain unless labeled confirmed by a named primary source document.</p>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="sec"><div class="sec-line"></div><div class="sec-label">Historical Timeline · John Nichols Household</div><div class="sec-line"></div></div>
+
+  <div style="padding:0 0 0 8px;">
+    <div class="timeline-entry">
+      <span class="timeline-year">1827 — Arrival</span>
+      <p class="timeline-title">John Nichols arrives in Texas from Sabine County</p>
+      <p class="timeline-body">Travels with wife Fannie, two sons, two daughters, and one unnamed enslaved person — described as a "Negro dependent" in historical records. This is the first confirmed enslaved person in the Nichols household in Texas. Who this person was and what became of them has not been confirmed by primary source.</p>
+      <p class="timeline-source">Source: Texas Historical Commission · Bellville townsite history</p>
     </div>
+
+    <div class="timeline-entry">
+      <span class="timeline-year">1832 — Land Grant</span>
+      <p class="timeline-title">Mexican government grants John Nichols one league and one labor of land</p>
+      <p class="timeline-body">Granted October 20 1832 by the Mexican government. This is not an Austin County deed — it originates in Mexican colonial land grant records. John Nichols later sells portions to James and Thomas Bell whose family name becomes attached to Bellville. The 1825–1835 Spanish deeds and 1837–1866 Austin County deed books are active research targets for documenting enslaved people transferred into or out of this household.</p>
+      <p class="timeline-source">Source: Texas Historical Commission · Mexican land grant records · Active research target</p>
+    </div>
+
+    <div class="timeline-entry">
+      <span class="timeline-year">1860 — Slave Schedule</span>
+      <p class="timeline-title">John Nichols holds 9 enslaved people in Bellville Austin County Texas</p>
+      <p class="timeline-body">The 1860 Federal Slave Schedule records 9 enslaved individuals in the John Nichols household — no names, only age, sex, and color. Cross-referenced with post-emancipation census records two identifications are supported as confirmed hypotheses: the Black female age 43 is consistent with Rendy Blayn, and the Mulatto female age 13 is consistent with Easter Bell Nichols.</p>
+      <p class="timeline-source">Source: 1860 U.S. Federal Census Slave Schedule · Austin County Texas · Bellville · John Nichols household</p>
+    </div>
+
+    <div class="timeline-entry">
+      <span class="timeline-year">1864 — Death</span>
+      <p class="timeline-title">John Nichols dies one year before emancipation</p>
+      <p class="timeline-body">John Nichols died in 1864. His probate file was searched at the Austin County Courthouse — the clerk reported no entry found in the probate index under any spelling variant of Nichols. The file may be lost, damaged, or filed under a different heading. His death one year before Juneteenth means the people he held were freed by General Order No. 3 in June 1865 — one year after his death.</p>
+      <p class="timeline-source">Source: Austin County Clerk correspondence · Stephanie Kovar · 2026 · Probate file not located</p>
+    </div>
+
+    <div class="timeline-entry">
+      <span class="timeline-year">1865 — Emancipation</span>
+      <p class="timeline-title">Juneteenth · June 19 1865 · Bellville Austin County Texas</p>
+      <p class="timeline-body">General Order No. 3 reaches Texas. The people held in the John Nichols household — including Rendy Blayn and Easter Bell — are freed. Easter Bell was approximately 17–27 years old depending on which birth year is accepted. Rendy Blayn was approximately 48 years old. The Bellville Countryman newspaper recorded in July 1864 that "Mill Creek bottom is said to be full of runaways" — the community was already moving toward freedom before the order arrived.</p>
+      <p class="timeline-source">Source: General Order No. 3 · June 19 1865 · The Bellville Countryman · Vol. 4 No. 41 · July 5 1864</p>
+    </div>
+  </div>
+
+  <!-- MAIN TABLE -->
+  <div class="sec"><div class="sec-line"></div><div class="sec-label">1860 Slave Schedule · John Nichols Household · Complete Record</div><div class="sec-line"></div></div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Record</th>
+          <th>Enslaver</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Sex</th>
+          <th>Color</th>
+          <th>Value</th>
+          <th>Relationship Clues</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="highlight">
+          <td class="year-cell">1860</td>
+          <td class="record-cell">Slave Schedule</td>
+          <td class="record-cell">John Nichols</td>
+          <td class="name-cell">Rendy Blayn<br><span class="conf-badge conf-hypothesis">Hypothesis · Strong</span></td>
+          <td>43</td>
+          <td>Female</td>
+          <td>Black</td>
+          <td class="value-cell">Not recorded</td>
+          <td>Easter Bell's 1935 death cert names mother as Rendy Blayn. Born ca. 1817 — consistent with age 43 in 1860. Easter's 1900 census lists mother's birthplace Arkansas. Not found in post-emancipation census records — may have died 1865–1870 or appears under variant spelling. Surname Blayn traces to Blain/Bland enslaving family — John Blain held Class 3 headright in adjacent Fayette County Texas arriving 1837–1840.</td>
+          <td class="record-cell">1860 U.S. Federal Census Slave Schedule · Austin County TX · Bellville · John Nichols household · row 1 of 9</td>
+        </tr>
+
+        <tr>
+          <td class="year-cell">1860</td>
+          <td class="record-cell">Slave Schedule</td>
+          <td class="record-cell">John Nichols</td>
+          <td class="name-cell">Unknown<br><span class="conf-badge conf-unknown">Unknown</span></td>
+          <td>26</td>
+          <td>Female</td>
+          <td>Black</td>
+          <td class="value-cell">Not recorded</td>
+          <td>No confirmed identification. Could be Rendy's older daughter or an unrelated community member. Born ca. 1834.</td>
+          <td class="record-cell">1860 Slave Schedule · Austin County TX · row 2 of 9</td>
+        </tr>
+
+        <tr>
+          <td class="year-cell">1860</td>
+          <td class="record-cell">Slave Schedule</td>
+          <td class="record-cell">John Nichols</td>
+          <td class="name-cell">Possibly Joseph Nichols<br><span class="conf-badge conf-hypothesis">Hypothesis · Possible</span></td>
+          <td>22</td>
+          <td>Male</td>
+          <td>Mulatto</td>
+          <td class="value-cell">Not recorded</td>
+          <td>Joseph Nichols appears as Mulatto in 1880 census age 35 — born ca. 1845. This male born ca. 1838 is slightly older. Joseph's age is inconsistent across census records. May be Joseph or an older male relative. Joseph married Easter after emancipation — consistent with being in the same household.</td>
+          <td class="record-cell">1860 Slave Schedule · Austin County TX · row 3 of 9</td>
+        </tr>
+
+        <tr>
+          <td class="year-cell">1860</td>
+          <td class="record-cell">Slave Schedule</td>
+          <td class="record-cell">John Nichols</td>
+          <td class="name-cell">Possibly Joseph Nichols<br><span class="conf-badge conf-hypothesis">Hypothesis · Possible</span></td>
+          <td>18</td>
+          <td>Male</td>
+          <td>Mulatto</td>
+          <td class="value-cell">Not recorded</td>
+          <td>Born ca. 1842. If Joseph Nichols was born ca. 1843 — consistent with age 37 in 1880 — this is the closer match. Joseph is consistently Mulatto after emancipation. His children Allen, Josephine, Oscar, and Clara are all Mulatto in 1880. Both Mulatto males in this household are candidates for Joseph.</td>
+          <td class="record-cell">1860 Slave Schedule · Austin County TX · row 4 of 9</td>
+        </tr>
+
+        <tr class="highlight">
+          <td class="year-cell">1860</td>
+          <td class="record-cell">Slave Schedule</td>
+          <td class="record-cell">John Nichols</td>
+          <td class="name-cell">Easter Bell Nichols<br><span class="conf-badge conf-confirmed">Confirmed Hypothesis</span></td>
+          <td>13</td>
+          <td>Female</td>
+          <td>Mulatto</td>
+          <td class="value-cell">Not recorded</td>
+          <td>Easter Bell born ca. 1847 per 1880 census — consistent with age 13 in 1860. Easter appears as Mulatto in 1880 census. Daughter of Rendy Blayn — confirmed by 1935 death certificate primary source. Married Joseph Nichols after emancipation. Lived in Bellville her entire life. Died December 17 1935 age 97. Buried Jeff Cemetery Bellville alongside her mother Easter Bell.</td>
+          <td class="record-cell">1860 Slave Schedule · Austin County TX · row 5 of 9 · Cross-referenced: 1935 Texas Death Certificate · Easter Pinks · TX State File No. 54496</td>
+        </tr>
+
+        <tr>
+          <td class="year-cell">1860</td>
+          <td class="record-cell">Slave Schedule</td>
+          <td class="record-cell">John Nichols</td>
+          <td class="name-cell">Unknown<br><span class="conf-badge conf-unknown">Unknown</span></td>
+          <td>11</td>
+          <td>Female</td>
+          <td>Black</td>
+          <td class="value-cell">Not recorded</td>
+          <td>Born ca. 1849. May be a younger sibling of Easter or an unrelated community member. No post-emancipation record identified.</td>
+          <td class="record-cell">1860 Slave Schedule · Austin County TX · row 6 of 9</td>
+        </tr>
+
+        <tr>
+          <td class="year-cell">1860</td>
+          <td class="record-cell">Slave Schedule</td>
+          <td class="record-cell">John Nichols</td>
+          <td class="name-cell">Unknown<br><span class="conf-badge conf-unknown">Unknown</span></td>
+          <td>11</td>
+          <td>Male</td>
+          <td>Black</td>
+          <td class="value-cell">Not recorded</td>
+          <td>Born ca. 1849. No identification. Twin to the female above or unrelated.</td>
+          <td class="record-cell">1860 Slave Schedule · Austin County TX · row 7 of 9</td>
+        </tr>
+
+        <tr>
+          <td class="year-cell">1860</td>
+          <td class="record-cell">Slave Schedule</td>
+          <td class="record-cell">John Nichols</td>
+          <td class="name-cell">Unknown<br><span class="conf-badge conf-unknown">Unknown</span></td>
+          <td>4</td>
+          <td>Female</td>
+          <td>Black</td>
+          <td class="value-cell">Not recorded</td>
+          <td>Born ca. 1856. Would be approximately 9 years old at emancipation. No identification found in post-emancipation records.</td>
+          <td class="record-cell">1860 Slave Schedule · Austin County TX · row 8 of 9</td>
+        </tr>
+
+        <tr>
+          <td class="year-cell">1860</td>
+          <td class="record-cell">Slave Schedule</td>
+          <td class="record-cell">John Nichols</td>
+          <td class="name-cell">Unknown<br><span class="conf-badge conf-unknown">Unknown</span></td>
+          <td>2</td>
+          <td>Female</td>
+          <td>Black</td>
+          <td class="value-cell">Not recorded</td>
+          <td>Born ca. 1858. Born enslaved. Freed at approximately age 7 at Juneteenth 1865. No identification found.</td>
+          <td class="record-cell">1860 Slave Schedule · Austin County TX · row 9 of 9</td>
+        </tr>
+
+        <!-- 1827 ARRIVAL RECORD -->
+        <tr>
+          <td class="year-cell">1827</td>
+          <td class="record-cell">Historical Record · Arrival</td>
+          <td class="record-cell">John Nichols</td>
+          <td class="name-cell">Unknown · "Negro Dependent"<br><span class="conf-badge conf-unknown">Unknown</span></td>
+          <td>Unknown</td>
+          <td>Unknown</td>
+          <td>Unknown</td>
+          <td class="value-cell">Not recorded</td>
+          <td>One enslaved person traveled with John Nichols from Sabine County to Austin County in 1827. Described only as "Negro dependent" in Texas Historical Commission records. Identity, age, sex unknown. Fate unknown. This person was in Texas when John Nichols received his Mexican land grant in 1832 — six years before Easter Bell was born in 1838.</td>
+          <td class="record-cell">Texas Historical Commission · Bellville townsite history · Nichols family arrival documentation</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ACTIVE RESEARCH TARGETS -->
+  <div class="sec"><div class="sec-line"></div><div class="sec-label">Active Research Targets · Documents Not Yet Located</div><div class="sec-line"></div></div>
+
+  <div style="display:grid;gap:12px;margin-bottom:32px;">
+    <div class="pending">
+      <span class="pending-label">Priority 1 · John Nichols 1864 Probate File</span>
+      <p style="font-size:13px;line-height:1.85;color:#a0988e;">The Austin County Clerk searched the probate index and found no entry for John Nichols under any spelling variant. The file may be lost, damaged, or misfiled. A book and page number would be required to locate it. If you have information about the John Nichols probate file contact: jlee@dockellisfoundation.com</p>
+    </div>
+    <div class="pending">
+      <span class="pending-label">Priority 2 · 1837–1866 Austin County Deed Books</span>
+      <p style="font-size:13px;line-height:1.85;color:#a0988e;">Deed records for the period between John Nichols's 1832 Mexican land grant and his 1864 death may document the transfer of enslaved people into or out of the Nichols household — including any bill of sale from a Blain or Bland family to John Nichols that would confirm Rendy's path from the Blain household to the Nichols household.</p>
+    </div>
+    <div class="pending">
+      <span class="pending-label">Priority 3 · 1825–1835 Spanish Deeds · Mexican Land Grant Records</span>
+      <p style="font-size:13px;line-height:1.85;color:#a0988e;">John Nichols's original land grant was issued by the Mexican government on October 20 1832 — not recorded in Austin County deed books. Spanish colonial deed records and Mexican land grant archives may contain additional information about the Nichols family's enslaved community before Texas statehood.</p>
+    </div>
+    <div class="pending">
+      <span class="pending-label">Priority 4 · Freedmen's Bureau · Brenham Subdistrict · Texas</span>
+      <p style="font-size:13px;line-height:1.85;color:#a0988e;">Austin County fell under the Brenham subdistrict of the Freedmen's Bureau. Labor contracts, ration records, and complaint reports from 1865–1870 may name Rendy Blayn and Easter Bell directly — the first post-emancipation records that would confirm their identities by name. Search on Fold3 under Texas Freedmen's Bureau — Brenham subdistrict.</p>
+    </div>
+  </div>
+
+  <!-- RENDY BLAYN ORIGIN -->
+  <div class="sec"><div class="sec-line"></div><div class="sec-label">Rendy Blayn · Origin Research Summary</div><div class="sec-line"></div></div>
+  <div class="prose">
+    <p>Rendy Blayn's surname traces to a white family named Blain or Bland who held her before she came to the John Nichols household. Her surname is confirmed by Easter Bell's 1935 death certificate — the primary source that names her mother as Rendy Blayn. Easter's 1900 census lists her mother's birthplace as <strong>Arkansas</strong>. Easter's 1910 census lists her mother's birthplace as <strong>North Carolina</strong>. The discrepancy between these records has not been resolved.</p>
+    <p>A <strong>John Blain</strong> received a Class 3 headright land grant in <strong>Fayette County Texas</strong> — the county directly adjacent to Austin County — arriving between October 1837 and January 1840. Easter Bell was born in Texas on July 4 1838. A Blain family arriving in adjacent Fayette County in 1837–1838 bringing Rendy from Arkansas is consistent with that timeline.</p>
+    <p>Critically — <strong>John S. Blain</strong> also appears in the 1850 census in <strong>Milam, Sabine County Texas</strong> — and John Nichols arrived in Austin County from <strong>Sabine County</strong> in 1827. The Blain and Nichols families may have known each other before either arrived in Austin County — both with documented Sabine County connections. A bill of sale from a Blain family to John Nichols — transferring Rendy — may exist in either Sabine County or Austin County deed records.</p>
+    <p>After emancipation the <strong>Bland family</strong> — Horace Bland born Kentucky — lived immediately adjacent to Joseph and Easter Nichols in the 1880 and 1900 censuses in Bellville. In 1880 Fayette County <strong>Almedia Blain</strong> — a Black woman born 1822 in Kentucky — appears with her father's birthplace recorded as <strong>Africa</strong>. She is the same generation as Rendy and shares the Blain surname — suggesting a shared enslaved community origin.</p>
+  </div>
+
+  <!-- DNA NOTE -->
+  <div class="sec"><div class="sec-line"></div><div class="sec-label">DNA Connections · If Your Family Is From Bellville</div><div class="sec-line"></div></div>
+  <div class="dna-note">
+    <span class="dna-label">Surnames That May Connect To This Household</span>
+    <p style="font-size:13px;line-height:1.85;color:#a0988e;margin-bottom:12px;">If your family traces to Bellville or Austin County Texas and carries any of these surnames after emancipation — you may descend from someone in the John Nichols household or the broader 1860 Bellville enslaved community. Contact us at jlee@dockellisfoundation.com with your DNA kit number and family connection.</p>
+    <p style="font-family:var(--f-mono);font-size:11px;color:#a0988e;line-height:2.2;">Nichols · Blayn · Bland · Bell · Edwards · Grant · Pink · Reese · Nagy · Armstrong · Schultz</p>
+    <p style="font-size:13px;line-height:1.85;color:#a0988e;margin-top:14px;">Active DNA kits: AncestryDNA SQ8499767 (Hjordis L. Corbin) · GEDmatch QW8418781 (Jasmine M. Lee)</p>
   </div>
 
 </div>
+
+  <!-- EMELINE NICKOLS -->
+  <div class="sec"><div class="sec-line"></div><div class="sec-label">Emeline Nickols · Last Confirmed Survivor of the Household · Born ca. 1847</div><div class="sec-line"></div></div>
+
+  <div style="background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.2);padding:24px 28px;margin-bottom:24px;">
+    <p style="font-size:14px;line-height:1.9;color:#b0a89e;margin-bottom:14px;">In 1930 — 65 years after emancipation — an 83-year-old Black woman named <strong style="color:#f0ead8;">Emeline Nickols</strong> was living in Bellville, Austin County, Texas. She owned her home. It was worth $300. She could not read or write. She worked as a laundress. Her granddaughter Zelma Whitmere, age 15, lived with her.</p>
+
+    <p style="font-size:14px;line-height:1.9;color:#b0a89e;margin-bottom:14px;">Emeline Nickols was born ca. 1847 in Texas. Her parents were both born in Texas — meaning they were among the earliest generation of enslaved people in Austin County, possibly arriving with John Nichols from Sabine County in 1827. The 1860 John Nichols slave schedule lists a Black female age 11 born ca. 1849 in his household — consistent with Emeline within two years of census age rounding. She took the Nickols name after emancipation because that was the household she was freed from.</p>
+
+    <p style="font-size:14px;line-height:1.9;color:#b0a89e;margin-bottom:14px;">She lived in Bellville for 83 years. She outlived John Nichols by 66 years. She outlived the Civil War, Reconstruction, Jim Crow, and into the era of radio — which she did not own. She owned her home in Bellville in 1930 on or near the same land the John Nichols household had occupied since 1827. The unnamed "Negro dependent" who arrived with John Nichols in 1827 per the Stephen F. Austin Register of Families may have been Emeline's mother — the first generation of this family on this land. Emeline was the last confirmed survivor with living memory of that household.</p>
+
+    <div style="font-family:var(--f-mono);font-size:9px;color:rgba(255,255,255,0.30);line-height:1.8;border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
+      1930 U.S. Federal Census · Bellville Austin County Texas · Dwelling 330 Family 390 · Emeline Nickols age 83 head of household · born ca. 1847 Texas · parents both born Texas · widowed · home owner value $300 · occupation laundress · cannot read or write · granddaughter Zelma Whitmere age 15
+    </div>
+  </div>
+
+  <!-- JOSEPH NICHOLS VOTER REGISTRATION -->
+  <div style="background:rgba(201,168,76,0.03);border:1px solid var(--border);padding:16px 20px;margin-bottom:24px;">
+    <p style="font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">January 27 1868 · Joseph Nichols Registers to Vote · Bellville Austin County Texas</p>
+    <p style="font-size:13px;line-height:1.85;color:#a0988e;">Less than three years after emancipation — Joseph Nichols registered to vote in Bellville, Austin County, Texas on January 27 1868. James W. Nichols registered the following day on January 28 1868. These are primary source documents showing formerly enslaved men in the John Nichols community exercising their rights as citizens during Reconstruction. Joseph Nichols — Easter Bell's husband — born ca. 1843 in Texas — registered as a voter in the same Bellville community where he had been enslaved.</p>
+    <p style="font-family:var(--f-mono);font-size:8px;color:rgba(255,255,255,0.25);margin-top:8px;">Source: Texas Voter Registration Lists 1867–1869 · Joseph Nichols · January 27 1868 · Bellville Austin County Texas · James W. Nichols · January 28 1868</p>
+  </div>
+
+
+  <!-- FORECLOSURE FINDING -->
+  <div class="sec"><div class="sec-line"></div><div class="sec-label">The Land · 140 Years · Lost in 2006</div><div class="sec-line"></div></div>
+
+  <div style="background:rgba(139,58,58,0.08);border:1px solid rgba(139,58,58,0.25);padding:24px 28px;margin-bottom:24px;">
+    <p style="font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#c07070;margin-bottom:14px;">Primary Source · 2006 Tax Foreclosure · Cause No. 97V-003 · Austin County Texas</p>
+    <p style="font-size:14px;line-height:1.9;color:#c0b8b0;margin-bottom:14px;">The people John Nichols held as property inherited his land after emancipation. The John Nichols Survey — Abstract No. 73 — originally granted by the Mexican government on October 20 1832 — descended in fractional interests to the formerly enslaved community and their descendants. Easter Bell Nichols, her children, and her grandchildren held legal title to a piece of that land for over 140 years.</p>
+    <p style="font-size:14px;line-height:1.9;color:#c0b8b0;margin-bottom:14px;">In 2006 Austin County filed a tax foreclosure suit — Cause No. 97V-003 — in the 155th Judicial District Court of Austin County, Texas. The land sold at foreclosure on August 1 2006. The named defendants — the legal heirs — were the descendants of the people John Nichols had enslaved:</p>
+    <div style="font-family:var(--f-mono);font-size:10px;line-height:2.2;color:#a0988e;padding:12px 0;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);margin:12px 0;">
+      Easter Pink (Easter Bell Nichols) · Allen Nichols · Oscar Nichols · Clara Nazy (Clara Nichols Nagy) · Joseph King · Charley King · Annie King (Annie Nichols King) · <strong style="color:#f0ead8;">Helen Armstrong a.k.a. Helen Gilbert</strong> (Hellen Nichols Armstrong) · Joseph Nichols · Willey Nichols · Myrtle T. Everline
+    </div>
+    <p style="font-size:14px;line-height:1.9;color:#c0b8b0;margin-bottom:14px;">The land transferred to the Bellville Independent School District. The title chain traces to Volume 209 Page 228 of the Austin County Deed Records — the fractional 2-acre split from the original 1832 John Nichols Survey master grant.</p>
+    <p style="font-size:13px;line-height:1.85;color:#a0988e;">This foreclosure document also provides the third independent primary source confirmation that <strong style="color:#f0ead8;">Helen Armstrong and Helen Gilbert are the same person</strong> — named together in a legal court filing in 2006. Combined with Death Certificate No. 54237 and the Find a Grave memorial, this identification is now confirmed by three independent primary sources.</p>
+    <p style="font-family:var(--f-mono);font-size:8px;color:rgba(255,255,255,0.25);margin-top:12px;">Source: Cause No. 97V-003 · 155th Judicial District Court of Austin County Texas · Sheriff R. DeWayne Burger grantor · recorded November 1 2006 · John Nichols Survey Abstract No. 73 · ACAD Account No. R20014 · Austin County Deed Records Vol. 209 Page 228</p>
+  </div>
+
+  <div style="background:rgba(201,168,76,0.04);border:1px solid var(--border);padding:16px 20px;margin-bottom:32px;">
+    <p style="font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Research Note · Volume 209 Page 228 · Austin County Deed Records</p>
+    <p style="font-size:13px;line-height:1.85;color:#a0988e;">The John Nichols 1864 probate file was not found in the Austin County courthouse index — but the land descended through deed, not probate. Volume 209 Page 228 of the Austin County Deed Records contains the chain of title showing how the Nichols Survey land transferred to Easter Bell and the other heirs. This deed record is an active research target and may document the exact transfer from the Nichols estate to the formerly enslaved community after emancipation.</p>
+  </div>
+
+
+<div class="footer">
+  <span class="footer-credit">Nichols-Waldrop Family Legacy · Research by Jasmine M. Lee · Dock Ellis Foundation · 2026</span>
+  <a href="family_tree.html" class="footer-link">&#8592; Family Tree</a>
+</div>
+
 </body>
 </html>

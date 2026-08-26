@@ -88,14 +88,63 @@
   .footer-link{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;
                text-transform:uppercase;color:var(--muted);text-decoration:none;}
   .footer-link:hover{color:var(--gold);}
+
+  /* ── GLOBAL NAV ── */
+  .gnav{position:sticky;top:0;z-index:100;background:rgba(8,6,4,0.97);
+        border-bottom:1px solid rgba(201,168,76,0.15);backdrop-filter:blur(8px);}
+  .gnav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;
+              justify-content:space-between;padding:0 24px;height:52px;gap:8px;}
+  .gnav-brand{font-family:'DM Serif Display',Georgia,serif;font-style:italic;
+              font-size:15px;color:rgba(240,234,216,0.8);text-decoration:none;
+              white-space:nowrap;flex-shrink:0;}
+  .gnav-brand:hover{color:#f0ead8;}
+  .gnav-links{display:flex;align-items:center;gap:2px;overflow-x:auto;
+              -webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .gnav-links::-webkit-scrollbar{display:none;}
+  .gnav-link{font-family:'Courier New',monospace;font-size:8.5px;letter-spacing:1.5px;
+             text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;
+             padding:6px 10px;white-space:nowrap;border-bottom:2px solid transparent;
+             transition:color 0.15s,border-color 0.15s;}
+  .gnav-link:hover{color:rgba(245,242,236,0.85);}
+  .gnav-link.active{color:#c9a84c;border-bottom-color:#c9a84c;}
+  .gnav-link.gstart{color:#c9a84c;border:1px solid rgba(201,168,76,0.35);
+                    padding:5px 10px;margin-right:6px;}
+  .gnav-link.gstart:hover{background:rgba(201,168,76,0.08);}
+  .breadcrumb{background:rgba(14,11,8,0.8);border-bottom:1px solid rgba(255,255,255,0.04);
+              padding:7px 24px;font-family:'Courier New',monospace;font-size:9px;
+              letter-spacing:1px;color:rgba(245,242,236,0.3);}
+  .breadcrumb a{color:rgba(245,242,236,0.4);text-decoration:none;}
+  .breadcrumb a:hover{color:#c9a84c;}
+  .breadcrumb span{color:rgba(255,255,255,0.18);margin:0 6px;}
+  .story-nav{display:flex;justify-content:space-between;align-items:center;
+             padding:24px;border-top:1px solid rgba(201,168,76,0.15);
+             max-width:800px;margin:0 auto;gap:12px;flex-wrap:wrap;}
+  .story-nav-link{font-family:'Courier New',monospace;font-size:9px;letter-spacing:2px;
+                  text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;
+                  border:1px solid rgba(201,168,76,0.2);padding:8px 14px;
+                  transition:color 0.15s,border-color 0.15s;}
+  .story-nav-link:hover{color:#c9a84c;border-color:rgba(201,168,76,0.5);}
+  .story-nav-center{font-family:'Courier New',monospace;font-size:9px;letter-spacing:2px;
+                    text-transform:uppercase;color:rgba(245,242,236,0.25);text-decoration:none;}
+  .story-nav-center:hover{color:rgba(245,242,236,0.5);}
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <a href="family_tree.html" class="nav-back">&#8592; Back to Family Tree</a>
-  <span class="nav-title">Nichols-Waldrop Family Legacy</span>
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a href="welcome.html" class="gnav-brand">Nichols-Waldrop Legacy</a>
+    <div class="gnav-links">
+      <a href="start_here.html" class="gnav-link gstart">★ Start Here</a>
+      <a href="welcome.html" class="gnav-link">Our Family</a>
+      <a href="how_we_got_here.html" class="gnav-link">The Story</a>
+      <a href="papertrail.html" class="gnav-link active">Documents</a>
+      <a href="photos.html" class="gnav-link">Photos</a>
+      <a href="methodology.html" class="gnav-link">Research</a>
+    </div>
+  </div>
 </nav>
+<div class="breadcrumb"><a href="welcome.html">Home</a><span>›</span><strong style="color:rgba(245,242,236,0.6);">Documents</strong><span>›</span><strong style="color:rgba(245,242,236,0.6);">John Nichols · Enslaved Community</strong></div>
 
 <div class="hero">
   <span class="eyebrow">Primary Source Reconstruction · Bellville · Austin County · Texas · 1827–1864</span>
@@ -117,7 +166,7 @@
   <!-- WALDROP CONNECTION -->
   <div class="explain-box" style="margin-bottom:24px;border-color:rgba(201,168,76,0.4);">
     <span class="explain-label" style="color:var(--gold);">The Waldrop Connection · Three States · Seventy Years</span>
-    <p class="explain-body">Fanny Waldrop Nichols was born in <strong>South Carolina ca. 1802</strong> — confirmed by the 1860 Austin County free population census which records her birthplace as South Carolina. This is the most significant finding in this research. Fanny Waldrop was born in South Carolina in 1802 — five years after Hezekiah Waldrop is documented in Newberry County South Carolina in 1797. She was born into the same South Carolina Waldrop household that held Patience and Clarissa. She grew up in that household. She married John Nichols and came to Texas in 1827 — bringing enslaved people from that same community with her. The 1870 census records her birthplace as Tennessee — but the 1860 census is the stronger primary source being closer to the period of documentation. Her connection to the Newberry County South Carolina Waldrop family is now confirmed by primary source. The documented migration of the Waldrop family runs directly from South Carolina to Mississippi to Texas:</p>
+    <p class="explain-body">Fanny Waldrop Nichols was born in <strong>South Carolina ca. 1802</strong> — confirmed by the 1860 Austin County free population census which records her birthplace as South Carolina. This is the most significant finding in this research. Fanny Waldrop was born in South Carolina in 1802 — five years after Hezekiah Waldrop is documented in Newberry County South Carolina in 1797. She was born into the same South Carolina Waldrop household that held Patience and Clarissa. She grew up in that household. She married John Nichols on <strong>October 14 1837</strong> in Austin County Texas — confirmed by researcher Kathryn R. Bonner who held the primary source marriage record — and came to Texas in 1827 — bringing enslaved people from that same community with her. The 1839 Rankin County Mississippi deed (Deed Book 4 Page 435) names Fanny Micholes — Fanny Waldrop Nichols — as one of eight recipients of Patience and her increase. That deed transferred Patience's family as property to Patty Waldrop's children. It did not free them. Fanny's share of that transfer is how Rendy Blayn and Easter Bell came to be in the John Nichols household in Bellville. The 1870 census records her birthplace as Tennessee — but the 1860 census is the stronger primary source being closer to the period of documentation. Her connection to the Newberry County South Carolina Waldrop family is now confirmed by primary source. The documented migration of the Waldrop family runs directly from South Carolina to Mississippi to Texas:</p>
     <p class="explain-body" style="margin-top:10px;"><strong style="color:var(--parchment);">1792</strong> — Francis Davenport sells an enslaved girl named <strong>Easther</strong> to James Davenport in Newberry County SC — witnessed by <strong>Richard Henderson Waldrop</strong> (Deed Book B: 629). The name Easter appears in the Davenport-Waldrop community 46 years before Easter Bell's birth.</p>
     <p class="explain-body" style="margin-top:8px;"><strong style="color:var(--parchment);">1795</strong> — Francis Davenport Sr. gives enslaved girl <strong>Patience</strong> to his daughter <strong>Patty Waldrop</strong> (Deed Book C: 367–368). Three days later he gives enslaved girl <strong>Eliza</strong> to his daughter <strong>Nancy Waldrop</strong> (Deed Book C: 369). Both deeds certified by Charles Griffin J.P. and Frederick Nance C.N.C.</p>
     <p class="explain-body" style="margin-top:8px;"><strong style="color:var(--parchment);">1797</strong> — Hezekiah Waldrop witnesses a Davenport deed in Newberry County SC — placing him in the same community as Patience and Clarissa.</p>

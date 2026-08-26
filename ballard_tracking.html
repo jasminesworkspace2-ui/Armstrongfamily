@@ -120,9 +120,59 @@
     .col-hdr span:last-child,.cell:last-child{display:none;}
     .sum-grid{grid-template-columns:1fr;}
   }
+
+  .gnav{position:sticky;top:0;z-index:100;background:rgba(8,6,4,0.97);
+        border-bottom:1px solid rgba(201,168,76,0.15);backdrop-filter:blur(8px);}
+  .gnav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;
+              justify-content:space-between;padding:0 24px;height:52px;gap:8px;}
+  .gnav-brand{font-family:'DM Serif Display',Georgia,serif;font-style:italic;font-size:15px;
+              color:rgba(240,234,216,0.8);text-decoration:none;white-space:nowrap;flex-shrink:0;}
+  .gnav-brand:hover{color:#f0ead8;}
+  .gnav-links{display:flex;align-items:center;gap:2px;overflow-x:auto;
+              -webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .gnav-links::-webkit-scrollbar{display:none;}
+  .gnav-link{font-family:'Courier New',monospace;font-size:8.5px;letter-spacing:1.5px;
+             text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;
+             padding:6px 10px;white-space:nowrap;border-bottom:2px solid transparent;
+             transition:color 0.15s,border-color 0.15s;}
+  .gnav-link:hover{color:rgba(245,242,236,0.85);}
+  .gnav-link.active{color:#c9a84c;border-bottom-color:#c9a84c;}
+  .gnav-link.gstart{color:#c9a84c;border:1px solid rgba(201,168,76,0.35);
+                    padding:5px 10px;margin-right:6px;}
+  .gnav-link.gstart:hover{background:rgba(201,168,76,0.08);}
+  .breadcrumb{background:rgba(14,11,8,0.8);border-bottom:1px solid rgba(255,255,255,0.04);
+              padding:7px 24px;font-family:'Courier New',monospace;font-size:9px;letter-spacing:1px;
+              color:rgba(245,242,236,0.3);}
+  .breadcrumb a{color:rgba(245,242,236,0.4);text-decoration:none;}
+  .breadcrumb a:hover{color:#c9a84c;}
+  .breadcrumb span{color:rgba(255,255,255,0.18);margin:0 6px;}
 </style>
 </head>
 <body>
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a href="welcome.html" class="gnav-brand">Nichols-Waldrop Legacy</a>
+    <div class="gnav-links">
+      <a href="start_here.html" class="gnav-link gstart">★ Start Here</a>
+      <a href="welcome.html" class="gnav-link">Our Family</a>
+      <a href="how_we_got_here.html" class="gnav-link">The Story</a>
+      <a href="papertrail.html" class="gnav-link active">Documents</a>
+      <a href="photos.html" class="gnav-link">Photos</a>
+      <a href="methodology.html" class="gnav-link">Research</a>
+    </div>
+  </div>
+</nav>
+<div class="breadcrumb">
+  <a href="welcome.html">Home</a><span>›</span>
+  <a href="papertrail.html">Documents</a><span>›</span>
+  <strong style="color:rgba(245,242,236,0.6);">Ballard Research Tracker</strong>
+</div>
+<div style="background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);
+     padding:16px 24px;max-width:700px;margin:16px auto 0;text-align:left;">
+  <p style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:3px;
+            text-transform:uppercase;color:rgba(201,168,76,0.7);margin-bottom:8px;">For Family Members · Plain Language</p>
+  <p style="font-size:13.5px;line-height:1.85;color:#b0a89e;">This page tracks the research into the Ballard family — Newton Ballard, Rev. George W. Ballard, James Wilson Ballard Sr., and Eva Armstrong Ballard. It shows what has been confirmed by documents, what is still being researched, and what may never be answered. If you only know the Ballard name from family history, this page shows you exactly what the documents say about where that name came from.</p>
+</div>
 
 <div class="hdr">
   <span class="eyebrow">Nichols-Waldrop Family Legacy · Research Archive</span>

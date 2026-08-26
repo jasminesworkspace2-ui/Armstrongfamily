@@ -283,14 +283,63 @@
   li { color: #d8d0c4; }
   strong { color: #f5f0e8 !important; }
 
+
+  /* ── GLOBAL NAV ── */
+  .gnav{position:sticky;top:0;z-index:100;background:rgba(8,6,4,0.97);
+        border-bottom:1px solid rgba(201,168,76,0.15);backdrop-filter:blur(8px);}
+  .gnav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;
+              justify-content:space-between;padding:0 24px;height:52px;gap:8px;}
+  .gnav-brand{font-family:'DM Serif Display',Georgia,serif;font-style:italic;
+              font-size:15px;color:rgba(240,234,216,0.8);text-decoration:none;
+              white-space:nowrap;flex-shrink:0;}
+  .gnav-brand:hover{color:#f0ead8;}
+  .gnav-links{display:flex;align-items:center;gap:2px;overflow-x:auto;
+              -webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .gnav-links::-webkit-scrollbar{display:none;}
+  .gnav-link{font-family:'Courier New',monospace;font-size:8.5px;letter-spacing:1.5px;
+             text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;
+             padding:6px 10px;white-space:nowrap;border-bottom:2px solid transparent;
+             transition:color 0.15s,border-color 0.15s;}
+  .gnav-link:hover{color:rgba(245,242,236,0.85);}
+  .gnav-link.active{color:#c9a84c;border-bottom-color:#c9a84c;}
+  .gnav-link.gstart{color:#c9a84c;border:1px solid rgba(201,168,76,0.35);
+                    padding:5px 10px;margin-right:6px;}
+  .gnav-link.gstart:hover{background:rgba(201,168,76,0.08);}
+  .breadcrumb{background:rgba(14,11,8,0.8);border-bottom:1px solid rgba(255,255,255,0.04);
+              padding:7px 24px;font-family:'Courier New',monospace;font-size:9px;
+              letter-spacing:1px;color:rgba(245,242,236,0.3);}
+  .breadcrumb a{color:rgba(245,242,236,0.4);text-decoration:none;}
+  .breadcrumb a:hover{color:#c9a84c;}
+  .breadcrumb span{color:rgba(255,255,255,0.18);margin:0 6px;}
+  .story-nav{display:flex;justify-content:space-between;align-items:center;
+             padding:24px;border-top:1px solid rgba(201,168,76,0.15);
+             max-width:800px;margin:0 auto;gap:12px;flex-wrap:wrap;}
+  .story-nav-link{font-family:'Courier New',monospace;font-size:9px;letter-spacing:2px;
+                  text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;
+                  border:1px solid rgba(201,168,76,0.2);padding:8px 14px;
+                  transition:color 0.15s,border-color 0.15s;}
+  .story-nav-link:hover{color:#c9a84c;border-color:rgba(201,168,76,0.5);}
+  .story-nav-center{font-family:'Courier New',monospace;font-size:9px;letter-spacing:2px;
+                    text-transform:uppercase;color:rgba(245,242,236,0.25);text-decoration:none;}
+  .story-nav-center:hover{color:rgba(245,242,236,0.5);}
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <a href="family_tree.html" class="nav-back">← Back to Family Archive</a>
-  <span class="nav-title">Margie Nell Ballard Corbin · 1929–1988</span>
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a href="welcome.html" class="gnav-brand">Nichols-Waldrop Legacy</a>
+    <div class="gnav-links">
+      <a href="start_here.html" class="gnav-link gstart">★ Start Here</a>
+      <a href="welcome.html" class="gnav-link">Our Family</a>
+      <a href="how_we_got_here.html" class="gnav-link active">The Story</a>
+      <a href="papertrail.html" class="gnav-link">Documents</a>
+      <a href="photos.html" class="gnav-link">Photos</a>
+      <a href="methodology.html" class="gnav-link">Research</a>
+    </div>
+  </div>
 </nav>
+<div class="breadcrumb"><a href="welcome.html">Home</a><span>›</span><strong style="color:rgba(245,242,236,0.6);">The Story</strong><span>›</span><strong style="color:rgba(245,242,236,0.6);">Margie Ballard Corbin</strong></div>
 
 <!-- OPENING -->
 <section class="opening">
@@ -527,7 +576,18 @@
   <div class="closing">
     <h2 class="closing-title">She held the line<br>until you could hold it yourself.</h2>
     <p class="closing-body"><strong>She smelled amazing and she made pudding for dinner.</strong> After everything — after all the history and the documents and the primary sources — that is the sentence that belongs here too. She was a real person who smelled amazing and made pudding for dinner. The archive holds both things at once.</p>
-    <div>
+    
+<div style="background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);
+            padding:20px 24px;margin:32px 0;max-width:800px;margin-left:auto;margin-right:auto;">
+  <p style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:3px;
+            text-transform:uppercase;color:rgba(201,168,76,0.8);margin-bottom:12px;">Where Margie Fits · The Maternal Line</p>
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-bottom:10px;font-size:13px;">
+    <a href="eva_story.html" style="color:rgba(245,242,236,0.45);text-decoration:none;font-size:12px;" onmouseover="this.style.color='#c9a84c'" onmouseout="this.style.color='rgba(245,242,236,0.45)'">Eva</a><span style="color:rgba(201,168,76,0.3);margin:0 6px;">→</span><strong style="color:var(--gold,#c9a84c);font-style:italic;">Margie</strong><span style="color:rgba(201,168,76,0.3);margin:0 6px;">→</span><a href="hjordis.html" style="color:rgba(245,242,236,0.45);text-decoration:none;font-size:12px;" onmouseover="this.style.color='#c9a84c'" onmouseout="this.style.color='rgba(245,242,236,0.45)'">Hjordis</a><span style="color:rgba(201,168,76,0.3);margin:0 6px;">→</span><span style="color:rgba(245,242,236,0.3);font-size:12px;">Jasmine</span>
+  </div>
+  <p style="font-size:12px;color:rgba(245,242,236,0.35);font-family:'Courier New',monospace;
+            letter-spacing:1px;text-transform:uppercase;">Margie Nell Ballard Corbin · Your grandmother</p>
+</div>
+<div>
       <a href="eva_story.html" class="back-link">← Eva Armstrong Ballard</a>
       <a href="family_tree.html" class="back-link">← Return to Archive</a>
       <a href="papertrail.html" class="back-link">The Paper Trail →</a>

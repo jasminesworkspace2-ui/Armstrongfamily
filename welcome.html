@@ -164,6 +164,7 @@
       <a href="start_here.html" class="gnav-link gstart">★ Start Here</a>
       <a href="welcome.html" class="gnav-link active">Our Family</a>
       <a href="bellville_family.html" class="gnav-link">The Family</a>
+      <a href="we_are_bellville.html" class="gnav-link">We Are Bellville</a>
       <a href="how_we_got_here.html" class="gnav-link">The Story</a>
       <a href="papertrail.html" class="gnav-link">Documents</a>
       <a href="photos.html" class="gnav-link">Photos</a>
@@ -322,10 +323,167 @@
   </div>
 </div>
 
+<div style="max-width:800px;margin:0 auto 48px;padding:0 24px;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <a href="we_are_bellville.html" style="text-decoration:none;display:block;background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.2);padding:24px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.5)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.2)'">
+      <span style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,168,76,0.5);display:block;margin-bottom:10px;">Community</span>
+      <span style="font-family:'DM Serif Display',Georgia,serif;font-size:22px;font-style:italic;color:#f0ead8;display:block;margin-bottom:8px;">We Are Bellville</span>
+      <span style="font-size:12px;line-height:1.7;color:#a0988e;">Every family that built the Bellville Black community after emancipation — Nichols, Armstrong, Pink, Lott, Nazy, McCree, Twiggs, and more. Our bloodline multiplied here.</span>
+    </a>
+    <a href="black_dutch_fork.html" style="text-decoration:none;display:block;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);padding:24px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.15)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+      <span style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);display:block;margin-bottom:10px;">Origins</span>
+      <span style="font-family:'DM Serif Display',Georgia,serif;font-size:22px;font-style:italic;color:#f0ead8;display:block;margin-bottom:8px;">Black Dutch Fork</span>
+      <span style="font-size:12px;line-height:1.7;color:#a0988e;">The South Carolina community where this family begins. What Dutch Fork means, what Black Dutch Fork means, and what the DNA says about our origins.</span>
+    </a>
+  </div>
+</div>
+
 <div class="footer">
   <span class="footer-credit">Armstrong Family Archive · Research by Jasmine M. Lee · Dock Ellis Foundation · Seven years · 2019–2026</span>
   <a href="family_tree.html" class="footer-link">Enter the Archive →</a>
 </div>
+
+
+<!-- WHAT'S NEW MODAL -->
+<div id="wn-overlay" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(4,3,2,0.85);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:20px;">
+  <div id="wn-modal" style="background:#0e0b08;border:1px solid rgba(201,168,76,0.3);max-width:640px;width:100%;max-height:85vh;overflow-y:auto;position:relative;">
+
+    <!-- HEADER -->
+    <div style="background:rgba(201,168,76,0.08);border-bottom:1px solid rgba(201,168,76,0.2);padding:20px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:2;">
+      <div>
+        <span style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,168,76,0.6);display:block;margin-bottom:4px;">Armstrong Family Archive</span>
+        <span style="font-family:'DM Serif Display',Georgia,serif;font-size:22px;font-style:italic;color:#f0ead8;">What's New</span>
+      </div>
+      <button onclick="closeModal()" style="background:none;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);width:32px;height:32px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">&times;</button>
+    </div>
+
+    <!-- DATE STAMP -->
+    <div style="padding:12px 28px;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.01);">
+      <span style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.25);">Last updated: August 27, 2026 · Session 19 · Major additions</span>
+    </div>
+
+    <!-- UPDATES LIST -->
+    <div style="padding:20px 28px;">
+
+      <!-- NEW PAGES -->
+      <p style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:14px;">New Pages Added</p>
+
+      <a href="we_are_bellville.html" onclick="closeModal()" style="display:block;text-decoration:none;padding:14px 16px;border:1px solid rgba(255,255,255,0.06);margin-bottom:8px;background:rgba(255,255,255,0.01);transition:border-color 0.15s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+        <span style="font-family:'DM Serif Display',Georgia,serif;font-size:16px;font-style:italic;color:#f0ead8;display:block;margin-bottom:4px;">We Are Bellville ★ New</span>
+        <span style="font-size:12px;color:#a0988e;line-height:1.6;">Every family that built the Bellville Black community after emancipation — Nichols, Armstrong, Pink, Lott, Nazy, McCree, Twiggs, Lilly. The community that formed from bondage. Our entire bloodline, documented.</span>
+      </a>
+
+      <a href="black_dutch_fork.html" onclick="closeModal()" style="display:block;text-decoration:none;padding:14px 16px;border:1px solid rgba(255,255,255,0.06);margin-bottom:8px;background:rgba(255,255,255,0.01);transition:border-color 0.15s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+        <span style="font-family:'DM Serif Display',Georgia,serif;font-size:16px;font-style:italic;color:#f0ead8;display:block;margin-bottom:4px;">Black Dutch Fork ★ New</span>
+        <span style="font-size:12px;color:#a0988e;line-height:1.6;">The South Carolina community where this family begins. What Dutch Fork means, the DNA evidence — 377 GEDmatch matches, haplogroups E1b1, LOa2a1, L3d1b — and the migration chain from South Carolina to Texas.</span>
+      </a>
+
+      <a href="bellville_family.html" onclick="closeModal()" style="display:block;text-decoration:none;padding:14px 16px;border:1px solid rgba(255,255,255,0.06);margin-bottom:20px;background:rgba(255,255,255,0.01);transition:border-color 0.15s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+        <span style="font-family:'DM Serif Display',Georgia,serif;font-size:16px;font-style:italic;color:#f0ead8;display:block;margin-bottom:4px;">The Bellville Family ★ New</span>
+        <span style="font-size:12px;color:#a0988e;line-height:1.6;">Easter Bell Nichols's seven children and all their descendants — expandable family branches showing where the family went after Bellville.</span>
+      </a>
+
+      <!-- MAJOR UPDATES -->
+      <p style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:14px;">Major Updates to Existing Pages</p>
+
+      <a href="hellen_story.html" onclick="closeModal()" style="display:block;text-decoration:none;padding:14px 16px;border:1px solid rgba(255,255,255,0.06);margin-bottom:8px;background:rgba(255,255,255,0.01);transition:border-color 0.15s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+        <span style="font-family:'DM Serif Display',Georgia,serif;font-size:16px;font-style:italic;color:#f0ead8;display:block;margin-bottom:4px;">Hellen Nichols Armstrong · Fully Rewritten</span>
+        <span style="font-size:12px;color:#a0988e;line-height:1.6;">Complete rewrite with 1910 Fort Worth census, 1930 census at 1121 Pulaski Avenue, full death certificate (Pellagra, 2:30 a.m., December 5, 1931), Eva Ballard as informant — and the fact that Eva wrote "Don't Know" for her mother's birthday.</span>
+      </a>
+
+      <a href="john_nichols_community.html" onclick="closeModal()" style="display:block;text-decoration:none;padding:14px 16px;border:1px solid rgba(255,255,255,0.06);margin-bottom:8px;background:rgba(255,255,255,0.01);transition:border-color 0.15s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+        <span style="font-family:'DM Serif Display',Georgia,serif;font-size:16px;font-style:italic;color:#f0ead8;display:block;margin-bottom:4px;">John Nichols Community · Major Additions</span>
+        <span style="font-size:12px;color:#a0988e;line-height:1.6;">Tennessee origin confirmed — Bedford vs. Nichols 1832 court records naming Milley, Harriet, and infant Fanny. Texas Revolution service confirmed 1836. Fanny Waldrop Nichols pension file — in poverty by 1876. The white family scattered. Easter Bell stayed 71 more years.</span>
+      </a>
+
+      <a href="joseph_story.html" onclick="closeModal()" style="display:block;text-decoration:none;padding:14px 16px;border:1px solid rgba(255,255,255,0.06);margin-bottom:8px;background:rgba(255,255,255,0.01);transition:border-color 0.15s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+        <span style="font-family:'DM Serif Display',Georgia,serif;font-size:16px;font-style:italic;color:#f0ead8;display:block;margin-bottom:4px;">Joseph Nichols · Updated</span>
+        <span style="font-size:12px;color:#a0988e;line-height:1.6;">Tennessee origin context added. Henry Nichols confirmed as his probable brother — same household, same land, same precinct, farming side by side in 1880.</span>
+      </a>
+
+      <a href="registry.html" onclick="closeModal()" style="display:block;text-decoration:none;padding:14px 16px;border:1px solid rgba(255,255,255,0.06);margin-bottom:20px;background:rgba(255,255,255,0.01);transition:border-color 0.15s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.3)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.06)'">
+        <span style="font-family:'DM Serif Display',Georgia,serif;font-size:16px;font-style:italic;color:#f0ead8;display:block;margin-bottom:4px;">Enslaved Persons Registry · 30+ New Names</span>
+        <span style="font-size:12px;color:#a0988e;line-height:1.6;">James Cowan estate 1834 (19 named people: Carson, Kate, Ephraim, Sucky, Black Sam, Mary, Cambridge, Harvey and more). Williamson County Tennessee — Milley, Harriet, infant Fanny. Two Henry County Tennessee Clarissa entries. Fanny — Petersburg Virginia to Bellville Texas, 1825.</span>
+      </a>
+
+      <!-- NEW PRIMARY SOURCES -->
+      <p style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,168,76,0.5);margin-bottom:14px;">New Primary Sources Found This Session</p>
+
+      <div style="background:rgba(255,255,255,0.02);border-left:3px solid rgba(201,168,76,0.2);padding:14px 16px;margin-bottom:8px;">
+        <span style="font-size:12px;color:#c0b8b0;line-height:1.8;display:block;"><strong style="color:#f0ead8;">Bedford vs. Nichols · Williamson County Tennessee · 1832–1835</strong> — Primary source court records confirming John Nichols fled Tennessee to Texas with Milley, Harriet, and infant Fanny. Sheriff's return: "Not Found."</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.02);border-left:3px solid rgba(201,168,76,0.2);padding:14px 16px;margin-bottom:8px;">
+        <span style="font-size:12px;color:#c0b8b0;line-height:1.8;display:block;"><strong style="color:#f0ead8;">James Cowan Deed of Trust · Henry County Tennessee · February 2, 1834</strong> — 19 named enslaved people confirmed. $8,523 debt to Brandon McKenna and Wright of New Orleans.</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.02);border-left:3px solid rgba(201,168,76,0.2);padding:14px 16px;margin-bottom:8px;">
+        <span style="font-size:12px;color:#c0b8b0;line-height:1.8;display:block;"><strong style="color:#f0ead8;">Fanny Waldrop Nichols Pension File · Texas Comptroller · 1876–1879</strong> — John Nichols confirmed as Texas Revolution soldier, Captain R.H. McNutt's Company. His widow in poverty by 1876, drawing $37.50 quarterly pension. Three sworn witnesses. Both John and Fanny signed with X marks — neither could write.</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.02);border-left:3px solid rgba(201,168,76,0.2);padding:14px 16px;margin-bottom:8px;">
+        <span style="font-size:12px;color:#c0b8b0;line-height:1.8;display:block;"><strong style="color:#f0ead8;">Joshua Armstrong Death Certificate · 1957</strong> — Father: David Armstrong. Mother: Clara Morgan. Confirms Joshua as John Armstrong's brother — son of the same Dave Armstrong (South Carolina) and Clara Morgan (North Carolina).</span>
+      </div>
+      <div style="background:rgba(255,255,255,0.02);border-left:3px solid rgba(201,168,76,0.2);padding:14px 16px;margin-bottom:20px;">
+        <span style="font-size:12px;color:#c0b8b0;line-height:1.8;display:block;"><strong style="color:#f0ead8;">Helen Reese Death Certificate No. 54237 · December 5, 1931</strong> — Cause of death: Pellagra. Date of birth: "Don't Know." Informant: Eva Ballard. Buried Jeff Cemetery same day. Father: Joe Nichols. Mother: Easter Nichols. The record that confirms everything — and the one that breaks your heart.</span>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div style="padding:16px 28px;border-top:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.01);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+        <input type="checkbox" id="wn-suppress" onchange="suppressFuture()" style="accent-color:#c9a84c;">
+        <span style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:1px;color:rgba(255,255,255,0.35);">Don't show this again on this device</span>
+      </label>
+      <button onclick="closeModal()" style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;background:var(--gold,#c9a84c);color:#080604;border:none;padding:8px 20px;cursor:pointer;font-weight:500;">Continue to Archive</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  var VERSION = '2026-08-27-session19';
+  var STORAGE_KEY = 'afa_whats_new_seen';
+
+  function shouldShow() {
+    try {
+      var seen = localStorage.getItem(STORAGE_KEY);
+      return seen !== VERSION;
+    } catch(e) { return true; }
+  }
+
+  window.closeModal = function() {
+    var overlay = document.getElementById('wn-overlay');
+    if (overlay) {
+      overlay.style.opacity = '0';
+      overlay.style.transition = 'opacity 0.2s';
+      setTimeout(function() { overlay.style.display = 'none'; }, 200);
+    }
+    try { localStorage.setItem(STORAGE_KEY, VERSION); } catch(e) {}
+  };
+
+  window.suppressFuture = function() {
+    var cb = document.getElementById('wn-suppress');
+    if (cb && cb.checked) {
+      try { localStorage.setItem(STORAGE_KEY, VERSION); } catch(e) {}
+    }
+  };
+
+  if (shouldShow()) {
+    var overlay = document.getElementById('wn-overlay');
+    if (overlay) {
+      overlay.style.display = 'flex';
+      // Close on overlay click (not modal click)
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeModal();
+      });
+      // Close on Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+      });
+    }
+  }
+})();
+</script>
 
 </body>
 </html>

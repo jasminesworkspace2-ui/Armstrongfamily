@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Start Here · Armstrong Family Archive</title>
-<meta name="description" content="New to this archive? Find out who you are in this family and where you connect.">
+<title>Find Your Connection · Armstrong Family Archive</title>
+<meta name="description" content="New to this archive? Select your name or generation and find exactly where you fit in the family.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -139,13 +139,12 @@
 
 <nav class="gnav">
   <div class="gnav-inner">
-    <a href="welcome.html" class="gnav-brand">Armstrong Family Archive</a>
+    <a href="index.html" class="gnav-brand">Armstrong Family Archive</a>
     <div class="gnav-links">
-      <a href="start_here.html" class="gnav-link gstart active">★ Start Here</a>
-      <a href="welcome.html" class="gnav-link">Our Family</a>
+      <a href="start_here.html" class="gnav-link gstart">★ Start Here</a>
+      <a href="welcome.html" class="gnav-link active">Our Family</a>
       <a href="bellville_family.html" class="gnav-link">The Family</a>
       <a href="we_are_bellville.html" class="gnav-link">We Are Bellville</a>
-      <a href="black_dutch_fork.html" class="gnav-link">Dutch Fork</a>
       <a href="how_we_got_here.html" class="gnav-link">The Story</a>
       <a href="papertrail.html" class="gnav-link">Documents</a>
       <a href="photos.html" class="gnav-link">Photos</a>
@@ -153,32 +152,23 @@
     </div>
   </div>
 </nav>
+
+<!-- BREADCRUMB -->
 <div class="breadcrumb">
-  <a href="welcome.html">Home</a><span>›</span>
-  <strong style="color:rgba(245,242,236,0.6);">Start Here</strong>
+  <a href="welcome.html">Home</a>
+  <span>›</span>
+  <strong style="color:rgba(245,242,236,0.6);">Find Your Connection</strong>
 </div>
 
-<!-- HERO -->
+<!-- HERO — SHORT AND DIRECT -->
 <div class="hero">
   <span class="hero-eyebrow">New Here? · This Is Your First Stop</span>
-  <h1 class="hero-title">You Found<br><em>Your Family.</em></h1>
-  <p class="hero-sub">Seven years of research traced this family back to 1793. Every name confirmed. Every date verified. Use the tool below to see exactly where you fit.</p>
+  <h1 class="hero-title">Find Where<br><em>You Fit.</em></h1>
+  <p class="hero-sub">Select your name below. The tool shows you exactly how you connect to every ancestor in the confirmed line.</p>
 </div>
 
-<div class="main">
-
-  <!-- WHO WE ARE -->
-  <div class="sec"><div class="sec-line"></div><div class="sec-label">Who This Family Is</div><div class="sec-line"></div></div>
-
-  <div class="intro-box">
-    <p>If your family carries the name <strong>Corbin, Ballard, Armstrong, Nichols, or Pink</strong> — or if a DNA test led you here — you may be looking at your own family history.</p>
-    <p>This archive traces one African American family from an enslaved woman named <strong>Patience</strong> in Newberry County, South Carolina in 1793 — all the way to the present day. Nine confirmed generations. Every name found in a primary source document — a deed, a death certificate, a census record, a marriage index, a slave schedule, a court filing.</p>
-    <p>The family's roots are in <strong>Bellville, Austin County, Texas</strong> — a town built on land that originally belonged to John Nichols, whose enslaved community became your family after emancipation. Before Texas, the trail runs through <strong>Mississippi</strong> and all the way back to <strong>Newberry and Laurens Counties, South Carolina</strong>. The Davenport family. The Waldrop family. The Bell family. The Sims family. They are the context — not the ancestors.</p>
-  </div>
-
-  <!-- CALCULATOR -->
-  <div class="sec"><div class="sec-line"></div><div class="sec-label">Find Your Connection</div><div class="sec-line"></div></div>
-
+<!-- CALCULATOR — FIRST THING ON PAGE -->
+<div class="sec" style="max-width:800px;margin:0 auto;padding:0 24px 48px;">
   <div class="calc-wrap">
     <span class="calc-label">Relationship Calculator</span>
     <p class="calc-question">Select your name, or the generation you belong to. The tool will show you exactly how you connect to every ancestor in the confirmed line.</p>
@@ -230,9 +220,26 @@
 
     <div id="calc-result"></div>
   </div>
+</div>
 
-  <!-- NINE GENERATIONS -->
-  <div class="sec"><div class="sec-line"></div><div class="sec-label">The Nine Generations · At a Glance</div><div class="sec-line"></div></div>
+<!-- WHO THIS FAMILY IS — AFTER THE CALCULATOR -->
+<div class="sec" style="max-width:800px;margin:0 auto;padding:0 24px 48px;">
+  <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);padding:24px 28px;">
+    <p style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:14px;">Who This Family Is</p>
+    <p style="font-size:14px;line-height:1.9;color:#b0a89e;margin-bottom:12px;">If your family carries the name <strong style="color:#f0ead8;">Corbin, Ballard, Armstrong, Nichols, or Pink</strong> — or if a DNA test led you here — you may be looking at your own family history.</p>
+    <p style="font-size:14px;line-height:1.9;color:#b0a89e;margin-bottom:12px;">This archive traces one African American family from an enslaved woman named <strong style="color:#f0ead8;">Patience</strong> in Newberry County, South Carolina in 1795 — all the way to the present day. Nine confirmed generations. Every name found in a primary source document — a deed, a death certificate, a census record, a marriage index, a slave schedule, a court filing.</p>
+    <p style="font-size:14px;line-height:1.9;color:#b0a89e;">The family's roots are in <strong style="color:#f0ead8;">Bellville, Austin County, Texas</strong> — a town built on a land grant whose enslaved community became your family after emancipation in 1865. Before Texas the trail runs through Mississippi and all the way back to South Carolina.</p>
+  </div>
+</div>
+
+<!-- NINE GENERATIONS -->
+<div class="sec" style="max-width:800px;margin:0 auto;padding:0 24px 64px;">
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:28px;">
+    <div style="flex:1;height:1px;background:rgba(201,168,76,0.15);"></div>
+    <span style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);">The Nine Generations · At a Glance</span>
+    <div style="flex:1;height:1px;background:rgba(201,168,76,0.15);"></div>
+  </div>
+  The Nine Generations · At a Glance</div><div class="sec-line"></div></div>
 
   <div class="nine-wrap">
     <div class="nine-row">
@@ -309,15 +316,19 @@
 
   <!-- ONE CTA -->
   <div style="text-align:center;padding:48px 0 0;">
-    <p style="font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:16px;">Want to read the whole story?</p>
-    <a href="how_we_got_here.html" style="font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;background:var(--gold);color:var(--deep);padding:12px 28px;text-decoration:none;display:inline-block;font-weight:500;">Read How We Got Here →</a>
-  </div>
+    <p style="font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:16px;">
+</div>
 
-</div><!-- /main -->
+<!-- CTA -->
+<div style="text-align:center;padding:0 24px 64px;">
+  <p style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:16px;">Ready to read the whole story?</p>
+  <a href="how_we_got_here.html" style="display:inline-block;font-family:'Courier New',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;background:#c9a84c;color:#080604;padding:14px 36px;text-decoration:none;font-weight:500;">Read How We Got Here →</a>
+</div>
 
-<div class="page-footer">
-  <span class="footer-credit">Armstrong Family Archive · Research by Jasmine M. Lee · Dock Ellis Foundation · 2019–2026</span>
-  <a href="family_tree.html" class="footer-link">Full Archive →</a>
+<!-- FOOTER -->
+<div style="max-width:1100px;margin:0 auto;padding:24px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+  <span style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:1px;color:rgba(255,255,255,0.2);">Armstrong Family Archive · Research by Jasmine M. Lee · Dock Ellis Foundation · 2019–2026</span>
+  <a href="family_tree.html" style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;">Full Archive →</a>
 </div>
 
 <script>

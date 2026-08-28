@@ -4,225 +4,165 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hellen Nichols Armstrong · Armstrong Family Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --deep: #080604;
-    --gold: #c9a84c;
-    --gold2: #e8c96a;
-    --cream: #f5f2ec;
-    --parchment: #f0ead8;
-    --aged: #e4dcd0;
-    --muted: #a8a090;
-    --border: rgba(201,168,76,0.15);
-    --f-display: 'Georgia', 'Times New Roman', serif;
-    --f-body: 'Georgia', serif;
-    --f-mono: 'Courier New', monospace;
+    --deep:#080604;--surface:#0e0b08;--card:#0f0c09;
+    --gold:#c9a84c;--gold2:#e8c96a;--cream:#f5f2ec;--parchment:#f0ead8;
+    --muted:rgba(245,242,236,0.45);--border:rgba(201,168,76,0.15);
+    --border2:rgba(255,255,255,0.06);
+    --f-display:'DM Serif Display',Georgia,serif;
+    --f-body:'Inter',sans-serif;--f-mono:'Courier New',monospace;
   }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;}
 
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body {
-    background:var(--deep);
-    color:var(--cream);
-    font-family:var(--f-body);
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-
-  .nav {
-    position:fixed;top:0;left:0;right:0;z-index:100;
-    padding:14px 24px;
-    display:flex;align-items:center;justify-content:space-between;
-    background:rgba(8,6,4,0.96);backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--border);
-  }
-  .nav-back { font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none; }
-  .nav-title { font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted); }
-
-  .opening {
-    min-height:100vh;
-    display:flex;flex-direction:column;
-    align-items:center;justify-content:center;
-    padding:100px 24px 80px;text-align:center;
-    position:relative;
-    background:radial-gradient(ellipse at center, rgba(139,105,20,0.07) 0%, transparent 65%);
-  }
-
-  .opening-label { font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px; }
-  .opening-name { font-family:var(--f-display);font-size:clamp(56px,12vw,120px);font-style:italic;color:var(--parchment);line-height:0.9;letter-spacing:-2px;margin-bottom:40px; }
-  .opening-dates { font-family:var(--f-mono);font-size:11px;letter-spacing:3px;color:var(--muted);margin-bottom:48px; }
-
-  .opening-three {
-    display:grid;grid-template-columns:1fr 1fr 1fr;
-    gap:20px;max-width:600px;margin:0 auto 48px;
-  }
-  @media(max-width:560px){ .opening-three{grid-template-columns:1fr;} }
-
-  .opening-fact {
-    padding:20px;border:1px solid var(--border);
-    background:rgba(10,8,5,0.4);text-align:center;
-  }
-  .opening-fact-number {
-    font-family:var(--f-display);font-size:clamp(28px,5vw,48px);
-    font-style:italic;color:var(--gold);display:block;margin-bottom:4px;
-  }
-  .opening-fact-label {
-    font-family:var(--f-mono);font-size:8px;letter-spacing:2px;
-    text-transform:uppercase;color:var(--muted);
-  }
-
-  .opening-statement {
-    max-width:520px;font-size:clamp(15px,2.5vw,17px);
-    line-height:1.9;color:var(--aged);font-style:italic;
-  }
-  .opening-statement em { color:var(--cream);font-style:normal; }
-
-  .scroll-down {
-    position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
-    font-family:var(--f-mono);font-size:9px;letter-spacing:3px;
-    text-transform:uppercase;color:var(--muted);
-    animation:breathe 3s ease-in-out infinite;
-  }
-  @keyframes breathe { 0%,100%{opacity:0.3;}50%{opacity:0.8;} }
-
-  .story { max-width:680px;margin:0 auto;padding:0 24px; }
-
-  .chapter { padding:80px 0;border-top:1px solid var(--border); }
-  .chapter-date { font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:32px;display:block; }
-  .chapter-title { font-family:var(--f-display);font-size:clamp(28px,5vw,42px);font-style:italic;color:var(--parchment);line-height:1.15;margin-bottom:40px;letter-spacing:-0.5px; }
-  .chapter p { font-size:clamp(15px,2.2vw,17px);line-height:2;color:var(--aged);margin-bottom:28px; }
-  .chapter p strong { color:var(--cream);font-weight:normal; }
-  .chapter p em { color:var(--parchment);font-style:italic; }
-
-  .doc-pull { margin:48px 0;padding:28px 32px;border-left:2px solid var(--gold);background:rgba(10,8,5,0.6); }
-  .doc-pull-label { font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block; }
-  .doc-pull-text { font-family:var(--f-mono);font-size:13px;line-height:1.9;color:var(--parchment); }
-  .doc-pull-text strong { color:var(--gold2); }
-  .doc-pull-source { font-family:var(--f-mono);font-size:9px;color:var(--muted);margin-top:14px;display:block; }
-
-  .pause {
-    text-align:center;padding:48px 0;
-    font-family:var(--f-display);font-size:clamp(17px,3vw,22px);font-style:italic;
-    color:var(--parchment);line-height:1.9;
-    border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:48px 0;
-  }
-
-  /* NEWSPAPER SECTION */
-  .newspaper {
-    margin:48px 0;
-    border:1px solid rgba(201,168,76,0.3);
-    background:rgba(248,240,220,0.04);
-    padding:32px;
-  }
-  .newspaper-label {
-    font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
-    text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px;
-  }
-  .newspaper-headline {
-    font-family:var(--f-display);font-size:clamp(16px,3vw,22px);
-    color:var(--cream);line-height:1.3;margin-bottom:16px;
-    border-bottom:1px solid var(--border);padding-bottom:16px;
-    font-style:normal;
-  }
-  .newspaper-body {
-    font-size:14px;line-height:1.9;color:var(--aged);
-  }
-  .newspaper-body strong { color:var(--cream);font-weight:normal; }
-
-  /* THE LINE */
-  .the-line { padding:80px 0;border-top:1px solid var(--border); }
-  .line-label { font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:40px;text-align:center;display:block; }
-  .line-chain { display:flex;flex-direction:column;gap:0;max-width:520px;margin:0 auto; }
-  .line-link { display:flex;gap:20px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--border); }
-  .line-link:last-child { border-bottom:none; }
-  .line-dot { width:20px;height:20px;border-radius:50%;border:1px solid var(--gold);background:var(--deep);flex-shrink:0;margin-top:3px; }
-  .line-dot.highlight { background:rgba(201,168,76,0.2); }
-  .line-name { font-family:var(--f-display);font-size:18px;font-style:italic;color:var(--parchment);display:block;margin-bottom:3px; }
-  .line-name.gold { color:var(--gold2); }
-  .line-detail { font-family:var(--f-mono);font-size:10px;color:var(--muted);line-height:1.6; }
-
-  .closing { padding:80px 0 120px;text-align:center;border-top:1px solid var(--border); }
-  .closing-title { font-family:var(--f-display);font-size:clamp(24px,4vw,40px);font-style:italic;color:var(--parchment);margin-bottom:32px;line-height:1.3; }
-  .closing-body { font-size:clamp(14px,2vw,16px);line-height:2;color:var(--aged);max-width:540px;margin:0 auto 48px; }
-  .closing-body strong { color:var(--cream);font-weight:normal; }
-  .back-link { display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--border);padding:14px 28px;border-radius:2px;margin:0 8px 12px;transition:border-color 0.2s; }
-  .back-link:hover { border-color:var(--gold); }
-
-  /* ACCESSIBILITY UPDATE: Improved contrast for readability */
-  .prose p, .story p, p { color: #e8e2d8; line-height: 2.1; }
-  .chapter-title, .section-title, .opening-name { color: #f5f0e8 !important; }
-  .chapter-label, .section-label, .opening-label { color: rgba(255,255,255,0.80) !important; }
-  .fact-key { color: rgba(255,255,255,0.65) !important; }
-  .fact-val { color: #e0d8cc !important; }
-  .child-note { color: #c8c0b4 !important; }
-  .aged, .muted { color: #d8d0c4 !important; }
-  table th { color: rgba(255,255,255,0.85) !important; }
-  table td { color: #d8d0c4 !important; }
-  .pull-quote p { color: #f0ead8 !important; }
-  .opening-statement { color: #d8d0c4 !important; }
-  .inheritance { color: #c8c0b4 !important; }
-  .inheritance strong { color: #f5f0e8 !important; }
-  .opening-dates { color: rgba(255,255,255,0.70) !important; }
-  .nav-title { color: rgba(255,255,255,0.60) !important; }
-  .sources ol li { color: #c0b8ac !important; }
-  .explain-box p, .cluster-detail { color: #d8d0c4 !important; }
-  .oracle-distance { color: #c0b8ac !important; }
-  .kit-detail { color: #c8c0b4 !important; }
-  .admix-label { color: #d0c8bc !important; }
-  .admix-pct { color: #f0d870 !important; }
-  li { color: #d8d0c4; }
-  strong { color: #f5f0e8 !important; }
-
-
-  /* ── GLOBAL NAV ── */
+  /* NAV */
   .gnav{position:sticky;top:0;z-index:100;background:rgba(8,6,4,0.97);
-        border-bottom:1px solid rgba(201,168,76,0.15);backdrop-filter:blur(8px);}
-  .gnav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;
+        border-bottom:1px solid var(--border);backdrop-filter:blur(8px);}
+  .gnav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;
               justify-content:space-between;padding:0 24px;height:52px;gap:8px;}
-  .gnav-brand{font-family:'DM Serif Display',Georgia,serif;font-style:italic;
-              font-size:15px;color:rgba(240,234,216,0.8);text-decoration:none;
-              white-space:nowrap;flex-shrink:0;}
+  .gnav-brand{font-family:var(--f-display);font-style:italic;font-size:15px;
+              color:rgba(240,234,216,0.8);text-decoration:none;white-space:nowrap;}
   .gnav-brand:hover{color:#f0ead8;}
-  .gnav-links{display:flex;align-items:center;gap:2px;overflow-x:auto;
-              -webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .gnav-links{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;}
   .gnav-links::-webkit-scrollbar{display:none;}
-  .gnav-link{font-family:'Courier New',monospace;font-size:8.5px;letter-spacing:1.5px;
+  .gnav-link{font-family:var(--f-mono);font-size:8.5px;letter-spacing:1.5px;
              text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;
-             padding:6px 10px;white-space:nowrap;border-bottom:2px solid transparent;
-             transition:color 0.15s,border-color 0.15s;}
+             padding:6px 10px;white-space:nowrap;border-bottom:2px solid transparent;transition:color 0.15s;}
   .gnav-link:hover{color:rgba(245,242,236,0.85);}
   .gnav-link.active{color:#c9a84c;border-bottom-color:#c9a84c;}
-  .gnav-link.gstart{color:#c9a84c;border:1px solid rgba(201,168,76,0.35);
-                    padding:5px 10px;margin-right:6px;}
-  .gnav-link.gstart:hover{background:rgba(201,168,76,0.08);}
+  .gnav-link.gstart{color:#c9a84c;border:1px solid rgba(201,168,76,0.35);padding:5px 10px;margin-right:6px;}
   .breadcrumb{background:rgba(14,11,8,0.8);border-bottom:1px solid rgba(255,255,255,0.04);
-              padding:7px 24px;font-family:'Courier New',monospace;font-size:9px;
-              letter-spacing:1px;color:rgba(245,242,236,0.3);}
+              padding:7px 24px;font-family:var(--f-mono);font-size:9px;letter-spacing:1px;color:rgba(245,242,236,0.3);}
   .breadcrumb a{color:rgba(245,242,236,0.4);text-decoration:none;}
   .breadcrumb a:hover{color:#c9a84c;}
   .breadcrumb span{color:rgba(255,255,255,0.18);margin:0 6px;}
-  .story-nav{display:flex;justify-content:space-between;align-items:center;
-             padding:24px;border-top:1px solid rgba(201,168,76,0.15);
-             max-width:800px;margin:0 auto;gap:12px;flex-wrap:wrap;}
-  .story-nav-link{font-family:'Courier New',monospace;font-size:9px;letter-spacing:2px;
-                  text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;
-                  border:1px solid rgba(201,168,76,0.2);padding:8px 14px;
-                  transition:color 0.15s,border-color 0.15s;}
-  .story-nav-link:hover{color:#c9a84c;border-color:rgba(201,168,76,0.5);}
-  .story-nav-center{font-family:'Courier New',monospace;font-size:9px;letter-spacing:2px;
-                    text-transform:uppercase;color:rgba(245,242,236,0.25);text-decoration:none;}
-  .story-nav-center:hover{color:rgba(245,242,236,0.5);}
+
+  /* HERO */
+  .hero{max-width:900px;margin:0 auto;padding:64px 24px 48px;text-align:center;}
+  .hero-eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;
+                color:rgba(255,255,255,0.28);display:block;margin-bottom:16px;}
+  .hero-name{font-family:var(--f-display);font-size:clamp(36px,6vw,64px);font-style:italic;
+             color:var(--parchment);display:block;line-height:1.1;margin-bottom:10px;}
+  .hero-sub{font-size:13px;color:rgba(245,242,236,0.45);margin-bottom:28px;
+            font-family:var(--f-mono);letter-spacing:1px;}
+  .hero-dates{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-bottom:32px;}
+  .hero-date{text-align:center;}
+  .hero-date-year{font-family:var(--f-display);font-size:28px;font-style:italic;color:var(--gold);display:block;}
+  .hero-date-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;
+                   color:rgba(255,255,255,0.3);display:block;margin-top:4px;}
+  .hero-line{font-size:14px;line-height:2;color:#a0988e;max-width:560px;margin:0 auto;}
+
+  /* BODY */
+  .prose{max-width:720px;margin:0 auto;padding:0 24px;}
+  .chapter{margin-bottom:56px;}
+  .chapter-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;
+                 color:rgba(255,255,255,0.25);display:block;margin-bottom:12px;}
+  .chapter-year{font-family:var(--f-display);font-size:clamp(22px,4vw,32px);font-style:italic;
+                color:var(--parchment);display:block;margin-bottom:16px;line-height:1.2;}
+  .chapter-body{font-size:14px;line-height:2;color:#c0b8b0;margin-bottom:16px;}
+  .chapter-body strong{color:var(--parchment);}
+  .chapter-body em{color:var(--gold);font-style:normal;}
+
+  /* DIVIDER */
+  .divider{border:none;border-top:1px solid var(--border2);margin:40px 0;}
+
+  /* DOCUMENT PULL */
+  .doc-pull{background:rgba(255,255,255,0.02);border-left:3px solid rgba(201,168,76,0.4);
+            padding:20px 24px;margin:24px 0;}
+  .doc-pull-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;
+                  color:rgba(201,168,76,0.6);display:block;margin-bottom:12px;}
+  .doc-pull-text{font-size:13px;line-height:1.9;color:#b0a89e;}
+  .doc-pull-text strong{color:var(--parchment);}
+
+  /* NEWSPAPER */
+  .newspaper{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);
+             padding:24px 28px;margin:24px 0;}
+  .newspaper-head{font-family:var(--f-display);font-size:16px;font-style:italic;
+                  color:var(--parchment);display:block;margin-bottom:4px;line-height:1.3;}
+  .newspaper-sub{font-family:var(--f-mono);font-size:9px;letter-spacing:1px;
+                 text-transform:uppercase;color:rgba(255,255,255,0.3);display:block;margin-bottom:14px;}
+  .newspaper-body{font-size:13px;line-height:1.85;color:#a0988e;}
+
+  /* DEATH CERTIFICATE */
+  .death-cert{background:rgba(139,58,58,0.06);border:1px solid rgba(139,58,58,0.25);
+              padding:24px 28px;margin:24px 0;}
+  .death-cert-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;
+                    color:rgba(220,100,100,0.6);display:block;margin-bottom:14px;}
+  .death-cert-row{display:grid;grid-template-columns:160px 1fr;gap:8px;padding:6px 0;
+                  border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px;}
+  .death-cert-row:last-child{border-bottom:none;}
+  .death-cert-field{font-family:var(--f-mono);font-size:9px;letter-spacing:1px;
+                    text-transform:uppercase;color:rgba(255,255,255,0.3);}
+  .death-cert-value{color:#c0b8b0;}
+  .death-cert-value strong{color:var(--parchment);}
+
+  /* CENSUS */
+  .census-block{background:rgba(255,255,255,0.02);border:1px solid var(--border2);
+                padding:20px 24px;margin:20px 0;}
+  .census-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;
+                color:rgba(255,255,255,0.3);display:block;margin-bottom:10px;}
+  .census-row{font-size:12px;color:#b0a89e;line-height:1.8;padding:2px 0;}
+  .census-row strong{color:var(--parchment);}
+
+  /* RESEARCH NOTE */
+  .research-note{background:rgba(201,168,76,0.04);border-left:3px solid rgba(201,168,76,0.25);
+                 padding:14px 18px;margin:20px 0;}
+  .research-note-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;
+                       text-transform:uppercase;color:rgba(201,168,76,0.5);display:block;margin-bottom:8px;}
+  .research-note-body{font-size:12px;line-height:1.75;color:#a0988e;}
+
+  /* REFLECTION BOX */
+  .reflection{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);
+              padding:28px 32px;margin:32px 0;text-align:center;}
+  .reflection-text{font-family:var(--f-display);font-size:clamp(16px,3vw,22px);font-style:italic;
+                   color:var(--parchment);line-height:1.6;}
+  .reflection-attribution{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;
+                           text-transform:uppercase;color:rgba(201,168,76,0.5);
+                           display:block;margin-top:12px;}
+
+  /* LINE */
+  .line-chain{background:rgba(255,255,255,0.02);border:1px solid var(--border2);
+              padding:24px 28px;margin:32px 0;}
+  .line-chain-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;
+                    text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:14px;display:block;}
+  .line-person{padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:13px;}
+  .line-person:last-child{border-bottom:none;}
+  .line-name{color:var(--parchment);font-family:var(--f-display);font-style:italic;font-size:15px;}
+  .line-name.gold{color:var(--gold);}
+  .line-detail{font-size:11px;color:#706860;margin-top:2px;}
+
+  /* NAV BOTTOM */
+  .story-nav{max-width:720px;margin:56px auto 0;padding:24px;
+             display:flex;justify-content:space-between;align-items:center;
+             border-top:1px solid var(--border2);flex-wrap:wrap;gap:12px;}
+  .story-nav a{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;
+               color:var(--muted);text-decoration:none;}
+  .story-nav a:hover{color:var(--gold);}
+  .story-nav-center{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;
+                    text-transform:uppercase;color:var(--gold);text-decoration:none;
+                    border:1px solid rgba(201,168,76,0.3);padding:6px 14px;}
+
+  @media(max-width:600px){
+    .hero-dates{gap:20px;}
+    .death-cert-row{grid-template-columns:1fr;gap:2px;}
+  }
 </style>
 </head>
 <body>
 
 <nav class="gnav">
   <div class="gnav-inner">
-    <a href="index.html" class="gnav-brand">Armstrong Family Archive</a>
+    <a href="welcome.html" class="gnav-brand">Armstrong Family Archive</a>
     <div class="gnav-links">
       <a href="start_here.html" class="gnav-link gstart">★ Start Here</a>
       <a href="welcome.html" class="gnav-link">Our Family</a>
       <a href="bellville_family.html" class="gnav-link">The Family</a>
+      <a href="we_are_bellville.html" class="gnav-link">We Are Bellville</a>
+      <a href="black_dutch_fork.html" class="gnav-link">Dutch Fork</a>
       <a href="how_we_got_here.html" class="gnav-link active">The Story</a>
       <a href="papertrail.html" class="gnav-link">Documents</a>
       <a href="photos.html" class="gnav-link">Photos</a>
@@ -230,303 +170,293 @@
     </div>
   </div>
 </nav>
-<div class="breadcrumb"><a href="index.html">Home</a><span>›</span><strong style="color:rgba(245,242,236,0.6);">The Story</strong><span>›</span><strong style="color:rgba(245,242,236,0.6);">Hellen Nichols Armstrong</strong></div>
+<div class="breadcrumb">
+  <a href="welcome.html">Home</a><span>›</span>
+  <a href="how_we_got_here.html">The Story</a><span>›</span>
+  <strong style="color:rgba(245,242,236,0.6);">Hellen Nichols Armstrong</strong>
+</div>
 
-<section class="opening">
-  <p class="opening-label">Daughter of Easter Bell & Joseph Nichols · Mother of Eva Armstrong Ballard</p>
-  <h1 class="opening-name">Hellen</h1>
-  <p class="opening-dates">September 1870 · Bellville, Austin County, Texas · after 1930</p>
-
-  <div class="opening-three">
-    <div class="opening-fact">
-      <span class="opening-fact-number">1870</span>
-      <span class="opening-fact-label">Born free · Bellville</span>
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-eyebrow">Daughter of Easter Bell &amp; Joseph Nichols · Mother of Eva Armstrong Ballard</span>
+  <span class="hero-name">Hellen Nichols Armstrong</span>
+  <span class="hero-sub">The First Generation Born Free</span>
+  <div class="hero-dates">
+    <div class="hero-date">
+      <span class="hero-date-year">1870</span>
+      <span class="hero-date-label">Born free · Bellville</span>
     </div>
-    <div class="opening-fact">
-      <span class="opening-fact-number">1911</span>
-      <span class="opening-fact-label">Widowed · Fort Worth</span>
+    <div class="hero-date">
+      <span class="hero-date-year">1898</span>
+      <span class="hero-date-label">Married · John Armstrong</span>
     </div>
-    <div class="opening-fact">
-      <span class="opening-fact-number">1930</span>
-      <span class="opening-fact-label">Last confirmed record</span>
+    <div class="hero-date">
+      <span class="hero-date-year">1911</span>
+      <span class="hero-date-label">Widowed · Fort Worth</span>
+    </div>
+    <div class="hero-date">
+      <span class="hero-date-year">1931</span>
+      <span class="hero-date-label">Died · Bellville · age unknown</span>
     </div>
   </div>
+  <p class="hero-line">She was the first person in her direct line born free. Her mother Easter Bell had been enslaved for twenty-seven years. Her father Joseph Nichols had been enslaved for twenty. Hellen was born five years after Juneteenth. She never knew — and neither did the people who loved her — the exact date she came into the world.</p>
+</div>
 
-  <p class="opening-statement">
-    She was the first generation born free.<br>
-    Her mother Easter Bell had been enslaved for twenty-seven years.<br>
-    Her father Joseph Nichols had been enslaved for twenty years.<br>
-    Hellen was born five years after Juneteenth —<br>
-    <em>the first of their children to enter the world free from birth.</em>
-  </p>
-  <p class="scroll-down">her story ↓</p>
-</section>
+<div class="prose">
 
-<div class="story">
-
-  <!-- CHAPTER 1 -->
+  <!-- BORN FREE -->
   <div class="chapter">
-    <span class="chapter-date">September 1870 · Bellville, Austin County, Texas</span>
-    <h2 class="chapter-title">Born Free</h2>
-
-    <p>Hellen Nichols was born in September 1870 in Bellville, Austin County, Texas. She was the fifth child of Joseph Nichols and Easter Bell Nichols — born five years after Juneteenth, five years after her parents were freed, five years after her father walked into the voter registration office and put his name on the list.</p>
-
-    <p>She was born into a family that had survived everything. Her mother Easter had been born enslaved on the Fourth of July 1838 and freed at 27. Her father Joseph had been born enslaved in February 1845 and freed at 20. They had married four and a half years after Juneteenth. They had already had three children before Hellen arrived — Allen, Annie, and Oscar. <strong>Hellen was the first generation of her family to be born into freedom from the very first day of her life.</strong></p>
-
-    <p>The world she was born into was not safe. Reconstruction was collapsing. The 1870 census that recorded her birth also recorded her father as a farm laborer who could not read or write. The community around her in Bellville was a formerly enslaved community trying to build lives on the same land where they had been held in bondage five years earlier.</p>
-
-    <p>But she was free. And that was the difference her parents had fought for.</p>
+    <span class="chapter-label">September 1870 · Bellville, Austin County, Texas</span>
+    <span class="chapter-year">Born Free</span>
+    <p class="chapter-body">Hellen Nichols was born in September 1870 in Bellville, Austin County, Texas. She was the fifth child of Joseph Nichols and Easter Bell Nichols — born five years after Juneteenth, five years after her parents walked out of bondage into a world that had technically freed them but had not finished deciding what that meant.</p>
+    <p class="chapter-body">Her mother Easter had been born enslaved on July 4, 1838 — on a plantation whose owner would die before he could see the end of what he had built. Her father Joseph had been born enslaved in that same household, recorded as Mulatto in every census after emancipation, his mother's name not known by any document that survives. They married on December 18, 1865 — six months after Juneteenth. They had already had three children by the time Hellen arrived.</p>
+    <p class="chapter-body">Hellen was the first in her family born into freedom from the very first moment of her life. That is not a small thing. That is what her parents had waited their entire lives for.</p>
+    <p class="chapter-body">The 1870 census — the same census that recorded her birth — shows her father Joseph as a farm laborer who could not read or write. The community around her in Bellville was a formerly enslaved community trying to build lives on the same land where they had been held in bondage five years earlier. They had no schools, little money, no political protection as Reconstruction collapsed. But they were free. And Hellen had never been anything else.</p>
   </div>
 
-  <!-- CHAPTER 2 -->
+  <hr class="divider">
+
+  <!-- GROWING UP -->
   <div class="chapter">
-    <span class="chapter-date">1870 — 1898 · Bellville, Austin County, Texas</span>
-    <h2 class="chapter-title">Growing Up on Piney Creek</h2>
-
-    <p>The 1880 census confirms Hellen's presence in the Nichols household — though she does not appear by name in the indexed results. She would have been approximately 10 years old in 1880, one of six children in the household with Joseph age 37 and Easter age 33.</p>
-
-    <p>She grew up on the same land where her parents had been enslaved. The 2 acres that Easter and Joseph had acquired from the John Nichols Survey — Abstract 73 — was the family ground. The town of Bellville around them had been built on land that John Nichols had owned. The Bell family whose name was on the town was the same Bell family whose name Easter had taken as her own at emancipation.</p>
-
-    <p>Hellen's world was Bellville. She knew every family in that formerly enslaved community — the Armstrongs who had come from Upshur County, the Morgans who had come from Virginia through Austin County, the Nichols families who had been enslaved alongside her parents. <strong>The community she grew up in was built by people who had survived the same thing her family had survived.</strong></p>
-
-    <p>She grew up and she stayed. She was approximately 28 years old when she married.</p>
+    <span class="chapter-label">1870 — 1898 · Bellville, Austin County, Texas</span>
+    <span class="chapter-year">Growing Up in Bellville</span>
+    <p class="chapter-body">The 1880 census confirms Hellen's presence in the Nichols household — approximately 10 years old, one of six children in the household with Joseph age 37 and Easter age 33. She grew up on the same land where her parents had been enslaved. The 2 acres that Easter and Joseph had acquired from the John Nichols Survey — Abstract 73 — was the family ground. The town of Bellville around her had been built on land that John Nichols had owned. The Bell family whose name was on the town was the same Bell family whose name Easter had carried as her own at emancipation.</p>
+    <p class="chapter-body">Hellen's world was Bellville. She knew every family in that formerly enslaved community — the Armstrongs who had come from South Carolina and North Carolina, the Nichols families who had been enslaved alongside her parents, Henry Nichols and Emmeline who farmed beside her father Joseph on the same precinct land. She grew up surrounded by people who had survived the same thing her family had survived. She grew up and she stayed. She was approximately 28 years old when she married.</p>
   </div>
 
-  <!-- CHAPTER 3 -->
+  <hr class="divider">
+
+  <!-- JOHN ARMSTRONG -->
   <div class="chapter">
-    <span class="chapter-date">November 27, 1898 · Austin County, Texas</span>
-    <h2 class="chapter-title">John Armstrong</h2>
-
-    <p>On November 27, 1898 — Hellen Nichols married <strong>John Armstrong</strong> in Austin County, Texas. The Armstrong family origin is now confirmed by primary source death certificates. John's father was <strong>Dave Armstrong</strong> — born in <strong>South Carolina</strong> — who came to Austin County Texas after emancipation and married <strong>Clara Morgan</strong> on August 29, 1868 in Austin County Texas (Marriage Record No. 376). Clara Morgan was born in <strong>North Carolina</strong> ca. 1848. Both of John Armstrong's parents came from the Carolinas — the same origin geography as the Waldrop-Davenport enslaved community that produced Easter Bell Nichols. Their connection to Austin County Texas after emancipation was through the same post-Civil War migration that brought formerly enslaved people from the Carolinas into the Bellville community.</p>
-
-    <p>John Armstrong and his siblings Charlie Armstrong (born October 1873) and Ida Armstrong (born February 28, 1875, Bellville) grew up in the Bellville community. Their parents Dave Armstrong and Clara Morgan Armstrong are both buried in Fort Worth — Clara died November 24, 1918 (Texas Death Certificate No. 52680). Their son John Armstrong served as informant on both his mother's and sister Ida's death certificates — identifying his father's birthplace as South Carolina and his mother's birthplace as North Carolina.</p>
-
-    <p>Two formerly enslaved families from the same Austin County community. Dave Armstrong came from South Carolina. Hellen's great-grandmother Patience had come from South Carolina to Texas through the Waldrop family. <strong>When John Armstrong married Hellen Nichols in 1898, two families from the same South Carolina origin — separated by the slave trade and the decades of bondage — came together again in Bellville, Texas.</strong></p>
-
-    <div style="background:rgba(255,165,0,0.04);border-left:3px solid rgba(255,165,0,0.3);padding:10px 14px;margin-top:12px;">
-      <p style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,165,0,0.6);margin-bottom:6px;">Research Note · Louisa Morgan</p>
-      <p style="font-size:12px;color:#a0988e;line-height:1.75;">Earlier research identified a woman named Louisa Morgan as Clara Morgan's mother. That identification has not been confirmed by a primary source document. Clara Armstrong's 1918 death certificate (filed by her son John Armstrong) lists both parents as Unknown. The source for Louisa as Clara's mother needs to be verified before it can be treated as confirmed.</p>
-    </div>
+    <span class="chapter-label">November 27, 1898 · Austin County, Texas</span>
+    <span class="chapter-year">John Armstrong</span>
+    <p class="chapter-body">On November 27, 1898 — Hellen Nichols married <strong>John Armstrong</strong> in Austin County, Texas. The Armstrong family origin is confirmed by primary source death certificates. John's father was <strong>Dave Armstrong</strong> — born in <strong>South Carolina</strong> — who married <strong>Clara Morgan</strong> (born North Carolina ca. 1848) in Austin County Texas on August 29, 1868 (Marriage Record No. 376). Both of John's parents came from the Carolinas — the same origin geography as the Waldrop-Davenport enslaved community that produced Easter Bell Nichols. Dave Armstrong born South Carolina. Hellen's great-grandmother Patience had come from South Carolina to Texas through the Waldrop family. When John Armstrong married Hellen Nichols in 1898 — two families from the same South Carolina origin, separated by the slave trade and decades of bondage, came together again in Bellville, Texas.</p>
+    <p class="chapter-body">John Armstrong ran a transfer line — a delivery wagon and trucking operation — in Bellville. He was a business owner. He and Hellen were building something.</p>
 
     <div class="doc-pull">
       <span class="doc-pull-label">Marriage Record · Austin County, Texas · November 27, 1898</span>
-      <div class="doc-pull-text">Hellen Nichols · married · John Armstrong<br>
-      Date: <strong>November 27, 1898</strong><br>
-      County: Austin, Texas<br>
-      Confirmed by: 1900 Federal Census listing Hellen as wife of John Armstrong</div>
-      <span class="doc-pull-source">Austin County Texas Marriage Records · 1898</span>
+      <div class="doc-pull-text">
+        <strong>Hellen Nichols</strong> · married · <strong>John Armstrong</strong><br>
+        Date: <strong>November 27, 1898</strong> · County: Austin, Texas<br>
+        Confirmed by: 1900 Federal Census listing Hellen as wife of John Armstrong
+      </div>
     </div>
 
-    <p>By June 1900 — the first census after their marriage — the household shows John Armstrong age 22, Hellen Armstrong age 23, and infant Eva Armstrong age 4 months. <strong>Eva Armstrong was born June 27, 1900 — Hellen and John's daughter — the woman who would become Eva Armstrong Ballard.</strong></p>
-
-    <div class="doc-pull">
-      <span class="doc-pull-label">1900 U.S. Federal Census · Bellville, Austin County, Texas</span>
-      <div class="doc-pull-text">John Armstrong · Head · Black · Male · age 22 · born ca. 1878 · Texas<br>
-      Occupation: Truck driver / Transfer line operator<br>
-      <strong>Hellen Armstrong</strong> · Wife · Black · Female · born September 1870 · age 23<br>
-      Birthplace: Texas · Father's BP: Texas · Mother's BP: Texas<br>
-      <strong>Eva Armstrong</strong> · Daughter · age 4/12 · born June 1900 · Texas<br>
-      Home ownership: Renting</div>
-      <span class="doc-pull-source">1900 U.S. Federal Census · Bellville, Austin County, Texas · June 1900</span>
+    <div class="research-note">
+      <span class="research-note-label">Research Note · Louisa Morgan</span>
+      <p class="research-note-body">Earlier research identified a woman named Louisa Morgan as Clara Morgan's mother — making her John Armstrong's maternal grandmother. That identification has not been confirmed by a primary source document. Clara Armstrong's 1918 death certificate (filed by her son John Armstrong) lists both parents as Unknown. The source for Louisa as Clara's mother needs to be verified before it can be treated as confirmed.</p>
     </div>
-
-    <p>John Armstrong ran his own transfer line — a truck driving and delivery operation — in Bellville. He was 22 years old, a business owner, a husband, a new father. The family was building something.</p>
-
-    <p>They had two children. One died before 1910 — unnamed in any surviving record. Eva survived.</p>
   </div>
 
-  <!-- CHAPTER 4 -->
+  <hr class="divider">
+
+  <!-- 1900 CENSUS -->
   <div class="chapter">
-    <span class="chapter-date">August 30, 1911 · Fort Worth, Tarrant County, Texas</span>
-    <h2 class="chapter-title">The Night Jack Thompson<br>Shot Her Husband Dead</h2>
+    <span class="chapter-label">June 1900 · Bellville, Austin County, Texas</span>
+    <span class="chapter-year">Eva</span>
+    <p class="chapter-body">By June 1900 — the first census after their marriage — the household was three. John Armstrong, age 22. Hellen Armstrong, age 23 per the census — born September 1870. And Eva Armstrong — 4 months old — born June 27, 1900.</p>
 
-    <p>By 1911 the family had moved from Bellville to Fort Worth. John Armstrong was working as a delivery wagon driver for the Denver News Service — headquartered inside the Terminal Hotel. He was 32 years old. Hellen was approximately 41. Eva was 11.</p>
+    <div class="census-block">
+      <span class="census-label">1900 U.S. Federal Census · Bellville, Austin County, Texas · June 1900</span>
+      <div class="census-row"><strong>John Armstrong</strong> · Head · Black · age 22 · born ca. 1878 · Texas · Transfer line operator</div>
+      <div class="census-row"><strong>Hellen Armstrong</strong> · Wife · Black · female · born September 1870 · Texas · Father's BP: Texas · Mother's BP: Texas</div>
+      <div class="census-row"><strong>Eva Armstrong</strong> · Daughter · age 4 months · born June 1900 · Texas</div>
+      <div class="census-row" style="color:#706860;font-size:11px;">Home: Renting</div>
+    </div>
 
-    <p>On the evening of August 30, 1911 — at 6:30 p.m. — John Armstrong was shot and killed near the East Front Street entrance to the Terminal Hotel in Fort Worth.</p>
+    <p class="chapter-body">The family was renting in 1900 — they did not yet own their home. But John had a business. He and Hellen had a daughter. They had four months of Eva when the census enumerator came through Bellville.</p>
+    <p class="chapter-body">Hellen had two children in total. One did not survive to 1910. The name of that child has not been found in any primary source document. He or she was born between 1899 and 1910 — and died. Eva survived.</p>
+
+    <div class="research-note">
+      <span class="research-note-label">Open Research Thread · Unnamed Child</span>
+      <p class="research-note-body">The 1910 census records Hellen as having 2 children born and 1 living. Eva Armstrong is the surviving child. One child was born and died between 1899 and 1910. No name, no birth certificate, no death certificate has been found. The child may have died in infancy before Texas death registration was complete in this community.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 1910 CENSUS -->
+  <div class="chapter">
+    <span class="chapter-label">1910 · Fort Worth Ward 5, Tarrant County, Texas</span>
+    <span class="chapter-year">Fort Worth</span>
+    <p class="chapter-body">By 1910 the family had left Bellville and moved to Fort Worth — Ward 5, Tarrant County. John Armstrong was 28 years old. Eva was 10. Hellen — recorded as Helen Armstrong, age 25 in the census — had been married 11 years. The census recorded two children born and one living.</p>
+
+    <div class="census-block">
+      <span class="census-label">1910 U.S. Federal Census · Fort Worth Ward 5, Tarrant County, Texas</span>
+      <div class="census-row"><strong>John R. Armstrong</strong> · Head · Black · age 28 · born ca. 1882 · Texas</div>
+      <div class="census-row"><strong>Helen Armstrong</strong> · Wife · Black · age 25 · born ca. 1885 · Texas — married 11 years — 2 children born, 1 living</div>
+      <div class="census-row"><strong>Eva Armstrong</strong> · Daughter · age 10 · born ca. 1900 · Texas</div>
+    </div>
+
+    <div class="research-note">
+      <span class="research-note-label">Note on Hellen's Recorded Age</span>
+      <p class="research-note-body">The 1910 census records Helen Armstrong as born ca. 1885 — age 25. The 1870 census records her birth as September 1870, making her approximately 40 in 1910. The 1930 census records her as age 46, born ca. 1884. Her death certificate records her age as "about 70" in 1931 — implying ca. 1861. No primary source document records her actual birth date. Her daughter Eva, who was the informant on her 1931 death certificate, wrote "Don't Know" for date of birth. The 1870 census — the document closest to her actual birth — is the strongest evidence for her birth year. The later census ages are almost certainly underestimates.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 1911 MURDER -->
+  <div class="chapter">
+    <span class="chapter-label">August 30, 1911 · Fort Worth, Tarrant County, Texas</span>
+    <span class="chapter-year">The Night Jack Thompson Shot Her Husband Dead</span>
+    <p class="chapter-body">On the evening of August 30, 1911 — at 6:30 p.m. — John Armstrong was shot and killed near the East Front Street entrance to the Terminal Hotel in Fort Worth. He was 32 years old. Hellen was approximately 41. Eva was 11. John had been driving a delivery wagon for the Denver News Service.</p>
+    <p class="chapter-body">A white man named Jack Thompson — who operated a competing transfer line at 15th and Commerce — shot him. Thompson drove to Houston Street, met former police commissioner George H. Mulkey, and surrendered to police. Bond was set at $3,000. It was posted within hours by Clarence Parker, George W. Mulkey, and W.P. McLean Jr. — some of the most prominent white men in Fort Worth. Thompson went home that night.</p>
 
     <div class="newspaper">
-      <span class="newspaper-label">Fort Worth Daily Newspaper · August 31, 1911</span>
-      <p class="newspaper-headline">NEGRO TRUCK DRIVER IS SHOT AND KILLED<br>
-      JACK THOMPSON, WHITE MAN, SURRENDERS TO OFFICERS AT HEADQUARTERS<br>
-      $3,000 BOND FURNISHED</p>
-      <p class="newspaper-body">
-        Jack Thompson — who operated a transfer line business at 15th and Commerce Streets — shot and killed <strong>John Armstrong</strong>, a negro truck driver, near the East Front Street entrance to the Terminal Hotel at 6:30 o'clock Wednesday evening.
-        <br><br>
-        Thompson drove around the corner to Houston Street, met former police commissioner George H. Mulkey, and went to police headquarters to surrender. Justice Tom Maben fixed Thompson's bond at <strong>$3,000</strong>, which was promptly signed by several white bondsmen — Clarence Parker, George W. Mulkey, W.P. McLean Jr.
-        <br><br>
-        John Armstrong lived at <strong>921 Arizona Avenue</strong> in Fort Worth with his family. He was employed to drive a delivery wagon for the Denver News Service.
-      </p>
+      <span class="newspaper-head">Negro Truck Driver Is Shot and Killed</span>
+      <span class="newspaper-sub">Fort Worth Daily Newspaper · August 31, 1911</span>
+      <p class="newspaper-body">Jack Thompson — who operated a transfer line business at 15th and Commerce Streets — shot and killed John Armstrong, a negro truck driver, near the East Front Street entrance to the Terminal Hotel at 6:30 o'clock Wednesday evening. Thompson drove around the corner to Houston Street, met former police commissioner George H. Mulkey, and went to police headquarters to surrender. Justice Tom Maben fixed Thompson's bond at $3,000, which was promptly signed by several white bondsmen — Clarence Parker, George W. Mulkey, W.P. McLean Jr.</p>
     </div>
 
     <div class="doc-pull">
       <span class="doc-pull-label">Texas Certificate of Death · State File No. 18682 · August 30, 1911</span>
-      <div class="doc-pull-text">Full Name: <strong>John Armstrong</strong><br>
-      Age: 32 · Sex: Male · Race: Negro · Married<br>
-      Birthplace: Texas<br>
-      Father: <strong>Dave Armstrong · Texas</strong><br>
-      Mother's maiden name: <strong>Clara Morgan</strong><br>
-      Cause of Death: <strong>Gunshot wounds inflicted by Jack Thompson</strong><br>
-      Place of death: Tarrant County · Fort Worth · Ward 5<br>
-      Signed: J.P. Tom Maben M.D. · Fort Worth, Texas</div>
-      <span class="doc-pull-source">Texas State Board of Health Death Certificate · State File No. 18682 · Tarrant County Texas</span>
+      <div class="doc-pull-text">
+        <strong>John Armstrong</strong> · Age 32 · Sex: Male · Race: Negro · Married<br>
+        Birthplace: Texas · Father: Dave Armstrong · Mother: Clara Morgan<br>
+        Cause of death: <strong>Gunshot wounds inflicted by Jack Thompson</strong><br>
+        Place of death: Tarrant County · Fort Worth · Ward 5<br>
+        Signed: J.P. Tom Maben M.D.
+      </div>
     </div>
 
-    <div class="pause">
-      A white man killed her husband at three feet.<br>
-      A white former police commissioner signed his bond.<br>
-      The plea was self-defense.<br><br>
-      <em>Hellen Armstrong was 41 years old.<br>
-      Eva was 11.<br>
-      They were alone in Fort Worth.</em>
-    </div>
-
-    <p>Thompson's defense was self-defense. A white witness named Lon Sullins testified that John Armstrong had advanced on Thompson's buggy with a knife. The outcome of the hearing is not confirmed by primary source. But the pattern is familiar — a Black man dead at three feet, a white man walking free on bond signed by the city's most prominent white citizens within hours of the shooting.</p>
-
-    <p>John Armstrong was buried in Fort Worth. The death certificate lists the place of burial as blank.</p>
+    <p class="chapter-body">Thompson's defense was self-defense. A witness named Lon Sullins testified that John Armstrong had advanced on Thompson's buggy with a knife. The outcome of the trial has not been confirmed by primary source. The pattern is familiar — a Black man dead at close range, a white man free on bond within hours, signed by the city's most prominent white citizens.</p>
+    <p class="chapter-body">Hellen Armstrong was widowed at approximately 41 years old with an 11-year-old daughter. She was alone in Fort Worth. The city where her husband had just been killed in the street.</p>
   </div>
 
-  <!-- CHAPTER 5 -->
+  <hr class="divider">
+
+  <!-- 1911-1930 THE DARK YEARS -->
   <div class="chapter">
-    <span class="chapter-date">1911 — 1930 · Fort Worth, Texas</span>
-    <h2 class="chapter-title">After</h2>
+    <span class="chapter-label">1911 — 1930 · Fort Worth, Texas · Nineteen Unrecorded Years</span>
+    <span class="chapter-year">After</span>
+    <p class="chapter-body">After John Armstrong's death in August 1911 there are nineteen years before Hellen appears again in the documentary record. The 1920 census has not located her under any confirmed name. She may have been living with Eva. She may have been working. She was in her forties — a widow in Jim Crow Fort Worth — with no husband, no confirmed income, and a daughter to finish raising.</p>
+    <p class="chapter-body">At some point in those nineteen years she appears to have married at least twice more. By 1930 she is recorded as <strong>Helen Gilbert</strong> — widowed. By her death in December 1931 she is recorded as <strong>Helen Reese</strong>. Whether these represent two marriages, or one marriage and a census error, or some other explanation, has not been confirmed by primary source. No marriage record for either a Gilbert or Reese union has been found.</p>
+    <p class="chapter-body">The Reese family is documented as a Black family in Bellville during this period — Louis L. Reese, Enoch Reese, and multiple Reese children all born in Bellville between 1895 and 1905. Albert Reese, born ca. 1880, is the most probable candidate for a husband. But this is hypothesis, not confirmed by document.</p>
 
-    <p>Hellen Armstrong was widowed at approximately 41 years old with an 11-year-old daughter. She had no husband. She had no confirmed income. She was a Black woman in Fort Worth in 1911 — in a city where her husband had just been shot dead in the street and his killer had walked free on a $3,000 bond within hours.</p>
-
-    <p>After John Armstrong's death in August 1911, Hellen remarried — possibly twice. By 1930 she appears in the census as <strong>Helen Gilbert</strong>, living with Eva in Fort Worth. By her death on December 5 1931 she carried the surname <strong>Reese</strong> — confirmed by Death Certificate No. 54237 which lists her as Helen Nichols Reese and names her parents as Joe and Easter Nichols. The Reese family is documented as a Black community in Bellville during exactly this period. Albert Reese, born ca. 1880, is the most likely candidate for her second or third husband. The Gilbert marriage has not yet been confirmed by primary source.</p>
-
-    <p>The 2006 Austin County tax suit — Cause No. 97V-003 — lists her as a named defendant: <strong>"Helen Armstrong, Also Known As: Helen Gilbert."</strong> This is the legal document that confirms her identity as Easter Bell and Joseph Nichols' daughter — named as a co-heir to the 2 acres of the John Nichols Survey alongside her siblings Allen, Oscar, Clara, and Willey. Even after death, her name remained on the land.</p>
-
-    <p>Eva Armstrong — Hellen's daughter — grew up in Fort Worth after her father's death. By 1920 Eva was approximately 20 years old. By 1929 Eva had married James Wilson Ballard Sr. and had children of her own.</p>
-
-    <div class="doc-pull">
-      <span class="doc-pull-label">1930 U.S. Federal Census · Fort Worth, Tarrant County, Texas · April 1930</span>
-      <div class="doc-pull-text">1121 Pulaski Avenue · Fort Worth<br>
-      <strong>Eva Ballard</strong> · Head · age 29 · Black · Female<br>
-      <strong>Helen Gilbert</strong> · Mother · age 59 · Black · Female · widowed<br>
-      <strong>James Ballard</strong> · Son · age 3<br>
-      <strong>Margie Ballard</strong> · Daughter · age 1</div>
-      <span class="doc-pull-source">1930 U.S. Federal Census · Fort Worth, Tarrant County, Texas · April 1930 · 1121 Pulaski Avenue</span>
-    </div>
-
-    <p>In April 1930 — the last confirmed record of Hellen Nichols Armstrong — she is living with Eva at 1121 Pulaski Avenue in Fort Worth. She is listed as Helen Gilbert, widowed, age 59. Eva is the head of household. James Ballard is 3 years old. Margie Ballard is 1 year old.</p>
-
-    <p><strong>Hellen Nichols Armstrong was living with her daughter and her grandchildren.</strong> James Ballard — who would grow up to become James Wilson Ballard Jr. She was present for the beginning of the next generation.</p>
-
-    <p>After April 1930 Hellen returned to Bellville, Austin County Texas — the town where she was born, where her mother Easter Bell still lived, where her siblings Allen, Oscar, Clara, and Willie remained. She did not die in Fort Worth. She died on <strong>December 5 1931</strong> in Bellville — the same town, the same community, the same Jeff Cemetery where Easter Bell would be buried four years later.</p>
-
-    <p>Her death is recorded under the name <strong>Helen Nichols Reese</strong> — Death Certificate No. 54237 — listing her parents as Joe and Easter Nichols. Find a Grave Memorial No. 199130041 places her at Jeff Cemetery in Bellville alongside her mother and her siblings. She carried the Reese surname at death — meaning she married a man named Reese at some point, almost certainly after John Armstrong's death in 1911. The Reese family is documented as a Black family in Bellville during exactly this period — Louis L. Reese, Enoch Reese, and multiple Reese children all born in Bellville between 1895 and 1905. Albert Reese, born ca. 1880, appears in family records as married to a Nichols daughter. He is the most likely candidate for Hellen's second husband.</p>
-
-    <p>The name Helen Gilbert — which appears in the 1930 census — may reflect a Gilbert marriage between 1911 and 1930, or may be an error in the census record. What is confirmed is that she died as Helen Nichols Reese in December 1931, was buried in Jeff Cemetery in Bellville, and her death certificate confirms her parents as Joseph Nichols and Easter Bell. <strong>Hellen Nichols Armstrong and Helen Nichols Reese are the same person.</strong> The documentary record is now closed.</p>
-
-    <p>A third independent primary source confirmed this in 2006. When Austin County filed a tax foreclosure suit against the heirs of the John Nichols Survey land — Cause No. 97V-003 — the named defendants included <strong>"Helen Armstrong (a.k.a. Helen Gilbert)."</strong> A legal court filing, naming her under both surnames simultaneously, 75 years after her death. Three independent primary sources — the death certificate, the Find a Grave memorial, and a 2006 court filing — all confirm the same identity. She is one person. She went by multiple names because she married multiple times. She died in Bellville as Helen Nichols Reese on December 5 1931 and was buried at Jeff Cemetery alongside her mother Easter Bell.</p>
-  </div>
-
-  <!-- THE LINE -->
-  <div class="the-line">
-    <span class="line-label">Hellen's Line · From Easter Bell to Jasmine</span>
-    <div class="line-chain">
-
-      <div class="line-link">
-        <div class="line-dot"></div>
-        <div class="line-content">
-          <span class="line-name">Easter Bell Nichols</span>
-          <span class="line-detail">born July 4 1838 · Bellville Texas · Hellen's mother · enslaved 27 years · freed 1865 · died December 17 1935 · age 97</span>
-        </div>
-      </div>
-
-      <div class="line-link">
-        <div class="line-dot"></div>
-        <div class="line-content">
-          <span class="line-name">Joseph Nichols</span>
-          <span class="line-detail">born February 1845 · Bellville Texas · Hellen's father · enslaved 20 years · freed 1865 · Line No. 1802 · died 1905 · Jeff Cemetery</span>
-        </div>
-      </div>
-
-      <div class="line-link">
-        <div class="line-dot highlight"></div>
-        <div class="line-content">
-          <span class="line-name gold">Hellen Nichols Armstrong</span>
-          <span class="line-detail">born September 1870 · Bellville Texas · first generation born free · married John Armstrong November 27 1898 · widowed August 30 1911 · died December 5 1931 · Bellville Texas · buried Jeff Cemetery · Death Certificate No. 54237 · also known as Helen Gilbert and Helen Nichols Reese · married twice after John Armstrong's death · returned to Bellville · buried near Easter Bell · born September 1870 · Bellville Texas · first generation born free · married John Armstrong November 27 1898 · widowed August 30 1911 · died December 5 1931 · Bellville Texas ·bert · last confirmed record April 1930 Fort Worth · death date unknown</span>
-        </div>
-      </div>
-
-      <div class="line-link">
-        <div class="line-dot highlight"></div>
-        <div class="line-content">
-          <span class="line-name gold">Eva Armstrong Ballard</span>
-          <span class="line-detail">born June 27 1900 · Bellville Texas · Hellen's daughter · ran the Nip and Sip · testified and told the truth · died November 24 1977 · Garden Grove California</span>
-        </div>
-      </div>
-
-      <div class="line-link">
-        <div class="line-dot highlight"></div>
-        <div class="line-content">
-          <span class="line-name gold">Margie Nell Ballard Corbin</span>
-          <span class="line-detail">born March 13 1929 · Fort Worth Texas · NaNa · 12182 Candy Lane · died October 15 1988 · Garden Grove California</span>
-        </div>
-      </div>
-
-      <div class="line-link">
-        <div class="line-dot"></div>
-        <div class="line-content">
-          <span class="line-name">Hjordis L. Corbin</span>
-          <span class="line-detail">born January 20 1960 · daughter of Margie · mother of Jasmine</span>
-        </div>
-      </div>
-
-      <div class="line-link">
-        <div class="line-dot highlight"></div>
-        <div class="line-content">
-          <span class="line-name gold">Jasmine M. Lee</span>
-          <span class="line-detail">born January 25 1982 · Orange County California · founder Dock Ellis Foundation · Hellen Nichols Armstrong's great-granddaughter · the researcher who found these documents</span>
-        </div>
-      </div>
-
+    <div class="research-note">
+      <span class="research-note-label">Open Research Thread · The Reese and Gilbert Names</span>
+      <p class="research-note-body">Hellen Nichols Armstrong appears in the 1930 census as Helen Gilbert and dies in 1931 as Helen Reese. No marriage records for either a Gilbert or Reese husband have been located in Fort Worth, Tarrant County, or Austin County records from 1911 to 1931. The 1920 census has not been searched successfully for her. This is a genuine research gap. If you have information about a Gilbert or Reese connection to this family, contact jlee@dockellisfoundation.com.</p>
     </div>
   </div>
 
-  <!-- CLOSING -->
-  <div class="closing">
-    <h2 class="closing-title">She Was Born Free.<br>She Outlived a Murdered Husband.<br>She Raised Eva.<br>She Disappears from the Record in 1930.</h2>
+  <hr class="divider">
 
-    <p class="closing-body">
-      Hellen Nichols Armstrong was the first person in her direct line born free. Her mother Easter Bell was enslaved for twenty-seven years. Her father Joseph Nichols was enslaved for twenty. Hellen was born in September 1870 — five years after Juneteenth — into a world that was still dangerous for Black families in Texas, but into a world where she had rights her parents had never had.
-    </p>
+  <!-- 1930 CENSUS -->
+  <div class="chapter">
+    <span class="chapter-label">April 1930 · Fort Worth, Tarrant County, Texas</span>
+    <span class="chapter-year">1121 Pulaski Avenue</span>
+    <p class="chapter-body">In April 1930 — the last confirmed record before her death — Hellen Nichols Armstrong is living at 1121 Pulaski Avenue in Fort Worth with her daughter Eva and Eva's family. She is listed as Helen Gilbert. She is widowed. She is 46 years old per the census — born ca. 1884. The column for age at first marriage shows 15.</p>
 
-    <p class="closing-body">
-      She married. She had a daughter. Her husband was shot dead by a white man who walked free. She rebuilt. She appeared in the 1930 census living with Eva and her grandchildren — James and Margie — the next generation taking shape around her.
-    </p>
+    <div class="census-block">
+      <span class="census-label">1930 U.S. Federal Census · Fort Worth, Tarrant County, Texas · April 1930 · 1121 Pulaski Avenue</span>
+      <div class="census-row"><strong>James W. Ballard</strong> · Head · age 34</div>
+      <div class="census-row"><strong>Eva Ballard</strong> · Wife · age 29</div>
+      <div class="census-row"><strong>James W. Ballard</strong> · Son · age 3</div>
+      <div class="census-row"><strong>Marga N. Ballard</strong> · Daughter · age 1</div>
+      <div class="census-row"><strong>Helen Gilbert</strong> · Mother · age 46 · Negro · widowed · born Texas · first married age 15</div>
+    </div>
 
-    <p class="closing-body">
-      <strong>After April 1930 the record goes silent.</strong> Her death date is not confirmed. Her burial place is not known. What is known is that she raised Eva Armstrong Ballard — and Eva raised Margie Nell Ballard Corbin — and Margie raised the daughters who became the family that eventually produced Jasmine M. Lee.
-    </p>
-
-    <p class="closing-body">
-      The line held. Through enslavement and freedom and a murdered husband and Jim Crow Texas and the Great Migration to California — the line held. <strong>It held because Hellen held it.</strong>
-    </p>
-
-    <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:32px;">
-      Research by Jasmine M. Lee · Dock Ellis Foundation · Seven years · 2019–2026
-    </p>
-
-    
-<div style="background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);
-            padding:20px 24px;margin:32px 0;max-width:800px;margin-left:auto;margin-right:auto;">
-  <p style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:3px;
-            text-transform:uppercase;color:rgba(201,168,76,0.8);margin-bottom:12px;">Where Hellen Fits · The Maternal Line</p>
-  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin-bottom:10px;font-size:13px;">
-    <a href="easter_story.html" style="color:rgba(245,242,236,0.45);text-decoration:none;font-size:12px;" onmouseover="this.style.color='#c9a84c'" onmouseout="this.style.color='rgba(245,242,236,0.45)'">Easter Bell</a><span style="color:rgba(201,168,76,0.3);margin:0 6px;">→</span><strong style="color:var(--gold,#c9a84c);font-style:italic;">Hellen</strong><span style="color:rgba(201,168,76,0.3);margin:0 6px;">→</span><a href="eva_story.html" style="color:rgba(245,242,236,0.45);text-decoration:none;font-size:12px;" onmouseover="this.style.color='#c9a84c'" onmouseout="this.style.color='rgba(245,242,236,0.45)'">Eva</a><span style="color:rgba(201,168,76,0.3);margin:0 6px;">→</span><a href="margie_story.html" style="color:rgba(245,242,236,0.45);text-decoration:none;font-size:12px;" onmouseover="this.style.color='#c9a84c'" onmouseout="this.style.color='rgba(245,242,236,0.45)'">Margie</a><span style="color:rgba(201,168,76,0.3);margin:0 6px;">→</span><a href="hjordis.html" style="color:rgba(245,242,236,0.45);text-decoration:none;font-size:12px;" onmouseover="this.style.color='#c9a84c'" onmouseout="this.style.color='rgba(245,242,236,0.45)'">Hjordis</a><span style="color:rgba(201,168,76,0.3);margin:0 6px;">→</span><span style="color:rgba(245,242,236,0.3);font-size:12px;">Jasmine</span>
+    <p class="chapter-body">She was living with Eva. Margie Nell Ballard — who would become Margie Nell Ballard Corbin — was one year old in April 1930. Hellen Nichols Armstrong was in the same room as her granddaughter. She held Margie when Margie was an infant. That is confirmed. The 1930 census put them in the same house on Pulaski Avenue.</p>
+    <p class="chapter-body">Sometime after April 1930 she went back to Bellville. To Easter Bell. To the town where she was born. To Jeff Cemetery, where she would be buried.</p>
   </div>
-  <p style="font-size:12px;color:rgba(245,242,236,0.35);font-family:'Courier New',monospace;
-            letter-spacing:1px;text-transform:uppercase;">Hellen Nichols Armstrong · Your 2nd great-grandmother</p>
+
+  <hr class="divider">
+
+  <!-- DEATH -->
+  <div class="chapter">
+    <span class="chapter-label">December 5, 1931 · 2:30 a.m. · Bellville, Austin County, Texas</span>
+    <span class="chapter-year">She Came Home to Die</span>
+    <p class="chapter-body">Hellen Nichols Armstrong died at 2:30 in the morning on December 5, 1931 in Bellville, Texas. She had been sick since at least October 15 — Dr. O.E. Steck attended her for six weeks. He last saw her alive on November 25. She died ten days later in the middle of the night.</p>
+    <p class="chapter-body">The cause of death was <strong>Pellagra</strong> — a disease caused by severe niacin deficiency. It was epidemic among poor Black communities in the Jim Crow South in the 1920s and 1930s. A disease of poverty. A disease that was preventable with adequate nutrition. She died of not having enough to eat, in the town where she had been born free sixty-one years earlier.</p>
+    <p class="chapter-body">Eva Ballard was the informant on the death certificate. Eva — 31 years old, living in Fort Worth — had come back to Bellville for her mother's final weeks, or she had followed the news and come for the death. She stood in front of a clerk in Bellville on December 7, 1931 and gave what information she could.</p>
+    <p class="chapter-body">The clerk asked for Hellen's date of birth. Eva said she didn't know. The clerk wrote: <em>Don't Know.</em></p>
+    <p class="chapter-body">Eva knew her mother's parents — Joe Nichols and Easter Nichols. She knew her mother had been born in Austin County Texas. She knew she was a widow and had been a housewife. But she did not know — and neither had anyone else around her — the exact date her mother was born. No document had ever recorded it while it mattered. The 1870 census — an enumerator passing through Bellville recording strangers — is the only surviving evidence that Hellen Nichols was born in September 1870.</p>
+
+    <div class="death-cert">
+      <span class="death-cert-label">Texas Death Certificate No. 54237 · Helen Reese · December 5, 1931</span>
+      <div class="death-cert-row"><span class="death-cert-field">Full Name</span><span class="death-cert-value"><strong>Helen Reese</strong></span></div>
+      <div class="death-cert-row"><span class="death-cert-field">Race</span><span class="death-cert-value">Colored</span></div>
+      <div class="death-cert-row"><span class="death-cert-field">Marital Status</span><span class="death-cert-value">Widow</span></div>
+      <div class="death-cert-row"><span class="death-cert-field">Date of Birth</span><span class="death-cert-value"><strong>Don't Know</strong></span></div>
+      <div class="death-cert-row"><span class="death-cert-field">Age</span><span class="death-cert-value">About 70 years</span></div>
+      <div class="death-cert-row"><span class="death-cert-field">Birthplace</span><span class="death-cert-value">Austin County, Texas</span></div>
+      <div class="death-cert-row"><span class="death-cert-field">Father</span><span class="death-cert-value">Joe Nichols · born Austin County, Texas</span></div>
+      <div class="death-cert-row"><span class="death-cert-field">Mother</span><span class="death-cert-value">Easter Nichols · born Austin County, Texas</span></div>
+      <div class="death-cert-row"><span class="death-cert-field">Informant</span><span class="death-cert-value"><strong>Eva Ballard · Bellville, Texas</strong></span></div>
+      <div class="death-cert-row"><span class="death-cert-field">Date of Death</span><span class="death-cert-value"><strong>December 5, 1931 · 2:30 a.m.</strong></span></div>
+      <div class="death-cert-row"><span class="death-cert-field">Cause of Death</span><span class="death-cert-value"><strong>Pellagra</strong></span></div>
+      <div class="death-cert-row"><span class="death-cert-field">Physician</span><span class="death-cert-value">O.E. Steck, M.D. · Bellville, Texas · attended October 15 – November 25, 1931</span></div>
+      <div class="death-cert-row"><span class="death-cert-field">Buried</span><span class="death-cert-value"><strong>Jeff Cemetery · Bellville · December 5, 1931</strong> (same day)</span></div>
+      <div class="death-cert-row"><span class="death-cert-field">Undertaker</span><span class="death-cert-value">James Wyatt · Bellville, Texas</span></div>
+    </div>
+
+    <p class="chapter-body">She was buried at Jeff Cemetery the same day she died. December 5, 1931. In the same cemetery as Easter Bell Nichols — who would follow her daughter there four years later in December 1935. In the same community where both of them had been born. The first generation born free, buried in the ground of the town where her parents had been enslaved.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- REFLECTION -->
+  <div class="reflection">
+    <p class="reflection-text">"Don't Know."<br><br>That is what Eva wrote on her mother's death certificate when the clerk asked for Hellen's date of birth. Not because Eva did not love her mother. Because no one had ever written it down while it mattered. The 1870 census enumerator — a stranger with a ledger — is the only person who preserved the fact that Hellen Nichols was born in September 1870. Her own daughter did not know it sixty-one years later.</p>
+    <span class="reflection-attribution">Death Certificate No. 54237 · Bellville, Texas · December 7, 1931 · Informant: Eva Ballard</span>
+  </div>
+
+  <hr class="divider">
+
+  <!-- IDENTITY CONFIRMED -->
+  <div class="chapter">
+    <span class="chapter-label">Three Names · One Woman · Three Primary Sources</span>
+    <span class="chapter-year">She Is One Person</span>
+    <p class="chapter-body">Hellen Nichols Armstrong went by multiple names because she married multiple times. The documentary record shows her as:</p>
+    <p class="chapter-body"><strong>Hellen Nichols Armstrong</strong> — born Bellville 1870, married John Armstrong 1898, 1900–1910 censuses.</p>
+    <p class="chapter-body"><strong>Helen Gilbert</strong> — 1930 census, 1121 Pulaski Avenue Fort Worth, widowed, mother of Eva Ballard.</p>
+    <p class="chapter-body"><strong>Helen Reese</strong> — Death Certificate No. 54237, December 5, 1931, Bellville, Texas, parents Joe and Easter Nichols.</p>
+    <p class="chapter-body">Three independent primary sources confirm she is one person. The death certificate names her parents as Joe and Easter Nichols. The 2006 Austin County tax foreclosure (Cause No. 97V-003) names her as a legal heir — "Helen Armstrong, Also Known As: Helen Gilbert" — in the same suit as her siblings Allen, Oscar, Clara, and Willey Nichols. And Find a Grave Memorial No. 199130041 places her at Jeff Cemetery in Bellville. She is one person. The names changed because life changed her circumstances. The identity did not change.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- LINE -->
+  <div class="line-chain">
+    <span class="line-chain-label">Hellen's Line · From Easter Bell to Jasmine</span>
+    <div class="line-person">
+      <span class="line-name">Easter Bell Nichols</span>
+      <div class="line-detail">Born July 4, 1838 · Bellville · Hellen's mother · enslaved 27 years · freed 1865 · died December 17, 1935 · Jeff Cemetery</div>
+    </div>
+    <div class="line-person">
+      <span class="line-name">Joseph Nichols</span>
+      <div class="line-detail">Born ca. 1843 · Bellville · Hellen's father · enslaved 20 years · freed 1865 · registered to vote January 27, 1868 · died ca. 1905</div>
+    </div>
+    <div class="line-person">
+      <span class="line-name gold">Hellen Nichols Armstrong</span>
+      <div class="line-detail">Born September 1870 · Bellville · first generation born free · married John Armstrong November 27, 1898 · widowed August 30, 1911 · died December 5, 1931 · 2:30 a.m. · Bellville · cause: Pellagra · buried Jeff Cemetery · Death Certificate No. 54237 · also known as Helen Gilbert and Helen Nichols Reese</div>
+    </div>
+    <div class="line-person">
+      <span class="line-name">Eva Armstrong Ballard</span>
+      <div class="line-detail">Born June 27, 1900 · Bellville · Hellen's daughter · married James Wilson Ballard Sr. · ran the Nip and Sip · died November 24, 1977 · Garden Grove, California</div>
+    </div>
+    <div class="line-person">
+      <span class="line-name">Margie Nell Ballard Corbin</span>
+      <div class="line-detail">Born March 13, 1929 · Fort Worth · Eva's daughter · 12182 Candy Lane · died October 15, 1988 · Garden Grove, California</div>
+    </div>
+    <div class="line-person">
+      <span class="line-name">Hjordis L. Corbin</span>
+      <div class="line-detail">Born January 20, 1960 · Margie's daughter · AncestryDNA kit SQ8499767</div>
+    </div>
+    <div class="line-person">
+      <span class="line-name">Jasmine M. Lee</span>
+      <div class="line-detail">Born January 25, 1982 · Hjordis's daughter · founder Dock Ellis Foundation · the researcher who found these documents · GEDmatch QW8418781</div>
+    </div>
+  </div>
+
+</div><!-- /prose -->
+
+<div class="story-nav">
+  <a href="joseph_story.html">← Joseph Nichols · His Story</a>
+  <a href="family_tree.html" class="story-nav-center">Full Archive</a>
+  <a href="eva_story.html">Eva Armstrong Ballard · Her Story →</a>
 </div>
-<div>
-      <a href="joseph_story.html" class="back-link">← Joseph Nichols · His Story</a>
-      <a href="easter_story.html" class="back-link">← Easter Bell · Her Story</a>
-      <a href="family_tree.html" class="back-link">← Return to Archive</a>
-    </div>
-  </div>
 
-</div>
 </body>
 </html>

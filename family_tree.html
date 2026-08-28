@@ -1819,6 +1819,7 @@ footer {
   strong { color: #f5f0e8 !important; }
 
 </style>
+<link rel="stylesheet" href="overrides.css">
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
@@ -1986,6 +1987,19 @@ footer {
 
 <!-- MAIN CONTENT -->
 <main id="main">
+
+<!-- FIRST TIME VISITOR ORIENTATION BANNER -->
+<div id="ft-orientation" style="background:rgba(201,168,76,0.07);border-bottom:1px solid rgba(201,168,76,0.2);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+    <span style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,168,76,0.8);">Welcome to the Full Archive</span>
+    <span style="font-size:12px;color:#d0c8c0;line-height:1.6;">Use the search bar to find any name · Click any person to expand their full record · Scroll down to explore all branches</span>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0;">
+    <a href="how_we_got_here.html" style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.7);text-decoration:none;border:1px solid rgba(201,168,76,0.25);padding:6px 12px;white-space:nowrap;">← Read the Story</a>
+    <a href="registry.html" style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;border:1px solid rgba(255,255,255,0.1);padding:6px 12px;white-space:nowrap;">Enslaved Registry</a>
+    <button onclick="document.getElementById('ft-orientation').style.display='none'" style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.3);background:none;border:none;cursor:pointer;padding:6px;">Dismiss</button>
+  </div>
+</div>
 
 <!-- ══════════════════════════════════════════
      HERO

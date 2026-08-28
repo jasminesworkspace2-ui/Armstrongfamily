@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Dutch Fork · Armstrong Family Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep:#080604;--gold:#c9a84c;--cream:#f5f2ec;--parchment:#f0ead8;
+    --muted:rgba(245,242,236,0.45);--border:rgba(201,168,76,0.15);
+    --border2:rgba(255,255,255,0.06);
+    --f-display:'DM Serif Display',Georgia,serif;
+    --f-body:'Inter',sans-serif;--f-mono:'Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;}
+  .gnav{position:sticky;top:0;z-index:100;background:rgba(8,6,4,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(8px);}
+  .gnav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:52px;gap:8px;}
+  .gnav-brand{font-family:var(--f-display);font-style:italic;font-size:15px;color:rgba(240,234,216,0.8);text-decoration:none;white-space:nowrap;}
+  .gnav-links{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;}
+  .gnav-links::-webkit-scrollbar{display:none;}
+  .gnav-link{font-family:var(--f-mono);font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;padding:6px 10px;white-space:nowrap;border-bottom:2px solid transparent;}
+  .gnav-link:hover{color:rgba(245,242,236,0.85);}
+  .gnav-link.active{color:#c9a84c;border-bottom-color:#c9a84c;}
+  .gnav-link.gstart{color:#c9a84c;border:1px solid rgba(201,168,76,0.35);padding:5px 10px;margin-right:6px;}
+  .breadcrumb{background:rgba(14,11,8,0.8);border-bottom:1px solid rgba(255,255,255,0.04);padding:7px 24px;font-family:var(--f-mono);font-size:9px;letter-spacing:1px;color:rgba(245,242,236,0.3);}
+  .breadcrumb a{color:rgba(245,242,236,0.4);text-decoration:none;}
+  .breadcrumb span{color:rgba(255,255,255,0.18);margin:0 6px;}
+
+  .hero{max-width:800px;margin:0 auto;padding:72px 24px 56px;text-align:center;}
+  .hero-eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,0.28);display:block;margin-bottom:18px;}
+  .hero-title{font-family:var(--f-display);font-size:clamp(40px,8vw,80px);font-style:italic;color:var(--parchment);line-height:1;margin-bottom:16px;}
+  .hero-sub{font-family:var(--f-display);font-size:clamp(14px,2.5vw,20px);font-style:italic;color:rgba(201,168,76,0.7);margin-bottom:32px;}
+  .hero-body{font-size:15px;line-height:2.1;color:#a0988e;max-width:620px;margin:0 auto;}
+  .hero-body strong{color:var(--parchment);}
+
+  .prose{max-width:720px;margin:0 auto;padding:0 24px 80px;}
+  .section{margin-bottom:56px;}
+  .section-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);display:block;margin-bottom:10px;}
+  .section-title{font-family:var(--f-display);font-size:clamp(22px,4vw,34px);font-style:italic;color:var(--parchment);display:block;margin-bottom:18px;line-height:1.2;}
+  .body{font-size:14px;line-height:2;color:#c0b8b0;margin-bottom:14px;}
+  .body strong{color:var(--parchment);}
+  .body em{color:var(--gold);font-style:normal;}
+
+  .divider{border:none;border-top:1px solid rgba(255,255,255,0.06);margin:40px 0;}
+
+  .doc-pull{background:rgba(255,255,255,0.02);border-left:3px solid rgba(201,168,76,0.4);padding:18px 22px;margin:20px 0;}
+  .doc-pull-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.5);display:block;margin-bottom:10px;}
+  .doc-pull-text{font-size:13px;line-height:1.85;color:#b0a89e;}
+  .doc-pull-text strong{color:var(--parchment);}
+
+  .surname-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1px;background:rgba(255,255,255,0.06);margin:20px 0;}
+  .surname-cell{background:var(--deep);padding:14px 16px;}
+  .surname-name{font-family:var(--f-display);font-size:17px;font-style:italic;color:var(--parchment);display:block;}
+  .surname-note{font-family:var(--f-mono);font-size:8px;letter-spacing:1px;color:rgba(255,255,255,0.25);display:block;margin-top:3px;}
+
+  .dna-block{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.2);padding:24px 28px;margin:20px 0;}
+  .dna-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.5);display:block;margin-bottom:14px;}
+  .dna-row{display:grid;grid-template-columns:1fr 2fr;gap:12px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px;}
+  .dna-row:last-child{border-bottom:none;}
+  .dna-field{font-family:var(--f-mono);font-size:9px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+  .dna-value{color:#c0b8b0;}
+  .dna-value strong{color:var(--parchment);}
+
+  .research-note{background:rgba(201,168,76,0.04);border-left:3px solid rgba(201,168,76,0.2);padding:14px 18px;margin:20px 0;}
+  .research-note-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.5);display:block;margin-bottom:8px;}
+  .research-note-body{font-size:12px;line-height:1.75;color:#a0988e;}
+
+  .footer-nav{max-width:720px;margin:0 auto;padding:24px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .footer-link{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;}
+  .footer-link:hover{color:var(--gold);}
+</style>
+</head>
+<body>
+
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a href="welcome.html" class="gnav-brand">Armstrong Family Archive</a>
+    <div class="gnav-links">
+      <a href="start_here.html" class="gnav-link gstart">★ Start Here</a>
+      <a href="welcome.html" class="gnav-link">Our Family</a>
+      <a href="bellville_family.html" class="gnav-link">The Family</a>
+      <a href="we_are_bellville.html" class="gnav-link">We Are Bellville</a>
+      <a href="black_dutch_fork.html" class="gnav-link active">Dutch Fork</a>
+      <a href="how_we_got_here.html" class="gnav-link active">The Story</a>
+      <a href="papertrail.html" class="gnav-link">Documents</a>
+      <a href="photos.html" class="gnav-link">Photos</a>
+      <a href="methodology.html" class="gnav-link">Research</a>
+    </div>
+  </div>
+</nav>
+<div class="breadcrumb">
+  <a href="welcome.html">Home</a><span>›</span>
+  <a href="how_we_got_here.html">The Story</a><span>›</span>
+  <strong style="color:rgba(245,242,236,0.6);">Black Dutch Fork</strong>
+</div>
+
+<div class="hero">
+  <span class="hero-eyebrow">Newberry County · Laurens County · South Carolina · 1750s–1839</span>
+  <h1 class="hero-title">Black<br>Dutch Fork</h1>
+  <p class="hero-sub">Where this family begins</p>
+  <p class="hero-body">Before Texas. Before Mississippi. Before the Waldrop migration. This family begins in a region of South Carolina called the Dutch Fork — in the households of German and Swiss immigrant farmers who brought enslaved people to the South Carolina upcountry in the 1700s. This is where Molley was. This is where Patience was given away. This is where Clarissa was born. The DNA still carries it.</p>
+</div>
+
+<div class="prose">
+
+  <div class="section">
+    <span class="section-label">Geography · South Carolina Upcountry</span>
+    <span class="section-title">What Is Dutch Fork?</span>
+    <p class="body">Dutch Fork is the region of South Carolina between the <strong>Broad River</strong> and the <strong>Saluda River</strong> — two rivers that converge near present-day Columbia. It was settled in the 1740s and 1750s primarily by German and Swiss immigrants — the "Dutch" in Dutch Fork is a corruption of <em>Deutsch</em>, the German word for German. These were not English colonists. They were German Lutheran and Reformed Church families who received land grants from the colonial government and built farms in the South Carolina upcountry, far from the tidewater plantations of Charleston.</p>
+    <p class="body">The counties that make up Dutch Fork include <strong>Newberry County</strong>, <strong>Laurens County</strong>, <strong>Lexington County</strong>, and parts of <strong>Union County</strong>. These are the exact counties where Molley, Patience, and Clarissa are documented in primary source deed books from 1793 through 1839.</p>
+    <p class="body">The German families of Dutch Fork brought enslaved people to the upcountry from the coastal lowcountry — and they bought and sold enslaved people among themselves, recorded in the deed books that survive in county courthouses today. The Waldrop family, the Davenport family, the Sims family, the Barksdale family — these are German-descended Dutch Fork families whose deed records are the documentary foundation of this entire archive.</p>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <span class="section-label">Our Family · In the Dutch Fork Records</span>
+    <span class="section-title">What Black Dutch Fork Means for This Family</span>
+    <p class="body"><strong>Molley</strong> appears in a Union County South Carolina mortgage document in 1793 — the westernmost edge of the Dutch Fork region. She is listed alongside her seven children including Patience and Tom. The 1793 deed index for Laurens and Newberry Counties confirms her name at page 118 — multiple deed book entries across multiple counties.</p>
+    <p class="body"><strong>Patience</strong> was given to Patty Waldrop on August 4, 1795 in Newberry County South Carolina — Deed Book C pages 367–368. The Waldrop family were Dutch Fork settlers. Patience was born in their household. She grew up in the Dutch Fork upcountry.</p>
+    <p class="body"><strong>Clarissa</strong> was born ca. 1807 in South Carolina — confirmed as Patience's daughter. She grew up in the Dutch Fork community before the Waldrop family moved west to Mississippi in the 1820s and 1830s, taking their enslaved community with them.</p>
+    <p class="body">The term <strong>Black Dutch Fork</strong> — not a historical term but a way of naming what happened — refers to the Black community that was built by and within the German immigrant households of the Dutch Fork region. Enslaved people held by Dutch Fork families were part of that community. Their descendants carry that history in their DNA and in the surnames that appear in this archive.</p>
+
+    <div class="doc-pull">
+      <span class="doc-pull-label">Primary Source · The Foundational Document · August 4, 1795</span>
+      <div class="doc-pull-text">
+        <strong>Deed Book C: 367–368 · Newberry County, South Carolina</strong><br>
+        "Francis Davenport Sr. to Patty Waldrop, his beloved daughter — one enslaved girl named Patience — August 4, 1795 — certified Charles Griffin J.P. — recorded August 18, 1795."<br><br>
+        This deed — recording the transfer of a human being as property — is the foundational document of this entire archive. Without it, this family's history before 1865 would be unrecoverable. It was executed in the Dutch Fork region of Newberry County, South Carolina.
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <span class="section-label">The Enslaver Families · Dutch Fork Surnames in the Deed Books</span>
+    <span class="section-title">The White Families Who Held Our Ancestors</span>
+    <p class="body">These are the white families documented in the South Carolina deed books holding or transferring the ancestors in this archive. Their surnames appear in the primary source documents that form this archive. After emancipation, formerly enslaved people sometimes took the surnames of families they had been held by — which is why some of these surnames appear in Black communities in Texas after 1865.</p>
+
+    <div class="surname-grid">
+      <div class="surname-cell"><span class="surname-name">Waldrop</span><span class="surname-note">Held Patience · Clarissa · Moved to Mississippi then Texas</span></div>
+      <div class="surname-cell"><span class="surname-name">Davenport</span><span class="surname-note">Gave Patience to Patty Waldrop 1795 · Newberry County SC</span></div>
+      <div class="surname-cell"><span class="surname-name">Sims</span><span class="surname-note">Held Molley · Union County SC 1793 mortgage</span></div>
+      <div class="surname-cell"><span class="surname-name">Barksdale</span><span class="surname-note">Laurens District SC · October 31 1807 bill of sale naming Tom and Clarissa</span></div>
+      <div class="surname-cell"><span class="surname-name">Nichols</span><span class="surname-note">John Nichols · fled Tennessee to Texas · held Easter Bell, Joseph, Rendy Blayn</span></div>
+      <div class="surname-cell"><span class="surname-name">Bell</span><span class="surname-note">Thomas Bell · Bellville founder · held Rendy Blayn before Nichols household</span></div>
+      <div class="surname-cell"><span class="surname-name">Griffin</span><span class="surname-note">Certified the 1795 Davenport deed · Newberry County JP</span></div>
+      <div class="surname-cell"><span class="surname-name">Bennett</span><span class="surname-note">Thomas L. Bennett · Henry County TN 1832 · held Clarissa and infant</span></div>
+      <div class="surname-cell"><span class="surname-name">Blain · Bland</span><span class="surname-note">Rendy Blayn's surname · Blain family confirmed in adjacent Fayette County TX</span></div>
+      <div class="surname-cell"><span class="surname-name">Cowan</span><span class="surname-note">James Cowan · Henry County TN · 19 enslaved people · 1834 deed of trust</span></div>
+    </div>
+
+    <div class="research-note">
+      <span class="research-note-label">Important Note</span>
+      <p class="research-note-body">Listing these surnames is not honoring the families who held our ancestors. It is documenting the historical record accurately. These surnames appear in the primary source documents. They are part of the evidentiary chain. They belong in the archive so that other researchers — other descendants of these same Dutch Fork communities — can find the connections.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <span class="section-label">DNA · What the Science Confirms</span>
+    <span class="section-title">The DNA Evidence of Dutch Fork Origins</span>
+    <p class="body">The AncestryDNA results for this family confirm what the documents show — and add what the documents cannot say. The DNA results show ancestry consistent with both <strong>West African origin</strong> (Yoruba and Dahomey regions — what is now Nigeria and Benin) and <strong>European ancestry</strong> consistent with the German and Swiss settler communities of the Dutch Fork.</p>
+    <p class="body">The European DNA in this family is not coincidental. It is the biological record of what happened in the Dutch Fork households where Molley, Patience, and Clarissa lived. The Mulatto designations on Joseph Nichols and his children in post-emancipation census records — and the DNA matches to descendants of white Dutch Fork families — are the documented evidence of that history.</p>
+
+    <div class="dna-block">
+      <span class="dna-label">AncestryDNA Results · This Family · Confirmed DNA Evidence</span>
+      <div class="dna-row">
+        <span class="dna-field">West African Origin</span>
+        <span class="dna-value"><strong>Yoruba and Dahomey regions confirmed</strong> — consistent with the Bight of Benin, what is now Nigeria and Benin. The Trans-Atlantic Slave Trade Database confirms the Rainbow voyage of 1758 brought 201 people from this region to Charleston, South Carolina.</span>
+      </div>
+      <div class="dna-row">
+        <span class="dna-field">DNA Kit — Hjordis</span>
+        <span class="dna-value">AncestryDNA kit SQ8499767 · Hjordis L. Corbin · primary research kit</span>
+      </div>
+      <div class="dna-row">
+        <span class="dna-field">DNA Kit — Jasmine</span>
+        <span class="dna-value">GEDmatch kit QW8418781 · Jasmine M. Lee · cross-reference kit</span>
+      </div>
+      <div class="dna-row">
+        <span class="dna-field">ThruLines — Clarissa</span>
+        <span class="dna-value"><strong>10 DNA matches confirming Clarissa as 4th great-grandmother</strong> — including Raven Johnson (12 cM, 3 segments) and Poppy/HarryTree (10 cM, 2 segments). These are descendants of white Dutch Fork families whose DNA overlaps with ours because our ancestors were held in the same households.</span>
+      </div>
+      <div class="dna-row">
+        <span class="dna-field">ThruLines — Waldrop</span>
+        <span class="dna-value"><strong>46 total DNA matches across seven Waldrop family branches</strong> — biological confirmation that Patience and Clarissa were in the Waldrop household and that this family's DNA intersects with the Waldrop descendants.</span>
+      </div>
+      <div class="dna-row">
+        <span class="dna-field">Mulatto Designations</span>
+        <span class="dna-value">Joseph Nichols — Mulatto — 1880 census. His children Allen, Josephine, Oscar, and Clara — all Mulatto in 1880 census. Easter Bell — Mulatto — 1880 census. These designations are the census record of what the DNA confirms.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="dna-block" style="margin-top:16px;border-color:rgba(255,255,255,0.1);">
+    <span class="dna-label">GEDmatch Segment Analysis · Black Dutch Fork South Carolina Genealogy Project · Kit QW8418781</span>
+    <div class="dna-row">
+      <span class="dna-field">Project</span>
+      <span class="dna-value"><strong>Black Dutch Fork South Carolina Genealogy</strong> — a named GEDmatch Ancestor Project run against Jasmine M. Lee's kit (QW8418781) to identify DNA matches consistent with the Dutch Fork South Carolina origin hypothesis</span>
+    </div>
+    <div class="dna-row">
+      <span class="dna-field">Matches Evaluated</span>
+      <span class="dna-value"><strong>377 matches</strong> evaluated at the 5.5 cM threshold · December 17, 2024 · Chromosome 23 excluded from results</span>
+    </div>
+    <div class="dna-row">
+      <span class="dna-field">MRCA Range</span>
+      <span class="dna-value">Most Recent Common Ancestor estimates range from <strong>approximately 4.7 to 7.5 generations back</strong> — consistent with Clarissa as a 4th great-grandmother and Molley as a 5th or 6th great-grandmother. These generational depths align exactly with the documentary record.</span>
+    </div>
+    <div class="dna-row">
+      <span class="dna-field">Segment Chromosomes</span>
+      <span class="dna-value">Matching segments identified on chromosomes <strong>1, 2, 5, 6, 17, 19, and 20</strong> — distributed across multiple chromosomes consistent with deep shared ancestry rather than a single recent common ancestor</span>
+    </div>
+    <div class="dna-row">
+      <span class="dna-field">Y-Haplogroup Finding</span>
+      <span class="dna-value"><strong>E1b1</strong> — a West African Y-haplogroup — appears in a match sharing a segment on chromosome 6. E1b1 is among the most common Y-haplogroups in West Africa, confirming West African paternal ancestry in the overlapping DNA. This is biological confirmation of the trans-Atlantic origin documented by the AncestryDNA ethnicity results.</span>
+    </div>
+    <div class="dna-row">
+      <span class="dna-field">Mitochondrial Haplogroups</span>
+      <span class="dna-value"><strong>LOa2a1, L3d1b, L1c1d</strong> — all sub-Saharan African maternal haplogroups — appear in multiple matches. LOa2a1 is one of the oldest haplogroups, associated with East and South Africa. L3d1b and L1c1d are West and Central African maternal lines. These confirm African maternal lineages in the overlapping DNA segments.</span>
+    </div>
+    <div class="dna-row">
+      <span class="dna-field">What This Confirms</span>
+      <span class="dna-value">The segment analysis is consistent with the Black Dutch Fork hypothesis — that this family's DNA preserves evidence of both <strong>West African ancestry</strong> (documented by haplogroups E1b1, LOa2a1, L3d1b, L1c1d) and <strong>genetic overlap with South Carolina Dutch Fork descendant communities</strong> at generational depths matching the documentary record for Clarissa (4th great-grandmother) and Molley (5th–6th great-grandmother).</span>
+    </div>
+    <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);">
+      <p style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:1px;color:rgba(255,255,255,0.2);line-height:1.6;">GEDmatch Terms of Service: Individual match kit IDs, usernames, and email addresses from this analysis are not published here in compliance with GEDmatch TOS. The aggregate findings, haplogroup results, and generational depth conclusions are Jasmine M. Lee's own research conclusions drawn from her kit QW8418781 and are published here with that context. If you believe you share Dutch Fork ancestry with this family and wish to connect, contact jlee@dockellisfoundation.com.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <span class="section-label">The Migration · Dutch Fork to Texas</span>
+    <span class="section-title">How the Dutch Fork Community Became the Bellville Community</span>
+    <p class="body">The Dutch Fork community did not stay in South Carolina. The German immigrant families — and the enslaved people they held — moved westward in the 1820s and 1830s as cotton agriculture expanded into Mississippi and Texas.</p>
+    <p class="body">The Waldrop family migrated from Newberry County South Carolina through Mississippi to Williamson County and then Austin County Texas — bringing Patience's family with them. The 1839 Rankin County Mississippi deed is the primary source document of that transfer — the last named record of Patience and Clarissa before Texas.</p>
+    <p class="body">John Nichols — who held Easter Bell and Rendy Blayn in Bellville — fled from Williamson County Tennessee to Austin County Texas in 1835. His wife was Fanny Waldrop — a daughter of the same Waldrop family that held Patience and Clarissa. The Dutch Fork community traveled to Texas through two parallel paths and converged in Bellville.</p>
+    <p class="body">What we call the Bellville community — the families documented in the 1900 census on the same pages — is the Texas destination of the Dutch Fork migration. The South Carolina upcountry, the Mississippi corridor, the Tennessee flight — all of it ends in Bellville, Austin County, Texas, in the same precinct, on the same land grant, in June 1900 when the census enumerator walked through.</p>
+
+    <div class="doc-pull">
+      <span class="doc-pull-label">The Migration Chain · Primary Sources</span>
+      <div class="doc-pull-text">
+        <strong>1793</strong> — Molley in Union County, South Carolina · Deed Book B:467<br>
+        <strong>1795</strong> — Patience given to Patty Waldrop · Newberry County SC · Deed Book C:367–368<br>
+        <strong>1807</strong> — Clarissa documented in Laurens District SC · Deed Book H:253<br>
+        <strong>1827</strong> — John Nichols arrives in Austin County Texas from Sabine County<br>
+        <strong>1832</strong> — John Nichols flees Williamson County Tennessee with Milley, Harriet, and infant Fanny<br>
+        <strong>1834</strong> — James Cowan estate, Henry County Tennessee · 19 enslaved people documented<br>
+        <strong>1839</strong> — Rankin County Mississippi deed transfers Patience's family · Fanny Waldrop Nichols receives Clarissa's community<br>
+        <strong>1860</strong> — John Nichols holds 9 enslaved people in Bellville · confirmed by slave schedule<br>
+        <strong>1865</strong> — Juneteenth · The Dutch Fork community is free in Bellville, Texas
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="section">
+    <span class="section-label">Still Researching</span>
+    <span class="section-title">What We Are Still Looking For</span>
+    <p class="body">The Dutch Fork origin of this family is confirmed by the documentary record and the DNA. What remains open:</p>
+    <p class="body">The exact household where Molley was born — whether in West Africa or in South Carolina. The Sims family who held her in 1793 Union County had roots in the Dutch Fork community. Whether Molley was brought from the coast or born in the upcountry is not yet confirmed.</p>
+    <p class="body">The European DNA match identities — the 10 ThruLines matches confirming Clarissa and the 46 Waldrop family DNA matches are biological evidence of the Dutch Fork community. Identifying which specific families produced those matches would confirm the exact household where Clarissa's European ancestry originated.</p>
+    <p class="body">The Francis Matthews Jr. connection — a DNA match at Halifax County Virginia with a neighbor named Jacob Blain — may connect Rendy Blayn's family to the Dutch Fork corridor through Virginia. Contact via GEDmatch has not yet been made: Fanin11@aol.com.</p>
+
+    <div class="research-note">
+      <span class="research-note-label">If You Are Researching Dutch Fork Connections</span>
+      <p class="research-note-body">If your family traces to the Dutch Fork region of South Carolina — Newberry County, Laurens County, Union County, Lexington County — and your ancestors held or were held alongside people named Patience, Clarissa, Molley, or Tom, you may be connected to this archive by blood or by history. Contact Jasmine M. Lee at jlee@dockellisfoundation.com or connect via AncestryDNA (kit SQ8499767) or GEDmatch (kit QW8418781).</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-nav">
+  <a href="how_we_got_here.html" class="footer-link">← The Story</a>
+  <a href="we_are_bellville.html" class="footer-link">We Are Bellville →</a>
+</div>
+
+</body>
+</html>

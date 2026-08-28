@@ -1,0 +1,205 @@
+/*
+ * Armstrong Family Archive — Global Readability Overrides
+ * Upload this file once. Update it to change colors site-wide.
+ * All values target text elements that were too low-contrast
+ * against the dark background on mobile and desktop.
+ */
+
+/* ── BODY TEXT — primary readable text ── */
+/* #a0988e → brighter warm grey — body copy, descriptions */
+[style*="color:#a0988e"],
+[style*="color: #a0988e"] {
+  color: #cec6be !important;
+}
+
+/* #b0a89e → brighter — slightly lighter body copy */
+[style*="color:#b0a89e"],
+[style*="color: #b0a89e"] {
+  color: #d6cec6 !important;
+}
+
+/* #c0b8b0 → brighter — already better but push further */
+[style*="color:#c0b8b0"],
+[style*="color: #c0b8b0"] {
+  color: #dedad2 !important;
+}
+
+/* #ccc4bc — used in bellville_family and we_are_bellville */
+[style*="color:#ccc4bc"],
+[style*="color: #ccc4bc"] {
+  color: #dedad2 !important;
+}
+
+/* #706860 — darkest body grey — nearly invisible on black */
+[style*="color:#706860"],
+[style*="color: #706860"] {
+  color: #b8b0a8 !important;
+}
+
+/* #807870 — medium dark grey */
+[style*="color:#807870"],
+[style*="color: #807870"] {
+  color: #c0b8b0 !important;
+}
+
+/* #504840 — very dark label text */
+[style*="color:#504840"],
+[style*="color: #504840"] {
+  color: #a09088 !important;
+}
+
+/* ── CSS CLASS-BASED TEXT — targets .class definitions ── */
+/* These cover the CSS classes defined in each page's <style> tag */
+
+.chapter-body,
+.doc-callout-text,
+.know-item,
+.hero-sub,
+.hero-body,
+.hero-intro,
+.body,
+.census-note-body,
+.research-note-body,
+.doc-pull-text,
+.newspaper-body,
+.desc-note,
+.child-card-note,
+.family-card-body,
+.marriage-note,
+.census-note-body,
+.explain-body,
+.timeline-body,
+.letter p,
+.section p,
+.chapter-body p {
+  color: #d0c8c0 !important;
+}
+
+/* Death cert values, desc dates, secondary text */
+.death-cert-value,
+.desc-dates,
+.line-detail,
+.anc-detail,
+.footer-credit,
+.family-member,
+.marriage-note,
+.community-note {
+  color: #b8b0a8 !important;
+}
+
+/* ── NAVIGATION — links must be readable ── */
+.gnav-link {
+  color: rgba(245,242,236,0.72) !important;
+}
+
+.gnav-link:hover {
+  color: rgba(245,242,236,0.95) !important;
+}
+
+.gnav-brand {
+  color: rgba(240,234,216,0.92) !important;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  color: rgba(245,242,236,0.55) !important;
+}
+
+/* ── SECTION LABELS AND EYEBROWS ── */
+/* The very muted uppercase labels on every section */
+.sec-label,
+.hero-eyebrow,
+.chapter-label,
+.section-label,
+.census-label,
+.doc-pull-label,
+.death-cert-label,
+.research-note-label,
+.family-card-root,
+.legend-label,
+.walk-you-label,
+.walk-num,
+.child-card-gen,
+.entry-card-label,
+.marriage-label,
+.community-note {
+  color: rgba(255,255,255,0.55) !important;
+}
+
+/* ── RGBA TEXT — inline styles with low opacity ── */
+/* These are the hardest to target without JS — we use a broad approach */
+/* on specific elements that commonly use these values */
+
+.gnav-link:not(.active):not(.gstart) {
+  color: rgba(245,242,236,0.72) !important;
+}
+
+/* story nav links */
+.story-nav-link,
+.footer-link {
+  color: rgba(245,242,236,0.65) !important;
+}
+
+.story-nav-center {
+  color: rgba(245,242,236,0.55) !important;
+}
+
+/* ── BORDERS — make section dividers visible ── */
+.sec-line,
+.divider,
+hr.divider {
+  opacity: 0.4 !important;
+}
+
+/* Increase border visibility on cards */
+.child-card,
+.family-card,
+.census-block,
+.doc-pull,
+.death-cert,
+.newspaper,
+.research-note,
+.dna-block,
+.explain-box {
+  border-color: rgba(255,255,255,0.12) !important;
+}
+
+/* ── WALK SECTION — ancestry chain ── */
+.walk-desc {
+  color: #cec6be !important;
+}
+
+.walk-step {
+  border-bottom-color: rgba(255,255,255,0.10) !important;
+}
+
+/* ── REGISTRY TABLE ── */
+.registry-table td,
+table td {
+  color: #cec6be !important;
+}
+
+table th {
+  color: rgba(255,255,255,0.65) !important;
+}
+
+/* ── TIMELINE ── */
+.timeline-body {
+  color: #cec6be !important;
+}
+
+.timeline-source {
+  color: rgba(255,255,255,0.45) !important;
+}
+
+/* ── HERO NOTES AND SUBS ── */
+.hero-note,
+.hero-line {
+  color: #cec6be !important;
+}
+
+/* ── PENDING RESEARCH ITEMS ── */
+.pend-body,
+.pending p {
+  color: #cec6be !important;
+}

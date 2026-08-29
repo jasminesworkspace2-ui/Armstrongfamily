@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Family Database · Armstrong Family Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="overrides.css">
+<style>
+:root {
+  --deep:#080604; --gold:#c9a84c; --gold2:#e0c070;
+  --cream:#f5f2ec; --parchment:#f0ead8;
+  --muted:rgba(245,242,236,0.45);
+  --border:rgba(201,168,76,0.15);
+  --border2:rgba(255,255,255,0.06);
+  --f-display:'DM Serif Display',Georgia,serif;
+  --f-body:'Inter',sans-serif;
+  --f-mono:'Courier New',monospace;
+
+  /* Evidence colors */
+  --ev-confirmed:#2d6a2d;
+  --ev-confirmed-bg:rgba(45,106,45,0.12);
+  --ev-hypothesis:#b8860b;
+  --ev-hypothesis-bg:rgba(184,134,11,0.12);
+  --ev-open:#8b2020;
+  --ev-open-bg:rgba(139,32,32,0.12);
+  --ev-dna:#1a4a7a;
+  --ev-dna-bg:rgba(26,74,122,0.12);
+  --ev-duplicate:#7a3d00;
+  --ev-duplicate-bg:rgba(122,61,0,0.12);
+  --ev-missing:#5a0020;
+  --ev-missing-bg:rgba(90,0,32,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--deep);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;}
+
+/* ── NAV ── */
+.gnav{position:sticky;top:0;z-index:100;background:rgba(8,6,4,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(8px);}
+.gnav-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:52px;gap:8px;}
+.gnav-brand{font-family:var(--f-display);font-style:italic;font-size:15px;color:rgba(240,234,216,0.8);text-decoration:none;white-space:nowrap;}
+.gnav-links{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;}
+.gnav-links::-webkit-scrollbar{display:none;}
+.gnav-link{font-family:var(--f-mono);font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;padding:6px 9px;white-space:nowrap;border-bottom:2px solid transparent;}
+.gnav-link:hover{color:rgba(245,242,236,0.85);}
+.gnav-link.active{color:#c9a84c;border-bottom-color:#c9a84c;}
+.gnav-link.gstart{color:#c9a84c;border:1px solid rgba(201,168,76,0.35);padding:5px 9px;margin-right:4px;}
+
+.breadcrumb{background:rgba(14,11,8,0.8);border-bottom:1px solid rgba(255,255,255,0.04);padding:7px 24px;font-family:var(--f-mono);font-size:9px;letter-spacing:1px;color:rgba(245,242,236,0.3);}
+.breadcrumb a{color:rgba(245,242,236,0.4);text-decoration:none;}
+.breadcrumb span{color:rgba(255,255,255,0.18);margin:0 6px;}
+
+/* ── HERO ── */
+.hero{max-width:900px;margin:0 auto;padding:52px 24px 36px;text-align:center;}
+.hero-eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(201,168,76,0.55);display:block;margin-bottom:14px;}
+.hero-title{font-family:var(--f-display);font-size:clamp(32px,6vw,60px);font-style:italic;color:var(--parchment);display:block;line-height:1.1;margin-bottom:14px;}
+.hero-sub{font-size:14px;line-height:1.9;color:#a0988e;max-width:620px;margin:0 auto 28px;}
+
+/* ── EVIDENCE LEGEND ── */
+.legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 auto 36px;max-width:900px;padding:0 24px;}
+.legend-item{font-family:var(--f-mono);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 12px;border-radius:2px;cursor:pointer;transition:opacity 0.2s;border:1px solid transparent;}
+.legend-item:hover{opacity:0.75;}
+.legend-item.active-filter{box-shadow:0 0 0 2px var(--gold);}
+.ev-confirmed{color:var(--ev-confirmed);background:var(--ev-confirmed-bg);border-color:rgba(45,106,45,0.3);}
+.ev-hypothesis{color:var(--ev-hypothesis);background:var(--ev-hypothesis-bg);border-color:rgba(184,134,11,0.3);}
+.ev-open{color:var(--ev-open);background:var(--ev-open-bg);border-color:rgba(139,32,32,0.3);}
+.ev-dna{color:var(--ev-dna);background:var(--ev-dna-bg);border-color:rgba(26,74,122,0.3);}
+.ev-duplicate{color:var(--ev-duplicate);background:var(--ev-duplicate-bg);border-color:rgba(122,61,0,0.3);}
+.ev-missing{color:var(--ev-missing);background:var(--ev-missing-bg);border-color:rgba(90,0,32,0.3);}
+.ev-all{color:rgba(201,168,76,0.8);background:rgba(201,168,76,0.06);border-color:rgba(201,168,76,0.25);}
+
+/* ── TAB SYSTEM ── */
+.tab-bar{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;gap:0;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;}
+.tab-bar::-webkit-scrollbar{display:none;}
+.tab-btn{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,242,236,0.4);background:none;border:none;border-bottom:2px solid transparent;padding:12px 18px;cursor:pointer;white-space:nowrap;transition:color 0.2s,border-color 0.2s;}
+.tab-btn:hover{color:rgba(245,242,236,0.75);}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+
+/* ── SEARCH BAR ── */
+.search-bar{max-width:1400px;margin:20px auto 0;padding:0 24px;}
+.search-input{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--cream);font-family:var(--f-body);font-size:13px;padding:10px 16px;outline:none;transition:border-color 0.2s;}
+.search-input:focus{border-color:rgba(201,168,76,0.4);}
+.search-input::placeholder{color:rgba(245,242,236,0.25);}
+
+/* ── TABLE ── */
+.table-wrap{max-width:1400px;margin:16px auto 48px;padding:0 24px;overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:12px;}
+thead th{background:rgba(8,6,4,0.95);border-bottom:1px solid var(--gold);padding:10px 12px;text-align:left;font-family:var(--f-mono);font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(201,168,76,0.7);position:sticky;top:52px;z-index:5;white-space:nowrap;cursor:pointer;user-select:none;}
+thead th:hover{color:var(--gold);}
+thead th.sort-asc::after{content:" ↑";}
+thead th.sort-desc::after{content:" ↓";}
+tbody tr{border-bottom:1px solid rgba(255,255,255,0.04);transition:background 0.12s;}
+tbody tr:hover{background:rgba(201,168,76,0.04);}
+tbody tr.direct-line-row{border-left:3px solid var(--gold);}
+tbody tr.hidden{display:none;}
+td{padding:10px 12px;vertical-align:top;line-height:1.6;color:#c8c0b8;}
+td.name-col{font-family:var(--f-display);font-style:italic;font-size:14px;color:var(--parchment);font-weight:400;}
+td.name-col.direct{color:var(--gold2);}
+td.mono{font-family:var(--f-mono);font-size:9px;color:rgba(245,242,236,0.4);}
+td.notes{font-size:11px;color:#a09890;max-width:280px;}
+
+/* evidence badges */
+.badge{display:inline-block;font-family:var(--f-mono);font-size:8px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:2px;white-space:nowrap;}
+
+/* ── DIRECT LINE SECTION ── */
+.direct-line-section{max-width:900px;margin:0 auto 48px;padding:0 24px;}
+.gen-row{display:grid;grid-template-columns:50px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.06);position:relative;}
+.gen-row::before{content:"";position:absolute;left:23px;top:0;bottom:0;width:1px;background:rgba(201,168,76,0.2);}
+.gen-num{font-family:var(--f-mono);font-size:10px;color:rgba(201,168,76,0.5);text-align:center;padding-top:4px;z-index:1;background:var(--deep);}
+.gen-content{}
+.gen-name{font-family:var(--f-display);font-style:italic;font-size:20px;color:var(--parchment);display:block;margin-bottom:4px;}
+.gen-dates{font-family:var(--f-mono);font-size:9px;color:rgba(201,168,76,0.5);display:block;margin-bottom:6px;}
+.gen-detail{font-size:12px;color:#a0988e;line-height:1.75;margin-bottom:8px;}
+.gen-source{font-family:var(--f-mono);font-size:8px;letter-spacing:1px;color:rgba(255,255,255,0.2);display:block;}
+
+/* ── SC DEED BOOK ── */
+.deed-card{background:rgba(255,255,255,0.02);border:1px solid rgba(201,168,76,0.15);padding:20px 24px;margin-bottom:16px;}
+.deed-ref{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.6);display:block;margin-bottom:8px;}
+.deed-date{font-family:var(--f-mono);font-size:9px;color:rgba(255,255,255,0.3);display:block;margin-bottom:10px;}
+.deed-title{font-family:var(--f-display);font-style:italic;font-size:17px;color:var(--parchment);display:block;margin-bottom:8px;}
+.deed-people{font-size:12px;color:#b0a8a0;line-height:1.75;margin-bottom:10px;}
+.deed-people strong{color:var(--parchment);}
+.deed-significance{background:rgba(201,168,76,0.05);border-left:2px solid rgba(201,168,76,0.4);padding:8px 12px;font-size:11px;color:#c0b8b0;line-height:1.75;}
+.deed-significance strong{color:var(--gold2);}
+
+/* ── MISSING / DUPLICATE CARDS ── */
+.issue-card{background:rgba(255,255,255,0.02);border-left:3px solid rgba(139,32,32,0.5);padding:16px 20px;margin-bottom:12px;}
+.issue-card.duplicate{border-left-color:rgba(122,61,0,0.6);}
+.issue-name{font-family:var(--f-display);font-style:italic;font-size:17px;color:var(--parchment);display:block;margin-bottom:6px;}
+.issue-body{font-size:12px;color:#b0a8a0;line-height:1.8;}
+.issue-action{font-family:var(--f-mono);font-size:9px;letter-spacing:1px;color:rgba(201,168,76,0.6);display:block;margin-top:10px;border-top:1px solid rgba(255,255,255,0.05);padding-top:8px;}
+.priority{display:inline-block;font-family:var(--f-mono);font-size:8px;letter-spacing:1px;padding:2px 8px;margin-bottom:8px;}
+.priority.urgent{background:rgba(139,32,32,0.2);color:#e07070;}
+.priority.high{background:rgba(184,134,11,0.15);color:#c9a84c;}
+.priority.medium{background:rgba(45,106,45,0.15);color:#70b870;}
+
+/* ── PROSE SECTIONS ── */
+.prose-section{max-width:800px;margin:0 auto 48px;padding:0 24px;}
+.section-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);display:block;margin-bottom:8px;}
+.section-title{font-family:var(--f-display);font-style:italic;font-size:clamp(22px,4vw,34px);color:var(--parchment);display:block;margin-bottom:16px;}
+.body-text{font-size:13px;line-height:2;color:#c0b8b0;margin-bottom:12px;}
+.body-text strong{color:var(--parchment);}
+
+/* ── STATS ROW ── */
+.stats{display:flex;flex-wrap:wrap;gap:16px;max-width:1400px;margin:24px auto;padding:0 24px;}
+.stat-box{background:rgba(255,255,255,0.02);border:1px solid var(--border);padding:16px 20px;flex:1;min-width:140px;}
+.stat-num{font-family:var(--f-display);font-size:32px;color:var(--gold);display:block;line-height:1;}
+.stat-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);display:block;margin-top:4px;}
+
+@media(max-width:600px){
+  .legend{gap:6px;}
+  .legend-item{font-size:7px;padding:4px 8px;}
+  table{font-size:11px;}
+  td{padding:8px 8px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a href="welcome.html" class="gnav-brand">Armstrong Family Archive</a>
+    <div class="gnav-links">
+      <a href="start_here.html" class="gnav-link gstart">★ Start Here</a>
+      <a href="for_the_family.html" class="gnav-link">Site Guide</a>
+      <a href="welcome.html" class="gnav-link">Our Family</a>
+      <a href="bellville_family.html" class="gnav-link">The Family</a>
+      <a href="we_are_bellville.html" class="gnav-link">We Are Bellville</a>
+      <a href="how_we_got_here.html" class="gnav-link">The Story</a>
+      <a href="family_tree.html" class="gnav-link">Documents</a>
+      <a href="family_database.html" class="gnav-link active">Database</a>
+    </div>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="welcome.html">Home</a><span>›</span>
+  <strong style="color:rgba(245,242,236,0.6);">Family Database · Research Audit</strong>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-eyebrow">Working Research Database · Primary Sources Only</span>
+  <span class="hero-title">The Family Database</span>
+  <p class="hero-sub">Every person documented in this archive — with their evidence status, primary sources, and what still needs to be confirmed. This is the working record behind the family story. Evidence is labeled honestly: confirmed means a primary source document says so. Hypothesis means the evidence points that way but is not yet proven.</p>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat-box"><span class="stat-num">149</span><span class="stat-label">GEDCOM Individuals</span></div>
+  <div class="stat-box"><span class="stat-num">55</span><span class="stat-label">Family Records</span></div>
+  <div class="stat-box"><span class="stat-num">10</span><span class="stat-label">Direct Line Generations</span></div>
+  <div class="stat-box"><span class="stat-num">7</span><span class="stat-label">Duplicate Names to Resolve</span></div>
+  <div class="stat-box"><span class="stat-num">11</span><span class="stat-label">SC Primary Source Deeds</span></div>
+  <div class="stat-box"><span class="stat-num">6</span><span class="stat-label">St. Croix Primary Sources</span></div>
+</div>
+
+<!-- EVIDENCE LEGEND / FILTER -->
+<div class="legend">
+  <div class="legend-item ev-all active-filter" onclick="filterTable('all')">Show All</div>
+  <div class="legend-item ev-confirmed" onclick="filterTable('confirmed')">✓ Confirmed — Primary Source</div>
+  <div class="legend-item ev-hypothesis" onclick="filterTable('hypothesis')">~ Hypothesis — Circumstantial</div>
+  <div class="legend-item ev-open" onclick="filterTable('open')">? Open — Unresolved</div>
+  <div class="legend-item ev-dna" onclick="filterTable('dna')">⌀ DNA Only</div>
+  <div class="legend-item ev-duplicate" onclick="filterTable('duplicate')">⚠ Duplicate — Needs Resolution</div>
+  <div class="legend-item ev-missing" onclick="filterTable('missing')">✗ Missing — Not in GEDCOM Yet</div>
+</div>
+
+<!-- TAB BAR -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('all-people', this)">All People</button>
+  <button class="tab-btn" onclick="switchTab('direct-line', this)">Direct Line</button>
+  <button class="tab-btn" onclick="switchTab('sc-deeds', this)">SC Deed Book</button>
+  <button class="tab-btn" onclick="switchTab('duplicates', this)">Duplicates</button>
+  <button class="tab-btn" onclick="switchTab('missing', this)">Missing from GEDCOM</button>
+  <button class="tab-btn" onclick="switchTab('ester-nicholas', this)">Ester Nicholas · St. Croix</button>
+</div>
+
+<!-- SEARCH BAR (visible on all-people tab) -->
+<div class="search-bar" id="search-wrap">
+  <input class="search-input" type="text" id="searchInput" placeholder="Search by name, location, relationship, source..." oninput="searchTable()">
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB 1 — ALL PEOPLE -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="tab-panel active" id="panel-all-people">
+<div class="table-wrap">
+<table id="peopleTable">
+<thead>
+  <tr>
+    <th onclick="sortTable(0)">ID</th>
+    <th onclick="sortTable(1)">Name</th>
+    <th onclick="sortTable(2)">Born</th>
+    <th onclick="sortTable(3)">Died</th>
+    <th onclick="sortTable(4)">Father</th>
+    <th onclick="sortTable(5)">Mother</th>
+    <th onclick="sortTable(6)">Spouse(s)</th>
+    <th onclick="sortTable(7)">Children</th>
+    <th onclick="sortTable(8)">Evidence</th>
+    <th onclick="sortTable(9)">Primary Source / Notes</th>
+  </tr>
+</thead>
+<tbody id="peopleBody">
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB 2 — DIRECT LINE -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="panel-direct-line">
+<div class="direct-line-section">
+  <div class="prose-section" style="padding:0;margin-bottom:32px;">
+    <span class="section-label">The Confirmed Ancestral Chain</span>
+    <span class="section-title">Molley to Jasmine · Ten Generations</span>
+    <p class="body-text">This is the working direct line as confirmed by primary source documents. Every generation is labeled with its evidence status. Hypothesis means the connection is supported by circumstantial evidence — a named primary source has not yet confirmed it. Confirmed means a document says it directly.</p>
+  </div>
+
+  <div class="gen-row">
+    <div class="gen-num">GEN<br>1</div>
+    <div class="gen-content">
+      <span class="gen-name">Nicholas and Pheabe</span>
+      <span class="gen-dates">St. Croix, Danish West Indies · Date unknown · OPEN HYPOTHESIS</span>
+      <p class="gen-detail">Named in the July 1, 1819 Christiansted deed as "navnlig Nicholas og Pheabe og dernes Afkom" — namely Nicholas and Pheabe and their descendants. Witnessed by H.C. Francis. They are the ancestral couple of the Nicholas surname in St. Croix. Whether they connect to the Texas line has not been confirmed by primary source.</p>
+      <span class="gen-source">Source: July 1, 1819 Christiansted Deed — Danish West Indies Records RG 55 — H.C. Francis witness</span>
+    </div>
+  </div>
+
+  <div class="gen-row">
+    <div class="gen-num">GEN<br>1</div>
+    <div class="gen-content">
+      <span class="gen-name">Molley</span>
+      <span class="gen-dates">ca. 1750 · Union/Newberry County, South Carolina · CONFIRMED</span>
+      <p class="gen-detail">The earliest confirmed ancestor in the Texas line. Appears in the 1793 Newberry County deed community. Mother of Patience and Rachel. Named in context with the Waldrop-Davenport-Nichols community of Laurens and Newberry Counties.</p>
+      <span class="gen-source">Source: 1793 Newberry County deed community; 1795 Deed Book C debt sale — Moll and Patience together — Newberry County SC</span>
+    </div>
+  </div>
+
+  <div class="gen-row">
+    <div class="gen-num">GEN<br>2</div>
+    <div class="gen-content">
+      <span class="gen-name">Patience</span>
+      <span class="gen-dates">ca. 1765–1780 · Newberry County SC → Mississippi → Texas · CONFIRMED</span>
+      <p class="gen-detail">Given by Francis Davenport Sr. to his daughter Patty Waldrop on August 4, 1795 — the foundational document of this archive. Traveled from South Carolina through Mississippi to Austin County Texas with the Waldrop family. Mother of Clarissa.</p>
+      <span class="gen-source">Source: Deed Book C: 367-368 — August 4, 1795 — Newberry County SC — Francis Davenport Sr. to Patty Waldrop</span>
+    </div>
+  </div>
+
+  <div class="gen-row">
+    <div class="gen-num">GEN<br>3</div>
+    <div class="gen-content">
+      <span class="gen-name">Clarissa</span>
+      <span class="gen-dates">ca. 1807 · South Carolina → Mississippi → Austin County TX · CONFIRMED</span>
+      <p class="gen-detail">Patience's daughter. Transferred by Waldrop family from Rankin County Mississippi to Fanny Waldrop Nichols of Austin County Texas in 1839. Mother of Amanda Nichols, William, and Harriet.</p>
+      <span class="gen-source">Source: 1839 Rankin County MS deed — transferred to Fanny Waldrop Nichols of Austin County TX</span>
+    </div>
+  </div>
+
+  <div class="gen-row">
+    <div class="gen-num">GEN<br>4</div>
+    <div class="gen-content">
+      <span class="gen-name">Rendy Blayn</span>
+      <span class="gen-dates">ca. 1815 · Virginia origin hypothesized → Austin County TX · HYPOTHESIS</span>
+      <p class="gen-detail">Named on Easter Bell Nichols's death certificate as Easter's mother — the name Rendy Blayn confirmed by primary source. Her origin — whether from a Halifax County Virginia Blain family or an Austin County Texas Bell family — remains unresolved. The two theories have not been reconciled.</p>
+      <span class="gen-source">Source: Easter Bell Nichols death certificate — December 17, 1935 — names mother as Rendy Blayn — Texas State Archives</span>
+    </div>
+  </div>
+
+  <div class="gen-row">
+    <div class="gen-num">GEN<br>5</div>
+    <div class="gen-content">
+      <span class="gen-name">Easter Bell Nichols</span>
+      <span class="gen-dates">July 4, 1838 · Bellville, Austin County TX · December 17, 1935 · CONFIRMED</span>
+      <p class="gen-detail">Born enslaved in the John Nichols household in Bellville, Texas. Freed June 19, 1865. Married Joseph Nichols December 18, 1865. Lived 97 years. Buried Jeff Cemetery, Bellville. Mother of eight documented children plus Katie Thorton (GED-listed). After Joseph's death she is documented with Hannibal Pink.</p>
+      <span class="gen-source">Source: 1870 census Dwelling 277 Beat 1 Austin County; 1880 census Precinct 1; death certificate December 17 1935; December 18 1865 marriage record; Jeff Cemetery Bellville TX</span>
+    </div>
+  </div>
+
+  <div class="gen-row">
+    <div class="gen-num">GEN<br>6</div>
+    <div class="gen-content">
+      <span class="gen-name">Hellen Nichols Armstrong</span>
+      <span class="gen-dates">September 1870 · Bellville TX · December 5, 1931 · Fort Worth TX · CONFIRMED</span>
+      <p class="gen-detail">Daughter of Joseph and Easter Bell Nichols. Married John Armstrong. Died of Pellagra at 2:30am December 5, 1931 in Bellville (after returning from Fort Worth). Death certificate lists parents as Joe Nichols and Easter Nichols. Eva Ballard was the informant. Her birth year shows a five-year discrepancy across sources — documented, not silently resolved.</p>
+      <span class="gen-source">Source: 1900 Austin County census; 1910 Fort Worth census; 1931 death certificate — Austin County TX — cause Pellagra — informant Eva Ballard</span>
+    </div>
+  </div>
+
+  <div class="gen-row">
+    <div class="gen-num">GEN<br>7</div>
+    <div class="gen-content">
+      <span class="gen-name">Eva Armstrong Ballard</span>
+      <span class="gen-dates">1900 · Bellville TX · 1977 · CONFIRMED</span>
+      <p class="gen-detail">Daughter of John Armstrong and Hellen Nichols. Wife of James Wilson Ballard Sr. Mother of James Wilson Ballard Jr., Margie Nell Ballard, Eloise Maud Ballard, Charles Ray Ballard, and Bettie Jean Ballard. Named in the 1954 San Antonio Light article. Connected to a business license under Eva Smith.</p>
+      <span class="gen-source">Source: Hellen Nichols death certificate (informant); 1900 Austin County census; 1910 Fort Worth census; 1954 San Antonio Light article</span>
+    </div>
+  </div>
+
+  <div class="gen-row">
+    <div class="gen-num">GEN<br>8</div>
+    <div class="gen-content">
+      <span class="gen-name">Margie Nell Ballard Corbin</span>
+      <span class="gen-dates">1929 · Texas · 1988 · CONFIRMED</span>
+      <p class="gen-detail">Daughter of James Wilson Ballard Sr. and Eva Armstrong. Mother of Hjordis L. Corbin and other children. The GEDCOM records two spouse entries — Norman Caswell Corbin (confirmed) and Charles R. Baker (unresolved — may be a data entry or a separate relationship).</p>
+      <span class="gen-source">Source: Family records; AncestryDNA shared match analysis — Ronnie Corbin 1,660 cM (half brother to Hjordis); Brendyal Corbin 1,068 cM (half niece)</span>
+    </div>
+  </div>
+
+  <div class="gen-row">
+    <div class="gen-num">GEN<br>9</div>
+    <div class="gen-content">
+      <span class="gen-name">Hjordis L. Corbin</span>
+      <span class="gen-dates">1960 · Living · CONFIRMED</span>
+      <p class="gen-detail">Daughter of Margie Nell Ballard Corbin. Biological father identity is an open research thread — paternity not confirmed by primary source. AncestryDNA Kit SQ8499767. The DNA kits for this archive. Her matches form the foundation of the DNA research including the Nicholas surname thread (19 matches) and the Ester Nicholas St. Croix hypothesis.</p>
+      <span class="gen-source">Source: AncestryDNA Kit SQ8499767; direct family knowledge</span>
+    </div>
+  </div>
+
+  <div class="gen-row">
+    <div class="gen-num">GEN<br>10</div>
+    <div class="gen-content">
+      <span class="gen-name">Jasmine M. Lee</span>
+      <span class="gen-dates">1982 · Living · CONFIRMED</span>
+      <p class="gen-detail">Founder and CEO, Dock Ellis Foundation. Lead researcher — seven years of primary source genealogy research producing this archive, the Nichols-Waldrop Family Legacy book (712 paragraphs), the Ballard Research Profile (576 paragraphs), and this website.</p>
+      <span class="gen-source">Source: GEDmatch Kit QW8418781; Dock Ellis Foundation — jlee@dockellisfoundation.com</span>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB 3 — SC DEED BOOK -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="panel-sc-deeds">
+<div class="prose-section">
+  <span class="section-label">Blacks Found in the Deeds of Laurens & Newberry Counties SC · 1785-1827</span>
+  <span class="section-title">South Carolina Primary Source Deeds</span>
+  <p class="body-text">These are primary source documents from the deed books of Laurens County and Newberry County, South Carolina — abstracted by Margaret Peckham Motes (Genealogical Publishing Co., Baltimore, 2002). Each document names enslaved people and the white families who held them. The Nichols, Waldrop, and Davenport families all appear as witnesses, creditors, and enslavers in this same deed book community between 1785 and 1827.</p>
+</div>
+
+<div style="max-width:1000px;margin:0 auto;padding:0 24px 48px;">
+
+  <div class="deed-card">
+    <span class="deed-ref">Deed Book C: 294-295</span>
+    <span class="deed-date">July 23, 1792 — Recorded June 3, 1795 — Newberry County SC</span>
+    <span class="deed-title">Bill of Sale — Daniel Williams Sr. to John Williams and John Williams Jr.</span>
+    <p class="deed-people">27 enslaved people named: Phil · Jack · Will · Kyzer · Moses · Harry · Jacob · Jude · Isbell · Ruth · <strong>Easter (girl about 14 years old)</strong> · Rose · Aggy · Aron · John · Dave · Frankey · Suckey · Sarah · Edom · Little Fill · Solomon · George · James · Lett · Winney · Harris. Consideration: £1,500 Virginia Currency.</p>
+    <div class="deed-significance"><strong>Easter age 14 in July 1792</strong> — the same Easter who appears as age 17 in Deed Book F: 23 (May 30, 1795) — tracked across two documents three years apart. Julius Nichols Jr. J.P. proves the companion Secret Trust document. The name Easter documented in the Newberry County community 46 years before Easter Bell Nichols was born in Texas.</div>
+  </div>
+
+  <div class="deed-card">
+    <span class="deed-ref">Deed Book C: 296</span>
+    <span class="deed-date">July 23, 1792 / Proved April 22, 1793 — Recorded June 8, 1795 — Newberry County SC</span>
+    <span class="deed-title">Secret Trust Declaration — John Williams Sr. for Daniel Williams Sr.</span>
+    <p class="deed-people">John Williams Sr. declares he holds all 27 enslaved people (same as C: 294-295) "subject to the control direction and order and command of the said Daniel Williams who is the real and true owner." Signed April 20, 1793. Witnesses: Charles Colcock, Stephen Heard.</p>
+    <div class="deed-significance"><strong>Proved by Julius Nichols Jr., J.P. — April 22, 1793.</strong> CRITICAL: The Nichols family is confirmed legally active in Laurens/Newberry County South Carolina in 1793 — the same deed book series and the same community as Patience, Molley, and the Waldrop-Davenport network.</div>
+  </div>
+
+  <div class="deed-card">
+    <span class="deed-ref">Deed Book C — Debt Sale (ca. January 1795)</span>
+    <span class="deed-date">Bond dated January 1, 1795 — Newberry County SC</span>
+    <span class="deed-title">Debt Sale — Unnamed seller to Wadsworth and Turpin, Merchants</span>
+    <p class="deed-people">Seven enslaved people: <strong>Moll (about 30 years old) · Patience (about 30 years old)</strong> · Hannah (about 12) · Lin (about 11) · Violet (9) · Esther (7) · George (3). Sold in open market to secure payment of £87 12 shillings 2p.</p>
+    <div class="deed-significance"><strong>FOUNDATIONAL.</strong> Moll and Patience — the two confirmed founding ancestors of this archive — appear together in this debt sale. Wadsworth and Turpin acquire them. Lin (age 11) is later confirmed freed by Thomas Wadsworth's will (Deed Book E: 624-625), proving Wadsworth acquired this entire group. Moll and Patience were NOT freed by Wadsworth's will — they were transferred elsewhere between January and August 1795.</div>
+  </div>
+
+  <div class="deed-card">
+    <span class="deed-ref">Deed Book C: 259</span>
+    <span class="deed-date">March 28, 1795 — Recorded May 29, 1795 — Newberry County SC</span>
+    <span class="deed-title">Mortgage — Daniel Williams to James Waldrop and Samuel Henderson</span>
+    <p class="deed-people">Enslaved people mortgaged as collateral: Harry · Moses · Jude and her children George and Lena · Sarah. Payment of £400 Sterling.</p>
+    <div class="deed-significance"><strong>James Waldrop confirmed as creditor of Daniel Williams.</strong> The same Daniel Williams who held Easter and the 27-person community. The Waldrop family is acquiring financial control over the Williams enslaved community — five months before Patty Waldrop receives Patience from Francis Davenport in August 1795.</div>
+  </div>
+
+  <div class="deed-card">
+    <span class="deed-ref">Deed Book C: 259</span>
+    <span class="deed-date">May 8, 1795 — Proved May 18, 1795 — Recorded June 5, 1795 — Newberry County SC</span>
+    <span class="deed-title">Bill of Sale — Francis Davenport Sr. to Francis Davenport Jr.</span>
+    <p class="deed-people">One enslaved man: Anthony (about 18 years old). Price: £20 Sterling. Witness: Isaac Davenport. Proved by Isaac Davenport before Charles Griffin J.P.</p>
+    <div class="deed-significance">The same Francis Davenport Sr. who gives Patience to Patty Waldrop three months later. The same Charles Griffin J.P. who will certify the August 4 Patience deed. The Davenport family is actively managing enslaved people in the months surrounding the foundational Patience document.</div>
+  </div>
+
+  <div class="deed-card" style="border-color:rgba(201,168,76,0.4);">
+    <span class="deed-ref">Deed Book C: 367-368</span>
+    <span class="deed-date">August 4, 1795 — Newberry County SC</span>
+    <span class="deed-title">Deed of Gift — Francis Davenport Sr. to his daughter Patty Waldrop</span>
+    <p class="deed-people"><strong>Patience</strong> — and her future increase. Proved by Charles Griffin J.P.</p>
+    <div class="deed-significance"><strong>THE FOUNDATIONAL DOCUMENT OF THIS ARCHIVE.</strong> Patience given to Patty Waldrop. This is the primary source that establishes Patience in the Waldrop family line that leads through Clarissa → Rendy Blayn → Easter Bell Nichols → Hellen → Eva → Margie → Hjordis → Jasmine M. Lee.</div>
+  </div>
+
+  <div class="deed-card">
+    <span class="deed-ref">Deed Book D: 280</span>
+    <span class="deed-date">January 2, 1799 — Recorded July 28, 1799 — Laurens/Newberry County SC</span>
+    <span class="deed-title">Deed of Gift — Spencer Morgan of Orangeburgh District to his daughter Fanney Morgan</span>
+    <p class="deed-people">Five enslaved people: Pompey (man) · Dinah (woman) · Littye · Newman · Mary (Dinah's three children).</p>
+    <div class="deed-significance"><strong>John Nichols witnesses this deed.</strong> Confirmed in the same Laurens/Newberry County deed book community in 1799 — four years after the Patience deed and six years after Julius Nichols Jr. J.P. appeared in the same books. The Nichols family is present and legally active in this community throughout the foundational period of this archive.</div>
+  </div>
+
+  <div class="deed-card">
+    <span class="deed-ref">Deed Books E: 613-629 and F: 1-5</span>
+    <span class="deed-date">May 10, 1802 — Proved 1802-1803 — Newberry County SC</span>
+    <span class="deed-title">Deeds of Emancipation — Thomas Wadsworth's Will (executors: William Turpin and Benjamin Cudworth)</span>
+    <p class="deed-people">Freed by will: Cate (~18) · Archibald (mulatto, ~9) · Jenny (~37) · Charlott (~3) · Jen (~28) · Thomas (mulatto, ~10) · <strong>Line (~11)</strong> · Sarah Threet (~35) · Letty (~60) · Mike (~24) · Tilda (~5) · Chloe (~6) · Lize (~14) · Phillis (~6) · Julias (boy, ~4) · Betty (~45) · Fanny (born December 28, 1801 — daughter of Black Sarah, a free woman)</p>
+    <div class="deed-significance"><strong>Line freed = Lin age 11 from the January 1795 debt sale.</strong> This confirms Wadsworth and Turpin acquired the entire January 1795 group including Moll and Patience. Moll and Patience were NOT freed by Wadsworth's will — they were transferred elsewhere before his 1799 death. The critical undiscovered document: who received Patience from Wadsworth between January and August 1795?</div>
+  </div>
+
+  <div class="deed-card">
+    <span class="deed-ref">Deed Book F: 23</span>
+    <span class="deed-date">May 30, 1795 — Proved June 2-3, 1795 before Thomas Wadsworth — Recorded July 21, 1795</span>
+    <span class="deed-title">Bill of Sale — Daniel Williams Sr. to Elizabeth Williams and Ursla Williams</span>
+    <p class="deed-people">15 enslaved people — £434 Sterling: Jack (~52) · Jacob (~21) · Rose (~42) · Latt (~14) · Saxon (~11) · John · James (~6) · Winney (~5) · Virgin (~3 months) · <strong>Easter (woman about 17 years of age)</strong> · Ben (~1) · Sukky (~15) · Aggy (~45) · Phill (~6) · Isham (~1).</p>
+    <div class="deed-significance"><strong>Easter age 17 in May 1795 = Easter age 14 in July 1792 (Deed Book C: 294-295) — confirmed same person across two documents.</strong> Thomas Wadsworth proves this deed — the same merchant whose firm held Patience in January 1795. Easter and Patience are being transferred in the same community, by the same legal officials, in the same three-month period of 1795.</div>
+  </div>
+
+  <div class="deed-card">
+    <span class="deed-ref">Deed Book C: 147</span>
+    <span class="deed-date">February 7, 1795 — Recorded March 31, 1795 — Newberry County SC</span>
+    <span class="deed-title">Bill of Sale — John Barlow to Andrew Smith Jr. and Elizabeth Ann Smith</span>
+    <p class="deed-people">12 enslaved people including Susanah and her children: Fortune · <strong>Santa Croix (~5 years old)</strong> · Hariot · Ireland.</p>
+    <div class="deed-significance"><strong>Santa Croix — a child named after Saint Croix island</strong> — documented in the Newberry County enslaved community in February 1795. The same community as Patience and Molley. Whether this reflects Caribbean family connections in the Newberry County community is an open observation — not connected to the Ester Nicholas hypothesis.</div>
+  </div>
+
+  <div class="deed-card">
+    <span class="deed-ref">Deed Book F: 53</span>
+    <span class="deed-date">March 28, 1795 — Newberry County SC</span>
+    <span class="deed-title">Bill of Sale — Daniel Williams Sr. to Samuel Henderson and James Waldrop</span>
+    <p class="deed-people">One enslaved man: Harry. Part of the £400 debt to Henderson and Waldrop (companion to the mortgage at Deed Book C: 259).</p>
+    <div class="deed-significance">James Waldrop confirmed as a direct buyer of enslaved people from Daniel Williams in 1795 — the same Daniel Williams whose community included Easter, Moll, and Patience. The Waldrop family's financial entanglement with the Williams enslaved community is documented across multiple deed book entries.</div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB 4 — DUPLICATES -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="panel-duplicates">
+<div class="prose-section">
+  <span class="section-label">GEDCOM Audit · Duplicate Name Records</span>
+  <span class="section-title">Seven Names Requiring Resolution</span>
+  <p class="body-text">These are names that appear in multiple GEDCOM records. Some may be the same person recorded twice — a data entry error. Others may be two different people with the same name. None of these should be merged or deleted until the evidence determines which is which. The website should not be updated for any of these until the resolution is confirmed.</p>
+</div>
+<div style="max-width:900px;margin:0 auto;padding:0 24px 48px;">
+
+  <div class="issue-card duplicate">
+    <span class="priority urgent">URGENT — DO NOT MERGE</span>
+    <span class="issue-name">Henry Nichols — Two Separate People</span>
+    <div class="issue-body">
+      <strong>Person 1 — Henry Nichols the adult (born ca. 1839 TX):</strong> Confirmed farmer and mill worker in Bellville Precinct 1. Married Delia Manning December 28, 1865 (FHL Film 1019274). Married Emeline Georgia January 23, 1879. Father: Tennessee, Mother: Tennessee (1880 census). Hypothesized brother of Joseph Nichols. Father of Louisa Nichols (born ca. 1859) and grandfather of Purney Nichols (born February 1880).<br><br>
+      <strong>Person 2 — Henry Nichols the infant (born April 1870):</strong> Son of Joseph Nichols and Easter Bell Nichols. Confirmed by 1870 census Page 38 Line 1 Dwelling 277 Beat 1 Austin County — age 2/12 — born April 1870. Absent from the 1880 census — died between 1870 and 1880. He is Easter Bell's child who did not survive.<br><br>
+      These are definitively two different people. The adult Henry was 31 years old when the infant Henry was born. They cannot be the same person.
+    </div>
+    <span class="issue-action">ACTION: Ensure both are separate GEDCOM records with clear labels. Website labels: "Henry Nichols (brother of Joseph — hypothesis)" and "Henry Nichols (infant son of Joseph and Easter — born April 1870 — died before 1880)".</span>
+  </div>
+
+  <div class="issue-card duplicate">
+    <span class="priority high">HIGH PRIORITY</span>
+    <span class="issue-name">Allen Nichols — Two GEDCOM Records</span>
+    <div class="issue-body">
+      <strong>Record 1:</strong> Allen Nichols — son of Joseph and Easter — married Diana Nichols — children Arthur Nichols, Ada Nichols, Allen Nichols Jr.<br><br>
+      <strong>Record 2:</strong> Allen Nichols — married Dora Nichols — no children recorded.<br><br>
+      May be the same Allen Nichols with two marriages (Diana first, then Dora) OR two different men named Allen Nichols in the community. No primary source distinguishes them.
+    </div>
+    <span class="issue-action">ACTION: Research whether Allen Nichols married twice. Do not merge. Flag both records until confirmed.</span>
+  </div>
+
+  <div class="issue-card duplicate">
+    <span class="priority high">HIGH PRIORITY — DATA ERROR</span>
+    <span class="issue-name">Delphia Lilly — Dual Father Assignment</span>
+    <div class="issue-body">
+      The GEDCOM attaches the same children — John Lilly Sr. and Ora Lee Lilly — to TWO different fathers: Willie Nichols AND John Silley. This is a data error. One man fathered these children. Both cannot be correct.<br><br>
+      Delphia Lilly is documented in one family record as married to Willie Nichols and in another as connected to John Silley for the same children.
+    </div>
+    <span class="issue-action">ACTION: Identify through primary source whether the father of John Lilly Sr. was Willie Nichols or John Silley. Correct the GEDCOM before updating the website.</span>
+  </div>
+
+  <div class="issue-card duplicate">
+    <span class="priority high">HIGH PRIORITY</span>
+    <span class="issue-name">Molley — Disconnected GEDCOM Record</span>
+    <div class="issue-body">
+      The authoritative Molley is confirmed: mother of Patience and Rachel — documented in the Newberry County South Carolina community 1793-1795 — the founding ancestor of the direct line.<br><br>
+      A second Molley individual record exists in the GEDCOM with no family connections — not linked to any family group. This disconnected record has no unique attributes documented.
+    </div>
+    <span class="issue-action">ACTION: Check the disconnected Molley record for any unique attributes, dates, or sources. If none, and if it has no attributes that distinguish it from the confirmed Molley, delete as a duplicate entry.</span>
+  </div>
+
+  <div class="issue-card duplicate">
+    <span class="priority high">HIGH PRIORITY</span>
+    <span class="issue-name">Harriet — Disconnected GEDCOM Record</span>
+    <div class="issue-body">
+      Harriet is documented as a daughter of Clarissa — in the core ancestral line through Patience.<br><br>
+      A second Harriet individual record exists in the GEDCOM with no family connections. Same disambiguation issue as the disconnected Molley record.
+    </div>
+    <span class="issue-action">ACTION: Check the disconnected Harriet record for any unique attributes. If none, determine whether it represents the same Harriet (daughter of Clarissa) and merge, or delete as a duplicate entry.</span>
+  </div>
+
+  <div class="issue-card duplicate">
+    <span class="priority medium">MEDIUM PRIORITY</span>
+    <span class="issue-name">William King — Two GEDCOM Records</span>
+    <div class="issue-body">
+      <strong>Record 1:</strong> William King — husband of Anna Nichols — father of Charlie King, Frank King, Hattie King, William King Jr., Rosa King, George King, Andro King, Girtrude King.<br><br>
+      <strong>Record 2:</strong> A second William King individual record with unclear family connections.
+    </div>
+    <span class="issue-action">ACTION: Determine whether the second William King record has any unique attributes. If not, delete as a duplicate of the Anna Nichols husband.</span>
+  </div>
+
+  <div class="issue-card duplicate">
+    <span class="priority medium">MEDIUM PRIORITY</span>
+    <span class="issue-name">John Lilly Sr. — Two Family Records</span>
+    <div class="issue-body">
+      John Lilly Sr. appears in two family records: one with children Madeline Regina Lilly Ph.D and Regine Lilly (with wife Lugene Lilly née Knott), and a separate record with child John Lilly Jr. (different family structure).<br><br>
+      This may be correct — John Lilly Jr. from a different relationship — or a data entry error.
+    </div>
+    <span class="issue-action">ACTION: Confirm whether John Lilly Jr. is John Sr.'s son from a separate relationship. If yes, document both family records correctly. If a data entry error, correct the GEDCOM.</span>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB 5 — MISSING FROM GEDCOM -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="panel-missing">
+<div class="prose-section">
+  <span class="section-label">People Confirmed by Primary Source · Not Yet in GEDCOM</span>
+  <span class="section-title">Missing from the GEDCOM — Ready to Add</span>
+  <p class="body-text">These people are confirmed by primary source document or by DNA evidence and are documented in this research archive — but have not yet been added to the Nichols_Slave_Tree.ged. The GEDCOM is a research working tool, not the completed archive. These people belong in it. Each entry below includes the primary source citation that confirms them.</p>
+</div>
+<div style="max-width:900px;margin:0 auto;padding:0 24px 48px;">
+
+  <div class="issue-card">
+    <span class="priority urgent">ADD NOW — CONFIRMED BY PRIMARY SOURCE</span>
+    <span class="issue-name">Henry Nichols — Infant Son of Joseph and Easter Bell (born April 1870)</span>
+    <div class="issue-body">
+      Confirmed by 1870 census Page 38 Line 1 Dwelling 277 (continued) Beat 1 Austin County Texas — enumerated July 1, 1870 — Henry Nicholas — age 2/12 — male — Black — born April 1870 — Texas. He is the continuation of the Joseph and Easter Nichols household from the preceding page. Absent from the 1880 census — died between 1870 and 1880. Easter Bell's son who did not survive childhood.<br><br>
+      <strong>Add to GEDCOM as:</strong> Henry Nichols · born April 1870 · Austin County TX · died ca. 1871-1879 · son of Joseph Nichols and Easter Bell Nichols · 1870 census Page 38 Line 1 as primary source. Label clearly as INFANT — distinct from Henry Nichols the adult (born ca. 1839).
+    </div>
+    <span class="issue-action">Primary Source: 1870 U.S. Federal Census — Beat 1, Austin County TX — Page 38, Line 1 — Dwelling 277 (continued) — Enumerator Samuel Green — enumerated July 1, 1870</span>
+  </div>
+
+  <div class="issue-card">
+    <span class="priority urgent">ADD NOW — CONFIRMED BY PRIMARY SOURCE</span>
+    <span class="issue-name">Louisa Nichols (born ca. 1859 — daughter of Henry Nichols and Delia Manning)</span>
+    <div class="issue-body">
+      Confirmed by 1880 census Precinct 1 Austin County TX — Dwelling 108 — Line 12 — Louisa Nichols — age 21 — Daughter — Single — At Home — born Texas — Father: Texas — Mother: Texas. She is Henry Nichols's daughter from his first marriage to Delia Manning (married December 28, 1865). She was born ca. 1859 — before the formal marriage registration, consistent with a child born during enslavement.<br><br>
+      In 1880 she is a 21-year-old single woman living in Henry's household with her infant daughter Purney.
+    </div>
+    <span class="issue-action">Primary Source: 1880 U.S. Federal Census — Precinct 1, Austin County TX — Dwelling 108 — Line 12 — Relation: Daughter</span>
+  </div>
+
+  <div class="issue-card">
+    <span class="priority urgent">ADD NOW — CONFIRMED BY PRIMARY SOURCE</span>
+    <span class="issue-name">Purney Nichols (born February 1880 — daughter of Louisa Nichols)</span>
+    <div class="issue-body">
+      Confirmed by 1880 census Precinct 1 Austin County TX — Dwelling 108 — Line 13 — Purney Nichols — age 3/12 — Daughter — born Texas — February birth month recorded. She is Louisa Nichols's infant daughter. Father not recorded. Born approximately February 1880 in Austin County Texas.<br><br>
+      She is Henry Nichols's granddaughter, Delia Manning's granddaughter, and if the brother hypothesis is correct, Easter Bell Nichols's grandniece.
+    </div>
+    <span class="issue-action">Primary Source: 1880 U.S. Federal Census — Precinct 1, Austin County TX — Dwelling 108 — Line 13 — Relation: Daughter (to Louisa) — February 1880 birth</span>
+  </div>
+
+  <div class="issue-card">
+    <span class="priority high">HIGH PRIORITY — CONFIRM AND ADD</span>
+    <span class="issue-name">Annie Nichols / Annie Nichols-King (possible daughter of Joseph and Easter)</span>
+    <div class="issue-body">
+      Surfaced through DNA research — Dalvius M. King-Harvy's great-grandfather Joseph King's death certificate names "Annie Nichols-King" as a parent. Dalvius King-Harvy matched John Armstrong and Jasmine M. Lee on AncestryDNA, suggesting a connection through the Armstrong-Nichols line.<br><br>
+      Annie Nichols appears on the website easter_story.html as a child of Joseph and Easter but is NOT in the GEDCOM. The website lists nine children — the GEDCOM lists six. Annie is one of the three discrepancies.<br><br>
+      <strong>Do not add to GEDCOM until the Joseph King death certificate is obtained from Dalvius King-Harvy and independently verified.</strong>
+    </div>
+    <span class="issue-action">Next Step: Respond to Dalvius M. King-Harvy — ask for the Joseph King death certificate showing "Annie Nichols-King" as parent — verify independently before adding to GEDCOM.</span>
+  </div>
+
+  <div class="issue-card">
+    <span class="priority high">HIGH PRIORITY — CONFIRM AND ADD</span>
+    <span class="issue-name">Mabel Nichols (listed on website as child of Joseph and Easter — not in GEDCOM)</span>
+    <div class="issue-body">
+      The website easter_story.html lists Mabel Nichols as a child of Joseph and Easter Bell Nichols. The GEDCOM does not include her. The discrepancy between the website (9 children) and the GEDCOM (6 children) includes Mabel, Annie, and Henry the infant.<br><br>
+      No primary source has been identified that names Mabel as Joseph and Easter's child.
+    </div>
+    <span class="issue-action">Next Step: Identify the primary source that names Mabel Nichols as Joseph and Easter's child. Do not add to GEDCOM without it. If no primary source exists, remove Mabel from the website listing until confirmed.</span>
+  </div>
+
+  <div class="issue-card">
+    <span class="priority high">HIGH PRIORITY</span>
+    <span class="issue-name">Henry Nichols the Adult — Needs Clean GEDCOM Entry</span>
+    <div class="issue-body">
+      Henry Nichols (born ca. 1839, Texas, Father Tennessee, Mother Tennessee) is confirmed by: 1870 census Dwelling 578 Beat 1 Austin County; 1880 census Precinct 1 Dwelling 108; marriage to Delia Manning December 28, 1865; marriage to Emeline Georgia January 23, 1879 — FHL Film 1019274 Texas Select County Marriage Index.<br><br>
+      The GEDCOM may have him but his parentage is incorrectly assigned — he appears as a child of Amanda Nichols in one record, which would make him Joseph's brother through Amanda. The hypothesis is that Henry and Joseph are brothers but this has not been confirmed by primary source. His parentage field should say Unknown — not Amanda Nichols — until confirmed.
+    </div>
+    <span class="issue-action">Next Step: Correct GEDCOM entry for adult Henry Nichols — parents: Unknown (Father Tennessee-born, Mother Tennessee-born per 1880 census) — marriages: Delia Manning December 28 1865 and Emeline Georgia January 23 1879 — children: Louisa Nichols.</span>
+  </div>
+
+  <div class="issue-card">
+    <span class="priority medium">MEDIUM PRIORITY</span>
+    <span class="issue-name">Benjamin Edwards (born ca. 1848) and Bettie Edwards (born ca. 1849)</span>
+    <div class="issue-body">
+      Confirmed by Mary Ann Ballard death certificate (State File No. 13962) — parents listed as Benjamin Edwards and Bettie (maiden name unknown). Also confirmed by AncestryDNA ThruLines. Benjamin and Bettie are the parents of Mary Ann Edwards who married Rev. George W. Ballard. Buried at Waco Colored Cemetery, McLennan County. A Texas census search for Benjamin Edwards with wife Bettie in McLennan County is the recommended next step.
+    </div>
+    <span class="issue-action">Primary Source: Mary Ann Ballard death certificate State File No. 13962 — parents: Benjamin Edwards and Bettie. Next Step: Texas census search for Benjamin Edwards and Bettie in McLennan County.</span>
+  </div>
+
+  <div class="issue-card" style="border-left-color:rgba(26,74,122,0.5);">
+    <span class="priority medium" style="background:rgba(26,74,122,0.15);color:#70a0c0;">DNA THREAD — DO NOT ADD TO GEDCOM YET</span>
+    <span class="issue-name">Ester Nicholas / Esther Sam — St. Croix, Danish West Indies (open hypothesis)</span>
+    <div class="issue-body">
+      Confirmed by three independent primary sources — National Archives M1883 Roll 2 RG 55; Denmark Free Colored Censuses 1815-1832 Record No. 1395; Register of Black Communicants St. Croix April 23, 1826. She is real. Her life in St. Croix is documented. Whether she connects to Easter Bell Nichols of Texas has NOT been confirmed by primary source.<br><br>
+      DNA triangulation through astewart277 (15 cM) and Erika Love (12 cM) — both pointing to the Ovile Nicholas family in Saint James and Ascension Parishes Louisiana — suggests a biological connection between Hjordis and the Louisiana Nicholas community that may trace to Ester Nicholas. The documentary bridge from St. Croix 1826 to Texas 1838 has not been found.<br><br>
+      See the Ester Nicholas tab on this page and ester_nicholas.html for the full documented research thread.
+    </div>
+    <span class="issue-action">DO NOT ADD TO GEDCOM. Document on ester_nicholas.html as confirmed primary source research with honest hypothesis framing. Add to GEDCOM only when a primary source bridge document is found connecting the St. Croix Nicholas family to the Texas Nichols community.</span>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- TAB 6 — ESTER NICHOLAS -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="tab-panel" id="panel-ester-nicholas">
+<div class="prose-section">
+  <span class="section-label">Open Research Thread · St. Croix, Danish West Indies · 1819-1826</span>
+  <span class="section-title">Ester Nicholas · Morning Star Plantation</span>
+  <p class="body-text">This tab summarizes the confirmed primary sources for Ester Nicholas of St. Croix and the DNA evidence pointing toward a connection with this family. For the full research page see <a href="ester_nicholas.html" style="color:var(--gold);">ester_nicholas.html</a>. The connection to Easter Bell Nichols of Texas is documented as a hypothesis — not confirmed. The primary sources for Ester Nicholas herself are confirmed.</p>
+  <p class="body-text" style="background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);padding:14px 18px;margin-top:16px;"><strong style="color:var(--parchment);">Three names — three different people.</strong> Esther Sam / Ester Nicholas (St. Croix, freed 1819) · Easter Bell Nichols (Bellville TX, born 1838) · The Louisiana Nicholas families (Ascension and Saint James Parishes, DNA match to Hjordis). These are three separate research threads that may or may not connect.</p>
+</div>
+
+<div style="max-width:900px;margin:0 auto;padding:0 24px 48px;">
+
+  <div class="deed-card" style="border-color:rgba(201,168,76,0.35);">
+    <span class="deed-ref">National Archives M1883, Roll 2 — Record Group 55</span>
+    <span class="deed-date">April 1, 1819 — Free Brief January 14, 1820</span>
+    <span class="deed-title">Freedom Charter — Esther Sam / Ester Nicholas — Morning Star Plantation, St. Croix</span>
+    <p class="deed-people">Line 37 — <strong>Esther Sam</strong> — Negro/Black — Morning Star Plantation — Administrator: H.C. Francis — Freed by A.C. Fibiger April 1, 1819 — Read in court June 29, 1819 — Free Brief issued January 14, 1820 — Recorded as <strong>Ester Nicholas</strong> — Record No. 1395. Grouped with Sarah M. v. Berger (Mulatto, Line 35), Rebecca C. Canter (Mustee, Line 36), Juliana Wilhelm (Mulatto, Line 38).</p>
+    <div class="deed-significance"><strong>CONFIRMED PRIMARY SOURCE.</strong> Her name in bondage was Esther Sam. Her name in freedom was Ester Nicholas. She was the only one of the four women classified as Negro — fully African ancestry. She received her freedom at approximately age 38 (born ca. 1781 on Paulus Plantation).</div>
+  </div>
+
+  <div class="deed-card">
+    <span class="deed-ref">Denmark, Free Colored Censuses 1815-1832 — Record No. 1395</span>
+    <span class="deed-date">1820</span>
+    <span class="deed-title">Free Colored Census — Ester Nicholas — St. Croix, Danish West Indies</span>
+    <p class="deed-people"><strong>Ester Nicholas</strong> — Female — Negro — Free — Occupation: Domestic (Husarbejde in Danish) — Freed by A.C. Fibiger 1819 — Not registered in 1816 census (was enslaved then). Others in record: John · Charles · Latticia · Louise · Anna Maria Rosina · Salomon · Baltazar · Maria · Peggy Thompson · Penny · Andrew Gordon · Madlane · Cecilia · Maria Wright · Joseph Salomon · Nancy · Johan Peter Recenke · Betsy · Less</p>
+    <div class="deed-significance"><strong>CONFIRMED PRIMARY SOURCE.</strong> Confirms her freedom status, occupation, and community. The name Joseph Salomon in the household group may connect to the "Sam" identifier in her bondage name — Esther Sam potentially meaning Esther associated with Salomon/Sam.</div>
+  </div>
+
+  <div class="deed-card" style="border-color:rgba(201,168,76,0.35);">
+    <span class="deed-ref">Danish West Indies Records RG 55 — National Archives</span>
+    <span class="deed-date">July 1, 1819 — Christiansted, St. Croix</span>
+    <span class="deed-title">Pantebog/Skøde — Formal Deed — Names Nicholas and Pheabe as Ancestral Couple</span>
+    <p class="deed-people">Key passage (Danish): <strong>"...navnlig Nicholas og Pheabe og dernes Afkom..."</strong> — namely Nicholas and Pheabe and their descendants. Central figure: Susanna Smith (free woman of color). Named heirs: Robert, Paul, Margareth, Isabella Grant. Legal principal: Ann Mary Robertson. Curator: William Purcell. Witnesses: <strong>H.C. Francis</strong> and E.H. Colbiörnsen.</p>
+    <div class="deed-significance"><strong>FOUNDATIONAL.</strong> Nicholas is a PERSON — a man — paired with a woman named Pheabe. Their descendants are legally registered. Ester Sam took the surname Nicholas because she descended from this Nicholas. H.C. Francis witnesses this registration three months after Ester's freedom — the same Morning Star administrator.</div>
+  </div>
+
+  <div class="deed-card">
+    <span class="deed-ref">Register of Black Communicants — St. Croix</span>
+    <span class="deed-date">April 23, 1826 — Morning Star Estate — Administrator: Mad. Seold</span>
+    <span class="deed-title">Holy Communion Record — Ester Sam · Line 177 · Morning Star · Free</span>
+    <p class="deed-people">Line 177: <strong>Ester Sam</strong> (also known as Ester Nicholas) — Negro — Free — taking Holy Communion at Morning Star estate. Same page: Catharine Deisler (Mulatto) · Julia M de Francis (Mulatto) · Sophia F de Francis (Samboe) · Thomas Petersen (Negro) · Anna M M Morgen (Mustee).</p>
+    <div class="deed-significance"><strong>LAST CONFIRMED PRIMARY SOURCE FOR ESTER NICHOLAS.</strong> She is alive, free, and part of the Morning Star community seven years after her freedom. The de Francis names (Julia and Sophia) connect to H.C. Francis. After April 1826 no further primary source has been found in American digital records.</div>
+  </div>
+
+  <div class="deed-card">
+    <span class="deed-ref">AncestryDNA — Hjordis L. Corbin Kit SQ8499767</span>
+    <span class="deed-date">Ongoing — 2019-2026</span>
+    <span class="deed-title">DNA Evidence — Nicholas Surname Matches — Triangulated Connection to Louisiana Nicholas Family</span>
+    <p class="deed-people">19 total Nicholas surname matches. <strong>Triangulated matches:</strong> astewart277 (15 cM) — public tree — Ovile Nicholas (1886-1978) Saint James Parish LA → Lilly Nicholas (1920-2006) Gonzales Ascension Parish LA. Erika Love (12 cM) — public tree — Ovile Nicholas Jr. + Ovile Nicholas Sr. + Emily Napolean (born 1851 died November 19, 1919). Both independent matches point to the same Ovile Nicholas family — confirmed triangulation.</p>
+    <div class="deed-significance"><strong>DNA ONLY — not yet confirmed by documentary evidence.</strong> The Louisiana Nicholas community in Ascension, Iberville, Saint James, and Feliciana Parishes shares DNA with Hjordis and occupies the geographic and temporal corridor consistent with descendants of Ester Nicholas migrating from St. Croix through New Orleans. The documentary bridge between St. Croix 1826 and Louisiana 1870 has not been found. At 15 cM the shared ancestor is approximately 4-5 generations back from Hjordis — placing the common ancestor ca. 1820s-1850s, consistent with Ester Nicholas's generation.</div>
+  </div>
+
+  <div class="deed-card" style="border-left:3px solid rgba(201,168,76,0.4);">
+    <span class="deed-ref">Open Research Thread</span>
+    <span class="deed-date">Next Steps</span>
+    <span class="deed-title">What Needs to Happen to Advance This Thread</span>
+    <p class="deed-people">1. Message awaiting response from djshook47 (41 cM — may be Ballard not Nicholas — shared matches include Ronnie Corbin 1,660 cM and Brendyal Corbin 1,068 cM through Margie Nell Ballard Corbin). 2. Contact Erika Love — ask for Ovile Nicholas Sr.'s parents. 3. Danish National Archives (Rigsarkivet Copenhagen) — Morning Star plantation journals — if Ester had children after 1826. 4. Search St. Croix baptismal records 1819-1835 for children of Ester Sam or Ester Nicholas. 5. Search Louisiana arrival records 1820-1840 for Nicholas family from St. Croix.</p>
+    <div class="deed-significance">American digital records have been exhausted for this thread. The next steps require either DNA match responses or Danish colonial archive research. The ester_nicholas.html page documents this thread completely and honestly.</div>
+  </div>
+
+</div>
+</div>
+
+<script>
+// ── DATA ──
+// Full 149-person dataset
+const people = [
+  // Format: [id, name, born, died, father, mother, spouses, children, status, notes, isDirect]
+  ["I001","Molley","ca. 1750","Unknown","Unknown","Unknown","—","Patience, Rachel","confirmed","1793 Newberry County SC deed community; 1795 Debt Sale Deed Book C — Moll and Patience together",true],
+  ["I002","Patience","ca. 1765–1780","Unknown","Unknown","Molley","—","Clarissa","confirmed","Deed Book C: 367-368 — August 4 1795 — Francis Davenport Sr. to Patty Waldrop — Newberry County SC",true],
+  ["I003","Rachel","Unknown","Unknown","Unknown","Molley","—","—","hypothesis","Mentioned alongside Patience as Molley's child",false],
+  ["I004","Clarissa","ca. 1807","Unknown","Unknown","Patience","—","Amanda Nichols, William, Harriet","confirmed","1839 Rankin County MS deed — transferred with children to Fanny Waldrop Nichols of Austin County TX",true],
+  ["I005","Rendy Blayn","ca. 1815","Unknown","Unknown","Unknown","—","Easter Bell Nichols","hypothesis","Easter Bell Nichols death certificate December 17 1935 — names mother as Rendy Blayn — Texas Death Certificate. Origin unresolved.",true],
+  ["I006","Easter Bell Nichols","July 4, 1838","December 17, 1935","Unknown","Rendy Blayn","Joseph Nichols; Hannibal Pink","Allen, Anna, Josephine, Oscar, Henry (infant d.), Helen, Clarar, Willie, Katie Thorton","confirmed","1870 census Dwelling 277 Beat 1 Austin County; 1880 census Precinct 1; death certificate December 17 1935; December 18 1865 marriage record; Jeff Cemetery Bellville TX",true],
+  ["I007","Joseph Nichols","ca. 1843","ca. 1905","Unknown — Amanda Nichols hypothesized","Amanda Nichols (hypothesis)","Easter Bell Nichols","Allen, Anna, Josephine, Oscar, Henry (infant), Helen, Clarar, Willie","hypothesis","1870 census; 1880 census; 1865 marriage record. Parentage as Amanda's son is hypothesis — not confirmed by primary source.",false],
+  ["I008","Hellen Nichols Armstrong","September 1870","December 5, 1931","Joseph Nichols","Easter Bell Nichols","John Armstrong","Eva Armstrong","confirmed","1900 Austin County census; 1910 Fort Worth census; 1931 death certificate Austin County TX — cause Pellagra 2:30am — informant Eva Ballard",true],
+  ["I009","John Armstrong","ca. 1872","ca. 1911 (murdered)","Dave Armstrong","Clara Morgan","Hellen Nichols","Eva Armstrong","confirmed","1900 Austin County census; marriage to Hellen Nichols; murdered Fort Worth ca. 1911",false],
+  ["I010","Eva Armstrong Ballard","1900","1977","John Armstrong","Hellen Nichols","James Wilson Ballard Sr.","James Wilson Ballard Jr., Margie Nell Ballard, Eloise Maud Ballard, Charles Ray Ballard, Bettie Jean Ballard","confirmed","Hellen Nichols death certificate (informant); 1900 Austin County census; 1910 Fort Worth census; 1954 San Antonio Light article",true],
+  ["I011","James Wilson Ballard Sr.","Unknown","Unknown","George W. Ballard","Mary Ann Edwards","Eva Armstrong","James Wilson Ballard Jr., Margie Nell Ballard, Eloise Maud Ballard, Charles Ray Ballard, Bettie Jean Ballard","confirmed","Ballard family documentation; marriage to Eva Armstrong",false],
+  ["I012","Margie Nell Ballard Corbin","1929","1988","James Wilson Ballard Sr.","Eva Armstrong","Norman Caswell Corbin; Charles R. Baker (unresolved)","Hjordis L. Corbin (and siblings)","confirmed","Family records; AncestryDNA shared match analysis",true],
+  ["I013","Norman Caswell Corbin","Unknown","Unknown","Unknown","Unknown","Margie Nell Ballard","—","open","No primary source documentation found",false],
+  ["I014","Hjordis L. Corbin","1960","Living","Unknown (paternity open)","Margie Nell Ballard","—","Jasmine M. Lee","confirmed","AncestryDNA Kit SQ8499767",true],
+  ["I015","Jasmine M. Lee","1982","Living","Unknown","Hjordis L. Corbin","—","—","confirmed","GEDmatch Kit QW8418781; Dock Ellis Foundation founder",true],
+  ["I016","Allen Nichols","ca. 1865","Unknown","Joseph Nichols","Easter Bell Nichols","Diana Nichols; Dora Nichols","Arthur Nichols, Ada Nichols, Allen Nichols Jr.","confirmed","1880 census Precinct 1 Austin County; marriage records",false],
+  ["I017","Anna Nichols","ca. 1868","Unknown","Joseph Nichols","Easter Bell Nichols","William King","Charlie King, Frank King, Hattie King, William King Jr., Rosa King, George King, Andro King, Girtrude King","confirmed","1880 census Precinct 1 Austin County",false],
+  ["I018","Josephine Nichols","ca. 1868","Unknown","Joseph Nichols","Easter Bell Nichols","Louis Biggs Pink","Leroy Greer, Hiwatha Pink, Hanibal Pink, Matthew Pink, Ceocie Pink","confirmed","1880 census Precinct 1 Austin County",false],
+  ["I019","Oscar Nichols","ca. 1870","Unknown","Joseph Nichols","Easter Bell Nichols","Clara Alexander","Walter Nichols","confirmed","1880 census Precinct 1 Austin County",false],
+  ["I020","Henry Nichols (infant)","April 1870","ca. 1871–1879","Joseph Nichols","Easter Bell Nichols","—","—","confirmed","1870 census Page 38 Line 1 Dwelling 277 Beat 1 Austin County — age 2/12 — born April 1870. MISSING FROM GEDCOM — needs to be added.",false],
+  ["I021","Clarar Nichols","ca. 1873","Unknown","Joseph Nichols","Easter Bell Nichols","John Nazy","Roy Nazy","confirmed","1880 census Precinct 1 Austin County",false],
+  ["I022","Willie Nichols","ca. 1884","Unknown","Joseph Nichols","Easter Bell Nichols","Delphia Lilly","John Lilly Sr., Ora Lee Lilly","confirmed","1880 census Precinct 1 Austin County",false],
+  ["I023","Katie Thorton","Unknown","Unknown","Unknown","Easter Bell Nichols (GED)","—","—","open","GED records Easter as mother. No primary source found. Relationship unconfirmed.",false],
+  ["I024","Amanda Nichols","ca. 1834","Unknown","Unknown","Clarissa","—","Henry Nichols, Joseph Nichols (hypothesis)","hypothesis","Circumstantial — Clarissa's daughter through the Waldrop-Nichols community",false],
+  ["I025","William (son of Clarissa)","Unknown","Unknown","Unknown","Clarissa","—","—","hypothesis","Listed in GEDCOM as Clarissa's child — no independent primary source",false],
+  ["I026","Harriet (daughter of Clarissa)","Unknown","Unknown","Unknown","Clarissa","—","—","hypothesis","Listed in GEDCOM as Clarissa's child — second disconnected Harriet record also in GED",false],
+  ["I027","Henry Nichols (adult — brother hypothesis)","ca. 1839","Unknown","Unknown (Father: Tennessee, Mother: Tennessee per 1880 census)","Unknown","Delia Manning (m. Dec 28 1865); Emeline Georgia (m. Jan 23 1879)","Louisa Nichols","hypothesis","1870 census Dwelling 578 Beat 1 Austin County; 1880 census Precinct 1 Dwelling 108; FHL Film 1019274 marriage records. BROTHER OF JOSEPH — hypothesis based on matching Tennessee parental birthplaces and December 1865 simultaneous marriages.",false],
+  ["I028","Louisa Nichols","ca. 1859","Unknown","Henry Nichols","Delia Manning","—","Purney Nichols","confirmed","1880 census Precinct 1 Austin County Dwelling 108 Line 12 — Daughter. MISSING FROM GEDCOM — needs to be added.",false],
+  ["I029","Purney Nichols","February 1880","Unknown","Unknown (not recorded)","Louisa Nichols","—","—","confirmed","1880 census Precinct 1 Austin County Dwelling 108 Line 13 — born February 1880. MISSING FROM GEDCOM — needs to be added.",false],
+  ["I030","George W. Ballard","Unknown","Unknown","Rev. George W. Ballard","Mary Ann Edwards","—","James Wilson Ballard Sr.","hypothesis","Ballard family documentation",false],
+  ["I031","Rev. George W. Ballard","Unknown","Unknown","Newton Ballard","Rebecca Ballard","Mary Ann Edwards","George W. Ballard","confirmed","McLennan County death certificate Vol 4 Page 483 (pending retrieval); Waco Colored Cemetery burial confirmed",false],
+  ["I032","Newton Ballard","ca. 1830","Unknown","Unknown","Unknown","—","Rev. George W. Ballard","hypothesis","1850 Smith County TX slave schedule — unnamed enslaved male age 20 born Mississippi in Lewis Frederick Ballard household. Named on Rev. George W. Ballard death certificate as father.",false],
+  ["I033","Mary Ann Edwards Ballard","Unknown","Unknown","Benjamin Edwards","Bettie Edwards","Rev. George W. Ballard","—","confirmed","Death certificate State File No. 13962 — parents Benjamin Edwards and Bettie. Buried Waco Colored Cemetery McLennan County.",false],
+  ["I034","Rebecca Ballard","Unknown","Unknown","Unknown","Unknown","Newton Ballard (hypothesis)","Rev. George W. Ballard","open","Origins permanently unresolvable — no primary source found after exhaustive search",false],
+  ["I035","Dave Armstrong","Unknown","Unknown","Unknown","Unknown","Clara Morgan","John Armstrong","confirmed","1868 Austin County marriage record — Dave Armstrong married Clara Morgan August 29 1868. Born South Carolina.",false],
+  ["I036","Clara Morgan Armstrong","ca. 1848","Unknown","Unknown","Unknown","Dave Armstrong","John Armstrong","confirmed","1868 Austin County marriage record. Born North Carolina ca. 1848.",false],
+  ["I037","George W Ballard (second GED record)","Unknown","Unknown","Unknown","Unknown","Helen Nichols (GED — needs disambiguation)","—","duplicate","DUPLICATE — second George W. Ballard record in GED — relationship to confirmed George W. Ballard unclear",false],
+  ["I038","Hannibal Pink","Unknown","Unknown","Unknown","Unknown","Easter Bell Nichols (after Joseph); Joel Pink; Jayell Pink; Eliza Miller","Louis Biggs Pink, Pearly Pink, John Thomas Pink","confirmed","Multiple family relationships in GED — confirmed in Bellville community records",false],
+  ["I039","Louis Biggs Pink","Unknown","Unknown","Hannibal Pink","Joel Pink or Jayell Pink","Josephine Nichols","Leroy Greer, Hiwatha Pink, Hanibal Pink, Matthew Pink, Ceocie Pink","confirmed","Family records",false],
+  ["I040","August Pink","Unknown","Unknown","Unknown","Unknown","Hattie Pink; Norcissa Pink","Willie Pink; (many children with Norcissa)","confirmed","Family records",false],
+  ["I041","Willie Pink","Unknown","Unknown","August Pink","Hattie Pink or Norcissa Pink","Jessie Lee Ward","Audrey Pink, B Y Pink, Willie M Pink, Bailey Pink, Mildred Pink","confirmed","Family records",false],
+  ["I042","Roberta Pink","Unknown","Unknown","August Pink","Norcissa Pink","Willie McDade","Ethel McDade, Samuel McDade, Narcisse McDade","confirmed","Family records",false],
+  ["I043","Willie McDade","Unknown","Unknown","Unknown","Unknown","Roberta Pink","Ethel McDade, Samuel McDade","confirmed","Family records",false],
+  ["I044","Steve McCree","Unknown","Unknown","Unknown","Unknown","Molly McCree","Winchester McCree, Mary McCree, Harrid McCree, Quille McCree","confirmed","Family records",false],
+  ["I045","Quille McCree","Unknown","Unknown","Steve McCree","Molly McCree","Roy Nazy","Beatrice Lee Nazy","confirmed","Family records",false],
+  ["I046","Roy Nazy","Unknown","Unknown","John Nazy","Clarar Nichols","Quille McCree; Lola Nazy; Zuilla Nazy; Pear G Nazy","Beatrice Lee Nazy; Dorothy Mae Nazy, Willie Nazy, Preston Nazy, Janice Nazy","confirmed","Multiple family relationships in GED",false],
+  ["I047","John Nazy","Unknown","Unknown","Jell Nezy","Unknown","Clarar Nichols","Roy Nazy","confirmed","Family records",false],
+  ["I048","Jell Nezy","Unknown","Unknown","Unknown","Unknown","Unknown","John Nazy","open","Origin unknown",false],
+  ["I049","Beatrice Lee Nazy","Unknown","Unknown","Roy Nazy","Quille McCree","Andrew J. Beamon","Bobby J. Taylor, Larene Beamon, Kenneth Lee Beamon","confirmed","Family records",false],
+  ["I050","Walter Nichols","Unknown","Unknown","Oscar Nichols","Clara Alexander","Donnie Robertson","Walter Louis Nichols, Lloyd Curtis Nichols, Everlin Nichols, Fay Lois Nichols","confirmed","Family records",false],
+  ["I051","Walter Louis Nichols","Unknown","Unknown","Walter Nichols","Donnie Robertson","Justine Smith","Ernest Lee Nichols","confirmed","Family records",false],
+  ["I052","Ernest Lee Nichols","Unknown","Unknown","Walter Louis Nichols","Justine Smith","—","—","confirmed","Family records",false],
+  ["I053","John Lilly Sr.","Unknown","Unknown","Willie Nichols (GED) OR John Silley (GED — DUPLICATE)","Delphia Lilly","Lugene Lilly (née Knott)","Madeline Regina Lilly Ph.D, Regine Lilly, John Lilly Jr.","duplicate","DUPLICATE — two fathers assigned in GED. One father must be confirmed by primary source.",false],
+  ["I054","Lugene Lilly (née Knott)","Unknown","Unknown","John Sidney Knott","Mattie L. Davidson","John Lilly Sr.","Madeline Regina Lilly Ph.D, Regine Lilly","confirmed","Family records",false],
+  ["I055","Madeline Regina Lilly Ph.D","Unknown","Unknown","John Lilly Sr.","Lugene Lilly","—","—","confirmed","Family records",false],
+  ["I056","John Sidney Knott","Unknown","Unknown","Unknown","Unknown","Mattie L. Davidson","Lugene Lilly, Virginia 'Virgie' Lee Knott, James Earl Knott, Johnnie Mae Knott, Marell Knott","confirmed","Family records",false],
+  ["I057","Patrick Alexander","Unknown","Unknown","Unknown","Unknown","Vina Taylor","Clara Alexander, S. Alexander, L. Alexander, A. N. Alexander","confirmed","Family records",false],
+  ["I058","Clara Alexander","Unknown","Unknown","Patrick Alexander","Vina Taylor","Oscar Nichols","Walter Nichols","confirmed","Family records",false],
+  ["I059","James Wilson Ballard Jr.","Unknown","Unknown","James Wilson Ballard Sr.","Eva Armstrong","Alice Faye Daniels","—","confirmed","Family records",false],
+  ["I060","Eloise Maud Ballard","Unknown","Unknown","James Wilson Ballard Sr.","Eva Armstrong","—","—","confirmed","Family records",false],
+  ["I061","Charles Ray Ballard","Unknown","Unknown","James Wilson Ballard Sr.","Eva Armstrong","—","—","confirmed","Family records",false],
+  ["I062","Bettie Jean Ballard","Unknown","Unknown","James Wilson Ballard Sr.","Eva Armstrong","—","—","confirmed","Family records",false],
+  ["I063","Charles R. Baker","Unknown","Unknown","Unknown","Unknown","Margie Nell Ballard","—","open","Relationship to Margie unresolved — may be earlier marriage or data entry error",false],
+  ["I064","Harriet (disconnected GED record)","Unknown","Unknown","Unknown","Unknown","—","—","duplicate","Disconnected GED record — no family connections — may duplicate Harriet daughter of Clarissa",false],
+  ["I065","Molley (disconnected GED record)","Unknown","Unknown","Unknown","Unknown","—","—","duplicate","Disconnected GED record — no family connections — may duplicate confirmed Molley ancestor",false],
+  ["I066","Zim Pink","Unknown","Unknown","Unknown","Unknown","—","—","open","In GED with no connections to main network",false],
+  ["I067","Martha Pink","Unknown","Unknown","Unknown","Unknown","—","—","open","In GED with no connections to main network",false],
+  ["I068","Allen Nichols (second GED record)","Unknown","Unknown","Unknown","Unknown","Dora Nichols","—","duplicate","Second Allen Nichols record — may be same person second marriage or different individual",false],
+  ["I069","William King (second GED record)","Unknown","Unknown","Unknown","Unknown","—","—","duplicate","Second William King record — needs disambiguation",false],
+  ["I070","John Silley","Unknown","Unknown","Unknown","Unknown","Delphia Lilly","John Lilly Sr., Ora Lee Lilly","duplicate","DUPLICATE FATHER — same children assigned to Willie Nichols AND John Silley. Must be resolved.",false],
+  ["I071","Diana Nichols","Unknown","Unknown","Unknown","Unknown","Allen Nichols","Arthur Nichols, Ada Nichols, Allen Nichols Jr.","open","Origin unknown",false],
+  ["I072","Dora Nichols","Unknown","Unknown","Unknown","Unknown","Allen Nichols (second record)","—","open","Origin unknown",false],
+  ["I073","Ada Nichols","Unknown","Unknown","Allen Nichols","Diana Nichols","Eliza Eldrich","—","open","Family records",false],
+  ["I074","Eliza Eldrich","Unknown","Unknown","Unknown","Unknown","Ada Nichols","—","open","Origin unknown",false],
+  ["I075","William King","Unknown","Unknown","Unknown","Unknown","Anna Nichols","Charlie King, Frank King, Hattie King, William King Jr., Rosa King, George King, Andro King, Girtrude King","open","King family — origin unknown",false],
+  ["I076","Donnie Robertson","Unknown","Unknown","Unknown","Unknown","Walter Nichols","Walter Louis Nichols, Lloyd Curtis Nichols, Everlin Nichols, Fay Lois Nichols","open","Origin unknown",false],
+  ["I077","Justine Smith","Unknown","Unknown","Unknown","Unknown","Walter Louis Nichols","Ernest Lee Nichols","open","Origin unknown",false],
+  ["I078","Delphia Lilly","Unknown","Unknown","Unknown","Unknown","Willie Nichols AND John Silley (DUPLICATE — data error)","John Lilly Sr., Ora Lee Lilly","duplicate","DUPLICATE FATHER ASSIGNMENT — same children given two fathers in GED",false],
+  ["I079","Fay Lois Nichols","Unknown","Unknown","Walter Nichols","Donnie Robertson","Ernest Lee Ward","—","confirmed","Family records",false],
+  ["I080","Ernest Lee Ward","Unknown","Unknown","Unknown","Unknown","Fay Lois Nichols","—","open","Origin unknown",false],
+  ["I081","Vina Taylor","Unknown","Unknown","Unknown","Unknown","Patrick Alexander","Clara Alexander, S. Alexander, L. Alexander, A. N. Alexander","open","Origin unknown",false],
+  ["I082","Jessie Lee Ward","Unknown","Unknown","Unknown","Unknown","Willie Pink","Audrey Pink, B Y Pink, Willie M Pink, Bailey Pink, Mildred Pink","open","Origin unknown",false],
+  ["I083","Alice Faye Daniels","Unknown","Unknown","Unknown","Unknown","James Wilson Ballard Jr.","—","open","Origin unknown",false],
+  ["I084","Mattie L. Davidson","Unknown","Unknown","Unknown","Unknown","John Sidney Knott","Lugene Lilly, Knott children","open","Origin unknown",false],
+  ["I085","Andrew J. Beamon","Unknown","Unknown","Unknown","Unknown","Beatrice Lee Nazy","Bobby J. Taylor, Larene Beamon, Kenneth Lee Beamon","open","Family records",false],
+  ["I086","Joel Pink / Jayell Pink","Unknown","Unknown","Unknown","Unknown","Hannibal Pink","Louis Biggs Pink, Pearly Pink","open","GED shows multiple entries",false],
+  ["I087","Eliza Miller","Unknown","Unknown","Unknown","Unknown","Hannibal Pink","John Thomas Pink","open","Origin unknown",false],
+  ["I088","John Thomas Pink","Unknown","Unknown","Hannibal Pink","Eliza Miller","Callie Terry","—","open","Family records",false],
+  ["I089","Benjamin Edwards","ca. 1848","Unknown","Unknown","Unknown","Bettie Edwards","Mary Ann Edwards","confirmed","Mary Ann Ballard death certificate State File No. 13962; AncestryDNA ThruLines",false],
+  ["I090","Norcissa Pink","Unknown","Unknown","Unknown","Unknown","August Pink","Leonice Keith, L J Pink, Roberta Pink, Francis Pink, Ermon Pink, Erma Pink, Hamon Pink, Nuly Bell Pink, Ruith E Pink, Nellie Mae Pink, Timothy Pink","open","Family records",false],
+  ["I091","Hattie Pink","Unknown","Unknown","Unknown","Unknown","August Pink","Willie Pink","open","Family records",false],
+  ["I092","Molly McCree","Unknown","Unknown","Unknown","Unknown","Steve McCree","Winchester McCree, Mary McCree, Harrid McCree, Quille McCree","open","Origin unknown",false],
+  ["I093","Lola Nazy","Unknown","Unknown","Unknown","Unknown","Roy Nazy","Dorothy Mae Nazy, Willie Nazy, Preston Nazy, Janice Nazy","open","Family records",false],
+  ["I094","Pearly Pink","Unknown","Unknown","Hannibal Pink","Joel or Jayell Pink","—","—","open","Family records",false],
+  ["I095","Lloyd Curtis Nichols","Unknown","Unknown","Walter Nichols","Donnie Robertson","—","—","confirmed","Family records",false],
+  ["I096","Everlin Nichols","Unknown","Unknown","Walter Nichols","Donnie Robertson","—","—","confirmed","Family records",false],
+  ["I097","Ora Lee Lilly","Unknown","Unknown","Willie Nichols OR John Silley","Delphia Lilly","—","—","duplicate","Same duplicate father issue as John Lilly Sr.",false],
+  ["I098","Regine Lilly","Unknown","Unknown","John Lilly Sr.","Lugene Lilly","—","—","confirmed","Family records",false],
+  ["I099","John Lilly Jr.","Unknown","Unknown","John Lilly Sr.","Unknown","—","—","open","Second family record for John Sr. — confirm parentage",false],
+  ["I100","Arthur Nichols","Unknown","Unknown","Allen Nichols","Diana Nichols","—","—","confirmed","Family records",false],
+  ["I101","Allen Nichols Jr.","Unknown","Unknown","Allen Nichols","Diana Nichols","—","—","confirmed","Family records",false],
+  ["I102","Leroy Greer","Unknown","Unknown","Unknown","Josephine Nichols","—","—","open","Father unknown",false],
+  ["I103","Hiwatha Pink","Unknown","Unknown","Louis Biggs Pink","Josephine Nichols","—","—","confirmed","Family records",false],
+  ["I104","Hanibal Pink Jr.","Unknown","Unknown","Louis Biggs Pink","Josephine Nichols","—","—","confirmed","Family records",false],
+  ["I105","Matthew Pink","Unknown","Unknown","Louis Biggs Pink","Josephine Nichols","—","—","confirmed","Family records",false],
+  ["I106","Ceocie Pink","Unknown","Unknown","Louis Biggs Pink","Josephine Nichols","—","—","confirmed","Family records",false],
+  ["I107","Charlie King","Unknown","Unknown","William King","Anna Nichols","—","—","confirmed","Family records",false],
+  ["I108","Frank King","Unknown","Unknown","William King","Anna Nichols","—","—","confirmed","Family records",false],
+  ["I109","Hattie King","Unknown","Unknown","William King","Anna Nichols","—","—","confirmed","Family records",false],
+  ["I110","William King Jr.","Unknown","Unknown","William King","Anna Nichols","—","—","confirmed","Family records",false],
+  ["I111","Rosa King","Unknown","Unknown","William King","Anna Nichols","—","—","confirmed","Family records",false],
+  ["I112","George King","Unknown","Unknown","William King","Anna Nichols","—","—","confirmed","Family records",false],
+  ["I113","Andro King","Unknown","Unknown","William King","Anna Nichols","—","—","confirmed","Family records",false],
+  ["I114","Girtrude King","Unknown","Unknown","William King","Anna Nichols","—","—","confirmed","Family records",false],
+  ["I115","Leonice Keith","Unknown","Unknown","August Pink","Norcissa Pink","—","—","confirmed","Family records",false],
+  ["I116","L J Pink","Unknown","Unknown","August Pink","Norcissa Pink","—","—","confirmed","Family records",false],
+  ["I117","Francis Pink","Unknown","Unknown","August Pink","Norcissa Pink","—","—","confirmed","Family records",false],
+  ["I118","Ermon Pink","Unknown","Unknown","August Pink","Norcissa Pink","—","—","confirmed","Family records",false],
+  ["I119","Erma Pink","Unknown","Unknown","August Pink","Norcissa Pink","—","—","confirmed","Family records",false],
+  ["I120","Hamon Pink","Unknown","Unknown","August Pink","Norcissa Pink","—","—","confirmed","Family records",false],
+  ["I121","Nuly Bell Pink","Unknown","Unknown","August Pink","Norcissa Pink","—","—","confirmed","Family records",false],
+  ["I122","Ruith E Pink","Unknown","Unknown","August Pink","Norcissa Pink","—","—","confirmed","Family records",false],
+  ["I123","Nellie Mae Pink","Unknown","Unknown","August Pink","Norcissa Pink","—","—","confirmed","Family records",false],
+  ["I124","Timothy Pink","Unknown","Unknown","August Pink","Norcissa Pink","—","—","confirmed","Family records",false],
+  ["I125","Audrey Pink","Unknown","Unknown","Willie Pink","Jessie Lee Ward","—","—","confirmed","Family records",false],
+  ["I126","B Y Pink","Unknown","Unknown","Willie Pink","Jessie Lee Ward","—","—","confirmed","Family records",false],
+  ["I127","Willie M Pink","Unknown","Unknown","Willie Pink","Jessie Lee Ward","—","—","confirmed","Family records",false],
+  ["I128","Bailey Pink","Unknown","Unknown","Willie Pink","Jessie Lee Ward","—","—","confirmed","Family records",false],
+  ["I129","Mildred Pink","Unknown","Unknown","Willie Pink","Jessie Lee Ward","—","—","confirmed","Family records",false],
+  ["I130","Ethel McDade","Unknown","Unknown","Willie McDade","Roberta Pink","—","—","confirmed","Family records",false],
+  ["I131","Samuel McDade","Unknown","Unknown","Willie McDade","Roberta Pink","—","—","confirmed","Family records",false],
+  ["I132","Narcisse McDade","Unknown","Unknown","Unknown","Roberta Pink","—","—","open","Father unknown",false],
+  ["I133","Winchester McCree","Unknown","Unknown","Steve McCree","Molly McCree","—","—","confirmed","Family records",false],
+  ["I134","Mary McCree","Unknown","Unknown","Steve McCree","Molly McCree","—","—","confirmed","Family records",false],
+  ["I135","Harrid McCree","Unknown","Unknown","Steve McCree","Molly McCree","—","—","confirmed","Family records",false],
+  ["I136","Bobby J. Taylor","Unknown","Unknown","Andrew J. Beamon","Beatrice Lee Nazy","—","—","confirmed","Family records",false],
+  ["I137","Larene Beamon","Unknown","Unknown","Andrew J. Beamon","Beatrice Lee Nazy","—","—","confirmed","Family records",false],
+  ["I138","Kenneth Lee Beamon","Unknown","Unknown","Andrew J. Beamon","Beatrice Lee Nazy","—","—","confirmed","Family records",false],
+  ["I139","Dorothy Mae Nazy","Unknown","Unknown","Roy Nazy","Lola Nazy","—","—","confirmed","Family records",false],
+  ["I140","Willie Nazy","Unknown","Unknown","Roy Nazy","Lola Nazy","—","—","confirmed","Family records",false],
+  ["I141","Preston Nazy","Unknown","Unknown","Roy Nazy","Lola Nazy","—","—","confirmed","Family records",false],
+  ["I142","Janice Nazy","Unknown","Unknown","Roy Nazy","Lola Nazy","—","—","confirmed","Family records",false],
+  ["I143","Virginia 'Virgie' Lee Knott","Unknown","Unknown","John Sidney Knott","Mattie L. Davidson","—","—","confirmed","Family records",false],
+  ["I144","James Earl Knott","Unknown","Unknown","John Sidney Knott","Mattie L. Davidson","—","—","confirmed","Family records",false],
+  ["I145","Johnnie Mae Knott","Unknown","Unknown","John Sidney Knott","Mattie L. Davidson","—","—","confirmed","Family records",false],
+  ["I146","Marell Knott","Unknown","Unknown","John Sidney Knott","Mattie L. Davidson","—","—","confirmed","Family records",false],
+  ["I147","Bettie Edwards","ca. 1849","Unknown","Unknown","Unknown","Benjamin Edwards","Mary Ann Edwards","confirmed","Mary Ann Ballard death certificate State File No. 13962",false],
+  ["I148","Rebecca Ballard","Unknown","Unknown","Unknown","Unknown","Newton Ballard (hypothesis)","Rev. George W. Ballard","open","Origins unresolvable — post-1870 record closed",false],
+  ["I149","Zuilla Nazy","Unknown","Unknown","Unknown","Unknown","Roy Nazy","—","open","Family records",false],
+];
+
+const BADGE_HTML = {
+  confirmed: '<span class="badge ev-confirmed">✓ Confirmed</span>',
+  hypothesis: '<span class="badge ev-hypothesis">~ Hypothesis</span>',
+  open: '<span class="badge ev-open">? Open</span>',
+  "dna only": '<span class="badge ev-dna">⌀ DNA Only</span>',
+  duplicate: '<span class="badge ev-duplicate">⚠ Duplicate</span>',
+  missing: '<span class="badge ev-missing">✗ Missing</span>',
+};
+
+function renderTable(data) {
+  const tbody = document.getElementById('peopleBody');
+  tbody.innerHTML = '';
+  data.forEach(p => {
+    const [id,name,born,died,father,mother,spouses,children,status,notes,isDirect] = p;
+    const badge = BADGE_HTML[status] || `<span class="badge">${status}</span>`;
+    const tr = document.createElement('tr');
+    if (isDirect) tr.classList.add('direct-line-row');
+    tr.dataset.status = status;
+    tr.dataset.search = [id,name,born,died,father,mother,spouses,children,status,notes].join(' ').toLowerCase();
+    tr.innerHTML = `
+      <td class="mono">${id}</td>
+      <td class="name-col${isDirect?' direct':''}">${name}</td>
+      <td class="mono">${born}</td>
+      <td class="mono">${died}</td>
+      <td>${father}</td>
+      <td>${mother}</td>
+      <td>${spouses}</td>
+      <td>${children}</td>
+      <td>${badge}</td>
+      <td class="notes">${notes}</td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+renderTable(people);
+
+// ── FILTER ──
+let currentFilter = 'all';
+let currentSearch = '';
+
+function filterTable(status) {
+  currentFilter = status;
+  document.querySelectorAll('.legend-item').forEach(el => el.classList.remove('active-filter'));
+  event.target.classList.add('active-filter');
+  applyFilters();
+}
+
+function searchTable() {
+  currentSearch = document.getElementById('searchInput').value.toLowerCase();
+  applyFilters();
+}
+
+function applyFilters() {
+  document.querySelectorAll('#peopleBody tr').forEach(tr => {
+    const statusMatch = currentFilter === 'all' || tr.dataset.status === currentFilter;
+    const searchMatch = !currentSearch || tr.dataset.search.includes(currentSearch);
+    tr.classList.toggle('hidden', !(statusMatch && searchMatch));
+  });
+}
+
+// ── SORT ──
+let sortDir = {};
+function sortTable(col) {
+  const tbody = document.getElementById('peopleBody');
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  const dir = sortDir[col] === 1 ? -1 : 1;
+  sortDir[col] = dir;
+  rows.sort((a,b) => {
+    const va = a.cells[col]?.textContent.trim() || '';
+    const vb = b.cells[col]?.textContent.trim() || '';
+    return va.localeCompare(vb) * dir;
+  });
+  rows.forEach(r => tbody.appendChild(r));
+  document.querySelectorAll('thead th').forEach((th,i) => {
+    th.classList.remove('sort-asc','sort-desc');
+    if (i === col) th.classList.add(dir === 1 ? 'sort-asc' : 'sort-desc');
+  });
+}
+
+// ── TABS ──
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+  document.getElementById('search-wrap').style.display = id === 'all-people' ? 'block' : 'none';
+}
+</script>
+
+<script src="sidebar.js"></script>
+</body>
+</html>

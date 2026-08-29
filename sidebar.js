@@ -46,6 +46,7 @@
       label: 'The Archive',
       items: [
         { href: 'family_tree.html',           text: 'Full Family Archive',      note: 'The complete record' },
+        { href: 'family_database.html',        text: 'Family Database',             note: 'All 149 people · Evidence audit' },
         { href: 'registry.html',              text: 'Enslaved Persons Registry', note: '200+ named individuals' },
         { href: 'papertrail.html',            text: 'Document Gallery',          note: 'Primary sources' },
         { href: 'john_nichols_community.html',text: 'John Nichols Community',    note: 'The Bellville household' },

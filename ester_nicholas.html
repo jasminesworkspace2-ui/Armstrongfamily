@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ester Nicholas · Morning Star · St. Croix · Armstrong Family Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="overrides.css">
+<style>
+  :root {
+    --deep:#080604;--gold:#c9a84c;--cream:#f5f2ec;--parchment:#f0ead8;
+    --muted:rgba(245,242,236,0.45);--border:rgba(201,168,76,0.15);
+    --border2:rgba(255,255,255,0.06);
+    --f-display:'DM Serif Display',Georgia,serif;
+    --f-body:'Inter',sans-serif;--f-mono:'Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;}
+
+  .gnav{position:sticky;top:0;z-index:100;background:rgba(8,6,4,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(8px);}
+  .gnav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:52px;gap:8px;}
+  .gnav-brand{font-family:var(--f-display);font-style:italic;font-size:15px;color:rgba(240,234,216,0.8);text-decoration:none;white-space:nowrap;}
+  .gnav-links{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;}
+  .gnav-links::-webkit-scrollbar{display:none;}
+  .gnav-link{font-family:var(--f-mono);font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;padding:6px 9px;white-space:nowrap;border-bottom:2px solid transparent;}
+  .gnav-link:hover{color:rgba(245,242,236,0.85);}
+  .gnav-link.active{color:#c9a84c;border-bottom-color:#c9a84c;}
+  .gnav-link.gstart{color:#c9a84c;border:1px solid rgba(201,168,76,0.35);padding:5px 9px;margin-right:4px;}
+
+  .breadcrumb{background:rgba(14,11,8,0.8);border-bottom:1px solid rgba(255,255,255,0.04);padding:7px 24px;font-family:var(--f-mono);font-size:9px;letter-spacing:1px;color:rgba(245,242,236,0.3);}
+  .breadcrumb a{color:rgba(245,242,236,0.4);text-decoration:none;}
+  .breadcrumb span{color:rgba(255,255,255,0.18);margin:0 6px;}
+
+  /* HERO */
+  .hero{max-width:800px;margin:0 auto;padding:64px 24px 48px;text-align:center;}
+  .hero-eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(201,168,76,0.55);display:block;margin-bottom:18px;}
+  .hero-name{font-family:var(--f-display);font-size:clamp(36px,7vw,72px);font-style:italic;color:var(--parchment);display:block;line-height:1.05;margin-bottom:8px;}
+  .hero-also{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.3);display:block;margin-bottom:20px;}
+  .hero-dates{font-family:var(--f-display);font-size:clamp(14px,2.5vw,18px);font-style:italic;color:rgba(201,168,76,0.65);display:block;margin-bottom:28px;}
+  .hero-intro{font-size:15px;line-height:2;color:#a0988e;max-width:620px;margin:0 auto;}
+  .hero-intro strong{color:var(--parchment);}
+
+  /* WARNING BOX — name clarity */
+  .name-clarity{max-width:800px;margin:0 auto 48px;padding:0 24px;}
+  .name-clarity-inner{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.3);padding:24px 28px;}
+  .name-clarity-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,168,76,0.7);display:block;margin-bottom:16px;}
+  .name-row{display:grid;grid-template-columns:200px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:13px;}
+  .name-row:last-child{border-bottom:none;}
+  .name-label{font-family:var(--f-display);font-style:italic;color:var(--gold);font-size:14px;line-height:1.4;}
+  .name-desc{color:#c0b8b0;line-height:1.75;}
+  .name-desc strong{color:var(--parchment);}
+
+  /* PROSE */
+  .prose{max-width:720px;margin:0 auto;padding:0 24px;}
+  .chapter{margin-bottom:52px;}
+  .chapter-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.25);display:block;margin-bottom:10px;}
+  .chapter-title{font-family:var(--f-display);font-size:clamp(22px,4vw,34px);font-style:italic;color:var(--parchment);display:block;margin-bottom:18px;line-height:1.2;}
+  .body{font-size:14px;line-height:2;color:#c0b8b0;margin-bottom:14px;}
+  .body strong{color:var(--parchment);}
+  .body em{color:var(--gold);font-style:normal;}
+  .divider{border:none;border-top:1px solid rgba(255,255,255,0.06);margin:40px 0;}
+
+  /* DOCUMENT BLOCKS */
+  .doc-block{background:rgba(255,255,255,0.02);border:1px solid rgba(201,168,76,0.2);padding:20px 24px;margin:20px 0;}
+  .doc-block-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.6);display:block;margin-bottom:12px;}
+  .doc-row{display:grid;grid-template-columns:160px 1fr;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px;}
+  .doc-row:last-child{border-bottom:none;}
+  .doc-field{font-family:var(--f-mono);font-size:9px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+  .doc-value{color:#c0b8b0;}
+  .doc-value strong{color:var(--parchment);}
+
+  /* DOCUMENT IMAGES */
+  .doc-image{margin:24px 0;}
+  .doc-image img{width:100%;display:block;filter:sepia(0.1) contrast(1.05);}
+  .doc-image-caption{font-family:var(--f-mono);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);display:block;padding:8px 0;border-top:1px solid rgba(255,255,255,0.06);}
+
+  /* POLICE RECORD */
+  .police-block{background:rgba(139,58,58,0.06);border:1px solid rgba(139,58,58,0.2);padding:20px 24px;margin:20px 0;}
+  .police-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(220,100,100,0.6);display:block;margin-bottom:12px;}
+
+  /* DNA SECTION */
+  .dna-section{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);padding:24px 28px;margin:24px 0;}
+  .dna-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,168,76,0.55);display:block;margin-bottom:16px;}
+  .dna-match{padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:12px;color:#b0a89e;line-height:1.7;}
+  .dna-match:last-child{border-bottom:none;}
+  .dna-match strong{color:var(--parchment);}
+  .dna-cM{font-family:var(--f-mono);font-size:10px;color:var(--gold);margin-right:8px;}
+
+  /* RESEARCH NOTE */
+  .research-note{background:rgba(255,255,255,0.02);border-left:3px solid rgba(201,168,76,0.3);padding:14px 18px;margin:20px 0;}
+  .research-note-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.5);display:block;margin-bottom:8px;}
+  .research-note-body{font-size:12px;line-height:1.75;color:#a0988e;}
+
+  /* CONFIRMED vs HYPOTHESIS */
+  .confirmed{border-left-color:rgba(100,200,100,0.4);}
+  .confirmed .research-note-label{color:rgba(100,200,100,0.5);}
+  .hypothesis{border-left-color:rgba(201,168,76,0.3);}
+  .open{border-left-color:rgba(200,100,100,0.3);}
+  .open .research-note-label{color:rgba(200,120,120,0.5);}
+
+  /* ANCESTRY CHAIN */
+  .chain{margin:32px 0;}
+  .chain-person{padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:grid;grid-template-columns:24px 1fr;gap:12px;}
+  .chain-person:last-child{border-bottom:none;}
+  .chain-arrow{color:rgba(201,168,76,0.4);font-size:14px;padding-top:2px;}
+  .chain-name{font-family:var(--f-display);font-style:italic;font-size:15px;color:var(--parchment);display:block;line-height:1.3;}
+  .chain-name.gold{color:var(--gold);}
+  .chain-detail{font-size:11px;color:#706860;margin-top:2px;line-height:1.6;}
+
+  /* FOOTER NAV */
+  .story-nav{max-width:720px;margin:56px auto 0;padding:24px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .story-nav a{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;}
+  .story-nav a:hover{color:var(--gold);}
+
+  @media(max-width:600px){
+    .name-row{grid-template-columns:1fr;}
+    .doc-row{grid-template-columns:1fr;gap:2px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a href="welcome.html" class="gnav-brand">Armstrong Family Archive</a>
+    <div class="gnav-links">
+      <a href="start_here.html" class="gnav-link gstart">★ Start Here</a>
+      <a href="for_the_family.html" class="gnav-link">Site Guide</a>
+      <a href="welcome.html" class="gnav-link">Our Family</a>
+      <a href="bellville_family.html" class="gnav-link">The Family</a>
+      <a href="we_are_bellville.html" class="gnav-link">We Are Bellville</a>
+      <a href="how_we_got_here.html" class="gnav-link active">The Story</a>
+      <a href="papertrail.html" class="gnav-link">Documents</a>
+      <a href="photos.html" class="gnav-link">Photos</a>
+    </div>
+  </div>
+</nav>
+<div class="breadcrumb">
+  <a href="welcome.html">Home</a><span>›</span>
+  <a href="how_we_got_here.html">The Story</a><span>›</span>
+  <strong style="color:rgba(245,242,236,0.6);">Ester Nicholas · Morning Star · St. Croix</strong>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-eyebrow">Open Research Thread · Hypothesis — Not Yet Confirmed as Direct Ancestor</span>
+  <span class="hero-name">Ester Nicholas</span>
+  <span class="hero-also">Born in bondage as Esther Sam · Morning Star Plantation · St. Croix, Danish West Indies</span>
+  <span class="hero-dates">Freed April 1, 1819 · Documented 1819, 1820, 1826 · Last known record: St. Croix</span>
+  <p class="hero-intro">She was enslaved on a sugar plantation in the Caribbean. She was freed in 1819, took the surname Nicholas, and was documented alive in St. Croix as late as April 1826. Whether she is an ancestor of Easter Bell Nichols of Bellville, Texas — and how the DNA connects these families — is the open question this page documents honestly.</p>
+</div>
+
+<!-- NAME CLARITY BOX -->
+<div class="name-clarity">
+  <div class="name-clarity-inner">
+    <span class="name-clarity-label">⚠ Three Names — Three Different People — Read This First</span>
+    <div class="name-row">
+      <span class="name-label">Esther Sam<br>Ester Nicholas</span>
+      <span class="name-desc"><strong>Same person — two names.</strong> Born ca. 1781 in St. Croix, Danish West Indies. Her name in bondage: Esther Sam. Her name in freedom: Ester Nicholas. Freed April 1, 1819. Documented in St. Croix in 1819, 1820, and 1826. <strong>She is not the same person as Easter Bell Nichols.</strong> She lived in the Caribbean. She is an open research hypothesis — not a confirmed direct ancestor.</span>
+    </div>
+    <div class="name-row">
+      <span class="name-label">Easter Bell<br>Nichols</span>
+      <span class="name-desc"><strong>Your confirmed 3rd great-grandmother.</strong> Born July 4, 1838 in Bellville, Austin County, Texas — enslaved in the John Nichols household. Freed June 19, 1865. Married Joseph Nichols December 18, 1865. Died December 17, 1935. <strong>She is not the same person as Ester Nicholas of St. Croix.</strong> The connection between them — if one exists — is what this page is investigating.</span>
+    </div>
+    <div class="name-row">
+      <span class="name-label">Nicholas Family<br>of Louisiana</span>
+      <span class="name-desc"><strong>A documented Black Nicholas family community</strong> in Ascension, Iberville, Saint James, and Feliciana Parishes Louisiana — documented 1870 through 1978 — who share DNA with Hjordis Corbin at 15 cM through the astewart277 match. They are the possible bridge between Ester Nicholas of St. Croix and the Texas Nichols community. Not yet confirmed by primary source.</span>
+    </div>
+  </div>
+</div>
+
+<div class="prose">
+
+  <!-- THE HISTORY THAT MADE HER -->
+  <div class="chapter">
+    <span class="chapter-label">Context · Danish West Indies · 1700s–1848</span>
+    <span class="chapter-title">The World She Was Born Into</span>
+    <p class="body">St. Croix was a Danish colonial possession — part of what Denmark called the Danish West Indies, today the U.S. Virgin Islands. Denmark purchased St. Croix from France in 1733-34 and introduced the plantation system and slavery. The island grew sugar. The labor was enslaved African people. The same year Denmark purchased St. Croix, a ferocious slave revolt on the neighboring island of St. John required French troops from Martinique to suppress. This was the world Esther Sam was born into.</p>
+    <p class="body">Denmark officially abolished the <em>slave trade</em> in 1803 — the first European slave-trading state to do so. But that did not free the people already enslaved on St. Croix. The enslaved population continued to be held in bondage for another 45 years. <strong>Denmark did not emancipate the enslaved people of the Danish West Indies until 1848</strong> — when a slave revolt on St. Croix finally forced the colonial governor's hand. Esther Sam received her individual freedom in 1819. The broader emancipation came 29 years later.</p>
+    <p class="body">In 1801-1802 and again in 1807-1815, Great Britain occupied the Danish West Indies during the Napoleonic Wars. Between these British occupations, St. Croix briefly came under English colonial law. The main seat of Danish colonial government was in Christiansted, St. Croix — the same city where the July 1, 1819 legal deed naming Nicholas and Pheabe was recorded.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ESTHER SAM — HER LIFE -->
+  <div class="chapter">
+    <span class="chapter-label">ca. 1781 – documented to 1826 · Morning Star Plantation · St. Croix</span>
+    <span class="chapter-title">Esther Sam · Her Life in Documents</span>
+    <p class="body">Esther Sam was born approximately 1781 on or near the Paulus Plantation in St. Croix. She was classified as <em>Negro</em> — the darkest classification in the Danish colonial racial hierarchy, meaning both her parents were classified as Black. She was enslaved on <strong>Morning Star Plantation</strong> under the administration of H.C. Francis. At some point she came under the household or influence of the Fibiger family — A.C. Fibiger, connected to the Little La Grange and Jolly Hill plantations — who formally freed her.</p>
+    <p class="body">On <strong>April 1, 1819</strong> A.C. Fibiger freed Esther Sam. The freedom was read in court on June 29, 1819. Her official Freedom Brief — her legal document of liberty — was issued on <strong>January 14, 1820</strong>. During the processing period she was administratively associated with Morning Star under H.C. Francis. When her name was formally registered in freedom, she chose or was assigned the surname <strong>Nicholas</strong> — the name of a man named Nicholas paired with a woman named Pheabe, whose descendants were legally registered in Christiansted on July 1, 1819 with H.C. Francis as witness.</p>
+    <p class="body">On <strong>April 23, 1826</strong> — seven years after her freedom — Ester Sam is documented by name in the Register of Black Communicants at Morning Star, taking Holy Communion alongside Julia M de Francis, Sophia F de Francis, Thomas Petersen, Catharine Deisler, and Anna M M Morgen. She is listed as Free. She is still in St. Croix. She is part of the Morning Star community.</p>
+    <p class="body">After April 1826, no further primary source document has yet been found for Ester Sam or Ester Nicholas in St. Croix or anywhere else.</p>
+  </div>
+
+  <!-- IMAGE: FREE COLORED CENSUS JPEG -->
+  <div class="doc-image">
+    <img src="Register%20of%20Free%20Persons%20of%20Color%2C%20St.%20Croix%2C%20Danish%20West%20Indies%20.jpeg"
+         alt="Register of Free Persons of Color, St. Croix, Danish West Indies — Ester Nicholas Record No. 1395"
+         loading="lazy">
+    <span class="doc-image-caption">Register of Free Persons of Color · St. Croix, Danish West Indies · Record No. 1395 · Ester Nicholas · Freed by A.C. Fibiger April 1, 1819 · Free Brief January 14, 1820</span>
+  </div>
+
+  <!-- PRIMARY SOURCE DOCUMENTS -->
+  <div class="chapter">
+    <span class="chapter-label">Six Primary Source Documents · Three Archives · 1819–1826</span>
+    <span class="chapter-title">What the Documents Confirm</span>
+
+    <div class="doc-block">
+      <span class="doc-block-label">Document One · Freedom Charter · 1819–1820</span>
+      <div class="doc-row"><span class="doc-field">Source</span><span class="doc-value">National Archives Microfilm M1883, Roll 2 — Record Group 55, Records of the Government of the Danish West Indies</span></div>
+      <div class="doc-row"><span class="doc-field">Record Type</span><span class="doc-value">Register of Free Persons of Color / Freedom Charters</span></div>
+      <div class="doc-row"><span class="doc-field">Individual</span><span class="doc-value"><strong>Esther Sam — also recorded as Ester Nicholas</strong></span></div>
+      <div class="doc-row"><span class="doc-field">Race</span><span class="doc-value">Negro/Black — Line 37 — Morning Star grouping</span></div>
+      <div class="doc-row"><span class="doc-field">Administrator</span><span class="doc-value">H.C. Francis — Morning Star Plantation</span></div>
+      <div class="doc-row"><span class="doc-field">Freed by</span><span class="doc-value">A.C. Fibiger — April 1, 1819</span></div>
+      <div class="doc-row"><span class="doc-field">Freedom read in court</span><span class="doc-value">June 29, 1819</span></div>
+      <div class="doc-row"><span class="doc-field">Free Brief issued</span><span class="doc-value"><strong>January 14, 1820</strong></span></div>
+      <div class="doc-row"><span class="doc-field">Grouped with</span><span class="doc-value">Sarah M. v. Berger (Mulatto) · Rebecca C. Canter (Mustee) · Juliana Wilhelm (Mulatto)</span></div>
+    </div>
+
+    <div class="doc-image">
+      <img src="IMG_1712.jpeg"
+           alt="Morning Star Plantation grouping — Esther Sam Line 37 — National Archives M1883"
+           loading="lazy">
+      <span class="doc-image-caption">Morning Star Plantation Grouping · Lines 35–38 · Esther Sam — Line 37 — Negro · H.C. Francis administrator · National Archives M1883 Roll 2</span>
+    </div>
+
+    <div class="doc-block">
+      <span class="doc-block-label">Document Two · Free Colored Census · 1820</span>
+      <div class="doc-row"><span class="doc-field">Source</span><span class="doc-value">Denmark, Free Colored Censuses 1815-1832 — Record No. 1395</span></div>
+      <div class="doc-row"><span class="doc-field">Name recorded</span><span class="doc-value"><strong>Ester Nicholas</strong></span></div>
+      <div class="doc-row"><span class="doc-field">Status</span><span class="doc-value">Free person of color — Race: Negro/Black</span></div>
+      <div class="doc-row"><span class="doc-field">Occupation</span><span class="doc-value">Domestic / Husarbejde</span></div>
+      <div class="doc-row"><span class="doc-field">Means of freedom</span><span class="doc-value">Free Brief 1820/01/14 — Freed by A.C. Fibiger 1819/04/01 — Read in court 1819/06/29</span></div>
+      <div class="doc-row"><span class="doc-field">1816 census</span><span class="doc-value">Not registered — she was not free in 1816</span></div>
+      <div class="doc-row"><span class="doc-field">Others in record</span><span class="doc-value">John · Charles · Latticia · Louise · Anna Maria Rosina · Salomon · Baltazar · Maria · Peggy Thompson · Penny · Andrew Gordon · Madlane · Cecilia · Maria Wright · Joseph Salomon · Nancy · Johan Peter Recenke · Betsy · Less</span></div>
+    </div>
+
+    <div class="doc-image">
+      <img src="Important%20free%20ester.jpeg"
+           alt="Free Colored Census Record — Ester Nicholas — St. Croix 1820"
+           loading="lazy">
+      <span class="doc-image-caption">Free Colored Census · St. Croix · 1820 · Ester Nicholas · Record No. 1395 · Denmark, Free Colored Censuses 1815-1832</span>
+    </div>
+
+    <div class="doc-block">
+      <span class="doc-block-label">Document Three · Christiansted Deed · July 1, 1819</span>
+      <div class="doc-row"><span class="doc-field">Source</span><span class="doc-value">Danish West Indies, Records and Documents Relating to General Governance, 1755-1916 — National Archives RG 55</span></div>
+      <div class="doc-row"><span class="doc-field">Document type</span><span class="doc-value">Pantebog/Skøde — Formal deed or legal agreement — Stamped No. 4 Tre Rigsdaler</span></div>
+      <div class="doc-row"><span class="doc-field">Date</span><span class="doc-value">July 1, 1819 — Christiansted, St. Croix</span></div>
+      <div class="doc-row"><span class="doc-field">Key passage</span><span class="doc-value"><strong>"...navnlig Nicholas og Pheabe og dernes Afkom..."</strong> — "...namely Nicholas and Pheabe and their descendants..."</span></div>
+      <div class="doc-row"><span class="doc-field">Central figure</span><span class="doc-value">Susanna Smith — free woman of color — property, children, and legal status detailed</span></div>
+      <div class="doc-row"><span class="doc-field">Named heirs</span><span class="doc-value">Robert · Paul · Margareth · Isabella Grant</span></div>
+      <div class="doc-row"><span class="doc-field">Legal principal</span><span class="doc-value">Ann Mary Robertson — curator: William Purcell</span></div>
+      <div class="doc-row"><span class="doc-field">Witnesses</span><span class="doc-value"><strong>H.C. Francis</strong> and E.H. Colbiörnsen</span></div>
+      <div class="doc-row"><span class="doc-field">Significance</span><span class="doc-value">Names the ancestral couple — <strong>Nicholas and Pheabe</strong> — and registers their descendants. Ester Sam took the surname Nicholas because she descended from this couple. H.C. Francis witnesses this registration three months after Ester's freedom.</span></div>
+    </div>
+
+    <div class="doc-image">
+      <img src="Danish%20colonial%20deed%20or%20legal%20agreement%20(pantebog%20or%20sk%C3%B8de).pdf"
+           alt="Christiansted Deed July 1 1819 — Nicholas and Pheabe — H.C. Francis witness"
+           loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div style="display:none;background:rgba(255,255,255,0.02);border:1px solid rgba(201,168,76,0.2);padding:20px;text-align:center;">
+        <span style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.5);">PDF Document · Christiansted Deed · July 1, 1819</span><br>
+        <span style="font-size:12px;color:#a0988e;margin-top:8px;display:block;">Danish colonial deed or legal agreement (pantebog or skøde) — Names Nicholas and Pheabe and their descendants — H.C. Francis witness</span>
+      </div>
+      <span class="doc-image-caption">Christiansted Deed · July 1, 1819 · St. Croix · Names Nicholas and Pheabe and their descendants · H.C. Francis witness · Danish West Indies Records RG 55</span>
+    </div>
+
+    <div class="doc-block">
+      <span class="doc-block-label">Document Four · Register of Black Communicants · April 23, 1826</span>
+      <div class="doc-row"><span class="doc-field">Source</span><span class="doc-value">Register of Black Communicants, St. Croix — Holy Communion / Til Alters</span></div>
+      <div class="doc-row"><span class="doc-field">Date</span><span class="doc-value">April 23, 1826</span></div>
+      <div class="doc-row"><span class="doc-field">Location</span><span class="doc-value">Morning Star Estate — Administrator: Mad. Seold</span></div>
+      <div class="doc-row"><span class="doc-field">Individual</span><span class="doc-value"><strong>Ester Sam — Line 177 — Negro — Free</strong></span></div>
+      <div class="doc-row"><span class="doc-field">Significance</span><span class="doc-value">Ester Sam is alive and free in St. Croix seven years after her freedom. She is part of the Morning Star community. Last confirmed primary source document for her.</span></div>
+      <div class="doc-row"><span class="doc-field">Communion group</span><span class="doc-value">Catharine Deisler (Mulatto) · Julia M de Francis (Mulatto) · Sophia F de Francis (Samboe) · Thomas Petersen (Negro) · <strong>Ester Sam / Ester Nicholas (Negro)</strong> · Anna M M Morgen (Mustee)</span></div>
+    </div>
+
+    <div class="doc-image">
+      <img src="IMG_1714.jpeg"
+           alt="Register of Black Communicants St. Croix April 23 1826 — Ester Sam Line 177"
+           loading="lazy">
+      <span class="doc-image-caption">Register of Black Communicants · Morning Star Estate · April 23, 1826 · Ester Sam — Line 177 — Negro — Free · St. Croix, Danish West Indies</span>
+    </div>
+
+    <!-- C. FRANCIS POLICE RECORD -->
+    <div class="police-block">
+      <span class="police-label">Document Five · Police Journal / Politiprotokol · April 24–25, 1826</span>
+      <p style="font-size:13px;line-height:1.85;color:#b0a89e;margin-bottom:10px;"><strong style="color:#f0ead8;">C. Francis — Friemand (Free Man)</strong> — arrested for disorderly conduct on April 24, 1826 by the Night Watch. Given a severe reprimand and warning for future good behavior on April 25, 1826. Christiansted Jurisdiction, St. Croix.</p>
+      <p style="font-size:12px;line-height:1.75;color:#a0988e;">C. Francis is listed as a Freeman — a free person, not enslaved. His April 24, 1826 arrest falls one day after Ester Sam's April 23, 1826 communion at Morning Star. The de Francis surname connects to H.C. Francis — the administrator of Ester Sam's freedom papers — and to Julia M de Francis and Sophia F de Francis who took communion alongside Ester Sam. The C. Francis community is the Morning Star free colored community.</p>
+      <p style="font-size:11px;font-family:'Courier New',monospace;color:rgba(255,255,255,0.25);margin-top:10px;">Source: St. Croix Police Journal / Politiprotokol — Christiansted Jurisdiction — April 1826 — Danish West Indies Records RG 55</p>
+    </div>
+
+    <div class="doc-image">
+      <img src="C.%20Francis%20in%20Danish%20West%20Indies%20Records.jpeg"
+           alt="C. Francis police record Danish West Indies April 1826"
+           loading="lazy">
+      <span class="doc-image-caption">C. Francis · Friemand (Free Man) · Police Journal · Christiansted · April 24–25, 1826 · Danish West Indies Records</span>
+    </div>
+
+  </div>
+
+  <hr class="divider">
+
+  <!-- NICHOLAS AND PHEABE -->
+  <div class="chapter">
+    <span class="chapter-label">The Ancestral Couple · Named in the 1819 Deed</span>
+    <span class="chapter-title">Nicholas and Pheabe · The Beginning</span>
+    <p class="body">The July 1, 1819 Christiansted deed names <strong>Nicholas</strong> and <strong>Pheabe</strong> as an ancestral couple whose descendants are being legally registered. Nicholas is a person — a man — not a randomly chosen surname. Pheabe is his partner. Their descendants form the documented Nicholas family of St. Croix.</p>
+    <p class="body">Ester Sam took the name Ester Nicholas upon freedom because she was — or claimed descent from — this Nicholas. She was classified as Negro — fully African ancestry — in a colonial system that tracked racial classification precisely. Nicholas and Pheabe, whoever they were, were the ancestors who gave this family its name.</p>
+    <p class="body">Who Nicholas was before his name became a family surname is not yet documented. He may have been an enslaved man who was known by the name Nicholas on a plantation — a practice common throughout the Caribbean and American slave systems where enslaved people were given single names, often classical or biblical. Pheabe — a variant of Phoebe — was a common name given to enslaved women throughout the Atlantic world. Their children and grandchildren carried Nicholas as a surname into freedom.</p>
+
+    <div class="research-note confirmed">
+      <span class="research-note-label">Confirmed by Primary Source</span>
+      <p class="research-note-body">Nicholas and Pheabe are named in a Danish colonial deed dated July 1, 1819 in Christiansted, St. Croix — witnessed by H.C. Francis — as the ancestral couple whose descendants are being legally registered. This is a primary source document held in Record Group 55, Records of the Government of the Danish West Indies, National Archives of the United States.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- DNA SECTION -->
+  <div class="chapter">
+    <span class="chapter-label">DNA Evidence · AncestryDNA · GEDmatch · 2,050 Matches</span>
+    <span class="chapter-title">What the DNA Says — and Why Gaps Do Not Mean No Connection</span>
+    <p class="body">When families were separated by the slave trade — sold across state lines, shipped between continents, divided between plantations — the paper trail was deliberately broken. Documents were not kept for enslaved people's families. Births were not registered. Marriages were not recorded. The system depended on forgetting.</p>
+    <p class="body"><strong>The DNA does not forget.</strong> When Hjordis Corbin took the AncestryDNA test, 2,050 of her matches were connected by Ancestry's algorithm to the Nicholas surname. That is not a coincidence of spelling. That is biology — shared segments of chromosomal DNA inherited from a common ancestor. The DNA is the evidence that the paper trail was not permitted to leave.</p>
+    <p class="body">A gap between Ester Nicholas of St. Croix in 1826 and Easter Bell Nichols of Texas in 1838 does not mean there is no connection. It means the people in between — whoever carried the Nicholas name or the Nicholas blood from the Caribbean through New Orleans into Texas — were not recorded in surviving documents. They existed. They had children. The DNA proves it. The documents have not yet caught up.</p>
+
+    <div class="dna-section">
+      <span class="dna-label">Hjordis L. Corbin · AncestryDNA Kit SQ8499767 · Nicholas Surname Matches</span>
+      <div class="dna-match"><span class="dna-cM">41 cM</span><strong>djshook47</strong> — Half 3rd cousin / 3rd cousin 1x removed — Private tree, 322 people — Highest priority uncontacted match</div>
+      <div class="dna-match"><span class="dna-cM">32 cM</span><strong>Deirdre Melvin</strong> — Half 3rd cousin 1x removed / 4th cousin — Private tree, 2,814 people — Extensive research likely</div>
+      <div class="dna-match"><span class="dna-cM">15 cM</span><strong>astewart277</strong> — Public tree — <em>Oville Nicholas (1886–1978) Saint James Parish Louisiana → Lilly Nicholas (1920–2006) Gonzales Ascension Parish Louisiana</em> — Louisiana Nicholas family confirmed in tree</div>
+      <div class="dna-match"><span class="dna-cM">13 cM</span><strong>Kristy Clark</strong> — 4th cousin / half 3rd cousin 1x removed — Public tree, 1,230 people</div>
+      <div class="dna-match"><span class="dna-cM">12 cM</span><strong>Erika Love</strong> — 4th cousin / half 3rd cousin 1x removed — Public tree, 1,213 people</div>
+      <div class="dna-match"><span class="dna-cM">12 cM</span><strong>Mary Haughaboo</strong> — 4th cousin / half 3rd cousin 1x removed — Public tree, 1,974 people</div>
+      <div class="dna-match"><span class="dna-cM">11 cM</span><strong>Cathie Young LaBar</strong> — Public tree, 64 people — Five-star research priority</div>
+      <div class="dna-match"><span class="dna-cM">11 cM</span><strong>Mark Harris</strong> — Public tree, 11,981 people</div>
+      <p style="font-family:'Courier New',monospace;font-size:8px;color:rgba(255,255,255,0.2);margin-top:12px;letter-spacing:1px;">Note: Per GEDmatch Terms of Service, individual kit IDs and email addresses from GEDmatch are not published here. The cM amounts and relationship estimates above are from AncestryDNA only. GEDmatch analysis for kit QW8418781 (Jasmine M. Lee) confirmed 377 matches at the 5.5 cM threshold in the Black Dutch Fork South Carolina Genealogy Project — haplogroups E1b1, LOa2a1, L3d1b confirmed.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- LOUISIANA NICHOLAS COMMUNITY -->
+  <div class="chapter">
+    <span class="chapter-label">The Bridge · Louisiana Nicholas Families · 1870–1978</span>
+    <span class="chapter-title">The People the DNA Points To</span>
+    <p class="body">Between Ester Nicholas of St. Croix and Easter Bell Nichols of Texas there is a documented community of Black Nicholas families spread across the Mississippi River corridor parishes of Louisiana — in Ascension, Iberville, Saint James, and Feliciana Parishes. These families were in Louisiana at the right time, in the right place, with the right surname. And they share DNA with Hjordis Corbin.</p>
+    <p class="body">Whether they are the descendants of Ester Nicholas who migrated from St. Croix through New Orleans after 1826 — or whether they are a separate Virginia-origin Nicholas family who arrived through the domestic slave trade — or whether both origins intermarried in Louisiana over generations — has not been confirmed by primary source document.</p>
+
+    <div class="doc-block">
+      <span class="doc-block-label">Louisiana Nicholas Families — Documented by Primary Source</span>
+      <div class="doc-row">
+        <span class="doc-field">Anlaine Nicholas</span>
+        <span class="doc-value">Born ca. 1825 — Ascension Parish Louisiana — 1870 census — wife Catiche — children include <strong>Estreae (Easter in French Creole form)</strong>, Ophelia, Liza, Ernest, Roseman — Creole names throughout — adjacent parish to Saint James and Iberville</span>
+      </div>
+      <div class="doc-row">
+        <span class="doc-field">Henry Nicholas</span>
+        <span class="doc-value">Born ca. 1822 — <strong>Virginia</strong> — Iberville Parish Louisiana — 1870 census — wife Mary A Nicholas (born Louisiana) — children Louis, Willis, Antoinette, Nick, Rebecca — Henry possibly died April 1870 per mortality schedule</span>
+      </div>
+      <div class="doc-row">
+        <span class="doc-field">Louis Nicholas</span>
+        <span class="doc-value">Born March 1847 — Louisiana — Feliciana Parish — 1900 census — son of Henry and Mary — wife Patsy — children Ephraim and Martha — confirmed in same river corridor</span>
+      </div>
+      <div class="doc-row">
+        <span class="doc-field">Oville Nicholas</span>
+        <span class="doc-value">Born January 31, 1886 — Saint James Parish Louisiana — died August 1978 — Convent, Saint James Parish — <strong>DNA match to Hjordis through astewart277 at 15 cM</strong> — married Rebecca Nicholas — daughter Lilly Nicholas (1920–2006) Gonzales, Ascension Parish</span>
+      </div>
+      <div class="doc-row">
+        <span class="doc-field">Ophelia Nicholas</span>
+        <span class="doc-value">Born ca. 1860 — <strong>Texas</strong> — 1930 New Orleans census — 2121 N. Galvez Street — mother-in-law of Aleck Nicholas (also Texas-born) — widowed — cannot read or write — connects the Texas Nicholas community to the Louisiana Nicholas community</span>
+      </div>
+    </div>
+
+    <div class="research-note hypothesis">
+      <span class="research-note-label">Hypothesis — Not Yet Confirmed</span>
+      <p class="research-note-body">The Louisiana Nicholas families documented above share DNA with Hjordis Corbin and occupy the geographic and temporal corridor consistent with descendants of Ester Nicholas who migrated from St. Croix through New Orleans after 1826. The daughter named Estreae — the French Creole form of Easter/Esther — in Anlaine Nicholas's household may reflect a family tradition of naming daughters after an ancestor named Ester or Easter. The bridge document connecting any specific Louisiana Nicholas person to either Ester Nicholas of St. Croix or Easter Bell Nichols of Texas has not been found. This remains open research.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- THE RAINBOW AND BARBADOS -->
+  <div class="chapter">
+    <span class="chapter-label">The Rainbow · 1758 · Middle Passage · Charleston</span>
+    <span class="chapter-title">The Ship and the Possible Caribbean Stop</span>
+    <p class="body">The Trans-Atlantic Slave Trade Database documents a ship called the Rainbow that arrived in Charleston, South Carolina in 1758 carrying 201 people from the <strong>Bight of Benin</strong> — the Yoruba and Dahomey region of West Africa that is today Nigeria and Benin. The AncestryDNA results for this family confirm Yoruba and Dahomey ancestry. This is the connection documented in the How We Got Here story.</p>
+    <p class="body">Many ships on the Middle Passage made intermediate stops at Caribbean islands before reaching their final American destination. Barbados was one of the most common stops. The Danish West Indies — including St. Croix — was also a documented intermediate port. If the Rainbow or a related voyage stopped at St. Croix, people from the same Yoruba and Dahomey community may have been left there while others continued to Charleston.</p>
+    <p class="body">This would mean that the ancestors of Ester Nicholas of St. Croix and the ancestors of Easter Bell Nichols of Texas came from the same West African community — separated not by different origins but by different ports of entry. The DNA showing shared Yoruba and Dahomey ancestry in both families is consistent with this possibility.</p>
+
+    <div class="research-note open">
+      <span class="research-note-label">Open Research Thread</span>
+      <p class="research-note-body">The Rainbow voyage (Trans-Atlantic Slave Trade Database Voyage 90466) should be searched for documented intermediate stops at St. Croix, Barbados, or other Caribbean ports before reaching Charleston in 1758. If the Rainbow stopped at St. Croix, that would suggest a shared West African origin for both the St. Croix Nicholas community and the Texas Nichols community. This has not been confirmed by document.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- WHAT IS CONFIRMED vs OPEN -->
+  <div class="chapter">
+    <span class="chapter-label">Honest Accounting · What Is Known · What Is Not</span>
+    <span class="chapter-title">Where the Research Stands</span>
+
+    <div class="research-note confirmed">
+      <span class="research-note-label">Confirmed by Primary Source Document</span>
+      <p class="research-note-body">Esther Sam — enslaved on Morning Star Plantation, St. Croix, Danish West Indies — was freed April 1, 1819 by A.C. Fibiger. She received her Free Brief January 14, 1820. She took the name Ester Nicholas. She descended from a couple named Nicholas and Pheabe registered in Christiansted on July 1, 1819. She was alive and free in St. Croix as late as April 23, 1826 — seven years after her freedom — taking communion at Morning Star. Three independent primary sources from three different record types confirm her identity, her freedom, and her presence in St. Croix.</p>
+    </div>
+
+    <div class="research-note confirmed">
+      <span class="research-note-label">Confirmed by DNA Evidence</span>
+      <p class="research-note-body">Hjordis L. Corbin shares DNA with 2,050 people connected by Ancestry's algorithm to the Nicholas surname. The highest confirmed match — astewart277 at 15 cM — has a public tree documenting the Louisiana Nicholas family of Ascension and Saint James Parishes. At 15 cM the shared ancestor is approximately 4-5 generations back — placing the common ancestor in the 1820s-1850s, consistent with Ester Nicholas's documented life dates.</p>
+    </div>
+
+    <div class="research-note hypothesis">
+      <span class="research-note-label">Hypothesis — Supported by Circumstantial Evidence — Not Yet Confirmed</span>
+      <p class="research-note-body">Ester Nicholas of St. Croix had descendants who migrated from the Caribbean to Louisiana through New Orleans after 1826, whose descendants eventually reached Austin County Texas, and whose bloodline connects to Easter Bell Nichols of Bellville. This hypothesis is supported by the DNA evidence, the geographic corridor, the surname continuity, the naming pattern (Estreae/Easter in Anlaine Nicholas's household), and the timeline. It is not yet confirmed by a primary source document that bridges the gap between St. Croix 1826 and Texas 1838.</p>
+    </div>
+
+    <div class="research-note open">
+      <span class="research-note-label">Open Research Threads</span>
+      <p class="research-note-body">Contact djshook47 (41 cM) and Deirdre Melvin (32 cM) — the two highest Nicholas surname DNA matches — to ask about Louisiana, St. Croix, or Caribbean ancestry. Search St. Croix baptismal records 1819-1835 for a child of Ester Sam or Ester Nicholas. Search Morning Star plantation journals for Ester Sam after 1826. Search Louisiana arrival records 1820-1840 for a Nicholas family from St. Croix. Search the Dalvius M King-Harvy thread — he matched John Armstrong's DNA and has Annie Nichols as an ancestor — this connection is unresolved.</p>
+    </div>
+  </div>
+
+  <!-- ANCESTRY CHAIN CONTEXT -->
+  <div class="chapter">
+    <span class="chapter-label">Where Ester Nicholas Fits · If the Hypothesis Is Confirmed</span>
+    <span class="chapter-title">The Line Before Molley</span>
+    <p class="body">If the documentary bridge between Ester Nicholas of St. Croix and Easter Bell Nichols of Texas is ever confirmed, the direct maternal line of this archive would extend before Molley — the earliest currently documented ancestor — back to the Danish West Indies and the ancestral couple Nicholas and Pheabe.</p>
+    <div class="chain">
+      <div class="chain-person">
+        <span class="chain-arrow">·</span>
+        <div>
+          <span class="chain-name gold">Nicholas and Pheabe</span>
+          <span class="chain-detail">Named in Christiansted deed July 1, 1819 · St. Croix, Danish West Indies · The ancestral couple · Their descendants registered under this name</span>
+        </div>
+      </div>
+      <div class="chain-person">
+        <span class="chain-arrow">↓</span>
+        <div>
+          <span class="chain-name gold">Esther Sam · Ester Nicholas</span>
+          <span class="chain-detail">Born ca. 1781 · Morning Star Plantation · St. Croix · Freed April 1, 1819 · Documented 1819, 1820, 1826 · Hypothesis: ancestor of Easter Bell Nichols</span>
+        </div>
+      </div>
+      <div class="chain-person">
+        <span class="chain-arrow">↓</span>
+        <div>
+          <span class="chain-name" style="color:rgba(201,168,76,0.5);">[ Gap — Undocumented — DNA Bridge ]</span>
+          <span class="chain-detail">St. Croix to Louisiana through New Orleans · 1826-1838 · No primary source found yet · DNA confirms biological connection to Louisiana Nicholas families</span>
+        </div>
+      </div>
+      <div class="chain-person">
+        <span class="chain-arrow">↓</span>
+        <div>
+          <span class="chain-name">Molley</span>
+          <span class="chain-detail">Earliest confirmed documented ancestor · Union/Newberry County South Carolina · 1793 · Seven children including Patience</span>
+        </div>
+      </div>
+      <div class="chain-person">
+        <span class="chain-arrow">↓</span>
+        <div>
+          <span class="chain-name">Patience</span>
+          <span class="chain-detail">Given to Patty Waldrop · Newberry County SC · August 4, 1795 · Deed Book C:367-368</span>
+        </div>
+      </div>
+      <div class="chain-person">
+        <span class="chain-arrow">↓</span>
+        <div>
+          <span class="chain-name">Clarissa</span>
+          <span class="chain-detail">Born ca. 1807 South Carolina · Patience's daughter · Moved with Waldrop family to Mississippi then Texas</span>
+        </div>
+      </div>
+      <div class="chain-person">
+        <span class="chain-arrow">↓</span>
+        <div>
+          <span class="chain-name">Rendy Blayn</span>
+          <span class="chain-detail">Easter Bell's mother · Virginia origin hypothesized · Held in John Nichols household Austin County Texas</span>
+        </div>
+      </div>
+      <div class="chain-person">
+        <span class="chain-arrow">↓</span>
+        <div>
+          <span class="chain-name">Easter Bell Nichols</span>
+          <span class="chain-detail">Born July 4, 1838 · Bellville, Austin County, Texas · Freed June 19, 1865 · Died December 17, 1935 · Your confirmed 3rd great-grandmother</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /prose -->
+
+<!-- FOOTER NAV -->
+<div class="story-nav">
+  <a href="how_we_got_here.html">← How We Got Here</a>
+  <a href="family_tree.html">Full Archive →</a>
+</div>
+
+<script src="sidebar.js"></script>
+</body>
+</html>

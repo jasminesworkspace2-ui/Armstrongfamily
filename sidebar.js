@@ -62,10 +62,11 @@
     {
       label: 'Origins',
       items: [
-        { href: 'black_dutch_fork.html',    text: 'Black Dutch Fork',     note: 'South Carolina 1795' },
+        { href: 'black_dutch_fork.html',    text: 'Black Dutch Fork',         note: 'South Carolina 1795' },
+        { href: 'ester_nicholas.html',      text: 'Ester Nicholas · St. Croix', note: 'Morning Star · 1819 · Open hypothesis' },
         { href: 'family_tree.html#africa-origins', text: 'Where We Come From', note: 'Dahomey · West Africa' },
-        { href: 'methodology.html',         text: 'Research Methodology', note: '7 years · primary sources' },
-        { href: 'glossary.html',            text: 'Glossary',             note: 'Terms explained' },
+        { href: 'methodology.html',         text: 'Research Methodology',     note: '7 years · primary sources' },
+        { href: 'glossary.html',            text: 'Glossary',                 note: 'Terms explained' },
       ]
     },
     {

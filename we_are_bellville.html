@@ -1,1 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>We Are Bellville · Armstrong Family Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep:#080604;--surface:#0e0b08;
+    --gold:#c9a84c;--gold2:#e8c96a;--cream:#f5f2ec;--parchment:#f0ead8;
+    --muted:rgba(245,242,236,0.45);--border:rgba(201,168,76,0.15);
+    --border2:rgba(255,255,255,0.06);
+    --f-display:'DM Serif Display',Georgia,serif;
+    --f-body:'Inter',sans-serif;--f-mono:'Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 
+  /* NAV */
+  .gnav{position:sticky;top:0;z-index:100;background:rgba(8,6,4,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(8px);}
+  .gnav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:52px;gap:8px;}
+  .gnav-brand{font-family:var(--f-display);font-style:italic;font-size:15px;color:rgba(240,234,216,0.8);text-decoration:none;white-space:nowrap;}
+  .gnav-brand:hover{color:#f0ead8;}
+  .gnav-links{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;}
+  .gnav-links::-webkit-scrollbar{display:none;}
+  .gnav-link{font-family:var(--f-mono);font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;padding:6px 10px;white-space:nowrap;border-bottom:2px solid transparent;transition:color 0.15s;}
+  .gnav-link:hover{color:rgba(245,242,236,0.85);}
+  .gnav-link.active{color:#c9a84c;border-bottom-color:#c9a84c;}
+  .gnav-link.gstart{color:#c9a84c;border:1px solid rgba(201,168,76,0.35);padding:5px 10px;margin-right:6px;}
+
+  /* OPENING STATEMENT */
+  .opening{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px;position:relative;
+           background:radial-gradient(ellipse at center,rgba(201,168,76,0.07) 0%,transparent 65%);}
+  .opening-eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,168,76,0.5);display:block;margin-bottom:24px;}
+  .opening-title{font-family:var(--f-display);font-size:clamp(48px,10vw,100px);font-style:italic;color:var(--parchment);line-height:1;margin-bottom:32px;}
+  .opening-sub{font-family:var(--f-display);font-size:clamp(16px,3vw,24px);font-style:italic;color:rgba(201,168,76,0.7);margin-bottom:40px;line-height:1.5;}
+  .opening-statement{font-size:16px;line-height:2.1;color:#b0a89e;max-width:680px;margin:0 auto;}
+  .opening-statement strong{color:var(--parchment);}
+
+  /* QUOTE BLOCK */
+  .founder-quote{max-width:800px;margin:64px auto;padding:40px 48px;text-align:center;
+                 background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.2);}
+  .founder-quote-text{font-family:var(--f-display);font-size:clamp(18px,3vw,26px);font-style:italic;color:var(--parchment);line-height:1.7;margin-bottom:16px;}
+  .founder-quote-attr{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.5);}
+
+  /* SECTION */
+  .sec{max-width:1100px;margin:0 auto;padding:0 24px;}
+  .sec-head{display:flex;align-items:center;gap:14px;margin:64px 0 32px;}
+  .sec-line{flex:1;height:1px;background:var(--border);}
+  .sec-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap;}
+
+  /* FAMILY CARDS */
+  .family-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;background:var(--border2);}
+  .family-card{background:var(--deep);padding:28px 28px 24px;border-top:3px solid;}
+  .family-card-name{font-family:var(--f-display);font-size:clamp(22px,4vw,32px);font-style:italic;color:var(--parchment);display:block;margin-bottom:6px;}
+  .family-card-root{font-family:var(--f-mono);font-size:9px;letter-spacing:1px;color:rgba(255,255,255,0.3);display:block;margin-bottom:16px;}
+  .family-card-body{font-size:13px;line-height:1.85;color:#b0a89e;}
+  .family-card-body strong{color:var(--parchment);}
+  .family-member{padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px;color:#a0988e;line-height:1.6;}
+  .family-member:last-child{border-bottom:none;}
+  .family-member strong{color:var(--parchment);}
+  .family-member em{color:var(--gold);font-style:normal;font-size:10px;}
+
+  /* MARRIAGE WEB */
+  .marriage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-bottom:24px;}
+  .marriage-card{background:rgba(255,255,255,0.02);border:1px solid var(--border2);padding:18px 20px;}
+  .marriage-names{font-family:var(--f-display);font-size:15px;font-style:italic;color:var(--parchment);display:block;margin-bottom:4px;}
+  .marriage-arrow{color:rgba(201,168,76,0.6);margin:0 6px;}
+  .marriage-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.25);display:block;margin-bottom:4px;}
+  .marriage-note{font-size:11px;color:#706860;line-height:1.6;}
+
+  /* COMMUNITY ROLL */
+  .community-roll{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1px;background:var(--border2);margin-bottom:32px;}
+  .community-name{background:var(--deep);padding:14px 16px;}
+  .community-surname{font-family:var(--f-display);font-size:18px;font-style:italic;color:var(--parchment);display:block;}
+  .community-note{font-family:var(--f-mono);font-size:8px;letter-spacing:1px;color:rgba(255,255,255,0.25);display:block;margin-top:3px;}
+
+  /* CENSUS NOTE */
+  .census-note{background:rgba(255,255,255,0.02);border-left:3px solid rgba(201,168,76,0.3);padding:20px 24px;margin:24px 0;max-width:800px;}
+  .census-note-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.5);display:block;margin-bottom:10px;}
+  .census-note-body{font-size:13px;line-height:1.85;color:#b0a89e;}
+
+  /* CLOSING */
+  .closing{text-align:center;padding:80px 24px;background:radial-gradient(ellipse at center bottom,rgba(201,168,76,0.06) 0%,transparent 60%);}
+  .closing-title{font-family:var(--f-display);font-size:clamp(28px,5vw,52px);font-style:italic;color:var(--parchment);margin-bottom:20px;line-height:1.2;}
+  .closing-body{font-size:15px;line-height:2.1;color:#a0988e;max-width:640px;margin:0 auto 32px;}
+  .closing-body strong{color:var(--parchment);}
+
+  /* FOOTER NAV */
+  .page-footer{max-width:1100px;margin:0 auto;padding:24px 24px 40px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .footer-link{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;}
+  .footer-link:hover{color:var(--gold);}
+
+  @media(max-width:600px){
+    .founder-quote{padding:28px 20px;}
+    .family-card{padding:20px 16px;}
+  }
+</style>
+<link rel="stylesheet" href="overrides.css">
+</head>
+<body>
+
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a href="welcome.html" class="gnav-brand">Armstrong Family Archive</a>
+    <div class="gnav-links">
+      <a href="start_here.html" class="gnav-link gstart">★ Start Here</a>
+      <a href="for_the_family.html" class="gnav-link">Site Guide</a>
+      <a href="welcome.html" class="gnav-link">Our Family</a>
+      <a href="bellville_family.html" class="gnav-link">The Family</a>
+      <a href="we_are_bellville.html" class="gnav-link active">We Are Bellville</a>
+      <a href="how_we_got_here.html" class="gnav-link">The Story</a>
+      <a href="papertrail.html" class="gnav-link">Documents</a>
+      <a href="photos.html" class="gnav-link">Photos</a>
+      
+    </div>
+  </div>
+</nav>
+
+<!-- OPENING -->
+<div class="opening">
+  <span class="opening-eyebrow">Bellville · Austin County · Texas · 1865 to Now</span>
+  <h1 class="opening-title">We Are<br>Bellville.</h1>
+  <p class="opening-sub">They stayed. They loved. They multiplied.</p>
+  <p class="opening-statement">They were brought to this land in chains — held by the same handful of men who received colonial land grants from the Mexican government in the 1820s and 1830s. When emancipation came on June 19, 1865, they did not scatter. They stayed on the same land. They found each other. They married each other's children. They built a community out of everything that had been done to them. <strong>This is that community. This is our family. We are Bellville.</strong></p>
+</div>
+
+<!-- FOUNDER'S STATEMENT -->
+<div class="founder-quote">
+  <p class="founder-quote-text">"Our entire bloodline in Bellville — built off the pain, the brokenness, the slavery. Our families found love, made children and multiplied. We truly are Bellville."</p>
+  <span class="founder-quote-attr">Jasmine M. Lee · Founder, Dock Ellis Foundation · Seven years of research · 2019–2026</span>
+</div>
+
+<!-- THE FAMILIES -->
+<div class="sec">
+  <div class="sec-head"><div class="sec-line"></div><div class="sec-label">The Families · Bellville, Austin County, Texas</div><div class="sec-line"></div></div>
+  <p style="font-size:13px;line-height:1.85;color:#a0988e;max-width:680px;margin-bottom:32px;">These are the families documented in this archive. Some dates are confirmed by primary source. Others come from family trees and oral history still being verified. All of them belong here. This page is a living document — growing as research continues.</p>
+
+  <div class="family-grid">
+
+    <!-- NICHOLS -->
+    <div class="family-card" style="border-color:#c9a84c;">
+      <span class="family-card-name">Nichols</span>
+      <span class="family-card-root">Joseph Nichols × Easter Bell Nichols · Bellville · 1865</span>
+      <p class="family-card-body">The heart of the archive. Joseph born ca. 1847 — born enslaved in the John Nichols household. Easter Bell born July 4, 1838 — born enslaved in the same community. They married December 18, 1865 — six months after Juneteenth. They had six children. Their descendants are the branches of this entire family tree.</p>
+      <div style="margin-top:14px;">
+        <div class="family-member"><strong>Allen Nichols</strong> (1865–1944) <em>married Diana Nichols</em></div>
+        <div class="family-member"><strong>Josephine Nichols</strong> (1868–) </div>
+        <div class="family-member"><strong>Oscar Nichols</strong> (1869–1949) <em>married Clara Alexander</em></div>
+        <div class="family-member"><strong>Hellen Nichols</strong> (1870–1931) <em>married John Armstrong → your direct line</em></div>
+        <div class="family-member"><strong>Clara Nichols</strong> (1875–1944) <em>married John Nagy/Nazy</em></div>
+        <div class="family-member"><strong>Willie Nichols</strong> (1884–1956) <em>married Delphia Lilly</em></div>
+        <div class="family-member" style="color:#706860;font-size:11px;margin-top:6px;">Also: Henry Nichols — Joseph's probable brother — married Emmeline (born Shreveport, LA) · both buried Jeff Cemetery Bellville</div>
+      </div>
+    </div>
+
+    <!-- ARMSTRONG -->
+    <div class="family-card" style="border-color:#7b9e87;">
+      <span class="family-card-name">Armstrong</span>
+      <span class="family-card-root">Dave Armstrong (S.C.) × Clara Morgan (N.C.) · Austin County · 1868</span>
+      <p class="family-card-body">Dave Armstrong was born in South Carolina. Clara Morgan was born in North Carolina. Both came to Austin County Texas after emancipation. They married August 29, 1868. Their children grew up in Bellville — and their son John Armstrong married Hellen Nichols, Easter Bell's daughter, connecting the Armstrong and Nichols families forever.</p>
+      <div style="margin-top:14px;">
+        <div class="family-member"><strong>John Armstrong</strong> (1872–1911) <em>married Hellen Nichols · murdered Fort Worth</em></div>
+        <div class="family-member"><strong>Charlie Armstrong</strong> (1874–)</div>
+        <div class="family-member"><strong>Ida Armstrong</strong> (1875–1918) <em>married Louis Twiggs</em></div>
+        <div class="family-member"><strong>Joshua Armstrong</strong> (1879–1957) <em>married Lula Lott</em></div>
+        <div class="family-member"><strong>Bettie Armstrong</strong> (1885–)</div>
+        <div class="family-member" style="color:#706860;font-size:11px;margin-top:6px;">Also: Luther Armstrong (born March 1897, Bellville) — confirmed in 1900 census, connection to family still being researched</div>
+      </div>
+    </div>
+
+    <!-- PINK -->
+    <div class="family-card" style="border-color:#7a8fa6;">
+      <span class="family-card-name">Pink</span>
+      <span class="family-card-root">Hannibal Pink · Bellville · married Easter Bell after Joseph's death</span>
+      <p class="family-card-body">Hannibal Pink was born ca. 1840 in Texas — confirmed in the 1900 Bellville census, married 1865. Easter Bell Nichols married Hannibal Pink after the death of Joseph Nichols. She died in December 1935 as Easter Pink — still in Bellville, still on the same land. The Pink family is confirmed in the 1900 Bellville community. Much of their documentation is still in progress.</p>
+      <div style="margin-top:14px;">
+        <div class="family-member"><strong>Hannibal Pink</strong> (1840–) <em>married Easter Bell Nichols</em></div>
+        <div class="family-member"><strong>J.L. Pink</strong> (1843–) <em>born Mississippi</em></div>
+        <div class="family-member"><strong>Lizzie Pink</strong> (1875–)</div>
+        <div class="family-member"><strong>Louis Biggs Pink</strong> (1883–1951)</div>
+        <div class="family-member"><strong>Pearly Pink</strong> (1885–)</div>
+        <div class="family-member"><strong>August Pink</strong> (1877–) <em>married 1898</em></div>
+        <div class="family-member" style="color:#706860;font-size:11px;margin-top:6px;">Research note: Full Pink family documentation in progress. The 2006 Austin County tax foreclosure named Easter Pink as a legal heir to the John Nichols Survey land — 141 years after emancipation.</div>
+      </div>
+    </div>
+
+    <!-- LOTT -->
+    <div class="family-card" style="border-color:#a09070;">
+      <span class="family-card-name">Lott</span>
+      <span class="family-card-root">Beno Lott (1830–) · William Lott × Rosie Carter · Bellville</span>
+      <p class="family-card-body">The Lott family surname traces to the Lott land grants in Austin County — Arthur Lott and Samuel Lott appear as original grantees in the tax records. The Black Lott family of Bellville descended from people held on those same grants. William Lott married Rosie Carter. Their daughter Lula Lott married Joshua Armstrong — connecting the Lott and Armstrong families.</p>
+      <div style="margin-top:14px;">
+        <div class="family-member"><strong>Beno Lott</strong> (1830–)</div>
+        <div class="family-member"><strong>Butler Lott Sr.</strong> (1857–1930)</div>
+        <div class="family-member"><strong>William Lott</strong> (1858–) <em>married Rosie Carter (1859–1917)</em></div>
+        <div class="family-member"><strong>Lula Lott</strong> (1886–1946) <em>married Joshua Armstrong</em></div>
+        <div class="family-member"><strong>Sarah Lott</strong> (1876–) · <strong>Renta Lott</strong> (1878–)</div>
+        <div class="family-member"><strong>Dizzie Lott</strong> (1884–) · <strong>Bucker Lott</strong> (1888–1914) · <strong>Litmore Lott</strong> (1890–1914)</div>
+        <div class="family-member"><strong>Luther Armstrong</strong> (1898–1916) <em>son of Joshua Armstrong and Lula Lott</em></div>
+      </div>
+    </div>
+
+    <!-- NAGY/NAZY -->
+    <div class="family-card" style="border-color:#9e7b8a;">
+      <span class="family-card-name">Nagy · Nazy</span>
+      <span class="family-card-root">John Nagy × Clara Nichols · Bellville · married 1892</span>
+      <p class="family-card-body">Clara Nichols — Easter Bell's daughter — married John Nagy on November 5, 1891. Their son Roy Nazy carried the family forward. Roy Nazy had children with Quille McCree — connecting the Nagy and McCree families — and later with Lola Hicklin. The Nazy name is one of the most documented branches of the Easter Bell tree.</p>
+      <div style="margin-top:14px;">
+        <div class="family-member"><strong>Roy Nazy</strong> (1895–1964)</div>
+        <div class="family-member"><strong>Beatrice Lee Beamon</strong> (1917–2002) <em>with Quille McCree · married Andrew J. Beamon</em></div>
+        <div class="family-member"><strong>Dorothy Mae Nazy</strong> (1926–) · <strong>Willie Nazy</strong> (1928–) · <strong>Preston Nazy</strong> (1931–)</div>
+        <div class="family-member"><strong>Janice Nazy</strong> (1945–2022)</div>
+        <div class="family-member" style="color:#706860;font-size:11px;margin-top:6px;">Beatrice Lee Beamon's children: Bobby J. Taylor, Larene Beamon, Kenneth Lee Beamon</div>
+      </div>
+    </div>
+
+    <!-- McCREE -->
+    <div class="family-card" style="border-color:#7a8fa6;">
+      <span class="family-card-name">McCree</span>
+      <span class="family-card-root">Steve McCree × Mollie Chappell · Bellville</span>
+      <p class="family-card-body">The McCree family was in Bellville in 1900 — confirmed in the census. Steve McCree and Mollie Chappell's daughter Quille McCree married Roy Nazy — connecting the McCree and Nagy families. The Hilliard McCree household — with Helen McCree born in North Carolina — is also documented in the 1900 Bellville census. Full McCree documentation is still in progress.</p>
+      <div style="margin-top:14px;">
+        <div class="family-member"><strong>Steve McCree</strong> (1858–1930) <em>married Mollie Chappell (1867–)</em></div>
+        <div class="family-member"><strong>Quille McCree</strong> (1899–1962) <em>married Roy Nazy</em></div>
+        <div class="family-member"><strong>Hilliard McCree</strong> — in Bellville 1900 <em>married Helen McCree (born North Carolina)</em></div>
+        <div class="family-member" style="color:#706860;font-size:11px;margin-top:6px;">Also in 1900 Bellville: James McCree (1877–) married Rosa McCree (1878–). Full family connection still being researched.</div>
+      </div>
+    </div>
+
+    <!-- TWIGGS -->
+    <div class="family-card" style="border-color:#888;">
+      <span class="family-card-name">Twiggs</span>
+      <span class="family-card-root">Louis Twiggs × Ida Armstrong · Bellville</span>
+      <p class="family-card-body">Ida Armstrong — daughter of Dave Armstrong and Clara Morgan, sister of John Armstrong — married Louis Twiggs. They had children in Bellville. Ida died May 19, 1918 in Fort Worth of tuberculosis — six months before her mother Clara Armstrong died. Louis Twiggs is confirmed in the 1900 Bellville census, born March 1870.</p>
+      <div style="margin-top:14px;">
+        <div class="family-member"><strong>Louis Twiggs</strong> (1875–1921) <em>married Ida Armstrong (1875–1918)</em></div>
+        <div class="family-member"><strong>Ra Twigs</strong> (1896–) · <strong>Rother Twiggs</strong> (1897–1913)</div>
+        <div class="family-member"><strong>Gertrude Twigs</strong> (1899–)</div>
+        <div class="family-member"><strong>William (Willie) Franklin Twiggs</strong> (1901–1948)</div>
+      </div>
+    </div>
+
+    <!-- LILLY -->
+    <div class="family-card" style="border-color:#a09070;">
+      <span class="family-card-name">Lilly</span>
+      <span class="family-card-root">Willie Nichols × Delphia Lilly · Austin County</span>
+      <p class="family-card-body">Willie Nichols — Easter Bell's youngest son — married Delphia Lilly. Their children took the Lilly surname. The family continued in Texas into the 1990s and 2000s. Willie Nichols was named as a legal heir — as Willey Nichols — in the 2006 Austin County tax foreclosure on the John Nichols Survey land.</p>
+      <div style="margin-top:14px;">
+        <div class="family-member"><strong>Willie Nichols</strong> (1884–1956) <em>married Delphia Lilly (1888–)</em></div>
+        <div class="family-member"><strong>John Lilly Sr.</strong> (1905–1970)</div>
+        <div class="family-member"><strong>Ora Lee Lilly</strong> (1906–)</div>
+        <div class="family-member"><strong>Regina Madeline Lilly</strong> (1949–2011) · <strong>Regine Lilly</strong> (1950–) · <strong>John Lilly Jr.</strong></div>
+      </div>
+    </div>
+
+    <!-- ALEXANDER -->
+    <div class="family-card" style="border-color:#888;">
+      <span class="family-card-name">Alexander</span>
+      <span class="family-card-root">Oscar Nichols × Clara Alexander · married May 21 1892</span>
+      <p class="family-card-body">Oscar Nichols — Easter Bell's son — married Clara Alexander on May 21, 1892. Clara Alexander was born in Fayette County, Tennessee ca. 1875. Oscar and Clara's son Walter Nichols married Donnie Robertson. Their branch produced descendants documented into the 1990s.</p>
+      <div style="margin-top:14px;">
+        <div class="family-member"><strong>Vina Taylor</strong> (1856–) <em>Clara Alexander's mother · married Patrick Alexander</em></div>
+        <div class="family-member"><strong>Clara Alexander</strong> (1875–1942) <em>born Fayette County, Tennessee</em></div>
+        <div class="family-member"><strong>Walter Nichols</strong> (1894–1959) <em>married Donnie Robertson (1894–1989)</em></div>
+        <div class="family-member"><strong>Walter Louis Nichols</strong> (1918–1992) <em>married Justine Smith → Ernest Lee Nichols (1960–)</em></div>
+        <div class="family-member"><strong>Lloyd Curtis Nichols</strong> (1923–1993) · <strong>Everlin Nichols</strong> (1930–) · <strong>Fay Lois Nichols</strong> (1930–2023)</div>
+      </div>
+    </div>
+
+  </div><!-- /family-grid -->
+</div><!-- /sec -->
+
+<!-- THE MARRIAGES THAT BUILT THE COMMUNITY -->
+<div class="sec">
+  <div class="sec-head"><div class="sec-line"></div><div class="sec-label">The Marriages That Built the Community</div><div class="sec-line"></div></div>
+  <p style="font-size:13px;line-height:1.85;color:#a0988e;max-width:680px;margin-bottom:24px;">These are the unions that connected the families of Bellville to each other — and to this archive. Formerly enslaved people and their descendants finding each other, choosing each other, building something together on the same land where they had been held.</p>
+
+  <div class="marriage-grid">
+    <div class="marriage-card">
+      <span class="marriage-label">Nichols ↔ Nichols</span>
+      <span class="marriage-names">Joseph Nichols <span class="marriage-arrow">×</span> Easter Bell</span>
+      <p class="marriage-note">December 18, 1865 · Six months after Juneteenth · The marriage that started everything · Six children · 97 years of Easter Bell's life</p>
+    </div>
+    <div class="marriage-card">
+      <span class="marriage-label">Armstrong ↔ Nichols · Your Direct Line</span>
+      <span class="marriage-names">John Armstrong <span class="marriage-arrow">×</span> Hellen Nichols</span>
+      <p class="marriage-note">November 27, 1898 · Dave Armstrong (S.C.) son marries Easter Bell's daughter · Eva Armstrong born June 1900 · the line continues</p>
+    </div>
+    <div class="marriage-card">
+      <span class="marriage-label">Armstrong ↔ Lott</span>
+      <span class="marriage-names">Joshua Armstrong <span class="marriage-arrow">×</span> Lula Lott</span>
+      <p class="marriage-note">John Armstrong's brother marries William Lott and Rosie Carter's daughter · two Bellville families joined · Luther Armstrong born 1898</p>
+    </div>
+    <div class="marriage-card">
+      <span class="marriage-label">Armstrong ↔ Twiggs</span>
+      <span class="marriage-names">Louis Twiggs <span class="marriage-arrow">×</span> Ida Armstrong</span>
+      <p class="marriage-note">Ida Armstrong — John Armstrong's sister — married Louis Twiggs · confirmed in 1900 Bellville census</p>
+    </div>
+    <div class="marriage-card">
+      <span class="marriage-label">Nichols ↔ Nagy</span>
+      <span class="marriage-names">John Nagy <span class="marriage-arrow">×</span> Clara Nichols</span>
+      <p class="marriage-note">November 5, 1891 · Easter Bell's daughter Clara marries John Nagy · son Roy Nazy born 1895</p>
+    </div>
+    <div class="marriage-card">
+      <span class="marriage-label">Nagy ↔ McCree</span>
+      <span class="marriage-names">Roy Nazy <span class="marriage-arrow">×</span> Quille McCree</span>
+      <p class="marriage-note">Steve McCree and Mollie Chappell's daughter with Clara Nichols's son · Beatrice Lee Beamon born 1917</p>
+    </div>
+    <div class="marriage-card">
+      <span class="marriage-label">Nichols ↔ Alexander</span>
+      <span class="marriage-names">Oscar Nichols <span class="marriage-arrow">×</span> Clara Alexander</span>
+      <p class="marriage-note">May 21, 1892 · Easter Bell's son Oscar marries Clara Alexander · Walter Nichols born 1894</p>
+    </div>
+    <div class="marriage-card">
+      <span class="marriage-label">Nichols ↔ Lilly</span>
+      <span class="marriage-names">Willie Nichols <span class="marriage-arrow">×</span> Delphia Lilly</span>
+      <p class="marriage-note">Easter Bell's youngest son · January 6, 1915 · children took the Lilly surname · named as heir in 2006 foreclosure</p>
+    </div>
+    <div class="marriage-card">
+      <span class="marriage-label">Pink ↔ Nichols</span>
+      <span class="marriage-names">Hannibal Pink <span class="marriage-arrow">×</span> Easter Bell Nichols</span>
+      <p class="marriage-note">Easter Bell's second marriage after Joseph Nichols died · she died December 1935 as Easter Pink · her name still on the Nichols Survey deed in 2006</p>
+    </div>
+  </div>
+</div>
+
+<!-- THE COMMUNITY ROLL -->
+<div class="sec">
+  <div class="sec-head"><div class="sec-line"></div><div class="sec-label">The Bellville Community · 1900 Census · Black Families</div><div class="sec-line"></div></div>
+
+  <div class="census-note">
+    <span class="census-note-label">Primary Source · 1900 U.S. Federal Census · Bellville, Austin County, Texas</span>
+    <p class="census-note-body">These are the Black families documented in Bellville in the 1900 census — enumerated on the same pages as the German immigrant families and white Texas-born families who also lived in Bellville. They are the descendants of people held in bondage on the original Austin County land grants. They stayed. They are all still there in 1900 — on or near the same land — 35 years after emancipation.</p>
+  </div>
+
+  <div class="community-roll">
+    <div class="community-name"><span class="community-surname">Nichols</span><span class="community-note">Joseph · Easter · Oscar · Clara · Willie · Walter</span></div>
+    <div class="community-name"><span class="community-surname">Armstrong</span><span class="community-note">John · Helen · Eva · Luther</span></div>
+    <div class="community-name"><span class="community-surname">Pink</span><span class="community-note">Hannibal · J.L. · Lizzie · Louis · Pearly · August · Hattie · Willie</span></div>
+    <div class="community-name"><span class="community-surname">Lott</span><span class="community-note">Rosa · Lula · Dizzie · Litmore · Bucker</span></div>
+    <div class="community-name"><span class="community-surname">Nagy · Nazy</span><span class="community-note">John · Clara · Roy</span></div>
+    <div class="community-name"><span class="community-surname">McCree</span><span class="community-note">James · Rosa · Samuel · Hilliard · Helen</span></div>
+    <div class="community-name"><span class="community-surname">Twiggs</span><span class="community-note">Louis · Ida · Ra · Gertrude</span></div>
+    <div class="community-name"><span class="community-surname">Bland</span><span class="community-note">Horace · Silismon · Claracy · Mat</span></div>
+    <div class="community-name"><span class="community-surname">Scales</span><span class="community-note">Jessie · Maria · Lina · Martha · Antony · Gertrude</span></div>
+    <div class="community-name"><span class="community-surname">Landrum</span><span class="community-note">Clark · Charlot · Mary · Henriette · John · Jenny · James</span></div>
+    <div class="community-name"><span class="community-surname">Hicks</span><span class="community-note">James · Molly · Senola · Annie · Henry · Marselle · Verdella</span></div>
+    <div class="community-name"><span class="community-surname">Jackson</span><span class="community-note">Sol · Irene</span></div>
+    <div class="community-name"><span class="community-surname">Wyatt</span><span class="community-note">Moses · Frankie · Clinton · Roberta</span></div>
+    <div class="community-name"><span class="community-surname">Conner</span><span class="community-note">William · Mary · Mattie · William · Oscar · Katie · Walter · Emmie · Ethel</span></div>
+    <div class="community-name"><span class="community-surname">Davis</span><span class="community-note">Philip · Virginia · Clarinda · Alzata · Mattie · Anderson · Clarika</span></div>
+    <div class="community-name"><span class="community-surname">Hilliard</span><span class="community-note">Cary · Mamie · Mary</span></div>
+    <div class="community-name"><span class="community-surname">Brown</span><span class="community-note">Georgia · Alex · Easter · Radford · Vazelle · Janie May · Leota</span></div>
+    <div class="community-name"><span class="community-surname">King</span><span class="community-note">Minnie · and others — research in progress</span></div>
+    <div class="community-name"><span class="community-surname">Blunt</span><span class="community-note">Thomas · born Virginia 1845</span></div>
+    <div class="community-name"><span class="community-surname">Wallis</span><span class="community-note">Alec</span></div>
+    <div class="community-name"><span class="community-surname">Reed</span><span class="community-note">John · born Mississippi</span></div>
+    <div class="community-name"><span class="community-surname">Simmons</span><span class="community-note">Henry</span></div>
+    <div class="community-name"><span class="community-surname">Williams</span><span class="community-note">James · Lizzie</span></div>
+    <div class="community-name"><span class="community-surname">Coleman</span><span class="community-note">Corine · Hermme</span></div>
+  </div>
+
+  <p style="font-size:12px;color:#706860;font-family:var(--f-mono);letter-spacing:1px;margin-bottom:48px;">Source: 1900 U.S. Federal Census · Bellville, Austin County, Texas · enumerated June 1900 · Primary source document</p>
+</div>
+
+<!-- 1869 FREEDMEN'S BUREAU REPORT — WHAT FREEDOM LOOKED LIKE -->
+<div style="max-width:800px;margin:0 auto 56px;padding:0 24px;">
+  <span style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,168,76,0.55);display:block;margin-bottom:14px;">Primary Source · June 9, 1869 · Office of Freedmen's Affairs, Post of Brenham</span>
+  <h2 style="font-family:'DM Serif Display',Georgia,serif;font-style:italic;font-size:clamp(24px,4vw,34px);color:#f0ead8;margin-bottom:20px;line-height:1.25;">What Freedom Looked Like</h2>
+  <p style="font-size:14px;line-height:2;color:#c0b8b0;margin-bottom:16px;">A U.S. Army officer's report, filed from the Post of Brenham on June 9, 1869 — not quite four years after Juneteenth — describes the night of May 31, 1869 in Bellville. A party of five armed men rode into town, visited the courthouse where a dance was underway, then rode out firing pistols at dogs, pigs, and houses. Before reaching town they had already fired a dozen shots into a vacant house. <strong style="color:#f0ead8;">Then they fired eight pistol shots into an occupied log house — the home of a freedwoman and her children — wounding her severely in the leg.</strong> The shots were not wild: seven of the eight passed cleanly through the gaps between the logs, meaning they were aimed at the house itself.</p>
+  <p style="font-size:14px;line-height:2;color:#c0b8b0;margin-bottom:16px;">The freedwoman is not named in the surviving portion of this report. We do not know if she is one of ours. But she was someone's mother, in Bellville, in 1869 — living through exactly the years when Easter Bell Nichols, newly free, was raising Allen, Josephine, Oscar, Hellen, Clarar, and Willie in this same town. This is the world freedom was won into. We record it here because it happened here, to a woman like the women in this family, and because someone, somewhere, may recognize her.</p>
+  <p style="font-size:14px;line-height:2;color:#c0b8b0;margin-bottom:16px;">The same report names the men the officer believed were working to seize control of Austin County's government in the years after the shooting: former Judge Johnson; his law partner, called "Chesley"; <strong style="color:#f0ead8;">A.J. Bell — "known as Jack Bell"</strong> — already documented as Austin County Sheriff as early as 1851; and <strong style="color:#f0ead8;">John G. Bell — "known as whispering John"</strong> — the same John G. Bell (born John Gideon Slade, adopted by Thomas Bell in 1854) who held enslaved people in Bellville and later ran a hotel there. The officer reports that Bell and Chesley jointly controlled the county treasury, each holding one of two keys, while the elected Treasurer — John G. Bell's own son, <strong style="color:#f0ead8;">L.D. Bell</strong> — was, in the officer's words, "a nonentity." "They care for nothing but their personal welfare and interests," the officer wrote, "and will adopt any measures, no matter what, to obtain the control of public Affairs."</p>
+  <div style="background:rgba(201,168,76,0.05);border-left:2px solid rgba(201,168,76,0.4);padding:16px 20px;margin-top:20px;">
+    <span style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:1px;color:rgba(201,168,76,0.6);display:block;margin-bottom:8px;">Source</span>
+    <p style="font-size:12px;line-height:1.8;color:#a8a090;margin:0;">Office of Freedmen's Affairs, Post of Brenham, Texas — Report to Capt. James Biddle, 17th Infantry, June 9, 1869, forwarding information from ex-Sheriff Fritz Palm of Austin County. The full registry entry for the Thomas Bell / John G. Bell estate, including the enslaved man Henry named in Thomas Bell's 1858 will, is documented on the <a href="registry.html" style="color:#c9a84c;">Enslaved Persons Registry</a>.</p>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <h2 class="closing-title">This Land.<br>These Names.<br>This Family.</h2>
+  <p class="closing-body">The John Nichols Survey — Abstract 73 — was a Mexican colonial land grant from 1832. John Nichols held it. He held people on it. When he died in 1864 and emancipation came in 1865, the people he had enslaved inherited fractional interests in that same land. <strong>Easter Bell Nichols's name was still on the deed in 2006</strong> — 141 years after emancipation — when Austin County foreclosed for unpaid taxes and the land transferred to the Bellville Independent School District.</p>
+  <p class="closing-body">They stayed on the land longer than the family that enslaved them. They built more with it. They multiplied from it. Every name on this page — every Nichols, every Armstrong, every Pink, every Lott, every Nazy, every McCree — traces back to that land. To that community. To the people who chose to stay and to love and to build something out of everything that had been taken from them.</p>
+  <p class="closing-body"><strong>We are Bellville.</strong></p>
+</div>
+
+<div class="page-footer">
+  <span style="font-family:var(--f-mono);font-size:8px;letter-spacing:1px;color:rgba(255,255,255,0.2);">Armstrong Family Archive · Research by Jasmine M. Lee · Dock Ellis Foundation · 2019–2026 · This page is a living document</span>
+  <a href="bellville_family.html" class="footer-link">Easter Bell's Children →</a>
+</div>
+
+<script src="sidebar.js"></script>
+</body>
+</html>

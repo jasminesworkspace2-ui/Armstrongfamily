@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Land · Armstrong Family Archive</title>
+<meta name="description" content="Three properties, three stories. The land Easter Bell's family held for 141 years in Bellville, Rev. George W. Ballard's property in Waco, and Newton Ballard's 160 acres in Upshur County — what was claimed, what was held, and what was lost.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep:#080604;--surface:#0e0b08;
+    --gold:#c9a84c;--gold2:#e8c96a;--cream:#f5f2ec;--parchment:#f0ead8;
+    --muted:rgba(245,242,236,0.45);--border:rgba(201,168,76,0.15);
+    --border2:rgba(255,255,255,0.06);
+    --rust:#b0492e;--rust-bg:rgba(176,73,46,0.08);
+    --forest:#4a8a5a;--forest-bg:rgba(74,138,90,0.08);
+    --f-display:'DM Serif Display',Georgia,serif;
+    --f-body:'Inter',sans-serif;--f-mono:'Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+
+  .gnav{position:sticky;top:0;z-index:100;background:rgba(8,6,4,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(8px);}
+  .gnav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:52px;gap:8px;}
+  .gnav-brand{font-family:var(--f-display);font-style:italic;font-size:15px;color:rgba(240,234,216,0.8);text-decoration:none;white-space:nowrap;}
+  .gnav-brand:hover{color:#f0ead8;}
+  .gnav-links{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;}
+  .gnav-links::-webkit-scrollbar{display:none;}
+  .gnav-link{font-family:var(--f-mono);font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;padding:6px 10px;white-space:nowrap;border-bottom:2px solid transparent;transition:color 0.15s;}
+  .gnav-link:hover{color:rgba(245,242,236,0.85);}
+  .gnav-link.active{color:#c9a84c;border-bottom-color:#c9a84c;}
+  .gnav-link.gstart{color:#c9a84c;border:1px solid rgba(201,168,76,0.35);padding:5px 10px;margin-right:6px;}
+
+  .opening{min-height:65vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:70px 24px;position:relative;
+           background:radial-gradient(ellipse at center,rgba(201,168,76,0.07) 0%,transparent 65%);}
+  .opening-eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,168,76,0.5);display:block;margin-bottom:24px;}
+  .opening-title{font-family:var(--f-display);font-size:clamp(44px,9vw,84px);font-style:italic;color:var(--parchment);line-height:1;margin-bottom:28px;}
+  .opening-sub{font-family:var(--f-display);font-size:clamp(15px,2.6vw,21px);font-style:italic;color:rgba(201,168,76,0.7);margin-bottom:36px;line-height:1.5;}
+  .opening-statement{font-size:15.5px;line-height:2.05;color:#b0a89e;max-width:680px;margin:0 auto;}
+  .opening-statement strong{color:var(--parchment);}
+
+  .sec{max-width:1100px;margin:0 auto;padding:0 24px;}
+  .sec-head{display:flex;align-items:center;gap:14px;margin:56px 0 28px;}
+  .sec-line{flex:1;height:1px;background:var(--border);}
+  .sec-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap;}
+
+  /* PROPERTY CARDS */
+  .card-box{background:var(--surface);border:1px solid var(--border2);border-radius:4px;padding:26px 28px;margin:20px 0;position:relative;overflow:hidden;}
+  .card-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(to right,var(--gold),var(--gold2));}
+  .card-box.red::before{background:linear-gradient(to right,var(--rust),#cc4444);}
+  .card-box.green::before{background:linear-gradient(to right,var(--forest),#2a7a2a);}
+  .card-label{font-family:var(--f-mono);font-size:9px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;display:block;}
+  .card-box.red .card-label{color:var(--rust);}
+  .card-box.green .card-label{color:var(--forest);}
+  .card-title{font-family:var(--f-display);font-size:26px;font-weight:600;color:var(--parchment);margin-bottom:4px;display:block;}
+  .card-loc{font-size:13.5px;font-style:italic;color:var(--muted);margin-bottom:14px;display:block;}
+  .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-family:var(--f-mono);font-size:9px;font-weight:400;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;}
+  .badge-red{background:var(--rust-bg);color:var(--rust);border:1px solid rgba(176,73,46,0.3);}
+  .badge-green{background:var(--forest-bg);color:var(--forest);border:1px solid rgba(74,138,90,0.3);}
+  .card-body{font-size:14.5px;line-height:1.95;color:#c0b8b0;margin-bottom:6px;}
+  .card-body strong{color:var(--parchment);}
+  .ftbl{width:100%;margin-top:16px;border-collapse:collapse;}
+  .ftbl tr{border-bottom:1px solid var(--border2);}
+  .ftbl tr:last-child{border-bottom:none;}
+  .ftbl td{padding:9px 0;vertical-align:top;font-size:12.5px;line-height:1.7;}
+  .ftbl td:first-child{font-family:var(--f-mono);font-size:9.5px;font-weight:400;letter-spacing:1px;color:rgba(201,168,76,0.6);text-transform:uppercase;width:150px;padding-right:18px;flex-shrink:0;}
+  .ftbl td:last-child{color:#a8a090;}
+  .src-note{font-family:var(--f-mono);font-size:9px;color:rgba(255,255,255,0.25);margin-top:14px;line-height:1.8;}
+
+  .heir-list{background:rgba(201,168,76,0.04);border-left:3px solid rgba(201,168,76,0.3);padding:18px 22px;margin:18px 0;}
+  .heir-label{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.55);display:block;margin-bottom:10px;}
+  .heir-names{font-size:13px;line-height:2;color:#c0b8b0;}
+
+  .prose{font-size:14.5px;line-height:1.95;color:#a0988e;max-width:760px;}
+  .prose strong{color:var(--parchment);}
+  .prose p{margin-bottom:16px;}
+
+  .pattern-block{background:rgba(255,255,255,0.02);border:1px solid var(--border2);padding:22px 26px;margin:24px 0;}
+  .pattern-table{width:100%;border-collapse:collapse;margin-top:8px;}
+  .pattern-table th{font-family:var(--f-mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(201,168,76,0.6);text-align:left;padding:8px 12px 8px 0;border-bottom:1px solid var(--border);}
+  .pattern-table td{font-size:12.5px;padding:8px 12px 8px 0;color:#a8a090;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.6;}
+
+  .closing{text-align:center;padding:72px 24px;background:radial-gradient(ellipse at center bottom,rgba(201,168,76,0.06) 0%,transparent 60%);}
+  .closing-title{font-family:var(--f-display);font-size:clamp(26px,4.5vw,44px);font-style:italic;color:var(--parchment);margin-bottom:18px;line-height:1.2;}
+  .closing-body{font-size:14.5px;line-height:2.05;color:#a0988e;max-width:640px;margin:0 auto 28px;}
+  .closing-body strong{color:var(--parchment);}
+
+  .page-footer{max-width:1100px;margin:0 auto;padding:24px 24px 40px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .footer-link{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;}
+  .footer-link:hover{color:var(--gold);}
+
+  @media(max-width:600px){
+    .card-box{padding:20px 18px;}
+    .ftbl td:first-child{width:110px;font-size:9px;}
+  }
+</style>
+<link rel="stylesheet" href="overrides.css">
+</head>
+<body>
+
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a href="welcome.html" class="gnav-brand">Armstrong Family Archive</a>
+    <div class="gnav-links">
+      <a href="start_here.html" class="gnav-link gstart">★ Start Here</a>
+      <a href="for_the_family.html" class="gnav-link">Site Guide</a>
+      <a href="welcome.html" class="gnav-link">Our Family</a>
+      <a href="bellville_family.html" class="gnav-link">The Family</a>
+      <a href="we_are_bellville.html" class="gnav-link">We Are Bellville</a>
+      <a href="how_we_got_here.html" class="gnav-link">The Story</a>
+      <a href="land.html" class="gnav-link active">The Land</a>
+      <a href="papertrail.html" class="gnav-link">Documents</a>
+      <a href="photos.html" class="gnav-link">Photos</a>
+    </div>
+  </div>
+</nav>
+
+<div class="opening">
+  <span class="opening-eyebrow">Three Properties · Three Stories · 1856 to 2017</span>
+  <h1 class="opening-title">The Land.</h1>
+  <p class="opening-sub">What was claimed. What was held. What was lost.</p>
+  <p class="opening-statement">This family tried to own land three separate times, in three separate counties, across three separate generations. One tract was sold legally, on fair terms, before anyone in this family had ever heard the word "heir." Two others were taken by tax sale — one in 2006, one in 2017 — sold at the courthouse steps for a fraction of their worth, decades after the people whose names were still on the title had died. <strong>This page tells all three stories, together, for the first time.</strong></p>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-line"></div><div class="sec-label">Property One · Lost 2006</div><div class="sec-line"></div></div>
+
+  <div class="card-box red">
+    <span class="card-label">Bellville, Austin County, Texas</span>
+    <span class="card-title">The Bellville Land</span>
+    <span class="card-loc">2 acres · J. Nichols Survey · Abstract No. 73</span>
+    <span class="badge badge-red">Lost — Tax Sale — August 1, 2006</span>
+    <div class="card-body">
+      <p>Sometime after emancipation in 1865, Easter Bell's family acquired two acres inside the same J. Nichols Survey where she had been born enslaved. They held that land — through Reconstruction, through Jim Crow, through the Great Migration that carried so many of their relatives to Fort Worth and California — for <strong>141 years</strong>.</p>
+      <p>Easter Bell Nichols died December 17, 1935, at age 97. Her name stayed on the title. So did the names of her children — Allen, Oscar, Clara, Willie, Hellen — and their children after them, as the fractional ownership split further with every generation and no single administrator ever consolidated it.</p>
+      <p>In 1997, Austin County and the Bellville Independent School District filed a delinquent tax suit — <strong>Cause No. 97V-003</strong> — naming every heir the county could identify, living and dead. Easter Pink (her name by her second marriage, to Hannibal Pink) was listed as a defendant sixty-two years after her death, because her name was still legally attached to the land.</p>
+      <p>Judgment was rendered December 14, 1999. The Sheriff's order of sale was issued June 23, 2006. On <strong>August 1, 2006</strong> — the first Tuesday of the month, as Texas law requires for tax foreclosure sales — Sheriff R. DeWayne Burger sold the land at the courthouse. It was conveyed to Austin County for the benefit of Bellville ISD.</p>
+    </div>
+
+    <div class="heir-list">
+      <span class="heir-label">Heirs named in the 2006 sale notice</span>
+      <span class="heir-names">Myrtle T. Everline (also known as Myrtle Taylor Everline) · Easter [Bell] Pink · Allen Nichols · Oscar Nichols · Clara Nazy · Joseph King · Charley King · Annie [Nichols] King · Helen Armstrong (also known as Helen Gilbert) · Joseph Nichols · Willie Nichols</span>
+    </div>
+
+    <table class="ftbl">
+      <tr><td>Original deed</td><td>Volume 209, Page 228 · Austin County Deed Records</td></tr>
+      <tr><td>Tax suit</td><td>Cause No. 97V-003 · 155th Judicial District Court of Austin County, Texas</td></tr>
+      <tr><td>Sheriff's Deed</td><td>Instrument No. 66418 · dated August 1, 2006</td></tr>
+      <tr><td>Account No.</td><td>R20014</td></tr>
+      <tr><td>Austin County Clerk</td><td>Patty Norman Leger · 979-227-3144 ext. 5143</td></tr>
+      <tr><td>District Clerk</td><td>Marcy Grimes · 979-270-6830 · 265 N. Chesley Street, Suite 1, Bellville TX 77418</td></tr>
+      <tr><td>Legal Aid</td><td>Lone Star Legal Aid · 713-652-0077 · lonestarlegal.org</td></tr>
+    </table>
+    <p class="src-note">Source: Cause No. 97V-003, 155th Judicial District Court of Austin County, Texas · Sheriff R. DeWayne Burger, grantor · sale date August 1, 2006 · J. Nichols Survey, Abstract No. 73 · Austin County Deed Records Vol. 209, Page 228</p>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-line"></div><div class="sec-label">Property Two · Lost 2017 · Most Actionable</div><div class="sec-line"></div></div>
+
+  <div class="card-box red">
+    <span class="card-label">Waco, McLennan County, Texas</span>
+    <span class="card-title">The Waco Land</span>
+    <span class="card-loc">724 East Johnson Street</span>
+    <span class="badge badge-red">Lost — Tax Sale — November 7, 2017</span>
+    <div class="card-body">
+      <p>Rev. George W. Ballard — son of Newton Ballard and Rebecca Ballard, ordained minister, husband of Mary Ann Edwards Ballard — owned this property in Waco, recorded in McLennan County Deed Records, Volume 289, Page 655.</p>
+      <p>He died October 24, 1937, at age 76. His death certificate, McLennan County Volume 4, Page 483, formally names Newton Ballard as his father — the document that closes the century-long gap between an unnamed enslaved child on a Mississippi plantation and the family that carries his name today.</p>
+      <p>The property outlived him by eighty years before it was lost. Austin County tax suit Cause No. 2014-3167-4 led to a sheriff's sale on November 7, 2017 — the land sold to the McQuade family for $1,600.</p>
+    </div>
+    <table class="ftbl">
+      <tr><td>Original deed</td><td>McLennan County Deed Records · Volume 289, Page 655</td></tr>
+      <tr><td>Tax suit</td><td>Cause No. 2014-3167-4 · McLennan County</td></tr>
+      <tr><td>Sold</td><td>November 7, 2017 · to the McQuade family · $1,600</td></tr>
+      <tr><td>Legal Aid</td><td>Lone Star Legal Aid · 713-652-0077 · <strong>call this one first</strong></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-line"></div><div class="sec-label">Property Three · Sold Legally · 1873</div><div class="sec-line"></div></div>
+
+  <div class="card-box green">
+    <span class="card-label">Upshur County, Texas</span>
+    <span class="card-title">Newton Ballard's 160 Acres</span>
+    <span class="card-loc">Preemption Survey No. 124 · Abstract 131 · Caney Creek</span>
+    <span class="badge badge-green">Legal Sale — No Recourse</span>
+    <div class="card-body">
+      <p>In August 1856 — six years before emancipation, while still legally enslaved — Newton Ballard walked into the Upshur County land office and filed a 160-acre preemption homestead claim, Texas General Land Office File No. 3378. In February 1857 he signed a sworn Settler's Affidavit stating he was the bona fide occupant, clearing the timber, working the land himself.</p>
+      <p>The white county clerk filed the jacket under the misspelled name <strong>Newton Bullard</strong> — a vowel shift that caused this record to disappear from search for over 150 years. But the 1859 tax roll tells the truth: in the column for who rendered the property, the clerk wrote <strong>Ballard</strong>, with an A, exactly as the family carried the name forward.</p>
+      <p>By 1870 Newton is absent from the Upshur County census. His wife Rebecca Ballard heads the household alone, raising Silla, Sandy, and George Washington Ballard. In August 1873, Newton reappears one final time — signing a deed transferring his 160-acre survey to E.G. Horn for $250 in gold, notarized not in Upshur County but in neighboring Rains County. He walks away with the money and disappears from the primary source record. His death date and burial location have never been found.</p>
+      <p>This sale was legal, fairly conducted, and fully documented by Newton's own signature. There is nothing to contest and no recourse to pursue — it is included here because it is part of the same story: a man who claimed land before he was even legally free, and chose, on his own terms, when to let it go.</p>
+    </div>
+    <table class="ftbl">
+      <tr><td>Claim filed</td><td>August 26, 1856 · Texas GLO File No. 3378 · Survey No. 124 · Abstract 131 · Certificate No. 131262</td></tr>
+      <tr><td>Affidavit</td><td>February 1857 · Sworn Settler's Affidavit</td></tr>
+      <tr><td>1859 tax roll</td><td>Rendered by "Ballard" · certified by Assessor A.P. Sullivan</td></tr>
+      <tr><td>Sold</td><td>August 9, 1873 · to E.G. Horn · $250 gold · notarized in Rains County</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-line"></div><div class="sec-label">The Pattern · Same Survey, Different Decades</div><div class="sec-line"></div></div>
+  <div class="prose">
+    <p>The John Nichols Survey — the same 4,428-acre grant where Easter Bell was born enslaved in 1848 — was actively being bought and sold around your family's two acres for the entire 20th century. "J. Nichols league," "Jno. Nichols league," and "John Nichols survey" remained the standard legal description used in dozens of Bellville real estate transactions, decades after emancipation, while your family held onto their own small piece of the same ground.</p>
+  </div>
+
+  <div class="pattern-block">
+    <span class="card-label" style="margin-bottom:2px;">1915 · Bellville Times · John Nichols Survey Transfers</span>
+    <table class="pattern-table">
+      <tr><th>Transfer</th><th>Detail</th></tr>
+      <tr><td>E.J. Spence to Joe D. Sutton</td><td>2 acres · J. Nichols league · $767.50 — the same acreage as your family's parcel</td></tr>
+      <tr><td>F.M. Howard to Emil Harigel</td><td>½ acre · Joe Nichols league · $500</td></tr>
+      <tr><td>Max Roensch to Henrietta DuBois</td><td>½ acre · Jno. Nichols league · $1 and other considerations</td></tr>
+      <tr><td>Margaret D. Chesley to Rose Porter</td><td>1 lot · Nichols league · gift</td></tr>
+    </table>
+  </div>
+
+  <div class="pattern-block">
+    <span class="card-label" style="margin-bottom:2px;">1947 · Bellville Times · John Nichols Survey Transfers</span>
+    <table class="pattern-table">
+      <tr><th>Transfer</th><th>Detail</th></tr>
+      <tr><td>Sheriff E.E. Reinecker to Thomas E. Hilliard</td><td>43¾ acres · John Nichols survey · $275 — a sheriff's sale, the same mechanism used against your family's land in 2006</td></tr>
+      <tr><td>Hugo Muery to G.R. Eckerman</td><td>1 acre · John Nichols league · $500</td></tr>
+      <tr><td>Richard Berndt to Arthur J. Smith</td><td>13,500 sq ft · John Nichols league · $600</td></tr>
+      <tr><td>Paul Rudloff to Eugene Rudloff</td><td>22,500 sq ft · John Nichols league · $10 and other considerations</td></tr>
+      <tr><td>Bertha E. Braun to Charles D. Rogers</td><td>2.65 acres · John Nichols league · $10 and other considerations</td></tr>
+    </table>
+  </div>
+
+  <div class="prose" style="margin-top:20px;">
+    <p>Sheriff's sales on the John Nichols survey in 1947. A sheriff's sale on the same survey in 2006. The same mechanism, the same ground, fifty-nine years apart.</p>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-line"></div><div class="sec-label">The Austin County Jail · Built on John Nichols's Original Land</div><div class="sec-line"></div></div>
+  <div class="prose">
+    <p>The Austin County Jail in Bellville — the building where Joseph Nichols, Oscar Nichols, Hellen Nichols Armstrong, John Armstrong, and four-month-old Eva Armstrong were all counted in the June 1900 census — was built in 1896 on land originally granted to <strong>John Nichols</strong> by the Mexican government on October 20, 1832.</p>
+    <p>Nichols sold portions of that original grant to James and Thomas Bell in the 1830s. That land became the town of Bellville — named for the Bell family — sitting on the same survey where your ancestors were enslaved. John Nichols's estate in 1864 listed ten enslaved people. He died before emancipation reached Texas. His widow and estate held Easter Bell and Rendy Blayn until June 19, 1865.</p>
+  </div>
+  <div class="card-box" style="border-color:var(--border2);">
+    <span class="card-label">Source · National Register of Historic Places · Austin County Jail, Bellville TX</span>
+    <p style="font-family:'DM Serif Display',Georgia,serif;font-size:15px;line-height:1.75;color:#c0b8b0;font-style:italic;">"This land had been granted to John Nichols on October 20, 1832 by the Mexican Government. Nichols over the next several years sold portions of his original grant to James and Thomas Bell. In March of 1846, Austin County purchased a total of 145½ acres of land from the Bells for a sum of $2.00." The jail was built on Lot 6 of Block F of this original Nichols land grant.</p>
+  </div>
+</div>
+
+<div class="closing">
+  <h2 class="closing-title">Two Acres. Twenty-Four Words.<br>One Hundred Forty-One Years.</h2>
+  <p class="closing-body"><strong>Cause No. 97V-003. Cause No. 2014-3167-4.</strong> Two case numbers, two counties, two tax sales, eleven years apart, taking land from the same family. Land that had been worked without pay is not the same as land that was later owned outright — but owning it, holding it, passing it down for generations, was still real. It mattered. Losing it mattered too. This page exists so that the loss is recorded the same way the survival was: with names, with dates, with sources, in full.</p>
+</div>
+
+<div class="page-footer">
+  <a href="how_we_got_here.html" class="footer-link">← The Story</a>
+  <a href="papertrail.html" class="footer-link">Documents →</a>
+</div>
+
+</body>
+</html>

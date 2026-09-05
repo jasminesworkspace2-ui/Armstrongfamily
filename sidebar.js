@@ -22,6 +22,7 @@
       items: [
         { href: 'bellville_family.html',  text: 'Easter Bell\'s Children', note: 'All 7 branches' },
         { href: 'we_are_bellville.html',  text: 'We Are Bellville',        note: 'The full community' },
+        { href: 'elders.html',  text: 'The Elders',        note: 'Oldest residents · Africa-born · family clusters' },
         { href: 'related.html',           text: 'How We Are Related',       note: 'Connection map' },
         { href: 'family_tree_chart.html', text: 'Complete Family Tree',     note: 'All names' },
       ]

@@ -30,6 +30,7 @@
       label: 'The Story',
       items: [
         { href: 'how_we_got_here.html',  text: 'How We Got Here',    note: 'Nine generations' },
+        { href: 'the_thread.html',  text: 'The Thread',    note: 'The full thesis, start to finish' },
         { href: 'molley.html',           text: 'Molley',              note: 'The beginning · ca. 1750' },
         { href: 'patience_story.html',   text: 'Patience',            note: 'Newberry County SC · 1795' },
         { href: 'clarissa_story.html',   text: 'Clarissa',            note: 'South Carolina · ca. 1807' },

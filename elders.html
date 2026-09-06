@@ -1,1 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Elders of Bellville · Armstrong Family Archive</title>
+<meta name="description" content="The oldest documented residents of Justice Precinct 1, Bellville — who was born enslaved, who was born in Africa, and how the families of this community wove together.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep:#080604;--surface:#0e0b08;
+    --gold:#c9a84c;--gold2:#e8c96a;--cream:#f5f2ec;--parchment:#f0ead8;
+    --muted:rgba(245,242,236,0.45);--border:rgba(201,168,76,0.15);
+    --border2:rgba(255,255,255,0.06);
+    --africa:#c9a84c;--africa-bg:rgba(201,168,76,0.12);
+    --f-display:'DM Serif Display',Georgia,serif;
+    --f-body:'Inter',sans-serif;--f-mono:'Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 
+  .gnav{position:sticky;top:0;z-index:100;background:rgba(8,6,4,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(8px);}
+  .gnav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:52px;gap:8px;}
+  .gnav-brand{font-family:var(--f-display);font-style:italic;font-size:15px;color:rgba(240,234,216,0.8);text-decoration:none;white-space:nowrap;}
+  .gnav-links{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;}
+  .gnav-links::-webkit-scrollbar{display:none;}
+  .gnav-link{font-family:var(--f-mono);font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;padding:6px 10px;white-space:nowrap;border-bottom:2px solid transparent;transition:color 0.15s;}
+  .gnav-link:hover{color:rgba(245,242,236,0.85);}
+  .gnav-link.active{color:#c9a84c;border-bottom-color:#c9a84c;}
+  .gnav-link.gstart{color:#c9a84c;border:1px solid rgba(201,168,76,0.35);padding:5px 10px;margin-right:6px;}
+
+  .opening{min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:64px 24px;
+           background:radial-gradient(ellipse at center,rgba(201,168,76,0.07) 0%,transparent 65%);}
+  .opening-eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,168,76,0.5);display:block;margin-bottom:24px;}
+  .opening-title{font-family:var(--f-display);font-size:clamp(36px,7vw,64px);font-style:italic;color:var(--parchment);line-height:1.1;margin-bottom:24px;}
+  .opening-statement{font-size:15px;line-height:2;color:#b0a89e;max-width:720px;margin:0 auto;}
+  .opening-statement strong{color:var(--parchment);}
+
+  .method-note{max-width:820px;margin:0 auto 40px;padding:22px 26px;background:var(--africa-bg);border:1px solid rgba(201,168,76,0.25);border-radius:4px;}
+  .method-note-title{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px;}
+  .method-note p{font-size:13.5px;line-height:1.9;color:#c0b8b0;}
+
+  .sec{max-width:1000px;margin:0 auto;padding:0 24px;}
+  .sec-head{display:flex;align-items:center;gap:14px;margin:56px 0 24px;}
+  .sec-line{flex:1;height:1px;background:var(--border);}
+  .sec-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap;}
+
+  .elder-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px;}
+  .elder-table th{font-family:var(--f-mono);font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(201,168,76,0.6);text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);}
+  .elder-table td{padding:11px 12px;color:#b0a89e;border-bottom:1px solid rgba(255,255,255,0.05);vertical-align:top;}
+  .elder-table tr.africa td{background:var(--africa-bg);}
+  .elder-table td.who{color:var(--parchment);font-weight:500;}
+  .africa-badge{display:inline-block;padding:2px 8px;border-radius:10px;font-family:var(--f-mono);font-size:8px;letter-spacing:1px;text-transform:uppercase;background:var(--gold);color:#1a1408;margin-left:8px;}
+
+  .cluster-card{background:var(--surface);border:1px solid var(--border2);border-left:3px solid var(--gold);padding:22px 26px;margin:18px 0;}
+  .cluster-name{font-family:var(--f-display);font-size:19px;font-style:italic;color:var(--parchment);margin-bottom:4px;}
+  .cluster-meta{font-family:var(--f-mono);font-size:9.5px;color:rgba(201,168,76,0.6);letter-spacing:0.5px;margin-bottom:12px;display:block;}
+  .cluster-body{font-size:13.5px;line-height:1.9;color:#a8a090;}
+  .cluster-body strong{color:var(--parchment);}
+
+  .intertwine{background:rgba(255,255,255,0.02);border:1px solid var(--border2);padding:20px 24px;margin:16px 0;}
+  .intertwine-title{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.6);margin-bottom:10px;display:block;}
+  .intertwine p{font-size:13px;line-height:1.85;color:#a8a090;}
+
+  .closing{text-align:center;padding:64px 24px;background:radial-gradient(ellipse at center bottom,rgba(201,168,76,0.06) 0%,transparent 60%);}
+  .closing-title{font-family:var(--f-display);font-size:clamp(22px,4vw,32px);font-style:italic;color:var(--parchment);margin-bottom:16px;}
+  .closing-body{font-size:14px;line-height:2;color:#a0988e;max-width:620px;margin:0 auto;}
+
+  .page-footer{max-width:1000px;margin:0 auto;padding:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .footer-link{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;}
+
+  @media(max-width:640px){
+    .elder-table{font-size:11px;}
+    .elder-table th,.elder-table td{padding:8px 6px;}
+  }
+</style>
+<link rel="stylesheet" href="overrides.css">
+</head>
+<body>
+
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a href="welcome.html" class="gnav-brand">Armstrong Family Archive</a>
+    <div class="gnav-links">
+      <a href="start_here.html" class="gnav-link gstart">★ Start Here</a>
+      <a href="for_the_family.html" class="gnav-link">Site Guide</a>
+      <a href="welcome.html" class="gnav-link">Our Family</a>
+      <a href="bellville_family.html" class="gnav-link">The Family</a>
+      <a href="we_are_bellville.html" class="gnav-link">We Are Bellville</a>
+      <a href="elders.html" class="gnav-link active">The Elders</a>
+      <a href="registry.html" class="gnav-link">Registry</a>
+      <a href="the_thread.html" class="gnav-link">The Thread</a>
+    </div>
+  </div>
+</nav>
+
+<div class="opening">
+  <span class="opening-eyebrow">Justice Precinct 1 · Bellville, Austin County, Texas · 1880–1940</span>
+  <h1 class="opening-title">The Elders of Bellville.</h1>
+  <p class="opening-statement">The oldest documented people in this community, side by side. Two of them were born in Africa. Several were born before the American Revolution. All of them lived to see freedom, in the same small precinct where your own ancestors were enslaved and later built their lives. <strong>This page holds their names, their ages, and the families that grew up around them.</strong></p>
+</div>
+
+<div class="method-note">
+  <span class="method-note-title">A Note on Ages and Birthplaces</span>
+  <p>Almost none of the ages, birth years, or birthplaces on this page agree perfectly across records. The same person is often recorded as born in two, three, even four different states across different census years, and their age frequently shifts by five, ten, or twenty years from one decade to the next. <strong>This is not a sign of error, confusion, or a different person — it is the ordinary, expected condition of records for people who were born enslaved.</strong> Enslaved people were rarely told their own birth date, and enumerators, often speaking to whoever answered the door rather than the individual themselves, frequently guessed. A birth year moving from 1780 to 1800, or a birthplace shifting from Georgia to Texas, does not disqualify a match or a family connection. It is simply what the record of slavery looks like. Every identification on this page is made by weighing the whole pattern — age, household, neighbors, and later continuity — not by demanding one number match exactly.</p>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-line"></div><div class="sec-label">Born in Africa</div><div class="sec-line"></div></div>
+
+  <div class="cluster-card">
+    <span class="cluster-name">Jack Jackson <span class="africa-badge">Born Africa</span></span>
+    <span class="cluster-meta">Born ca. 1780, Africa · Age 100 in 1880 · Justice Precinct 1</span>
+    <div class="cluster-body">Head of household, married to <strong>Gabriella Jackson</strong>, with sons <strong>James</strong> and <strong>John Jackson</strong> in the home. Occupation recorded as Farmer at age 100. His age is almost certainly a rounded estimate rather than a precise count — but the stated birthplace, Africa, was not something an enumerator would typically guess at random. This is one of the most direct living links to the Middle Passage documented in this entire community.</div>
+  </div>
+
+  <div class="cluster-card">
+    <span class="cluster-name">Solomon Blake <span class="africa-badge">Born Africa</span></span>
+    <span class="cluster-meta">Born ca. 1780, Africa · Age 100 in 1880 · Justice Precinct 1</span>
+    <div class="cluster-body">Listed in the household with Mettie and Josephine Menke. Like Jack Jackson, recorded at exactly age 100 — the same rounding pattern — with Africa stated plainly as his birthplace.</div>
+  </div>
+
+  <div class="cluster-card">
+    <span class="cluster-name">Jim George <span class="africa-badge">Father Born Africa</span></span>
+    <span class="cluster-meta">Born ca. 1763, South Carolina · Age 117 in 1880 · married to Fannie George</span>
+    <div class="cluster-body">Already documented on the Registry page. Jim George's own father — and separately, his wife Fannie's father — are both recorded with birthplace Africa on the 1880 census. Jim's own recorded age of 117 is not a literal fact; it reflects how extreme old age was estimated for people whose birth was never formally recorded. Fannie George is a strong candidate for "Fanny," age 55 in the 1864 John Nichols estate partition.</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-line"></div><div class="sec-label">The Oldest Documented Residents · 1880</div><div class="sec-line"></div></div>
+
+  <table class="elder-table">
+    <thead><tr><th>Name</th><th>Born</th><th>Birthplace</th><th>Age in 1880</th><th>Household</th></tr></thead>
+    <tbody>
+      <tr class="africa"><td class="who">Jim George</td><td>ca. 1763</td><td>South Carolina</td><td>117</td><td>Head · wife Fannie George</td></tr>
+      <tr class="africa"><td class="who">Jack Jackson</td><td>ca. 1780</td><td><strong>Africa</strong></td><td>100</td><td>Head · wife Gabriella · sons James, John</td></tr>
+      <tr class="africa"><td class="who">Solomon Blake</td><td>ca. 1780</td><td><strong>Africa</strong></td><td>100</td><td>With Mettie &amp; Josephine Menke</td></tr>
+      <tr><td class="who">Isaac Logan</td><td>ca. 1780</td><td>Texas (likely misrecorded)</td><td>100</td><td>Father · son Chuk Logan</td></tr>
+      <tr><td class="who">Dabney Waller</td><td>ca. 1786</td><td>Virginia</td><td>94</td><td>Father · daughter Louisa Gillespie</td></tr>
+      <tr><td class="who">Leah Benjaman</td><td>ca. 1785</td><td>South Carolina</td><td>95</td><td>Mother · son Mack Benjaman</td></tr>
+      <tr><td class="who">Litty Lewis</td><td>ca. 1790</td><td>South Carolina</td><td>90</td><td>Mother · son Ransom Lewis</td></tr>
+      <tr><td class="who">Stack Reese</td><td>ca. 1790</td><td>Texas</td><td>90</td><td>Head · wife Amanda · large family</td></tr>
+      <tr><td class="who">P. Simms</td><td>ca. 1795</td><td>Virginia</td><td>85</td><td>With the Sikes family</td></tr>
+      <tr><td class="who">Mary Hunter</td><td>ca. 1795</td><td>Tennessee</td><td>85</td><td>Grandmother · Luke &amp; Emeline Johnson</td></tr>
+      <tr><td class="who">Ford Chandler</td><td>ca. 1800</td><td>South Carolina</td><td>80</td><td>Uncle · Wysong family household</td></tr>
+      <tr><td class="who">Inna Blake</td><td>ca. 1800</td><td>Georgia</td><td>80</td><td>Head, widowed, listed as Pauper</td></tr>
+      <tr><td class="who">Thomas McCoy</td><td>ca. 1800</td><td>Mississippi</td><td>80</td><td>Father-in-law · Murray family</td></tr>
+      <tr><td class="who">Robbin James</td><td>ca. 1800</td><td>Virginia</td><td>80</td><td>Head, single</td></tr>
+      <tr><td class="who">Minor Johnson</td><td>ca. 1799</td><td>Louisiana</td><td>81</td><td>Head · Maria, William Johnson, John Brooks</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:var(--muted);font-style:italic;">Ages and birthplaces per the 1880 U.S. Federal Census, Justice Precinct 1, Austin County, Texas. As noted above, these figures are frequently rounded or estimated and should be read as approximate.</p>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-line"></div><div class="sec-label">The Nichols &amp; Armstrong Households, Year by Year</div><div class="sec-line"></div></div>
+  <p style="font-size:13.5px;line-height:1.9;color:#a8a090;margin-bottom:20px;">Every household containing a Nichols or Armstrong in Justice Precinct 1, laid out census by census, exactly as recorded — head, spouse, children, and anyone else sharing the home. Ages and relationships as stated on each specific record.</p>
+
+  <div class="cluster-card">
+    <span class="cluster-name">1880 Census</span>
+    <div class="cluster-body">
+      <strong>Household — Joseph Nichols</strong><br>
+      Joseph Nichols · Head · age 37 · b. 1843<br>
+      Easter Nichols · Wife · age 33 · b. 1847<br>
+      Allen Nichols · Son · age 15 · b. 1865<br>
+      Josephine Nichols · Daughter · age 12 · b. 1868<br>
+      Oscar Nichols · Son · age 10 · b. 1870<br>
+      Clarar Nichols · Daughter · age 7 · b. 1873<br><br>
+      <strong>Household — Alfred Nichols</strong> <em style="color:var(--muted);">(separate family)</em><br>
+      Alfred Nichols · Head · age 37 · b. 1843, North Carolina<br>
+      Caroline Nichols · Wife · age 38 · b. 1842<br>
+      Hester Nichols · Daughter · age 13 · b. 1867<br>
+      Jane Anthony · Child<br><br>
+      <strong>Household — Henry Nichols</strong> <em style="color:var(--muted);">(connection to Joseph's family not yet confirmed)</em><br>
+      Henry Nichols · Head · age 41 · b. 1839<br>
+      Emiline Nichols · Wife · age 25 · b. 1855<br>
+      Purney Nichols · Daughter · age 2 months · b. 1880<br>
+      Louisa Nichols · Other · age 21 · b. 1859
+    </div>
+  </div>
+
+  <div class="cluster-card">
+    <span class="cluster-name">1900 Census</span>
+    <div class="cluster-body">
+      <strong>Household — Joe Nichols</strong><br>
+      Joe Nichols · Head · age 53 · b. June 1847<br>
+      Easter Nichols · Wife · age 59 · b. July 1841<br>
+      Willie Nichols · Son · age 16 · b. June 1884<br><br>
+      <strong>Household — John Armstrong</strong><br>
+      John Armstrong · Head · b. 1899 (marriage year, not birth)<br>
+      Helen Armstrong · Wife · age 30 · b. Sept 1870<br>
+      Eva Armstrong · Daughter · age 1 · b. June 1899<br><br>
+      <strong>Household — Allen Nichols</strong><br>
+      Allen Nichols · Head · age 34 · b. Feb 1866<br>
+      Diana Nichols · Wife · age 35 · b. Dec 1865<br>
+      Arthur Nichols · Son · age 12 · b. Oct 1888<br>
+      Ada Nichols · Daughter · age 8 · b. March 1892<br>
+      Allen Nichols Jr. · Son · age 5 · b. Feb 1895<br><br>
+      <strong>Household — Oscar Nichols</strong><br>
+      Oscar Nichols · Head · age 27 · b. June 1873<br>
+      Clara Nichols · Wife · age 25 · b. May 1875<br>
+      Walter Nichols · Son · age 4 · b. April 1896<br><br>
+      <strong>Household — Clara Armstrong</strong> <em style="color:var(--muted);">(John Armstrong's mother)</em><br>
+      Clara Armstrong · Mother/Head · Widowed<br>
+      Charlie Armstrong · Son · age 27 · b. Oct 1873<br>
+      Ida Twiggs · Daughter<br>
+      Bettie Armstrong · Daughter · age 15 · b. Jan 1885<br>
+      Rother Twiggs, Gertrude Twiggs · Others<br><br>
+      <strong>Household — Burl Armstrong</strong> <em style="color:var(--muted);">(separate, unconnected Armstrong family — Alabama-born)</em><br>
+      Burl Armstrong · Head · age 60 · b. Dec 1840, Alabama<br>
+      Mary Armstrong · Wife · age 48 · b. Dec 1852, Alabama<br>
+      Burl Armstrong Jr. · Son · age 22 · b. March 1878<br>
+      Nealy Armstrong · Son · age 20 · b. May 1880<br>
+      Willie Armstrong · Son · age 19 · b. April 1881<br>
+      George Armstrong · Son · age 16 · b. May 1884<br><br>
+      <strong>Household — Maggie Armstrong</strong> <em style="color:var(--muted);">(unconfirmed connection)</em><br>
+      Maggie Armstrong · Employee · age 28 · b. 1872<br>
+      Others: Cato, Diania, Charles, Scott, Dan Daniels · Charlie Sims · Gertrude Robinson
+    </div>
+  </div>
+
+  <div class="cluster-card">
+    <span class="cluster-name">1910 Census</span>
+    <div class="cluster-body">
+      <strong>Household — William Nichols</strong><br>
+      William Nichols · Head · age 24 · b. 1886<br>
+      Mabel Nichols · Wife · age 19 · b. 1891<br>
+      Easter Nichols · Mother · age 62 · b. 1848 <em style="color:var(--muted);">(Easter living with her son Willie/William)</em><br><br>
+      <strong>Household — Oscar Nichols</strong><br>
+      Oscar Nichols · Head · age 35 · b. 1875<br>
+      Clara Nichols · Wife · age 33 · b. 1877<br>
+      Walter Nichols · Son · age 14 · b. 1896<br><br>
+      <strong>Household — Ralph Nichols</strong><br>
+      Ralph Nichols · Head · age 20 · b. 1890<br>
+      Mary Nichols · Wife · age 21 · b. 1889<br>
+      Sarah Nichols · Daughter · age 2 · b. 1908<br>
+      Julia Nichols · Daughter · age 0 · b. 1910<br><br>
+      <strong>Household — Emaline Nichols</strong><br>
+      Emaline Nichols · Head, Widowed · age 51 · b. 1859<br>
+      Hattie Nichols · Daughter · age 11 · b. 1899<br><br>
+      <strong>Household — Anderson Armstrong</strong> <em style="color:var(--muted);">(connection to John Armstrong not yet confirmed)</em><br>
+      Anderson Armstrong · Head · age 38 · b. 1872<br>
+      Estella Armstrong · Wife · age 32 · b. 1878<br>
+      Others: Eula Ennis, Albert Ennis, Ruberta Smith
+    </div>
+  </div>
+
+  <div class="cluster-card">
+    <span class="cluster-name">1920 Census</span>
+    <div class="cluster-body">
+      <strong>Household — Allen Nichols</strong><br>
+      Allen Nichols · Head · age 50 · b. 1870<br>
+      Dora Nichols · Wife · age 54 · b. 1866<br><br>
+      <strong>Household — Oscar Nichols</strong><br>
+      Oscar Nichols · Head · age 47 · b. 1873<br>
+      Clara Nichols · Wife · age 41 · b. 1879<br><br>
+      <strong>Household — Walla Nichols</strong><br>
+      Walla Nichols · Head · age 26 · b. 1894<br>
+      Dorie Nichols · Wife · age 25 · b. 1895<br>
+      Walter L. Nichols · Son · age 2 · b. 1917<br><br>
+      <strong>Household — Mary Nichols</strong><br>
+      Mary Nichols · Head, Widowed · age 32 · b. 1888<br>
+      Julia Nichols · Daughter · b. 1910<br>
+      Sarah Nichols · Daughter · age 12 · b. 1908<br>
+      James A. Johnson, John D. Johnson, Alton Johnson · Sons<br><br>
+      <strong>Household — Anderson Armstrong</strong><br>
+      Anderson Armstrong · Head · age 46 · b. 1874<br>
+      Eula Armstrong · Wife · age 40 · b. 1880<br>
+      Prince Albert Ennis, Roberta Smith · Children
+    </div>
+  </div>
+
+  <div class="cluster-card">
+    <span class="cluster-name">1930 Census</span>
+    <div class="cluster-body">
+      <strong>Household — Allen Nichols</strong><br>
+      Allen Nichols · Head · age 65 · b. 1865<br>
+      Dina Nichols · Wife · age 65 · b. 1865<br>
+      Millie Smith · Extended Family <em style="color:var(--muted);">(recorded as Dina's mother)</em><br><br>
+      <strong>Household — Oscar Nichols</strong><br>
+      Oscar Nichols · Head · age 55 · b. 1875<br>
+      Clara Nichols · Wife · age 51 · b. 1879<br><br>
+      <strong>Household — Walter Nichols</strong><br>
+      Walter Nichols · Head · age 36 · b. 1894<br>
+      Donie Nichols · Wife · age 35 · b. 1895<br>
+      Walter Louis Nichols · Son · age 12 · b. 1918<br>
+      Lloyd Curtis Nichols · Son · age 7 · b. 1923<br><br>
+      <strong>Household — Geo Armstrong</strong><br>
+      Geo Armstrong · Head · age 19 · b. 1911<br>
+      Hattie Armstrong · Wife · age 18 · b. 1912<br><br>
+      <strong>Household — Niel Armstrong</strong><br>
+      Niel Armstrong · Brother-in-law · age 38 · b. 1892<br>
+      Others: Wm Whittmeyer, Edna Whittmeyer
+    </div>
+  </div>
+
+  <div class="cluster-card">
+    <span class="cluster-name">1940 Census</span>
+    <div class="cluster-body">
+      <strong>Household — Allen Nichols</strong><br>
+      Allen Nichols · Head, Widowed · age 74 · b. 1866<br>
+      Others: Tye Mays, Hattie Mays<br><br>
+      <strong>Household — Oscar Nichols</strong><br>
+      Oscar Nichols · Head · age 67 · b. 1873<br>
+      Clara Nichols · Wife · age 65 · b. 1875<br><br>
+      <strong>Household — Walter Nichols</strong><br>
+      Walter Nichols · Head · age 46 · b. 1894<br>
+      Donie Nichols · Wife · age 45 · b. 1895<br>
+      L C Nichols · Son · age 17 · b. 1923<br>
+      Fay Lois Nichols · Daughter · age 10 · b. 1930<br><br>
+      <strong>Household — Julia Nichols</strong><br>
+      Julia Nichols · Head, Widowed · age 30 · b. 1910<br>
+      Ralf N. Nichols · Son · age 13 · b. 1927<br>
+      James Nichols · Son · age 6 · b. 1934<br><br>
+      <strong>Household — Anderson Armstrong</strong><br>
+      Anderson Armstrong · Head, Widowed · age 66 · b. 1874<br>
+      Jimmy Parker · Other<br><br>
+      <strong>Household — Will Armstrong</strong><br>
+      Will Armstrong · Brother-in-law · age 56 · b. 1884<br>
+      Others: Willie Whitmire, Emma Whitmire
+    </div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-line"></div><div class="sec-label">Family Clusters of This Community</div><div class="sec-line"></div></div>
+
+  <div class="cluster-card">
+    <span class="cluster-name">The Lott Family</span>
+    <span class="cluster-meta">At least six distinct household clusters, 1880–1940</span>
+    <div class="cluster-body">The largest single-surname family documented in this precinct. <strong>Ned Lott</strong> (b. ca. 1820, Georgia) is the oldest identified Lott, living as "Uncle" in Joe and Maria Lott's household in 1900, and appearing again in 1920 at age 97. Separate, apparently unrelated Lott households — headed by George W. Lott (b. 1830, Mississippi), Jacob Lott (b. 1853, Mississippi), Sam Lott (b. 1825, Virginia), and Joseph Lott (b. 1850, Mississippi) — suggest either several independent Lott families converging on Bellville from different origin states, or one extended family separated by the domestic slave trade and reunited only partially in Texas. <strong>Ennis Lott's own line is traceable continuously from 1910 through 1940</strong>, the clearest multi-generational thread in the whole family.</div>
+  </div>
+
+
+  <div class="cluster-card">
+    <span class="cluster-name">The Reese Family</span>
+    <span class="cluster-meta">Over 100 individuals documented, 1880–1940 · not currently connected to the direct Nichols-Armstrong bloodline</span>
+    <div class="cluster-body"><strong>Stack Reese</strong> (b. ca. 1790, Texas) anchors the oldest generation, with wife Amanda (b. 1826, Georgia) and children Perressie, Waller, and Ratience. A separate, larger branch descends from <strong>Frank Reese</strong> and <strong>Enoch Reese</strong> (both b. 1856, Alabama) — brothers or close relatives who each raised large families in the same precinct. This is a genuinely distinct, extensively documented Bellville family in its own right. No document yet connects this Reese family by blood to Helen Nichols Reese, the Nichols-family daughter who is separately documented on this site.</div>
+  </div>
+
+  <div class="cluster-card">
+    <span class="cluster-name">The Nicholson / Nickelson Family</span>
+    <span class="cluster-meta">1920–1940 · a distinct family from the Nichols line</span>
+    <div class="cluster-body">Will and Mary Nickelson, and the related Nicholson households (Willie, Mary, Lulu), form their own family cluster. The surname's similarity to Nichols is coincidental — no shared household, parent, or document connects the two families.</div>
+  </div>
+
+  <div class="cluster-card">
+    <span class="cluster-name">Jefferson Nagy &amp; the Nazy Family</span>
+    <span class="cluster-meta">Jefferson Nagy b. ca. 1811, Louisiana — one of the oldest documented residents</span>
+    <div class="cluster-body">Jefferson Nagy, recorded at age 89 in 1900, lived in the same household as <strong>Ned Bell</strong>. Separately, <strong>John Nazy and Clara Nazy</strong> (likely the same couple as your confirmed John Nazy and Clara Nichols, married 1891) appear here as "Nagy," with a son recorded as Roy Thompson — very likely Roy Nazy under a stepfather's or earlier surname.</div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-line"></div><div class="sec-label">How These Families Intertwine</div><div class="sec-line"></div></div>
+
+  <div class="intertwine">
+    <span class="intertwine-title">Shared Households, Not Just Shared Surnames</span>
+    <p>Rosa Lott's household includes <strong>Luther Armstrong</strong>, grandson, born March 1897 — connecting the Lott and Armstrong families directly, likely through a daughter's marriage not otherwise documented. Ned Bell's household includes Jefferson Nagy with no stated blood relation — two elderly men from different origin states (South Carolina and Louisiana) sharing a home, the kind of mutual support common among elderly formerly enslaved people with no surviving family nearby. Fanny Nichols's later household (1910) includes an "adopted daughter" and "adopted granddaughter" with no blood tie at all — a reminder that family in this community was built through care and proximity as often as through blood, especially for those separated from their birth families by sale.</p>
+  </div>
+
+  <div class="intertwine">
+    <span class="intertwine-title">The Jail Enumeration Pattern</span>
+    <p>Several elderly residents — Ned Lott in 1920, and Joseph Nichols's own household in 1900 — appear with the relationship label "Inmate," a pattern already confirmed elsewhere on this site as a page-formatting artifact from the county jail's position on the enumerator's route, not an indication of actual incarceration.</p>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-head"><div class="sec-line"></div><div class="sec-label">The Complete 1860 Bellville Slave Schedule</div><div class="sec-line"></div></div>
+  <p style="font-size:13.5px;line-height:1.9;color:#a8a090;margin-bottom:20px;">Every enslaver and every enslaved person recorded in Bellville proper on the 1860 U.S. Federal Census Slave Schedule — 220 individual records across roughly 30 households. John Nichols's own household of 9 is the anchor point for this entire archive. The two largest households in town — Jos. S.R. Blake's 24 people and Wm. E. Crump's 20 — dwarf it. No age is a name, but every age here is a real person who lived, worked, and was held in this specific town.</p>
+
+  <table class="elder-table">
+    <thead><tr><th>Owner</th><th>Number Held</th><th>Ages Recorded</th></tr></thead>
+    <tbody>
+      <tr><td class="who">John Nichols</td><td>9</td><td>F43, F26, M22, M18, F13, F11, M11, F4, F2</td></tr>
+      <tr><td class="who">Jos. S.R. Blake</td><td>24</td><td>M70, M60, M52, M44, M32, M24, M22, M21, M21, M19, M17, M15, M11, M10, M8, M7, M5, M3, M1 · F38, F24, F24, F23, F21, F20, F18, F13, F12, F6, F2</td></tr>
+      <tr><td class="who">Wm. E. Crump</td><td>20</td><td>M87, M53, M35, M30, M19, M12, M8 · F62, F55, F53, F29, F28, F27, F26, F25, F24, F23, F22, F12, F6</td></tr>
+      <tr><td class="who">I.T. Edwards</td><td>16</td><td>M32, M26, M18, M13, M10, M9, M4, M1 · F55, F27, F22, F15, F13, F11, F6</td></tr>
+      <tr><td class="who">D.Y. Portis</td><td>12</td><td>M30, M28, M27, M19, M16, M16 · F75, F32, F30, F21, F8</td></tr>
+      <tr><td class="who">Martha Stephenson</td><td>10</td><td>M45, M27, M20, M12, M10, M8, M2 · F37, F30, F20, F16</td></tr>
+      <tr><td class="who">W.H. Martin</td><td>9</td><td>M26, M24, M7 · F38, F24 (Mulatto), F22, F6, F1</td></tr>
+      <tr><td class="who">B.E. Roach</td><td>9</td><td>M30, M28, M27, M14, M6 · F31, F25, F4, F2</td></tr>
+      <tr><td class="who">T. Holder</td><td>8</td><td>M24, M18, M5, M1 · F25, F17, F16, F1</td></tr>
+      <tr><td class="who">Alex Glenn</td><td>8</td><td>M40, M30, M16, M4 · F40, F15, F6, F1</td></tr>
+      <tr><td class="who">A.P. Fisher</td><td>6</td><td>M28, M7 (Mulatto), M1 · F44, F10, F3 (Mulatto)</td></tr>
+      <tr><td class="who">A. Bell</td><td>5</td><td>M33, M10 · F35, F14, F3</td></tr>
+      <tr><td class="who">H. Simmons</td><td>5</td><td>M25 (Mulatto), M11 · F25, F23, F15</td></tr>
+      <tr><td class="who">J.G. Bell</td><td>4</td><td>M38, M16 (Mulatto) · F19, F2 (Mulatto)</td></tr>
+      <tr><td class="who">H. Miler</td><td>4</td><td>F28, F6, F3, F1 (Mulatto)</td></tr>
+      <tr><td class="who">Jane Railey</td><td>4</td><td>M20, M10 (Mulatto) · F52, F41</td></tr>
+      <tr><td class="who">B.T. Harris</td><td>4</td><td>M3 · F25, F7, F5</td></tr>
+      <tr><td class="who">R.C. Thompson</td><td>3</td><td>F21, F5, F2</td></tr>
+      <tr><td class="who">G.W. Johnston</td><td>3</td><td>F28, F7, F4</td></tr>
+      <tr><td class="who">W.J. Cocke</td><td>3</td><td>M18 · F25, F7</td></tr>
+      <tr><td class="who">B.W. Whitworth</td><td>2</td><td>F26, F4</td></tr>
+      <tr><td class="who">John W. Manning</td><td>2</td><td>F48, F35</td></tr>
+      <tr><td class="who">John Atkinson</td><td>2</td><td>M33, M19</td></tr>
+      <tr><td class="who">W.L. Shelburne</td><td>2</td><td>F20, F1</td></tr>
+      <tr><td class="who">John P. Osterhout</td><td>2</td><td>M4 · F22</td></tr>
+      <tr><td class="who">I.H. Campbell</td><td>1</td><td>M24</td></tr>
+      <tr><td class="who">G. Cole</td><td>1</td><td>F7</td></tr>
+      <tr><td class="who">Z. Hunt</td><td>1</td><td>M23</td></tr>
+      <tr><td class="who">John Kray</td><td>1</td><td>F65</td></tr>
+      <tr><td class="who">S.O. Blandin</td><td>1</td><td>F55</td></tr>
+      <tr><td class="who">R.C. Thompson (Agent)</td><td>1</td><td>M40</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:var(--muted);font-style:italic;">1860 U.S. Federal Census, Slave Schedule, Bellville, Austin County, Texas. Ages as recorded; no names were assigned to enslaved individuals on this schedule type. "Agent" indicates the enslaver was recorded as holding the listed person on behalf of another party, not in their own right.</p>
+</div>
+
+<div class="closing">
+  <h2 class="closing-title">One Precinct. One Community.<br>Every Name Real.</h2>
+  <p class="closing-body">Justice Precinct 1 was small enough that everyone in it eventually touched everyone else — through marriage, through shared land, through the simple fact of living next door for sixty years. This page is not finished. Every new record adds another name, another household, another thread connecting one family to the next.</p>
+</div>
+
+<div class="page-footer">
+  <a href="registry.html" class="footer-link">← Enslaved Persons Registry</a>
+  <a href="we_are_bellville.html" class="footer-link">We Are Bellville →</a>
+</div>
+
+<script src="sidebar.js"></script>
+</body>
+</html>

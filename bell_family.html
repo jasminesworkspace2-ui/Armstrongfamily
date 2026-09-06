@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Bells of Bellville · Armstrong Family Archive</title>
+<meta name="description" content="Every Bell household found in Austin County research — white enslavers, Black descendants, every name, every document, laid out in full.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep:#080604;--surface:#0e0b08;
+    --gold:#c9a84c;--gold2:#e8c96a;--cream:#f5f2ec;--parchment:#f0ead8;
+    --muted:rgba(245,242,236,0.45);--border:rgba(201,168,76,0.15);
+    --border2:rgba(255,255,255,0.06);
+    --white-fam:#8a7ca8;--white-bg:rgba(138,124,168,0.10);
+    --black-fam:#4a8a5a;--black-bg:rgba(74,138,90,0.10);
+    --open:#b0492e;--open-bg:rgba(176,73,46,0.10);
+    --f-display:'DM Serif Display',Georgia,serif;
+    --f-body:'Inter',sans-serif;--f-mono:'Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+
+  .gnav{position:sticky;top:0;z-index:100;background:rgba(8,6,4,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(8px);}
+  .gnav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:52px;gap:8px;}
+  .gnav-brand{font-family:var(--f-display);font-style:italic;font-size:15px;color:rgba(240,234,216,0.8);text-decoration:none;white-space:nowrap;}
+  .gnav-links{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;}
+  .gnav-links::-webkit-scrollbar{display:none;}
+  .gnav-link{font-family:var(--f-mono);font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;padding:6px 10px;white-space:nowrap;border-bottom:2px solid transparent;}
+  .gnav-link.active{color:#c9a84c;border-bottom-color:#c9a84c;}
+  .gnav-link.gstart{color:#c9a84c;border:1px solid rgba(201,168,76,0.35);padding:5px 10px;margin-right:6px;}
+
+  .opening{min-height:65vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:64px 24px;
+           background:radial-gradient(ellipse at center,rgba(201,168,76,0.07) 0%,transparent 65%);}
+  .opening-eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,168,76,0.5);display:block;margin-bottom:24px;}
+  .opening-title{font-family:var(--f-display);font-size:clamp(36px,7vw,64px);font-style:italic;color:var(--parchment);line-height:1.1;margin-bottom:24px;}
+  .opening-statement{font-size:15px;line-height:2;color:#b0a89e;max-width:740px;margin:0 auto;}
+  .opening-statement strong{color:var(--parchment);}
+
+  .method-note{max-width:820px;margin:0 auto 40px;padding:22px 26px;background:rgba(176,73,46,0.07);border:1px solid rgba(176,73,46,0.25);border-radius:4px;}
+  .method-note-title{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#d08868;display:block;margin-bottom:10px;}
+  .method-note p{font-size:13.5px;line-height:1.9;color:#c0b8b0;}
+
+  .sec{max-width:1000px;margin:0 auto;padding:0 24px;}
+  .sec-head{display:flex;align-items:center;gap:14px;margin:56px 0 24px;}
+  .sec-line{flex:1;height:1px;background:var(--border);}
+  .sec-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap;}
+
+  .family-card{background:var(--surface);border:1px solid var(--border2);border-left:3px solid var(--white-fam);padding:22px 26px;margin:18px 0;}
+  .family-card.black{border-left-color:var(--black-fam);}
+  .family-card.open{border-left-color:var(--open);}
+  .family-name{font-family:var(--f-display);font-size:22px;font-style:italic;color:var(--parchment);margin-bottom:4px;}
+  .family-meta{font-family:var(--f-mono);font-size:9.5px;color:rgba(201,168,76,0.6);letter-spacing:0.5px;margin-bottom:14px;display:block;}
+  .family-badge{display:inline-block;padding:3px 10px;border-radius:10px;font-family:var(--f-mono);font-size:8.5px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;}
+  .badge-white{background:var(--white-bg);color:var(--white-fam);border:1px solid rgba(138,124,168,0.3);}
+  .badge-black{background:var(--black-bg);color:var(--black-fam);border:1px solid rgba(74,138,90,0.3);}
+  .badge-open{background:var(--open-bg);color:var(--open);border:1px solid rgba(176,73,46,0.3);}
+  .family-body{font-size:13.5px;line-height:1.9;color:#a8a090;}
+  .family-body strong{color:var(--parchment);}
+
+  .hh-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px;}
+  .hh-table th{font-family:var(--f-mono);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(201,168,76,0.55);text-align:left;padding:8px 10px;border-bottom:1px solid var(--border);}
+  .hh-table td{padding:9px 10px;color:#b0a89e;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:top;}
+  .hh-table td.who{color:var(--parchment);font-weight:500;}
+
+  .src-note{font-family:var(--f-mono);font-size:9px;color:rgba(255,255,255,0.28);margin-top:10px;line-height:1.7;}
+
+  .ruled-out{background:rgba(255,255,255,0.02);border:1px solid var(--border2);padding:16px 20px;margin:12px 0;font-size:12.5px;line-height:1.8;color:#8a8078;}
+  .ruled-out strong{color:#a8a090;}
+
+  .closing{text-align:center;padding:64px 24px;background:radial-gradient(ellipse at center bottom,rgba(201,168,76,0.06) 0%,transparent 60%);}
+  .closing-title{font-family:var(--f-display);font-size:clamp(22px,4vw,32px);font-style:italic;color:var(--parchment);margin-bottom:16px;}
+  .closing-body{font-size:14px;line-height:2;color:#a0988e;max-width:680px;margin:0 auto;}
+  .closing-body strong{color:var(--parchment);}
+
+  .page-footer{max-width:1000px;margin:0 auto;padding:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .footer-link{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;}
+
+  @media(max-width:640px){
+    .hh-table{font-size:11px;}
+    .family-card{padding:16px 18px;}
+  }
+</style>
+<link rel="stylesheet" href="overrides.css">
+</head>
+<body>
+
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a href="welcome.html" class="gnav-brand">Armstrong Family Archive</a>
+    <div class="gnav-links">
+      <a href="start_here.html" class="gnav-link gstart">★ Start Here</a>
+      <a href="bellville_family.html" class="gnav-link">The Family</a>
+      <a href="we_are_bellville.html" class="gnav-link">We Are Bellville</a>
+      <a href="elders.html" class="gnav-link">The Elders</a>
+      <a href="bell_family.html" class="gnav-link active">The Bells</a>
+      <a href="the_thread.html" class="gnav-link">The Thread</a>
+      <a href="registry.html" class="gnav-link">Registry</a>
+    </div>
+  </div>
+</nav>
+
+<div class="opening">
+  <span class="opening-eyebrow">Austin County, Texas · Why We Started Looking</span>
+  <h1 class="opening-title">The Bells of Bellville.</h1>
+  <p class="opening-statement">Easter Bell took that name at freedom. Somewhere in Bellville, a white Bell household held her before 1865 — the same way John Nichols held Joseph. But which Bell? Thomas and Abigail's? John G.'s hotel? A cousin's farm across town? The town had more than one Bell family in it, all landed, all related by name if not always by document, and Easter's own record never says which one raised her. <strong>That question is what sent this research into every Bell household Austin County left behind — and it kept turning up more Bells than we expected, some connecting cleanly, some not connecting at all yet, and at least one — a Black father and son named Bell, born right in the middle of slavery — that we haven't been able to let go of.</strong> This page follows that search all the way through, in the order it actually happened, not cleaned up after the fact.</p>
+</div>
+
+<div class="method-note">
+  <span class="method-note-title">Why This Page Exists</span>
+  <p>People who share a surname, settle the same small town, and name that town after themselves did not arrive as strangers to one another. When a Black or mixed-race child is born in that same town, during or immediately after slavery, carrying that same surname — that is not coincidence requiring a separate document to "prove." It is the expected, ordinary outcome of what slavery actually was. This page treats every Bell found in Austin County research as part of one connected story, whether or not a will or deed spells out the exact relationship between any two individuals. Austin County's own records are thinner and harder to access than many neighboring counties' — a gap that is itself worth noting, not explaining away.</p>
+</div>
+
+<!-- WHITE BELL FAMILIES -->
+<div class="sec">
+  <div class="sec-head"><div class="sec-line"></div><div class="sec-label">Starting Where Easter Started — Thomas &amp; Abigail's House</div><div class="sec-line"></div></div>
+  <p style="font-size:13.5px;line-height:1.9;color:#a8a090;margin-bottom:20px;">This is the household the search began with, because it's the one Easter's own age most cleanly fits into.</p>
+
+  <div class="family-card">
+    <span class="family-badge badge-white">Founding Family</span>
+    <span class="family-name">Thomas Bell</span>
+    <span class="family-meta">b. ca. 1802, North Carolina · d. January–May 1858, Bellville · Texas Revolution veteran</span>
+    <div class="family-body">
+      <p>Co-donor of the Bellville townsite, land purchased directly from John Nichols. Married Abigail Grimes (b. 1810, Sumner Co., TN — d. 1860, Bellville), daughter of George Grimes and Eurydice Gardner. Adopted John Gideon Slade (age 33, from Florida) as legal heir, January 4, 1854 — a documented legal adoption, not a blood relation, per the Texas State Historical Association's own record.</p>
+      <p><strong>His January 1858 will named two enslaved men directly:</strong> Henry — willed to Abigail for four months, then to John G. Bell, with a clause allowing him to "choose his master" if dissatisfied. Mat — willed to Abigail for her life, then to grandson Thomas J. Bell. The will was contested by Abigail herself, who argued she and Thomas had already executed a full community-property partition in 1856. The contest was ongoing as of the will's probate in May 1858.</p>
+      <table class="hh-table">
+        <thead><tr><th>Year</th><th>Household</th><th>Enslaved / Descendants Recorded</th></tr></thead>
+        <tbody>
+          <tr><td>1850</td><td>Thomas Bell (as head)</td><td>4 enslaved — matches TSHA's own record</td></tr>
+          <tr><td>1858</td><td>Named in will</td><td>Henry, Mat (named directly)</td></tr>
+        </tbody>
+      </table>
+      <p class="src-note">Source: Texas State Historical Association, Handbook of Texas · Austin County Probate Records, will proved May 1858, contested by Abigail Bell</p>
+    </div>
+  </div>
+
+  <div class="family-card">
+    <span class="family-badge badge-white">Thomas Bell's Wife</span>
+    <span class="family-name">Abigail Grimes Bell ("A. Bell" / "A.G. Bell")</span>
+    <span class="family-meta">b. 1810, Sumner Co., TN · d. 1860, Bellville</span>
+    <div class="family-body">
+      <table class="hh-table">
+        <thead><tr><th>Year</th><th>Enslaved People (Age/Sex)</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td>1850 (A.G. Bell)</td><td>F24, F14, F12, F9, M11, M1, F3, M6/12</td><td>8</td></tr>
+          <tr><td>1860 (A Bell)</td><td>F35, M33, F14, M10, F3</td><td>5</td></tr>
+        </tbody>
+      </table>
+      <p>The 12-year-old female in 1850 and the 19-year-old female in J.G. Bell's 1860 household (below) are treated elsewhere on this site as the strongest circumstantial candidates for Easter Bell's own girlhood — same surname family, consistent age progression across a decade, corroborated by an independently remembered hotel-servant record. No document names her directly in either entry.</p>
+    </div>
+  </div>
+
+  <div class="family-card">
+    <span class="family-badge badge-white">Adopted Heir</span>
+    <span class="family-name">John Gideon Bell ("J.G. Bell")</span>
+    <span class="family-meta">Adopted by Thomas Bell, Jan. 4, 1854 · age 33 at adoption, from Hamilton Co., Florida · Innkeeper, Bellville</span>
+    <div class="family-body">
+      <table class="hh-table">
+        <thead><tr><th>Year</th><th>Enslaved People (Age/Sex)</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td>1860</td><td>M38 (likely Henry, per will), M16-Mulatto (likely Mat), F19, F2-Mulatto</td><td>4</td></tr>
+          <tr><td>1870 (household, free)</td><td>Gray, Thomas (60, Black, SC) · Tucker(?), Mary (48, Black, TN, domestic) · Fenging(?), Ann (20, Black, TX, domestic) with infant Joseph (7mo) · <strong>Bell, Easter (12, Black, TX, domestic servant)</strong> · Henry (8, Black, TX)</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p>Married Penelope. Household in 1870 (his own hotel) recorded as: Wolnizek family (boarders), John G. Bell (50) and family, plus the formerly enslaved individuals above living and working in the same building.</p>
+    </div>
+  </div>
+
+  <p style="font-size:13.5px;line-height:1.9;color:#a8a090;margin:24px 0;">One household wasn't the whole town, though. Bellville had Bells everywhere — different farms, different generations, not all of them obviously related to Thomas and Abigail on paper. Ruling each one out, or in, meant checking all of them.</p>
+
+  <div class="family-card">
+    <span class="family-badge badge-white">Separate Line</span>
+    <span class="family-name">Robert E. Bell</span>
+    <span class="family-meta">b. 1828, North Carolina · d. May 23, 1873, Chappell Hill, Washington Co., TX · Buried Masonic Cemetery</span>
+    <div class="family-body">
+      <p>Married Elizabeth Winters (b. ~1831, Alabama; father b. Virginia, mother Sarah A. Winters b. Tennessee). No confirmed blood relationship to Thomas Bell's line has been established — treated as a separate or distantly related Bell family until a connecting document surfaces.</p>
+      <table class="hh-table">
+        <thead><tr><th>Year</th><th>Location</th><th>Enslaved People (Age/Sex)</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td>1860</td><td>Pine Grove, Austin Co.</td><td>M45, M40, M30, M21, M16, M9, M3 · F45, F19, F10, F4</td><td>11</td></tr>
+        </tbody>
+      </table>
+      <p>The 45-year-old woman here is a real, close age match to Rendy Blayn (b. 1817, would be 43 in 1860) — a two-year gap, within normal recording drift. His own youth (32 in 1860) makes it likely this household was inherited rather than built by him directly, supporting a family connection to an older Bell relative not yet identified.</p>
+    </div>
+  </div>
+
+  <div class="family-card">
+    <span class="family-badge badge-white">Separate Line — The Sheriff</span>
+    <span class="family-name">Andrew J. "A.J." Bell ("Jack Bell")</span>
+    <span class="family-meta">b. Tennessee · arrived Texas 1832–33 · Austin County Sheriff, 1850 · State Legislature, 1853–55</span>
+    <div class="family-body">
+      <p>Married Calpernia Shellbourne (native of Alabama). Served in the Mexican War, 1846–48. Four children: a daughter (Mrs. R. Wit—), a daughter (Mrs. C.H. Bethany), <strong>John P. Bell</strong> (b. 1844, County Judge of Austin County, admitted to the bar 1869, C.S.A. veteran, married 1872 to I.A. Bethany, children Lucy, James J./"Jim Jack," Annie, Bessie), and George C. Bell.</p>
+      <p><strong>No enslaved people found under A.J. Bell's name in the 1850 slave schedule index</strong> — either he held none, or his household is recorded under a name variant not yet located. This remains an open, unresolved gap given his documented position and long tenure in the county.</p>
+      <p>Named in the 1869 Freedmen's Bureau report on racial violence in Bellville as one of the men "whispering John" (J.G. Bell) and this family held long, entrenched political control over — Austin County's treasury key, sheriff's office, and county judgeship all passing through this same extended white Bell network for decades after emancipation.</p>
+    </div>
+  </div>
+
+  <div class="family-card open">
+    <span class="family-badge badge-open">Unconfirmed — Two More Bell Names</span>
+    <span class="family-name">Thomas H. Bell &amp; James Bell (two entries)</span>
+    <span class="family-meta">1850 U.S. Slave Schedule, Austin County</span>
+    <div class="family-body">
+      <table class="hh-table">
+        <thead><tr><th>Owner</th><th>Enslaved People (Age/Sex)</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td>Thomas H. Bell</td><td>M18, M14, M12</td><td>3</td></tr>
+          <tr><td>James Bell (1st)</td><td>F40</td><td>1</td></tr>
+          <tr><td>James Bell (2nd)</td><td>M40, M24, F26, M19, F18, F8, M5, M1/12</td><td>8</td></tr>
+        </tbody>
+      </table>
+      <p>Relationship to Thomas Bell's, Robert E. Bell's, or A.J. Bell's lines not established. Recorded here in full so no household is lost from the record.</p>
+    </div>
+  </div>
+</div>
+
+<!-- BLACK BELLS -->
+<div class="sec">
+  <div class="sec-head"><div class="sec-line"></div><div class="sec-label">Then We Started Looking for Them, Not Just the Bells Who Owned Them</div><div class="sec-line"></div></div>
+  <p style="font-size:13.5px;line-height:1.9;color:#a8a090;margin-bottom:20px;">Every white Bell household is only half the question. The other half is who came out of it carrying the name. Easter's own trail is documented in full elsewhere on this site — the rest of what turned up while looking is here.</p>
+
+  <div class="family-card black">
+    <span class="family-badge badge-black">Direct Ancestor</span>
+    <span class="family-name">Easter Bell (Nichols, later Pink)</span>
+    <span class="family-meta">b. July 4, 1838 · d. December 17, 1935 · Bellville</span>
+    <div class="family-body">
+      <p>Fully documented elsewhere on this site. Traced through the Thomas/Abigail/John G. Bell household by consistent age progression: age 12 (Bell hotel, ~1850), age 12 (A.G. Bell's 1850 slave schedule), age 19 (J.G. Bell's 1860 schedule). Mother: Rendy Blayn. Took the Bell surname at emancipation. Married Joseph Nichols, December 18, 1865.</p>
+    </div>
+  </div>
+
+  <div class="family-card black">
+    <span class="family-badge badge-black">Confirmed, Community</span>
+    <span class="family-name">Ned Bell</span>
+    <span class="family-meta">b. ca. 1835/1843 (records vary), South Carolina · d. May 20, 1912, Bellville · Fisherman</span>
+    <div class="family-body">
+      <p>Documented across 1880, 1900, and 1910 census records. In 1900, listed alongside Jefferson Nagy (b. 1811, Louisiana), no stated blood relation. Parents both South Carolina-born per 1900 census.</p>
+    </div>
+  </div>
+
+  <div class="family-card black">
+    <span class="family-badge badge-black">Married Into Nichols Family</span>
+    <span class="family-name">Edward Bell</span>
+    <span class="family-meta">Married Eliza Nichols, Austin County Freedmen's Marriage Register, Entry No. 7 · December 10–11, 1865</span>
+    <div class="family-body">
+      <p>Married the same week as Joseph Nichols and Easter Bell (Entry No. 8). Eliza's surname was Nichols before marriage — very likely enslaved in the same John Nichols household as Joseph. By 1870: Edward Bell (24), Eliza Bell (22), son Charles Bell (5), Dwelling 430, Bellville.</p>
+    </div>
+  </div>
+
+  <div class="family-card open">
+    <span class="family-badge badge-open">The Reason This Page Exists</span>
+    <span class="family-name">John Bell &amp; William Bell</span>
+    <span class="family-meta">John Bell: b. ca. 1845, Texas, Black · William Bell: b. ca. 1863, Texas, Mulatto, son of John Bell</span>
+    <div class="family-body">
+      <p><strong>1870 U.S. Federal Census, Beat 1, Bellville, Dwelling 592:</strong> a 25-year-old Black man named John Bell, living in the household of Moses and Ellen Miller, with his own 7-year-old son beside him — William Bell, recorded as Mulatto.</p>
+      <p>Run the year back. William was born around 1863. Slavery in Texas didn't end until June 19, 1865. That means William was conceived and born enslaved, two years before freedom, and recorded as Mulatto — meaning one of his parents was white. His father carries the Bell surname. So did the family that founded this town, named it, and held Easter Bell in the same years, a few miles from wherever John and William actually lived.</p>
+      <p>No will or deed says which white Bell held John. It could be Thomas and Abigail's household. It could be A.J. Bell's, the sheriff's, whose own son was nearly the same age as John. It could be Robert E. Bell's, out at Pine Grove. Nothing found yet closes that gap. But a mixed-race child, born enslaved, carrying the Bell name, in the same small town as every other Bell already on this page — that is not a coincidence this research is willing to file away. <strong>It's the reason the search widened to every Bell household in the first place, and it's still open.</strong></p>
+    </div>
+  </div>
+
+  <div class="family-card open">
+    <span class="family-badge badge-open">Checked and Ruled Out</span>
+    <span class="family-name">Lottie B. (Garnett) Bell/Beal Fletcher</span>
+    <span class="family-meta">b. April 25, 1911 · d. February 19, 1971, Bellville</span>
+    <div class="family-body">
+      <p>Appeared in 1940 census indexing as "Fletcher Lottie Bell." Her own 1971 death certificate names her parents as Robert Garnett and Eliza Boldan — neither a Bell. A separate 1920 census record shows a "Lottie B. Beal" in a large Beal family household in Justice Precinct 8 — "Beal" and "Bell" are easily confused in transcription and indexing. Recorded here for completeness; not currently supported as a Bell descendant by blood or marriage.</p>
+    </div>
+  </div>
+</div>
+
+<div class="ruled-out">
+  <strong>Also checked, not part of this family's confirmed line:</strong> the white John P. Bell household (1850, 1900) — son of A.J. Bell, unconnected by any document to the Black John Bell above beyond shared name and geography. Robert E. Bell's wife Elizabeth Winters and her own Winters family — Virginia/Tennessee origin, unconnected to the Bell bloodline itself.
+</div>
+
+<div class="closing">
+  <h2 class="closing-title">Every Name Kept.<br>Nothing Decided For You.</h2>
+  <p class="closing-body">This page will grow as more documents surface. Some of these Bell households will eventually connect directly to your own line with a named document. Others may never produce one — the record of slavery was built to make that connection hard to find, not impossible. <strong>Holding every name here, confirmed or not, is the work.</strong></p>
+</div>
+
+<div class="page-footer">
+  <a href="the_thread.html" class="footer-link">← The Thread</a>
+  <a href="elders.html" class="footer-link">The Elders →</a>
+</div>
+
+<script src="sidebar.js"></script>
+</body>
+</html>

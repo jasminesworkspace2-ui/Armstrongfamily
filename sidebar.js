@@ -14,6 +14,7 @@
       items: [
         { href: 'welcome.html',       text: 'Home',                   note: 'Armstrong Family Archive' },
         { href: 'start_here.html',    text: '★ Find Your Connection', note: 'New here? Start here' },
+        { href: 'our_story.html',    text: '★ Our Story',    note: 'The whole family story, start to finish' },
         { href: 'for_the_family.html',text: 'Site Guide',             note: 'How to use this archive' },
       ]
     },

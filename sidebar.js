@@ -13,68 +13,81 @@
       label: 'Start Here',
       items: [
         { href: 'welcome.html',       text: 'Home',                   note: 'Armstrong Family Archive' },
-        { href: 'start_here.html',    text: '★ Find Your Connection', note: 'New here? Start here' },
-        { href: 'our_story.html',    text: '★ Our Story',    note: 'The whole family story, start to finish' },
+        { href: 'start_here.html',    text: '\u2605 Find Your Connection', note: 'New here? Start here' },
+        { href: 'our_story.html',    text: '\u2605 What I\'ve Learned',    note: 'A personal reflection from Jasmine' },
         { href: 'for_the_family.html',text: 'Site Guide',             note: 'How to use this archive' },
       ]
     },
     {
-      label: 'The Family',
+      label: 'Our Direct Line',
       items: [
-        { href: 'bellville_family.html',  text: 'Easter Bell\'s Children', note: 'All 7 branches' },
-        { href: 'we_are_bellville.html',  text: 'We Are Bellville',        note: 'The full community' },
-        { href: 'elders.html',  text: 'The Elders',        note: 'Oldest residents · Africa-born · family clusters' },
+        { href: 'the_thread.html',  text: 'The Thread',    note: 'The full thesis, start to finish' },
+        { href: 'molley.html',           text: 'Molley',              note: 'The beginning \u00b7 ca. 1750' },
+        { href: 'patience_story.html',   text: 'Patience',            note: 'Newberry County SC \u00b7 1795' },
+        { href: 'clarissa_story.html',   text: 'Clarissa',            note: 'South Carolina \u00b7 ca. 1807' },
+        { href: 'rendy_story.html',      text: 'Rendy Blayn',         note: 'Easter Bell\'s mother' },
+        { href: 'easter_story.html',     text: 'Easter Bell',         note: '1838 \u2013 1935 \u00b7 Bellville' },
+        { href: 'joseph_story.html',     text: 'Joseph Nichols',      note: '1847 \u2013 1905' },
+        { href: 'hellen_story.html',     text: 'Hellen Nichols',      note: '1870 \u2013 1931' },
+        { href: 'eva_story.html',        text: 'Eva Armstrong',       note: '1900 \u2013 1977' },
+        { href: 'margie_story.html',     text: 'Margie Nell Corbin',  note: '1929 \u2013 1988' },
+        { href: 'hjordis.html',          text: 'Hjordis Corbin',      note: 'b. 1960' },
+      ]
+    },
+    {
+      label: 'The Enslaving Families',
+      items: [
         { href: 'bell_family.html',  text: 'The Bells',        note: 'Every Bell household, white and Black, found and unresolved' },
+        { href: 'waldrop_family_story.html',  text: 'The Waldrops',    note: 'Patience, Clarissa, and the family that stayed in Louisiana' },
+      ]
+    },
+    {
+      label: 'Bellville Community',
+      items: [
+        { href: 'bellville_family.html',  text: 'Easter Bell\'s Children', note: 'All 9 branches' },
+        { href: 'we_are_bellville.html',  text: 'We Are Bellville',        note: 'The full community' },
+        { href: 'elders.html',  text: 'The Elders of Bellville',        note: 'Oldest residents \u00b7 Africa-born \u00b7 family clusters' },
         { href: 'related.html',           text: 'How We Are Related',       note: 'Connection map' },
         { href: 'family_tree_chart.html', text: 'Complete Family Tree',     note: 'All names' },
       ]
     },
     {
-      label: 'The Story',
+      label: 'Research Archive',
       items: [
-        { href: 'how_we_got_here.html',  text: 'How We Got Here',    note: 'Nine generations' },
-        { href: 'the_thread.html',  text: 'The Thread',    note: 'The full thesis, start to finish' },
-        { href: 'waldrop_family_story.html',  text: 'The Mississippi Branch',    note: 'Patience, Clarissa, and the family that stayed in Louisiana' },
-        { href: 'precinct1_analysis.html',  text: 'Bellville Census Analysis',    note: '213 women, deep research document' },
-        { href: 'location_checksheet.html',  text: 'Location Checksheet',    note: 'Quick reference — who was where, when' },
-        { href: 'molley.html',           text: 'Molley',              note: 'The beginning · ca. 1750' },
-        { href: 'patience_story.html',   text: 'Patience',            note: 'Newberry County SC · 1795' },
-        { href: 'clarissa_story.html',   text: 'Clarissa',            note: 'South Carolina · ca. 1807' },
-        { href: 'rendy_story.html',      text: 'Rendy Blayn',         note: 'Easter Bell\'s mother' },
-        { href: 'easter_story.html',     text: 'Easter Bell',         note: '1838 – 1935 · Bellville' },
-        { href: 'joseph_story.html',     text: 'Joseph Nichols',      note: '1847 – 1905' },
-        { href: 'hellen_story.html',     text: 'Hellen Nichols',      note: '1870 – 1931' },
-        { href: 'eva_story.html',        text: 'Eva Armstrong',       note: '1900 – 1977' },
-        { href: 'margie_story.html',     text: 'Margie Nell Corbin',  note: '1929 – 1988' },
-        { href: 'hjordis.html',          text: 'Hjordis Corbin',      note: 'b. 1960' },
+        { href: 'registry.html',              text: 'Enslaved Persons Registry', note: '200+ named individuals' },
+        { href: 'land.html',                  text: 'The Land',                  note: '4 properties \u00b7 1793\u20132017' },
+        { href: 'dna.html',                   text: 'DNA Evidence',              note: 'AncestryDNA \u00b7 GEDmatch' },
+        { href: 'papertrail.html',            text: 'Document Gallery',          note: 'Primary sources' },
+        { href: 'john_nichols_community.html',text: 'John Nichols Community',    note: 'The Bellville household' },
+        { href: 'family_database.html',        text: 'Family Database',             note: 'All 149 people \u00b7 Evidence audit' },
+        { href: 'family_tree.html',           text: 'Full Family Archive',      note: 'The complete record' },
+        { href: 'reference.html',             text: 'Ancestral Reference',       note: 'Quick lookup' },
       ]
     },
     {
-      label: 'The Archive',
+      label: 'Timeline & Memory',
       items: [
-        { href: 'family_tree.html',           text: 'Full Family Archive',      note: 'The complete record' },
-        { href: 'family_database.html',        text: 'Family Database',             note: 'All 149 people · Evidence audit' },
-        { href: 'registry.html',              text: 'Enslaved Persons Registry', note: '200+ named individuals' },
-        { href: 'land.html',                  text: 'The Land',                  note: '3 properties · 1856–2017' },
-        { href: 'papertrail.html',            text: 'Document Gallery',          note: 'Primary sources' },
-        { href: 'john_nichols_community.html',text: 'John Nichols Community',    note: 'The Bellville household' },
         { href: 'timeline.html',              text: 'Family Timeline',           note: 'Dates in history' },
         { href: 'familytime.html',            text: 'Family Dates',              note: 'Celebrations & events' },
         { href: 'photos.html',                text: 'Photos',                    note: 'Family photographs' },
         { href: 'voices.html',                text: 'Family Voices',             note: 'Stories & memories' },
         { href: 'freedom.html',               text: 'Freedom Stories',           note: 'Life after 1865' },
-        { href: 'ballard.html',               text: 'Ballard Research',          note: 'Newton Ballard line' },
-        { href: 'dna.html',                   text: 'DNA Evidence',              note: 'AncestryDNA · GEDmatch' },
-        { href: 'reference.html',             text: 'Ancestral Reference',       note: 'Quick lookup' },
       ]
     },
     {
-      label: 'Origins',
+      label: 'Other Family Lines',
+      items: [
+        { href: 'ballard.html',               text: 'Ballard Research',          note: 'Newton Ballard line' },
+        { href: 'norman_corbin.html', text: 'Norman Corbin',     note: 'The Corbin family' },
+      ]
+    },
+    {
+      label: 'Origins & Methodology',
       items: [
         { href: 'black_dutch_fork.html',    text: 'Black Dutch Fork',         note: 'South Carolina 1795' },
-        { href: 'ester_nicholas.html',      text: 'Ester Nicholas · St. Croix', note: 'Morning Star · 1819 · Open hypothesis' },
-        { href: 'family_tree.html#africa-origins', text: 'Where We Come From', note: 'Dahomey · West Africa' },
-        { href: 'methodology.html',         text: 'Research Methodology',     note: '7 years · primary sources' },
+        { href: 'ester_nicholas.html',      text: 'Ester Nicholas \u00b7 St. Croix', note: 'Morning Star \u00b7 1819 \u00b7 Open hypothesis' },
+        { href: 'family_tree.html#africa-origins', text: 'Where We Come From', note: 'Dahomey \u00b7 West Africa' },
+        { href: 'methodology.html',         text: 'Research Methodology',     note: '7 years \u00b7 primary sources' },
         { href: 'glossary.html',            text: 'Glossary',                 note: 'Terms explained' },
       ]
     },
@@ -82,7 +95,6 @@
       label: 'Connect',
       items: [
         { href: 'contact.html',   text: 'Contact & Collaborate', note: 'Share what you know' },
-        { href: 'norman_corbin.html', text: 'Norman Corbin',     note: 'The Corbin family' },
       ]
     },
   ];

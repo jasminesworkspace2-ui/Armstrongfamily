@@ -40,6 +40,7 @@
       items: [
         { href: 'bell_family.html',  text: 'The Bells',        note: 'Every Bell household, white and Black, found and unresolved' },
         { href: 'john_nichols.html',  text: 'John Nichols',    note: 'Bellville\'s own land, and everyone he held' },
+        { href: 'waldrop_enslavers.html',  text: 'The Waldrops',    note: 'Three generations, seventy-five years, every price paid' },
       ]
     },
     {

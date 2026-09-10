@@ -32,13 +32,14 @@
         { href: 'eva_story.html',        text: 'Eva Armstrong',       note: '1900 \u2013 1977' },
         { href: 'margie_story.html',     text: 'Margie Nell Corbin',  note: '1929 \u2013 1988' },
         { href: 'hjordis.html',          text: 'Hjordis Corbin',      note: 'b. 1960' },
+        { href: 'waldrop_family_story.html',  text: 'The Matriarchs of the Family',    note: 'Molley, Patience, Rachel, and Clarissa\'s own story' },
       ]
     },
     {
       label: 'The Enslaving Families',
       items: [
         { href: 'bell_family.html',  text: 'The Bells',        note: 'Every Bell household, white and Black, found and unresolved' },
-        { href: 'waldrop_family_story.html',  text: 'The Waldrops',    note: 'Patience, Clarissa, and the family that stayed in Louisiana' },
+        { href: 'john_nichols.html',  text: 'John Nichols',    note: 'Bellville\'s own land, and everyone he held' },
       ]
     },
     {

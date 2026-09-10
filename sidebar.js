@@ -34,6 +34,9 @@
       items: [
         { href: 'how_we_got_here.html',  text: 'How We Got Here',    note: 'Nine generations' },
         { href: 'the_thread.html',  text: 'The Thread',    note: 'The full thesis, start to finish' },
+        { href: 'waldrop_family_story.html',  text: 'The Mississippi Branch',    note: 'Patience, Clarissa, and the family that stayed in Louisiana' },
+        { href: 'precinct1_analysis.html',  text: 'Bellville Census Analysis',    note: '213 women, deep research document' },
+        { href: 'location_checksheet.html',  text: 'Location Checksheet',    note: 'Quick reference — who was where, when' },
         { href: 'molley.html',           text: 'Molley',              note: 'The beginning · ca. 1750' },
         { href: 'patience_story.html',   text: 'Patience',            note: 'Newberry County SC · 1795' },
         { href: 'clarissa_story.html',   text: 'Clarissa',            note: 'South Carolina · ca. 1807' },

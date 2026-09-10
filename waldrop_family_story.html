@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Family That Stayed Together · Armstrong Family Archive</title>
+<meta name="description" content="Patience's family did not all go to Texas. Some went to Mississippi, then Louisiana, and stayed together for three generations. This is their story.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep:#080604;--surface:#0e0b08;
+    --gold:#c9a84c;--gold2:#e8c96a;--cream:#f5f2ec;--parchment:#f0ead8;
+    --muted:rgba(245,242,236,0.45);--border:rgba(201,168,76,0.15);
+    --f-display:'DM Serif Display',Georgia,serif;
+    --f-body:'Inter',sans-serif;--f-mono:'Courier New',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;}
+
+  .gnav{position:sticky;top:0;z-index:100;background:rgba(8,6,4,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(8px);}
+  .gnav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:52px;gap:8px;}
+  .gnav-brand{font-family:var(--f-display);font-style:italic;font-size:15px;color:rgba(240,234,216,0.8);text-decoration:none;white-space:nowrap;}
+  .gnav-links{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;}
+  .gnav-links::-webkit-scrollbar{display:none;}
+  .gnav-link{font-family:var(--f-mono);font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;padding:6px 10px;white-space:nowrap;border-bottom:2px solid transparent;}
+  .gnav-link.active{color:#c9a84c;border-bottom-color:#c9a84c;}
+  .gnav-link.gstart{color:#c9a84c;border:1px solid rgba(201,168,76,0.35);padding:5px 10px;margin-right:6px;}
+
+  .opening{min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:64px 24px;
+           background:radial-gradient(ellipse at center,rgba(201,168,76,0.07) 0%,transparent 65%);}
+  .opening-eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,168,76,0.5);display:block;margin-bottom:24px;}
+  .opening-title{font-family:var(--f-display);font-size:clamp(32px,6.5vw,58px);font-style:italic;color:var(--parchment);line-height:1.1;margin-bottom:20px;}
+  .opening-sub{font-size:15px;line-height:1.9;color:#b0a89e;max-width:600px;margin:0 auto;}
+
+  .story{max-width:680px;margin:0 auto;padding:20px 24px 100px;}
+  .story p{font-size:17px;line-height:2.05;color:#d0c8ba;margin-bottom:26px;}
+  .story p:first-of-type::first-letter{font-family:var(--f-display);font-size:64px;font-style:italic;color:var(--gold2);float:left;line-height:0.8;padding-right:10px;padding-top:6px;}
+  .story strong{color:var(--parchment);font-weight:500;}
+  .story em{color:rgba(201,168,76,0.9);font-style:italic;}
+  .story h2{font-family:var(--f-display);font-size:26px;font-style:italic;color:var(--parchment);margin:56px 0 22px;line-height:1.3;}
+  .story .quote{font-family:var(--f-display);font-size:19px;font-style:italic;line-height:1.7;color:#c8c0b4;border-left:2px solid var(--gold);padding-left:22px;margin:32px 0;}
+  .divider{text-align:center;color:rgba(201,168,76,0.4);font-size:14px;letter-spacing:8px;margin:48px 0;}
+
+  .doc-links{background:var(--surface);border:1px solid var(--border);padding:28px 30px;margin:40px 0;}
+  .doc-links-title{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.6);display:block;margin-bottom:16px;}
+  .doc-link{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.06);text-decoration:none;}
+  .doc-link:last-child{border-bottom:none;}
+  .doc-link-icon{font-family:var(--f-mono);font-size:16px;color:var(--gold);}
+  .doc-link-text{flex:1;}
+  .doc-link-title{font-size:14.5px;color:var(--parchment);display:block;margin-bottom:2px;}
+  .doc-link-sub{font-family:var(--f-mono);font-size:10px;color:var(--muted);}
+  .doc-link-arrow{color:rgba(201,168,76,0.5);font-size:14px;}
+
+  .closing{text-align:center;padding:72px 24px;background:radial-gradient(ellipse at center bottom,rgba(201,168,76,0.06) 0%,transparent 60%);}
+  .closing-title{font-family:var(--f-display);font-size:clamp(24px,4vw,36px);font-style:italic;color:var(--parchment);margin-bottom:18px;line-height:1.3;}
+  .closing-body{font-size:14.5px;line-height:2;color:#a0988e;max-width:600px;margin:0 auto 24px;}
+
+  .page-footer{max-width:680px;margin:0 auto;padding:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  .footer-link{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;}
+
+  @media(max-width:600px){
+    .story p{font-size:16px;}
+    .story .quote{font-size:17px;padding-left:16px;}
+  }
+</style>
+<link rel="stylesheet" href="overrides.css">
+</head>
+<body>
+
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a href="welcome.html" class="gnav-brand">Armstrong Family Archive</a>
+    <div class="gnav-links">
+      <a href="start_here.html" class="gnav-link gstart">★ Start Here</a>
+      <a href="our_story.html" class="gnav-link">Our Story</a>
+      <a href="waldrop_family_story.html" class="gnav-link active">The Mississippi Branch</a>
+      <a href="the_thread.html" class="gnav-link">The Full Research</a>
+      <a href="registry.html" class="gnav-link">Registry</a>
+    </div>
+  </div>
+</nav>
+
+<div class="opening">
+  <span class="opening-eyebrow">South Carolina → Georgia → Tennessee → Mississippi → Louisiana</span>
+  <h1 class="opening-title">The Family That Stayed Together.</h1>
+  <p class="opening-sub">Not everyone Patience raised went to Texas. This is the story of the branch that didn't — and what happened to them instead.</p>
+</div>
+
+<div class="story">
+
+<p>When Francis Davenport gave Patience to his daughter Patty in August 1795, he was giving her to a young married woman starting a new life. Patty's husband was a young man named <strong>Ezekiah Parrish Waldrop</strong>, twenty-one years old, still finishing his own schooling under his own father's will. Neither of them could have known that Patience would still be part of their family's story forty-four years later, carried through five states and three generations of their own children.</p>
+
+<p>Ezekiah moved constantly. Newberry County, South Carolina, where he was born in 1774, gave way to Franklin County, Georgia by 1802. From there to Jackson County, Georgia. From there to Maury County, Tennessee, where he fought in the War of 1812 alongside his own eldest son, Claiborne. By 1820 he had reached Lawrence County, Mississippi — and it's here, in a census taken that year, that Patience appears for the first time since her name was given to Patty: a woman over forty-five, with two younger women beside her, old enough to be her own daughters. <strong>Rachel</strong> and <strong>Clarissa</strong> were growing up in this household, moving every few years across the whole American South, before either of them had a country's law recognize their own name.</p>
+
+<p>Patsy Davenport Waldrop — Patience's own mistress since the day she was born to that name — died sometime around 1824 or 1825. Ezekiah remarried, to a woman named Sarah Knight, and kept moving: Hinds County, Mississippi, then Rankin County. For fourteen years after Patsy's death, Ezekiah held Patience and her family "in trust" — his own legal language — for the children his first wife had borne him, without ever quite finishing the job of dividing them up.</p>
+
+<div class="divider">⁂</div>
+
+<h2>Two Names, Sold Within Months</h2>
+
+<p>On <strong>March 25, 1839</strong>, in the town of Brandon, Mississippi, Ezekiah finally signed the document that ended the trust. It named Patience "and her increase" — Rachel, Clarissa, Tom (Rachel's son), and William, Amanda, and Harriet (Clarissa's children) — and divided them among his eight surviving children.</p>
+
+<p>What the deed doesn't say is what happened next. That part has to be pieced together from what came after.</p>
+
+<p><strong>Rachel</strong> went to Ezekiah's son Stephen. Within five months, Stephen sold her — to his own father-in-law, Howell Prestridge, for eight hundred and fifty dollars, along with her son, recorded in the bill of sale as "Bryant." She was gone from this family's own hands almost as soon as the ink had dried, moved into a different household entirely, in a different county, through a marriage connection rather than a blood one. Nothing in this research has been able to follow her any further than that.</p>
+
+<div class="quote">"...one Negro woman named Patience with her increase named Rachel, Clarissa, Tom — Rachel's son — William and Amanda and Harriet, children of Clarissa..."</div>
+
+<p><strong>Clarissa</strong> went, almost certainly, to Ezekiah's eldest son <strong>Claiborne</strong> — the same boy who had grown up alongside Patience's own family back in 1820, in his father's Lawrence County household. Claiborne had already been building his own life for years: married to Mary Ann Bowlin since 1815, his own children arriving one after another, his own household already established in Rankin County by the time his father's estate was finally settled. Sometime between 1838 and 1841, Claiborne moved his whole family west again — this time to Sabine Parish, Louisiana, near a small town that would later be called Many.</p>
+
+<h2>A Household That Grew Instead of Scattering</h2>
+
+<p>A census taken in Sabine Parish in 1850 shows Claiborne's household: a woman aged sixty-three, born around 1787 — very likely Patience herself, near the end of her own long life. A woman aged forty-six, born around 1804 — very likely Clarissa. And around them, younger people in their twenties and thirties, old enough to be Clarissa's own children, grown into adults.</p>
+
+<p>Ten years later, the same household had grown to eighteen people. Not scattered. Not sold off one at a time the way Rachel had been. <strong>Grown</strong> — the way a real family grows, across three generations, staying under one roof even while that roof belonged to a man who owned every one of them.</p>
+
+<p>A newspaper register of runaways from Louisiana, corrected weekly, printed a single line that names one of them directly:</p>
+
+<div class="quote">"TOM — Very black complexion, about 30 years old, 5 feet 8 or 10 inches high, committed about March 20th; says he belongs to Mr. C.P. Waldrop, of Sabine Parish."</div>
+
+<p>Whether this is the same Tom named in the 1839 deed — Rachel's own son, or a namesake born later in Claiborne's household — isn't fully certain. But the name, the household, and the parish all line up. Somewhere around 1850 or 1860, a man named Tom, enslaved by Claiborne Waldrop, ran. He was caught, or gave himself up, or was recognized and returned — the register doesn't say which. What it does say, in five plain lines of newsprint, is that at least one person in this household refused to simply stay where he'd been placed, even for a little while.</p>
+
+<div class="divider">⁂</div>
+
+<h2>The Piece Still Missing</h2>
+
+<p>Here is the honest part of this story, the part that doesn't resolve into anything tidy yet: <strong>no single document has ever shown Amanda — Clarissa's daughter, the great-grandmother this whole archive believes connects to Joseph Nichols — physically traveling from Louisiana to Texas.</strong> The working belief, based on Jasmine's own confirmed Ancestry ThruLines and years of DNA-supported research, is that Joseph descends from Patience through Clarissa through Amanda. That belief hasn't been disproven by anything found today. It just hasn't been closed with a named document either — the same kind of gap this whole archive has learned to hold honestly rather than paper over.</p>
+
+<p>What today's research adds is the other half of the picture: what happened to the family members who did <em>not</em> make that journey. Rachel, sold within months. Clarissa herself, very likely living out her life in Sabine Parish, Louisiana, never reaching Texas at all. Tom, who ran. If Amanda did leave that Louisiana household and eventually reach Texas — through a route not yet documented — she left behind a mother and siblings whose own lives went a different direction, stayed together in one place, and are recorded here now for the first time.</p>
+
+<p>The bridge everyone already knows about is <strong>Fanny Waldrop</strong>, Ezekiah's own daughter, who married John Nichols in Austin County, Texas, two years before her father ever divided Patience's family. Fanny received no direct share of Patience's own children in that 1839 division. Whether Amanda made her own way to Texas through a different, still-unfound route — a later sale, a family connection, a road this research hasn't found yet — remains the single open question standing between this Louisiana family and the one in Bellville.</p>
+
+</div>
+
+<div class="doc-links">
+  <span class="doc-links-title">The Full Research Behind This Story</span>
+  <a href="precinct1_analysis.html" class="doc-link">
+    <span class="doc-link-icon">◆</span>
+    <span class="doc-link-text">
+      <span class="doc-link-title">The Bellville Census Deep Analysis</span>
+      <span class="doc-link-sub">213 women, 1860 slave schedules, and the Austin County probate records — full document</span>
+    </span>
+    <span class="doc-link-arrow">→</span>
+  </a>
+  <a href="location_checksheet.html" class="doc-link">
+    <span class="doc-link-icon">◆</span>
+    <span class="doc-link-text">
+      <span class="doc-link-title">Where Everyone Was, When — Quick Reference</span>
+      <span class="doc-link-sub">A one-page checksheet for testing any new record against the confirmed timeline</span>
+    </span>
+    <span class="doc-link-arrow">→</span>
+  </a>
+</div>
+
+<div class="closing">
+  <h2 class="closing-title">One Family, Two Directions.<br>Both Worth Knowing.</h2>
+  <p class="closing-body">Whether Amanda's own road ran from this Louisiana household to Texas is still an open question. What isn't open is that this family was real, stayed together against every pressure meant to break it apart, and deserved to be found and written down — the same as every other name in this archive.</p>
+</div>
+
+<div class="page-footer">
+  <a href="our_story.html" class="footer-link">← Our Story</a>
+  <a href="the_thread.html" class="footer-link">The Full Research →</a>
+</div>
+
+<script src="sidebar.js"></script>
+</body>
+</html>

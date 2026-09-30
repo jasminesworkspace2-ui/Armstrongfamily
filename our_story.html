@@ -2,72 +2,133 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What I've Learned · Armstrong Family Archive</title>
-<meta name="description" content="A personal reflection from Jasmine Lee on seven years of research into her family's enslavement, survival, and endurance.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The People Who Walked This Land · Armstrong Family Archive</title>
+<meta name="description" content="A family story reconstructed from the records, the places, the fragments, and the questions that survived. By Jasmine M. Lee.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&family=Courier+Prime&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --deep:#080604;--surface:#0e0b08;
-    --gold:#c9a84c;--gold2:#e8c96a;--cream:#f5f2ec;--parchment:#f0ead8;
-    --muted:rgba(245,242,236,0.45);--border:rgba(201,168,76,0.15);
-    --f-display:'DM Serif Display',Georgia,serif;
-    --f-body:'Inter',sans-serif;--f-mono:'Courier New',monospace;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;}
+:root {
+  --black:#070605;--surface:#0f0d0b;--card:#161311;--border:rgba(201,168,76,0.14);--border2:rgba(255,255,255,0.06);
+  --parchment:#f0ead8;--cream:#dcd2c0;--muted:#8a8078;
+  --gold:#c9a84c;--gold2:#e2c060;
+  --t-doc:#5a9a5a;--t-supported:#4a8aa8;--t-recon:#c9a84c;--t-unknown:#7a7a7a;
+  --f-display:'DM Serif Display',Georgia,serif;--f-body:'Inter',sans-serif;--f-mono:'Courier Prime','Courier New',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.01ms !important;transition-duration:0.01ms !important;} }
+body{background:var(--black);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+strong{color:var(--parchment);font-weight:500;}
+em{color:var(--gold2);font-style:italic;}
 
-  .gnav{position:sticky;top:0;z-index:100;background:rgba(8,6,4,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(8px);}
-  .gnav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:52px;gap:8px;}
-  .gnav-brand{font-family:var(--f-display);font-style:italic;font-size:15px;color:rgba(240,234,216,0.8);text-decoration:none;white-space:nowrap;}
-  .gnav-links{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:none;}
-  .gnav-links::-webkit-scrollbar{display:none;}
-  .gnav-link{font-family:var(--f-mono);font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;padding:6px 10px;white-space:nowrap;border-bottom:2px solid transparent;}
-  .gnav-link.active{color:#c9a84c;border-bottom-color:#c9a84c;}
-  .gnav-link.gstart{color:#c9a84c;border:1px solid rgba(201,168,76,0.35);padding:5px 10px;margin-right:6px;}
+.gnav{position:sticky;top:0;z-index:200;background:rgba(7,6,5,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(8px);}
+.gnav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:52px;gap:8px;}
+.gnav-brand{font-family:var(--f-display);font-style:italic;font-size:15px;color:var(--parchment);text-decoration:none;}
+.gnav-links{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;}
+.gnav-links::-webkit-scrollbar{display:none;}
+.gnav-link{font-family:var(--f-mono);font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:6px 10px;white-space:nowrap;border-bottom:2px solid transparent;}
+.gnav-link.active{color:var(--gold);border-bottom-color:var(--gold);}
+.gnav-link.gstart{color:var(--gold);border:1px solid rgba(201,168,76,0.35);padding:5px 10px;margin-right:6px;}
 
-  .opening{min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:64px 24px;
-           background:radial-gradient(ellipse at center,rgba(201,168,76,0.07) 0%,transparent 65%);}
-  .opening-eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,168,76,0.5);display:block;margin-bottom:24px;}
-  .opening-title{font-family:var(--f-display);font-size:clamp(32px,6.5vw,58px);font-style:italic;color:var(--parchment);line-height:1.15;margin-bottom:20px;}
-  .opening-sub{font-size:15px;line-height:1.9;color:#b0a89e;max-width:580px;margin:0 auto;}
-  .opening-byline{font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.6);margin-top:24px;display:block;}
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;overflow:hidden;}
+.hero-canvas{position:absolute;inset:0;z-index:0;opacity:0.5;}
+.hero-content{position:relative;z-index:2;max-width:680px;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.hero-year{font-family:var(--f-mono);font-size:11px;letter-spacing:6px;color:var(--gold);margin-bottom:24px;opacity:0;animation:fadeUp 1s 0.3s forwards;}
+.hero-title{font-family:var(--f-display);font-size:clamp(30px,6vw,54px);font-style:italic;color:var(--parchment);line-height:1.2;margin-bottom:20px;opacity:0;animation:fadeUp 1s 0.6s forwards;}
+.hero-sub{font-size:14.5px;line-height:1.9;color:var(--cream);opacity:0;animation:fadeUp 1s 0.9s forwards;max-width:520px;margin:0 auto 20px;}
+.hero-byline{font-family:var(--f-mono);font-size:10px;letter-spacing:2px;color:var(--gold2);opacity:0;animation:fadeUp 1s 1.2s forwards;}
+.hero-chain{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:36px;opacity:0;animation:fadeUp 1s 1.5s forwards;}
+.hero-chain span{font-family:var(--f-mono);font-size:9px;letter-spacing:1.5px;color:var(--muted);}
+.hero-chain .arrow{color:var(--gold);}
+.scroll-cue{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-family:var(--f-mono);font-size:9px;letter-spacing:3px;color:rgba(255,255,255,0.25);animation:breathe 2.5s ease-in-out infinite;}
+@keyframes breathe{0%,100%{opacity:0.2;}50%{opacity:0.6;}}
 
-  .story{max-width:680px;margin:0 auto;padding:20px 24px 100px;}
-  .story p{font-size:17px;line-height:2.05;color:#d0c8ba;margin-bottom:26px;}
-  .story p:first-of-type::first-letter{font-family:var(--f-display);font-size:64px;font-style:italic;color:var(--gold2);float:left;line-height:0.8;padding-right:10px;padding-top:6px;}
-  .story strong{color:var(--parchment);font-weight:500;}
-  .story em{color:rgba(201,168,76,0.9);font-style:italic;}
-  .story h2{font-family:var(--f-display);font-size:26px;font-style:italic;color:var(--parchment);margin:56px 0 22px;line-height:1.3;}
-  .story .quote{font-family:var(--f-display);font-size:19px;font-style:italic;line-height:1.7;color:#c8c0b4;border-left:2px solid var(--gold);padding-left:22px;margin:32px 0;}
-  .divider{text-align:center;color:rgba(201,168,76,0.4);font-size:14px;letter-spacing:8px;margin:48px 0;}
+/* STORY LAYOUT */
+.story{max-width:680px;margin:0 auto;padding:0 24px;}
+.chapter{padding:70px 0;border-top:1px solid var(--border);}
+.chapter:first-child{border-top:none;}
+.ch-label{font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:14px;}
+.ch-title{font-family:var(--f-display);font-size:clamp(24px,4.5vw,34px);font-style:italic;color:var(--parchment);margin-bottom:26px;line-height:1.25;}
+.prose p{font-size:16px;line-height:2.1;color:var(--cream);margin-bottom:20px;}
+.prose p.short{margin-bottom:6px;}
+.prose p:last-child{margin-bottom:0;}
 
-  .fact-box{background:var(--surface);border-left:3px solid var(--gold);padding:20px 26px;margin:28px 0;}
-  .fact-box-label{font-family:var(--f-mono);font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.6);display:block;margin-bottom:10px;}
-  .fact-box p{font-size:14.5px;line-height:1.85;color:#b0a89e;margin-bottom:0;}
-  .fact-box p:first-of-type::first-letter{all:unset;}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
 
-  .unanswered{background:rgba(176,73,46,0.06);border:1px solid rgba(176,73,46,0.2);padding:26px 28px;margin:36px 0;}
-  .unanswered-title{font-family:var(--f-display);font-size:19px;font-style:italic;color:#d0a088;display:block;margin-bottom:14px;}
-  .unanswered ul{margin:0;padding-left:20px;}
-  .unanswered li{font-size:14.5px;line-height:1.9;color:#b8a89e;margin-bottom:10px;}
-  .unanswered li strong{color:var(--parchment);}
+/* EVIDENCE TAG */
+.etag{display:inline-block;font-family:var(--f-mono);font-size:8px;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;border-radius:10px;margin-bottom:16px;}
+.etag-doc{background:rgba(90,154,90,0.14);color:var(--t-doc);border:1px solid rgba(90,154,90,0.35);}
+.etag-supported{background:rgba(74,138,168,0.14);color:var(--t-supported);border:1px solid rgba(74,138,168,0.35);}
+.etag-recon{background:rgba(201,168,76,0.14);color:var(--t-recon);border:1px solid rgba(201,168,76,0.35);}
+.etag-unknown{background:rgba(122,122,122,0.14);color:var(--t-unknown);border:1px solid rgba(122,122,122,0.35);}
 
-  .closing{text-align:center;padding:72px 24px;background:radial-gradient(ellipse at center bottom,rgba(201,168,76,0.06) 0%,transparent 60%);}
-  .closing-title{font-family:var(--f-display);font-size:clamp(24px,4vw,36px);font-style:italic;color:var(--parchment);margin-bottom:18px;line-height:1.3;}
-  .closing-body{font-size:14.5px;line-height:2;color:#a0988e;max-width:600px;margin:0 auto 24px;}
-  .closing-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
-  .closing-link{font-family:var(--f-mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(201,168,76,0.3);padding:10px 18px;border-radius:2px;}
+.pull{margin:36px 0;padding:26px 32px;border-left:3px solid var(--gold);background:rgba(201,168,76,0.04);border-radius:0 8px 8px 0;}
+.pull p{font-family:var(--f-display);font-size:clamp(17px,3vw,21px);font-style:italic;color:var(--parchment);line-height:1.6;margin:0!important;}
+.pull-attr{font-family:var(--f-mono);font-size:9px;color:var(--muted);display:block;margin-top:10px;}
 
-  .page-footer{max-width:680px;margin:0 auto;padding:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-  .footer-link{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;}
+.doc-block{margin:30px 0;border:1px solid var(--border2);border-radius:8px;overflow:hidden;background:var(--card);}
+.doc-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:1px solid var(--border2);background:rgba(0,0,0,0.25);}
+.doc-label a{color:var(--gold);text-decoration:none;}
+.doc-body{padding:18px 20px;font-size:13px;line-height:1.85;color:var(--cream);font-family:var(--f-mono);}
 
-  @media(max-width:600px){
-    .story p{font-size:16px;}
-    .story .quote{font-size:17px;padding-left:16px;}
-  }
+/* NAME CONSTELLATION */
+.constellation{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin:28px 0;}
+.star{background:var(--card);border:1px solid var(--border2);border-radius:8px;padding:16px 14px;text-align:center;cursor:pointer;transition:border-color 0.2s,transform 0.2s;}
+.star:hover{border-color:var(--gold);transform:translateY(-2px);}
+.star-name{font-family:var(--f-display);font-size:16px;font-style:italic;color:var(--parchment);}
+.star-card{display:none;grid-column:1/-1;background:var(--surface);border:1px solid var(--gold);border-radius:8px;padding:18px 22px;font-size:12.5px;line-height:1.8;color:var(--cream);text-align:left;margin-top:4px;}
+.star-card.open{display:block;}
+.star-card strong{color:var(--gold2);}
+
+/* TWO NETWORK TOGGLE */
+.network-box{background:var(--card);border:1px solid var(--border2);border-radius:10px;padding:26px 24px;margin:30px 0;}
+.network-toggle{display:flex;gap:10px;margin-bottom:20px;justify-content:center;}
+.net-btn{font-family:var(--f-mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:9px 16px;border-radius:20px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.2s;}
+.net-btn.active{border-color:var(--gold);color:var(--gold2);background:rgba(201,168,76,0.08);}
+.net-view{display:none;}
+.net-view.active{display:block;}
+.net-line{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:12.5px;color:var(--cream);}
+.net-line .dash{color:var(--muted);font-family:var(--f-mono);}
+.net-solid{color:var(--t-doc);}
+.net-dotted{color:var(--t-recon);border-bottom:2px dotted var(--t-recon);padding-bottom:1px;}
+
+/* MAP REGIONS */
+.map-regions{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin:28px 0;}
+.region{background:var(--card);border:1px solid var(--border2);border-radius:8px;padding:18px 16px;cursor:pointer;transition:border-color 0.2s;}
+.region:hover{border-color:var(--gold);}
+.region-name{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px;}
+.region-body{font-size:12px;line-height:1.7;color:var(--muted);}
+
+/* CHAIN */
+.gen-chain{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:28px 0;font-family:var(--f-mono);font-size:11px;}
+.gen-chain .name{color:var(--parchment);padding:6px 12px;border:1px solid var(--border2);border-radius:16px;}
+.gen-chain .arrow{color:var(--gold);}
+
+/* BELIEVE / DO-NOT-KNOW LISTS */
+.believe-box{background:linear-gradient(180deg,rgba(201,168,76,0.05),transparent);border:1px solid rgba(201,168,76,0.3);border-radius:10px;padding:30px 28px;margin:20px 0;}
+.believe-label{font-family:var(--f-mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:4px;text-align:center;}
+.believe-sub{font-size:12.5px;color:var(--muted);text-align:center;margin-bottom:24px;font-style:italic;}
+.believe-item{font-size:14.5px;line-height:1.9;color:var(--cream);margin-bottom:14px;padding-left:20px;position:relative;}
+.believe-item::before{content:'—';position:absolute;left:0;color:var(--gold);}
+
+.unknown-box{background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:28px 26px;margin:20px 0;}
+.unknown-item{font-size:13.5px;line-height:1.9;color:var(--muted);margin-bottom:10px;}
+.unknown-item::before{content:'· ';color:var(--t-unknown);}
+
+.divider{text-align:center;color:rgba(201,168,76,0.35);font-size:13px;letter-spacing:10px;margin:44px 0;}
+
+/* FULL SCREEN CLOSING */
+.final{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px;border-top:1px solid var(--border);}
+.final-line{font-family:var(--f-display);font-size:clamp(20px,4vw,32px);font-style:italic;color:var(--parchment);line-height:1.5;margin-bottom:6px;}
+.final-byline{font-family:var(--f-mono);font-size:11px;letter-spacing:2px;color:var(--gold2);margin-top:30px;}
+.final-tag{font-family:var(--f-mono);font-size:10px;letter-spacing:1.5px;color:var(--muted);margin-top:20px;font-style:italic;}
+.final-links{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+.back-link{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--border2);border-radius:30px;padding:11px 20px;}
+
+@media(max-width:600px){ .prose p{font-size:15px;} .network-toggle{flex-wrap:wrap;} }
 </style>
 <link rel="stylesheet" href="overrides.css">
 </head>
@@ -78,101 +139,456 @@
     <a href="welcome.html" class="gnav-brand">Armstrong Family Archive</a>
     <div class="gnav-links">
       <a href="start_here.html" class="gnav-link gstart">★ Start Here</a>
-      <a href="our_story.html" class="gnav-link active">What I've Learned</a>
-      <a href="the_thread.html" class="gnav-link">The Full Research</a>
-      <a href="bell_family.html" class="gnav-link">The Bells</a>
-      <a href="registry.html" class="gnav-link">Registry</a>
+      <a href="our_story.html" class="gnav-link active">Our Story</a>
+      <a href="research_archive.html" class="gnav-link">Research Archive</a>
+      <a href="the_thread.html" class="gnav-link">The Thread</a>
     </div>
   </div>
 </nav>
 
-<div class="opening">
-  <span class="opening-eyebrow">A Personal Reflection</span>
-  <h1 class="opening-title">What I've Learned.</h1>
-  <p class="opening-sub">Seven years into this research, this is what it has taught me — about my family, about what was done to them, and about what love was allowed to look like when someone finally had the right to choose it.</p>
-  <span class="opening-byline">— Jasmine M. Lee</span>
-</div>
+<!-- HERO -->
+<section class="hero">
+  <svg class="hero-canvas" id="ink-line" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice">
+    <path id="ink-path" d="M 400 0 Q 300 200 420 400 T 380 800" stroke="#c9a84c" stroke-width="1" fill="none" opacity="0.25" stroke-dasharray="1400" stroke-dashoffset="1400"/>
+  </svg>
+  <div class="hero-content">
+    <span class="hero-year">1793</span>
+    <h1 class="hero-title">The People Who Walked This Land.</h1>
+    <p class="hero-sub">A family story reconstructed from the records, the places, the fragments, and the questions that survived.</p>
+    <span class="hero-byline">By Jasmine M. Lee</span>
+    <div class="hero-chain">
+      <span>MOLLEY</span><span class="arrow">→</span><span>PATIENCE</span><span class="arrow">→</span><span>EASTER</span><span class="arrow">→</span><span>BLUFORD</span><span class="arrow">→</span><span>EASTER BELL</span><span class="arrow">→</span><span>JASMINE</span>
+    </div>
+  </div>
+  <span class="scroll-cue">scroll</span>
+</section>
 
 <div class="story">
 
-<p>I did not start this research expecting it to change how I think about family, about love, about what it means to belong to someone rather than choose to be with them. I started it wanting names. What I found instead was a family that was enslaved, sold, separated, forced to breed, and stripped of its own history so completely that I am still, seven years in, finding pieces of my own great-great-great-grandmothers scattered across four states in documents written by the very people who owned them.</p>
-
-<p>Here is what I know now, plainly, without softening it: <strong>this family enslaved us.</strong> The Waldrops. The Davenports. The Nichols family. The Hutchins family. Not once, not in passing — across four states and nearly a hundred years, generation after generation, they held my family as property, forced us to take their names when freedom finally came, and today I carry their DNA in my own blood, whether I asked for it or not. That is not a metaphor. It is a fact my own DNA test confirms every time I match with a descendant of one of these families and have to explain, again, why that connection exists.</p>
-
-<div class="fact-box">
-  <span class="fact-box-label">What the DNA Confirms</span>
-  <p>Confirmed matches to descendants of the Waldrop and Davenport families, corroborated independently by a documented cousin's own research and by Jasmine's own Ancestry ThruLines placing Patience as a likely 5th-great-grandmother. The connection is not assumed — it is measured, in centimorgans, the same as any other family relationship DNA can confirm.</p>
-</div>
-
-<p>I cannot imagine the pain of being sold away from your own mother. I cannot imagine being shared between brothers the way land or livestock was shared, moved from one man's household to another's because it suited his own bookkeeping. I cannot imagine being assaulted, and forced to bear children by someone love never chose for you, and then having no word for what happened to you because the law did not recognize you as a person capable of being wronged that way at all.</p>
-
-<div class="fact-box">
-  <span class="fact-box-label">What The Documents Show</span>
-  <p>On March 25, 1839, Ezekiah Waldrop divided Patience, her daughters Rachel and Clarissa, and Clarissa's three children among his eight children — fourteen days after losing a lawsuit, almost certainly to protect his own property from being seized by the court. Within five months, Rachel and her son had been sold again, this time for cash, to a different family entirely. Patience herself was sold once in 1827, for three hundred dollars, alongside her daughter for five hundred and a young boy for two hundred. Human beings, priced like the two feather beds sold in the very same sentence.</p>
-</div>
-
-<p>From everything I have found, only one woman in this entire family ever seems to have gotten to choose who she loved: <strong>Easter.</strong> Not because anyone gave her that right — no one did, not until the war ended and the law finally admitted she was a person. But the moment freedom came, six months after Juneteenth, she chose Joseph Nichols, and she kept choosing family for the rest of her life. She raised nine children. She took in the marriages that grew around her. She kept the Bell name she was born with — her own name, not one she was given by a husband — all the way to her own death certificate, sixty years later, as if she never once forgot who she was before anyone else claimed her.</p>
-
-<div class="quote">Easter Bell was born on the Fourth of July and freed on Juneteenth. She lived inside that contradiction for twenty-seven years before either date meant anything for her at all.</div>
-
-<p>I see the same thing in my own grandmother. The need to hold family together, to keep everyone close, to make sure no one got lost the way so many of our own ancestors were lost — I believe that comes from somewhere. I believe it is inherited the same way trauma is inherited, quietly, without anyone ever having to explain where it came from.</p>
-
-<h2>Why No One Told These Stories</h2>
-
-<p>I used to wonder why none of this was ever passed down to me directly — no names, no dates, nothing beyond a feeling that something had happened and it wasn't spoken about. I understand it now. I believe it was never shared because it was never safe to share. I believe it became a silent void, on purpose, to protect their own hearts and their own dignity from having to relive it out loud, generation after generation. Silence was not forgetting. Silence was survival.</p>
-
-<p>That silence means there are children who existed and were never written down anywhere I can find. There are people this research will never recover, not because they didn't matter, but because the world they were born into made sure they never mattered enough to record. I have to live with that. I have decided I would rather name what I can and be honest about what I cannot than pretend the gaps don't exist.</p>
-
-<div class="unanswered">
-  <span class="unanswered-title">The Ones I Still Look For</span>
-  <ul>
-    <li><strong>Mingo</strong> — named twice, seventy years apart: once in the 1795 Davenport gift alongside Rachel, Fanny, and Peter, and again in John Nichols's own 1864 estate, alongside Fanny, Jack, Rhoda, Amanda, and Warren. Is this the same name recurring by coincidence, the way so many names did in this family's story, or is it the same family line, split apart and reappearing decades later under a different owner? I don't know yet. I want to.</li>
-    <li><strong>Big Lucy</strong> — named in the 1793 Union County mortgage alongside Daniel, in the same document that first names Molley and her seven children. Whether she is family or simply another enslaved woman recorded on the same page, I cannot yet say.</li>
-    <li><strong>Tom, Rachel, William, Amanda, Harriet</strong> — Patience and Clarissa's own children and grandchildren, named directly in the 1839 deed, scattered across at least three different households within months of that document being signed. Most of them, I have never been able to find again.</li>
-    <li><strong>The runaway Tom</strong> — a man belonging to C.P. Waldrop of Sabine Parish, recorded in a Louisiana runaway register as "very black complexion, about 30 years old," committed to custody around March 20th of an unstated year. Whether this is the same Tom named in the family's own documents, whether he was ever returned, sold again, or killed for running, whether he had children of his own who carried his memory forward — none of that survives anywhere I have found. My heart tells me he is family. I may never be able to prove it.</li>
-  </ul>
-</div>
-
-<p>What were their names before they were given ones by the people who owned them? I don't know. That question may never have an answer, because the erasure of that original name was often the very first thing slavery did to a person, before anything else was taken.</p>
-
-<div class="divider">⁂</div>
-
-<h2>What This Cost, In Numbers</h2>
-
-<p>I want to say plainly what is easy to lose in the middle of names and dates: <strong>this family built wealth off the people it enslaved, and the law rewarded them for it.</strong> Under the colonization system that first brought settlers into Texas, a man received 640 acres for himself, 320 more for his wife, and eighty acres for every human being he brought across the border in chains. Eighty acres — a quarter of what his own wife was worth to that same government, half of what each of his own children was worth. John Nichols and Thomas Bell both built their holdings, in real and calculable part, on exactly that formula. The town of Bellville itself sits on land that was, quite literally, paid for by the number of people they enslaved.</p>
-
-<div class="fact-box">
-  <span class="fact-box-label">The Price Of A Person, In Their Own Words</span>
-  <p>1827, Hinds County, Mississippi: Patience sold for $300. Her daughter for $500. Another daughter for $300. A small boy for $200. Two feather beds, in the same document, for $90. 1839, the same family: Rachel and her son sold for $850 combined, five months after being handed to a new owner in a document that called it a gift.</p>
-</div>
-
-<p>I will never know the full weight of what they endured. No document can hold that. What I can do is make sure the names, the dates, and the dollar amounts are written down where someone else can find them — because the same system that priced my family in dollars also made sure their pain was never priced at all, never recorded, never acknowledged as a cost anyone had to answer for.</p>
-
-<p>And it did not end with emancipation. Deeds to land my own family rightfully held have been lost to tax sales, decades after the people whose names were on them had already died — 2006 and again in 2017. Records that could answer some of these questions sit in county courthouses that will not always release them. I don't say this to make excuses for the gaps in this site. I say it because it's true: some of what should connect this family's story was, and still is, deliberately kept out of reach.</p>
-
-<div class="divider">⁂</div>
-
-<p>If parts of this website feel unclear, or the pieces don't always connect the way you'd want a family tree to connect — I want to say plainly that this is not carelessness. This is what the actual record of slavery looks like when you go looking for it. Names that change. Ages that don't match. Documents that were never written in the first place, because no one thought a Black child's birth in 1847 was worth recording the way a white child's was. Sometimes the story has to start from memory, and from belief, because the paper trail simply stops.</p>
-
-<p>I believe Molley, Patience, Rachel, Tom, Mingo, and every name I have not yet found are my kin. I cannot always prove it the way I would like to. I choose to say so anyway, and to keep looking for as long as I am able to. What was done to them was never chosen by them — not the separations, not the children forced on them, not the names they were made to carry. What they did with what was left to them — holding on to each other whenever the world allowed it, choosing love the moment they were finally permitted to — that part was theirs. I intend to keep finding out just how far that reaches.</p>
-
-</div>
-
-<div class="closing">
-  <h2 class="closing-title">The Research Continues.</h2>
-  <p class="closing-body">Every name in this reflection is sourced somewhere on this site. Every open question is being actively worked. This page will be updated as more is found — for as long as I am here to keep looking.</p>
-  <div class="closing-links">
-    <a href="the_thread.html" class="closing-link">Read the Full Research</a>
-    <a href="waldrop_family_story.html" class="closing-link">The Mississippi Branch</a>
-    <a href="registry.html" class="closing-link">See Every Name</a>
+  <!-- PROLOGUE -->
+  <div class="chapter reveal">
+    <span class="ch-label">Prologue</span>
+    <h2 class="ch-title">I Did Not Begin With a Story.</h2>
+    <div class="prose">
+      <p>I began with names. That is how this research started.</p>
+      <p class="short">A name here.</p>
+      <p class="short">A census there.</p>
+      <p class="short">A family tree that seemed to connect one person to another.</p>
+      <p class="short">A DNA match that raised another question.</p>
+      <p>A record that contradicted something I had been told. Then another record. And another.</p>
+      <p>The deeper I went, the more I understood that genealogy is not always the process of finding a clean line from one generation to the next. Sometimes it is the process of finding a person who was never supposed to be easy to find.</p>
+      <p class="short">A person whose birth was never recorded.</p>
+      <p class="short">A mother whose name appears only because someone sold her child.</p>
+      <p class="short">A child who appears in a deed because someone considered him property.</p>
+      <p class="short">A family relationship preserved accidentally in a will.</p>
+      <p>And sometimes — a single phrase in an old document changes everything. That is what happened to me.</p>
+    </div>
   </div>
+
+  <!-- CHAPTER 1 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter One · South Carolina, 1793</span>
+    <h2 class="ch-title">Where the Paper Trail Begins</h2>
+    <div class="prose">
+      <p>The family did not begin in 1793. But this is where one of my earliest surviving documentary trails begins.</p>
+      <p>The South Carolina upcountry was a landscape of rivers, farms, roads, settlements, and expanding agriculture. Newberry County had been created in 1785. This was also a society in which slavery was deeply embedded. But I am not beginning this story with cotton. I am beginning with a woman. Molley. And with a girl named Patience.</p>
+      <p>On March 22, 1793, James Sims Sr. mortgaged land and enslaved people to Peter Braselman. It was a financial document, not a family record. But inside it are names. Patience appears within a group that includes Isaac, Tabby, Charles, Edward, Delf, Abram, Sawny, and Tom. Molley appears with seven children.</p>
+    </div>
+    <div class="pull">
+      <p>The record gives me something slavery tried very hard to prevent descendants from having: a glimpse of people existing together.</p>
+    </div>
+    <div class="prose">
+      <p>But I have to be careful. The record does not prove that Molley was Patience's mother. It does not prove that the Patience in this mortgage is the same person who appears in every later record. It gives me a beginning. And sometimes a beginning is all a researcher gets.</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 2 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Two · South Carolina, 1795</span>
+    <h2 class="ch-title">When a Person Becomes a Transaction</h2>
+    <span class="etag etag-doc">Documented</span>
+    <div class="prose">
+      <p>Two years later, another document brings Patience into view. August 4, 1795. Francis Davenport Sr. Patty Waldrop. One enslaved girl: Patience.</p>
+      <p>The record does not tell me what Patience thought. It does not tell me what she wanted. But it tells me something I cannot ignore: Patience changed hands. The witnesses were Isaac Davenport and Edward Turner. The transaction was recorded in Newberry Deed Book C.</p>
+    </div>
+    <div class="pull"><p>The paper is precise. The human reality behind it is not.</p></div>
+    <div class="doc-block">
+      <span class="doc-label">Newberry Deed Book C:367–368 · August 4, 1795 <a href="research_archive.html#03">Research Archive →</a></span>
+      <div class="doc-body">"One Negro girl named Patience." Proved by Isaac Davenport, August 5, before Charles Griffin, J.P. Recorded August 18.</div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 3 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Three</span>
+    <h2 class="ch-title">Patience and the Family Hidden Inside the Paperwork</h2>
+    <div class="prose">
+      <p>The deeper I went, the more Patience stopped looking like a single name. She began looking like the center of a family. Later records connect Patience with people including Rachel, Clarissa, Tom, William, Amanda, and Harriet.</p>
+      <p>But the records do not preserve this family the way a modern family tree would. Their relationships appear in fragments. A deed. A transfer. An estate. A later recital of an earlier transaction. A child named here. A mother named there. A person disappearing from one household and appearing in another.</p>
+    </div>
+    <div class="pull">
+      <p>This is what reconstruction means. I take the fragments and ask: what is the strongest story these records allow me to tell? Not: what story do I wish they told?</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 4 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Four</span>
+    <h2 class="ch-title">The Family Was Not the Same Thing as the Ownership</h2>
+    <div class="prose">
+      <p>This became one of the most important lessons in my research. The legal records created one network. The family created another. The two networks overlapped. But they were not the same.</p>
+      <p>A person could belong legally to one household while their mother, sister, child, or grandchild belonged to someone else. A person could be transferred without the family relationship disappearing. That is why I now keep two maps.</p>
+    </div>
+    <div class="network-box">
+      <div class="network-toggle">
+        <button class="net-btn active" onclick="showNet('legal', this)">The Legal Map</button>
+        <button class="net-btn" onclick="showNet('family', this)">The Family Map</button>
+      </div>
+      <div class="net-view active" id="net-legal">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:14px;text-align:center;font-style:italic;">Who held whom. Who transferred whom. Who inherited whom.</p>
+        <div class="net-line"><span class="net-solid">Francis Davenport Sr.</span><span class="dash">→</span><span class="net-solid">Patty Waldrop</span><span class="dash">(Patience, 1795)</span></div>
+        <div class="net-line"><span class="net-solid">Ezekiah Waldrop</span><span class="dash">→</span><span class="net-solid">Stephen R. Waldrop</span><span class="dash">(1827, 1839)</span></div>
+        <div class="net-line"><span class="net-solid">Owen Flinn</span><span class="dash">→</span><span class="net-solid">Isaac Davenport</span><span class="dash">(Milly, Selay, Jack, 1798)</span></div>
+      </div>
+      <div class="net-view" id="net-family">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:14px;text-align:center;font-style:italic;">Solid = direct relationship stated in a document. Dotted = supported, not yet proven.</p>
+        <div class="net-line"><span class="net-solid">Patience</span><span class="dash">→</span><span class="net-solid">Rachel</span><span class="dash">→</span><span class="net-solid">Tom</span></div>
+        <div class="net-line"><span class="net-solid">Patience</span><span class="dash">→</span><span class="net-solid">Clarissa</span><span class="dash">→</span><span class="net-solid">William, Amanda, Harriet</span></div>
+        <div class="net-line"><span class="net-dotted">Molley</span><span class="dash">→</span><span class="net-dotted">Patience?</span><span class="dash">(unresolved)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 5 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Five · 1839</span>
+    <h2 class="ch-title">A Family Is Divided on Paper</h2>
+    <span class="etag etag-recon">Strongly Supported / Research Reconstruction</span>
+    <div class="prose">
+      <p>By 1839, the family appears more clearly in the record.</p>
+      <p>Patience's daughter Rachel appears with her son, Tom.</p>
+      <p>Patience's daughter Clarissa appears with her children, William, Amanda, and Harriet.</p>
+      <p>The names are no longer just isolated entries in old documents. They begin to reveal a family structure:</p>
+    </div>
+    <div class="gen-chain">
+      <span class="name">Patience</span><span class="arrow">→</span><span class="name">Rachel</span><span class="arrow">→</span><span class="name">Tom</span>
+    </div>
+    <div class="gen-chain">
+      <span class="name">Patience</span><span class="arrow">→</span><span class="name">Clarissa</span><span class="arrow">→</span><span class="name">William, Amanda, Harriet</span>
+    </div>
+    <div class="prose">
+      <p>This is one of the most important family relationships preserved in the surviving records. The document was created to transfer people as property. But within that legal transaction, it also preserved pieces of a family.</p>
+      <p style="color:var(--muted);font-size:13px;font-style:italic;">The original 1839 deed still needs direct verification. Until then, this reconstruction is labeled strongly supported, not fully documented.</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 6 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Six</span>
+    <h2 class="ch-title">The People I Cannot Let Disappear</h2>
+    <div class="prose">
+      <p>There are names in this research that I can see only once. Some may connect to my family. Some remain uncertain. Some may ultimately belong to another branch. I refuse to solve that uncertainty by simply choosing the answer I like best.</p>
+    </div>
+    <div class="pull"><p>I would rather have an honest question than a beautiful mistake.</p></div>
+    <div class="constellation">
+      <div class="star" onclick="toggleStar(this)"><span class="star-name">Tom</span></div>
+      <div class="star" onclick="toggleStar(this)"><span class="star-name">Big Lucy</span></div>
+      <div class="star" onclick="toggleStar(this)"><span class="star-name">Mingo</span></div>
+      <div class="star" onclick="toggleStar(this)"><span class="star-name">William</span></div>
+      <div class="star" onclick="toggleStar(this)"><span class="star-name">Amanda</span></div>
+      <div class="star" onclick="toggleStar(this)"><span class="star-name">Harriet</span></div>
+      <div class="star" onclick="toggleStar(this)"><span class="star-name">Rendy</span></div>
+      <div class="star-card">Click any name above. Not proven ancestors — people I am still looking for. There is a difference between saying "I proved this person" and saying "I refuse to stop looking for this person."</div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 7 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Seven</span>
+    <h2 class="ch-title">Easter: Two Women, Two Stories</h2>
+    <span class="etag etag-doc">Documented — Confirmed Separate</span>
+    <div class="prose">
+      <p>One of the most important things genealogy has taught me is that a repeated name is not automatically the same person. There are at least two different women named Easter in the records I am following.</p>
+      <p>One Easter was emancipated by John Pringle in 1817 — the record describes her as about forty, with him roughly twenty-eight years. Another Easter appears in the Davenport/Burton documentary network, first in 1792, then again decades later in the Burton estate records.</p>
+    </div>
+    <div class="pull"><p>I do not merge these women simply because the name is the same. That is not a limitation of the story. It is part of the story.</p></div>
+  </div>
+
+  <!-- CHAPTER 8 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Eight</span>
+    <h2 class="ch-title">The Sentence That Changed the Research</h2>
+    <span class="etag etag-doc">Documented</span>
+    <div class="prose">
+      <p>Jonathan Davenport's 1842 will contains one of the most important documentary relationships in this research. Bluford is identified as:</p>
+    </div>
+    <div class="pull">
+      <p>Son of Easter.</p>
+      <span class="pull-attr">Not a guess. Not a DNA prediction. Not a family-tree algorithm. A written statement.</span>
+    </div>
+    <div class="prose">
+      <p>Sometimes one sentence survives that tells us what generations of silence tried to erase.</p>
+    </div>
+    <div class="doc-block">
+      <span class="doc-label">Jonathan Davenport Will · 1842 <a href="research_archive.html#10">Research Archive →</a></span>
+      <div class="doc-body">Clause 6: Bluford, identified directly as "son of Easter," given to James M. Davenport.</div>
+    </div>
+  </div>
+
+  <!-- CHAPTER 9 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Nine</span>
+    <h2 class="ch-title">I Learned Not to Confuse Roles With Ownership</h2>
+    <div class="prose">
+      <p>A recurring problem in historical records is assuming everyone named in an estate or transaction had the same role. A witness is not automatically an owner. An appraiser is not automatically an owner. An administrator is not automatically an owner. An executor is not automatically an owner. And a person with the same name is not automatically the same person.</p>
+      <p>This became more than a technical rule for me. It became a way of respecting the people whose identities I am trying to recover. I will not merge two people simply because doing so makes the family tree prettier.</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 10 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Ten</span>
+    <h2 class="ch-title">Westward</h2>
+    <div class="prose">
+      <p>The family story does not stay in one place. The map begins widening. South Carolina. Mississippi. Louisiana. Texas. The distances become enormous. But people moved. Owners moved. Families moved. Land changed hands. New settlements developed. And slavery moved with them.</p>
+      <p style="color:var(--muted);font-style:italic;">The records place different generations and branches of this family in these regions. The exact routes taken by individual ancestors are still being reconstructed.</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 11 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Eleven</span>
+    <h2 class="ch-title">Texas</h2>
+    <div class="prose">
+      <p>Texas changes the landscape again. The geography is different. The political world is different. The records are different. Eventually the research reaches Austin County and Bellville.</p>
+      <p>Broader history of settlement, slavery, emancipation, and land provides real context — but it does not automatically prove that a specific event happened to a specific ancestor. This is where I have learned to distinguish the world around my ancestors from the things I can prove about my ancestors.</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 12 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Twelve</span>
+    <h2 class="ch-title">The Nichols Family</h2>
+    <div class="prose">
+      <p>John Nichols. Fanny. The Nichols name. The Bell connection. The enslaved people appearing in the Texas records. These form another layer of the family story.</p>
+      <p>But Texas also introduces a problem that follows African-American genealogy into the nineteenth century: many records were created primarily to document the interests of property holders, governments, churches, and employers — not to preserve complete biographies of the people being researched.</p>
+      <p>So I have to read the records sideways. Repeated names. Age patterns. Locations. Estate records. Neighbors. Witnesses. Later marriages. Children. Freedpeople's records. Death certificates. DNA. And the places where independent clues point in the same direction.</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 13 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Thirteen</span>
+    <h2 class="ch-title">Rendy</h2>
+    <span class="etag etag-recon">Preserved Variants — Not Yet Resolved</span>
+    <div class="prose">
+      <p>One of the names I refuse to let disappear is Rendy. The surname appears in different forms, including Blayn or Bland, across the research trail. If I normalize everything too quickly, I may erase the evidence that something changed. So I preserve the variants.</p>
+      <p>I look at the original record. Who was around the person. The place. The age. Later descendants. And I ask: could these records belong to the same person? Sometimes the answer is yes. Sometimes it remains: not yet proven.</p>
+    </div>
+    <div class="pull"><p>The goal is not to make the past cooperate with my tree. The goal is to recover the past as honestly as I can.</p></div>
+  </div>
+
+  <!-- CHAPTER 14 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Fourteen</span>
+    <h2 class="ch-title">Easter Bell</h2>
+    <div class="prose">
+      <p>Easter Bell was born July 4, 1838. I cannot know what her mother knew about the date. I cannot know who chose the name Easter. I cannot know what the Fourth of July meant to a Black child born enslaved in Texas.</p>
+      <p>But I know what that date means to me now — because she lived long enough for the world around her to change.</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 15 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Fifteen</span>
+    <h2 class="ch-title">June 19, 1865</h2>
+    <div class="prose">
+      <p>On June 19, 1865, General Gordon Granger's General Order Number 3 announced emancipation in Texas at Galveston. The news did not instantly erase the conditions created by generations of slavery, and the transition to freedom unfolded unevenly.</p>
+      <p>For people like Easter, freedom was not an abstract historical event. It changed what another human being was legally allowed to do to your body. It changed the meaning of movement. Of marriage. Of children. Of your own name. And the meaning of the word: <em>family.</em></p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 16 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Sixteen</span>
+    <h2 class="ch-title">After Freedom</h2>
+    <div class="prose">
+      <p>Freedom did not erase the past. It created a new problem: what do you do with freedom after generations of having almost none? Where do you live? How do you earn money? How do you keep your children together? How do you prove who you are? How do you marry? How do you claim land?</p>
+      <p>How do you build a family when the previous system spent generations breaking families apart? These are questions I think about when I look at the generations that followed.</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 17 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Seventeen</span>
+    <h2 class="ch-title">Love After Ownership</h2>
+    <div class="prose">
+      <p>I cannot prove everything about the emotional lives of my ancestors. I cannot know every relationship, every act of resistance, every moment of tenderness. But freedom changed the legal possibilities surrounding Black family life.</p>
+      <p>Marriage could become a legal institution entered by choice rather than an arrangement controlled through ownership. Children could be recognized as members of families rather than property. A household could become something a family built, rather than something assigned. That is why the generations after emancipation matter so much to me.</p>
+    </div>
+  </div>
+
+  <!-- CHAPTER 18 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Eighteen</span>
+    <h2 class="ch-title">From Easter to the Women Who Came After Her</h2>
+    <div class="prose">
+      <p>Now the timeline begins moving faster. The names become more familiar. The records become more personal. The distances between generations shrink.</p>
+    </div>
+    <div class="gen-chain">
+      <span class="name">Easter</span><span class="arrow">→</span><span class="name">Hellen</span><span class="arrow">→</span><span class="name">Eva</span><span class="arrow">→</span><span class="name">Margie</span><span class="arrow">→</span><span class="name">Hjordis</span><span class="arrow">→</span><span class="name">Jasmine</span>
+    </div>
+    <p style="text-align:center;font-size:11px;color:var(--muted);font-style:italic;">Not every link carries the same kind of evidence. See the Research Archive for each connection's own status.</p>
+  </div>
+
+  <!-- CHAPTER 19 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Nineteen</span>
+    <h2 class="ch-title">What Was Inherited</h2>
+    <div class="prose">
+      <p>I used to think inheritance meant property. Land. Money. A house. A surname. Now I think inheritance is more complicated.</p>
+      <p>Some things are inherited through documents. Some through DNA. Some through stories. Some through silence. Some through the way a grandmother insists everyone stays close. Some through the fear of losing people. Some through the instinct to protect the family. Some through the questions nobody thought to ask.</p>
+    </div>
+    <div class="pull"><p>I cannot scientifically prove every emotional connection I feel to these women. But I can say this: when I look at the generations of women who kept finding ways to carry family forward, I recognize something. I recognize the work.</p></div>
+  </div>
+
+  <!-- CHAPTER 20 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Twenty</span>
+    <h2 class="ch-title">The Land</h2>
+    <div class="prose">
+      <p>Not just where they lived. Where they walked. These were people who lived in real places, not names floating in a database.</p>
+    </div>
+    <div class="map-regions">
+      <div class="region"><span class="region-name">South Carolina</span><div class="region-body">Newberry/Union — Sims, Davenport, Waldrop documentary networks. Patience.</div></div>
+      <div class="region"><span class="region-name">Mississippi</span><div class="region-body">Later Waldrop research and possible family movement. Individual identifications remain unresolved.</div></div>
+      <div class="region"><span class="region-name">Louisiana</span><div class="region-body">Sabine Parish research. Not every Waldrop-related person went there.</div></div>
+      <div class="region"><span class="region-name">Texas</span><div class="region-body">Austin County / Bellville — Nichols, Bell, Easter, Rendy research.</div></div>
+    </div>
+  </div>
+
+  <div class="divider">⁂</div>
+
+  <!-- MY RECONSTRUCTION -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Twenty-One</span>
+    <h2 class="ch-title">What I Believe May Have Happened</h2>
+    <div class="believe-box">
+      <span class="believe-label">My Reconstruction</span>
+      <p class="believe-sub">This is where I allow myself to tell the story the documents suggest — while remaining honest about where I cannot prove it.</p>
+      <p class="believe-item">I believe the story began long before the first document I have found.</p>
+      <p class="believe-item">I believe Molley may have been part of a family already living within the South Carolina enslaved community before Patience appears in the 1793 Sims mortgage.</p>
+      <p class="believe-item">I believe Patience became connected to the Davenport and Waldrop families through the 1795 transaction.</p>
+      <p class="believe-item">I believe the later records reveal that Patience was part of a family whose members included Rachel, Clarissa, and their children.</p>
+      <p class="believe-item">I believe slavery repeatedly interrupted that family without necessarily destroying the relationships themselves.</p>
+      <p class="believe-item">I believe some people whose names appear in separate households may have continued to know exactly who they belonged to, even when the law said otherwise.</p>
+      <p class="believe-item">I believe the westward movement of different family branches carried parts of the story into Mississippi, Louisiana, and eventually Texas.</p>
+      <p class="believe-item">I believe the Texas records contain descendants and family connections we are still learning how to reconstruct.</p>
+      <p class="believe-item">I believe Easter Bell stands at one of the most important thresholds in the story: the point where a woman born into slavery lived long enough to see the legal world around her change.</p>
+      <p class="believe-item">And I believe the generations after her carried more forward than names. They carried survival. They carried family. They carried memory. And eventually, they carried me.</p>
+    </div>
+  </div>
+
+  <!-- WHAT I DO NOT KNOW -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Twenty-Two</span>
+    <h2 class="ch-title">What I Still Do Not Know</h2>
+    <div class="unknown-box">
+      <p class="unknown-item">I do not know whether Molley was Patience's mother.</p>
+      <p class="unknown-item">I do not know exactly what happened to Patience after every documented transaction.</p>
+      <p class="unknown-item">I do not know whether every later woman named Patience belongs to the same documentary line.</p>
+      <p class="unknown-item">I do not know the identity of every person in the 1839 family group.</p>
+      <p class="unknown-item">I do not know whether every recurring name belongs to the same family.</p>
+      <p class="unknown-item">I do not know whether every DNA connection points to the exact relationship I initially imagined.</p>
+      <p class="unknown-item">I do not know the original African names of most of these ancestors.</p>
+      <p class="unknown-item">I do not know every road they traveled, every place they slept, every person they loved.</p>
+      <p class="unknown-item">I do not know how many children were born and never recorded, or how many names disappeared completely.</p>
+    </div>
+    <p style="text-align:center;font-family:var(--f-display);font-style:italic;color:var(--gold2);font-size:17px;margin-top:20px;">And I will not invent those answers.</p>
+  </div>
+
+  <!-- CHAPTER 24 -->
+  <div class="chapter reveal">
+    <span class="ch-label">Chapter Twenty-Four</span>
+    <h2 class="ch-title">The Documents Were Never Meant for Me</h2>
+    <div class="prose">
+      <p>The people who created many of these records were documenting property, debt, land, inheritance, taxes, sales, estates, legal disputes, and ownership. They were not trying to preserve the memories of the people I am descended from.</p>
+      <p class="short">And yet — their names survived.</p>
+      <p class="short">Patience survived in a mortgage.</p>
+      <p class="short">Patience survived in a deed.</p>
+      <p class="short">Easter survived in an estate.</p>
+      <p class="short">Bluford survived because someone wrote: son of Easter.</p>
+      <p class="short">Rendy survived in a later record.</p>
+      <p>The family survived in fragments. And those fragments eventually reached me.</p>
+    </div>
+  </div>
+
+  <!-- FINAL CHAPTER -->
+  <div class="chapter reveal">
+    <span class="ch-label">Final Chapter</span>
+    <h2 class="ch-title">I Am the Descendant Looking Back</h2>
+    <div class="prose">
+      <p>I used to think the purpose of genealogy was to complete a tree. Now I think it is something else. It is to return humanity to people whose records often reduced them to names, ages, prices, and property descriptions.</p>
+      <p>I cannot undo what happened. I cannot give Patience her childhood back. I cannot tell Molley what happened to her children. I cannot reunite every family that slavery separated. I cannot recover every name that disappeared.</p>
+    </div>
+    <div class="pull"><p>But I can refuse to let the surviving names disappear again. So I keep looking.</p></div>
+    <div class="prose">
+      <p style="text-align:center;color:var(--muted);font-size:14px;">In deeds. In probate. In wills. In census records. In marriage records. In death certificates. In land records. In DNA. In maps. In places. In names that were misspelled. In names that changed. In names that appeared only once.</p>
+      <p style="text-align:center;margin-top:20px;">And now — I look at the land.</p>
+    </div>
+  </div>
+
 </div>
 
-<div class="page-footer">
-  <a href="welcome.html" class="footer-link">← Home</a>
-  <a href="the_thread.html" class="footer-link">The Full Research →</a>
-</div>
+<!-- FULL SCREEN CLOSING -->
+<section class="final">
+  <p class="final-line reveal">They walked this land before I knew their names.</p>
+  <p class="final-line reveal">They survived a world that tried to make them disappear.</p>
+  <p class="final-line reveal">And now I am walking backward to find them.</p>
+  <p class="final-line reveal" style="margin-top:20px;">I am still looking.</p>
+  <span class="final-byline reveal">Jasmine M. Lee</span>
+  <p class="final-tag reveal">The research continues. Because there are still names waiting to be found.</p>
+  <div class="final-links reveal">
+    <a href="research_archive.html" class="back-link">The Research Archive →</a>
+    <a href="the_thread.html" class="back-link">The Full Thread →</a>
+    <a href="welcome.html" class="back-link">← Home</a>
+  </div>
+</section>
 
 <script src="sidebar.js"></script>
+<script>
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Hero ink-line draw animation
+window.addEventListener('load', () => {
+  const path = document.getElementById('ink-path');
+  if (path) {
+    path.style.transition = 'stroke-dashoffset 3.5s ease-out';
+    requestAnimationFrame(() => { path.style.strokeDashoffset = '0'; });
+  }
+});
+
+function showNet(which, btn) {
+  document.querySelectorAll('.net-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.net-view').forEach(v => v.classList.remove('active'));
+  document.getElementById('net-' + which).classList.add('active');
+}
+
+function toggleStar(el) {
+  const card = el.parentElement.querySelector('.star-card');
+  const isOpen = card.classList.contains('open');
+  el.parentElement.querySelectorAll('.star-card').forEach(c => c.classList.remove('open'));
+  if (!isOpen) card.classList.add('open');
+}
+</script>
 </body>
 </html>

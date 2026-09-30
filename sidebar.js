@@ -42,6 +42,7 @@
         { href: 'john_nichols.html',  text: 'John Nichols',    note: 'Bellville\'s own land, and everyone he held' },
         { href: 'waldrop_enslavers.html',  text: 'The Waldrops',    note: 'Three generations, seventy-five years, every price paid' },
         { href: 'davenport_family.html',  text: 'The Davenports',    note: 'Where it all began \u2014 August 1795' },
+        { href: 'ownership_network.html',  text: 'The Ownership Network',    note: 'Interactive map \u2014 legal records vs. family, never merged' },
       ]
     },
     {

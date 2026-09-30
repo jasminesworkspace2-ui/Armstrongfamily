@@ -57,6 +57,7 @@
     {
       label: 'Research Archive',
       items: [
+        { href: 'research_archive.html',  text: '★ Research Archive — Full Documentary Layer',    note: 'Every record, every evidence tier, every do-not-merge rule' },
         { href: 'registry.html',              text: 'Enslaved Persons Registry', note: '200+ named individuals' },
         { href: 'land.html',                  text: 'The Land',                  note: '4 properties \u00b7 1793\u20132017' },
         { href: 'dna.html',                   text: 'DNA Evidence',              note: 'AncestryDNA \u00b7 GEDmatch' },

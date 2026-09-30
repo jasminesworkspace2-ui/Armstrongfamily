@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Ownership Network · Armstrong Family Archive</title>
+<meta name="description" content="The legal records that intersected the lives of the people I am trying to find — the documentary bridge between the story and the Research Archive.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&family=Courier+Prime&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:#0a0805;--surface:#131009;--card:#1c1811;--border:rgba(201,168,76,0.16);--border2:rgba(255,255,255,0.07);
+  --parchment:#f0ead8;--cream:#ddd2bc;--muted:#8f8574;
+  --gold:#c9a84c;--gold2:#e2c060;--burgundy:#7a3a3a;
+  --legal:#c9a84c;--family:#5a9a7a;--dna:#9a6ab0;--unresolved:#7a7568;
+  --f-display:'DM Serif Display',Georgia,serif;--f-body:'Inter',sans-serif;--f-mono:'Courier Prime','Courier New',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){ *{animation-duration:0.01ms !important;transition-duration:0.01ms !important;} }
+body{background:var(--black);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden;
+     background-image:radial-gradient(circle at 20% 30%, rgba(201,168,76,0.03) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(122,58,58,0.03) 0%, transparent 50%);}
+strong{color:var(--parchment);font-weight:500;}
+
+.gnav{position:sticky;top:0;z-index:300;background:rgba(10,8,5,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(8px);}
+.gnav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:52px;gap:8px;}
+.gnav-brand{font-family:var(--f-display);font-style:italic;font-size:15px;color:var(--parchment);text-decoration:none;}
+.gnav-links{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;}
+.gnav-links::-webkit-scrollbar{display:none;}
+.gnav-link{font-family:var(--f-mono);font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:6px 10px;white-space:nowrap;border-bottom:2px solid transparent;}
+.gnav-link.active{color:var(--gold);border-bottom-color:var(--gold);}
+.gnav-link.gstart{color:var(--gold);border:1px solid rgba(201,168,76,0.35);padding:5px 10px;margin-right:6px;}
+
+/* HERO */
+.hero{position:relative;min-height:75vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 24px;overflow:hidden;border-bottom:1px solid var(--border);}
+.hero-grid{position:absolute;inset:0;opacity:0.15;background-image:linear-gradient(rgba(201,168,76,0.3) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.3) 1px,transparent 1px);background-size:60px 60px;}
+.hero-content{position:relative;z-index:2;max-width:640px;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.hero-title{font-family:var(--f-mono);font-size:clamp(24px,5vw,36px);letter-spacing:6px;color:var(--parchment);margin-bottom:18px;opacity:0;animation:fadeUp 1s 0.2s forwards;}
+.hero-sub{font-family:var(--f-display);font-size:clamp(18px,3vw,24px);font-style:italic;color:var(--gold2);margin-bottom:24px;opacity:0;animation:fadeUp 1s 0.5s forwards;}
+.hero-copy{font-size:14px;line-height:1.9;color:var(--cream);opacity:0;animation:fadeUp 1s 0.8s forwards;}
+.hero-note{margin-top:28px;font-family:var(--f-mono);font-size:10px;letter-spacing:2px;color:var(--burgundy);border:1px solid rgba(122,58,58,0.4);display:inline-block;padding:8px 16px;border-radius:20px;opacity:0;animation:fadeUp 1s 1.1s forwards;}
+.hero-line-svg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:300px;height:2px;z-index:1;}
+.hero-line-path{stroke:var(--gold);stroke-width:1;fill:none;stroke-dasharray:300;stroke-dashoffset:300;opacity:0.4;}
+
+/* CONTROLS */
+.controls-bar{position:sticky;top:52px;z-index:150;background:rgba(19,16,9,0.97);border-bottom:1px solid var(--border);backdrop-filter:blur(10px);padding:14px 20px;}
+.controls-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;}
+.ctrl-group{display:flex;gap:4px;background:var(--surface);border-radius:20px;padding:3px;border:1px solid var(--border2);}
+.ctrl-tab{font-family:var(--f-mono);font-size:8.5px;letter-spacing:1px;text-transform:uppercase;padding:7px 13px;border-radius:16px;border:none;background:transparent;color:var(--muted);cursor:pointer;transition:all 0.2s;}
+.ctrl-tab.active{background:var(--gold);color:#1a1408;}
+.ctrl-search{font-family:var(--f-mono);font-size:11px;background:var(--surface);border:1px solid var(--border2);border-radius:20px;padding:8px 16px;color:var(--parchment);width:200px;}
+.ctrl-search::placeholder{color:var(--muted);}
+.ctrl-search:focus{outline:none;border-color:var(--gold);}
+.ctrl-reset{font-family:var(--f-mono);font-size:8.5px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);background:transparent;border:1px solid var(--border2);border-radius:20px;padding:7px 14px;cursor:pointer;}
+.ctrl-reset:hover{border-color:var(--gold);color:var(--gold);}
+
+.timeline-wrap{max-width:1200px;margin:12px auto 0;padding:0 20px;}
+.timeline-slider{width:100%;-webkit-appearance:none;height:3px;background:var(--border2);border-radius:2px;outline:none;}
+.timeline-slider::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--gold);cursor:pointer;}
+.timeline-labels{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:8px;color:var(--muted);margin-top:6px;}
+.timeline-year-display{text-align:center;font-family:var(--f-display);font-size:15px;font-style:italic;color:var(--gold2);margin-top:6px;}
+
+/* NETWORK CANVAS */
+.network-section{padding:40px 20px 20px;}
+.network-wrap{max-width:1100px;margin:0 auto;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;position:relative;overflow:hidden;}
+.network-legend{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid var(--border2);}
+.legend-item{display:flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:8px;letter-spacing:0.5px;text-transform:uppercase;color:var(--muted);}
+.legend-swatch{width:16px;height:2px;}
+.legend-dot{width:9px;height:9px;border-radius:50%;border:1.5px solid;}
+
+svg#network-svg{width:100%;height:auto;display:block;}
+.net-node{cursor:pointer;transition:opacity 0.3s;}
+.net-node.dimmed{opacity:0.15;}
+.net-node-circle{transition:r 0.2s,filter 0.2s;}
+.net-node:hover .net-node-circle{filter:brightness(1.3);}
+.net-node-label{font-family:var(--f-mono);font-size:8px;fill:var(--cream);text-anchor:middle;pointer-events:none;}
+.net-edge{transition:opacity 0.3s;}
+.net-edge.dimmed{opacity:0.08;}
+.net-edge-legal{stroke:var(--legal);stroke-width:1.5;fill:none;}
+.net-edge-family{stroke:var(--family);stroke-width:1.5;fill:none;}
+.net-edge-family-dotted{stroke:var(--family);stroke-width:1.5;fill:none;stroke-dasharray:3,3;}
+
+/* RECORD CARD PANEL */
+.record-panel{position:fixed;top:0;right:-420px;width:400px;max-width:90vw;height:100vh;background:var(--surface);border-left:1px solid var(--gold);z-index:400;transition:right 0.4s cubic-bezier(0.16,1,0.3,1);overflow-y:auto;padding:70px 26px 40px;}
+.record-panel.open{right:0;}
+.panel-close{position:absolute;top:66px;right:20px;background:none;border:1px solid var(--border2);color:var(--muted);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:16px;}
+.panel-close:hover{border-color:var(--gold);color:var(--gold);}
+.panel-name{font-family:var(--f-display);font-size:22px;font-style:italic;color:var(--parchment);margin-bottom:4px;}
+.panel-role{font-family:var(--f-mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+.panel-field{margin-bottom:16px;}
+.panel-field-label{font-family:var(--f-mono);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;}
+.panel-field-value{font-size:13px;line-height:1.7;color:var(--cream);}
+.panel-notprove{background:rgba(122,58,58,0.08);border:1px solid rgba(122,58,58,0.35);border-radius:8px;padding:14px 16px;margin-top:20px;}
+.panel-notprove .panel-field-label{color:#c47a6a;}
+.panel-source{font-family:var(--f-mono);font-size:9.5px;color:var(--gold2);background:rgba(0,0,0,0.3);padding:10px 12px;border-radius:6px;margin-top:6px;line-height:1.6;}
+.panel-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:399;display:none;}
+.panel-overlay.open{display:block;}
+
+/* SEARCH RESULT BANNER */
+.search-banner{max-width:1100px;margin:0 auto 16px;padding:14px 20px;background:rgba(122,58,58,0.1);border:1px solid rgba(122,58,58,0.4);border-radius:8px;text-align:center;font-family:var(--f-mono);font-size:11px;letter-spacing:1px;color:#c47a6a;display:none;}
+.search-banner.show{display:block;}
+
+/* GENERIC SECTION */
+.container{max-width:900px;margin:0 auto;padding:0 20px;}
+.section{padding:50px 0;border-top:1px solid var(--border);}
+.section-eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px;}
+.section-title{font-family:var(--f-display);font-size:26px;font-style:italic;color:var(--parchment);margin-bottom:20px;}
+.section-sub{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:24px;}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* FAMILY REVEAL CHAIN */
+.gen-chain{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin:20px 0;font-family:var(--f-mono);font-size:11px;}
+.gen-chain .name{color:var(--parchment);padding:6px 12px;border:1px solid var(--family);border-radius:16px;background:rgba(90,154,122,0.08);}
+.gen-chain .arrow{color:var(--family);}
+.rule-note{background:rgba(201,168,76,0.06);border-left:3px solid var(--gold);padding:12px 18px;font-size:12px;color:var(--muted);margin:16px 0;border-radius:0 6px 6px 0;}
+
+/* EASTER NAME TRAP */
+.name-trap{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;}
+.trap-card{background:var(--card);border:1px solid var(--border2);border-radius:10px;padding:20px;}
+.trap-card-title{font-family:var(--f-display);font-size:17px;font-style:italic;color:var(--parchment);margin-bottom:8px;}
+.trap-warning{text-align:center;font-family:var(--f-mono);font-size:11px;letter-spacing:2px;color:var(--burgundy);border:1px solid rgba(122,58,58,0.4);border-radius:20px;padding:10px;margin:16px auto;max-width:400px;background:rgba(122,58,58,0.06);}
+
+/* OPEN NODES */
+.q-item{background:var(--card);border-left:3px solid var(--unresolved);padding:12px 18px;margin-bottom:8px;font-size:12.5px;color:var(--cream);border-radius:0 6px 6px 0;}
+
+/* GEOGRAPHY */
+.geo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0;}
+.geo-card{background:var(--card);border:1px solid var(--border2);border-radius:8px;padding:16px;cursor:pointer;transition:border-color 0.2s;}
+.geo-card:hover,.geo-card.active{border-color:var(--gold);}
+.geo-name{font-family:var(--f-mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px;}
+.geo-body{font-size:11.5px;color:var(--muted);line-height:1.6;}
+
+/* CANNOT TELL US */
+.cannot-box{background:var(--surface);border:1px solid var(--border2);border-radius:10px;padding:26px 24px;margin:20px 0;}
+.cannot-item{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:10px;padding-left:18px;position:relative;}
+.cannot-item::before{content:'·';position:absolute;left:0;color:var(--unresolved);}
+
+.final-msg{padding:60px 24px;text-align:center;border-top:1px solid var(--border);}
+.final-msg-body{font-size:14px;line-height:1.9;color:var(--cream);max-width:540px;margin:0 auto 24px;}
+.final-quote{font-family:var(--f-display);font-size:20px;font-style:italic;color:var(--gold2);line-height:1.6;max-width:520px;margin:0 auto;}
+.back-links{margin-top:36px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.back-link{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--border2);border-radius:30px;padding:11px 20px;}
+
+@media(max-width:640px){
+  .name-trap{grid-template-columns:1fr;}
+  .record-panel{width:100%;max-width:100%;}
+  .ctrl-search{width:140px;}
+}
+
+/* ===== FLAGSHIP NETWORK ENHANCEMENT ===== */
+.network-section{padding:54px 20px 34px;background:radial-gradient(circle at 50% 40%,rgba(201,168,76,.055),transparent 48%);}
+.network-wrap{max-width:1180px;border-radius:22px;padding:0;overflow:hidden;background:linear-gradient(145deg,rgba(29,24,16,.98),rgba(12,10,7,.98));box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 1px rgba(255,255,255,.035);}
+.network-header{padding:24px 28px 18px;display:flex;justify-content:space-between;gap:18px;align-items:flex-end;border-bottom:1px solid var(--border2);}
+.network-kicker{font-family:var(--f-mono);font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);}
+.network-headline{font-family:var(--f-display);font-size:27px;font-style:italic;color:var(--parchment);margin-top:5px;}
+.network-meta{font-family:var(--f-mono);font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);text-align:right;line-height:1.7;}
+.network-stage{position:relative;padding:12px 18px 18px;min-height:610px;background:radial-gradient(circle at 50% 50%,rgba(201,168,76,.045),transparent 42%),linear-gradient(rgba(201,168,76,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.018) 1px,transparent 1px);background-size:auto,42px 42px,42px 42px;}
+.network-stage::before{content:"ARCHIVAL NETWORK • DOCUMENTARY LAYER";position:absolute;left:26px;top:20px;font:8px var(--f-mono);letter-spacing:2px;color:rgba(240,234,216,.25);}
+.network-stage::after{content:"1792 — 1842";position:absolute;right:26px;top:20px;font:8px var(--f-mono);letter-spacing:2px;color:rgba(240,234,216,.25);}
+.network-legend{padding:14px 24px;margin:0;border-top:1px solid var(--border2);border-bottom:0;background:rgba(0,0,0,.16);}
+.legend-swatch{border-radius:99px;box-shadow:0 0 8px currentColor;}
+.legend-dot{box-shadow:0 0 8px currentColor;}
+.net-edge{vector-effect:non-scaling-stroke;}
+.net-edge-legal{stroke-width:2;filter:drop-shadow(0 0 3px rgba(201,168,76,.18));}
+.net-edge-family{stroke-width:2.2;filter:drop-shadow(0 0 3px rgba(90,154,122,.16));}
+.net-edge-family-dotted{stroke-dasharray:4 5;}
+.net-node-circle{filter:drop-shadow(0 4px 7px rgba(0,0,0,.5));}
+.net-node:hover .net-node-circle{filter:brightness(1.35) drop-shadow(0 0 9px rgba(226,192,96,.35));}
+.net-node-label{font-size:8.5px;letter-spacing:.2px;}
+.net-node[data-kind="anchor"] .net-node-label{font-size:10px;fill:var(--gold2);font-weight:500;}
+.network-callout{position:absolute;left:28px;bottom:26px;max-width:290px;padding:13px 15px;background:rgba(10,8,5,.78);border:1px solid var(--border);border-radius:10px;backdrop-filter:blur(8px);font:9px/1.7 var(--f-mono);color:var(--muted);}
+.network-callout strong{color:var(--gold2);}
+@media(max-width:700px){.network-header{align-items:flex-start;flex-direction:column}.network-meta{text-align:left}.network-stage{min-height:500px;padding:8px}.network-callout{position:relative;left:auto;bottom:auto;margin:0 12px 12px;max-width:none}}
+
+</style>
+<link rel="stylesheet" href="overrides.css">
+</head>
+<body>
+
+<nav class="gnav">
+  <div class="gnav-inner">
+    <a href="welcome.html" class="gnav-brand">Armstrong Family Archive</a>
+    <div class="gnav-links">
+      <a href="start_here.html" class="gnav-link gstart">★ Start Here</a>
+      <a href="bell_family.html" class="gnav-link">The Bells</a>
+      <a href="john_nichols.html" class="gnav-link">John Nichols</a>
+      <a href="waldrop_enslavers.html" class="gnav-link">The Waldrops</a>
+      <a href="davenport_family.html" class="gnav-link">The Davenports</a>
+      <a href="ownership_network.html" class="gnav-link active">Ownership Network</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <svg class="hero-line-svg" viewBox="0 0 300 2"><path class="hero-line-path" d="M0,1 L300,1"/></svg>
+  <div class="hero-content">
+    <h1 class="hero-title">THE OWNERSHIP NETWORK</h1>
+    <p class="hero-sub">The legal records that intersected the lives of the people I am trying to find.</p>
+    <p class="hero-copy">Before a family tree can show relationships, the records often force us to confront the system around them. This map follows the deeds, estates, purchases, gifts, and transfers that placed enslaved people inside the legal property networks of South Carolina and Mississippi. It does not tell the whole story. It tells us what the surviving records say.</p>
+    <span class="hero-note">LEGAL RECORDS ≠ FAMILY RELATIONSHIPS</span>
+     <div style="margin-top:22px;font:8px/1.8 var(--f-mono);letter-spacing:1.6px;color:rgba(240,234,216,.38);text-transform:uppercase;">
+       1792–1842 · South Carolina & Mississippi · Documentary Network
+     </div>
+  </div>
+</section>
+
+<!-- CONTROLS -->
+<div class="controls-bar">
+  <div class="controls-inner">
+    <div class="ctrl-group" role="group" aria-label="Network view">
+      <button class="ctrl-tab active" data-view="overlay" onclick="setView('overlay',this)">Overlay</button>
+      <button class="ctrl-tab" data-view="ownership" onclick="setView('ownership',this)">Ownership</button>
+      <button class="ctrl-tab" data-view="family" onclick="setView('family',this)">Family</button>
+    </div>
+    <input type="text" class="ctrl-search" id="net-search" placeholder="Search: Patience, Easter, Bluford…" oninput="searchNetwork(this.value)">
+    <button class="ctrl-reset" onclick="resetNetwork()">Reset</button>
+  </div>
+  <div class="timeline-wrap">
+    <input type="range" class="timeline-slider" id="year-slider" min="1792" max="1842" value="1842" oninput="setYear(this.value)">
+    <div class="timeline-labels"><span>1792 · Easter</span><span>1798 · Milly</span><span>1817 · Pringle</span><span>1829 · Burton</span><span>1839 · Family</span><span>1842 · Will</span></div>
+    <div class="timeline-year-display" id="year-display">Showing through 1842</div>
+  </div>
+</div>
+
+<div class="search-banner" id="search-banner"></div>
+
+<!-- NETWORK -->
+<div class="network-section">
+  <div class="network-wrap">
+    <div class="network-legend">
+      <div class="legend-item"><div class="legend-swatch" style="background:var(--legal);"></div>Legal Ownership</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:var(--family);"></div>Family (Documented)</div>
+      <div class="legend-item"><div class="legend-swatch" style="background:var(--family);border-top:2px dashed var(--family);height:0;"></div>Family (Supported)</div>
+      <div class="legend-item"><div class="legend-dot" style="border-color:var(--dna);"></div>DNA Signal</div>
+      <div class="legend-item"><div class="legend-dot" style="border-color:var(--unresolved);"></div>Unresolved</div>
+    </div>
+    <svg id="network-svg" viewBox="0 0 1000 620" aria-label="Interactive ownership and family network diagram"></svg>
+  </div>
+</div>
+
+<!-- RECORD PANEL -->
+<div class="panel-overlay" id="panel-overlay" onclick="closePanel()"></div>
+<div class="record-panel" id="record-panel" role="dialog" aria-label="Record details">
+  <button class="panel-close" onclick="closePanel()" aria-label="Close">✕</button>
+  <div id="panel-content"></div>
+</div>
+
+<div class="container">
+
+  <!-- CRITICAL PATIENCE NODE -->
+  <div class="section reveal">
+    <span class="section-eyebrow">The Family Reveal</span>
+    <h2 class="section-title">Patience, Rachel, and Clarissa</h2>
+    <p class="section-sub">The 1839 Rankin County, Mississippi deed is a major bridge record. It identifies Patience's daughters and their own children directly.</p>
+    <div class="gen-chain">
+      <span class="name">Patience</span><span class="arrow">→</span><span class="name">Rachel</span><span class="arrow">→</span><span class="name">Tom</span>
+    </div>
+    <div class="gen-chain">
+      <span class="name">Patience</span><span class="arrow">→</span><span class="name">Clarissa</span><span class="arrow">→</span><span class="name">William, Amanda, Harriet</span>
+    </div>
+    <div class="rule-note"><strong>William is shown here as Clarissa's child, not Rachel's</strong> — the 1839 deed transcription and the current research handoff both support this structure.</div>
+  </div>
+
+  <!-- EASTER ANTI-MERGE -->
+  <div class="section reveal">
+    <span class="section-eyebrow">The Name Trap</span>
+    <h2 class="section-title">Easter — Two Women, Never Merged</h2>
+    <p class="section-sub">Genealogy under slavery requires identity discipline. A repeated name is not automatically the same person.</p>
+    <div class="trap-warning">SAME NAME. DIFFERENT DOCUMENTARY TRAIL.</div>
+    <div class="name-trap">
+      <div class="trap-card">
+        <div class="trap-card-title">Easter #1</div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">John Pringle's Easter</p>
+        <p style="font-size:12.5px;line-height:1.7;">Laurens District, May 7, 1817. Emancipated, about 40 years old, with Pringle roughly 28 years. Kept entirely separate.</p>
+      </div>
+      <div class="trap-card">
+        <div class="trap-card-title">Easter #2</div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:8px;">Davenport/Burton Easter</p>
+        <p style="font-size:12.5px;line-height:1.7;">1792 Davenport transfer; 1829 Burton estate sale, $80. Continuity between the two appearances is unresolved.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SON OF EASTER -->
+  <div class="section reveal">
+    <span class="section-eyebrow">The Son of Easter Moment</span>
+    <h2 class="section-title">One Sentence, Directly Stated</h2>
+    <p style="font-family:var(--f-display);font-size:22px;font-style:italic;color:var(--gold2);text-align:center;margin:24px 0;">"...son of Easter..."</p>
+    <p class="section-sub" style="text-align:center;">Jonathan Davenport's 1842 will — Newberry District Court of Equity. Not a guess. Not a DNA prediction. A written statement.</p>
+  </div>
+
+  <!-- BLUFORD -->
+  <div class="section reveal">
+    <span class="section-eyebrow">Two Separate Record Trails</span>
+    <h2 class="section-title">Bluford A and Bluford B</h2>
+    <div class="name-trap">
+      <div class="trap-card">
+        <div class="trap-card-title">Bluford A</div>
+        <p style="font-size:12.5px;line-height:1.7;">Purchased by Jonathan Davenport, 1829, $375. Named directly in the 1842 will as "son of Easter."</p>
+      </div>
+      <div class="trap-card">
+        <div class="trap-card-title">Bluford B</div>
+        <p style="font-size:12.5px;line-height:1.7;">A separate 1829 sale entry, associated with William Burton, $215. Not merged with Bluford A without a documentary bridge.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNRESOLVED NODES -->
+  <div class="section reveal">
+    <span class="section-eyebrow">Open Questions</span>
+    <h2 class="section-title">Unresolved / Open Nodes</h2>
+    <div class="q-item">Who was the $390 enslaved woman associated with Mary Waldrop / James Waldrop Jr.'s sale material?</div>
+    <div class="q-item">Is the $390 woman in the separate appraisal the same person?</div>
+    <div class="q-item">Who was the $300 enslaved man in John Milligan's estate?</div>
+    <div class="q-item">What exactly are the names and values in Stephen Waldrop's 1816 inventory — "Naund," possibly "Moses"?</div>
+    <div class="q-item">Is the 1792 Davenport Easter the same woman as the 1829/1842 Easter?</div>
+    <div class="q-item">What earlier record connects William Burton to Easter and Bluford?</div>
+    <div class="q-item">Can John Pringle's Easter be traced through earlier Laurens County records?</div>
+    <div class="q-item">Does the original 1839 Waldrop deed image further resolve Patience and her increase?</div>
+    <div class="q-item">Which Reuben Sims appears in the 1790 Newberry census — is he James Sims Sr.'s own son?</div>
+  </div>
+
+  <!-- GEOGRAPHY -->
+  <div class="section reveal">
+    <span class="section-eyebrow">Where the Records Were Made</span>
+    <h2 class="section-title">Geography</h2>
+    <p class="section-sub">Click a place to filter the network above. No speculative migration arrows are drawn.</p>
+    <div class="geo-grid">
+      <div class="geo-card" onclick="filterRegion('newberry',this)"><span class="geo-name">Newberry Co., SC</span><div class="geo-body">Core Davenport/Waldrop/Sims documentary landscape.</div></div>
+      <div class="geo-card" onclick="filterRegion('union',this)"><span class="geo-name">Union Co., SC</span><div class="geo-body">Sims records — the 1793 mortgage.</div></div>
+      <div class="geo-card" onclick="filterRegion('laurens',this)"><span class="geo-name">Laurens District, SC</span><div class="geo-body">John Pringle's Easter emancipation record.</div></div>
+      <div class="geo-card" onclick="filterRegion('rankin',this)"><span class="geo-name">Rankin Co., MS</span><div class="geo-body">The 1839 deed.</div></div>
+      <div class="geo-card" onclick="filterRegion('hinds',this)"><span class="geo-name">Hinds Co., MS</span><div class="geo-body">Waldrop land patents and migration context.</div></div>
+      <div class="geo-card" onclick="filterRegion('texas',this)"><span class="geo-name">Austin Co., Texas</span><div class="geo-body">Later Nichols family context — a separate later chapter, kept apart unless continuity is established.</div></div>
+    </div>
+  </div>
+
+  <!-- CANNOT TELL US -->
+  <div class="section reveal">
+    <span class="section-eyebrow">Honest Limits</span>
+    <h2 class="section-title">What This Map Cannot Tell Us</h2>
+    <div class="cannot-box">
+      <p class="cannot-item">It cannot show every person who was enslaved.</p>
+      <p class="cannot-item">It cannot show every family relationship.</p>
+      <p class="cannot-item">It cannot show every separation, sale, birth, death, resistance, or act of survival.</p>
+      <p class="cannot-item">It cannot prove parentage from a surname, age, geography, DNA match, or similar name alone.</p>
+      <p class="cannot-item">It cannot assume that every person named in a probate document was owned by the person who signed as appraiser, witness, administrator, or executor.</p>
+      <p class="cannot-item">It cannot turn an unresolved lead into a fact just because the visualization looks convincing.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FINAL MESSAGE -->
+<div class="final-msg reveal">
+  <p class="final-msg-body">The records are not the people. They are traces left by a legal system that recorded people as property. But sometimes, inside those records, a relationship survives: a mother, a child, a son, a family group. This page follows those traces carefully.</p>
+  <p class="final-quote">I am not building this map to make the past look complete.<br>I am building it so I can see where the evidence ends — and where the search begins.</p>
+  <div class="back-links">
+    <a href="research_archive.html" class="back-link">Research Archive →</a>
+    <a href="davenport_family.html" class="back-link">← The Davenports</a>
+  </div>
+</div>
+
+<script src="sidebar.js"></script>
+<script>
+// ===== NODE DATA =====
+const nodes = [
+  // Holders / legal parties — secondary visual treatment
+  {id:'francis_sr', label:'Francis Davenport Sr.', type:'holder', x:180, y:100, year:1792},
+  {id:'james_davenport', label:'James Davenport', type:'holder', x:340, y:60, year:1792},
+  {id:'patty_waldrop', label:'Patty Waldrop', type:'holder', x:180, y:220, year:1795},
+  {id:'nancy_waldrop', label:'Nancy Waldrop', type:'holder', x:340, y:180, year:1795},
+  {id:'francis_jr', label:'Francis Davenport Jr.', type:'holder', x:60, y:180, year:1795},
+  {id:'owen_flinn', label:'Owen Flinn', type:'holder', x:500, y:120, year:1798},
+  {id:'isaac_davenport', label:'Isaac Davenport', type:'holder', x:620, y:160, year:1798},
+  {id:'william_burton', label:'William Burton (estate)', type:'holder', x:500, y:320, year:1829},
+  {id:'jonathan_davenport', label:'Jonathan Davenport', type:'holder', x:650, y:360, year:1829},
+  {id:'james_m_davenport', label:'James M. Davenport', type:'holder', x:800, y:400, year:1842},
+  {id:'james_sims', label:'James Sims Sr.', type:'holder', x:120, y:400, year:1793},
+  {id:'peter_braselman', label:'Peter Braselman', type:'holder', x:60, y:480, year:1793},
+  {id:'drucilla_braselman', label:'Drucilla Braselman', type:'holder', x:220, y:480, year:1793},
+
+  // Enslaved persons — primary, human-centered
+  {id:'patience', label:'PATIENCE', type:'person', x:260, y:160, year:1795, big:true},
+  {id:'eliza', label:'Eliza', type:'person', x:400, y:220, year:1795},
+  {id:'anthony', label:'Anthony', type:'person', x:30, y:120, year:1795},
+  {id:'milly', label:'Milly', type:'person', x:560, y:200, year:1798},
+  {id:'selay', label:'Selay', type:'person', x:640, y:230, year:1798},
+  {id:'jack', label:'Jack', type:'person', x:600, y:100, year:1798},
+  {id:'easter_a', label:'Easter #1 (Pringle)', type:'person-unresolved', x:850, y:200, year:1817},
+  {id:'easter_b', label:'Easter #2 (Davenport)', type:'person', x:580, y:400, year:1829, big:true},
+  {id:'bluford_a', label:'Bluford A', type:'person', x:700, y:440, year:1829},
+  {id:'bluford_b', label:'Bluford B', type:'person-unresolved', x:560, y:500, year:1829},
+  {id:'sims_nine', label:'Nine Enslaved (Sims)', type:'person', x:200, y:560, year:1793},
+
+  // Family layer — Patience's descendants
+  {id:'rachel', label:'Rachel', type:'person', x:130, y:280, year:1839},
+  {id:'clarissa', label:'Clarissa', type:'person', x:280, y:290, year:1839},
+  {id:'tom', label:'Tom', type:'person', x:80, y:340, year:1839},
+  {id:'william', label:'William', type:'person', x:230, y:360, year:1839},
+  {id:'amanda', label:'Amanda', type:'person', x:300, y:360, year:1839},
+  {id:'harriet', label:'Harriet', type:'person', x:360, y:340, year:1839},
+];
+
+const edges = [
+  {from:'francis_sr', to:'james_davenport', type:'legal', person:'easter_b', year:1792},
+  {from:'francis_sr', to:'patty_waldrop', type:'legal', year:1795},
+  {from:'patty_waldrop', to:'patience', type:'legal', year:1795},
+  {from:'francis_sr', to:'nancy_waldrop', type:'legal', year:1795},
+  {from:'nancy_waldrop', to:'eliza', type:'legal', year:1795},
+  {from:'francis_sr', to:'francis_jr', type:'legal', year:1795},
+  {from:'francis_jr', to:'anthony', type:'legal', year:1795},
+  {from:'owen_flinn', to:'isaac_davenport', type:'legal', year:1798},
+  {from:'isaac_davenport', to:'milly', type:'legal', year:1798},
+  {from:'milly', to:'selay', type:'family', year:1798},
+  {from:'milly', to:'jack', type:'family', year:1798},
+  {from:'william_burton', to:'jonathan_davenport', type:'legal', year:1829},
+  {from:'jonathan_davenport', to:'easter_b', type:'legal', year:1829},
+  {from:'jonathan_davenport', to:'bluford_a', type:'legal', year:1829},
+  {from:'william_burton', to:'bluford_b', type:'legal', year:1829},
+  {from:'jonathan_davenport', to:'james_m_davenport', type:'legal', year:1842},
+  {from:'james_m_davenport', to:'bluford_a', type:'legal', year:1842},
+  {from:'easter_b', to:'bluford_a', type:'family', year:1842},
+  {from:'james_sims', to:'peter_braselman', type:'legal', year:1793},
+  {from:'james_sims', to:'drucilla_braselman', type:'legal', year:1793},
+  {from:'drucilla_braselman', to:'sims_nine', type:'legal', year:1793},
+  {from:'patience', to:'rachel', type:'family', year:1839},
+  {from:'patience', to:'clarissa', type:'family', year:1839},
+  {from:'rachel', to:'tom', type:'family', year:1839},
+  {from:'clarissa', to:'william', type:'family', year:1839},
+  {from:'clarissa', to:'amanda', type:'family', year:1839},
+  {from:'clarissa', to:'harriet', type:'family', year:1839},
+];
+
+const recordData = {
+  francis_sr:{role:'Legal Party / Holder',date:'1795 and related Davenport records',place:'Newberry County, SC',transaction:'Francis Davenport Sr. appears as grantor/seller in multiple documented records.',price:'Varies by transaction',source:'NEWBERRY COUNTY SC • DEED BOOK C • 1795',transcription:'Patience appears in the August 4, 1795 transfer to Patty Waldrop.',proves:'Francis Davenport Sr. is the documented legal party in these transactions.',doesNotProve:'Being a legal party in one record does not establish every person in his household as his property or prove a biological relationship.',evidence:'Documented / Confirmed'},
+  james_davenport:{role:'Legal Party / Holder',date:'December 11, 1792',place:'Newberry County, SC',transaction:'Francis Davenport → James Davenport; Easter appears in the transfer.',price:'Not stated',source:'NEWBERRY COUNTY SC • DECEMBER 11, 1792',transcription:'One enslaved girl named Easter.',proves:'A documented 1792 Davenport transfer involving Easter.',doesNotProve:'Does not establish that this Easter is the same woman later appearing in 1829.',evidence:'Documented / Confirmed'},
+  patty_waldrop:{role:'Recipient / Legal Party',date:'August 4, 1795',place:'Newberry County, SC',transaction:'Francis Davenport Sr. → Patty Waldrop: Patience.',price:'Not stated',source:'NEWBERRY COUNTY SC • DEED BOOK C • PAGE 367 • AUGUST 4, 1795',transcription:'One Negro girl named Patience.',proves:'Patience was transferred to Patty Waldrop.',doesNotProve:'Does not establish Patience’s parentage or later movement by itself.',evidence:'Documented / Confirmed'},
+  nancy_waldrop:{role:'Recipient / Legal Party',date:'August 4, 1795',place:'Newberry County, SC',transaction:'Francis Davenport Sr. → Nancy Waldrop: Eliza.',price:'Not stated',source:'NEWBERRY COUNTY SC • DEED BOOK C • PAGE 369',transcription:'One enslaved girl, Eliza.',proves:'A separate same-day transaction.',doesNotProve:'Does not establish a biological or ownership connection to Patience.',evidence:'Documented / Confirmed'},
+  francis_jr:{role:'Recipient / Legal Party',date:'May 8, 1795',place:'Newberry County, SC',transaction:'Francis Davenport Sr. → Francis Davenport Jr.: Anthony.',price:'£20 (reported)',source:'NEWBERRY COUNTY SC • MAY 8, 1795',transcription:'Anthony, about age 8.',proves:'A reported transfer within the Davenport family.',doesNotProve:'The original image remains the final verification source for the exact reading.',evidence:'OCR Needs Verification'},
+  owen_flinn:{role:'Legal Party / Seller',date:'1798',place:'Newberry County, SC',transaction:'Owen Flinn → Isaac Davenport.',price:'$550',source:'NEWBERRY COUNTY SC • DEED BOOK D • PAGES 64–65',transcription:'Milly and her children Selay and Jack.',proves:'A documented transfer involving a mother and her two children.',doesNotProve:'Does not connect this family to Patience’s line.',evidence:'Documented / Confirmed'},
+  isaac_davenport:{role:'Recipient / Legal Party',date:'1798',place:'Newberry County, SC',transaction:'Owen Flinn → Isaac Davenport: Milly, Selay, Jack.',price:'$550',source:'NEWBERRY COUNTY SC • DEED BOOK D • PAGES 64–65',transcription:'Milly and her children Selay and Jack.',proves:'Isaac Davenport is the documented recipient.',doesNotProve:'Does not establish later continuity for these three people.',evidence:'Documented / Confirmed'},
+  william_burton:{role:'Estate / Legal Party',date:'December 29, 1829',place:'Mississippi / Newberry network',transaction:'Burton estate sale material involving Easter and two separate Bluford entries.',price:'Easter $80; Bluford entries include $375 and $215',source:'WILLIAM BURTON ESTATE SALE • DECEMBER 29, 1829',transcription:'Easter and Bluford appear in the sale material.',proves:'A documented 1829 sale context for these named people.',doesNotProve:'The separate Bluford entries cannot be merged without continuity evidence.',evidence:'Documented / Confirmed'},
+  jonathan_davenport:{role:'Legal Party / Purchaser / Testator',date:'1829–1842',place:'Mississippi / Newberry District, SC',transaction:'Purchased Easter and Bluford in 1829; later made the 1842 will identifying Bluford as son of Easter.',price:'Easter $80; Bluford A $375',source:'BURTON ESTATE SALE • 1829 / JONATHAN DAVENPORT WILL • 1842',transcription:'“…son of Easter…”',proves:'The documentary trail connects Jonathan Davenport to the 1829 purchases and the 1842 will.',doesNotProve:'Does not by itself resolve every earlier/later identity connection.',evidence:'Documented / Confirmed'},
+  james_m_davenport:{role:'Recipient / Legal Party',date:'1842',place:'Newberry District, SC',transaction:'Receives Bluford in Jonathan Davenport’s will.',price:'—',source:'SOUTH CAROLINA COURT OF EQUITY • NEWBERRY DISTRICT • 1842 WILL • IMAGES 430–431',transcription:'Bluford is identified as “son of Easter.”',proves:'A legal transfer in the 1842 will and the stated Easter–Bluford relationship.',doesNotProve:'Does not establish Bluford’s father or earlier life.',evidence:'Documented / Confirmed'},
+  james_sims:{role:'Legal Party / Mortgage Holder',date:'March 22, 1793',place:'Union County, SC',transaction:'James Sims Sr. → Peter Braselman mortgage involving a large enslaved-property group.',price:'£1,000 sterling mortgage',source:'UNION COUNTY SC • DEED BOOK B • PAGE 467 • MARCH 22, 1793',transcription:'Patience appears among the named enslaved people in the property group.',proves:'Patience was within this documented Sims property network in 1793.',doesNotProve:'Does not establish Patience’s parentage or a biological connection to the Sims.',evidence:'Documented / Confirmed'},
+  peter_braselman:{role:'Mortgage Recipient / Legal Party',date:'March 22, 1793',place:'Union County, SC',transaction:'Receives mortgage interest in the Sims property group.',price:'£1,000 sterling mortgage',source:'UNION COUNTY SC • DEED BOOK B • PAGE 467',transcription:'Named enslaved property appears in the mortgage.',proves:'A documented legal/property relationship.',doesNotProve:'Does not establish biological relationships among the people named.',evidence:'Documented / Confirmed'},
+  drucilla_braselman:{role:'Recipient / Legal Party',date:'June 26, 1793',place:'Union County, SC',transaction:'James Sims Sr. → Drucilla Braselman: nine named enslaved people.',price:'Not itemized individually',source:'UNION COUNTY SC • DEED BOOK B • PAGE 466',transcription:'Phillis, Sarah, Ithea, Stephen, Benjamin, Abina, Barlet, Susannah, Henry.',proves:'A documented transfer of nine named people.',doesNotProve:'Does not establish a connection to Patience.',evidence:'Documented / Confirmed'},
+const recordData = {
+  patience: {role:'Enslaved Person',date:'August 4, 1795',place:'Newberry County, SC',transaction:'Francis Davenport Sr. → Patty Waldrop',price:'Not stated in this record',source:'NEWBERRY COUNTY SC • DEED BOOK C • PAGE 367 • AUGUST 4, 1795',transcription:'"One Negro girl named Patience."',proves:'Documented transfer of Patience to Patty Waldrop.',doesNotProve:'Does not establish Patience\'s parentage, birth year, or that "with her increase" appeared in this original document — that phrase comes from a later 1839 recital.',evidence:'Documented / Confirmed'},
+  eliza: {role:'Enslaved Person',date:'August 4, 1795',place:'Newberry County, SC',transaction:'Francis Davenport Sr. → Nancy Waldrop',price:'Not stated',source:'NEWBERRY COUNTY SC • DEED BOOK C • PAGE 369',transcription:'One enslaved girl, Eliza.',proves:'A separate transaction, same day, different recipient.',doesNotProve:'No connection to Patience beyond the same source household.',evidence:'Documented / Confirmed'},
+  anthony: {role:'Enslaved Person',date:'May 8, 1795',place:'Newberry County, SC',transaction:'Francis Davenport Sr. → Francis Davenport Jr.',price:'£20 (reported)',source:'NEWBERRY COUNTY SC • MAY 8, 1795',transcription:'About age 8.',proves:'A transfer within the Davenport family.',doesNotProve:'Original image not yet verified as final source.',evidence:'OCR Needs Verification'},
+  milly: {role:'Enslaved Person',date:'1798',place:'Newberry County, SC',transaction:'Owen Flinn → Isaac Davenport',price:'$550 (Milly and children)',source:'NEWBERRY COUNTY SC • DEED BOOK D • PAGES 64–65',transcription:'Milly and her children Selay and Jack.',proves:'A documented sale of a mother and her two children together.',doesNotProve:'No connection established to Patience\'s own line.',evidence:'Documented / Confirmed'},
+  easter_a: {role:'Enslaved Woman — Kept Separate',date:'May 7, 1817',place:'Laurens District, SC',transaction:'Emancipated by John Pringle',price:'N/A — emancipation record',source:'LAURENS DISTRICT SC • MAY 7, 1817',transcription:'About 40 years old; had been with Pringle about 28 years.',proves:'A confirmed, separate emancipation record.',doesNotProve:'No connection to the Davenport/Burton Easter without a documentary bridge.',evidence:'Documented — Confirmed Separate'},
+  easter_b: {role:'Enslaved Woman',date:'Dec. 29, 1829',place:'Mississippi/Newberry network',transaction:'William Burton estate → Jonathan Davenport',price:'$80',source:'WILLIAM BURTON ESTATE SALE • DEC. 29, 1829',transcription:'Easter, purchased by Jonathan Davenport.',proves:'Documented purchase; named directly as Bluford\'s mother in the 1842 will.',doesNotProve:'Continuity to the separate 1792 Davenport Easter is unresolved.',evidence:'Strong Research Lead'},
+  bluford_a: {role:'Enslaved Man',date:'1829 / 1842',place:'Mississippi / Newberry District, SC',transaction:'Jonathan Davenport → James M. Davenport',price:'$375 (1829)',source:'JONATHAN DAVENPORT WILL • 1842',transcription:'"...son of Easter..."',proves:'Direct family relationship — a written statement, not an inference.',doesNotProve:'Nothing about Bluford\'s own father or any relationship beyond Easter.',evidence:'Documented / Confirmed'},
+  bluford_b: {role:'Enslaved Man — Kept Separate',date:'Dec. 29, 1829',place:'Same sale material',transaction:'William Burton',price:'$215',source:'WILLIAM BURTON ESTATE SALE • DEC. 29, 1829',transcription:'A separate Bluford entry.',proves:'A distinct legal record from Bluford A.',doesNotProve:'Not merged with Bluford A without a continuity bridge.',evidence:'Unresolved'},
+  sims_nine: {role:'Nine Enslaved People',date:'June 26, 1793',place:'Union County, SC',transaction:'James Sims Sr. → Drucilla Braselman',price:'Not itemized individually',source:'UNION COUNTY SC • DEED BOOK B • PAGE 466',transcription:'Phillis, Sarah, Ithea, Stephen, Benjamin, Abina, Barlet, Susannah, Henry.',proves:'A documented transfer of nine named people.',doesNotProve:'No established biological connection to Patience.',evidence:'Documented / Confirmed'},
+  rachel: {role:'Enslaved Woman — Patience\'s Daughter',date:'By 1839',place:'Rankin County, MS',transaction:'Named in 1839 deed',price:'—',source:'RANKIN COUNTY MS • DEED BOOK 4 • PAGE 435 • MARCH 25, 1839',transcription:'Rachel, daughter of Patience; Tom, her son.',proves:'Direct family relationship stated in the deed.',doesNotProve:'The original deed image itself still needs direct verification.',evidence:'Strong Research Lead'},
+  clarissa: {role:'Enslaved Woman — Patience\'s Daughter',date:'By 1839',place:'Rankin County, MS',transaction:'Named in 1839 deed',price:'—',source:'RANKIN COUNTY MS • DEED BOOK 4 • PAGE 435 • MARCH 25, 1839',transcription:'Clarissa, daughter of Patience; William, Amanda, and Harriet, her children.',proves:'Direct family relationship stated in the deed. William belongs to Clarissa, not Rachel.',doesNotProve:'The original deed image still needs direct verification.',evidence:'Strong Research Lead'},
+  tom: {role:'Enslaved Man — Rachel\'s Son',date:'By 1839',place:'Rankin County, MS',transaction:'Named in 1839 deed',price:'—',source:'RANKIN COUNTY MS • DEED BOOK 4 • PAGE 435',transcription:'Tom, Rachel\'s son.',proves:'A stated family relationship.',doesNotProve:'Nothing beyond this relationship.',evidence:'Strong Research Lead'},
+  william: {role:'Enslaved Man — Clarissa\'s Child',date:'By 1839',place:'Rankin County, MS',transaction:'Named in 1839 deed',price:'—',source:'RANKIN COUNTY MS • DEED BOOK 4 • PAGE 435',transcription:'William, child of Clarissa.',proves:'A stated family relationship — William belongs to Clarissa\'s line.',doesNotProve:'Nothing about his own later life or descendants.',evidence:'Strong Research Lead'},
+  amanda: {role:'Enslaved Woman — Clarissa\'s Child',date:'By 1839',place:'Rankin County, MS',transaction:'Named in 1839 deed',price:'—',source:'RANKIN COUNTY MS • DEED BOOK 4 • PAGE 435',transcription:'Amanda, child of Clarissa.',proves:'A stated family relationship.',doesNotProve:'No document yet confirms her presence in Texas.',evidence:'Strong Research Lead'},
+  harriet: {role:'Enslaved Woman — Clarissa\'s Child',date:'By 1839',place:'Rankin County, MS',transaction:'Named in 1839 deed',price:'—',source:'RANKIN COUNTY MS • DEED BOOK 4 • PAGE 435',transcription:'Harriet, child of Clarissa.',proves:'A stated family relationship.',doesNotProve:'Her own line has not yet been traced forward.',evidence:'Strong Research Lead'},
+};
+
+// ===== RENDER =====
+const svg = document.getElementById('network-svg');
+let currentView = 'overlay';
+let currentYear = 1842;
+let activeSearch = null;
+
+function nodeById(id){ return nodes.find(n=>n.id===id); }
+
+function render(){
+  svg.innerHTML = '';
+  // edges first
+  edges.forEach(e => {
+    if (e.year > currentYear) return;
+    if (currentView === 'ownership' && e.type !== 'legal') return;
+    if (currentView === 'family' && e.type === 'legal') return;
+    const a = nodeById(e.from), b = nodeById(e.to);
+    if (!a || !b) return;
+    const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('x1', a.x); line.setAttribute('y1', a.y);
+    line.setAttribute('x2', b.x); line.setAttribute('y2', b.y);
+    line.setAttribute('class', 'net-edge ' + (e.type==='legal' ? 'net-edge-legal' : 'net-edge-family'));
+    let dim = false;
+    if (activeSearch && !(activeSearch.includes(e.from) || activeSearch.includes(e.to))) dim = true;
+    if (dim) line.classList.add('dimmed');
+    svg.appendChild(line);
+  });
+  // nodes
+  nodes.forEach(n => {
+    if (n.year > currentYear) return;
+    const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+    g.setAttribute('class','net-node');
+    g.setAttribute('tabindex','0');
+    g.setAttribute('role','button');
+    g.setAttribute('aria-label', n.label);
+    if (activeSearch && !activeSearch.includes(n.id)) g.classList.add('dimmed');
+     if (n.big) g.dataset.kind='anchor';
+    const circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    circle.setAttribute('cx', n.x); circle.setAttribute('cy', n.y);
+    let r = n.big ? 14 : (n.type==='holder' ? 7 : 10);
+    circle.setAttribute('r', r);
+    circle.setAttribute('class','net-node-circle');
+    if (n.type === 'holder') {
+      circle.setAttribute('fill', '#3a3428'); circle.setAttribute('stroke', 'var(--muted)'); circle.setAttribute('stroke-width','1');
+    } else if (n.type === 'person-unresolved') {
+      circle.setAttribute('fill', 'none'); circle.setAttribute('stroke', 'var(--unresolved)'); circle.setAttribute('stroke-width','1.5'); circle.setAttribute('stroke-dasharray','3,2');
+    } else {
+      circle.setAttribute('fill', 'rgba(201,168,76,0.85)'); circle.setAttribute('stroke', 'var(--gold2)'); circle.setAttribute('stroke-width','1.5');
+    }
+    g.appendChild(circle);
+    const label = document.createElementNS('http://www.w3.org/2000/svg','text');
+    label.setAttribute('x', n.x); label.setAttribute('y', n.y + r + 12);
+    label.setAttribute('class','net-node-label');
+    label.textContent = n.label;
+    g.appendChild(label);
+    g.addEventListener('click', () => openPanel(n));
+    g.addEventListener('keypress', (ev) => { if(ev.key==='Enter') openPanel(n); });
+    svg.appendChild(g);
+  });
+}
+
+function setView(view, btn){
+  currentView = view;
+  document.querySelectorAll('.ctrl-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function setYear(year){
+  currentYear = parseInt(year);
+  document.getElementById('year-display').textContent = 'Showing through ' + year;
+  render();
+}
+
+function resetNetwork(){
+  currentView='overlay'; currentYear=1842; activeSearch=null;
+  document.getElementById('net-search').value='';
+  document.getElementById('search-banner').classList.remove('show');
+  document.getElementById('year-slider').value=1842;
+  document.getElementById('year-display').textContent='Showing through 1842';
+  document.querySelectorAll('.ctrl-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelector('[data-view="overlay"]').classList.add('active');
+  render();
+}
+
+function searchNetwork(q){
+  q = q.trim().toLowerCase();
+  const banner = document.getElementById('search-banner');
+  if (!q) { activeSearch = null; banner.classList.remove('show'); render(); return; }
+
+  if (q.includes('easter')) {
+    activeSearch = ['easter_a','easter_b','james_davenport','william_burton','jonathan_davenport','bluford_a'];
+    banner.textContent = 'SAME NAME. DIFFERENT DOCUMENTARY TRAIL — two separate Easters remain separate.';
+    banner.classList.add('show');
+  } else if (q.includes('bluford')) {
+    activeSearch = ['bluford_a','bluford_b','jonathan_davenport','william_burton','james_m_davenport','easter_b'];
+    banner.textContent = 'TWO BLUFORD RECORD TRAILS — the “son of Easter” relationship attaches only to Bluford A.';
+    banner.classList.add('show');
+  } else if (q.includes('patience')) {
+    activeSearch = ['patience','francis_sr','patty_waldrop','rachel','clarissa','tom','william','amanda','harriet'];
+    banner.textContent = '1795 DAVENPORT → PATTY WALDROP → PATIENCE → 1839 FAMILY GROUP.';
+    banner.classList.add('show');
+  } else if (q.includes('sims')) {
+    activeSearch = ['james_sims','peter_braselman','drucilla_braselman','sims_nine'];
+    banner.textContent = '1793 SIMS RECORDS — documentary ownership evidence, not a biological Patience connection.';
+    banner.classList.add('show');
+  } else if (q.includes('jonathan')) {
+    activeSearch = ['jonathan_davenport','william_burton','easter_b','bluford_a','james_m_davenport'];
+    banner.textContent = '1829 BURTON ESTATE → EASTER / BLUFORD → 1842 WILL.';
+    banner.classList.add('show');
+  } else {
+    const matches = nodes.filter(n => n.label.toLowerCase().includes(q)).map(n => n.id);
+    activeSearch = matches.length ? matches : null;
+    banner.textContent = matches.length ? `${matches.length} matching node${matches.length===1?'':'s'} highlighted.` : 'No exact node match — try a person or family name.';
+    banner.classList.add('show');
+  }
+  render();
+}
+
+function filterRegion(region, card){
+  document.querySelectorAll('.geo-card').forEach(c=>c.classList.remove('active'));
+  if(card) card.classList.add('active');
+  const map = {
+    newberry: ['francis_sr','patty_waldrop','nancy_waldrop','francis_jr','patience','eliza','anthony','owen_flinn','isaac_davenport','milly','selay','jack','jonathan_davenport','james_m_davenport','bluford_a'],
+    union: ['james_sims','peter_braselman','drucilla_braselman','sims_nine'],
+    laurens: ['easter_a'],
+    rankin: ['rachel','clarissa','tom','william','amanda','harriet','patience'],
+    hinds: [],
+    texas: []
+  };
+  activeSearch = map[region] || null;
+  render();
+}
+
+function openPanel(node){
+  const data = recordData[node.id];
+  const panel = document.getElementById('record-panel');
+  const overlay = document.getElementById('panel-overlay');
+  const content = document.getElementById('panel-content');
+  if (!data) {
+    content.innerHTML = `<div class="panel-name">${node.label}</div><div class="panel-role">${node.type === 'holder' ? 'Legal Party / Holder' : 'Person'}</div><p class="panel-field-value">Full record detail for this node is catalogued on the Research Archive page.</p><div class="panel-field"><span class="panel-field-label">Research Archive</span><span class="panel-field-value">The broader documentary context is catalogued in the Research Archive.</span></div>`;
+  } else {
+    content.innerHTML = `
+      <div class="panel-name">${node.label}</div>
+      <div class="panel-role">${data.role}</div>
+      <div class="panel-field"><span class="panel-field-label">Date</span><span class="panel-field-value">${data.date}</span></div>
+      <div class="panel-field"><span class="panel-field-label">Place</span><span class="panel-field-value">${data.place}</span></div>
+      <div class="panel-field"><span class="panel-field-label">Transaction / Relationship</span><span class="panel-field-value">${data.transaction}</span></div>
+      <div class="panel-field"><span class="panel-field-label">Price / Value</span><span class="panel-field-value">${data.price}</span></div>
+      <div class="panel-field"><span class="panel-field-label">Short Transcription</span><span class="panel-field-value">${data.transcription}</span></div>
+      <div class="panel-field"><span class="panel-field-label">Source Record</span><div class="panel-source">${data.source}</div></div>
+      <div class="panel-field"><span class="panel-field-label">What This Proves</span><span class="panel-field-value">${data.proves}</span></div>
+      <div class="panel-notprove"><span class="panel-field-label">What This Does NOT Prove</span><span class="panel-field-value">${data.doesNotProve}</span></div>
+      <div class="panel-field" style="margin-top:16px;"><span class="panel-field-label">Evidence Level</span><span class="panel-field-value" style="color:var(--gold2);">${data.evidence}</span></div>
+    `;
+  }
+  panel.classList.add('open');
+  overlay.classList.add('open');
+}
+function closePanel(){
+  document.getElementById('record-panel').classList.remove('open');
+  document.getElementById('panel-overlay').classList.remove('open');
+}
+
+render();
+
+// scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// hero line draw
+window.addEventListener('load', () => {
+  const path = document.querySelector('.hero-line-path');
+  if (path) { path.style.transition='stroke-dashoffset 2.5s ease-out'; requestAnimationFrame(()=>{ path.style.strokeDashoffset='0'; }); }
+});
+</script>
+</body>
+</html>

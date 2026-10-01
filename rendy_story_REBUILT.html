@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rendy · Rinde Bland · Armstrong Family Archive</title>
+<style>
+  :root {
+    --deep: #080604;
+    --gold: #c9a84c;
+    --gold2: #e8c96a;
+    --cream: #f5f2ec;
+    --parchment: #f0ead8;
+    --aged: #e4dcd0;
+    --muted: #a8a090;
+    --border: rgba(201,168,76,0.15);
+    --f-display: 'Georgia', 'Times New Roman', serif;
+    --f-body: 'Georgia', serif;
+    --f-mono: 'Courier New', monospace;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background:var(--deep);
+    color:var(--cream);
+    font-family:var(--f-body);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* NAV */
+  .nav {
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+    background:rgba(8,6,4,0.96);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-back { font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none; }
+  .nav-title { font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted); }
+
+  /* OPENING — deliberately sparse */
+  .opening {
+    min-height:100vh;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    padding:100px 24px 80px;text-align:center;
+    position:relative;
+  }
+
+  .opening-label {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);margin-bottom:40px;
+  }
+
+  .opening-name {
+    font-family:var(--f-display);
+    font-size:clamp(72px,16vw,160px);
+    font-style:italic;color:var(--parchment);
+    line-height:0.9;letter-spacing:-2px;
+    margin-bottom:40px;
+  }
+
+  .opening-dates {
+    font-family:var(--f-mono);font-size:11px;letter-spacing:3px;
+    color:var(--muted);margin-bottom:60px;
+  }
+
+  .opening-count {
+    font-family:var(--f-display);
+    font-size:clamp(18px,3vw,24px);
+    font-style:italic;color:var(--aged);
+    line-height:1.8;max-width:480px;
+  }
+
+  .opening-count strong { color:var(--cream);font-style:normal; }
+
+  .scroll-down {
+    position:absolute;bottom:40px;left:50%;transform:translateX(-50%);
+    font-family:var(--f-mono);font-size:9px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--muted);
+    animation:breathe 3s ease-in-out infinite;
+  }
+  @keyframes breathe { 0%,100%{opacity:0.3;}50%{opacity:0.8;} }
+
+  /* STORY */
+  .story { max-width:680px;margin:0 auto;padding:0 24px; }
+
+  /* CHAPTER */
+  .chapter { padding:80px 0;border-top:1px solid var(--border); }
+
+  .chapter-date {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:32px;display:block;
+  }
+
+  .chapter-title {
+    font-family:var(--f-display);font-size:clamp(28px,5vw,42px);
+    font-style:italic;color:var(--parchment);
+    line-height:1.15;margin-bottom:40px;letter-spacing:-0.5px;
+  }
+
+  .chapter p {
+    font-size:clamp(15px,2.2vw,17px);line-height:2;
+    color:var(--aged);margin-bottom:28px;
+  }
+
+  .chapter p strong { color:var(--cream);font-weight:normal; }
+  .chapter p em { color:var(--parchment);font-style:italic; }
+
+  /* DOC PULL */
+  .doc-pull {
+    margin:48px 0;padding:28px 32px;
+    border-left:2px solid var(--gold);
+    background:rgba(10,8,5,0.6);
+  }
+  .doc-pull-label {
+    font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:14px;display:block;
+  }
+  .doc-pull-text {
+    font-family:var(--f-mono);font-size:13px;
+    line-height:1.9;color:var(--parchment);
+  }
+  .doc-pull-text strong { color:var(--gold2); }
+  .doc-pull-source {
+    font-family:var(--f-mono);font-size:9px;
+    color:var(--muted);margin-top:14px;display:block;
+  }
+
+  /* PAUSE */
+  .pause {
+    text-align:center;padding:48px 0;
+    font-family:var(--f-display);
+    font-size:clamp(17px,3vw,22px);font-style:italic;
+    color:var(--parchment);line-height:1.9;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    margin:48px 0;
+  }
+
+  /* THE ONE DOCUMENT */
+  .one-document {
+    padding:80px 0;border-top:1px solid var(--border);
+    text-align:center;
+  }
+
+  .one-doc-label {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:40px;display:block;
+  }
+
+  .one-doc-title {
+    font-family:var(--f-display);font-size:clamp(24px,4vw,36px);
+    font-style:italic;color:var(--parchment);
+    line-height:1.3;margin-bottom:48px;
+  }
+
+  .death-cert {
+    background:rgba(10,8,5,0.8);
+    border:1px solid rgba(201,168,76,0.3);
+    padding:40px;
+    max-width:520px;margin:0 auto;
+    text-align:left;
+  }
+
+  .death-cert-header {
+    font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);
+    border-bottom:1px solid var(--border);
+    padding-bottom:16px;margin-bottom:24px;
+  }
+
+  .cert-field {
+    display:grid;grid-template-columns:160px 1fr;
+    gap:8px;padding:10px 0;
+    border-bottom:1px solid rgba(201,168,76,0.08);
+    align-items:baseline;
+  }
+
+  .cert-field:last-child { border-bottom:none; }
+
+  .cert-label {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:1px;
+    text-transform:uppercase;color:var(--muted);
+  }
+
+  .cert-value {
+    font-family:var(--f-mono);font-size:13px;color:var(--parchment);
+  }
+
+  .cert-value.highlight { color:var(--gold2);font-size:15px; }
+
+  .cert-note {
+    margin-top:24px;padding-top:24px;border-top:1px solid var(--border);
+    font-size:13px;line-height:1.8;color:var(--muted);font-style:italic;
+  }
+
+  /* WHAT REMAINED */
+  .what-remained {
+    padding:80px 0;border-top:1px solid var(--border);
+  }
+
+  .remained-label {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:40px;display:block;
+  }
+
+  .remained-title {
+    font-family:var(--f-display);font-size:clamp(24px,4vw,36px);
+    font-style:italic;color:var(--parchment);
+    line-height:1.3;margin-bottom:40px;
+  }
+
+  .remained-grid {
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:24px;margin-bottom:48px;
+  }
+
+  @media(max-width:560px) { .remained-grid{grid-template-columns:1fr;} }
+
+  .remained-col {
+    padding:24px;border:1px solid var(--border);
+    background:rgba(10,8,5,0.4);
+  }
+
+  .remained-col-label {
+    font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--gold);
+    display:block;margin-bottom:16px;
+  }
+
+  .remained-col p {
+    font-size:13px;line-height:1.8;color:var(--aged);
+  }
+
+  .remained-col p strong { color:var(--cream);font-weight:normal; }
+
+  /* THE LINE */
+  .the-line { padding:80px 0;border-top:1px solid var(--border); }
+  .line-label {
+    font-family:var(--f-mono);font-size:9px;letter-spacing:4px;
+    text-transform:uppercase;color:var(--gold);
+    margin-bottom:40px;text-align:center;display:block;
+  }
+  .line-chain { display:flex;flex-direction:column;gap:0;max-width:520px;margin:0 auto; }
+  .line-link {
+    display:flex;gap:20px;align-items:flex-start;
+    padding:20px 0;border-bottom:1px solid var(--border);
+  }
+  .line-link:last-child { border-bottom:none; }
+  .line-dot {
+    width:20px;height:20px;border-radius:50%;
+    border:1px solid var(--gold);background:var(--deep);
+    flex-shrink:0;margin-top:3px;
+  }
+  .line-dot.highlight { background:rgba(201,168,76,0.2); }
+  .line-name {
+    font-family:var(--f-display);font-size:18px;font-style:italic;
+    color:var(--parchment);display:block;margin-bottom:3px;
+  }
+  .line-name.gold { color:var(--gold2); }
+  .line-detail {
+    font-family:var(--f-mono);font-size:10px;
+    color:var(--muted);line-height:1.6;
+  }
+
+  /* CLOSING */
+  .closing {
+    padding:80px 0 120px;text-align:center;
+    border-top:1px solid var(--border);
+  }
+  .closing-title {
+    font-family:var(--f-display);font-size:clamp(24px,4vw,36px);
+    font-style:italic;color:var(--parchment);
+    margin-bottom:32px;line-height:1.3;
+  }
+  .closing-body {
+    font-size:clamp(14px,2vw,16px);line-height:2;color:var(--aged);
+    max-width:520px;margin:0 auto 48px;
+  }
+  .closing-body strong { color:var(--cream);font-weight:normal; }
+  .back-link {
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--f-mono);font-size:10px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--gold);text-decoration:none;
+    border:1px solid var(--border);padding:14px 28px;border-radius:2px;
+    margin:0 8px 12px;transition:border-color 0.2s;
+  }
+  .back-link:hover { border-color:var(--gold); }
+
+  /* ACCESSIBILITY UPDATE: Improved contrast for readability */
+  .prose p, .story p, p { color: #e8e2d8; line-height: 2.1; }
+  .chapter-title, .section-title, .opening-name { color: #f5f0e8 !important; }
+  .chapter-label, .section-label, .opening-label { color: rgba(255,255,255,0.80) !important; }
+  .fact-key { color: rgba(255,255,255,0.65) !important; }
+  .fact-val { color: #e0d8cc !important; }
+  .child-note { color: #c8c0b4 !important; }
+  .aged, .muted { color: #d8d0c4 !important; }
+  table th { color: rgba(255,255,255,0.85) !important; }
+  table td { color: #d8d0c4 !important; }
+  .pull-quote p { color: #f0ead8 !important; }
+  .opening-statement { color: #d8d0c4 !important; }
+  .inheritance { color: #c8c0b4 !important; }
+  .inheritance strong { color: #f5f0e8 !important; }
+  .opening-dates { color: rgba(255,255,255,0.70) !important; }
+  .nav-title { color: rgba(255,255,255,0.60) !important; }
+  .sources ol li { color: #c0b8ac !important; }
+  .explain-box p, .cluster-detail { color: #d8d0c4 !important; }
+  .oracle-distance { color: #c0b8ac !important; }
+  .kit-detail { color: #c8c0b4 !important; }
+  .admix-label { color: #d0c8bc !important; }
+  .admix-pct { color: #f0d870 !important; }
+  li { color: #d8d0c4; }
+  strong { color: #f5f0e8 !important; }
+
+
+  /* ── GLOBAL NAV ── */
+  .gnav{position:sticky;top:0;z-index:100;background:rgba(8,6,4,0.97);
+        border-bottom:1px solid rgba(201,168,76,0.15);backdrop-filter:blur(8px);}
+  .gnav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;
+              justify-content:space-between;padding:0 24px;height:52px;gap:8px;}
+  .gnav-brand{font-family:'DM Serif Display',Georgia,serif;font-style:italic;
+              font-size:15px;color:rgba(240,234,216,0.8);text-decoration:none;
+              white-space:nowrap;flex-shrink:0;}
+  .gnav-brand:hover{color:#f0ead8;}
+  .gnav-links{display:flex;align-items:center;gap:2px;overflow-x:auto;
+              -webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .gnav-links::-webkit-scrollbar{display:none;}
+  .gnav-link{font-family:'Courier New',monospace;font-size:8.5px;letter-spacing:1.5px;
+             text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;
+             padding:6px 10px;white-space:nowrap;border-bottom:2px solid transparent;
+             transition:color 0.15s,border-color 0.15s;}
+  .gnav-link:hover{color:rgba(245,242,236,0.85);}
+  .gnav-link.active{color:#c9a84c;border-bottom-color:#c9a84c;}
+  .gnav-link.gstart{color:#c9a84c;border:1px solid rgba(201,168,76,0.35);
+                    padding:5px 10px;margin-right:6px;}
+  .gnav-link.gstart:hover{background:rgba(201,168,76,0.08);}
+  .breadcrumb{background:rgba(14,11,8,0.8);border-bottom:1px solid rgba(255,255,255,0.04);
+              padding:7px 24px;font-family:'Courier New',monospace;font-size:9px;
+              letter-spacing:1px;color:rgba(245,242,236,0.3);}
+  .breadcrumb a{color:rgba(245,242,236,0.4);text-decoration:none;}
+  .breadcrumb a:hover{color:#c9a84c;}
+  .breadcrumb span{color:rgba(255,255,255,0.18);margin:0 6px;}
+  .story-nav{display:flex;justify-content:space-between;align-items:center;
+             padding:24px;border-top:1px solid rgba(201,168,76,0.15);
+             max-width:800px;margin:0 auto;gap:12px;flex-wrap:wrap;}
+  .story-nav-link{font-family:'Courier New',monospace;font-size:9px;letter-spacing:2px;
+                  text-transform:uppercase;color:rgba(245,242,236,0.45);text-decoration:none;
+                  border:1px solid rgba(201,168,76,0.2);padding:8px 14px;
+                  transition:color 0.15s,border-color 0.15s;}
+  .story-nav-link:hover{color:#c9a84c;border-color:rgba(201,168,76,0.5);}
+  .story-nav-center{font-family:'Courier New',monospace;font-size:9px;letter-spacing:2px;
+                    text-transform:uppercase;color:rgba(245,242,236,0.25);text-decoration:none;}
+  .story-nav-center:hover{color:rgba(245,242,236,0.5);}
+</style>
+<link href="overrides.css" rel="stylesheet"/>
+<style>
+.evidence-box{margin:42px 0;padding:28px 30px;border:1px solid rgba(201,168,76,.24);background:rgba(201,168,76,.035);position:relative}
+.evidence-box.warning{border-left:3px solid rgba(201,168,76,.75)}
+.evidence-label,.research-card span,.final-label{display:block;font-family:'Courier New',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#c9a84c;margin-bottom:12px}
+.evidence-box h3{font-family:Georgia,serif;font-size:22px;font-style:italic;color:#f5f0e8;margin-bottom:12px;font-weight:normal}
+.evidence-box p{font-size:14px;line-height:1.9;color:#d8d0c4}
+.research-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:40px 0}
+.research-card{border:1px solid rgba(201,168,76,.16);padding:22px;background:rgba(10,8,5,.42)}
+.research-card strong{display:block;font-family:Georgia,serif;font-size:20px;font-style:italic;color:#f0ead8!important;margin-bottom:8px}
+.research-card p{font-size:12px!important;line-height:1.7!important;margin:0!important;color:#c8c0b4!important}
+.network{margin:44px auto;max-width:560px;text-align:center;padding:30px 18px;border-top:1px solid rgba(201,168,76,.15);border-bottom:1px solid rgba(201,168,76,.15)}
+.network-node{display:inline-block;min-width:220px;padding:14px 18px;border:1px solid rgba(201,168,76,.2);background:rgba(10,8,5,.6);font-family:'Courier New',monospace;font-size:10px;letter-spacing:1.5px;color:#e0d8cc}
+.network-node small{font-size:8px;color:#a8a090;letter-spacing:1px}
+.network-node.emphasis{border-color:rgba(201,168,76,.55);color:#f0d870}
+.network-arrow{font-family:'Courier New',monospace;font-size:9px;letter-spacing:1px;color:#a8a090;padding:10px}
+.network-children{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.network-children .network-node{min-width:180px}
+.status-table{margin:38px 0;border-top:1px solid rgba(201,168,76,.2)}
+.status-row{display:grid;grid-template-columns:1.35fr 1fr;gap:20px;padding:15px 12px;border-bottom:1px solid rgba(201,168,76,.1);font-family:'Courier New',monospace;font-size:10px;line-height:1.6}
+.status-row.head{color:#c9a84c;font-size:8px;letter-spacing:2px;text-transform:uppercase}
+.status-row b{font-weight:normal;color:#e0d8cc;letter-spacing:.6px}
+.open-questions{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+.open-questions>div{padding:22px;border:1px solid rgba(201,168,76,.15);background:rgba(10,8,5,.35)}
+.open-questions span{font-family:'Courier New',monospace;color:#c9a84c;font-size:9px;display:block;margin-bottom:10px}
+.open-questions strong{display:block;font-family:Georgia,serif;font-size:18px;font-style:italic;margin-bottom:7px}
+.open-questions p{font-size:12px!important;line-height:1.7!important;margin:0!important}
+.research-note-final{max-width:680px;margin:34px auto;padding:24px;border:1px solid rgba(201,168,76,.2);background:rgba(201,168,76,.03)}
+.research-note-final p{font-family:'Courier New',monospace;font-size:10px!important;line-height:1.8!important;color:#c8c0b4!important;margin:0!important}
+.research-note-final strong{color:#f5f0e8!important}
+@media(max-width:620px){
+ .research-grid,.open-questions{grid-template-columns:1fr}
+ .status-row{grid-template-columns:1fr;gap:6px}
+ .network-children{flex-direction:column;align-items:center}
+ .network-node,.network-children .network-node{min-width:0;width:100%;max-width:300px}
+}
+</style></head>
+<body>
+<nav class="gnav">
+<div class="gnav-inner">
+<a class="gnav-brand" href="index.html">Armstrong Family Archive</a>
+<div class="gnav-links">
+<a class="gnav-link gstart" href="start_here.html">★ Start Here</a>
+<a class="gnav-link" href="for_the_family.html">Site Guide</a>
+<a class="gnav-link" href="welcome.html">Our Family</a>
+<a class="gnav-link" href="bellville_family.html">The Family</a>
+<a class="gnav-link" href="we_are_bellville.html">We Are Bellville</a>
+<a class="gnav-link active" href="how_we_got_here.html">The Story</a>
+<a class="gnav-link" href="papertrail.html">Documents</a>
+<a class="gnav-link" href="photos.html">Photos</a>
+</div>
+</div>
+</nav>
+<div class="breadcrumb"><a href="index.html">Home</a><span>›</span><a href="how_we_got_here.html">The Story</a><span>›</span><strong>Rendy</strong></div>
+<section class="opening">
+<p class="opening-label">Mother of Easter Bell · Identity &amp; Enslavement Research</p>
+<h1 class="opening-name">Rendy</h1>
+<p class="opening-dates">Rendy · Rinde · Bland · Blayn · identity unresolved</p>
+<p class="opening-count">
+    Her daughter named her.<br/>
+    The surviving record does not yet tell us<br/>
+    who held her, where she was born, or where she came from.<br/><br/>
+<strong>This page follows the evidence — and the questions it leaves behind.</strong>
+</p>
+<p class="scroll-down">begin the research ↓</p>
+</section>
+<div class="story">
+<div class="chapter">
+<span class="chapter-date">The starting point · Easter's 1935 death certificate</span>
+<h2 class="chapter-title">A Name Survived. The Rest Is Still Being Recovered.</h2>
+<p>The strongest direct evidence for Rendy comes from her daughter, <strong>Easter</strong>. Easter's 1935 Texas death certificate identifies her mother by a name read in different ways across the surviving record pulls: <strong>Rendy Blayn</strong> in one reading and <strong>Rinde Bland</strong> in another.</p>
+<p>That variation matters. This archive does not need to decide that one spelling is “the correct one” simply because it looks cleaner. The responsible approach is to preserve the forms actually encountered and search them as variants of the same research subject while the underlying original image and related records are examined.</p>
+<div class="doc-pull">
+<span class="doc-pull-label">1935 · Easter Bell / Ester Pinks · Austin County, Texas</span>
+<div class="doc-pull-text">
+        Mother / mother's maiden name: <strong>Rinde Bland</strong><br/>
+        Earlier research pull: <strong>Rendy Blayn</strong><br/>
+        Informant: <strong>Clara Nezy</strong>, Easter's daughter
+      </div>
+<span class="doc-pull-source">Texas Deaths and Burials, 1903–1973 · State File No. 54496 · spelling requires source-image discipline</span>
+</div>
+<div class="evidence-box">
+<span class="evidence-label">DOCUMENTED</span>
+<h3>Rendy was Easter's mother.</h3>
+<p>The death certificate is the documentary starting point for the relationship. It does not identify Rendy's birthplace, parents, or enslaver.</p>
+</div>
+</div>
+<div class="chapter">
+<span class="chapter-date">Identity question · Name variants</span>
+<h2 class="chapter-title">The Name Itself — Unstable Across Every Reading</h2>
+<p>For this archive, <strong>Rendy</strong>, <strong>Rinde</strong>, <strong>Bland</strong>, and <strong>Blayn</strong> are retained as research variants. The point is not to declare that every historical appearance of those names belongs to this woman. The point is to prevent a spelling variation from closing a search before the evidence has been tested.</p>
+<p>The “Bland” reading opened a new research path. Instead of assuming the name belonged to a particular enslaving family, the archive searched the surname independently. That search found genuine Bland families in Texas, but it did not produce a documentary bridge to Rendy.</p>
+<div class="research-grid">
+<div class="research-card">
+<span>NAME FORM</span>
+<strong>Rendy</strong>
+<p>Family-history form used in the archive and earlier research.</p>
+</div>
+<div class="research-card">
+<span>RECORD READING</span>
+<strong>Rinde Bland</strong>
+<p>Appears in the later pull of Easter's death record.</p>
+</div>
+<div class="research-card">
+<span>EARLIER READING</span>
+<strong>Rendy Blayn</strong>
+<p>Appeared in an earlier pull of the same record type.</p>
+</div>
+<div class="research-card">
+<span>SEARCH VARIANT</span>
+<strong>Bland / Blayn</strong>
+<p>Kept together for research without treating either as an established enslaver surname.</p>
+</div>
+</div>
+</div>
+<div class="chapter">
+<span class="chapter-date">Theory tested · Halifax County, Virginia</span>
+<h2 class="chapter-title">The Virginia Theory We Could Not Prove</h2>
+<p>Jacob Blane became an important working theory because the 1850 Halifax County slave schedule contains an enslaved woman whose reported age is compatible with Rendy's estimated birth year. Stephen Blain and Amanda Blain were also examined as possible relatives because of shared surname and geography.</p>
+<p>But the documentary bridge never appeared. No record found so far identifies the woman in Jacob Blane's schedule as Rendy. No record found so far identifies her daughter as Easter. No record found so far establishes Stephen or Amanda as Rendy's siblings.</p>
+<div class="evidence-box warning">
+<span class="evidence-label">RESEARCH LEAD · NOT PROVEN</span>
+<h3>Jacob Blane is a theory, not Rendy's documented enslaver.</h3>
+<p>The age match is worth preserving because it explains why the theory was investigated. It is not sufficient to identify an unnamed woman with Rendy.</p>
+</div>
+<p>The disappearance of the two women from the Blane household between 1850 and 1860 is also unresolved. The old page described that disappearance as a sale. That wording is being retired. Without a deed, bill of sale, estate record, advertisement, trader record, or other direct evidence, we do not know what happened to the unnamed woman in the schedule.</p>
+<div class="doc-pull">
+<span class="doc-pull-label">What the Virginia lead actually gives us</span>
+<div class="doc-pull-text">
+        1850 Halifax County, Virginia · unnamed enslaved female · approximately age 34<br/>
+        Possible age correspondence to Rendy: <strong>yes</strong><br/>
+        Identity of woman as Rendy: <strong>not established</strong><br/>
+        Relationship to Stephen or Amanda Blain: <strong>not established</strong><br/>
+        Transfer from Virginia to Texas: <strong>not documented</strong>
+</div>
+</div>
+</div>
+<div class="chapter">
+<span class="chapter-date">Another lead · Fayette County, Texas</span>
+<h2 class="chapter-title">The Fayette County Question</h2>
+<p>A Blain family land-grant lead was also investigated in Fayette County, Texas, geographically close to Austin County. Earlier research used that proximity to suggest that Rendy could have been in Texas around the time of Easter's birth.</p>
+<p>That argument is no longer being presented as fact. The specific land-grant evidence has not been independently re-verified to the standard required for an identity claim about Rendy.</p>
+<div class="evidence-box">
+<span class="evidence-label">STATUS · UNRESOLVED</span>
+<h3>Proximity is not continuity.</h3>
+<p>A Blain/Blane presence in the region would make the name worth investigating. It does not place Rendy in that family without a record connecting the people.</p>
+</div>
+</div>
+<div class="chapter">
+<span class="chapter-date">New direction · Austin County, Texas</span>
+<h2 class="chapter-title">The Bland Search Closed One Door</h2>
+<p>The “Rinde Bland” reading prompted a direct search for Bland families in the Texas records. Daniel Bland, born about 1827 in Kentucky, and his wife were examined through the 1870 census and their 1871 marriage record.</p>
+<p>The marriage record was particularly useful because it established that Daniel Bland's wife, Jennie Miller, carried the Miller surname before that marriage. The Bland surname in that family therefore did not create a maternal line back to Rendy.</p>
+<p>A separate Black Bland family holding land in Austin County by 1896 was also identified. It is a genuine historical family, but no documentary bridge currently connects it to Rendy.</p>
+<div class="evidence-box">
+<span class="evidence-label">RESULT</span>
+<h3>The surname search produced real people — but not Rendy.</h3>
+<p>This is useful negative evidence. A surname match alone cannot be used to manufacture an ancestry connection.</p>
+</div>
+</div>
+<div class="chapter">
+<span class="chapter-date">A second route into the question · Gardner → Grimes → Bell</span>
+<h2 class="chapter-title">Another Road Into Texas</h2>
+<p>A different research network now deserves attention. The Gardner, Grimes, and Bell families appear repeatedly in the historical and DNA research surrounding this branch of the family. The existence of that network is documented; the connection from that network to Rendy is not.</p>
+<p>The current working reconstruction begins with <strong>John Gardner</strong>, born about 1755 in North Carolina, and his second wife, <strong>Easter James</strong>, born about 1758. Research indicates a daughter, <strong>Priss</strong>, and a son, <strong>Luke</strong>, who were enslaved. One active question is whether Priss — and possibly Luke — were later bequeathed to <strong>Eurydice Gardner</strong>, born about 1784 in North Carolina.</p>
+<p>Eurydice's marriage to <strong>George Grimes</strong> places the Gardner and Grimes families together. Their daughter <strong>Abigail Grimes</strong> later married <strong>Thomas Bell</strong>, creating a documented Bellville-era family network that overlaps the period and place in which Easter's history unfolds.</p>
+<div class="network">
+<div class="network-node">JOHN GARDNER<br/><small>ca. 1755</small></div>
+<div class="network-arrow">↓</div>
+<div class="network-node">EASTER JAMES<br/><small>ca. 1758 · second wife</small></div>
+<div class="network-children">
+<div class="network-node">PRISS<br/><small>enslaved · research lead</small></div>
+<div class="network-node">LUKE<br/><small>enslaved · research lead</small></div>
+</div>
+<div class="network-arrow">↓ possible inheritance / bequest — verify original</div>
+<div class="network-node">EURYDICE GARDNER<br/><small>ca. 1784</small></div>
+<div class="network-arrow">↓ marriage</div>
+<div class="network-node">GEORGE GRIMES<br/><small>ca. 1781</small></div>
+<div class="network-arrow">↓</div>
+<div class="network-node">ABIGAIL GRIMES<br/><small>1810–1860 · Bellville</small></div>
+<div class="network-arrow">↓ marriage</div>
+<div class="network-node emphasis">THOMAS BELL</div>
+</div>
+<div class="evidence-box warning">
+<span class="evidence-label">IMPORTANT</span>
+<h3>This is a research network, not Rendy's proven ancestry.</h3>
+<p>The Gardner → Grimes → Bell chain gives us people, places, estates, and records to investigate. It does not yet establish that Rendy was related to them or enslaved by them.</p>
+</div>
+</div>
+<div class="chapter">
+<span class="chapter-date">Bellville · The enslaver question</span>
+<h2 class="chapter-title">The Bell Connection Is Worth Testing</h2>
+<p>Easter carried the Bell surname before her marriage to Joseph Nichols. That fact makes the Bell family an important research direction. It does not, by itself, prove how she acquired the surname.</p>
+<p>Thomas Bell's household and estate records document enslaved people. Other Bell family members also appear in slavery-era property and estate records. The Bell family therefore belongs in the documentary search for the people who may have held Easter or members of her family.</p>
+<div class="evidence-box">
+<span class="evidence-label">CURRENT POSITION</span>
+<h3>Easter's Bell connection is a strong research lead.</h3>
+<p>The target record is still the direct bridge: a deed, estate inventory, will, bill of sale, probate distribution, household record, or other document naming Easter or an identifiable family unit containing her.</p>
+</div>
+<p>The archive will not fill that gap with an assumption. If the Bell connection is correct, the records should eventually give us a way to demonstrate it.</p>
+</div>
+<div class="chapter">
+<span class="chapter-date">Easter's family · A separate documentary path</span>
+<h2 class="chapter-title">Katie Thornton — The Daughter Outside the Marriage</h2>
+<p>Easter's story does not end with the Nichols surname. She also had a daughter, <strong>Katie Thornton</strong>, outside her marriage to Joseph Nichols.</p>
+<p>That fact opens another research network. The Thornton surname is not being treated as incidental. An <strong>Eli Thornton</strong> has already emerged in the research and needs to be tested against Katie's dates, location, household relationships, land, probate, and other documentary evidence.</p>
+<div class="doc-pull">
+<span class="doc-pull-label">THORNTON RESEARCH TARGET</span>
+<div class="doc-pull-text">
+<strong>Katie Thornton</strong> · daughter of Easter<br/>
+<strong>Eli Thornton</strong> · previously identified research subject<br/><br/>
+        Questions: relationship? residence? age? household? land? probate? witnesses? Bell/Grimes/Gardner overlap?
+      </div>
+</div>
+<p>This is not a claim that Eli Thornton was Katie's father or that the Thornton family explains Rendy. It is a documentary path that may eventually tell us more about Easter's life and the community around her.</p>
+</div>
+<div class="chapter">
+<span class="chapter-date">DNA evidence · Corroboration, not assignment</span>
+<h2 class="chapter-title">The DNA Signal</h2>
+<p>Gardner, Grimes, and Edmiston are surnames that recur among DNA matches connected to this broader research. That recurrence is meaningful as a research signal, but it cannot independently identify Rendy's parents, enslaver, or family relationship.</p>
+<p>The correct use of the DNA evidence here is directional: it tells us which documented families may deserve deeper examination. The historical records must establish the relationship.</p>
+<div class="evidence-box">
+<span class="evidence-label">METHOD</span>
+<h3>DNA tells us where to look. Documents must tell us why.</h3>
+<p>A DNA match to a Gardner, Grimes, or Edmiston descendant is not, by itself, proof that Rendy belonged to that family. It becomes stronger when combined with a documented geographic, household, probate, land, or kinship bridge.</p>
+</div>
+</div>
+<div class="chapter">
+<span class="chapter-date">What the evidence can say today</span>
+<h2 class="chapter-title">The Rendy File — Current Evidence Position</h2>
+<div class="status-table">
+<div class="status-row head"><span>QUESTION</span><span>CURRENT STATUS</span></div>
+<div class="status-row"><span>Was Rendy Easter's mother?</span><b>DOCUMENTED</b></div>
+<div class="status-row"><span>Was the name recorded as Rinde Bland?</span><b>DOCUMENTED READING</b></div>
+<div class="status-row"><span>Was “Rendy Blayn” another reading/variant?</span><b>DOCUMENTED READING / VARIANT</b></div>
+<div class="status-row"><span>Was Rendy enslaved?</span><b>HISTORICAL CONTEXT — INDIVIDUAL RECORD OPEN</b></div>
+<div class="status-row"><span>Was Rendy enslaved by a Bland/Blayn?</span><b>UNRESOLVED</b></div>
+<div class="status-row"><span>Was Rendy held by Jacob Blane?</span><b>UNPROVEN RESEARCH LEAD</b></div>
+<div class="status-row"><span>Was Rendy held by John Nichols?</span><b>NOT ESTABLISHED</b></div>
+<div class="status-row"><span>Was Easter held by the Bell family?</span><b>STRONG RESEARCH LEAD</b></div>
+<div class="status-row"><span>Was Easter held by John Nichols?</span><b>UNRESOLVED</b></div>
+<div class="status-row"><span>Was Katie Thornton Easter's daughter?</span><b>DOCUMENTED IN FAMILY RESEARCH</b></div>
+<div class="status-row"><span>Is Eli Thornton connected to Katie?</span><b>RESEARCH LEAD</b></div>
+<div class="status-row"><span>Is Rendy part of the Clarissa/Waldrop line?</span><b>UNRESOLVED</b></div>
+</div>
+</div>
+<div class="chapter">
+<span class="chapter-date">What has been ruled out · What remains open</span>
+<h2 class="chapter-title">The Search Did Not Fail. It Changed Direction.</h2>
+<p>Several explanations have been tested and weakened. The Jacob Blane theory has no documentary identity bridge. The Texas Bland families examined do not connect to Rendy. Rinda Hall was eliminated on chronology. John Nichols should not be presented as Rendy's enslaver.</p>
+<p>That leaves the questions that matter most: <strong>where was Rendy born, who enslaved her, how did Easter enter the Bell network, and what does the Thornton connection reveal?</strong></p>
+<div class="open-questions">
+<div><span>01</span><strong>Rendy's birthplace</strong><p>No confirmed birthplace has yet been established.</p></div>
+<div><span>02</span><strong>Rendy's enslaver</strong><p>Search Bland/Blayn, Gardner, Grimes, Bell, and related Austin County networks without assuming any one family is correct.</p></div>
+<div><span>03</span><strong>Easter's Bell connection</strong><p>Find the direct record connecting Easter to a Bell household or estate.</p></div>
+<div><span>04</span><strong>Katie Thornton</strong><p>Test Katie and Eli Thornton against the records for a documentary relationship.</p></div>
+<div><span>05</span><strong>Priss and Luke</strong><p>Locate and verify the Gardner estate/will language concerning their possible bequest to Eurydice.</p></div>
+<div><span>06</span><strong>Rendy's maternal placement</strong><p>Do not place her under Clarissa/Waldrop until a documentary or properly corroborated bridge is found.</p></div>
+</div>
+</div>
+<div class="one-document">
+<span class="one-doc-label">The Document That Started the Search</span>
+<h2 class="one-doc-title">Her Daughter Remembered the Name</h2>
+<div class="death-cert">
+<div class="death-cert-header">State of Texas · Standard Certificate of Death · Austin County · December 17, 1935</div>
+<div class="cert-field"><span class="cert-label">Daughter</span><span class="cert-value highlight">Easter / Ester Pinks</span></div>
+<div class="cert-field"><span class="cert-label">Birthplace</span><span class="cert-value">Texas</span></div>
+<div class="cert-field"><span class="cert-label">Mother</span><span class="cert-value highlight">Rinde Bland</span></div>
+<div class="cert-field"><span class="cert-label">Other research reading</span><span class="cert-value">Rendy Blayn</span></div>
+<div class="cert-field"><span class="cert-label">Informant</span><span class="cert-value">Clara Nezy · Easter's daughter</span></div>
+<p class="cert-note">This record establishes the starting point. Everything beyond it must be built by finding independent documentary bridges.</p>
+</div>
+</div>
+<div class="the-line">
+<span class="line-label">The Family Line · Documented Where Possible, Open Where Necessary</span>
+<div class="line-chain">
+<div class="line-link"><div class="line-dot highlight"></div><div><span class="line-name gold">Rendy / Rinde Bland / Blayn</span><span class="line-detail">mother of Easter · direct identification comes through Easter's death certificate · enslaver and birthplace unresolved</span></div></div>
+<div class="line-link"><div class="line-dot highlight"></div><div><span class="line-name gold">Easter Bell</span><span class="line-detail">born Texas · daughter of Rendy · Bell surname precedes marriage · married Joseph Nichols · mother of Katie Thornton</span></div></div>
+<div class="line-link"><div class="line-dot"></div><div><span class="line-name">Katie Thornton</span><span class="line-detail">daughter of Easter outside the Nichols marriage · Thornton network under investigation</span></div></div>
+<div class="line-link"><div class="line-dot"></div><div><span class="line-name">Hellen Nichols Armstrong</span><span class="line-detail">descendant of Easter and Joseph · later Armstrong line</span></div></div>
+<div class="line-link"><div class="line-dot highlight"></div><div><span class="line-name gold">Jasmine M. Lee</span><span class="line-detail">present-day researcher preserving the evidence trail and unresolved questions</span></div></div>
+</div>
+</div>
+<div class="closing">
+<h2 class="closing-title">One Name.<br/>Several Readings.<br/>A Research Trail Still Open.</h2>
+<p class="closing-body">
+      Rendy is not a finished story. She is a documented maternal relationship surrounded by unanswered historical questions. The archive will not turn a theory into a fact simply because the theory fits.
+    </p>
+<p class="closing-body">
+<strong>Jacob Blane remains a tested lead. Bland remains a surname trail. Gardner, Grimes, Edmiston, and Bell now form a separate research network to investigate. Katie Thornton and Eli Thornton open another path.</strong>
+</p>
+<p class="closing-body">
+      The goal is not to choose the most beautiful explanation. It is to find the record that makes the explanation defensible.
+    </p>
+<div class="research-note-final">
+<p class="final-label">2026 Research Position</p>
+<p><strong>Do not merge Rendy into the Clarissa/Waldrop line yet.</strong> Do not identify an unnamed slave-schedule woman as Rendy without a continuity bridge. Do not identify John Nichols as her enslaver. Do not treat a Gardner, Grimes, Edmiston, Bell, Bland, or Blayn connection as established solely from surname recurrence or DNA.</p>
+</div>
+<p class="research-credit">Research by Jasmine M. Lee · Armstrong Family Archive · Evidence preserved as found · hypotheses labeled as hypotheses</p>
+<div>
+<a class="back-link" href="clarissa_story.html">← Clarissa · Her Story</a>
+<a class="back-link" href="patience_story.html">← Patience · Her Story</a>
+<a class="back-link" href="family_tree.html">← Return to Archive</a>
+</div>
+</div>
+</div>
+<script src="sidebar.js"></script>
+</body>
+</html>

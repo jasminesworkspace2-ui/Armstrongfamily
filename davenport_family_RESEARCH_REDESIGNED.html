@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Davenport Family · Armstrong Family Archive</title>
+
+<style>
+:root{
+  --ink:#0a0907;--ink2:#11100d;--paper:#eee8da;--paper2:#d8cfbd;
+  --muted:#9f988b;--faint:#686258;--gold:#c8a552;--gold2:#e1c675;
+  --red:#9e4a3d;--line:rgba(218,202,164,.17);--line2:rgba(255,255,255,.07);
+  --serif:Georgia,"Times New Roman",serif;--sans:Arial,Helvetica,sans-serif;
+  --mono:"Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--serif);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+strong{font-weight:700;color:#fff}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(8,7,5,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+.topbar-in{max-width:1180px;margin:auto;height:52px;padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font:italic 15px var(--serif);color:var(--paper);text-decoration:none;white-space:nowrap}
+.nav{display:flex;gap:4px;overflow:auto}
+.nav a{font:10px var(--mono);letter-spacing:1.4px;text-transform:uppercase;color:#aaa398;text-decoration:none;padding:8px 10px;white-space:nowrap}
+.nav a.active{color:var(--gold2);border-bottom:1px solid var(--gold)}
+.crumb{max-width:1180px;margin:auto;padding:10px 22px;font:9px var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:#716b61}
+.hero{min-height:72vh;display:grid;align-items:end;position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:
+ radial-gradient(circle at 75% 25%,rgba(200,165,82,.11),transparent 30%),
+ linear-gradient(115deg,#090806 0%,#15120d 53%,#0a0907 100%)}
+.hero:after{content:"DAVENPORT";position:absolute;right:-40px;bottom:-55px;font:italic 18vw/1 var(--serif);color:rgba(255,255,255,.025);pointer-events:none}
+.hero-in{max-width:1180px;width:100%;margin:auto;padding:110px 30px 78px;position:relative;z-index:1}
+.eyebrow{font:10px var(--mono);letter-spacing:3px;text-transform:uppercase;color:var(--gold2);margin-bottom:28px}
+.hero h1{font:clamp(46px,7vw,82px)/.98 var(--serif);font-weight:400;letter-spacing:-1.5px;margin:0 0 20px;color:var(--paper)}
+.hero h1 em{color:var(--gold2)}
+.hero-deck{max-width:760px;font:18px/1.75 var(--serif);color:#c7c0b4;margin:0}
+.hero-meta{margin-top:34px;display:flex;flex-wrap:wrap;gap:8px 26px;font:9px var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:#827b70}
+.hero-meta span:before{content:"";display:inline-block;width:5px;height:5px;background:var(--gold);margin:0 9px 1px 0}
+.layout{max-width:1180px;margin:auto;padding:0 30px}
+.section{padding:82px 0;border-bottom:1px solid var(--line)}
+.section-head{display:grid;grid-template-columns:minmax(250px,.75fr) minmax(320px,1.25fr);gap:60px;margin-bottom:42px}
+.kicker{font:9px var(--mono);letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:13px}
+.section h2{font:400 clamp(28px,4vw,45px)/1.08 var(--serif);margin:0;color:var(--paper)}
+.section-intro{font:16px/1.9 var(--serif);color:#bdb5a8;margin:0}
+.record-strip{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:22px 18px;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat-num{font:25px var(--serif);color:var(--gold2)}
+.stat-label{margin-top:5px;font:8px/1.5 var(--mono);letter-spacing:1.8px;text-transform:uppercase;color:#7f786d}
+.record{border-top:1px solid var(--line);padding:30px 0;display:grid;grid-template-columns:150px minmax(0,1fr);gap:34px}
+.record:first-child{border-top:0}
+.record-date{font:10px/1.6 var(--mono);letter-spacing:1.3px;text-transform:uppercase;color:var(--gold2)}
+.record-type{margin-top:8px;font:8px/1.5 var(--mono);letter-spacing:1.2px;text-transform:uppercase;color:#716a60}
+.record h3{font:24px/1.2 var(--serif);font-weight:400;margin:0 0 12px;color:#f1ecdf}
+.record p{font:15px/1.85 var(--serif);color:#bdb5a9;margin:0 0 15px}
+.source-ref{font:9px/1.7 var(--mono);letter-spacing:.8px;color:#8c8478;border-left:2px solid rgba(200,165,82,.45);padding-left:12px}
+.source-ref b{color:#cfc5b4}
+.person-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line)}
+.person{background:#0d0c09;padding:27px 26px;min-height:180px;transition:background .25s,transform .25s}
+.person:hover{background:#14110c;transform:translateY(-2px)}
+.person-name{font:italic 23px/1.15 var(--serif);color:var(--paper);margin-bottom:7px}
+.person-role{font:8px var(--mono);letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.person p{font:14px/1.8 var(--serif);color:#afa79b;margin:0}
+.badge{display:inline-block;font:8px var(--mono);letter-spacing:1.5px;text-transform:uppercase;padding:5px 7px;border:1px solid rgba(200,165,82,.28);color:#b8a66f;margin-top:16px}
+.family-chain{border-left:1px solid var(--gold);margin:30px 0 0 10px;padding-left:30px}
+.chain-row{position:relative;padding:12px 0 18px}
+.chain-row:before{content:"";position:absolute;left:-35px;top:20px;width:9px;height:9px;border:1px solid var(--gold);background:var(--ink);border-radius:50%}
+.chain-main{font:20px var(--serif);color:var(--paper)}
+.chain-sub{font:9px/1.7 var(--mono);color:#817a70;letter-spacing:.8px;margin-top:4px}
+.will-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.will-card{border:1px solid var(--line);background:#0d0c09;padding:28px}
+.will-card h3{font:22px var(--serif);font-weight:400;margin:0 0 15px}
+.will-card p{font:14px/1.8 var(--serif);color:#aaa297;margin:0}
+.quote{margin:30px 0;padding:28px 30px;border-left:3px solid var(--gold);background:rgba(200,165,82,.045)}
+.quote p{font:19px/1.75 var(--serif);font-style:italic;color:#ddd4c5;margin:0}
+.quote .cite{display:block;margin-top:12px;font:8px var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:#80786c}
+.notice{margin-top:30px;padding:20px 22px;background:rgba(158,74,61,.08);border:1px solid rgba(158,74,61,.25)}
+.notice-title{font:8px var(--mono);letter-spacing:2px;text-transform:uppercase;color:#c78072;margin-bottom:8px}
+.notice p{font:13px/1.8 var(--serif);color:#b7aea2;margin:0}
+.sources{padding:65px 0 90px}
+.sources h2{font:30px var(--serif);font-weight:400;margin:0 0 28px}
+.sources ol{margin:0;padding-left:25px}
+.sources li{font:10px/1.9 var(--mono);color:#898176;margin-bottom:7px;padding-left:5px}
+.footer{border-top:1px solid var(--line);padding:40px 30px;text-align:center}
+.footer a{display:inline-block;text-decoration:none;font:9px var(--mono);letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);padding:12px 18px;margin:4px}
+@media(max-width:760px){
+ .topbar-in{height:auto;padding:12px 16px;align-items:flex-start}.nav{max-width:62vw}
+ .hero-in,.layout{padding-left:20px;padding-right:20px}.hero{min-height:66vh}
+ .section-head{grid-template-columns:1fr;gap:18px}.record-strip{grid-template-columns:1fr 1fr}
+ .stat:nth-child(2){border-right:0}.stat{border-bottom:1px solid var(--line)}
+ .record{grid-template-columns:1fr;gap:10px}.person-grid,.will-grid{grid-template-columns:1fr}
+}
+</style>
+
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="welcome.html">Armstrong Family Archive</a>
+    <div class="nav">
+      <a href="start_here.html">Start Here</a>
+      <a href="bell_family.html">The Bells</a>
+      <a href="john_nichols.html">John Nichols</a>
+      <a href="waldrop_enslavers.html">The Waldrops</a>
+      <a class="active" href="davenport_family.html">The Davenports</a>
+    </div>
+  </div>
+</nav>
+<div class="crumb">Home / The Enslaving Families / Davenport</div>
+
+<header class="hero">
+  <div class="hero-in">
+    <div class="eyebrow">Armstrong Family Archive · Davenport Research File</div>
+    <h1>Francis <em>Davenport</em></h1>
+    <p class="hero-deck">Slaveholding, deeds, probate, family relationships, and enslaved people named in the Davenport record.</p>
+    <div class="hero-meta">
+      <span>Virginia</span><span>Newberry County, South Carolina</span><span>1740–1803</span><span>Primary record emphasis</span>
+    </div>
+  </div>
+</header>
+
+<main class="layout">
+
+<section class="section">
+  <div class="section-head">
+    <div><div class="kicker">01 · Scope of the file</div><h2>A record of people, property, and relationships.</h2></div>
+    <p class="section-intro">This file follows Francis Davenport and the Davenport records in which enslaved people are named, transferred, inventoried, inherited, or otherwise appear. The purpose is not to collapse every person with the Davenport name into one household, but to preserve the documentary trail and identify where continuity is established, where it is only possible, and where the record remains open.</p>
+  </div>
+  <div class="record-strip">
+    <div class="stat"><div class="stat-num">1792</div><div class="stat-label">Early Davenport enslaved-person record</div></div>
+    <div class="stat"><div class="stat-num">1795</div><div class="stat-label">Patience conveyed to Patty Waldrop</div></div>
+    <div class="stat"><div class="stat-num">1798</div><div class="stat-label">Francis will names Peter</div></div>
+    <div class="stat"><div class="stat-num">1842</div><div class="stat-label">Jonathan Davenport will</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div><div class="kicker">02 · Francis Davenport</div><h2>Family identification.</h2></div>
+    <p class="section-intro">Family reconstruction places Francis Davenport in the Davenport family descending from Isaac Davenport Sr. and Phoebe Eva Sawyer. The supplied research also documents four marriages associated with Francis, while noting unresolved gaps in the family reconstruction.</p>
+  </div>
+  <div class="person-grid">
+    <article class="person"><div class="person-role">Father</div><div class="person-name">Isaac Davenport Sr.</div><p>Born 1693; died 1749. Married Phoebe Eva Sawyer. The supplied FamilySearch reconstruction lists seven children.</p></article>
+    <article class="person"><div class="person-role">Subject</div><div class="person-name">Francis Davenport</div><p>Born 1718; died 1803. The Davenport record associated with the 1795 Newberry conveyances naming Patience and other enslaved people.</p><span class="badge">Primary research subject</span></article>
+    <article class="person"><div class="person-role">Marriage record</div><div class="person-name">Ann Whaley</div><p>Marriage dated July 20, 1740, Campbell, Albemarle County, Virginia. The supplied family reconstruction attributes ten children to this marriage.</p></article>
+    <article class="person"><div class="person-role">Later marriage</div><div class="person-name">Mary Young · Mary Turner</div><p>Mary Young appears as a later wife in Newberry research. Mary Turner appears as the widow of William Turner and is the wife named in Francis's 1798 will in connection with Peter.</p></article>
+  </div>
+  <div class="notice"><div class="notice-title">Research caution</div><p>The supplied FamilySearch record itself carries a research alert. The Virginia marriage, later North Carolina land trail, Newberry residence, four-marriage reconstruction, and parentage of Martha “Patty” Davenport require the distinctions already preserved in the source material.</p></div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div><div class="kicker">03 · Deeds & conveyances</div><h2>August 1795: the names in the record.</h2></div>
+    <p class="section-intro">Newberry County Deed Book C records a concentrated series of Davenport conveyances in August 1795. These entries are the documentary foundation for the Davenport–Waldrop connection and also preserve the names of enslaved people who went into other Davenport households.</p>
+  </div>
+
+  <article class="record">
+    <div><div class="record-date">Aug. 1, 1795</div><div class="record-type">Deed C:369</div></div>
+    <div><h3>Francis Davenport Sr. → Nancy Waldrop</h3><p>An enslaved person was conveyed to Nancy Waldrop. The surviving research identifies the person as unnamed in the record under review. Nancy is therefore a documented recipient; the person's later identity remains unresolved.</p><div class="source-ref"><b>Newberry County, SC</b> · Deed Book C · p. 369 · Aug. 1, 1795</div></div>
+  </article>
+
+  <article class="record">
+    <div><div class="record-date">Aug. 4, 1795</div><div class="record-type">Deed C:367</div></div>
+    <div><h3>Francis Davenport Sr. → Patty Waldrop</h3><p>The deed identifies <strong>one enslaved girl named Patience</strong>. Witnesses: Isaac Davenport, Edward Turner, and Elizabeth Towling. The deed was proved before Charles Griffin, J.P., on August 5.</p><div class="source-ref"><b>Record language preserved:</b> “Francis Davenport, Sr., to daughter Patty Waldrop, gift, one negro girl named Patience.”</div></div>
+  </article>
+
+  <article class="record">
+    <div><div class="record-date">Aug. 4, 1795</div><div class="record-type">Deed C:365</div></div>
+    <div><h3>Francis Davenport Sr. → his children</h3><p>The supplied transcription describes a larger conveyance of slaves and household goods to Isaac Davenport, William Davenport, David Davenport, Sarah Beeks, and Abigail Davenport.</p><div class="source-ref"><b>Witnesses:</b> Ezekiel Waldrop · Edward Turner · George Goggans · <b>Proved:</b> Charles Griffin, J.P. · Aug. 5, 1795</div></div>
+  </article>
+
+  <div class="person-grid">
+    <article class="person"><div class="person-role">To Isaac Davenport</div><div class="person-name">Rachel · Fanny/Jenny · Peter · Coy · Mingo · Rachel</div><p>The supplied page preserves a second Rachel described as a girl. These names belong to Isaac's 1795 receipt and are not automatically part of Patience's family.</p></article>
+    <article class="person"><div class="person-role">To William Davenport</div><div class="person-name">Dick</div><p>Named as the enslaved person conveyed to William Davenport.</p></article>
+    <article class="person"><div class="person-role">To David Davenport</div><div class="person-name">Oliver</div><p>Named in connection with David Davenport and a 200-acre conveyance.</p></article>
+    <article class="person"><div class="person-role">To Sarah Beeks</div><div class="person-name">Tom</div><p>Named as the enslaved person conveyed to Sarah Beeks.</p></article>
+    <article class="person"><div class="person-role">To Abigail Davenport</div><div class="person-name">Nan</div><p>Named as the enslaved person conveyed to Abigail Davenport.</p></article>
+    <article class="person"><div class="person-role">Separate Waldrop recipient</div><div class="person-name">Unnamed person</div><p>A separate August 1 conveyance to Nancy Waldrop remains an unidentified-person record.</p></article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div><div class="kicker">04 · Enslaved people index</div><h2>Names preserved beyond the direct family line.</h2></div>
+    <p class="section-intro">The archive records these people because they appear in Davenport documents, not only because they connect to Patience. A future researcher may be looking for any one of these names.</p>
+  </div>
+  <div class="person-grid">
+    <article class="person"><div class="person-name">Patience</div><div class="person-role">1795 · Patty Waldrop</div><p>Named in Deed Book C:367 as an enslaved girl conveyed by Francis Davenport Sr. to his daughter Patty Waldrop.</p></article>
+    <article class="person"><div class="person-name">Rachel</div><div class="person-role">1795 · Isaac Davenport</div><p>Named in the larger August 1795 distribution. Do not merge this Rachel with Patience's later daughter without documentary continuity.</p></article>
+    <article class="person"><div class="person-name">Fanny / Jenny</div><div class="person-role">1795 · Isaac Davenport</div><p>The supplied record preserves the name as Fanny (or Jenny). Exact reading and later continuity remain research questions.</p></article>
+    <article class="person"><div class="person-name">Peter</div><div class="person-role">1795 · 1798</div><p>Named in the 1795 distribution to Isaac and again in Francis Davenport's 1798 will in connection with Mary Turner. Whether these references are the same man remains unresolved.</p></article>
+    <article class="person"><div class="person-name">Coy · Mingo · Dick · Oliver · Tom · Nan</div><div class="person-role">1795 distribution</div><p>Each is named in the August 1795 Davenport distribution and preserved here as an independent research subject.</p></article>
+    <article class="person"><div class="person-name">Milly · Selay · Jack</div><div class="person-role">1798 · Isaac Davenport</div><p>Owen Flinn conveyed Milly and her children Selay and Jack to Isaac Davenport for $550. The record explicitly identifies Selay and Jack as Milly's children.</p></article>
+    <article class="person"><div class="person-name">Easter</div><div class="person-role">1792 · Davenport record</div><p>Francis Davenport conveyed an enslaved girl named Easter to James Davenport in December 1792. Later Davenport/Burton records create a separate Easter–Bluford research trail.</p></article>
+    <article class="person"><div class="person-name">Bluford</div><div class="person-role">1829 · 1842</div><p>Jonathan Davenport purchased Bluford in 1829; Jonathan's 1842 will identifies Bluford as the son of Easter. This is a documented enslaved-family relationship.</p></article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div><div class="kicker">05 · Probate</div><h2>Francis Davenport's 1798 will.</h2></div>
+    <p class="section-intro">The will provides a second legal record after the 1795 distribution and is especially important because it names Peter in a life-estate provision for Mary Turner.</p>
+  </div>
+  <div class="quote"><p>“...wife Mary, to have Negro Peter, farm animals, household furniture, life estate...”</p><span class="cite">Newberry County, South Carolina · Wills D:40 · January 23, 1798</span></div>
+  <div class="notice"><div class="notice-title">Peter — continuity question</div><p>The 1795 distribution names Peter among persons conveyed to Isaac Davenport. The 1798 will separately names an enslaved man Peter for Mary. The two references should not be merged as fact until a documentary bridge is found.</p></div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div><div class="kicker">06 · Davenport property network</div><h2>Separate transactions. Related legal world.</h2></div>
+    <p class="section-intro">The Davenport record extends beyond Francis's household. These transactions are included because they establish other enslaved families and legal relationships involving Davenport descendants and associated families.</p>
+  </div>
+  <article class="record">
+    <div><div class="record-date">Sept. 19, 1798</div><div class="record-type">Deed D:64–65</div></div>
+    <div><h3>Owen Flinn → Isaac Davenport</h3><p>For $550, Owen Flinn conveyed <strong>Milly, a woman; Selay, her child; and Jack, her child</strong> to Isaac Davenport. Witnessed by Sarey Waldrop; proved by David Waldrop October 17; recorded November 12, 1798.</p><div class="source-ref"><b>Family group explicitly stated:</b> Milly → Selay and Jack</div></div>
+  </article>
+  <article class="record">
+    <div><div class="record-date">Jan. 15, 1846</div><div class="record-type">Estate sale</div></div>
+    <div><h3>John G. Greeves estate · Claiborne County, Mississippi</h3><p>Hamilton Cooper purchased seven enslaved people for $3,210: Jack, Sing, Patience, Little Dick, Hiram, Auguster, and Madison, an infant. This is a separate Patience and a separate Jack unless continuity is established.</p><div class="source-ref"><b>Do not merge:</b> shared names do not establish identity.</div></div>
+  </article>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div><div class="kicker">07 · Easter & Bluford</div><h2>An enslaved family documented across records.</h2></div>
+    <p class="section-intro">This research track is separate from Patience's line. It is retained because the Davenport records provide an unusually important continuity clue: a later will explicitly states a parent-child relationship.</p>
+  </div>
+  <div class="family-chain">
+    <div class="chain-row"><div class="chain-main">Easter</div><div class="chain-sub">1792 · Francis Davenport → James Davenport · enslaved girl named Easter</div></div>
+    <div class="chain-row"><div class="chain-main">Easter → Bluford</div><div class="chain-sub">1829 · Davenport/Burton estate records · continuity requires careful record-by-record reconstruction</div></div>
+    <div class="chain-row"><div class="chain-main">Bluford</div><div class="chain-sub">1842 · Jonathan Davenport's will identifies Bluford as “son of Easter”</div></div>
+  </div>
+  <div class="notice"><div class="notice-title">Documentary significance</div><p>The 1842 parent-child statement is treated as stronger evidence of relationship than an age match, repeated surname, or proximity alone. The 1792-to-1829 continuity remains a separate question.</p></div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div><div class="kicker">08 · Jonathan Davenport</div><h2>The 1842 will and enslaved family groups.</h2></div>
+    <p class="section-intro">Jonathan Davenport's will is one of the most important Davenport records in the research set because it identifies enslaved people in family relationships rather than merely as unnamed property.</p>
+  </div>
+  <div class="will-grid">
+    <article class="will-card"><h3>Bluford</h3><p>Clause 6 identifies Bluford as <strong>“son of Easter”</strong> and provides for him to James M. Davenport.</p></article>
+    <article class="will-card"><h3>Sarah & children</h3><p>Clause 7 names Sarah and her children <strong>Solomon, Elvira, Admiral, and Muzilla</strong>, together with old Sam and his wife Esther.</p></article>
+    <article class="will-card"><h3>Martha & Anderson</h3><p>Clause 4 identifies Martha and Anderson in a distribution involving Mary, Nancy, and Emily.</p></article>
+    <article class="will-card"><h3>Albert & Nelson</h3><p>Clause 8 records Albert and Nelson in a separate distribution, alongside Dorcas, Ann, and Peggy.</p></article>
+  </div>
+  <div class="source-ref" style="margin-top:24px"><b>Primary source:</b> South Carolina Court of Equity, Newberry District · FamilySearch Image Group 008300158 · Images 430–431 · Jonathan Davenport will, 1842</div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div><div class="kicker">09 · Patience continuity</div><h2>The Davenport record connects to the Waldrop file.</h2></div>
+    <p class="section-intro">The documentary bridge presently used in this archive begins with the August 4, 1795 conveyance and continues through the Waldrop records. The route below is deliberately limited to the records currently treated as established in this research.</p>
+  </div>
+  <div class="family-chain">
+    <div class="chain-row"><div class="chain-main">Francis Davenport Sr. → Patty Waldrop</div><div class="chain-sub">Aug. 4, 1795 · Newberry County, SC · Deed Book C:367 · Patience named</div></div>
+    <div class="chain-row"><div class="chain-main">Hezekiah Waldrop → Stephen R. Waldrop</div><div class="chain-sub">1827 · Mississippi · Patience, Rachel and Thomas named; Clarissa not named in this transfer</div></div>
+    <div class="chain-row"><div class="chain-main">1839 distribution</div><div class="chain-sub">Rankin County, Mississippi · Patience and descendants distributed among Hezekiah's children</div></div>
+    <div class="chain-row"><div class="chain-main">Stephen Waldrop household</div><div class="chain-sub">1870 Louisiana census research lead · elderly “P.”, age 90, born Virginia · source verification retained as necessary</div></div>
+  </div>
+</section>
+
+<section class="sources">
+  <h2>Source Register</h2>
+  <ol>
+    <li>Newberry County, South Carolina, Deed Book C, pp. 365, 367, 369 · August 1–5, 1795 · Francis Davenport Sr. conveyances.</li>
+    <li>Newberry County, South Carolina, Wills D:40 · January 23, 1798 · Francis Davenport Sr.</li>
+    <li>Newberry County, South Carolina, Deed Book D, pp. 64–65 · September 19, 1798 · Owen Flinn → Isaac Davenport.</li>
+    <li>South Carolina Court of Equity, Newberry District · Jonathan Davenport will, 1842 · FamilySearch Image Group 008300158 · images 430–431.</li>
+    <li>Claiborne County, Mississippi, estate sale · John G. Greeves · January 15, 1846.</li>
+    <li>FamilySearch Family Tree · Isaac Davenport Sr. and Phoebe Eva Sawyer · supplied family reconstruction.</li>
+    <li>FamilySearch Family Tree · Francis Davenport Sr. · supplied marriage/family research and standing research alert.</li>
+    <li>Lt. Anthony Allaire's Diary, June 20–21, 1780, published in Lyman C. Draper, <em>King's Mountain and Its Heroes</em> (1881), pp. 498–499.</li>
+    <li>Clark, Murtie June, <em>Loyalists in the Southern Campaign of the Revolutionary War</em>, Vol. I.</li>
+    <li>Davenport, Dr. John Scott, <em>Newberry Davenport Data</em>, compiled from Newberry County probate and deed records.</li>
+  </ol>
+</section>
+</main>
+
+<footer class="footer">
+  <a href="waldrop_enslavers.html">← The Waldrops</a>
+  <a href="patience_story.html">Patience's Story →</a>
+  <a href="research_archive.html">Research Archive</a>
+</footer>
+
+</body>
+</html>

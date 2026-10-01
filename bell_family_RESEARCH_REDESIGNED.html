@@ -1,0 +1,230 @@
+<!doctype html><html lang='en'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>The Bells · Armstrong Family Archive</title><meta name='description' content='Documentary reconstruction of the Bell family, Bellville, and the enslaved people named in the surviving records.'><style>
+:root{
+ --ink:#090806;--ink2:#11100d;--paper:#f3eee3;--cream:#ddd4c4;--muted:#968d7d;
+ --gold:#c9a84c;--gold2:#e6c968;--line:rgba(201,168,76,.20);
+ --green:#86bd91;--rust:#d58a70;--display:Georgia,'Times New Roman',serif;
+ --body:Georgia,'Times New Roman',serif;--mono:'Courier New',monospace;
+ --ease:cubic-bezier(.16,1,.3,1)
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:var(--body);overflow-x:hidden}
+strong{color:var(--paper);font-weight:600} em{color:var(--gold2)}
+a{color:var(--gold2)}
+.gnav{position:sticky;top:0;z-index:100;background:rgba(9,8,6,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.gnav-inner{max-width:1120px;margin:auto;height:54px;padding:0 22px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.gnav-brand{font:italic 15px var(--display);color:var(--paper);text-decoration:none;white-space:nowrap}
+.gnav-links{display:flex;gap:2px;overflow:auto;scrollbar-width:none}.gnav-links::-webkit-scrollbar{display:none}
+.gnav-link{font:9px var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:#8f887c;text-decoration:none;padding:7px 10px;white-space:nowrap;border-bottom:2px solid transparent}
+.gnav-link.active{color:var(--gold);border-bottom-color:var(--gold)}
+.hero{min-height:86vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--line);
+ background:radial-gradient(ellipse at center,rgba(201,168,76,.09),transparent 62%)}
+.hero:before,.hero:after{content:"";position:absolute;left:50%;width:1px;background:linear-gradient(transparent,var(--gold),transparent);opacity:.35}
+.hero:before{top:0;height:36%}.hero:after{bottom:0;height:28%}
+.hero-content{max-width:700px;padding:80px 24px;position:relative;z-index:2}
+.eyebrow,.chapter-label,.source-label,.record-meta,.status-title{font:9px var(--mono);letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block}
+.hero .eyebrow{margin-bottom:25px}.hero h1{font:italic clamp(54px,10vw,104px)/.95 var(--display);color:var(--paper);margin-bottom:20px}
+.hero .subtitle{font-size:clamp(16px,2.4vw,19px);line-height:2;color:var(--cream);font-style:italic;max-width:620px;margin:auto}
+.hero .dates{font:10px var(--mono);letter-spacing:2px;color:var(--muted);margin-top:30px}
+.scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font:8px var(--mono);letter-spacing:3px;color:#625d53;animation:breathe 3s infinite}
+@keyframes breathe{50%{opacity:.3}100%{opacity:1}}
+.story{max-width:760px;margin:auto;padding:0 22px}
+.chapter{padding:82px 0;border-top:1px solid var(--line);position:relative}
+.chapter:first-child{border-top:0}
+.chapter h2{font:italic clamp(28px,5vw,43px)/1.15 var(--display);color:var(--paper);margin:12px 0 30px}
+.prose p{font-size:16px;line-height:2.08;color:#ddd5c8;margin-bottom:24px}
+.prose p:last-child{margin-bottom:0}
+.pull{margin:42px 0;padding:28px 32px;border-left:3px solid var(--gold);background:rgba(201,168,76,.045)}
+.pull p{font:italic clamp(19px,3vw,25px)/1.6 var(--display);color:var(--paper);margin:0}
+.pull small{display:block;margin-top:13px;font:9px var(--mono);letter-spacing:1.5px;color:var(--muted)}
+.doc{margin:38px 0;border:1px solid var(--line);background:rgba(14,12,9,.75);overflow:hidden;position:relative}
+.doc:after{content:"";position:absolute;left:-30%;top:0;width:25%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);transform:skewX(-18deg);animation:scan 6s ease-in-out infinite}
+@keyframes scan{0%,65%{left:-30%}100%{left:130%}}
+.doc-head{padding:12px 18px;border-bottom:1px solid var(--line);font:8px var(--mono);letter-spacing:2px;text-transform:uppercase;color:#a59c8d;background:rgba(0,0,0,.2)}
+.doc-body{padding:21px 23px;font:12px/1.9 var(--mono);color:#c7beaf}
+.evidence{margin:30px 0;padding:22px 24px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.018)}
+.evidence h3{font:italic 21px var(--display);color:var(--paper);margin-bottom:10px}
+.evidence p{font-size:13px;line-height:1.9;color:#bdb4a6}
+.badge{display:inline-block;padding:3px 8px;margin-bottom:12px;border:1px solid var(--line);font:8px var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--gold)}
+.badge.confirmed{color:var(--green);border-color:rgba(134,189,145,.3)}.badge.open{color:var(--rust);border-color:rgba(213,138,112,.3)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:28px 0}
+.card{padding:22px;border:1px solid var(--line);background:rgba(16,14,11,.8);transition:transform .35s var(--ease),border-color .35s,background .35s}
+.card:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.48);background:rgba(201,168,76,.045)}
+.card .num{font:23px var(--mono);color:var(--gold2);margin-bottom:8px}.card h3{font:italic 20px var(--display);color:var(--paper);margin-bottom:8px}.card p{font-size:12.5px;line-height:1.8;color:#aaa296}
+.table-wrap{overflow:auto;margin:28px 0;border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;min-width:620px}th{font:8px var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);text-align:left;padding:11px;border-bottom:1px solid var(--line)}
+td{font-size:12px;line-height:1.7;color:#bdb4a7;padding:12px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:top}td:first-child{color:var(--paper)}
+.timeline{position:relative;margin:30px 0}.event{display:grid;grid-template-columns:95px 18px 1fr;gap:15px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.event-year{font:10px var(--mono);color:var(--gold);text-align:right}.event-dot{width:10px;height:10px;margin-top:4px;border:2px solid var(--gold);border-radius:50%;box-shadow:0 0 12px rgba(201,168,76,.2)}
+.event h3{font:italic 19px var(--display);color:var(--paper);margin-bottom:5px}.event p{font-size:12.5px;line-height:1.75;color:#aaa296}
+.question{border:1px solid rgba(213,138,112,.22);background:rgba(110,45,30,.06);padding:22px 24px;margin:28px 0}.question h3{font:9px var(--mono);letter-spacing:2px;text-transform:uppercase;color:var(--rust);margin-bottom:10px}.question p{font-size:13px;line-height:1.85;color:#c0b7aa}
+.sources{margin:50px 0;padding:24px;border:1px solid var(--line);background:rgba(12,10,8,.7)}
+.sources ol{padding-left:20px}.sources li{font:9.5px/1.9 var(--mono);color:#9e9689;margin-bottom:8px}
+.closing{text-align:center;padding:90px 22px;border-top:1px solid var(--line);background:radial-gradient(ellipse at center,rgba(201,168,76,.06),transparent 70%)}
+.closing h2{font:italic clamp(28px,5vw,42px) var(--display);color:var(--paper);margin-bottom:18px}.closing p{max-width:570px;margin:0 auto 28px;font-size:14px;line-height:2;color:#bdb4a7}
+.btn{display:inline-block;padding:11px 19px;margin:5px;border:1px solid var(--line);font:9px var(--mono);letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:.25s}.btn:hover{border-color:var(--gold);background:rgba(201,168,76,.06)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}.reveal.visible{opacity:1;transform:none}
+@media(max-width:680px){.grid{grid-template-columns:1fr}.event{grid-template-columns:65px 14px 1fr}.chapter{padding:65px 0}.prose p{font-size:15px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style></head><body>
+<nav class="gnav"><div class="gnav-inner">
+<a href="welcome.html" class="gnav-brand">Armstrong Family Archive</a>
+<div class="gnav-links">
+<a href="start_here.html" class="gnav-link">★ Start Here</a>
+<a href="bell_family.html" class="gnav-link active">The Bells</a>
+<a href="john_nichols.html" class="gnav-link">John Nichols</a>
+<a href="waldrop_enslavers.html" class="gnav-link">The Waldrops</a>
+<a href="davenport_family.html" class="gnav-link">The Davenports</a>
+</div></div></nav>
+
+<section class="hero">
+<div class="hero-content">
+<span class="eyebrow">Armstrong Family Archive · Bellville, Austin County, Texas</span>
+<h1>The Bells</h1>
+<p class="subtitle">The family that gave Bellville its name — and the enslaved people whose labor, names, and lives are documented underneath that founding story.</p>
+<div class="dates">FLORIDA → AUSTIN'S COLONY → BELLVILLE · 1822–TODAY</div>
+</div><span class="scroll">SCROLL</span></section>
+
+<main class="story">
+
+<section class="chapter reveal">
+<span class="chapter-label">The Documentary Problem</span>
+<h2>A Town Has a Name. A Record Has Names.</h2>
+<div class="prose">
+<p>Bellville carries the Bell name because Thomas Bell offered land for the townsite. That public history is easy to find. The harder history is in the records that describe the people whose labor existed inside the Bell household and whose lives continued after emancipation.</p>
+<p>This page therefore follows two histories at once: <strong>the Bell family as an enslaving family</strong>, and the people held within or connected to that family. Where the documents establish a relationship, it is stated. Where the evidence comes from a family tree, DNA research, or an inference, it is marked separately.</p>
+</div>
+<div class="pull"><p>The purpose is not to replace the founding story. It is to put the records that story leaves out beside it.</p><small>RESEARCH METHOD · DOCUMENTARY EVIDENCE FIRST</small></div>
+</section>
+
+<section class="chapter reveal">
+<span class="chapter-label">Thomas Bell · Founding Generation</span>
+<h2>The Man Behind the Name</h2>
+<div class="prose">
+<p>Thomas Bell arrived in Austin's Colony with his brother James in the early 1820s. The present research places him in the Bellville story as a landholder, town founder, enslaver, and participant in the political and military history of early Texas.</p>
+<p>The supplied research records describe his land connection to the <strong>John Nichols league</strong> and his later contribution of land for Bellville. They also identify four enslaved people in his 1850 slave schedule. The exact identities of those four people are not established by that schedule alone.</p>
+</div>
+<div class="grid">
+<div class="card reveal"><div class="num">04</div><h3>1850 Slave Schedule</h3><p>Four enslaved people are recorded in the Thomas Bell household: female 25, male 20, female 5, and a male infant. The schedule does not provide names.</p></div>
+<div class="card reveal"><div class="num">108</div><h3>Acres for Bellville</h3><p>The current research identifies 108 acres associated with the land offered for the townsite, accepted in 1847 and surveyed in 1848.</p></div>
+</div>
+<div class="doc reveal"><div class="doc-head">1850 U.S. Federal Slave Schedule · Thomas Bell Household · Austin County, Texas</div><div class="doc-body">Female · age 25 · Black<br>Male · age 20 · Black<br>Female · age 5 · Black<br>Male · infant · Black<br><br>DOCUMENTARY LIMIT: The schedule enumerates people but does not name them.</div></div>
+</section>
+
+<section class="chapter reveal">
+<span class="chapter-label">Abigail Grimes Bell · Family Context</span>
+<h2>The Household Was Larger Than Thomas Bell Alone</h2>
+<div class="prose">
+<p>Abigail Grimes married Thomas Bell and later contested the handling of his estate. The supplied research identifies her as a daughter of George Grimes and Eurydice “Dicey” Gardner. Her family is relevant because the Bellville records repeatedly intersect with the Grimes, Gardner, and other families appearing in the research surrounding Easter Bell.</p>
+<p>After Thomas's death in 1858, Abigail became central to the probate story. The existing record states that she initially refused to produce Thomas's will and was compelled by court order. That episode belongs in the documentary record because it shows that the disposition of enslaved property was contested rather than simply transferred without dispute.</p>
+</div>
+<div class="question reveal"><h3>Research distinction</h3><p>Abigail's family connections are documented in the supplied research, but a family connection is not evidence that a particular enslaved person belonged biologically to the Grimes or Gardner family. Those possibilities remain separate research questions.</p></div>
+</section>
+
+<section class="chapter reveal">
+<span class="chapter-label">James Bell · Separate Estate</span>
+<h2>Another Bell Household, Another Record Set</h2>
+<div class="prose">
+<p>Thomas's brother James Bell maintained a separate household and estate. The supplied page identifies him as born about 1796 in North Carolina, arriving with Thomas, marrying Margaret C. Grimes, and holding a substantial estate by the time of his death in 1859.</p>
+<p>His records matter because they contain named enslaved people and therefore provide a second documentary window into the Bell family's slaveholding network. They must not, however, be merged automatically with Thomas Bell's household.</p>
+</div>
+<div class="doc reveal"><div class="doc-head">James Bell · Last Will and Testament · December 11, 1856</div><div class="doc-body">"...my wife Margaret Bell shall keep all my Negroes to make a support and raise and educate my children..."<br><br>"...a Negro girl named Jenny..."</div></div>
+<div class="pull reveal"><p>Same surname. Same county. Separate estate. The records have to stay separate until a document joins them.</p><small>DO-NOT-MERGE RULE · BELL HOUSEHOLDS</small></div>
+</section>
+
+<section class="chapter reveal">
+<span class="chapter-label">James Bell Estate · Named Enslaved People</span>
+<h2>Nine People, Named in One Estate</h2>
+<div class="prose"><p>The current research identifies nine enslaved people in James Bell's estate inventory. The names are preserved here because a named person can become a research path. A name that disappears from the owner's record does not mean the person disappeared from history.</p></div>
+<div class="table-wrap">
+<table><thead><tr><th>Name</th><th>Estate value</th><th>Current research status</th></tr></thead><tbody>
+<tr><td>Nelson</td><td>$1,200</td><td>Named in estate; forward identity unresolved.</td></tr>
+<tr><td>Isham</td><td>$1,200</td><td>Possible connection to Isham Jackson; requires documentary verification.</td></tr>
+<tr><td>Jenny</td><td>$1,200</td><td>Current research identifies her as Jenny Miller; marriage to Daniel Bland is a forward lead.</td></tr>
+<tr><td>Ely</td><td>$1,000</td><td>Current research identifies Ely Thornton; forward family trail requires verification.</td></tr>
+<tr><td>Daniel</td><td>$1,000</td><td>Identity unresolved.</td></tr>
+<tr><td>Tom</td><td>$1,000</td><td>Identity and later life unresolved.</td></tr>
+<tr><td>Mary</td><td>$800</td><td>Identity unresolved.</td></tr>
+<tr><td>Ned</td><td>$600</td><td>Separate from Ned Bell; identity unresolved.</td></tr>
+<tr><td>Jacob</td><td>$500</td><td>Identity unresolved.</td></tr>
+</tbody></table></div>
+<div class="question reveal"><h3>Source-control note</h3><p>The supplied page describes this as a January 1860 inventory while also identifying the will as probated November 29, 1859. That chronology should be checked against the original probate packet before the archive labels the inventory date as settled.</p></div>
+</section>
+
+<section class="chapter reveal">
+<span class="chapter-label">Easter Bell · The Record That Connects the Bell and Nichols Pages</span>
+<h2>Easter Carried the Name Forward</h2>
+<div class="prose">
+<p>Easter Bell is one of the most important people on this page because her life crosses the Bell and Nichols research tracks. The supplied research places her in the Bell household before emancipation and identifies her later marriage to <strong>Joseph Nichols</strong> on December 18, 1865.</p>
+<p>Her continued use of the Bell surname is documented into her later life. But the surname alone does not tell us whether Bell was an enslaver's surname, a family surname, a name adopted at freedom, or a combination of those histories. Her parentage remains a separate question.</p>
+</div>
+<div class="doc reveal"><div class="doc-head">Post-Emancipation Family Record · Easter Bell & Joseph Nichols</div><div class="doc-body">EASTER BELL<br>Born: research materials give conflicting approximate dates; verify against original records.<br>Marriage: Joseph Nichols · December 18, 1865 · Austin County, Texas<br>Later records: Bell surname continues through her life.</div></div>
+<div class="question reveal"><h3>Open maternal-line question</h3><p>Research materials identify Rendy Blayn as a possible mother of Easter and explore Gardner, Grimes, Edmiston, and Bell connections. Those relationships must remain hypotheses unless a record names the parent-child relationship.</p></div>
+</section>
+
+<section class="chapter reveal">
+<span class="chapter-label">John Gideon Bell · A Different Kind of Family Record</span>
+<h2>Biology, Adoption, and the Bell Name</h2>
+<div class="prose">
+<p>The supplied research describes John Gideon Bell as born John Slade in 1818 and later formally adopted by Thomas Bell in 1854. The account identifies him as Thomas Bell's biological son and Nancy Slade's son, while the adoption created a formal Bell-family relationship.</p>
+<p>This record is useful to the archive for a larger reason: <strong>the Bell surname does not automatically tell us what kind of relationship existed.</strong> Adoption, marriage, enslavement, biological parentage, and post-emancipation surname choice all appear in this family's documentary landscape.</p>
+</div>
+<div class="evidence reveal"><span class="badge confirmed">Documented in supplied research</span><h3>John Gideon Bell / born Slade</h3><p>Born 1818 in Nassau County, Florida; later formally adopted by Thomas Bell on January 4, 1854. The supplied source attributes the biological-parentage account to <em>Cracker Times and Pioneer Lives: The Florida Reminiscences of George Gillett</em>. The underlying publication should be retained as the source for this claim.</p></div>
+</section>
+
+<section class="chapter reveal">
+<span class="chapter-label">The Bellville Timeline</span>
+<h2>What the Records Show, In Order</h2>
+<div class="timeline">
+<div class="event"><div class="event-year">1822–24</div><div class="event-dot"></div><div><h3>Thomas and James Bell arrive</h3><p>The brothers enter Austin's Colony and become part of the early Texas settlement network.</p></div></div>
+<div class="event"><div class="event-year">1837</div><div class="event-dot"></div><div><h3>Bell / Nichols land connection</h3><p>The supplied research identifies Thomas Bell's acquisition/use of land connected to the John Nichols league and the later Bellville townsite.</p></div></div>
+<div class="event"><div class="event-year">1847–48</div><div class="event-dot"></div><div><h3>Bellville townsite</h3><p>108 acres are identified in the current research as the portion offered for the townsite and later surveyed.</p></div></div>
+<div class="event"><div class="event-year">1850</div><div class="event-dot"></div><div><h3>Four enslaved people enumerated</h3><p>Thomas Bell's slave schedule records four people but does not name them.</p></div></div>
+<div class="event"><div class="event-year">1854</div><div class="event-dot"></div><div><h3>John Gideon Bell adopted</h3><p>The supplied research dates Thomas Bell's formal adoption of John Gideon Bell to January 4.</p></div></div>
+<div class="event"><div class="event-year">1856–60</div><div class="event-dot"></div><div><h3>James Bell probate records</h3><p>Will and inventory preserve the names and monetary valuations of enslaved people in James Bell's separate estate.</p></div></div>
+<div class="event"><div class="event-year">1858</div><div class="event-dot"></div><div><h3>Thomas Bell dies</h3><p>His will directs the future disposition of Henry and Mat and becomes part of a contested probate proceeding.</p></div></div>
+<div class="event"><div class="event-year">1865</div><div class="event-dot"></div><div><h3>Easter Bell marries Joseph Nichols</h3><p>The Bell and Nichols research tracks meet in a documented post-emancipation marriage.</p></div></div>
+</div>
+</section>
+
+<section class="chapter reveal">
+<span class="chapter-label">Research Questions · Still Open</span>
+<h2>The Bells We Have Not Finished Finding</h2>
+<div class="grid">
+<div class="card"><div class="num">01</div><h3>Who were the four people in 1850?</h3><p>The schedule gives ages and sex, but not names. A continuity bridge from 1850 to later records remains necessary.</p></div>
+<div class="card"><div class="num">02</div><h3>Who was Easter's mother?</h3><p>Rendy Blayn is a major research lead. Gardner, Grimes, Edmiston, and Bell connections remain to be tested.</p></div>
+<div class="card"><div class="num">03</div><h3>Who were James Bell's nine?</h3><p>Several forward identities have been proposed, but each needs its own documentary bridge.</p></div>
+<div class="card"><div class="num">04</div><h3>Who was Thomas's first wife?</h3><p>The supplied research notes an 1829 legal record naming a wife “Prudencio.” Its relationship to Abigail Grimes remains unresolved.</p></div>
+</div>
+</section>
+
+<div class="sources reveal">
+<span class="source-label">Source Register · Bell Research</span>
+<ol>
+<li>Thomas Bell will, Austin County Probate Records, proved May 1858.</li>
+<li>1850 U.S. Federal Slave Schedule, Thomas Bell household, Austin County, Texas.</li>
+<li>James Bell Last Will and Testament, December 11, 1856.</li>
+<li>James Bell estate/inventory materials as represented in the supplied Bell research page; inventory chronology requires original-packet verification.</li>
+<li>1870 U.S. Federal Census, Bellville, Austin County — J.G. Bell household; Easter Bell and Henry Bell.</li>
+<li>Cracker Times and Pioneer Lives: The Florida Reminiscences of George Gillett — John Gideon Bell / John Slade account.</li>
+<li>FamilySearch material concerning Abigail Grimes and the Grimes/Gardner family.</li>
+<li>Jasmine M. Lee GEDCOM, “Nichols Slave Tree.ged” — used only as a research-lead source where explicitly identified.</li>
+<li>Stephen F. Austin colonization contract material concerning headright acreage.</li>
+<li>Texas Historical Commission Bellville marker and Bellville tourism history — retained as public-history comparison sources, not as substitutes for probate records.</li>
+</ol>
+</div>
+</main>
+
+<section class="closing">
+<h2>The Name Remains. The People Come Back Into View.</h2>
+<p>Bellville carries the Bell name. This archive keeps following the people whose names were omitted, renamed, inherited, recorded, or carried forward — and separates what the documents establish from what descendants are still trying to recover.</p>
+<a class="btn" href="john_nichols.html">John Nichols →</a>
+<a class="btn" href="waldrop_enslavers.html">← The Waldrops</a>
+<a class="btn" href="davenport_family.html">The Davenports →</a>
+</section>
+
+<script>
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:.08,rootMargin:'0px 0px -35px 0px'});
+document.querySelectorAll('.reveal').forEach(x=>obs.observe(x));
+</script>
+</body></html>

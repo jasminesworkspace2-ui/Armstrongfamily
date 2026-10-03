@@ -53,7 +53,7 @@
         { href: 'we_are_bellville.html',  text: 'We Are Bellville',        note: 'The full community' },
         { href: 'elders.html',  text: 'The Elders of Bellville',        note: 'Oldest residents \u00b7 Africa-born \u00b7 family clusters' },
         { href: 'related.html',           text: 'How We Are Related',       note: 'Connection map' },
-        { href: 'family_tree_chart.html', text: 'Complete Family Tree',     note: 'All names' },
+        { href: 'family_tree.html#family-tree', text: 'Complete Family Tree',     note: 'Every known name' },
       ]
     },
     {

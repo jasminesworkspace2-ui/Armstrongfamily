@@ -8,59 +8,186 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --deep:#080604;--gold:#c9a84c;--gold2:#e8c96a;--cream:#f5f2ec;--parchment:#f0ead8;
-    --muted:rgba(245,242,236,0.45);--border:rgba(201,168,76,0.15);
+  :root{
+    --deep:#080604;--deep2:#0d0a07;--gold:#c9a84c;--gold2:#e8c96a;
+    --cream:#f5f2ec;--parchment:#f0ead8;--muted:#9a9187;
+    --border:rgba(201,168,76,0.16);
     --f-display:'DM Serif Display',Georgia,serif;
     --f-body:'Inter',sans-serif;--f-mono:'Courier New',monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  body{background:var(--deep);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;
-       min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-       text-align:center;padding:40px 24px;position:relative;overflow:hidden;
-       background-image:radial-gradient(ellipse at 50% 30%,rgba(201,168,76,0.09) 0%,transparent 65%);}
-
-  .eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,168,76,0.55);display:block;margin-bottom:22px;}
-  .title{font-family:var(--f-display);font-size:clamp(38px,9vw,80px);font-style:italic;color:var(--parchment);line-height:1.05;margin-bottom:10px;}
-  .title span{color:var(--gold);}
-  .sub{font-family:var(--f-display);font-size:clamp(13px,2.2vw,17px);font-style:italic;color:rgba(201,168,76,0.6);margin-bottom:32px;}
-  .intro{font-size:14.5px;line-height:1.9;color:#a0988e;max-width:480px;margin:0 auto 48px;}
-  .intro strong{color:var(--parchment);}
-
-  .choices{display:flex;flex-direction:column;gap:14px;width:100%;max-width:420px;}
-  .choice{display:block;text-decoration:none;padding:26px 28px;border:1px solid var(--border);
-          background:rgba(255,255,255,0.015);transition:border-color 0.2s,background 0.2s;text-align:left;}
-  .choice:hover{border-color:rgba(201,168,76,0.4);background:rgba(201,168,76,0.04);}
-  .choice.primary{border-color:rgba(201,168,76,0.3);background:rgba(201,168,76,0.05);}
-  .choice-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,168,76,0.6);display:block;margin-bottom:8px;}
-  .choice-title{font-family:var(--f-display);font-size:clamp(19px,3vw,24px);font-style:italic;color:var(--parchment);display:block;margin-bottom:6px;}
-  .choice-body{font-size:12.5px;line-height:1.7;color:#8a8078;}
-
-  .menu-note{margin-top:44px;font-family:var(--f-mono);font-size:9px;letter-spacing:1.5px;color:var(--muted);}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--deep);color:var(--cream);font-family:var(--f-body);
+    -webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;
+  }
+  body:before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.12),transparent 46%),
+      radial-gradient(ellipse at 90% 70%,rgba(115,77,32,.06),transparent 35%);
+  }
+  .wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 28px;}
+  .hero{min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:90px 0 70px;}
+  .hero-inner{max-width:820px;}
+  .eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,168,76,.65);margin-bottom:26px;}
+  .title{font-family:var(--f-display);font-size:clamp(52px,9vw,104px);font-style:italic;font-weight:400;line-height:.95;letter-spacing:-2px;color:var(--parchment);}
+  .title span{display:block;color:var(--gold);}
+  .rule{width:72px;height:1px;background:var(--gold);opacity:.55;margin:28px auto;}
+  .sub{font-family:var(--f-display);font-size:clamp(16px,2.4vw,22px);font-style:italic;color:rgba(232,201,106,.72);line-height:1.45;}
+  .intro{max-width:650px;margin:25px auto 0;font-size:15px;line-height:1.95;color:#aaa197;}
+  .intro strong{color:var(--parchment);font-weight:400;}
+  .scroll{margin-top:42px;font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,242,236,.3);}
+  .scroll:after{content:"↓";display:block;font-size:15px;color:var(--gold);margin-top:9px;}
+  
+  .entry-section{padding:30px 0 100px;}
+  .section-kicker{text-align:center;font-family:var(--f-mono);font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(201,168,76,.55);margin-bottom:13px;}
+  .section-title{text-align:center;font-family:var(--f-display);font-size:clamp(28px,5vw,44px);font-style:italic;font-weight:400;color:var(--parchment);margin-bottom:12px;}
+  .section-intro{text-align:center;max-width:650px;margin:0 auto 38px;color:#8f877e;font-size:13px;line-height:1.85;}
+  
+  .choices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .choice{
+    display:flex;flex-direction:column;min-height:245px;text-decoration:none;
+    padding:28px 25px;border:1px solid var(--border);background:rgba(255,255,255,.018);
+    transition:transform .2s,border-color .2s,background .2s;
+  }
+  .choice:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.45);background:rgba(201,168,76,.045);}
+  .choice.primary{border-color:rgba(201,168,76,.38);background:rgba(201,168,76,.055);}
+  .choice-number{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;color:var(--gold);margin-bottom:26px;}
+  .choice-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(245,242,236,.38);margin-bottom:9px;}
+  .choice-title{font-family:var(--f-display);font-size:25px;font-style:italic;color:var(--parchment);line-height:1.1;margin-bottom:12px;}
+  .choice-body{font-size:12px;line-height:1.75;color:#817a73;}
+  .choice-arrow{margin-top:auto;padding-top:22px;font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,.65);}
+  
+  .story-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:70px 0;}
+  .story-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:70px;align-items:center;}
+  .story-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,168,76,.55);margin-bottom:15px;}
+  .story-heading{font-family:var(--f-display);font-size:clamp(30px,4vw,48px);font-style:italic;font-weight:400;line-height:1.05;color:var(--parchment);}
+  .story-copy{font-size:14px;line-height:1.95;color:#968d84;}
+  .story-copy p+p{margin-top:18px;}
+  .story-copy strong{color:#d9d0c3;font-weight:400;}
+  
+  .principles{padding:75px 0 95px;}
+  .principle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:38px;}
+  .principle{border-top:1px solid var(--border);padding-top:18px;}
+  .principle-num{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;color:var(--gold);margin-bottom:12px;}
+  .principle h3{font-family:var(--f-display);font-size:22px;font-style:italic;font-weight:400;color:var(--parchment);margin-bottom:9px;}
+  .principle p{font-size:12px;line-height:1.8;color:#7f7870;}
+  
+  .footer{border-top:1px solid var(--border);padding:30px 0 55px;text-align:center;}
+  .footer-title{font-family:var(--f-display);font-size:22px;font-style:italic;color:var(--parchment);margin-bottom:9px;}
+  .footer-note{font-family:var(--f-mono);font-size:8px;letter-spacing:1.5px;color:rgba(245,242,236,.28);}
+  
+  @media(max-width:760px){
+    .hero{min-height:82vh;padding-top:75px;}
+    .wrap{padding:0 20px;}
+    .choices,.principle-grid,.story-grid{grid-template-columns:1fr;}
+    .choice{min-height:205px;}
+    .story-grid{gap:30px;}
+    .story-strip{padding:55px 0;}
+    .principles{padding:55px 0 70px;}
+  }
 </style>
 <link rel="stylesheet" href="overrides.css">
 </head>
 <body>
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-inner">
+          <div class="eyebrow">Bellville, Texas · South Carolina · Mississippi · Today</div>
+          <h1 class="title">Armstrong<span>Family Archive</span></h1>
+          <div class="rule"></div>
+          <p class="sub">Seven years of research. A family story still being uncovered.</p>
+          <p class="intro">
+            This archive follows our family through <strong>enslavement, emancipation, migration, marriage, land, and generations of survival</strong>.
+            Some connections are documented. Some are strong research leads. Some questions are still open.
+            They all belong here.
+          </p>
+          <div class="scroll">Enter the archive</div>
+        </div>
+      </div>
+    </section>
 
-  <span class="eyebrow">Bellville, Texas · 1838 — Today</span>
-  <h1 class="title">Armstrong <span>Family Archive</span></h1>
-  <p class="sub">Seven years of research. Every name preserved, with the evidence status shown.</p>
-  <p class="intro">This family's story was traced back to <strong>1795</strong> — to a deed book in South Carolina, an enslaved woman named Patience, and everyone who came after. <strong>Choose where to start.</strong></p>
+    <section class="entry-section">
+      <div class="wrap">
+        <div class="section-kicker">Where do you want to begin?</div>
+        <h2 class="section-title">Three ways into the story</h2>
+        <p class="section-intro">You do not need to understand the genealogy before you enter. Start with yourself, start with the family tree, or start with the records that built the story.</p>
 
-  <div class="choices">
-    <a href="start_here.html" class="choice primary">
-      <span class="choice-label">New Here?</span>
-      <span class="choice-title">Find Where You Fit</span>
-      <span class="choice-body">Select your name or generation and see exactly how you connect to every ancestor.</span>
-    </a>
-    <a href="family_tree.html" class="choice">
-      <span class="choice-label">Already Know Your Line</span>
-      <span class="choice-title">Go Straight to the Family Tree</span>
-      <span class="choice-body">The full, complete tree — every generation, every confirmed name.</span>
-    </a>
-  </div>
+        <div class="choices">
+          <a href="start_here.html" class="choice primary">
+            <span class="choice-number">01</span>
+            <span class="choice-label">For Family</span>
+            <span class="choice-title">Find Where You Fit</span>
+            <span class="choice-body">Start with your own name or generation and follow the path back through the family.</span>
+            <span class="choice-arrow">Enter your family →</span>
+          </a>
+          <a href="family_tree.html" class="choice">
+            <span class="choice-number">02</span>
+            <span class="choice-label">The Family Archive</span>
+            <span class="choice-title">Explore the Family Tree</span>
+            <span class="choice-body">Meet the people, generations, branches, and stories that make up the archive.</span>
+            <span class="choice-arrow">Open the family tree →</span>
+          </a>
+          <a href="papertrail.html" class="choice">
+            <span class="choice-number">03</span>
+            <span class="choice-label">For Researchers</span>
+            <span class="choice-title">Follow the Paper Trail</span>
+            <span class="choice-body">Go directly to wills, deeds, probate records, land records, census records, and research leads.</span>
+            <span class="choice-arrow">Enter the documents →</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
-  <p class="menu-note">Everything else — the full research, the land, the community — is in the menu ☰</p>
+    <section class="story-strip">
+      <div class="wrap">
+        <div class="story-grid">
+          <div>
+            <div class="story-label">What this archive is about</div>
+            <h2 class="story-heading">The names came first.<br>The story came after.</h2>
+          </div>
+          <div class="story-copy">
+            <p>For generations, the people in this family were recorded in documents that were never created to tell their stories. Enslaved people appear in deeds, wills, inventories, schedules, tax records, and court files — often only as property.</p>
+            <p>This archive brings those records together and follows the people beyond the transaction: <strong>who they were, who they were connected to, where they lived, what happened to them, and what we still do not know.</strong></p>
+            <p>The goal is not to make the story cleaner than the evidence allows. The goal is to preserve it accurately enough that the next generation can keep going.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="principles">
+      <div class="wrap">
+        <div class="section-kicker">How the archive works</div>
+        <h2 class="section-title">Evidence matters here.</h2>
+        <div class="principle-grid">
+          <div class="principle">
+            <div class="principle-num">01 · DOCUMENTED</div>
+            <h3>What the records establish</h3>
+            <p>Names, relationships, dates, transactions, and places are tied to the records that actually support them.</p>
+          </div>
+          <div class="principle">
+            <div class="principle-num">02 · RESEARCH LEADS</div>
+            <h3>What the evidence points toward</h3>
+            <p>A promising connection can stay in the archive without being promoted to fact. Leads remain visible while the search continues.</p>
+          </div>
+          <div class="principle">
+            <div class="principle-num">03 · OPEN QUESTIONS</div>
+            <h3>What we still need to prove</h3>
+            <p>Missing documents, uncertain identities, and unresolved migration paths are part of the story too.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer-title">Every name preserved. Every question worth pursuing.</div>
+        <div class="footer-note">Armstrong Family Archive · A living family history</div>
+      </div>
+    </footer>
+  </main>
 
 <script src="sidebar.js"></script>
 </body>

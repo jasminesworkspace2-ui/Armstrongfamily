@@ -43,6 +43,7 @@
         { href: 'waldrop_enslavers.html',  text: 'The Waldrops',    note: 'Three generations, seventy-five years, every price paid' },
         { href: 'davenport_family.html',  text: 'The Davenports',    note: 'Where it all began \u2014 August 1795' },
         { href: 'ownership_network.html',  text: 'The Ownership Network',    note: 'Interactive map \u2014 legal records vs. family, never merged' },
+        { href: 'enslavement_community_network.html',  text: 'Enslavement & Community Network',    note: 'Blake, Bostick, Cornett, Osterhout, Gardner/Grimes \u2014 the wider research web' },
       ]
     },
     {

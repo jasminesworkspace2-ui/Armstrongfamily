@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Enslavement & Community Network · Armstrong Family Archive</title>
+<meta name="description" content="The broader documentary network surrounding African American genealogy: enslavers, estates, enslaved people, land, courts, probate, and community records researched because the records of slavery rarely stay inside one family.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&family=Courier+Prime&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#e8e0d0; --muted:#9a9080; --paper:#0a0806; --paper2:#141210;
+  --line:rgba(201,168,76,0.18); --gold:#c9a84c; --gold2:#e2c060; --rose:#c47a5e;
+  --green:#7ec98f; --blue:#7a9ac0; --dark:#f0ead8; --white:#1a1712;
+  --shadow:0 18px 50px rgba(0,0,0,.4); --radius:22px;
+  --f-display:'DM Serif Display',Georgia,serif; --f-body:'Inter',sans-serif; --f-mono:'Courier Prime','Courier New',monospace;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);line-height:1.68}
+a{color:inherit;text-decoration:none}
+.sitebar{position:sticky;top:0;z-index:50;background:rgba(10,8,6,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.sitebar-inner{max-width:1180px;margin:auto;padding:12px 22px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.brand{font-family:var(--f-display);font-style:italic;font-size:16px;letter-spacing:0;text-transform:none;font-weight:400}
+.back{font-size:13px;color:var(--muted);border-bottom:1px solid var(--gold2);padding-bottom:2px}
+.hero{max-width:1180px;margin:auto;padding:90px 22px 55px;position:relative;overflow:hidden}
+.eyebrow{font-family:var(--f-mono);color:var(--gold);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:400}
+h1{font-family:var(--f-display);font-style:italic;font-size:clamp(44px,7vw,88px);line-height:.94;margin:18px 0 25px;letter-spacing:-.02em;max-width:920px;font-weight:400}
+.lede{font-size:clamp(18px,2.1vw,24px);max-width:850px;color:#c7beaf}
+.hero-rule{height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:42px 0}
+.pillrow{display:flex;flex-wrap:wrap;gap:9px}
+.pill{border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:12px;color:var(--muted);background:rgba(255,255,255,.35)}
+.orbit{position:absolute;right:-110px;top:45px;width:390px;height:390px;border:1px solid rgba(154,117,66,.18);border-radius:50%;animation:spin 30s linear infinite}
+.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid rgba(154,117,66,.14);border-radius:50%}
+.orbit:before{inset:55px}.orbit:after{inset:115px}
+.orbit-dot{position:absolute;left:50%;top:-5px;width:10px;height:10px;border-radius:50%;background:var(--gold)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.wrap{max-width:1180px;margin:auto;padding:0 22px}
+.notice{background:#1a1712;color:#f0ead8;border:1px solid var(--line);border-radius:var(--radius);padding:30px 32px;margin:18px 0 55px;box-shadow:var(--shadow)}
+.notice strong{color:#e0c18a}
+.section{padding:35px 0 70px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:24px}
+.kicker{font-family:var(--f-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:400}
+h2{font-family:var(--f-display);font-style:italic;font-size:38px;line-height:1.05;margin:7px 0 0;font-weight:400;letter-spacing:0}
+h3{font-family:var(--f-display);font-style:italic;font-size:23px;margin:0 0 10px;font-weight:400}
+.small{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--paper2);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 8px 30px rgba(0,0,0,.25);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.card .num{font-family:var(--f-mono);font-size:10px;letter-spacing:.16em;color:var(--gold);text-transform:uppercase}
+.card p{font-family:var(--f-body);color:#b0a89e;margin-bottom:0}
+.status{display:inline-flex;align-items:center;gap:7px;font-family:var(--f-mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;font-weight:400;padding:5px 9px;border-radius:999px;margin:7px 0 13px}
+.status.doc{background:rgba(126,201,143,.14);color:#8fc98f;border:1px solid rgba(126,201,143,.3)}.status.lead{background:rgba(201,168,76,.14);color:#e2c060;border:1px solid rgba(201,168,76,.3)}
+.status.net{background:rgba(122,154,192,.14);color:#9ab4d8;border:1px solid rgba(122,154,192,.3)}.status.open{background:rgba(196,122,94,.14);color:#d09070;border:1px solid rgba(196,122,94,.3)}
+.timeline{position:relative;margin:35px 0}.timeline:before{content:"";position:absolute;left:93px;top:0;bottom:0;width:1px;background:var(--line)}
+.event{display:grid;grid-template-columns:75px 36px 1fr;gap:18px;align-items:start;margin:0 0 24px}
+.year{font-family:var(--f-mono);font-size:12px;color:var(--gold);font-weight:400;text-align:right;padding-top:4px}
+.dot{width:12px;height:12px;border:3px solid var(--paper);outline:1px solid var(--gold);border-radius:50%;background:var(--gold);margin:5px auto;z-index:1}
+.event-body{background:var(--paper2);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.event-body strong{font-family:var(--f-display);font-style:italic;font-size:19px;font-weight:400;}
+details{border-top:1px solid var(--line);padding:17px 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;font-weight:700;display:flex;justify-content:space-between;gap:15px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--gold);font-size:20px;line-height:1}
+details[open] summary:after{content:"−"}
+.quote{border-left:3px solid var(--gold);padding:8px 0 8px 20px;margin:18px 0;color:#d0c8ba;font-style:italic;background:linear-gradient(90deg,rgba(201,168,76,.08),transparent);padding-right:15px}
+.docbox{background:var(--paper2);border:1px solid var(--line);border-radius:18px;padding:20px;margin:15px 0}
+.docmeta{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+.meta{font-family:var(--f-mono);font-size:10px;color:var(--muted)} .meta b{font-family:var(--f-body);display:block;color:var(--ink);font-size:13px}
+.network{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
+.nodebox{border:1px solid var(--line);border-radius:18px;background:var(--paper2);padding:22px;position:relative}
+.nodebox:after{content:"";position:absolute;right:-18px;top:50%;width:18px;border-top:1px dashed var(--gold)}
+.nodebox:nth-child(even):after{display:none}
+.nodebox .arrow{color:var(--gold);font-size:20px;float:right}
+.registry{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.person{background:var(--paper2);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.person strong{font-family:var(--f-display);font-style:italic;font-size:17px;font-weight:400;display:block}.person span{font-family:var(--f-mono);font-size:10px;color:var(--muted)}
+.map{height:360px;border-radius:var(--radius);background:
+ radial-gradient(circle at 25% 30%,rgba(201,168,76,.17) 0 2px,transparent 3px),
+ radial-gradient(circle at 70% 45%,rgba(122,154,192,.20) 0 2px,transparent 3px),
+ linear-gradient(140deg,#141210,#0a0806);border:1px solid var(--line);position:relative;overflow:hidden}
+.map:before{content:"";position:absolute;inset:40px;border:1px dashed rgba(154,117,66,.3);border-radius:50% 45% 55% 40%;transform:rotate(-9deg)}
+.route{position:absolute;height:1px;background:var(--gold);transform-origin:left center;opacity:.65}
+.route.r1{width:280px;left:23%;top:48%;transform:rotate(17deg)} .route.r2{width:240px;left:43%;top:58%;transform:rotate(-25deg)}
+.pin{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--rose);box-shadow:0 0 0 7px rgba(156,100,112,.10);animation:pulse 2.5s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 13px rgba(156,100,112,.02)}}
+.pin:after{content:attr(data-label);position:absolute;left:17px;top:-5px;white-space:nowrap;font-family:var(--f-mono);font-size:10px;color:var(--ink)}
+.p1{left:22%;top:46%}.p2{left:43%;top:57%}.p3{left:67%;top:40%}.p4{left:76%;top:68%}
+.flip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.flip{height:190px;perspective:900px;cursor:pointer}.flip-inner{height:100%;position:relative;transition:transform .7s;transform-style:preserve-3d}.flip:hover .flip-inner,.flip:focus-within .flip-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;border:1px solid var(--line);padding:20px;background:var(--paper2)}
+.face.back{transform:rotateY(180deg);background:#1a1712;color:#f0ead8;border-color:var(--gold)}
+.face h3{font-size:20px}.face p{font-size:13px;color:inherit;opacity:.88}
+.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:var(--paper2)}
+table{border-collapse:collapse;width:100%;font-size:13px;font-family:var(--f-body)}th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}th{font-family:var(--f-mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);background:var(--paper2)}
+.footer{padding:50px 22px 80px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.callout{border:1px solid rgba(154,117,66,.35);background:rgba(198,166,107,.09);padding:22px;border-radius:18px;margin-top:18px}
+@media(max-width:850px){.grid,.flip-grid,.network{grid-template-columns:1fr 1fr}.orbit{opacity:.35;right:-180px}.docmeta{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){h1{font-size:49px}.grid,.flip-grid,.network,.registry{grid-template-columns:1fr}.timeline:before{left:56px}.event{grid-template-columns:45px 22px 1fr;gap:8px}.docmeta{grid-template-columns:1fr}.section{padding-bottom:45px}}
+</style>
+</head>
+<body>
+<header class="sitebar">
+  <div class="sitebar-inner">
+    <a class="brand" href="welcome.html">Armstrong Family Archive</a>
+    <a class="back" href="research_archive.html">← Research Archive</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="orbit"><div class="orbit-dot"></div></div>
+  <div class="eyebrow">Research Network · Documentary Layer</div>
+  <h1>Enslavement &amp;<br>Community Network.</h1>
+  <p class="lede">The families who appear in the records because African American genealogy rarely stays inside one family.</p>
+  <div class="hero-rule"></div>
+  <div class="pillrow">
+    <span class="pill">Enslavers &amp; estates</span><span class="pill">Enslaved people</span>
+    <span class="pill">Land &amp; property</span><span class="pill">Probate &amp; courts</span>
+    <span class="pill">Community records</span><span class="pill">Unresolved connections preserved</span>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="notice">
+    <strong>Why this page exists.</strong><br>
+    When researching an African American family, the records often do not begin with the ancestor. They begin with the person who enslaved them, the estate that held them, the person who bought or sold them, the neighbor who witnessed the deed, the administrator who inventoried them, the court that divided their value, or the family that later occupied the same land. Research therefore has to move outward before it can move homeward.
+    <br><br>
+    This page preserves those surrounding families and records so that a person searching for an ancestor, a parent, a child, a sibling, or an enslaved community may find a name here that was never part of the Armstrong direct line. <strong>A person does not have to be proven related to this family to deserve a place in the archive.</strong>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><div class="kicker">01 · How to read this page</div><h2>A research room, not a family tree.</h2></div></div>
+    <div class="grid">
+      <article class="card"><div class="num">Direct family</div><h3>Our line stays separate.</h3><p>The Armstrong direct line remains in the site's existing family-story pages. This network does not silently add people to the family tree.</p></article>
+      <article class="card"><div class="num">Historical network</div><h3>Surrounding families stay visible.</h3><p>Enslavers, estates, landowners, attorneys, witnesses, appraisers, administrators and neighboring households are retained when their records help reconstruct the historical environment.</p></article>
+      <article class="card"><div class="num">Future connection</div><h3>A lead can become a bridge.</h3><p>If later evidence connects an enslaved person or family to the Armstrong line, the existing archive can be updated without losing the original uncertainty or research trail.</p></article>
+    </div>
+    <div class="callout"><b>Core principle:</b> legal ownership, biological family, geographic community and documentary association are four different kinds of evidence. They are tracked separately until a record connects them.</div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><div class="kicker">02 · Network map</div><h2>Records pull the researcher outward.</h2></div><div class="small">Illustrative network — not a statement of biological descent.</div></div>
+    <div class="map">
+      <div class="route r1"></div><div class="route r2"></div>
+      <div class="pin p1" data-label="Georgia estates"></div>
+      <div class="pin p2" data-label="Austin County / Bellville"></div>
+      <div class="pin p3" data-label="Texas property records"></div>
+      <div class="pin p4" data-label="Community &amp; probate records"></div>
+    </div>
+    <p class="small">The visual represents the research method: an enslaved person may appear first through an estate, then through a sale, then through a court case, then through a later census or land record. The route itself is evidence only where the underlying documents establish it.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><div class="kicker">03 · Families under active research</div><h2>The surrounding families.</h2></div></div>
+    <div class="flip-grid">
+      <div class="flip" tabindex="0"><div class="flip-inner"><div class="face"><div class="num">Austin County</div><h3>S. R. Blake</h3><p>30 people in the 1860 Bellville slave schedule; names not recorded.</p></div><div class="face back"><h3>Why he matters</h3><p>Later Austin County records, enslaved-property research, and a Georgia Blake/Bostick legal network make this a major documentary cluster.</p></div></div></div>
+      <div class="flip" tabindex="0"><div class="flip-inner"><div class="face"><div class="num">Georgia</div><h3>Bostick / Powers</h3><p>Rebecca Bostick's estate and a specific legacy of named enslaved people.</p></div><div class="face back"><h3>Why it matters</h3><p>The Blake litigation required accounting for the legacy, its value, hire, profits and disposition.</p></div></div></div>
+      <div class="flip" tabindex="0"><div class="flip-inner"><div class="face"><div class="num">Texas</div><h3>William Cornett</h3><p>Assessment records and a six-person 1860 slave schedule.</p></div><div class="face back"><h3>Research lead</h3><p>The 1860 female age 23 is a continuity candidate only; the schedule does not name her.</p></div></div></div>
+      <div class="flip" tabindex="0"><div class="flip-inner"><div class="face"><div class="num">Texas</div><h3>John P. Osterhout</h3><p>Two enslaved people in Bellville in 1860; probate/guardianship material under review.</p></div><div class="face back"><h3>Why it remains open</h3><p>Osterhout records contain named enslaved people, but possession in a guardianship record is not automatically ownership.</p></div></div></div>
+      <div class="flip" tabindex="0"><div class="flip-inner"><div class="face"><div class="num">Tennessee → Texas</div><h3>Gardner / Grimes</h3><p>Estate, succession, land and family records intersect the Bellville community.</p></div><div class="face back"><h3>Documentary trail</h3><p>John Gardner's will, George Grimes's succession, and the Abigail Grimes–Thomas Bell marriage create a valuable property/community network.</p></div></div></div>
+      <div class="flip" tabindex="0"><div class="flip-inner"><div class="face"><div class="num">Community watch</div><h3>Martin · Portis · Edwards · Fisher</h3><p>Additional Bellville/Austin County slaveholding households retained for comparison.</p></div><div class="face back"><h3>Purpose</h3><p>These households are not being turned into separate family biographies. Their enslaved populations are tracked because they may produce the missing documentary bridge.</p></div></div></div>
+      <div class="flip" tabindex="0"><div class="flip-inner"><div class="face"><div class="num">Archive lead</div><h3>William H. Grimes</h3><p>1840 Travis County estate material in the DeGolyer early Texas collection.</p></div><div class="face back"><h3>Do not merge</h3><p>William H. Grimes is not automatically the same as George Grimes. The record is retained as a separate research lead.</p></div></div></div>
+      <div class="flip" tabindex="0"><div class="flip-inner"><div class="face"><div class="num">Legal network</div><h3>Beall / Blake</h3><p>Executor, attorney and estate-accounting relationships surrounding enslaved property.</p></div><div class="face back"><h3>What it gives us</h3><p>Courts required detailed accounting of enslaved people's values, hire and profits — potentially opening a path to records beyond the census.</p></div></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="blake">
+    <div class="section-head"><div><div class="kicker">04 · Austin County documentary cluster</div><h2>S. R. Blake.</h2></div><span class="status doc">Documented network</span></div>
+    <div class="card">
+      <p><b>Working research identification:</b> S. R. Blake in the Austin County/Bellville records is treated here as the same S. R. Blake across the continuing Austin County record trail. The archive follows the documentary record rather than splitting the research every time an abbreviated name appears.</p>
+      <details open><summary>1860 Bellville slave schedule — 30 enslaved people</summary>
+        <div class="docbox">
+          <div class="docmeta">
+            <div class="meta"><b>Owner</b>S. R. Blake</div><div class="meta"><b>Place</b>Belleville, Austin County, Texas</div>
+            <div class="meta"><b>Record</b>1860 Slave Schedule</div><div class="meta"><b>Total</b>30</div>
+          </div>
+          <p><b>Original schedule information as recorded:</b></p>
+          <p>M70 · M60 · M52 · M44 · F38 · M32 · M24 · F24 · F24 · F23 · M22 · M21 · M21 · F21 · F20 · M19 · F18 · M17 · M15 · F13 · F12 · M11 · M10 · M8 · M7 · F6 · M5 · M3 · F2 · M1.</p>
+          <p class="small"><b>Important:</b> the original slave schedule does not provide personal names. These 30 people therefore remain unnamed in this record. No name is assigned here merely from an age match.</p>
+          <p class="small">FamilySearch record supplied in the research: <a href="https://www.familysearch.org/ark:/61903/1:1:WKTT-V76Z" target="_blank">FamilySearch · 1860 S. R. Blake schedule</a></p>
+        </div>
+      </details>
+      <details><summary>Later Austin County records</summary>
+        <div class="docbox">
+          <p><b>1884 school-land release:</b> 260½ acres in Lampasas County, part of Austin County school lands; signed by S. R. Blake as County Judge. Underlying conveyance to C. B. Moore dated Nov. 19, 1879; filed Sept. 7, 1886.</p>
+          <p><b>1892 school-land release:</b> 160 acres to A. Langham/Laughson; signed by S. R. Blake, County Judge.</p>
+          <p><b>1898 school-land release:</b> 320 acres to J. W. Davis; signed by S. R. Blake, County Judge. The research also contains 1898 marriage records bearing the County Judge's signature.</p>
+          <p><b>1902 deed of trust:</b> S. R. Blake, “as Guardian of Saml R. Blake a minor,” secured a $1,200 note by J. A. Johnston involving 240 acres in the John F. Stephenson league in Wharton County, trustee G. S. Cummings. The minor is not pursued here unless the record produces enslaved-property evidence.</p>
+        </div>
+      </details>
+      <details><summary>1841 Pulaski County, Georgia — Samuel R. Blake as attorney</summary>
+        <div class="docbox">
+          <p>A July Term 1841 Pulaski Superior Court record names <b>Samuel R. Blake, attorney</b> for the plaintiff in <i>Bank of Hawkinsville v. Alfred C. Bostwick</i>. The same court material contains a separate 1830 sheriff's sale of a “Negro Girl Slave” about age 14, purchased by Lewis Wood for $340. That girl is <b>not</b> connected to Blake ownership by the supplied record and is retained only as contextual court-network evidence.</p>
+          <p class="small">This record matters because it establishes Blake's presence in the Georgia legal network before the later Bostick estate litigation. It does not by itself establish that the 1841 attorney is the same individual as the later Texas S. R. Blake unless continuity is separately documented.</p>
+        </div>
+      </details>
+      <details><summary>1844 — Mary Adeline Blake's Bostick estate interest</summary>
+        <div class="docbox">
+          <p>The supplied receipt states that Samuel R. Blake received <b>$1,160.51</b> from Nathan H. Beall on Feb. 2, 1844, “in full of the interest of Mary Adeline Blake, my wife &amp; formerly Mary Adeline Beall, in &amp; to the Estate of Mrs. Rebecca Bostick deceased,” except for interest reserved by agreement for further adjudication.</p>
+          <p>The Jan. 13, 1844 agreement describes the estate as including “negroes, debts, Judgments, Appling Land, money, accounts, &amp;c.” Samuel R. Blake signed “in right of his wife Mary A. Blake.” This is a documented <b>estate-interest/legal relationship</b>, not proof that Blake personally owned every enslaved person in the estate.</p>
+        </div>
+      </details>
+      <details><summary>1850–1852 — the Blake / Beall accounting litigation</summary>
+        <div class="docbox">
+          <p>The litigation describes Samuel R. Blake as having been Beall's attorney or one of his attorneys for years and familiar with the business. A later filing refers to “Complainants Blake &amp; his father Edmund Blake” resisting the claim concerning Mrs. Powers's specific legacy.</p>
+          <p>The financial accounting contains numerous names — Drury M. Cox, David G. Worsham, John Pinchard, Dr. W. B. Stephens, John Bishop, Bungay &amp; Spicer, Bungay &amp; Calloway, Hill/Foster/Hill/Sanford, Turner/Dunn/Cochran, C. Thorp, L. L. Griffin, A. Craft, H. Long, Davidson &amp; Burney, Jesse Pope, I. Dunn, D. Sanford, Wm. &amp; Wiley Pope, Fitzgerald &amp; Mann, Eubanks/Kent/Duncan, Bush/Jackson, Thompson/Bush, Alex Smith, Burgay/Hoskins, Bungay &amp; Blake, and A.G./J. Lockett.</p>
+          <p class="small"><b>These are financial/legal network names, not enslaved people.</b> They are retained because the accounting shows how the estate's property and money moved through the wider community.</p>
+        </div>
+      </details>
+      <details><summary>Why the Blake page belongs in this network</summary>
+        <p>The 1860 schedule establishes a substantial enslaved population in the Austin County record. The later county records establish continued documentary presence in Austin County. The Georgia material establishes a separate but potentially related Blake legal/property network involving Mary Adeline Blake's interest in Rebecca Bostick's estate and a specific legacy of enslaved people.</p>
+        <p>The archive deliberately preserves both tracks without forcing them into one biography. Where a future primary document creates a bridge, that bridge can be added without losing the original evidence trail.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="section" id="bostick">
+    <div class="section-head"><div><div class="kicker">05 · Estate &amp; legal network</div><h2>Rebecca Bostick · Powers · Beall · Blake.</h2></div><span class="status net">Property / legal network</span></div>
+    <div class="card">
+      <p>This Georgia court record cluster is valuable because it shows how enslaved people can disappear from a family narrative into estate administration, litigation, hiring, and accounting. It also shows why attorneys, executors and trustees must be tracked even when their role is not ownership.</p>
+      <div class="quote">“the negroes, debts, Judgments, Appling Land, money, accounts, &amp;c.”</div>
+      <p>The Jan. 13, 1844 agreement divided estate interests. Frances L. Powers, wife of A. P. Powers, was to receive one half in value of the negroes bequeathed to her and their hire; the other half and hire remained with the executor subject to litigation. Samuel R. Blake signed “in right of his wife Mary A. Blake.”</p>
+      <details open><summary>The named enslaved people in Mrs. Powers's specific legacy</summary>
+        <div class="registry">
+          <div class="person"><strong>Anna</strong><span>Described as a woman considerably advanced in years.</span></div>
+          <div class="person"><strong>Abram / Abraham</strong><span>Beall said he believed Abram died during Mrs. Bostick's lifetime.</span></div>
+          <div class="person"><strong>Moses</strong><span>Beall said he believed Moses died during Mrs. Bostick's lifetime.</span></div>
+          <div class="person"><strong>Sam</strong><span>Named in the specific legacy.</span></div>
+          <div class="person"><strong>Owen</strong><span>Described as a “fine Carpenter” and “exceedingly valuable.”</span></div>
+          <div class="person"><strong>Lewis</strong><span>Beall said he was informed by Mr. Powers that Lewis died in spring 1848.</span></div>
+          <div class="person"><strong>Mary / May</strong><span>Both readings occur in the supplied record material; not silently reconciled.</span></div>
+          <div class="person"><strong>Caroline</strong><span>Beall stated Caroline had two children, both of whom died in infancy.</span></div>
+          <div class="person"><strong>Little William</strong><span>Named in the later Beall answer.</span></div>
+          <div class="person"><strong>Ann Eliza</strong><span>Identified as born after the date of Rebecca Bostick's will.</span></div>
+        </div>
+      </details>
+      <details><summary>Beall's 1851–1852 accounting problem</summary>
+        <p>The litigation alleged that Beall had used estate funds, mixed trust funds with his own, made loans, and made profits from the “hire of negroes and rent of land annually.” The court required a full accounting, “statement by statement, charge by charge, and paragraph by paragraph,” with dates, amounts, names and circumstances.</p>
+        <p>On Jan. 31, 1844, the one-half of the negroes and accrued hire retained by Beall was stated as <b>$1,681.70</b>, subject to litigation.</p>
+      </details>
+      <details><summary>May 1852 exceptions — the specific legacy</summary>
+        <div class="quote">“It does not specify the ages, the value or the amount hire of the negroes.”</div>
+        <p>The exceptions argued that Beall's answer failed to give the full and entire account of his dealings with the specific legacy, the ages and values of the enslaved people, the amount of hire, what the entire legacy consisted of, whether it was negroes alone or negroes plus other property, and the material facts necessary for the court's decree.</p>
+      </details>
+      <details><summary>December 7, 1852 order — what the court demanded</summary>
+        <p>The court ordered Beall to perfect his answer. As to the specific legacy of Mrs. Powers, he was required to set forth the amount retained, what it consisted of, whether money or property, the value if property, the annual value of hire, “the issues and profits thereof,” why it was retained, what had been paid over, and every other fact necessary to a decree.</p>
+        <p class="small"><b>Research significance:</b> this order tells us exactly what additional records or a perfected answer might contain. It creates a documentary target for the next phase of the research.</p>
+      </details>
+      <div class="callout"><b>What this does NOT prove:</b> Samuel R. Blake personally owned every enslaved person named in the Powers legacy. His documented role here is as a litigant in right of his wife and as part of the estate/legal network. The named people remain a Bostick/Powers enslaved family group unless a separate ownership document proves otherwise.</div>
+    </div>
+  </section>
+
+  <section class="section" id="cornett">
+    <div class="section-head"><div><div class="kicker">06 · Austin County</div><h2>William Cornett.</h2></div><span class="status lead">Strong research lead</span></div>
+    <div class="card">
+      <p><b>Marriage:</b> Nancy Smith married William Cornett Nov. 18, 1841 in Austin County.</p>
+      <p><b>1841 assessment:</b> 160 acres, $500 real property, one enslaved person valued at $250.</p>
+      <p><b>1855 assessments:</b> two separate Cornett entries appear: one with 3 enslaved people valued at $2,100 and another with 7 valued at $3,200. These are retained as separate assessment/property units and are not combined into ten without evidence.</p>
+      <p><b>1859 assessment:</b> one enslaved person valued at $500; approximately 520 acres/Mill Creek reading remains partly unresolved.</p>
+      <p><b>1860 slave schedule:</b> six enslaved people — F23, M18, F20, M15, F13, F1.</p>
+      <div class="callout"><b>Continuity candidate:</b> the F23 in the 1860 schedule is an age-continuity candidate for Easter research, but the slave schedule does not name her. This page therefore records the lead without converting it into an identity.</div>
+      <p class="small">Texas State Library and Archives County probate/succession records remain a high-value target for Cornett estate and property transfers, especially around the reported 1861 death.</p>
+    </div>
+  </section>
+
+  <section class="section" id="osterhout">
+    <div class="section-head"><div><div class="kicker">07 · Bellville</div><h2>John P. Osterhout.</h2></div><span class="status open">Connection unresolved</span></div>
+    <div class="card">
+      <p><b>1860 Bellville slave schedule:</b> two enslaved people — F22 and M4.</p>
+      <p>Osterhout's family papers also contain guardianship/probate material with enslaved people named <b>Adaline, Lucy, Milton, Prince, Charles, Matilda</b>, and a separate 1850–1851 Fisher/Michael guardianship document involving minors Alexander P. Fisher and Minerva Fisher and enslaved people <b>Adam and Catherine</b>.</p>
+      <p>The archive tracks these names because the records may reveal ownership, possession, inheritance, or community relationships. A guardian or custodian is not automatically treated as the owner.</p>
+      <div class="callout"><b>Research question:</b> do Osterhout's records provide a documentary bridge to Easter Bell or another person in the Armstrong network? At present, that connection is unresolved.</div>
+    </div>
+  </section>
+
+  <section class="section" id="gardner">
+    <div class="section-head"><div><div class="kicker">08 · Tennessee → Texas</div><h2>Gardner / Grimes network.</h2></div><span class="status net">Community / property network</span></div>
+    <div class="card">
+      <p><b>George Grimes:</b> associated with Eurydice “Dicy” Gardner; the 1848 Stewart County, Tennessee power of attorney explicitly names Abigail Bell with husband Thomas Bell among the children/heirs of George Grimes and Dicy. The 1849 Austin County succession litigation records George's statement that Eurydice died Sept. 1, 1836 after marriage in Tennessee before immigration.</p>
+      <p><b>John Gardner will, Stewart County, Tennessee:</b> signed Aug. 8, 1841 and proven Jan. 1842. Wife Easter Gardner received the farm/lifetime household property and one enslaved girl named <b>Priss</b> during her lifetime. The will gives <b>Luke</b> to James Gardner. It also names the “Dicey Grimes heirs” and “Elizabeth Grimes heirs” for $200 each.</p>
+      <p><b>Luke:</b> later receipt confirms James Gardner received Luke from the executors; Luke was valued around $900.</p>
+      <p><b>Martha:</b> Dec. 3, 1836 bill of sale John Gardner → Samuel Wofford: enslaved girl age 5–6, $300. This is kept as a direct transaction rather than assumed to be part of the later estate.</p>
+      <p><b>Bryan:</b> 1843 deeds show fractional interests in an enslaved girl named Bryan, about 14, transferred to James Wofford after being willed to Walter/Susannah Boswell and John/Sarah Wofford at Easter Gardner's death.</p>
+      <p><b>Phillis:</b> 1852 James Gardner purchase from W. A. Griffin for $200.</p>
+      <div class="callout"><b>Network lead:</b> a secondary source reports that in 1851 Nathan W. Bush, administrator of George Grimes's estate, conveyed a Mill Creek tract where George lived at death plus an enslaved woman “Monty” to William Frampton for $518.16, 108 acres, with Thomas Bell as witness. The primary deed is still the target. “Monty” is not silently merged with “Minty.”</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><div class="kicker">09 · Community comparison</div><h2>Other Austin County households.</h2></div></div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Household / name</th><th>Record currently tracked</th><th>Enslaved population / detail</th><th>Research role</th></tr></thead>
+        <tbody>
+          <tr><td>W. H. Martin</td><td>1860 Bellville</td><td>8: M26, M24, F38, F24 mulatto, F22, M7, F6, F1</td><td>Community comparison / possible ownership-network lead</td></tr>
+          <tr><td>D. Y. Portis</td><td>1860 Bellville</td><td>10: F46, F25, M23, M21, M19, M11, M9, M4, F18, F16</td><td>Community comparison</td></tr>
+          <tr><td>I. T. / J. Edwards</td><td>1850–1860 research</td><td>Index and physical-page totals require reconciliation; 1860 I.T. Edwards entry reported at 15</td><td>Keep open until original pages reconcile the entries</td></tr>
+          <tr><td>A. P. Fisher</td><td>Bellville / guardianship material</td><td>Fisher/Michael guardianship names Adam and Catherine</td><td>Guardianship/property-network research</td></tr>
+          <tr><td>J. S. R. Blake / S. R. Blake</td><td>1860 Bellville</td><td>Master working schedule: 30</td><td>Primary Austin County network track</td></tr>
+          <tr><td>John P. Osterhout</td><td>1860 Bellville</td><td>2: F22, M4</td><td>Elimination / connection research</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="small">This table is deliberately a research index, not a ranking of enslavers. Households are included because their records can help identify the people, property and community surrounding the Armstrong line.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><div class="kicker">10 · Documentary trail</div><h2>The research moves through records.</h2></div></div>
+    <div class="timeline">
+      <div class="event"><div class="year">1836</div><div class="dot"></div><div class="event-body"><strong>John Gardner → Samuel Wofford</strong><br>Bill of sale for an enslaved girl, age 5–6, $300. A direct transaction.</div></div>
+      <div class="event"><div class="year">1841</div><div class="dot"></div><div class="event-body"><strong>John Gardner will</strong><br>Priss, Luke and the “Dicey Grimes heirs” appear in the estate document.</div></div>
+      <div class="event"><div class="year">1844</div><div class="dot"></div><div class="event-body"><strong>Rebecca Bostick estate division</strong><br>Samuel R. Blake signs in right of Mary A. Blake; the estate includes enslaved property, hire and other assets.</div></div>
+      <div class="event"><div class="year">1851–52</div><div class="dot"></div><div class="event-body"><strong>Beall estate-accounting litigation</strong><br>Courts demand a complete accounting of usury, estate funds and the Powers specific legacy, including enslaved people and their hire.</div></div>
+      <div class="event"><div class="year">1855</div><div class="dot"></div><div class="event-body"><strong>Cornett assessments</strong><br>Two separate assessment units record 3 and 7 enslaved people. They are not combined without proof.</div></div>
+      <div class="event"><div class="year">1860</div><div class="dot"></div><div class="event-body"><strong>Bellville slave schedules</strong><br>Blake, Cornett, Osterhout, Martin, Portis and other households preserve age/sex populations without personal names.</div></div>
+      <div class="event"><div class="year">1884–98</div><div class="dot"></div><div class="event-body"><strong>S. R. Blake county records</strong><br>School-land releases and county-judge signatures keep the Blake documentary trail visible after emancipation.</div></div>
+      <div class="event"><div class="year">1902</div><div class="dot"></div><div class="event-body"><strong>Blake deed of trust</strong><br>S. R. Blake appears as guardian in a Wharton County land transaction; retained as a later property-network record.</div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><div class="kicker">11 · Named people ledger</div><h2>Every name stays somewhere.</h2></div></div>
+    <p>These are not all Armstrong ancestors. They are people encountered while following the records. A future researcher may recognize a name here and find the missing bridge.</p>
+    <div class="registry">
+      <div class="person"><strong>Priss</strong><span>John Gardner will · lifetime interest to Easter Gardner</span></div>
+      <div class="person"><strong>Luke</strong><span>John Gardner will → James Gardner · later receipt</span></div>
+      <div class="person"><strong>Martha</strong><span>1836 Gardner → Wofford bill of sale · age 5–6</span></div>
+      <div class="person"><strong>Bryan</strong><span>1843 fractional-interest deeds · about age 14</span></div>
+      <div class="person"><strong>Phillis</strong><span>1852 James Gardner purchase · $200</span></div>
+      <div class="person"><strong>Monty</strong><span>1851 secondary deed lead · primary deed needed</span></div>
+      <div class="person"><strong>Anna</strong><span>Bostick/Powers specific legacy</span></div>
+      <div class="person"><strong>Abram / Abraham</strong><span>Bostick/Powers legacy · reported deceased</span></div>
+      <div class="person"><strong>Moses</strong><span>Bostick/Powers legacy · reported deceased</span></div>
+      <div class="person"><strong>Sam</strong><span>Bostick/Powers legacy</span></div>
+      <div class="person"><strong>Owen</strong><span>Bostick/Powers legacy · carpenter</span></div>
+      <div class="person"><strong>Lewis</strong><span>Bostick/Powers legacy · reported died spring 1848</span></div>
+      <div class="person"><strong>Mary / May</strong><span>Bostick/Powers legacy · transcription variant retained</span></div>
+      <div class="person"><strong>Caroline</strong><span>Bostick/Powers legacy · two children died in infancy</span></div>
+      <div class="person"><strong>Little William</strong><span>Bostick/Powers legacy</span></div>
+      <div class="person"><strong>Ann Eliza</strong><span>Bostick/Powers legacy · born after will</span></div>
+      <div class="person"><strong>Adaline</strong><span>Osterhout family papers · guardianship/probate research</span></div>
+      <div class="person"><strong>Lucy</strong><span>Osterhout family papers · guardianship/probate research</span></div>
+      <div class="person"><strong>Milton</strong><span>Osterhout family papers · guardianship/probate research</span></div>
+      <div class="person"><strong>Prince</strong><span>Osterhout family papers · guardianship/probate research</span></div>
+      <div class="person"><strong>Charles</strong><span>Osterhout family papers · guardianship/probate research</span></div>
+      <div class="person"><strong>Matilda</strong><span>Osterhout family papers · guardianship/probate research</span></div>
+      <div class="person"><strong>Adam</strong><span>Fisher/Michael guardianship document</span></div>
+      <div class="person"><strong>Catherine</strong><span>Fisher/Michael guardianship document</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><div class="kicker">12 · Why the archive keeps them</div><h2>Someone else's ancestor may be here.</h2></div></div>
+    <div class="grid">
+      <article class="card"><h3>A name can survive sideways.</h3><p>An ancestor may not appear in a direct record. A sibling, mother, child or neighbor may appear in an estate, bill of sale, court case or slave schedule instead.</p></article>
+      <article class="card"><h3>Property records preserve relationships.</h3><p>Transfers, inheritance, fractional interests and estate distributions can reveal family groupings that later records obscure.</p></article>
+      <article class="card"><h3>Community is evidence.</h3><p>Witnesses, appraisers, attorneys, administrators, landowners and neighbors can help locate the records that eventually identify an enslaved person.</p></article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><div class="kicker">13 · Research rules</div><h2>What this archive will never do.</h2></div></div>
+    <div class="card">
+      <details open><summary>Same name does not equal same person.</summary><p>Names such as Sam, Lewis, Mary, Caroline, Easter, Bluford, John, James and others recur. A match remains separate until documentary continuity is established.</p></details>
+      <details><summary>A slave schedule does not supply names it does not contain.</summary><p>Age and sex are recorded as evidence, not converted into personal identity without a bridge.</p></details>
+      <details><summary>An administrator, guardian, appraiser or witness is not automatically an owner.</summary><p>The legal role must be read from the document.</p></details>
+      <details><summary>A legal ownership network is not the same as a biological family network.</summary><p>The archive keeps both visible and does not merge them merely because they overlap geographically.</p></details>
+      <details><summary>An unresolved connection is still a research result.</summary><p>Eliminating a possible enslaver can be just as useful as confirming one, because it narrows the historical search.</p></details>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><div class="kicker">14 · Next documentary targets</div><h2>The archive is designed to keep growing.</h2></div></div>
+    <div class="grid">
+      <article class="card"><h3>Bostick / Beall</h3><p>Locate the perfected answer ordered Dec. 7, 1852 and the original Rebecca Bostick will/inventory/division.</p></article>
+      <article class="card"><h3>Cornett succession</h3><p>Follow Austin County probate/succession records and bills of sale around the reported 1861 death.</p></article>
+      <article class="card"><h3>Osterhout papers</h3><p>Read the original guardianship/probate documents for Adaline, Lucy, Milton, Prince, Charles, Matilda, Adam and Catherine.</p></article>
+      <article class="card"><h3>Gardner / Grimes</h3><p>Find the primary 1851 deed behind the Monty transaction and follow the enslaved people through later records.</p></article>
+      <article class="card"><h3>Blake</h3><p>Continue the 1860 population through probate, land and post-emancipation records rather than assigning names from age alone.</p></article>
+      <article class="card"><h3>Austin County comparison</h3><p>Reconcile the Edwards and Blake indexed/physical-page discrepancies and continue tracking community households.</p></article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><div class="kicker">15 · Sources &amp; archive navigation</div><h2>Where the evidence lives.</h2></div></div>
+    <div class="grid">
+      <a class="card" href="research_archive.html"><div class="num">Archive</div><h3>Research Archive</h3><p>The documentary layer: evidence standards, original records, transcriptions, unresolved questions and do-not-merge rules.</p></a>
+      <a class="card" href="registry.html"><div class="num">People</div><h3>Enslaved Persons Registry</h3><p>Continue tracking named enslaved people encountered throughout the research.</p></a>
+      <a class="card" href="ownership_network.html"><div class="num">Property</div><h3>Ownership Network</h3><p>Separate legal ownership/property relationships from biological-family reconstruction.</p></a>
+      <a class="card" href="papertrail.html"><div class="num">Documents</div><h3>Document Gallery</h3><p>Primary-source images and the records behind the story.</p></a>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <b>Armstrong Family Archive · Enslavement &amp; Community Network</b><br>
+    This page is a living research index. Its purpose is preservation: to keep names, documents, places, transactions and unresolved connections visible so that future researchers can recognize their own people in the record.
+    <br><br>
+    <a href="welcome.html">← Armstrong Family Archive</a> ·
+    <a href="research_archive.html">Research Archive</a> ·
+    <a href="registry.html">Enslaved Persons Registry</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="DNA Research Center · Armstrong Family Archive. Genetic evidence, population modeling, cousin networks, segment analysis, and documentary research leads.">
+<title>DNA Research Center · Armstrong Family Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#090806;--panel:#11100c;--card:#17140e;--card2:#1d1911;--gold:#d0ad55;--gold2:#f0d78b;--cream:#eee6d5;--text:#d5cbb8;--muted:#918675;--line:rgba(208,173,85,.18);--line2:rgba(255,255,255,.08);--dna:#b486d5;--dna2:#d5b4ee;--green:#78a98c;--blue:#83a7bd;--red:#b87979;--serif:'DM Serif Display',Georgia,serif;--body:Inter,system-ui,sans-serif;--mono:'Courier Prime','Courier New',monospace;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.7;-webkit-font-smoothing:antialiased}a{color:var(--gold2);text-decoration:none}a:hover{text-decoration:underline}.wrap{max-width:1180px;margin:auto;padding:0 22px}.top{position:sticky;top:0;z-index:20;background:rgba(9,8,6,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.topin{height:54px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font:italic 18px var(--serif);color:var(--cream);white-space:nowrap}.nav{display:flex;gap:4px;overflow:auto;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}.nav a{font:12px var(--mono);letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);padding:7px 9px;white-space:nowrap}.nav a.active{color:var(--gold);border-bottom:2px solid var(--gold)}
+.hero{position:relative;overflow:hidden;padding:90px 0 70px;border-bottom:1px solid var(--line);background:radial-gradient(circle at 78% 20%,rgba(180,134,213,.12),transparent 30%),radial-gradient(circle at 15% 80%,rgba(208,173,85,.06),transparent 34%)}.hero:after{content:'DNA';position:absolute;right:-15px;top:8px;font:italic 180px var(--serif);color:rgba(208,173,85,.025);pointer-events:none}.eyebrow{font:13px var(--mono);letter-spacing:2.5px;text-transform:uppercase;color:var(--gold)}h1{font:clamp(45px,8vw,82px)/.98 var(--serif);font-weight:400;color:var(--cream);max-width:850px;margin:14px 0 20px}h2{font:34px/1.1 var(--serif);font-weight:400;color:var(--cream);margin:0 0 12px}h3{font:20px/1.25 var(--serif);font-weight:400;color:var(--cream);margin:0 0 9px}p{margin:0 0 14px}.lede{font-size:19px;max-width:760px;color:#c7bba6}.hero-note{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}.pill{border:1px solid var(--line);border-radius:999px;padding:6px 11px;color:var(--muted);font:12px var(--mono);letter-spacing:1px;text-transform:uppercase}.pill.dna{color:var(--dna2);border-color:rgba(180,134,213,.35)}
+.section{padding:66px 0;border-bottom:1px solid var(--line)}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:25px}.kicker{font:12px var(--mono);letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}.small{font-size:15px;color:var(--muted)}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:linear-gradient(180deg,var(--card),#12100b);border:1px solid var(--line2);border-radius:13px;padding:20px}.card.accent{border-color:rgba(180,134,213,.27);background:linear-gradient(180deg,rgba(180,134,213,.08),var(--card))}.card.gold{border-color:rgba(208,173,85,.25)}.label{font:12px var(--mono);letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}.big{font-size:29px;color:var(--cream);margin:5px 0 2px}.mono{font-family:var(--mono)}
+.callout{border-left:3px solid var(--gold);padding:18px 20px;background:rgba(208,173,85,.045);margin:18px 0}.callout.dna{border-left-color:var(--dna);background:rgba(180,134,213,.05)}.callout strong{color:var(--cream)}
+.evidence{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.ev{padding:13px 12px;border:1px solid var(--line2);border-radius:9px;background:#100e0a}.ev b{display:block;font:12px var(--mono);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}.ev span{font-size:14px;color:var(--muted);line-height:1.45}.confirmed b{color:#a9d2b7}.supported b{color:#a7c5d9}.lead b{color:var(--gold2)}.hyp b{color:var(--red)}.unresolved b{color:#b6ad9f}
+.k10{display:grid;grid-template-columns:1fr 1.08fr;gap:20px;align-items:stretch}.kitbox{display:flex;flex-direction:column;justify-content:center}.kitline{display:flex;gap:14px;flex-wrap:wrap;margin:18px 0}.metric{min-width:150px;padding:14px;border:1px solid rgba(180,134,213,.24);border-radius:10px;background:rgba(180,134,213,.055)}.metric .value{font:22px var(--mono);color:var(--dna2);margin-top:3px}.bars{display:flex;flex-direction:column;gap:12px}.barrow{display:grid;grid-template-columns:125px 1fr 62px;gap:10px;align-items:center}.barname{font-size:14px;color:#cfc5b4}.track{height:12px;border-radius:20px;background:#0b0a08;overflow:hidden;border:1px solid rgba(255,255,255,.05)}.fill{height:100%;border-radius:20px;background:linear-gradient(90deg,#79569b,#d5b4ee)}.pct{text-align:right;font:14px var(--mono);color:var(--cream)}.chart-note{font-size:13px;color:var(--muted);margin-top:16px}.source-chip{display:inline-block;padding:5px 8px;border:1px solid var(--line2);border-radius:6px;font:12px var(--mono);color:var(--muted)}
+.fulani-feature{display:grid;grid-template-columns:1fr 1.08fr;gap:18px;margin:0 0 18px}.fulani-map-card{padding:0;overflow:hidden}.fulani-map-card img{display:block;width:100%;height:auto;max-height:500px;object-fit:contain;background:#f3f1e8;object-position:center}
+.map-open{display:block;width:100%;border:0;padding:0;background:#080806;cursor:zoom-in;position:relative}.map-open img{transition:transform .25s ease}.map-open:hover img{transform:scale(1.01)}.map-open span{position:absolute;right:10px;bottom:10px;padding:6px 9px;border:1px solid rgba(201,168,76,.35);border-radius:999px;background:rgba(10,8,5,.86);color:var(--gold2);font:12px var(--mono);letter-spacing:1px;text-transform:uppercase}.map-modal{position:fixed;inset:0;z-index:900;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;padding:18px}.map-modal.open{display:flex}.map-modal-inner{width:min(1200px,96vw);max-height:94vh;overflow:auto;position:relative;background:#0a0805;border:1px solid rgba(201,168,76,.22);border-radius:12px;padding:10px}.map-modal img{display:block;width:100%;height:auto;max-height:88vh;object-fit:contain;margin:auto}.map-close{position:absolute;right:10px;top:10px;z-index:2;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(10,8,5,.92);color:#f0ead8;font-size:22px;cursor:pointer}.map-modal-caption{padding:8px 8px 2px;color:var(--muted);font:12px var(--mono);letter-spacing:.5px;line-height:1.5}.source-link{color:var(--gold2);text-decoration:none;border-bottom:1px dotted rgba(226,192,96,.45)}.source-link:hover{color:var(--parchment)}.map-credit{padding:9px 15px 15px;color:var(--muted);font-size:12px;line-height:1.5}.fulani-copy{padding:22px}.fulani-copy h3{font:25px var(--serif);color:var(--cream);margin:6px 0 12px}.fulani-copy p{font-size:15px;line-height:1.75;color:#c0b7a8;margin:0 0 13px}.research-note{display:grid;grid-template-columns:170px 1fr;gap:12px;padding:13px 14px;border:1px solid rgba(213,180,238,.18);background:rgba(180,134,213,.045);border-radius:9px;margin-top:14px}.research-note b{font:12px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--dna2)}.research-note span{font-size:13.5px;line-height:1.6;color:var(--muted)}.oracle{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.oracle .distance{font:24px var(--mono);color:var(--gold2);margin:7px 0}.oracle .title{font:13px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--muted)}.method-note{font-size:15px;color:var(--muted);line-height:1.65}
+.project{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 0;border-bottom:1px solid var(--line2)}.project:last-child{border-bottom:0}.project .count{font:25px var(--mono);color:var(--dna2)}
+.table-scroll{width:100%;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;border:1px solid var(--line2);border-radius:10px;background:#100e0a;scrollbar-width:thin;scrollbar-color:rgba(213,180,238,.45) #0b0a08}.table-scroll:focus{outline:1px solid rgba(213,180,238,.55);outline-offset:3px}.table-scroll table{min-width:860px;margin:0}table{width:100%;border-collapse:collapse;font-size:12.5px;line-height:1.45}th{text-align:left;font:10.5px var(--mono);letter-spacing:.8px;text-transform:uppercase;color:var(--muted);padding:8px 9px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#100e0a;z-index:2}td{padding:8px 9px;border-bottom:1px solid var(--line2);vertical-align:top}td strong{color:var(--cream);font-weight:500}.scroll-hint{display:flex;align-items:center;gap:8px;margin:9px 2px 0;color:var(--muted);font:12px var(--mono);letter-spacing:.7px;text-transform:uppercase}.scroll-hint::before{content:"↔";color:var(--dna2);font-size:16px}.status{display:inline-block;border-radius:999px;padding:3px 7px;font:12px var(--mono);letter-spacing:.8px;text-transform:uppercase}.s-confirmed{color:#a9d2b7;background:rgba(120,169,140,.09);border:1px solid rgba(120,169,140,.2)}.s-supported{color:#a7c5d9;background:rgba(131,167,189,.09);border:1px solid rgba(131,167,189,.2)}.s-lead{color:var(--gold2);background:rgba(208,173,85,.08);border:1px solid rgba(208,173,85,.2)}.s-unresolved{color:#c1b7a7;background:rgba(145,134,117,.08);border:1px solid rgba(145,134,117,.18)}
+.two-col{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}.list{display:flex;flex-direction:column;gap:10px}.item{padding:14px 15px;border:1px solid var(--line2);border-radius:9px;background:#100e0a}.item b{color:var(--cream)}.item small{display:block;color:var(--muted);font-size:13px;margin-top:3px}.timeline{position:relative;padding-left:23px}.timeline:before{content:'';position:absolute;left:5px;top:7px;bottom:7px;width:1px;background:var(--line)}.t{position:relative;margin-bottom:18px}.t:before{content:'';position:absolute;left:-22px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px var(--bg)}.t .date{font:12px var(--mono);color:var(--gold);letter-spacing:1px}.t p{font-size:15px;margin-top:2px}
+footer{padding:60px 0;text-align:center}.footer-title{font:italic 31px var(--serif);color:var(--cream)}.footer-copy{max-width:690px;margin:12px auto;color:var(--muted);font-size:15px}.back{display:inline-block;margin-top:15px;border:1px solid var(--line);padding:10px 16px;border-radius:999px;font:12px var(--mono);letter-spacing:1.4px;text-transform:uppercase}
+@media(max-width:900px){.grid3,.oracle{grid-template-columns:1fr}.k10,.two-col,.fulani-feature{grid-template-columns:1fr}.evidence{grid-template-columns:repeat(2,1fr)}.fulani-map-card img{max-height:none;width:100%;height:auto;object-fit:contain}}@media(max-width:600px){.wrap{padding:0 15px}.hero{padding:60px 0 48px}.section{padding:48px 0}.barrow{grid-template-columns:100px 1fr 55px}.evidence{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}.topin{height:auto;min-height:54px}.brand{font-size:17px}.nav a{padding:7px 7px;font-size:12px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap topin"><a class="brand" href="welcome.html">Armstrong Family Archive</a><nav class="nav"><a href="start_here.html">Start Here</a><a href="the_thread.html">The Thread</a><a class="active" href="dna.html">DNA</a><a href="research_archive.html">Research</a><a href="registry.html">Registry</a></nav></div></header>
+
+<section class="hero"><div class="wrap">
+<div class="eyebrow">Genetic Evidence · Research Center</div>
+<h1>Where We Come From</h1>
+<p class="lede">DNA is another way into the archive. The paper trail identifies people, places, estates and transactions; genetic evidence can reveal relationships and communities that surviving records do not always name.</p>
+<div class="callout dna"><strong>The rule of this page:</strong> DNA evidence is preserved at the strength it actually supports. A genetic signal can open a door without pretending to be the document that is still missing.</div>
+<div class="hero-note"><span class="pill dna">Maternal line focus</span><span class="pill">GEDmatch research</span><span class="pill">Population modeling</span><span class="pill">Segment analysis</span><span class="pill">Documentary cross-checking</span></div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="section-head"><div><div class="kicker">01 · Read this first</div><h2>What the DNA page is for</h2></div><div class="small">Family + researcher edition</div></div>
+<div class="grid2">
+<div class="card"><h3>For our family</h3><p>This page records what the DNA can tell us about biological connections, ancestral populations, and communities connected to the family story. It also shows where the paper trail still has work to do.</p></div>
+<div class="card"><h3>For other researchers</h3><p>The goal is reproducibility. Kit identifiers are masked where appropriate; methods, match sizes, segment information, calculator settings, and research status are shown where available.</p></div>
+</div>
+<div class="callout"><strong>DNA does not replace the paper trail.</strong> It can point toward a family, place, community, or biological relationship that can then be tested against deeds, probate, census records, wills, land records, death certificates, and other primary sources.</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="section-head"><div><div class="kicker">02 · Evidence framework</div><h2>How genetic evidence is labeled</h2></div></div>
+<div class="evidence">
+<div class="ev confirmed"><b>Documented</b><span>Primary record or original image directly establishes the historical fact.</span></div>
+<div class="ev supported"><b>DNA-supported</b><span>Genetic evidence and documentary evidence point in the same direction.</span></div>
+<div class="ev lead"><b>Genetic network signal</b><span>Clusters, shared matches, geography, surnames, or segments create a research direction.</span></div>
+<div class="ev hyp"><b>Hypothesis</b><span>A plausible ancestral or historical explanation still requiring a documentary bridge.</span></div>
+<div class="ev unresolved"><b>Unresolved</b><span>The genetic relationship may be real while the exact historical ancestor remains unknown.</span></div>
+</div>
+</div></section>
+
+<section class="section" id="ethiohelix"><div class="wrap">
+<div class="section-head"><div><div class="kicker">03 · African population modeling</div><h2>EthioHelix K10 · Africa Only</h2></div><span class="source-chip">Kit QW84*****</span></div>
+<div class="k10">
+<div class="card accent kitbox">
+<div class="label">Analysis record</div><div class="big">16,113 SNPs</div><p class="small">Africa-only analysis of Jasmine M. Lee's GEDmatch kit. The public page masks the full kit identifier.</p>
+<div class="kitline"><div class="metric"><div class="label">Scope</div><div class="value">AFRICA</div></div><div class="metric"><div class="label">Kit</div><div class="value">QW84*****</div></div></div>
+<div class="callout dna"><strong>How to read this:</strong> these percentages are outputs of a population-comparison model. They are not a direct measurement of a named historical ancestor's ethnicity.</div>
+</div>
+<div class="card"><div class="label">K10 Africa Only · recorded components</div><div class="bars" style="margin-top:18px">
+<div class="barrow"><div class="barname">West Africa</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="pct">54.37%</div></div>
+<div class="barrow"><div class="barname">North Africa</div><div class="track"><div class="fill" style="width:33.4%"></div></div><div class="pct">18.16%</div></div>
+<div class="barrow"><div class="barname">East Africa 2</div><div class="track"><div class="fill" style="width:22.4%"></div></div><div class="pct">12.17%</div></div>
+<div class="barrow"><div class="barname">Omotic</div><div class="track"><div class="fill" style="width:8.4%"></div></div><div class="pct">4.56%</div></div>
+<div class="barrow"><div class="barname">Biaka Pygmy</div><div class="track"><div class="fill" style="width:7.0%"></div></div><div class="pct">3.83%</div></div>
+<div class="barrow"><div class="barname">Nilo-Saharan</div><div class="track"><div class="fill" style="width:5.8%"></div></div><div class="pct">3.13%</div></div>
+<div class="barrow"><div class="barname">Khoi-San</div><div class="track"><div class="fill" style="width:4.0%"></div></div><div class="pct">2.20%</div></div>
+<div class="barrow"><div class="barname">Hadza</div><div class="track"><div class="fill" style="width:2.3%"></div></div><div class="pct">1.26%</div></div>
+<div class="barrow"><div class="barname">East Africa 1</div><div class="track"><div class="fill" style="width:.59%"></div></div><div class="pct">0.32%</div></div>
+</div><div class="chart-note">Values reproduced from the archive's recorded EthioHelix K10 Africa Only result. Bar lengths are visualized relative to the largest component.</div></div>
+</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="section-head"><div><div class="kicker">04 · Oracle modeling</div><h2>Population approximations</h2></div><div class="small">Mathematical fits · not ethnic identity assignments</div></div>
+<div class="fulani-feature">
+<div class="card fulani-map-card">
+<div class="label">Geographic context</div>
+<h3>Fulani / Fula world</h3>
+<button class="map-open" type="button" aria-label="Open Fulani geographic distribution map">
+<img src="fulani_distribution_map.png" alt="Illustrative map of broad Fulani and Fula geographic distribution across West and Central Africa" loading="lazy">
+<span>Tap map to enlarge</span>
+</button>
+<p class="map-credit"><strong>Archive map:</strong> created for the Armstrong Family Archive to provide geographic context. The shaded belt is an illustrative synthesis of the broad Fulani/Fula distribution described in published geographic sources; it is not a DNA result, ethnicity assignment, or exact population census map. <a class="source-link" href="https://www.uscirf.gov/sites/default/files/2021-07/2020%20Factsheet%20-%20Fulani%20Communities_FINAL.pdf" target="_blank" rel="noopener">Reference: USCIRF, Fulani Communities in West and Central Africa</a>.</p>
+</div>
+<div class="card fulani-copy">
+<div class="label">Who are the Fulani?</div>
+<h3>One people, many communities</h3>
+<p>The <strong>Fulani</strong>, also called <strong>Fula</strong> or <strong>Fulbe</strong>, are a large and geographically dispersed people whose communities extend across a broad belt of West and Central Africa. Fulfulde and related varieties are spoken across this region, with major concentrations from Senegal and Guinea through Mali, Burkina Faso, Niger and northern Nigeria, and farther east into Cameroon and Chad. <a class="source-link" href="https://academic.oup.com/edited-volume/61663/chapter-abstract/553460521" target="_blank" rel="noopener">Oxford Research Encyclopedia of African History</a></p>
+<p>Fulani communities have never been a single uniform population. Many have historically practiced pastoralism and seasonal livestock movement, while others have lived as farmers, combined agriculture with livestock keeping, or settled in towns and cities. Their histories also differ by region, language variety, lineage, religion, political history and migration. <a class="source-link" href="https://www.nationalgeographic.com/culture/article/fulani-africa-nomadic-people" target="_blank" rel="noopener">National Geographic</a></p>
+<div class="callout dna"><strong>Why this matters here:</strong> the EthioHelix/Oracle results can point toward reference populations associated with broad African regions. A Fulani model result is therefore a <strong>population-level research signal</strong>. It does not by itself establish that a specific historical ancestor was Fulani, nor does it identify where in the Fulani world that ancestry entered the family.</div>
+<div class="research-note"><b>Historical research question</b><span>If the Fulani signal persists across independent genetic analyses, the next step is to investigate the documented routes, communities and Atlantic-world populations through which West African ancestry could have entered the family—not to assign the result to a named ancestor without a bridge.</span></div>
+</div>
+</div>
+<div class="oracle">
+<div class="card accent"><div class="title">Single Population · two methods</div><h3>Fulani</h3><div class="distance">18.56 / 18.65</div><p class="method-note">The recorded result identifies Fulani as the best single-population fit in both listed Oracle methods. Agreement is useful as a population-model signal; it does not prove a specific Fulani ancestor.</p></div>
+<div class="card"><div class="title">4-Ancestors Oracle</div><h3>Algeria + Hema + Yoruba + Yoruba</h3><div class="distance">4.18</div><p class="method-note">The model uses reference populations to approximate the tested profile. Yoruba appears twice in the recorded fit; Hema and Algeria are model components, not documentary ancestors.</p></div>
+<div class="card"><div class="title">Mixed Mode · Dienekes</div><h3>68.8% Bamoun + 31.2% Libya</h3><div class="distance">4.06</div><p class="method-note">A two-population mathematical fit. “Libya” is a reference-population proxy in the model, not a statement that a recent ancestor came from Libya.</p></div>
+</div>
+<div class="callout"><strong>Research interpretation:</strong> the calculator results are useful because several models point toward broad West African, Sahelian, Central African, and East African reference populations. The archive keeps the results visible while reserving specific ancestral identities for documentary and genetic-network evidence.</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="section-head"><div><div class="kicker">05 · Living cousin networks</div><h2>DNA matches that lead back into Bellville</h2></div></div>
+<div class="grid2">
+<div class="card accent"><div class="label">Gwen Reese</div><div class="big">53.5 cM</div><p>Recorded connection to the Nichols / Armstrong research network. Hjordis Corbin shares 71.5 cM with Gwen in the current research record.</p><span class="status s-supported">DNA-supported network</span></div>
+<div class="card"><div class="label">LaToya Carraway</div><div class="big">39.6 cM</div><p>Recorded connection through the Black Carraway family, Shelby County Texas, and the Bobo freedom-colony research thread. Generation estimate recorded as 4.3.</p><span class="status s-lead">Strong research lead</span></div>
+<div class="card"><div class="label">Lolah D James</div><div class="big">35.7 cM</div><p>Recorded shared Carraway / James node. Generation estimate recorded as 4.3.</p><span class="status s-lead">Strong research lead</span></div>
+<div class="card gold"><div class="label">The question this cluster creates</div><h3>Easter Bell Nichols · Joseph Nichols · or another Bellville connection?</h3><p>The genetic relationship is useful evidence. The exact historical common ancestor still requires the documentary bridge.</p><span class="status s-unresolved">Unresolved identity bridge</span></div>
+</div>
+<div class="callout dna"><strong>Important:</strong> a group of mutual matches is not automatically a formal segment-triangulation group. Segment triangulation requires overlapping segment evidence and appropriate one-to-one comparison. The archive therefore distinguishes match clusters from confirmed segment work.</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="section-head"><div><div class="kicker">06 · Campbell network</div><h2>Bellville Precinct 5 · 1870</h2></div></div>
+<div class="two-col"><div class="card"><h3>Three descendants · three matches</h3><table><thead><tr><th>Match</th><th>cM</th><th>Historical target</th></tr></thead><tbody><tr><td><strong>Danni Durham</strong></td><td>23.8</td><td>Edwin Campbell, born ca. 1862</td></tr><tr><td><strong>Kailey Knight</strong></td><td>17.7</td><td>James Campbell, born ca. 1867</td></tr><tr><td><strong>Kelly E. Mobley</strong></td><td>12.5</td><td>Moses Campbell, born ca. 1859</td></tr></tbody></table></div><div class="card"><div class="label">Documentary correction</div><h3>The original census matters</h3><p>The archive records that the 1870 Campbell household was misindexed in major databases. Examination of the original sheet showed M/B designations in the Color column rather than the database's White indexing.</p><p class="small">The page also preserves the Hannah Campbell domestic-servant / inferred-mother problem and the later 1880 birthplace discrepancy as separate research corrections.</p></div></div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="section-head"><div><div class="kicker">07 · Enslaved & enslavers research</div><h2>When DNA points toward a historical community</h2></div></div>
+<div class="grid2">
+<div class="card"><h3>Laban Andrews estate · Orange County, North Carolina</h3><p>A recorded 17.4 cM chromosome 2 match with Laura Andrews was used as a research lead into the Laban Andrews probate estate. The estate records preserve the names of enslaved people who might otherwise be invisible.</p><table><thead><tr><th>Named in estate research</th><th>Record status</th></tr></thead><tbody><tr><td>Barcas</td><td>Documented</td></tr><tr><td>Lucy</td><td>Documented</td></tr><tr><td>Tom</td><td>Documented</td></tr><tr><td>Silvey</td><td>Documented</td></tr><tr><td>Peter</td><td>Documented</td></tr><tr><td>Jordon</td><td>Documented</td></tr><tr><td>Green</td><td>Documented</td></tr></tbody></table></div>
+<div class="card accent"><h3>Why this belongs here</h3><p>The purpose is not to declare these people direct ancestors. It is to show how a DNA match can identify a community worth researching, and how that research can recover names, transactions, heirs, and dispositions from probate records.</p><div class="callout dna"><strong>Core principle:</strong> a DNA match can be evidence of a biological relationship while the historical meaning of that relationship remains unresolved.</div></div>
+</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="section-head"><div><div class="kicker">08 · Segment analysis</div><h2>Enslaved & Enslavers Ancestors DNA Project</h2></div><div class="small">Recorded August 23, 2026</div></div>
+<div class="card accent"><div class="grid3"><div><div class="label">Kit</div><div class="big">QW84*****</div></div><div><div class="label">Threshold</div><div class="big">7 cM</div></div><div><div class="label">Kits evaluated</div><div class="big">1,802</div></div></div><p style="margin-top:18px">Chromosome 23 excluded. The current research notes that Hjordis Corbin appears as the first match in each significant cluster, supporting the interpretation that these connections run through the maternal family line.</p></div>
+<div class="card" style="margin-top:15px"><div class="table-scroll" tabindex="0" aria-label="Horizontal scrolling DNA segment match table"><table><thead><tr><th>Kit</th><th>Name</th><th>Chr</th><th>cM</th><th>SNPs</th><th>MRCA</th><th>Research note</th></tr></thead><tbody>
+<tr><td>T726990</td><td><strong>Jean F. Birkhead Brown</strong></td><td>13</td><td>27.0</td><td>3,504</td><td>4.53</td><td>Largest segment in recorded analysis; priority research contact.</td></tr>
+<tr><td>T061541</td><td><strong>Mildred S.</strong></td><td>4</td><td>14.5</td><td>1,800</td><td>4.97</td><td>L1c3; West/Central African maternal-line research signal.</td></tr>
+<tr><td>A077986</td><td><strong>Nina L. Taylor</strong></td><td>2</td><td>13.4</td><td>1,622</td><td>5.03</td><td>L3e1; recorded Pontotoc County Coffin research connection.</td></tr>
+<tr><td>MF4964321</td><td><strong>SMJC</strong></td><td>15</td><td>10.8</td><td>1,374</td><td>5.19</td><td>L1b3a4; Thompson surname research lead.</td></tr>
+<tr><td>SC2396688</td><td><strong>SearchingForFamily</strong></td><td>8</td><td>13.3</td><td>2,004</td><td>—</td><td>Anonymous kit; 2,004 SNPs recorded.</td></tr>
+<tr><td>T862730</td><td><strong>Bailey SC</strong></td><td>3</td><td>8.1</td><td>1,154</td><td>7.28</td><td>L2a1e; South Carolina connection is a research lead, not proof.</td></tr>
+<tr><td>A539366</td><td><strong>Gena Renee Pulliam</strong></td><td>—</td><td>15.2</td><td>—</td><td>4.9</td><td>Pulliam/Pontotoc and Bellville research intersection.</td></tr>
+<tr><td>M171545</td><td><strong>Robert D. Lindsey</strong></td><td>19</td><td>7.8</td><td>818</td><td>7.42</td><td>L2a1; African maternal-line signal; Lindsey surname appears in Newberry research.</td></tr>
+</tbody></table></div><div class="scroll-hint">Swipe or scroll horizontally to view all columns</div></div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="section-head"><div><div class="kicker">09 · Pontotoc cluster</div><h2>When a DNA cluster creates a new historical corridor</h2></div></div>
+<div class="grid2"><div class="card"><h3>Nina Taylor cluster</h3><div class="big">29 shared matches</div><p>The recorded People Who Match Both analysis between Jasmine's kit and Nina Taylor's kit returned 29 kits. The shared chromosome 2 segment is recorded at positions 206,155,107–217,532,139, 13.4 cM and 1,622 SNPs.</p><span class="status s-supported">Segment evidence recorded</span></div><div class="card"><h3>Gena Pulliam cluster</h3><div class="big">43 shared matches</div><p>The recorded People Who Match Both analysis between Jasmine's kit and Gena Renee Pulliam's kit returned 43 kits. The overlap creates a separate Pontotoc/Bellville research corridor that is being investigated independently from the Nina cluster.</p><span class="status s-lead">Research network</span></div></div>
+<div class="callout"><strong>Research discipline:</strong> a match to a descendant of an enslaver is not automatically evidence of descent from that enslaver. The archive tracks the genetic relationship and then researches the historical community, migration, probate, land, and enslaved-person records around it.</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="section-head"><div><div class="kicker">10 · African population results</div><h2>What the current models can—and cannot—say</h2></div></div>
+<div class="grid3">
+<div class="card"><div class="label">Can say</div><h3>Population similarity</h3><p>The tested DNA resembles the calculator's reference populations in the proportions and combinations reported.</p></div>
+<div class="card"><div class="label">Can suggest</div><h3>Research directions</h3><p>Broad West African, Sahelian, Central African, East African, or other population signals can help determine which historical communities deserve deeper investigation.</p></div>
+<div class="card"><div class="label">Cannot establish alone</div><h3>A named ancestor</h3><p>An admixture component cannot, by itself, identify Patience, Easter, Rendy, or another specific ancestor—or prove a specific ethnic identity.</p></div>
+</div>
+<div class="callout dna"><strong>Why the EthioHelix chart remains important:</strong> it preserves the actual computational result instead of hiding it behind a narrative. Future tools, better reference panels, or new DNA matches can be compared against this recorded baseline.</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="section-head"><div><div class="kicker">11 · Research corrections</div><h2>The original record outranks the database</h2></div></div>
+<div class="grid2"><div class="card"><h3>Campbell indexing correction</h3><p>The 1870 Austin County Campbell household was misindexed as White in major genealogy databases. The archive records the original-sheet examination showing M/B designations.</p><p class="small">The research page also preserves the Hannah Campbell inferred-mother problem and the 1880 birthplace discrepancy rather than silently reconciling them.</p></div><div class="card"><h3>Why this matters to DNA work</h3><p>Bad indexing can erase a family from search results. A DNA match may point toward a community that the indexed record makes difficult to find. Original images are therefore part of the genetic-genealogy workflow, not a separate activity.</p></div></div>
+</div></section>
+
+<section class="section"><div class="wrap">
+<div class="section-head"><div><div class="kicker">12 · Research queue</div><h2>What the DNA is asking us to solve</h2></div></div>
+<div class="list">
+<div class="item"><b>Bellville Nichols cluster</b><small>Identify the exact documentary bridge among the living-cousin cluster, Easter Bell Nichols, Joseph Nichols, and other Bellville families. <span class="status s-unresolved">Unresolved</span></small></div>
+<div class="item"><b>Campbell ↔ Nichols connection</b><small>Locate the historical family relationship behind the biological connection. <span class="status s-lead">Strong research lead</span></small></div>
+<div class="item"><b>Rendy Blayn / Blain / Bland</b><small>Use Virginia DNA matches as a guide toward the primary record that identifies Rendy before Texas. <span class="status s-lead">Research lead</span></small></div>
+<div class="item"><b>Patience and the Dutch Fork</b><small>Use the 377-match community signal as genetic context while documentary work continues around the 1795 Newberry record. <span class="status s-supported">DNA-supported research direction</span></small></div>
+<div class="item"><b>Pontotoc corridor</b><small>Separate the Nina/Coffin/Trott/Thompson cluster from the Pulliam/Bellville cluster and identify the historical bridge only where records support it. <span class="status s-lead">Active research</span></small></div>
+</div>
+</div></section>
+
+<footer><div class="wrap"><div class="footer-title">The DNA is a trail, not the destination.</div><p class="footer-copy">Seven years of documentary research and genetic genealogy are being built together. The archive records what is known, what is supported, what is suggested, and what is still waiting for the record that closes the gap.</p><a class="back" href="research_archive.html">Return to Research Archive</a></div></footer>
+
+<div class="map-modal" id="fulaniMapModal" aria-hidden="true">
+  <div class="map-modal-inner">
+    <button class="map-close" type="button" aria-label="Close map">×</button>
+    <img src="fulani_distribution_map.png" alt="Fulani / Fula geographic distribution map">
+    <div class="map-modal-caption">Archive-created geographic context map. It illustrates broad Fulani/Fula distribution and is not an ethnicity or DNA assignment.</div>
+  </div>
+</div>
+<script>
+(function(){
+  const openBtn=document.querySelector('.map-open');
+  const modal=document.getElementById('fulaniMapModal');
+  const closeBtn=modal && modal.querySelector('.map-close');
+  if(!openBtn||!modal) return;
+  function close(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+  openBtn.addEventListener('click',()=>{modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';});
+  closeBtn.addEventListener('click',close);
+  modal.addEventListener('click',e=>{if(e.target===modal) close();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape') close();});
+})();
+</script>
+</body></html>

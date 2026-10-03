@@ -3,192 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Armstrong Family Archive</title>
-<meta name="description" content="Seven years of research traced our family back to 1795. Find where you fit, or go straight to the family tree.">
+<title>Our Story · Armstrong Family Archive</title>
+<meta name="description" content="The working family story reconstructed from seven years of genealogical research, primary records, DNA evidence, and unresolved research leads.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --deep:#080604;--deep2:#0d0a07;--gold:#c9a84c;--gold2:#e8c96a;
-    --cream:#f5f2ec;--parchment:#f0ead8;--muted:#9a9187;
-    --border:rgba(201,168,76,0.16);
-    --f-display:'DM Serif Display',Georgia,serif;
-    --f-body:'Inter',sans-serif;--f-mono:'Courier New',monospace;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--deep);color:var(--cream);font-family:var(--f-body);
-    -webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;
-  }
-  body:before{
-    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-    background:
-      radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.12),transparent 46%),
-      radial-gradient(ellipse at 90% 70%,rgba(115,77,32,.06),transparent 35%);
-  }
-  .wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 28px;}
-  .hero{min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:90px 0 70px;}
-  .hero-inner{max-width:820px;}
-  .eyebrow{font-family:var(--f-mono);font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(201,168,76,.65);margin-bottom:26px;}
-  .title{font-family:var(--f-display);font-size:clamp(52px,9vw,104px);font-style:italic;font-weight:400;line-height:.95;letter-spacing:-2px;color:var(--parchment);}
-  .title span{display:block;color:var(--gold);}
-  .rule{width:72px;height:1px;background:var(--gold);opacity:.55;margin:28px auto;}
-  .sub{font-family:var(--f-display);font-size:clamp(16px,2.4vw,22px);font-style:italic;color:rgba(232,201,106,.72);line-height:1.45;}
-  .intro{max-width:650px;margin:25px auto 0;font-size:15px;line-height:1.95;color:#aaa197;}
-  .intro strong{color:var(--parchment);font-weight:400;}
-  .scroll{margin-top:42px;font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,242,236,.3);}
-  .scroll:after{content:"↓";display:block;font-size:15px;color:var(--gold);margin-top:9px;}
-  
-  .entry-section{padding:30px 0 100px;}
-  .section-kicker{text-align:center;font-family:var(--f-mono);font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(201,168,76,.55);margin-bottom:13px;}
-  .section-title{text-align:center;font-family:var(--f-display);font-size:clamp(28px,5vw,44px);font-style:italic;font-weight:400;color:var(--parchment);margin-bottom:12px;}
-  .section-intro{text-align:center;max-width:650px;margin:0 auto 38px;color:#8f877e;font-size:13px;line-height:1.85;}
-  
-  .choices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-  .choice{
-    display:flex;flex-direction:column;min-height:245px;text-decoration:none;
-    padding:28px 25px;border:1px solid var(--border);background:rgba(255,255,255,.018);
-    transition:transform .2s,border-color .2s,background .2s;
-  }
-  .choice:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.45);background:rgba(201,168,76,.045);}
-  .choice.primary{border-color:rgba(201,168,76,.38);background:rgba(201,168,76,.055);}
-  .choice-number{font-family:var(--f-mono);font-size:9px;letter-spacing:2px;color:var(--gold);margin-bottom:26px;}
-  .choice-label{font-family:var(--f-mono);font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(245,242,236,.38);margin-bottom:9px;}
-  .choice-title{font-family:var(--f-display);font-size:25px;font-style:italic;color:var(--parchment);line-height:1.1;margin-bottom:12px;}
-  .choice-body{font-size:12px;line-height:1.75;color:#817a73;}
-  .choice-arrow{margin-top:auto;padding-top:22px;font-family:var(--f-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,.65);}
-  
-  .story-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:70px 0;}
-  .story-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:70px;align-items:center;}
-  .story-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,168,76,.55);margin-bottom:15px;}
-  .story-heading{font-family:var(--f-display);font-size:clamp(30px,4vw,48px);font-style:italic;font-weight:400;line-height:1.05;color:var(--parchment);}
-  .story-copy{font-size:14px;line-height:1.95;color:#968d84;}
-  .story-copy p+p{margin-top:18px;}
-  .story-copy strong{color:#d9d0c3;font-weight:400;}
-  
-  .principles{padding:75px 0 95px;}
-  .principle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:38px;}
-  .principle{border-top:1px solid var(--border);padding-top:18px;}
-  .principle-num{font-family:var(--f-mono);font-size:8px;letter-spacing:2px;color:var(--gold);margin-bottom:12px;}
-  .principle h3{font-family:var(--f-display);font-size:22px;font-style:italic;font-weight:400;color:var(--parchment);margin-bottom:9px;}
-  .principle p{font-size:12px;line-height:1.8;color:#7f7870;}
-  
-  .footer{border-top:1px solid var(--border);padding:30px 0 55px;text-align:center;}
-  .footer-title{font-family:var(--f-display);font-size:22px;font-style:italic;color:var(--parchment);margin-bottom:9px;}
-  .footer-note{font-family:var(--f-mono);font-size:8px;letter-spacing:1.5px;color:rgba(245,242,236,.28);}
-  
-  @media(max-width:760px){
-    .hero{min-height:82vh;padding-top:75px;}
-    .wrap{padding:0 20px;}
-    .choices,.principle-grid,.story-grid{grid-template-columns:1fr;}
-    .choice{min-height:205px;}
-    .story-grid{gap:30px;}
-    .story-strip{padding:55px 0;}
-    .principles{padding:55px 0 70px;}
-  }
+:root{--deep:#080604;--deep2:#0d0a07;--gold:#c9a84c;--gold2:#e8c96a;--cream:#f5f2ec;--parchment:#f0ead8;--muted:#9a9187;--border:rgba(201,168,76,.16);--f-display:'DM Serif Display',Georgia,serif;--f-body:Inter,sans-serif;--f-mono:'Courier New',monospace}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--deep);color:var(--cream);font-family:var(--f-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 50% 0,rgba(201,168,76,.1),transparent 44%),radial-gradient(ellipse at 90% 75%,rgba(115,77,32,.05),transparent 35%)}
+.wrap{position:relative;z-index:1;max-width:1060px;margin:auto;padding:0 28px}
+.gnav{position:sticky;top:0;z-index:100;background:rgba(8,6,4,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(8px)}.gnav-inner{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:52px;gap:8px}.gnav-brand{font:italic 15px var(--f-display);color:rgba(240,234,216,.8);text-decoration:none;white-space:nowrap}.gnav-links{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}.gnav-links::-webkit-scrollbar{display:none}.gnav-link{font:8.5px var(--f-mono);letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,242,236,.45);text-decoration:none;padding:6px 10px;white-space:nowrap;border-bottom:2px solid transparent}.gnav-link:hover{color:rgba(245,242,236,.85)}.gnav-link.active{color:var(--gold);border-bottom-color:var(--gold)}.gnav-link.gstart{color:var(--gold);border:1px solid rgba(201,168,76,.35);padding:5px 10px;margin-right:6px}
+.breadcrumb{position:relative;z-index:1;background:rgba(14,11,8,.8);border-bottom:1px solid rgba(255,255,255,.04);padding:7px 24px;font:9px var(--f-mono);letter-spacing:1px;color:rgba(245,242,236,.3)}.breadcrumb a{color:rgba(245,242,236,.4);text-decoration:none}.breadcrumb span{color:rgba(255,255,255,.18);margin:0 6px}
+.hero{position:relative;z-index:1;min-height:78vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:90px 0 75px}.hero-inner{max-width:820px}.eyebrow{font:9px var(--f-mono);letter-spacing:5px;text-transform:uppercase;color:rgba(201,168,76,.65);margin-bottom:24px}.title{font:400 clamp(50px,8vw,94px)/.95 var(--f-display);font-style:italic;letter-spacing:-2px;color:var(--parchment)}.title span{display:block;color:var(--gold)}.rule{width:72px;height:1px;background:var(--gold);opacity:.55;margin:27px auto}.sub{font:italic clamp(17px,2.4vw,23px)/1.5 var(--f-display);color:rgba(232,201,106,.76)}.hero-copy{max-width:690px;margin:24px auto 0;font-size:15px;line-height:1.95;color:#aaa197}.hero-copy strong{color:var(--parchment);font-weight:400}.scroll{margin-top:38px;font:8px var(--f-mono);letter-spacing:3px;text-transform:uppercase;color:rgba(245,242,236,.3)}.scroll:after{content:"↓";display:block;font-size:15px;color:var(--gold);margin-top:9px}
+.story{position:relative;z-index:1;border-top:1px solid var(--border);padding:80px 0 105px}.story-layout{display:grid;grid-template-columns:260px 1fr;gap:65px}.story-nav{position:sticky;top:82px;align-self:start}.story-nav-label{font:8px var(--f-mono);letter-spacing:3px;text-transform:uppercase;color:rgba(201,168,76,.55);margin-bottom:15px}.story-nav a{display:block;padding:8px 0;color:#756e67;text-decoration:none;font:10px var(--f-mono);letter-spacing:1px;border-left:1px solid transparent;padding-left:12px}.story-nav a:hover{color:var(--gold);border-left-color:var(--gold)}.story-column{max-width:690px}.chapter{padding:0 0 72px;margin-bottom:72px;border-bottom:1px solid rgba(201,168,76,.1)}.chapter:last-child{border-bottom:0;margin-bottom:0}.chapter-kicker{font:8px var(--f-mono);letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}.chapter h2{font:400 clamp(30px,4vw,48px)/1.05 var(--f-display);font-style:italic;color:var(--parchment);margin-bottom:20px}.chapter p{font-size:15px;line-height:2;color:#a0988e;margin-bottom:18px}.chapter p:last-child{margin-bottom:0}.chapter strong{color:#ddd4c7;font-weight:400}.chapter em{color:var(--gold2);font-style:normal}.pullquote{margin:30px 0;padding:23px 25px;border-left:2px solid var(--gold);background:rgba(201,168,76,.045);font:italic 21px/1.55 var(--f-display);color:var(--parchment)}.record{display:grid;grid-template-columns:100px 1fr;gap:18px;margin:24px 0;padding:18px;background:rgba(255,255,255,.018);border:1px solid rgba(255,255,255,.06)}.record-label{font:8px var(--f-mono);letter-spacing:2px;text-transform:uppercase;color:var(--gold)}.record p{font-size:12px;line-height:1.75;color:#8f877e;margin:0}
+.uncertainty{margin:24px 0;padding:19px 20px;background:rgba(201,168,76,.035);border:1px solid rgba(201,168,76,.14)}.uncertainty-label{font:8px var(--f-mono);letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}.uncertainty p{font-size:12px!important;line-height:1.8!important;color:#928a81!important;margin:0!important}
+.timeline{margin-top:26px;border-left:1px solid rgba(201,168,76,.2);padding-left:25px}.event{position:relative;margin-bottom:28px}.event:last-child{margin-bottom:0}.event:before{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--gold);left:-29px;top:6px}.event-date{font:8px var(--f-mono);letter-spacing:2px;color:var(--gold);margin-bottom:5px}.event-title{font:18px var(--f-display);font-style:italic;color:var(--parchment);margin-bottom:5px}.event-text{font-size:12px;line-height:1.75;color:#8f877e}
+.status-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px}.status{padding:21px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.018)}.status-label{font:8px var(--f-mono);letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:9px}.status h3{font:21px var(--f-display);font-style:italic;color:var(--parchment);margin-bottom:8px}.status p{font-size:11px;line-height:1.75;color:#878078}
+.entry{position:relative;z-index:1;border-top:1px solid var(--border);padding:75px 0 90px}.entry-title{text-align:center;font:italic 38px var(--f-display);color:var(--parchment);margin-bottom:12px}.entry-copy{text-align:center;max-width:650px;margin:auto;color:#8f877e;font-size:13px;line-height:1.85}.choices{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:760px;margin:35px auto 0}.choice{display:block;text-decoration:none;padding:23px;border:1px solid var(--border);background:rgba(255,255,255,.018);transition:.2s}.choice:hover{transform:translateY(-2px);border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.04)}.choice-label{font:8px var(--f-mono);letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}.choice h3{font:italic 24px var(--f-display);color:var(--parchment);margin-bottom:7px}.choice p{font-size:11px;line-height:1.7;color:#817a73}.choice-arrow{display:block;margin-top:15px;font:8px var(--f-mono);letter-spacing:2px;text-transform:uppercase;color:#9d813d}
+.footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:30px 0 50px;text-align:center}.footer-title{font:italic 22px var(--f-display);color:var(--parchment);margin-bottom:8px}.footer-note{font:8px var(--f-mono);letter-spacing:1.5px;color:rgba(245,242,236,.28)}
+@media(max-width:800px){.wrap{padding:0 20px}.story-layout{grid-template-columns:1fr;gap:35px}.story-nav{position:static;display:flex;gap:5px;overflow-x:auto}.story-nav-label{display:none}.story-nav a{white-space:nowrap;border:1px solid rgba(255,255,255,.07);padding:8px 10px}.status-grid{grid-template-columns:1fr}.choices{grid-template-columns:1fr}.hero{min-height:72vh;padding-top:70px}}
+@media(max-width:520px){.gnav-brand{display:none}.gnav-inner{justify-content:flex-start}.record{grid-template-columns:1fr;gap:7px}.chapter{padding-bottom:55px;margin-bottom:55px}}
 </style>
 <link rel="stylesheet" href="overrides.css">
 </head>
 <body>
-  <main>
-    <section class="hero">
-      <div class="wrap">
-        <div class="hero-inner">
-          <div class="eyebrow">Bellville, Texas · South Carolina · Mississippi · Today</div>
-          <h1 class="title">Armstrong<span>Family Archive</span></h1>
-          <div class="rule"></div>
-          <p class="sub">Seven years of research. A family story still being uncovered.</p>
-          <p class="intro">
-            This archive follows our family through <strong>enslavement, emancipation, migration, marriage, land, and generations of survival</strong>.
-            Some connections are documented. Some are strong research leads. Some questions are still open.
-            They all belong here.
-          </p>
-          <div class="scroll">Enter the archive</div>
-        </div>
-      </div>
-    </section>
+<nav class="gnav"><div class="gnav-inner">
+<a href="index.html" class="gnav-brand">Armstrong Family Archive</a>
+<div class="gnav-links">
+<a href="start_here.html" class="gnav-link gstart">★ Start Here</a>
+<a href="for_the_family.html" class="gnav-link">Site Guide</a>
+<a href="welcome.html" class="gnav-link active">Our Story</a>
+<a href="bellville_family.html" class="gnav-link">The Family</a>
+<a href="we_are_bellville.html" class="gnav-link">We Are Bellville</a>
+<a href="how_we_got_here.html" class="gnav-link">The Story</a>
+<a href="papertrail.html" class="gnav-link">Documents</a>
+<a href="photos.html" class="gnav-link">Photos</a>
+</div></div></nav>
 
-    <section class="entry-section">
-      <div class="wrap">
-        <div class="section-kicker">Where do you want to begin?</div>
-        <h2 class="section-title">Three ways into the story</h2>
-        <p class="section-intro">You do not need to understand the genealogy before you enter. Start with yourself, start with the family tree, or start with the records that built the story.</p>
+<div class="breadcrumb"><a href="index.html">Home</a><span>›</span><strong style="color:rgba(245,242,236,.6)">Our Story</strong></div>
 
-        <div class="choices">
-          <a href="start_here.html" class="choice primary">
-            <span class="choice-number">01</span>
-            <span class="choice-label">For Family</span>
-            <span class="choice-title">Find Where You Fit</span>
-            <span class="choice-body">Start with your own name or generation and follow the path back through the family.</span>
-            <span class="choice-arrow">Enter your family →</span>
-          </a>
-          <a href="family_tree.html" class="choice">
-            <span class="choice-number">02</span>
-            <span class="choice-label">The Family Archive</span>
-            <span class="choice-title">Explore the Family Tree</span>
-            <span class="choice-body">Meet the people, generations, branches, and stories that make up the archive.</span>
-            <span class="choice-arrow">Open the family tree →</span>
-          </a>
-          <a href="papertrail.html" class="choice">
-            <span class="choice-number">03</span>
-            <span class="choice-label">For Researchers</span>
-            <span class="choice-title">Follow the Paper Trail</span>
-            <span class="choice-body">Go directly to wills, deeds, probate records, land records, census records, and research leads.</span>
-            <span class="choice-arrow">Enter the documents →</span>
-          </a>
-        </div>
-      </div>
-    </section>
+<header class="hero">
+<div class="wrap"><div class="hero-inner">
+<div class="eyebrow">A Working Reconstruction · Armstrong Family Archive</div>
+<h1 class="title">The Story<span>We Believe.</span></h1>
+<div class="rule"></div>
+<p class="sub">Seven years of records, names, places, and connections — assembled one piece at a time.</p>
+<p class="hero-copy">This is the family's story <strong>as the research currently allows us to tell it</strong>. Some chapters rest on direct records. Others are working hypotheses built from patterns across deeds, wills, census records, land records, family records, and DNA evidence. Where the bridge is missing, we leave it visible.</p>
+<div class="scroll">Read the reconstruction</div>
+</div></div>
+</header>
 
-    <section class="story-strip">
-      <div class="wrap">
-        <div class="story-grid">
-          <div>
-            <div class="story-label">What this archive is about</div>
-            <h2 class="story-heading">The names came first.<br>The story came after.</h2>
-          </div>
-          <div class="story-copy">
-            <p>For generations, the people in this family were recorded in documents that were never created to tell their stories. Enslaved people appear in deeds, wills, inventories, schedules, tax records, and court files — often only as property.</p>
-            <p>This archive brings those records together and follows the people beyond the transaction: <strong>who they were, who they were connected to, where they lived, what happened to them, and what we still do not know.</strong></p>
-            <p>The goal is not to make the story cleaner than the evidence allows. The goal is to preserve it accurately enough that the next generation can keep going.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<section class="story">
+<div class="wrap"><div class="story-layout">
+<aside class="story-nav">
+<div class="story-nav-label">In this story</div>
+<a href="#beginning">The Beginning</a>
+<a href="#patience">Patience</a>
+<a href="#westward">The Missing Bridge</a>
+<a href="#bellville">Bellville</a>
+<a href="#easter">Easter Bell</a>
+<a href="#generations">The Generations</a>
+<a href="#what-we-know">What We Know</a>
+</aside>
 
-    <section class="principles">
-      <div class="wrap">
-        <div class="section-kicker">How the archive works</div>
-        <h2 class="section-title">Evidence matters here.</h2>
-        <div class="principle-grid">
-          <div class="principle">
-            <div class="principle-num">01 · DOCUMENTED</div>
-            <h3>What the records establish</h3>
-            <p>Names, relationships, dates, transactions, and places are tied to the records that actually support them.</p>
-          </div>
-          <div class="principle">
-            <div class="principle-num">02 · RESEARCH LEADS</div>
-            <h3>What the evidence points toward</h3>
-            <p>A promising connection can stay in the archive without being promoted to fact. Leads remain visible while the search continues.</p>
-          </div>
-          <div class="principle">
-            <div class="principle-num">03 · OPEN QUESTIONS</div>
-            <h3>What we still need to prove</h3>
-            <p>Missing documents, uncertain identities, and unresolved migration paths are part of the story too.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+<div class="story-column">
+<article class="chapter" id="beginning">
+<div class="chapter-kicker">Chapter I · South Carolina</div>
+<h2>Before Texas, there was Patience.</h2>
+<p>The earliest part of the story begins in <strong>Newberry County, South Carolina</strong>, where an enslaved woman named <strong>Patience</strong> appears in an 1795 deed. That document is one of the anchors of this archive because it gives us a person, a place, a date, and a documented relationship to the Waldrop family network.</p>
+<p>The working reconstruction reaches one generation earlier to <strong>Molley</strong>, an earlier enslaved woman identified through the Laurens and Newberry County deed records and through the family relationships being reconstructed from those records. We treat Molley as a foundational research figure, while continuing to distinguish the documentary record from the relationships we infer from it.</p>
+<div class="record"><div class="record-label">1795 · Record</div><p>The August 4, 1795 deed documents Patience in Newberry County. It is evidence of enslavement and ownership at that moment; it is not evidence that Patience was free or that the transaction was a family migration.</p></div>
+<div class="pullquote">The records give us names first. The family relationships have to be reconstructed around them.</div>
+</article>
 
-    <footer class="footer">
-      <div class="wrap">
-        <div class="footer-title">Every name preserved. Every question worth pursuing.</div>
-        <div class="footer-note">Armstrong Family Archive · A living family history</div>
-      </div>
-    </footer>
-  </main>
+<article class="chapter" id="patience">
+<div class="chapter-kicker">Chapter II · Patience's Family</div>
+<h2>A family appears inside the property records.</h2>
+<p>The next generation brings us to <strong>Clarissa</strong>, treated in this archive as Patience's daughter within the working reconstruction. A 1839 Rankin County, Mississippi deed names Clarissa alongside her daughters <strong>Amanda and Harriet</strong>. That record is important because it places this branch in Mississippi and shows how an enslaved family continued to be recorded through property transactions decades after Patience first appears in South Carolina.</p>
+<p>But the document also tells us what it <em>does not</em> tell us. It does not document Clarissa, Amanda, or Harriet traveling to Texas. It does not establish that Fanny Waldrop carried Patience's descendants west with her. Fanny's presence in Texas is a separate documented fact.</p>
+<div class="uncertainty"><div class="uncertainty-label">Research boundary</div><p>The South Carolina → Mississippi portion of this branch is documented through records. The route from this branch into the Texas Nichols/Bellville family has not been established by a documentary bridge. That connection remains a research hypothesis, not a settled fact.</p></div>
+</article>
 
+<article class="chapter" id="westward">
+<div class="chapter-kicker">Chapter III · The Missing Bridge</div>
+<h2>This is where the story becomes a hypothesis.</h2>
+<p>There are several families and communities whose records overlap across <strong>South Carolina, Mississippi, Louisiana, Tennessee, and Texas</strong>. Waldrop, Davenport, Bell, Sims, Williams, Nichols, and related families appear in different parts of the larger research network.</p>
+<p>It is tempting to turn those overlapping records into one uninterrupted migration story. The evidence does not yet allow that. The archive therefore keeps two important lines of investigation visible: the <strong>Molley → Patience → Clarissa</strong> working reconstruction and the <strong>Rendy Blayn → Easter Bell Nichols</strong> Texas line.</p>
+<p>The two branches eventually meet in the documented marriage of <strong>Joseph Nichols and Easter Bell Nichols</strong>. That marriage is a real meeting point in the family record. What happened to the earlier South Carolina/Mississippi branch before that point remains an open genealogical problem.</p>
+<div class="record"><div class="record-label">Working model</div><p>Overlap between families and places can identify where to search next. It does not, by itself, prove that a particular enslaved person traveled with a particular enslaver or household.</p></div>
+</article>
+
+<article class="chapter" id="bellville">
+<div class="chapter-kicker">Chapter IV · Texas</div>
+<h2>Then the records bring us to Bellville.</h2>
+<p>By the nineteenth century, the research turns toward <strong>Bellville and Austin County, Texas</strong>. This is where the family becomes especially visible after emancipation: in census records, tax rolls, land records, probate material, marriages, death records, and the memories preserved by descendants.</p>
+<p>The Nichols Survey becomes an important part of that story. Post-emancipation records document Black residents and landholders in the Bellville community and on the survey. Those records establish landholding and community presence; they do not, by themselves, establish that every Black landholder had previously been enslaved by John Nichols or that every person had been held on that exact land.</p>
+<p>That distinction matters because the archive is trying to reconstruct the lives of formerly enslaved people <strong>without replacing one incomplete record with another unproven assumption.</strong></p>
+<div class="timeline">
+<div class="event"><div class="event-date">1838</div><div class="event-title">Easter Bell is born</div><div class="event-text">Easter Bell Nichols' 1935 death certificate gives her birth date as July 4, 1838. She was born during slavery in Texas.</div></div>
+<div class="event"><div class="event-date">1865</div><div class="event-title">Easter and Joseph marry</div><div class="event-text">Easter Bell and Joseph Nichols are documented as marrying December 18, 1865, after emancipation.</div></div>
+<div class="event"><div class="event-date">Reconstruction</div><div class="event-title">The family builds a life in Bellville</div><div class="event-text">Census, tax, land, and family records follow Black residents establishing households, marriages, work, and landownership in the community.</div></div>
+</div>
+</article>
+
+<article class="chapter" id="easter">
+<div class="chapter-kicker">Chapter V · Easter Bell Nichols</div>
+<h2>The woman at the center of the Texas story.</h2>
+<p><strong>Easter Bell Nichols</strong> is one of the clearest anchors of the later family history. Her records carry the story from slavery into freedom and then into the generations that followed.</p>
+<p>Her 1935 death certificate identifies her as the daughter of <strong>Rinde Bland</strong>, the name that drives the archive's Rendy Blayn/Bland research. An 1860 John Nichols slave schedule contains an unnamed female of an age that makes her a research candidate for Rendy, but the schedule does not name her. Likewise, an unnamed female of the right age cannot simply be converted into a confirmed identity.</p>
+<p>What we can say with confidence is that Easter lived through the transition from slavery to freedom, married Joseph Nichols in 1865, raised a family in Bellville, and remained connected to the community through the rest of her life.</p>
+<div class="uncertainty"><div class="uncertainty-label">The question still open</div><p>Who was Easter's mother before emancipation, and what household held Easter and Rendy? The records give us important clues. They have not yet given us the complete documentary bridge.</p></div>
+</article>
+
+<article class="chapter" id="generations">
+<div class="chapter-kicker">Chapter VI · The Family Continues</div>
+<h2>Freedom becomes family history.</h2>
+<p>From Easter, the documentary trail becomes increasingly personal. Her daughter <strong>Hellen Nichols Armstrong</strong> was born in 1870, five years after emancipation. Hellen's daughter <strong>Eva Armstrong Ballard</strong> was born in 1900. Eva's daughter <strong>Margie Nell Ballard Corbin</strong> was born in 1929. Margie's daughter <strong>Hjordis L. Corbin</strong> followed in 1960, and the line reaches the present through <strong>Jasmine M. Lee</strong>.</p>
+<p>These later generations are not simply names on a chart. Their lives show what happened after the records stopped describing people as property: marriages, children, work, movement, businesses, land, legal struggles, community life, and the ordinary persistence of a family.</p>
+<div class="record"><div class="record-label">The later line</div><p>Easter Bell Nichols → Hellen Nichols Armstrong → Eva Armstrong Ballard → Margie Nell Ballard Corbin → Hjordis L. Corbin → Jasmine M. Lee.</p></div>
+</article>
+
+<article class="chapter" id="what-we-know">
+<div class="chapter-kicker">Chapter VII · The Archive's Position</div>
+<h2>What we know. What we believe. What we still need.</h2>
+<p>The purpose of this archive is not to choose between a good story and a bad story. It is to keep the <strong>best-supported story</strong> visible while preserving the questions that could change it.</p>
+<div class="status-grid">
+<div class="status"><div class="status-label">Documented</div><h3>The record says it.</h3><p>A cited record directly supports the person, event, relationship, date, or place being described.</p></div>
+<div class="status"><div class="status-label">Research lead</div><h3>The evidence points there.</h3><p>Multiple clues may make a connection plausible, but the documentary bridge is incomplete.</p></div>
+<div class="status"><div class="status-label">Open question</div><h3>We are still looking.</h3><p>The answer is not yet established. The uncertainty remains part of the archive instead of being hidden.</p></div>
+</div>
+<p style="margin-top:28px">That is why this story may change. A newly found deed, probate file, census record, court case, family document, or DNA connection could strengthen a hypothesis, redirect a branch, or reveal a person who has been missing from the story for generations.</p>
+<p><strong>The story is not unfinished because the research has failed. It is unfinished because the people were always more than the records that survived them.</strong></p>
+</article>
+</div></div>
+</section>
+
+<section class="entry">
+<div class="wrap">
+<h2 class="entry-title">Now find your place.</h2>
+<p class="entry-copy">If this is your family, start with yourself and work backward. Or step into the larger family tree and explore the people whose names brought this story here.</p>
+<div class="choices">
+<a class="choice" href="start_here.html"><div class="choice-label">For Family</div><h3>Find Where You Fit →</h3><p>See who is your grandmother, great-grandmother, 2nd great-grandmother, and beyond.</p></a>
+<a class="choice" href="family_tree.html"><div class="choice-label">The Archive</div><h3>Explore the Family Tree →</h3><p>Enter the larger family experience and explore the people, branches, stories, and research.</p></a>
+</div>
+</div>
+</section>
+
+<footer class="footer"><div class="wrap"><div class="footer-title">Every name preserved. Every question worth pursuing.</div><div class="footer-note">Armstrong Family Archive · A living family history</div></div></footer>
 <script src="sidebar.js"></script>
 </body>
 </html>

@@ -499,6 +499,13 @@ body {
 .family-letter-cta:focus-visible { outline: 2px solid var(--gold2); outline-offset: 3px; }
 .family-letter-cta span { color: var(--gold3); }
 
+/* Letter modal content must remain visible when the modal opens. */
+.family-letter-content { opacity: 1 !important; transform: none !important; }
+.family-letter-content .letter-body p { color: var(--cream); }
+.family-letter-content .letter-salutation,
+.family-letter-content .letter-sign-name { color: var(--parchment); }
+
+
 
 /* ═══════════════════════════════════════════════
    SECTION UTILITY
@@ -6474,7 +6481,7 @@ document.querySelectorAll('.journey-node').forEach(node => {
               style="background:var(--card);border:1px solid var(--border);border-radius:50%;width:44px;height:44px;color:var(--cream);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;">&#x2715;</button>
     </div>
     <div style="max-width:620px;margin:0 auto;">
-    <div class="reveal">
+    <div class="reveal visible family-letter-content">
       <p class="letter-date">WRITTEN 2026 · RESEARCH ONGOING SINCE 2019</p>
       <p class="letter-salutation">To every member of this family —</p>
       <div class="letter-body">

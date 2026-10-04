@@ -32,14 +32,21 @@
   .nav-back{font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);text-decoration:none;}
   .nav-title{font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.40);}
 
-  /* OPENING — starfield effect with ember glow */
-  .opening{
-    min-height:100vh;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    padding:100px 24px 80px;text-align:center;
-    position:relative;overflow:hidden;
-    background:radial-gradient(ellipse at 50% 60%,rgba(139,58,26,0.18) 0%,rgba(26,18,8,0.95) 50%,var(--deep) 100%);
-  }
+  /* OPENING — archival title plate */
+  .opening{min-height:calc(100vh - 52px);display:flex;align-items:center;padding:90px 24px 80px;text-align:left;position:relative;overflow:hidden;background:radial-gradient(circle at 78% 48%,rgba(201,168,76,.10),transparent 28%),radial-gradient(circle at 22% 75%,rgba(139,58,26,.13),transparent 34%),linear-gradient(120deg,#06050a 0%,#120d08 58%,#080706 100%);}
+  .opening:after{content:"";position:absolute;inset:34px 24px;border:1px solid rgba(201,168,76,.10);pointer-events:none;}
+  .opening-inner{width:min(1120px,100%);margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:110px minmax(0,1fr) 280px;gap:42px;align-items:end;}
+  .opening-index{font-family:var(--f-mono);font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.34);padding-bottom:9px;border-bottom:1px solid var(--border);writing-mode:vertical-rl;transform:rotate(180deg);height:145px;justify-self:center;}
+  .opening-copy{text-align:left;}
+  .opening-copy .ember-line{margin:0 0 24px;width:100px;height:1px;background:linear-gradient(to right,var(--gold),transparent);}
+  .opening-label{margin-bottom:18px;display:block;}
+  .opening-name{font-size:clamp(78px,12vw,168px);margin:0 0 20px;line-height:.78;}
+  .opening-sub{margin-bottom:25px;display:block;}
+  .opening-statement{max-width:700px;}
+  .opening-meta{border-left:1px solid var(--border2);padding-left:25px;padding-bottom:8px;}
+  .opening-meta-label{font:8px var(--f-mono);letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:15px;}
+  .opening-meta p{font:13px/1.8 var(--f-body);color:#b8b0a8;margin:0 0 18px;}
+  .opening-meta .meta-rule{height:1px;background:var(--border);margin:0 0 16px;}
   .opening::before{
     content:'';position:absolute;inset:0;
     background:radial-gradient(ellipse at 50% 80%,rgba(201,168,76,0.08) 0%,transparent 60%);
@@ -260,8 +267,16 @@
   }
   .back-link:hover{border-color:var(--gold);}
 
+  @media(max-width:800px){
+    .opening{min-height:auto;padding:105px 22px 85px;}
+    .opening:after{inset:22px 12px;}
+    .opening-inner{grid-template-columns:1fr;gap:28px;}
+    .opening-index{writing-mode:horizontal-tb;transform:none;height:auto;justify-self:start;border-bottom:0;padding:0;}
+    .opening-copy .ember-line{margin-bottom:20px;}
+    .opening-name{font-size:clamp(68px,20vw,120px);}
+    .opening-meta{border-left:0;border-top:1px solid var(--border2);padding:22px 0 0;}
+  }
   @media(max-width:600px){
-    .opening-name{font-size:clamp(64px,18vw,120px);}
     .pull{padding:20px 24px;}
     .doc-body{padding:16px 18px;}
   }
@@ -326,11 +341,24 @@
 
 <!-- OPENING -->
 <section class="opening">
-  <div class="ember-line"></div>
-  <span class="opening-label">Armstrong Family Archive · The Beginning of the Line · Union County, South Carolina · 1793</span>
-  <h1 class="opening-name">Molley</h1>
-  <span class="opening-sub">ca. 1750–1765 · Union County, South Carolina · Your 6th Great-Grandmother</span>
-  <p class="opening-statement">Her name appears once in a mortgage document. She is listed as the mother of seven children. She kept them together across two states for nearly fifty years. She is the beginning of this entire family's documented history.</p>
+  <div class="opening-inner">
+    <div class="opening-index">ARCHIVE FILE · 01</div>
+    <div class="opening-copy">
+      <div class="ember-line"></div>
+      <span class="opening-label">Armstrong Family Archive · The Beginning of the Line · Union County, South Carolina · 1793</span>
+      <h1 class="opening-name">Molley</h1>
+      <span class="opening-sub">ca. 1750–1765 · Union County, South Carolina · 6th Great-Grandmother</span>
+      <p class="opening-statement">Her name appears in a mortgage document. She is listed as the mother of seven children. This is the earliest named generation at the foundation of the archive's documented line.</p>
+    </div>
+    <aside class="opening-meta">
+      <span class="opening-meta-label">The record opens here</span>
+      <p><strong>1793 · Deed Book B, Page 467</strong><br>Newberry County, South Carolina</p>
+      <div class="meta-rule"></div>
+      <p>Named with Charles, Edward, Delf, Abram, Sawny, Tom, and Patience.</p>
+      <div class="meta-rule"></div>
+      <p>What survives is her name and the family unit recorded around her.</p>
+    </aside>
+  </div>
   <span class="scroll-hint">scroll to read her story</span>
 </section>
 

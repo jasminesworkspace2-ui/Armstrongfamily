@@ -55,7 +55,9 @@
         { href: 'family_database.html',      text: 'Evidence Audit',             note: 'Working people-and-evidence database' },
         { href: 'reference.html',            text: 'Ancestral Reference',         note: 'Quick lookup' },
         { href: 'methodology.html',          text: 'Research Methodology',        note: 'How the research is evaluated' },
-        { href: 'glossary.html',             text: 'Glossary',                   note: 'Research terms explained' }
+        { href: 'glossary.html',             text: 'Glossary',                   note: 'Research terms explained' },
+        { href: 'precinct1_analysis.html',   text: 'Bellville Census Deep Analysis', note: 'Detailed census, slave-schedule, and probate analysis' },
+        { href: 'location_checksheet.html',  text: 'Where Everyone Was, When',       note: 'Quick reference for testing dates and locations' }
       ]
     },
     {

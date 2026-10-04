@@ -258,7 +258,7 @@
   // the single navigation system, so those duplicate link rows are hidden
   // while the page's archive brand/header remains available.
   function retireLegacyNav() {
-    document.querySelectorAll('.gnav-links').forEach(function(nav) {
+    document.querySelectorAll('.gnav-links, header.top .nav').forEach(function(nav) {
       nav.style.display = 'none';
     });
   }

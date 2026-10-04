@@ -40,6 +40,43 @@
   .prose strong{color:var(--parchment);font-weight:500;}
   .contact-box{background:var(--card);border:1px solid var(--gold);
                padding:28px 32px;text-align:center;margin-bottom:32px;}
+  .submission-panel{margin:0 0 46px;border:1px solid rgba(201,168,76,.28);
+                    background:linear-gradient(145deg,rgba(201,168,76,.055),rgba(255,255,255,.012));}
+  .submission-intro{padding:28px 32px 22px;border-bottom:1px solid var(--border);}
+  .submission-intro h2{font-family:var(--f-display);font-size:30px;font-style:italic;
+                       font-weight:400;color:var(--parchment);margin:5px 0 9px;}
+  .submission-intro p{font-size:13px;line-height:1.85;color:#aaa198;max-width:610px;}
+  .archive-form{padding:28px 32px;}
+  .archive-form label{display:block;margin-bottom:20px;}
+  .archive-form label>span{display:block;font-family:var(--f-mono);font-size:8px;
+                           letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+  .archive-form label>span em{font-family:var(--f-body);font-style:normal;letter-spacing:0;
+                              text-transform:none;color:var(--muted);}
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .archive-form input[type="text"],.archive-form input[type="email"],
+  .archive-form input[type="file"],.archive-form select,.archive-form textarea{
+    width:100%;border:1px solid rgba(201,168,76,.18);background:#0b0907;color:var(--cream);
+    border-radius:0;padding:12px 13px;font:13px var(--f-body);outline:none;
+    transition:border-color .2s,box-shadow .2s;}
+  .archive-form textarea{resize:vertical;min-height:150px;line-height:1.7;}
+  .archive-form input:focus,.archive-form select:focus,.archive-form textarea:focus{
+    border-color:rgba(201,168,76,.65);box-shadow:0 0 0 2px rgba(201,168,76,.07);}
+  .archive-form input[type="file"]{padding:10px;color:#aaa198;}
+  .archive-form input[type="file"]::file-selector-button{
+    border:1px solid rgba(201,168,76,.3);background:rgba(201,168,76,.07);color:var(--gold);
+    padding:8px 11px;margin-right:10px;font:9px var(--f-mono);letter-spacing:1px;text-transform:uppercase;cursor:pointer;}
+  .archive-form small{display:block;margin-top:7px;font-size:11px;line-height:1.6;color:var(--muted);}
+  .hp-field{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;
+             opacity:0!important;pointer-events:none!important;}
+  .form-consent{display:flex;gap:12px;align-items:flex-start;border-top:1px solid var(--border);
+                padding-top:18px;margin-top:4px;}
+  .consent-mark{color:var(--gold);font-family:var(--f-mono);font-size:13px;line-height:1.4;}
+  .form-consent p{font-size:11px;line-height:1.7;color:var(--muted);}
+  .archive-submit{border:1px solid var(--gold);background:var(--gold);color:#090806;
+                  padding:13px 20px;margin-top:20px;font:10px var(--f-mono);letter-spacing:2px;
+                  text-transform:uppercase;font-weight:bold;cursor:pointer;transition:.2s ease;}
+  .archive-submit:hover{background:var(--parchment);border-color:var(--parchment);}
+
   .contact-label{font-family:var(--f-mono);font-size:8px;letter-spacing:3px;
                  text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:block;}
   .contact-email{font-family:var(--f-display);font-size:22px;font-style:italic;
@@ -105,6 +142,11 @@
   .story-nav-center{font-family:'Courier New',monospace;font-size:9px;letter-spacing:2px;
                     text-transform:uppercase;color:rgba(245,242,236,0.25);text-decoration:none;}
   .story-nav-center:hover{color:rgba(245,242,236,0.5);}
+  @media(max-width:600px){
+    .submission-intro,.archive-form{padding:22px 18px;}
+    .form-grid{grid-template-columns:1fr;}
+    .submission-intro h2{font-size:25px;}
+  }
 </style>
 <link rel="stylesheet" href="overrides.css">
 </head>
@@ -141,6 +183,64 @@
     <span class="contact-email">jlee@dockellisfoundation.com</span>
     <p class="contact-note">Jasmine M. Lee · Dock Ellis Foundation<br>Please include your connection to the family, your DNA kit number if applicable, and the surnames or communities you research.</p>
   </div>
+  <section class="submission-panel" aria-labelledby="submission-title">
+    <div class="submission-intro">
+      <span class="contact-label">Send Something to the Archive</span>
+      <h2 id="submission-title">Documents, records, memories &amp; leads</h2>
+      <p>If you have a record, photograph, family document, email correspondence, research note, or information that may help close a gap, you can send it directly through this form. Your message and attachments will be routed to the archive contact above.</p>
+    </div>
+
+    <form class="archive-form" action="https://formsubmit.co/jlee@dockellisfoundation.com" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="_subject" value="Armstrong Family Archive · New Research Submission">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hp-field" aria-hidden="true">
+
+      <div class="form-grid">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" required>
+        </label>
+      </div>
+
+      <label>
+        <span>What are you sending?</span>
+        <select name="submission_type" required>
+          <option value="" selected disabled>Select one</option>
+          <option>Family document or record</option>
+          <option>Photograph or image</option>
+          <option>Family memory or oral history</option>
+          <option>Genealogy research or tree</option>
+          <option>DNA match or research lead</option>
+          <option>Correction or additional information</option>
+          <option>Email or correspondence</option>
+          <option>Other</option>
+        </select>
+      </label>
+
+      <label>
+        <span>How does this connect to the family?</span>
+        <textarea name="message" rows="7" required placeholder="Tell us the names, places, dates, relationships, or record details you know."></textarea>
+      </label>
+
+      <label>
+        <span>Attach files <em>(optional · up to 10 MB total)</em></span>
+        <input type="file" name="attachments" multiple accept=".pdf,.jpg,.jpeg,.png,.gif,.tif,.tiff,.doc,.docx,.txt,.csv,.eml,.msg">
+        <small>Useful formats include PDFs, photographs, scanned records, Word files, and saved email files (.eml/.msg).</small>
+      </label>
+
+      <div class="form-consent">
+        <span class="consent-mark" aria-hidden="true">+</span>
+        <p>Please do not upload Social Security numbers, financial account information, passwords, or other highly sensitive information about living people. By submitting, you are giving the archive permission to receive and review the material for genealogical research.</p>
+      </div>
+
+      <button class="archive-submit" type="submit">Send to the Archive <span aria-hidden="true">→</span></button>
+    </form>
+  </section>
+
 
   <div class="sec"><div class="sec-line"></div><div class="sec-label">Surnames We Are Researching</div><div class="sec-line"></div></div>
   <p style="font-size:13px;line-height:1.8;color:var(--muted);margin-bottom:16px;">If any of these surnames appear in your family tree — especially in the geographies listed — please reach out. A connection you consider minor may close a gap in this research that has been open for years.</p>

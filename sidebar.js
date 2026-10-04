@@ -1,4 +1,4 @@
-/**
+/** 
  * Armstrong Family Archive — Global Sidebar Navigation
  * The menu is organized by what visitors are trying to do,
  * not by the order the archive's files were created.
@@ -22,13 +22,25 @@
     {
       label: 'The Family',
       items: [
-        { href: 'family_tree.html',          text: 'Full Family Tree',          note: 'The complete family experience' },
-        { href: 'the_thread.html',           text: 'The Thread',                note: 'The working family thesis' },
+        { href: 'family_tree.html',          text: 'Full Family Tree',             note: 'The complete family experience' },
+        { href: 'the_thread.html',           text: 'The Thread',                   note: 'The working family thesis' },
         { href: 'waldrop_family_story.html', text: 'The Matriarchs of the Family', note: 'Molley, Patience, Rachel, and Clarissa' },
-        { href: 'bellville_family.html',     text: 'The Family in Bellville',   note: 'Easter Bell’s nine branches' },
-        { href: 'related.html',              text: 'How We Are Related',        note: 'Connections across the family' },
-        { href: 'photos.html',               text: 'Photos',                    note: 'Family photographs' },
-        { href: 'voices.html',               text: 'Family Voices',             note: 'Stories and memories' }
+        { href: 'bellville_family.html',     text: 'The Family in Bellville',      note: 'Easter Bell’s nine branches' },
+        { href: 'related.html',              text: 'How We Are Related',           note: 'Connections across the family' },
+        { href: 'photos.html',               text: 'Photos',                       note: 'Family photographs' },
+        { href: 'voices.html',               text: 'Family Voices',                note: 'Stories and memories' }
+      ]
+    },
+    {
+      label: 'Enslavement & Historical Records',
+      items: [
+        { href: 'bell_family.html',                    text: 'The Bells',                         note: 'Bell family slaveholding records' },
+        { href: 'john_nichols.html',                  text: 'John Nichols',                       note: 'Enslavement and land records' },
+        { href: 'john_nichols_community.html',        text: 'John Nichols Community',             note: 'Household and community research' },
+        { href: 'waldrop_enslavers.html',             text: 'The Waldrops',                       note: 'Waldrop enslavement records' },
+        { href: 'davenport_family.html',              text: 'The Davenports',                     note: 'Early South Carolina records' },
+        { href: 'ownership_network.html',             text: 'Ownership Network',                  note: 'Legal-record network; not a family tree' },
+        { href: 'enslavement_community_network.html', text: 'Enslavement & Community Network',   note: 'Wider historical research network' }
       ]
     },
     {
@@ -49,49 +61,42 @@
     {
       label: 'History & Community',
       items: [
-        { href: 'we_are_bellville.html',             text: 'We Are Bellville',              note: 'The wider Bellville community' },
-        { href: 'elders.html',                      text: 'The Elders of Bellville',       note: 'Early residents and family clusters' },
-        { href: 'freedom.html',                     text: 'Freedom Stories',                note: 'Life after emancipation' },
-        { href: 'timeline.html',                    text: 'Family Timeline',                note: 'People, places, and dates' },
-        { href: 'familytime.html',                  text: 'Family Dates',                   note: 'Celebrations and events' },
-        { href: 'black_dutch_fork.html',            text: 'Black Dutch Fork',               note: 'South Carolina community context' },
-        { href: 'john_nichols_community.html',      text: 'John Nichols Community',         note: 'Bellville household and community research' }
+        { href: 'we_are_bellville.html',  text: 'We Are Bellville',       note: 'The wider Bellville community' },
+        { href: 'elders.html',            text: 'The Elders of Bellville',note: 'Early residents and family clusters' },
+        { href: 'freedom.html',           text: 'Freedom Stories',        note: 'Life after emancipation' },
+        { href: 'timeline.html',          text: 'Family Timeline',        note: 'People, places, and dates' },
+        { href: 'familytime.html',        text: 'Family Dates',           note: 'Celebrations and events' },
+        { href: 'black_dutch_fork.html',  text: 'Black Dutch Fork',       note: 'South Carolina community context' }
       ]
     },
     {
       label: 'People & Historical Networks',
       items: [
-        { href: 'molley.html',                    text: 'Molley',                    note: 'The earliest working ancestor in this line' },
-        { href: 'patience_story.html',            text: 'Patience',                  note: 'Newberry County, South Carolina' },
-        { href: 'clarissa_story.html',            text: 'Clarissa',                  note: 'South Carolina · working reconstruction' },
-        { href: 'rendy_story.html',               text: 'Rendy Blayn',               note: 'Easter Bell’s mother' },
-        { href: 'easter_story.html',              text: 'Easter Bell',               note: '1838–1935 · Bellville' },
-        { href: 'joseph_story.html',              text: 'Joseph Nichols',             note: '1847–1905 · Bellville' },
-        { href: 'hellen_story.html',              text: 'Hellen Nichols',             note: '1870–1931' },
-        { href: 'eva_story.html',                 text: 'Eva Armstrong',              note: '1900–1977' },
-        { href: 'margie_story.html',              text: 'Margie Nell Corbin',         note: '1929–1988' },
-        { href: 'hjordis.html',                   text: 'Hjordis Corbin',              note: 'b. 1960' },
-        { href: 'bell_family.html',               text: 'The Bells',                  note: 'Bell family research' },
-        { href: 'john_nichols.html',              text: 'John Nichols',                note: 'Enslavement and land records' },
-        { href: 'waldrop_enslavers.html',        text: 'The Waldrops',                note: 'Waldrop enslavement records' },
-        { href: 'davenport_family.html',         text: 'The Davenports',               note: 'Early South Carolina records' },
-        { href: 'ownership_network.html',        text: 'Ownership Network',            note: 'Legal-record network; not a family tree' },
-        { href: 'enslavement_community_network.html', text: 'Enslavement & Community Network', note: 'Wider historical research network' }
+        { href: 'molley.html',       text: 'Molley',              note: 'The earliest working ancestor in this line' },
+        { href: 'patience_story.html', text: 'Patience',            note: 'Newberry County, South Carolina' },
+        { href: 'clarissa_story.html', text: 'Clarissa',            note: 'South Carolina · working reconstruction' },
+        { href: 'rendy_story.html', text: 'Rendy Blayn',           note: 'Easter Bell’s mother' },
+        { href: 'easter_story.html', text: 'Easter Bell',           note: '1838–1935 · Bellville' },
+        { href: 'joseph_story.html', text: 'Joseph Nichols',         note: '1847–1905 · Bellville' },
+        { href: 'hellen_story.html', text: 'Hellen Nichols',         note: '1870–1931' },
+        { href: 'eva_story.html',    text: 'Eva Armstrong',          note: '1900–1977' },
+        { href: 'margie_story.html', text: 'Margie Nell Corbin',     note: '1929–1988' },
+        { href: 'hjordis.html',      text: 'Hjordis Corbin',          note: 'b. 1960' }
       ]
     },
     {
       label: 'Other Lines & Open Research',
       items: [
-        { href: 'ballard.html',                  text: 'Ballard Research',             note: 'Newton Ballard line' },
-        { href: 'norman_corbin.html',            text: 'Norman Corbin',                note: 'Corbin family research' },
-        { href: 'ester_nicholas.html',           text: 'Ester Nicholas · St. Croix',   note: 'Open research hypothesis' },
-        { href: 'family_tree.html#africa-origins', text: 'Where We Come From',          note: 'Africa origins research' }
+        { href: 'ballard.html',                     text: 'Ballard Research',           note: 'Newton Ballard line' },
+        { href: 'norman_corbin.html',               text: 'Norman Corbin',              note: 'Corbin family research' },
+        { href: 'ester_nicholas.html',              text: 'Ester Nicholas · St. Croix', note: 'Open research hypothesis' },
+        { href: 'family_tree.html#africa-origins',  text: 'Where We Come From',         note: 'Africa origins research' }
       ]
     },
     {
       label: 'Connect',
       items: [
-        { href: 'contact.html',                   text: 'Contact & Collaborate',        note: 'Share records, memories, or corrections' }
+        { href: 'contact.html', text: 'Contact & Collaborate', note: 'Share records, memories, or corrections' }
       ]
     }
   ];
@@ -254,9 +259,6 @@
   document.head.appendChild(style);
 
   // ── RETIRE LEGACY PAGE-LEVEL NAVIGATION ──
-  // Older pages contain their own navigation bars. The global sidebar is now
-  // the single navigation system, so those duplicate link rows are hidden
-  // while the page's archive brand/header remains available.
   function retireLegacyNav() {
     document.querySelectorAll('.gnav-links, header.top .nav').forEach(function(nav) {
       nav.style.display = 'none';

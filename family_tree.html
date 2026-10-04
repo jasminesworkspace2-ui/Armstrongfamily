@@ -1925,19 +1925,6 @@ footer {
   </button>
 </nav>
 
-<!-- ARCHIVE UPDATE ALERT -->
-<div id="archive-update" class="archive-update" role="status" aria-label="Latest archive update">
-  <div class="archive-update-inner">
-    <span class="archive-update-mark" aria-hidden="true">!</span>
-    <div class="archive-update-copy">
-      <span class="archive-update-label">Archive Update</span>
-      <span class="archive-update-message"><strong>Family Tree</strong> has been updated with new research and information.</span>
-    </div>
-    <a class="archive-update-link" href="#family-tree">View Update <span aria-hidden="true">→</span></a>
-    <button class="archive-update-dismiss" type="button" aria-label="Dismiss archive update" onclick="dismissArchiveUpdate()">×</button>
-  </div>
-</div>
-
 <!-- NAV DRAWER -->
 <div id="nav-overlay" aria-hidden="true"></div>
 <aside id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
@@ -6639,19 +6626,7 @@ document.querySelectorAll('.journey-node').forEach(node => {
 <script src="sidebar.js"></script>
 
 <script>
-function dismissArchiveUpdate(){
-  var el=document.getElementById('archive-update');
-  if(!el)return;
-  el.style.display='none';
-  try{ sessionStorage.setItem('armstrongArchiveUpdateDismissed','1'); }catch(e){}
-}
-function restoreArchiveUpdate(){
-  var el=document.getElementById('archive-update');
-  if(!el)return;
-  try{
-    if(sessionStorage.getItem('armstrongArchiveUpdateDismissed')==='1') el.style.display='none';
-  }catch(e){}
-}
+
 
 function openFamilyLetter(){
   var modal=document.getElementById('family-letter-modal');
@@ -6679,6 +6654,7 @@ window.addEventListener('load',function(){
 });
 </script>
 
+<script src="archive-update.js"></script>
 </body>
 </html>      <div class="person-card reveal reveal-delay-1" onclick="openPersonModal('joseph')" role="button" tabindex="0" aria-label="Joseph Nichols - read full story">
         <div class="card-header">

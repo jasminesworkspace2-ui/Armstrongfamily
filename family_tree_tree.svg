@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520">
+<defs>
+ <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#b98945" stop-opacity=".55"/><stop offset="1" stop-color="#3a2615" stop-opacity=".15"/></linearGradient>
+ <radialGradient id="halo"><stop stop-color="#c99a50" stop-opacity=".24"/><stop offset="1" stop-color="#0b0a08" stop-opacity="0"/></radialGradient>
+</defs>
+<ellipse cx="600" cy="260" rx="470" ry="240" fill="url(#halo)"/>
+<!-- roots -->
+<g fill="none" stroke="url(#g)" stroke-linecap="round">
+ <path d="M590 420 C530 445 450 475 315 505" stroke-width="12"/>
+ <path d="M605 420 C550 470 470 500 390 520" stroke-width="9"/>
+ <path d="M620 420 C680 465 760 490 885 515" stroke-width="11"/>
+ <path d="M630 410 C710 445 820 460 1000 495" stroke-width="8"/>
+ <path d="M595 425 C555 475 515 500 470 520" stroke-width="6"/>
+ <path d="M635 425 C700 475 735 505 770 520" stroke-width="6"/>
+</g>
+<!-- trunk -->
+<path d="M540 520 C555 450 570 390 570 325 C570 260 545 205 570 145 C582 115 620 115 632 145 C657 205 630 260 635 325 C640 395 660 450 680 520Z" fill="#080706"/>
+<!-- main branches -->
+<g fill="none" stroke="#080706" stroke-linecap="round">
+ <path d="M600 300 C520 260 450 210 330 155" stroke-width="38"/>
+ <path d="M610 300 C690 255 760 200 875 145" stroke-width="38"/>
+ <path d="M585 235 C525 175 475 105 420 55" stroke-width="27"/>
+ <path d="M625 235 C680 170 730 105 790 52" stroke-width="27"/>
+ <path d="M575 350 C490 325 405 315 305 320" stroke-width="23"/>
+ <path d="M635 350 C725 320 820 310 925 315" stroke-width="23"/>
+</g>
+<!-- canopy -->
+<g fill="#17110b">
+ <ellipse cx="285" cy="145" rx="150" ry="78"/>
+ <ellipse cx="410" cy="72" rx="125" ry="65"/>
+ <ellipse cx="505" cy="135" rx="125" ry="75"/>
+ <ellipse cx="790" cy="70" rx="135" ry="68"/>
+ <ellipse cx="900" cy="145" rx="155" ry="80"/>
+ <ellipse cx="700" cy="135" rx="130" ry="75"/>
+ <ellipse cx="270" cy="315" rx="125" ry="60"/>
+ <ellipse cx="930" cy="315" rx="135" ry="65"/>
+</g>
+<!-- leaves -->
+<g fill="#a87838" opacity=".58">
+ <ellipse cx="190" cy="130" rx="13" ry="7" transform="rotate(-25 190 130)"/>
+ <ellipse cx="245" cy="85" rx="11" ry="6" transform="rotate(20 245 85)"/>
+ <ellipse cx="335" cy="55" rx="13" ry="7" transform="rotate(-30 335 55)"/>
+ <ellipse cx="430" cy="105" rx="12" ry="6" transform="rotate(25 430 105)"/>
+ <ellipse cx="500" cy="60" rx="13" ry="7" transform="rotate(-20 500 60)"/>
+ <ellipse cx="705" cy="78" rx="12" ry="6" transform="rotate(25 705 78)"/>
+ <ellipse cx="790" cy="35" rx="13" ry="7" transform="rotate(-25 790 35)"/>
+ <ellipse cx="870" cy="95" rx="12" ry="6" transform="rotate(25 870 95)"/>
+ <ellipse cx="965" cy="120" rx="13" ry="7" transform="rotate(-20 965 120)"/>
+ <ellipse cx="1030" cy="170" rx="12" ry="6" transform="rotate(25 1030 170)"/>
+ <ellipse cx="210" cy="310" rx="13" ry="7" transform="rotate(-20 210 310)"/>
+ <ellipse cx="330" cy="340" rx="12" ry="6" transform="rotate(25 330 340)"/>
+ <ellipse cx="875" cy="340" rx="12" ry="6" transform="rotate(-25 875 340)"/>
+ <ellipse cx="1000" cy="305" rx="13" ry="7" transform="rotate(20 1000 305)"/>
+</g>
+<!-- subtle archival gold baseline -->
+<path d="M90 490 C260 455 340 505 500 480 C650 455 760 505 910 475 C1030 450 1100 475 1150 460" fill="none" stroke="#b78945" stroke-width="3" opacity=".42"/>
+</svg>

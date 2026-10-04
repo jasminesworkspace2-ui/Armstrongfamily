@@ -253,6 +253,18 @@
   `;
   document.head.appendChild(style);
 
+  // ── RETIRE LEGACY PAGE-LEVEL NAVIGATION ──
+  // Older pages contain their own navigation bars. The global sidebar is now
+  // the single navigation system, so those duplicate link rows are hidden
+  // while the page's archive brand/header remains available.
+  function retireLegacyNav() {
+    document.querySelectorAll('.gnav-links').forEach(function(nav) {
+      nav.style.display = 'none';
+    });
+  }
+
+  retireLegacyNav();
+
   // ── BUILD DOM ──
   var overlay = document.createElement('div');
   overlay.id = 'afa-overlay';

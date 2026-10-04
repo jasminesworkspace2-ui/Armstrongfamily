@@ -227,4 +227,5 @@ td{font-size:12px;line-height:1.7;color:#bdb4a7;padding:12px;border-bottom:1px s
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:.08,rootMargin:'0px 0px -35px 0px'});
 document.querySelectorAll('.reveal').forEach(x=>obs.observe(x));
 </script>
+<script src="sidebar.js"></script>
 </body></html>

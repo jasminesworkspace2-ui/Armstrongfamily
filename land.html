@@ -95,6 +95,23 @@
     .card-box{padding:20px 18px;}
     .ftbl td:first-child{width:110px;font-size:9px;}
   }
+
+  /* LAND MAP FEATURE — gives the archive map an intentional documentary home */
+  .land-map-feature{max-width:1100px;margin:0 auto 30px;padding:0 24px;display:grid;grid-template-columns:1.45fr .8fr;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .land-map-image{min-height:320px;background:#090705;overflow:hidden;border-right:1px solid var(--border);}
+  .land-map-image img{display:block;width:100%;height:100%;min-height:320px;object-fit:cover;object-position:center top;}
+  .land-map-caption{display:flex;flex-direction:column;justify-content:center;padding:34px 30px;background:rgba(201,168,76,.035);}
+  .land-map-kicker{font:8px var(--f-mono);letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+  .land-map-caption h2{font:italic 30px var(--f-display);color:var(--parchment);margin-bottom:12px;line-height:1.1;}
+  .land-map-caption p{font-size:13px;line-height:1.85;color:#b8b0a8;margin-bottom:18px;}
+  .land-map-caption a{font:9px var(--f-mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);text-decoration:none;}
+  .land-map-caption a:hover{color:var(--gold2);}
+  @media(max-width:760px){
+    .land-map-feature{display:block;padding:0 16px;}
+    .land-map-image{border-right:0;border-bottom:1px solid var(--border);}
+    .land-map-image img{min-height:230px;}
+    .land-map-caption{padding:25px 20px;}
+  }
 </style>
 <link rel="stylesheet" href="overrides.css">
 </head>
@@ -126,6 +143,20 @@
   <p class="opening-statement" style="margin-top:18px;"><strong>Eighty years later, the reversal.</strong> The federal government's own promise to the people who had actually broken and worked that same soil — the promise of forty acres and a mule — was made once, then revoked, then never honored again. The people who were counted as eighty acres each got nothing. The men who counted them kept the land. <strong>What follows on this page is what happened to that same family's own attempts to hold any ground of their own, a century later.</strong></p>
 </div>
 
+<div class="land-map-feature" aria-labelledby="land-map-title">
+  <div class="land-map-image">
+    <img src="https://raw.githubusercontent.com/jasminesworkspace2-ui/Armstrongfamily/main/theland.jpeg"
+         alt="The John Nichols Survey, Abstract 73, Austin County, Texas — family land research map"
+         loading="eager">
+  </div>
+  <div class="land-map-caption">
+    <span class="land-map-kicker">LAND RECORD · AUSTIN COUNTY, TEXAS</span>
+    <h2 id="land-map-title">The Ground Beneath the Names</h2>
+    <p>The John Nichols Survey and Abstract No. 73 belong here because land is part of the documentary story. This image is not decoration: it anchors the Bellville land research in the place described by the records.</p>
+    <a href="#property-one">Read the Bellville land record <span aria-hidden="true">→</span></a>
+  </div>
+</div>
+
 <div class="opening">
   <span class="opening-eyebrow">Four Properties · Four Stories · 1856 to 2017</span>
   <h1 class="opening-title">The Land.</h1>
@@ -133,7 +164,7 @@
   <p class="opening-statement">This family tried to own land four separate times, in four separate counties, across four separate generations. One tract was sold legally, on fair terms, before anyone in this family had ever heard the word "heir." One was held for thirteen years and sold on its owner's own terms, no loss involved. Two others were taken by tax sale — one in 2006, one in 2017 — sold at the courthouse steps for a fraction of their worth, decades after the people whose names were still on the title had died. <strong>This page tells all four stories, together, for the first time.</strong></p>
 </div>
 
-<div class="sec">
+<div class="sec" id="property-one">
   <div class="sec-head"><div class="sec-line"></div><div class="sec-label">Property One · Lost 2006</div><div class="sec-line"></div></div>
 
   <div class="card-box red">

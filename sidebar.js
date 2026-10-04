@@ -17,6 +17,7 @@
         { href: 'welcome.html',        text: 'Our Story',            note: 'The family story as the research allows it' },
         { href: 'our_story.html',      text: 'What I’ve Learned',    note: 'Jasmine’s personal reflection' },
         { href: 'for_the_family.html', text: 'Explore the Archive',  note: 'Guide to everything else' }
+        ,{ href: 'family_tree.html#family-letter', text: 'Jasmine’s Letter to the Family', note: 'A personal letter · opens as a pop-up' }
       ]
     },
     {
@@ -84,6 +85,7 @@
         { href: 'eva_story.html',    text: 'Eva Armstrong',          note: '1900–1977' },
         { href: 'margie_story.html', text: 'Margie Nell Corbin',     note: '1929–1988' },
         { href: 'hjordis.html',      text: 'Hjordis Corbin',          note: 'b. 1960' }
+        ,{ href: 'bessie.html', text: 'Aunt Bessie Rawls', note: 'Orange County family memory · relationship under research' }
       ]
     },
     {

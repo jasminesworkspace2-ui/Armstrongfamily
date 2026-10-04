@@ -151,4 +151,5 @@ function applyFilters(){const q=document.getElementById('search').value.toLowerC
 const modal=document.createElement('div');modal.className='modal';modal.innerHTML='<div class="modal-box"><button class="close" aria-label="Close">×</button><img alt="Primary document page"></div>';document.body.appendChild(modal);modal.querySelector('.close').onclick=()=>modal.classList.remove('open');modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('open')});
 </script>
 <script src="sidebar.js"></script>
+<script src="archive-update.js"></script>
 </body></html>

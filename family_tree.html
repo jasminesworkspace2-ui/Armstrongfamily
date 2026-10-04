@@ -6379,7 +6379,7 @@ document.querySelectorAll('.journey-node').forEach(node => {
 <!-- FAMILY LETTER MODAL -->
 <div id="family-letter-modal" role="dialog" aria-modal="true" aria-labelledby="family-letter-title"
      style="display:none;position:fixed;inset:0;z-index:9100;background:rgba(0,0,0,0.94);overflow-y:auto;-webkit-overflow-scrolling:touch;">
-  <div style="max-width:720px;margin:0 auto;padding:20px 20px 60px;">
+  <div style="max-width:760px;margin:0 auto;padding:20px 20px 60px;">
     <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 0 22px;position:sticky;top:0;background:rgba(0,0,0,0.96);z-index:1;border-bottom:1px solid var(--border);">
       <div>
         <p style="font-family:var(--f-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">Written 2026 · Research ongoing since 2019</p>
@@ -6388,23 +6388,38 @@ document.querySelectorAll('.journey-node').forEach(node => {
       <button onclick="closeFamilyLetter()" aria-label="Close family letter"
               style="background:var(--card);border:1px solid var(--border);border-radius:50%;width:44px;height:44px;color:var(--cream);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;">&#x2715;</button>
     </div>
-    <div style="padding-top:24px;">
-      <p style="font-family:var(--f-display);font-size:22px;color:var(--parchment);font-style:italic;margin-bottom:24px;">To every member of this family —</p>
-      <div style="font-size:15px;line-height:1.9;color:var(--cream);">
-        <p style="margin-bottom:20px;">Seven years ago I started asking questions. Simple ones at first. Where did we come from? Who were the people before Grandma Margie? What were their names? Where did they live? What happened to them?</p>
-        <p style="margin-bottom:20px;">What I found changed how I understand myself, this family, and what it means to be who we are. I found <strong style="color:var(--parchment);">Easter Bell Nichols</strong> — born enslaved on July 4, 1838, in Bellville, Texas. I found her mother Rendy Blayn, and Clarissa's mother Patience, whose own birth year is unknown — she is documented by 1793. I found a great-grandmother named <strong style="color:var(--parchment);">Eva Armstrong Ballard</strong> who ran a café on San Antonio's East Side and was subpoenaed to testify in a police brutality case in 1955 — and told the truth. I found a great-uncle named James Wilson Ballard Jr. who made the front page of the San Antonio Light for helping break a cover-up case.</p>
-        <p style="margin-bottom:20px;">I found names that had almost disappeared. I found people who were bought, sold, transferred, counted, inherited, and then — somehow — became free people who bought land, raised children, built homes, opened businesses, and kept going.</p>
-        <p style="margin-bottom:20px;">This archive is my way of putting those names back where they belong.</p>
-        <p style="margin-bottom:20px;">It is not finished. Some questions remain open. Some relationships are supported by DNA but not yet by a document. Some people may never be identified beyond the records that survived. I want our family to know the difference between what we know, what the records strongly support, and what we are still trying to prove.</p>
-        <p style="margin-bottom:20px;">But I also want us to understand something bigger: the people before us were not just names in a database. They were somebody's mother. Somebody's father. Somebody's child. They had humor, grief, faith, anger, dreams, arguments, work, love, and ordinary days.</p>
-        <p style="margin-bottom:20px;">We are here because they kept going.</p>
-        <p style="font-family:var(--f-display);font-size:20px;font-style:italic;color:var(--gold2);line-height:1.6;padding-top:18px;border-top:1px solid var(--border);">This is our record. This is our inheritance. And now it belongs to all of us.</p>
-        <p style="margin-top:28px;color:var(--muted);font-family:var(--f-mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;">Jasmine M. Lee · Armstrong Family Archive</p>
+    <div style="max-width:620px;margin:0 auto;">
+    <div class="reveal">
+      <p class="letter-date">WRITTEN 2026 · RESEARCH ONGOING SINCE 2019</p>
+      <p class="letter-salutation">To every member of this family —</p>
+      <div class="letter-body">
+        <p>Seven years ago I started asking questions. Simple ones at first. Where did we come from? Who were the people before Grandma Margie? What were their names? Where did they live? What happened to them?</p>
+        <p>What I found changed how I understand myself, this family, and what it means to be who we are. I found <strong>Easter Bell Nichols</strong> — born enslaved on July 4, 1838, in Bellville, Texas. I found her mother Rendy Blayn, and Clarissa's mother Patience, whose own birth year is unknown — she is documented by 1793. I found a great-grandmother named <strong>Eva Armstrong Ballard</strong> who ran a café on San Antonio's East Side and was subpoenaed to testify in a police brutality case in 1955 — and told the truth. I found a great-uncle named James Wilson Ballard Jr. who made the front page of the San Antonio Light for helping break a cover-up case. I found ministers and porters and waitresses and gamblers and community organizers. I found people who built things under impossible conditions and kept going.</p>
+        <p>The more I searched, the more I realized I didn't know much. You can live your entire life believing things were seamless or perfect because of the love you share for one another. But the more you learn, you find out your loved ones were human — their past wasn't easy or smooth. And you start to understand your own defaults, your blessings, and the generational curses that were passed down without anyone meaning to pass them. You realize you are not starting from scratch. You are starting from somewhere. That somewhere is what this history is about.</p>
+        <p>My mother is <strong>Hjordis L. Corbin</strong> — born January 20, 1960, the daughter of Margie Nell Ballard Corbin. She grew up at 622 South Townsend Street in Santa Ana and later at 12182 Candy Lane in Garden Grove — the home where I have my earliest memories of NaNa. Hjordis carried the weight of losing her mother at 28 years old, navigated a probate process no one explained to her, and kept going. She is the reason I know this family at all. She is the thread that connects me to everything in this history.</p>
+
+        <div class="letter-pullquote">
+          "Teach your children who they are. Tell them Easter Bell's name. Tell them that Margie Nell Ballard made it from Fort Worth to California with seven children and kept going. Tell them they come from people who kept going."
+        </div>
+
+        <p>I built this website so that what I found does not disappear. So that the names don't get lost again. So that the next generation doesn't have to start from zero the way I did.</p>
+        <p>This research is ongoing. Every generation adds to the story. What matters is that the foundation is here, sourced to primary documents, and honest about what we know and what we don't. If you have family photographs, documents, stories, or information about any family member — please reach out. Every piece helps.</p>
+      </div>
+      <div class="letter-sign">
+        <p class="letter-sign-name">Jasmine M. Lee</p>
+        <p class="letter-sign-title">Founder, Dock Ellis Foundation · Granddaughter of Margie Nell Ballard Corbin</p>
+        <div class="letter-lineage">
+          <strong>Granddaughter</strong> of Margie Nell Ballard Corbin<br>
+          <strong>Great-granddaughter</strong> of Eva Armstrong Ballard<br>
+          <strong>Great-great-granddaughter</strong> of Hellen Nichols Armstrong<br>
+          <strong>Great-great-great-granddaughter</strong> of Easter Bell Nichols<br>
+          <span style="color:var(--gold);font-style:italic;">Born during slavery · July 4, 1838 · Texas · Her exact pre-emancipation household remains unresolved</span>
+        </div>
       </div>
     </div>
   </div>
+  </div>
 </div>
-
 
 <!-- ══════════════════════════════════════════
      THE LAND · FULL MODAL

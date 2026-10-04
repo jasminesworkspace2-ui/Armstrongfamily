@@ -1771,14 +1771,18 @@ footer {
 .gallery-item:hover { border-color: var(--gold); }
 .gallery-item img {
   width: 100%;
-  height: 110px;
-  object-fit: cover;
-  display: block;
-}
-.gallery-item.tall img { height: 130px; }
-.gallery-item.doc img {
-  height: 110px;
+  height: 180px;
   object-fit: contain;
+  object-position: center;
+  display: block;
+  background: var(--surface);
+  padding: 6px;
+}
+.gallery-item.tall img { height: 180px; }
+.gallery-item.doc img {
+  height: 180px;
+  object-fit: contain;
+  object-position: center;
   background: var(--surface);
   padding: 6px;
 }
@@ -4266,7 +4270,7 @@ footer {
     <div style="display:grid;gap:16px;" class="reveal">
 
       <!-- Obituary image — re-upload needed -->
-      <div class="gallery-item doc" onclick="openLightbox(this)" style="max-width:400px;">
+      <div class="gallery-item doc" onclick="openLightbox(this)" style="width:100%;max-width:400px;margin:0 auto;">
         <img src="https://raw.githubusercontent.com/jasminesworkspace2-ui/Armstrongfamily/main/Bessie%20Rawls.jpeg" alt="Bessie Rawls obituary program - August 31 1973" loading="lazy">
         <p class="gallery-item-caption">Bessie Rawls · Funeral Program · August 31, 1973</p>
       </div>

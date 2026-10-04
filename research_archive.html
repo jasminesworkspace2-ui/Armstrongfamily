@@ -33,6 +33,8 @@ a{color:inherit}.topbar{position:sticky;top:0;z-index:100;background:rgba(7,7,7,
 .closing{text-align:center;padding:65px 22px;border-top:1px solid var(--border)}.closing h2{font:italic 29px var(--serif);color:var(--paper);margin-bottom:10px}.closing p{max-width:680px;margin:auto;color:var(--muted);font-size:12.5px;line-height:1.8}.back{display:inline-block;margin-top:22px;padding:11px 20px;border:1px solid var(--border2);border-radius:22px;text-decoration:none;color:var(--gold);font:9px var(--mono);letter-spacing:1.5px;text-transform:uppercase}
 @media(max-width:850px){.explainer,.person-grid{grid-template-columns:1fr}.index-grid{grid-template-columns:repeat(2,1fr)}.person-head{grid-template-columns:1fr}.status-box{text-align:left;max-width:none}.doc-gallery{grid-template-columns:repeat(2,1fr)}.source-register{grid-template-columns:1fr}}
 @media(max-width:560px){.index-grid{grid-template-columns:1fr}.hero{padding-top:55px}.container{padding:0 15px}.toplinks{display:none}.timeline{grid-template-columns:72px 1fr}.doc-gallery{grid-template-columns:1fr 1fr}.doc-thumb img{height:115px}}
+
+.latest-research{scroll-margin-top:100px}.latest-entry{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:22px 0;border-top:1px solid var(--border)}.latest-entry:last-child{border-bottom:1px solid var(--border)}.latest-date{font:10px var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--gold2)}.latest-label{font:8px var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}.latest-entry h3{font:italic 25px var(--serif);color:var(--paper);margin:5px 0 7px}.latest-entry p{font-size:12px;color:#c7beb1;line-height:1.8;max-width:720px}.latest-entry a{display:inline-block;margin-top:10px;color:var(--gold2);font:9px var(--mono);letter-spacing:1px;text-decoration:none}.latest-entry a:hover{color:var(--paper)}@media(max-width:650px){.latest-entry{grid-template-columns:1fr;gap:7px}}
 </style>
 </head>
 <body>
@@ -48,7 +50,31 @@ a{color:inherit}.topbar{position:sticky;top:0;z-index:100;background:rgba(7,7,7,
 
 <div class="index-tools"><div class="tools-in"><input id="search" class="search" placeholder="Search names, places, records, enslaved people…" oninput="applyFilters()"><button class="filter active" data-status="all" onclick="setStatus('all',this)">All Networks</button><button class="filter" data-status="confirmed" onclick="setStatus('confirmed',this)">Confirmed</button><button class="filter" data-status="documented" onclick="setStatus('documented',this)">Documented</button><button class="filter" data-status="lead" onclick="setStatus('lead',this)">Research Lead</button><button class="filter" data-status="hypothesis" onclick="setStatus('hypothesis',this)">Hypothesis</button></div></div>
 
-<main class="container">
+<main class="container"><section class="section latest-research" id="latest">
+<span class="sec-kicker">00 · Latest Research</span>
+<h2>What changed most recently</h2>
+<p class="section-intro">This log records meaningful research additions so the archive remains transparent about when a file changed and why.</p>
+<div class="latest-entry">
+  <div class="latest-date">October 2026</div>
+  <div>
+    <span class="latest-label">Easter Bell Nichols · Documentary Research File</span>
+    <h3>Easter's research file expanded</h3>
+    <p>New documentary research, evidence notes, and unresolved questions have been added to Easter Bell Nichols's file. The update strengthens the distinction between what the records establish and what remains a research lead.</p>
+    <a href="easter_story.html#slavery">Open Easter's research file →</a>
+  </div>
+</div>
+<div class="latest-entry">
+  <div class="latest-date">August 2026</div>
+  <div>
+    <span class="latest-label">Patience · Waldrop / Davenport Network</span>
+    <h3>Primary-source deed confirmation added</h3>
+    <p>A deed record concerning Patience and the Waldrop network was added to the documentary research archive and moved from pending to confirmed primary-source evidence.</p>
+    <a href="#waldrop">Open the Waldrop research network →</a>
+  </div>
+</div>
+</section>
+
+
 <section class="section" id="index">
 <span class="sec-kicker">01 · Start Here</span><h2>Research Network Index</h2>
 <p class="section-intro">Choose a network below. Each one is intentionally self-contained so the next research session can begin where the last one ended. The same person may appear in more than one network when the records warrant it; that does not automatically mean the records describe the same individual.</p>

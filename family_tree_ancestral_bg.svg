@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid slice">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16130f"/><stop offset=".55" stop-color="#3a2717"/><stop offset="1" stop-color="#0a0907"/></linearGradient>
+  <linearGradient id="field" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#60421f"/><stop offset="1" stop-color="#0b0906"/></linearGradient>
+  <radialGradient id="sun"><stop stop-color="#d99b45" stop-opacity=".72"/><stop offset="1" stop-color="#9a6225" stop-opacity="0"/></radialGradient>
+  <filter id="blur"><feGaussianBlur stdDeviation="10"/></filter>
+  <filter id="soft"><feGaussianBlur stdDeviation="2"/></filter>
+</defs>
+<rect width="1600" height="800" fill="url(#sky)"/>
+<circle cx="800" cy="420" r="360" fill="url(#sun)" filter="url(#blur)"/>
+<!-- distant tree line -->
+<path d="M0 410 Q80 330 150 400 Q230 300 320 395 Q420 305 500 400 Q590 320 680 400 Q760 305 850 400 Q950 300 1040 400 Q1140 320 1230 398 Q1320 300 1410 400 Q1500 320 1600 395 L1600 520 L0 520Z" fill="#17130e" opacity=".82"/>
+<!-- plantation house in distance -->
+<g fill="#18130f" opacity=".9">
+<path d="M1135 375 L1260 300 L1385 375 L1370 382 L1370 515 L1150 515 L1150 382Z"/>
+<rect x="1170" y="350" width="180" height="145"/>
+<path d="M1155 345 L1260 282 L1365 345Z"/>
+<g fill="#8b5d2b" opacity=".38">
+<rect x="1190" y="375" width="25" height="42"/><rect x="1230" y="375" width="25" height="42"/><rect x="1270" y="375" width="25" height="42"/><rect x="1310" y="375" width="25" height="42"/>
+<rect x="1190" y="435" width="25" height="42"/><rect x="1230" y="435" width="25" height="42"/><rect x="1270" y="435" width="25" height="42"/><rect x="1310" y="435" width="25" height="42"/>
+</g>
+</g>
+<!-- field -->
+<path d="M0 455 Q400 425 800 470 Q1200 420 1600 460 L1600 800 L0 800Z" fill="url(#field)"/>
+<!-- distant figures -->
+<g fill="#090806" opacity=".86">
+<path d="M255 470 q18 -25 36 0 l7 75 h-50z"/><circle cx="273" cy="452" r="13"/>
+<path d="M410 470 q20 -28 40 0 l8 90 h-56z"/><circle cx="430" cy="450" r="14"/>
+<path d="M820 470 q17 -23 34 0 l7 82 h-48z"/><circle cx="837" cy="453" r="12"/>
+<path d="M965 470 q18 -24 36 0 l8 88 h-52z"/><circle cx="983" cy="452" r="13"/>
+<path d="M1080 472 q17 -22 34 0 l7 82 h-48z"/><circle cx="1097" cy="455" r="12"/>
+</g>
+<!-- large ancestral tree -->
+<path d="M105 800 C135 650 175 560 225 470 C270 390 270 250 245 120 C238 80 255 48 285 42 C315 38 330 72 322 115 C300 250 335 360 365 430 C405 520 470 590 520 800Z" fill="#090806"/>
+<path d="M270 285 C210 230 150 195 60 175 M285 330 C380 250 475 200 590 180 M275 220 C340 135 420 95 510 75" fill="none" stroke="#0b0907" stroke-width="28" stroke-linecap="round"/>
+<!-- hanging foliage -->
+<g fill="#15100b" opacity=".9">
+<ellipse cx="110" cy="115" rx="95" ry="50"/><ellipse cx="360" cy="92" rx="120" ry="62"/><ellipse cx="540" cy="130" rx="115" ry="60"/>
+<ellipse cx="180" cy="215" rx="110" ry="55"/><ellipse cx="470" cy="215" rx="130" ry="58"/>
+</g>
+<!-- central foreground silhouette -->
+<g fill="#080706">
+<circle cx="675" cy="430" r="25"/>
+<path d="M620 480 Q675 445 730 480 L755 675 L600 675Z"/>
+<path d="M630 495 Q560 555 535 650 L555 660 Q600 590 650 555Z"/>
+<path d="M720 500 Q775 555 815 620 L795 635 Q755 585 700 550Z"/>
+<path d="M650 670 L620 800 L665 800 L685 690Z M700 670 L735 800 L780 800 L735 675Z"/>
+</g>
+<!-- other foreground figures -->
+<g fill="#090806">
+<circle cx="500" cy="525" r="20"/><path d="M465 565 Q500 535 535 565 L550 690 H450Z"/>
+<circle cx="875" cy="520" r="21"/><path d="M840 560 Q875 535 910 560 L930 690 H820Z"/>
+<circle cx="1010" cy="535" r="18"/><path d="M980 570 Q1010 545 1040 570 L1055 690 H965Z"/>
+</g>
+<!-- cotton/field plants -->
+<g stroke="#b17a32" stroke-width="3" opacity=".62" fill="none">
+<path d="M60 730 q30 -55 55 0 q30 -55 60 0 M210 760 q30 -65 55 0 q30 -55 60 0 M340 720 q30 -55 60 0 q25 -50 55 0 M850 745 q25 -65 55 0 q25 -55 55 0 M1080 730 q25 -60 55 0 q30 -55 60 0 M1280 750 q25 -60 55 0 q30 -55 60 0 M1450 720 q25 -55 55 0"/>
+</g>
+<!-- subtle vine border -->
+<path d="M0 750 C160 690 260 790 420 735 C580 680 680 790 820 730 C980 665 1080 790 1230 725 C1390 660 1480 770 1600 710" fill="none" stroke="#b78945" stroke-width="6" opacity=".5"/>
+<g fill="#b78945" opacity=".55">
+<ellipse cx="135" cy="725" rx="20" ry="8" transform="rotate(-35 135 725)"/><ellipse cx="300" cy="750" rx="20" ry="8" transform="rotate(35 300 750)"/>
+<ellipse cx="500" cy="720" rx="20" ry="8" transform="rotate(-35 500 720)"/><ellipse cx="720" cy="755" rx="20" ry="8" transform="rotate(35 720 755)"/>
+<ellipse cx="1000" cy="715" rx="20" ry="8" transform="rotate(-35 1000 715)"/><ellipse cx="1200" cy="750" rx="20" ry="8" transform="rotate(35 1200 750)"/>
+<ellipse cx="1420" cy="700" rx="20" ry="8" transform="rotate(-35 1420 700)"/>
+</g>
+<!-- vignette -->
+<rect width="1600" height="800" fill="none" stroke="#050403" stroke-width="70" opacity=".5"/>
+</svg>

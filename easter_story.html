@@ -98,6 +98,7 @@ nav{position:sticky;top:0;z-index:20;background:rgba(9,8,6,.9);backdrop-filter:b
 @media(max-width:800px){.atlas-grid{grid-template-columns:1fr}.atlas-footer{grid-template-columns:1fr}.slave-constellation{min-height:150px}.slave-constellation:after{width:220px;height:220px}}
 @media(prefers-reduced-motion:reduce){.slave-constellation:after{animation:none}}
 </style>
+<link rel="stylesheet" href="overrides.css">
 </head>
 <body>
 <header class="hero" id="top"><div class="wrap hero-inner">
@@ -617,5 +618,6 @@ nav{position:sticky;top:0;z-index:20;background:rgba(9,8,6,.9);backdrop-filter:b
 
 <script>document.querySelectorAll('.atlas-filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.atlas-filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('.atlas-card').forEach(card=>{const groups=card.dataset.group.split(' ');card.classList.toggle('hidden',f!=='all'&&!groups.includes(f))})}));</script>
 <script src="sidebar.js"></script>
+<script src="archive-update.js"></script>
 </body>
 </html>

@@ -6291,37 +6291,96 @@ const searchEmpty = document.getElementById('search-empty');
 
 function performSearch() {
   const query = (mainSearch?.value || '').toLowerCase().trim();
-  if (!query) return;
-  
-  const results = SEARCH_INDEX.filter(item => {
-    return item.text.toLowerCase().includes(query) || 
-           item.section.toLowerCase().includes(query);
-  });
-  
   searchResults.innerHTML = '';
   searchEmpty.style.display = 'none';
-  
-  if (results.length === 0) {
+
+  if (!query) return;
+
+  // Build a live people index from the Complete Family Tree itself.
+  // This keeps the search synchronized with names added to the tree
+  // without requiring a second hand-maintained list.
+  const people = [];
+  const seen = new Set();
+
+  document.querySelectorAll('.ft-person, .ft-child').forEach(card => {
+    const nameEl = card.querySelector('.ft-name');
+    if (!nameEl) return;
+    const name = nameEl.textContent.replace(/★/g, '').trim();
+    if (!name || seen.has(name.toLowerCase())) return;
+    seen.add(name.toLowerCase());
+
+    const text = card.textContent.replace(/\s+/g, ' ').trim();
+    people.push({
+      section: 'Family Tree · ' + name,
+      text: name + ' ' + text,
+      element: card
+    });
+  });
+
+  const personResults = people.filter(item =>
+    item.text.toLowerCase().includes(query)
+  );
+
+  // Keep the existing section/document search as a secondary search.
+  const sectionResults = SEARCH_INDEX.filter(item =>
+    item.text.toLowerCase().includes(query) ||
+    item.section.toLowerCase().includes(query)
+  ).map(item => ({
+    section: item.section,
+    text: item.text,
+    action: item.action
+  }));
+
+  const results = [...personResults, ...sectionResults].slice(0, 20);
+
+  if (!results.length) {
     searchEmpty.style.display = 'block';
     return;
   }
-  
-  results.slice(0, 10).forEach(r => {
+
+  results.forEach(r => {
     const div = document.createElement('div');
     div.className = 'search-result';
     div.setAttribute('role', 'button');
     div.setAttribute('tabindex', '0');
-    
-    const highlighted = r.text.split(' ')
-      .filter(word => word.toLowerCase().includes(query))
-      .slice(0, 8).join(' ');
-    
+
+    const text = r.text.replace(/\s+/g, ' ').trim();
+    const lower = text.toLowerCase();
+    const matchIndex = lower.indexOf(query);
+    const excerpt = matchIndex >= 0
+      ? text.slice(Math.max(0, matchIndex - 45), Math.min(text.length, matchIndex + query.length + 100))
+      : text.slice(0, 145);
+
     div.innerHTML = `
       <p class="search-result-section">${r.section}</p>
-      <p class="search-result-text">${r.section} — ${highlighted ? `...${highlighted}...` : 'Tap to view'}</p>
+      <p class="search-result-text">${excerpt}${text.length > excerpt.length ? '…' : ''}</p>
     `;
-    div.addEventListener('click', () => { closeNav(); r.action(); });
-    div.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { closeNav(); r.action(); } });
+
+    const openResult = () => {
+      closeNav();
+
+      if (r.element) {
+        r.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // If this tree card is an interactive person/story card,
+        // open its existing story/modal after bringing it into view.
+        if (r.element.matches('button') && typeof r.element.onclick === 'function') {
+          setTimeout(() => r.element.click(), 350);
+        }
+        return;
+      }
+
+      if (typeof r.action === 'function') r.action();
+    };
+
+    div.addEventListener('click', openResult);
+    div.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openResult();
+      }
+    });
+
     searchResults.appendChild(div);
   });
 }

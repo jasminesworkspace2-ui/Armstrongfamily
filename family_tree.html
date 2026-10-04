@@ -296,6 +296,64 @@ body {
 .drawer-search input::placeholder { color: var(--muted); }
 
 /* ═══════════════════════════════════════════════
+   ARCHIVE UPDATE ALERT
+═══════════════════════════════════════════════ */
+.archive-update {
+  position: relative;
+  z-index: 20;
+  margin-top: calc(68px + var(--safe-top));
+  padding: 0 20px;
+  background: var(--black);
+}
+.archive-update-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  background: linear-gradient(90deg, rgba(201,168,76,0.12), rgba(201,168,76,0.04));
+  border: 1px solid rgba(201,168,76,0.45);
+  border-left: 3px solid var(--gold);
+  border-radius: 10px;
+}
+.archive-update-mark {
+  width: 28px; height: 28px; flex: 0 0 28px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--gold); border-radius: 50%;
+  color: var(--gold2); font-family: var(--f-mono); font-size: 12px; font-weight: 700;
+}
+.archive-update-copy { min-width: 0; flex: 1; display: flex; align-items: baseline; flex-wrap: wrap; gap: 7px; }
+.archive-update-label {
+  font-family: var(--f-mono); font-size: 8px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold); white-space: nowrap;
+}
+.archive-update-message { font-size: 12px; line-height: 1.5; color: var(--cream); }
+.archive-update-message strong { color: var(--parchment); }
+.archive-update-link {
+  flex-shrink: 0; color: var(--gold2); font-family: var(--f-mono);
+  font-size: 9px; letter-spacing: 1px; text-transform: uppercase;
+  text-decoration: none; white-space: nowrap;
+}
+.archive-update-link:hover { color: var(--gold3); text-decoration: underline; }
+.archive-update-dismiss {
+  flex: 0 0 auto; width: 30px; height: 30px; border: 0;
+  background: transparent; color: var(--muted); font-size: 18px; line-height: 1;
+  cursor: pointer; border-radius: 6px;
+}
+.archive-update-dismiss:hover { color: var(--cream); background: var(--gold-dim); }
+@media (max-width: 600px) {
+  .archive-update { padding: 0 12px; }
+  .archive-update-inner { gap: 10px; padding: 10px; }
+  .archive-update-mark { width: 24px; height: 24px; flex-basis: 24px; font-size: 10px; }
+  .archive-update-copy { display: block; }
+  .archive-update-label { display: block; margin-bottom: 2px; }
+  .archive-update-message { font-size: 11px; }
+  .archive-update-link { font-size: 8px; }
+}
+
+/* ═══════════════════════════════════════════════
    HERO — OPENING EXPERIENCE
 ═══════════════════════════════════════════════ */
 #hero {
@@ -427,6 +485,20 @@ body {
   transform: translateY(-2px);
 }
 .hero-cta svg { width: 14px; height: 14px; }
+
+.family-letter-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin: 0 0 28px; padding: 10px 16px;
+  border: 1px solid rgba(201,168,76,0.5); border-radius: 999px;
+  background: rgba(201,168,76,0.06); color: var(--gold2);
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase; cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.family-letter-cta:hover { background: var(--gold-dim); border-color: var(--gold); transform: translateY(-1px); }
+.family-letter-cta:focus-visible { outline: 2px solid var(--gold2); outline-offset: 3px; }
+.family-letter-cta span { color: var(--gold3); }
+
 
 /* ═══════════════════════════════════════════════
    SECTION UTILITY
@@ -1846,6 +1918,19 @@ footer {
   </button>
 </nav>
 
+<!-- ARCHIVE UPDATE ALERT -->
+<div id="archive-update" class="archive-update" role="status" aria-label="Latest archive update">
+  <div class="archive-update-inner">
+    <span class="archive-update-mark" aria-hidden="true">!</span>
+    <div class="archive-update-copy">
+      <span class="archive-update-label">Archive Update</span>
+      <span class="archive-update-message"><strong>Family Tree</strong> has been updated with new research and information.</span>
+    </div>
+    <a class="archive-update-link" href="#family-tree">View Update <span aria-hidden="true">→</span></a>
+    <button class="archive-update-dismiss" type="button" aria-label="Dismiss archive update" onclick="dismissArchiveUpdate()">×</button>
+  </div>
+</div>
+
 <!-- NAV DRAWER -->
 <div id="nav-overlay" aria-hidden="true"></div>
 <aside id="nav-drawer" role="dialog" aria-label="Navigation menu" aria-modal="true">
@@ -1863,9 +1948,6 @@ footer {
 
   <div class="drawer-sep"></div>
   <span class="drawer-group-label">On This Page</span>
-  <a href="#letter" class="drawer-link" data-section="letter">
-    <span class="icon" aria-hidden="true">·</span> A Letter to Our Family
-  </a>
   <a href="#direct-line" class="drawer-link" data-section="direct-line">
     <span class="icon" aria-hidden="true">·</span> The Direct Line
   </a>
@@ -2005,6 +2087,9 @@ footer {
   </div>
 
       <p class="hero-eyebrow">Nine Generations · One Unbroken Thread</p>
+    <button type="button" class="family-letter-cta" onclick="openFamilyLetter()" aria-haspopup="dialog" aria-controls="family-letter-modal">
+      <span aria-hidden="true">✦</span> A Letter to the Family
+    </button>
     <h1 class="hero-title">
       The Legacy of the
       <em>Ballard-Armstrongs</em>
@@ -6547,6 +6632,20 @@ document.querySelectorAll('.journey-node').forEach(node => {
 <script src="sidebar.js"></script>
 
 <script>
+function dismissArchiveUpdate(){
+  var el=document.getElementById('archive-update');
+  if(!el)return;
+  el.style.display='none';
+  try{ sessionStorage.setItem('armstrongArchiveUpdateDismissed','1'); }catch(e){}
+}
+function restoreArchiveUpdate(){
+  var el=document.getElementById('archive-update');
+  if(!el)return;
+  try{
+    if(sessionStorage.getItem('armstrongArchiveUpdateDismissed')==='1') el.style.display='none';
+  }catch(e){}
+}
+
 function openFamilyLetter(){
   var modal=document.getElementById('family-letter-modal');
   if(!modal)return;
@@ -6568,6 +6667,7 @@ document.addEventListener('keydown',function(e){
   }
 });
 window.addEventListener('load',function(){
+  restoreArchiveUpdate();
   if(location.hash==='#family-letter') openFamilyLetter();
 });
 </script>

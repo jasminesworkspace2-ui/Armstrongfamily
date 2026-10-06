@@ -347,7 +347,7 @@ const searchBox=document.getElementById('networkSearch');
 let searchFamilyState=null;
 searchBox.addEventListener('input',function(){
  const q=this.value.trim().toLowerCase(); let n=0; const identities=new Set();
- const families=[...document.querySelectorAll('.family')];
+ const families=[...document.querySelectorAll('section.family')];
  if(q && !searchFamilyState){searchFamilyState=new Map(families.map(f=>[f,f.classList.contains('open')]));}
  const items=document.querySelectorAll('.person,.gchild,.regcard,.deskcard,.pathrow');
  items.forEach(function(el){
@@ -369,7 +369,7 @@ function updateFinderLabel(){
  if(activeFilter!=='all')label+=' · filter: '+filterNames[activeFilter];
  document.getElementById('findCount').textContent=label;
 }
-document.getElementById('expand').onclick=()=>{document.querySelectorAll('.family').forEach(f=>{f.classList.add('open');f.querySelector('.family-toggle').textContent='−'})};
+document.getElementById('expand').onclick=()=>{document.querySelectorAll('section.family').forEach(f=>{f.classList.add('open');f.querySelector('.family-toggle').textContent='−'})};
 
 // Finishing controls: views, source navigation and keyboard-accessible evidence.
 const sourcePages={davenport:['davenport_family.html','Davenport records'],waldrop:['waldrop_enslavers.html','Waldrop records'],nichols:['john_nichols.html','John Nichols records'],bell:['bell_family.html','Bell records'],paper:['papertrail.html','Document transcriptions & evidence']};
@@ -401,12 +401,12 @@ const parentIds={'Francis Davenport Sr.':'francis','Ezekiah / Hezekiah P. Waldro
 document.querySelectorAll('.gnode').forEach(el=>{const name=el.querySelector('.gname').textContent;if(parentIds[name])el.dataset.id=parentIds[name];});
 document.querySelectorAll('[data-id]').forEach(el=>{if(!dossier[el.dataset.id])return;if(el.tagName!=='BUTTON'){el.tabIndex=0;el.setAttribute('role','button');}el.setAttribute('aria-haspopup','dialog');el.onclick=e=>{if(e.target.closest('a'))return;openDossier(el);};el.addEventListener('keydown',e=>{if(e.target!==el)return;if(e.key==='Enter'||e.key===' '){e.preventDefault();openDossier(el);}});});
 function syncFamily(f){const h=f.querySelector('.family-head');h.setAttribute('aria-expanded',String(f.classList.contains('open')));h.querySelector('.family-toggle').textContent=f.classList.contains('open')?'−':'+';}
-document.querySelectorAll('.family').forEach((f,i)=>{const h=f.querySelector('.family-head'),body=f.querySelector('.family-body');body.id='family-body-'+i;h.tabIndex=0;h.setAttribute('role','button');h.setAttribute('aria-controls',body.id);h.onclick=()=>{f.classList.toggle('open');syncFamily(f);};h.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();h.click();}};syncFamily(f);});
-document.getElementById('expand').onclick=()=>{const families=[...document.querySelectorAll('.family')],collapse=families.every(f=>f.classList.contains('open'));families.forEach(f=>{f.classList.toggle('open',!collapse);syncFamily(f);});document.getElementById('expand').textContent=collapse?'Expand all families':'Collapse all families';};
+document.querySelectorAll('section.family').forEach((f,i)=>{const h=f.querySelector('.family-head'),body=f.querySelector('.family-body');body.id='family-body-'+i;h.tabIndex=0;h.setAttribute('role','button');h.setAttribute('aria-controls',body.id);h.onclick=()=>{f.classList.toggle('open');syncFamily(f);};h.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();h.click();}};syncFamily(f);});
+document.getElementById('expand').onclick=()=>{const families=[...document.querySelectorAll('section.family')],collapse=families.every(f=>f.classList.contains('open'));families.forEach(f=>{f.classList.toggle('open',!collapse);syncFamily(f);});document.getElementById('expand').textContent=collapse?'Expand all families':'Collapse all families';};
 const viewSections={people:'.family,.genealogy,.bridge',enslaved:'.track,.registry,.bridge',estates:'.family,.pathway,.matrix,.researchdesk',migration:'.movement,.pathway,.bridge'};
 function setView(view){document.querySelectorAll('[data-view]').forEach(b=>{const active=b.dataset.view===view;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});document.querySelectorAll('main > section').forEach(el=>{if(el.matches('.finder,.statuskey'))return;el.classList.toggle('view-hidden',view!=='all'&&!el.matches(viewSections[view]));});}
 document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));
-searchBox.addEventListener('input',()=>{if(searchBox.value.trim())setView('all');document.querySelectorAll('.family').forEach(syncFamily);});
+searchBox.addEventListener('input',()=>{if(searchBox.value.trim())setView('all');document.querySelectorAll('section.family').forEach(syncFamily);});
 document.querySelectorAll('.jumpnav a').forEach(a=>a.addEventListener('click',()=>{setView('all');const target=document.querySelector(a.getAttribute('href'));const family=target&&target.closest('.family');if(family){family.classList.add('open');syncFamily(family);}}));
 
 </script>

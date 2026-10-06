@@ -321,14 +321,16 @@ document.querySelectorAll('.follow').forEach(b=>b.onclick=()=>{document.querySel
 
 const searchBox=document.getElementById('networkSearch');
 searchBox.addEventListener('input',function(){
- const q=this.value.trim().toLowerCase(); let n=0;
+ const q=this.value.trim().toLowerCase(); let n=0; const identities=new Set();
  const items=document.querySelectorAll('.person,.gchild,.regcard,.deskcard,.pathrow');
  items.forEach(function(el){
   el.classList.remove('search-hide','search-hit');
   if(q && el.textContent.toLowerCase().indexOf(q)===-1){el.classList.add('search-hide');}
-  else if(q){el.classList.add('search-hit');n++; const fam=el.closest('.family'); if(fam){fam.classList.add('open'); const t=fam.querySelector('.family-toggle'); if(t)t.textContent='−';}}
+  else if(q){el.classList.add('search-hit');n++; if(el.dataset.id)identities.add(el.dataset.id); const fam=el.closest('.family'); if(fam){fam.classList.add('open'); const t=fam.querySelector('.family-toggle'); if(t)t.textContent='−';}}
  });
- document.getElementById('findCount').textContent=q?(n+' match'+(n===1?'':'es')):'Showing all';
+ let label='Showing all';
+ if(q){const unique=identities.size;label=n+' matching card'+(n===1?'':'s');if(unique&&unique<n)label+=' · '+unique+' unique research identit'+(unique===1?'y':'ies');}
+ document.getElementById('findCount').textContent=label;
 });
 document.getElementById('expand').onclick=()=>{document.querySelectorAll('.family').forEach(f=>{f.classList.add('open');f.querySelector('.family-toggle').textContent='−'})};
 </script>

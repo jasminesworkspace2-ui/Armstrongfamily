@@ -332,7 +332,13 @@ function openDossier(el){const d=dossier[el.dataset.id];if(!d)return;document.ge
 document.querySelectorAll('.gchild[data-id],.regcard[data-id]').forEach(el=>el.onclick=()=>openDossier(el));
 document.querySelectorAll('.person[data-id]').forEach(el=>el.onclick=()=>openDossier(el));
 function closeP(){document.getElementById('panel').classList.remove('open');document.getElementById('bg').classList.remove('open')}document.getElementById('close').onclick=closeP;document.getElementById('bg').onclick=closeP;
-document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-filter]').forEach(x=>x.classList.remove('active'));b.classList.add('active');const f=b.dataset.filter;document.querySelectorAll('.person').forEach(p=>{const st=p.dataset.status||'';p.classList.toggle('dim',f==='owner'&&!st.includes('owner')||f==='recipient'&&!st.includes('recipient')||f==='open'&&!st.includes('open')||f==='enslaved'&&!st.includes('enslaved'))});document.querySelectorAll('[data-enslaved]').forEach(x=>x.style.opacity=(f==='owner'||f==='recipient'||f==='open')?'.18':'1');if(f==='enslaved'){document.querySelectorAll('[data-enslaved]').forEach(x=>x.style.opacity='1')}})
+let activeFilter='all';
+function applyFilter(){
+ document.querySelectorAll('.person').forEach(p=>{const st=p.dataset.status||'';const mismatch=activeFilter==='owner'&&!st.includes('owner')||activeFilter==='recipient'&&!st.includes('recipient')||activeFilter==='open'&&!st.includes('open')||activeFilter==='enslaved'&&!st.includes('enslaved');p.classList.toggle('dim',mismatch&&!p.classList.contains('search-hit'));});
+ document.querySelectorAll('[data-enslaved]').forEach(x=>x.style.opacity=(activeFilter==='owner'||activeFilter==='recipient'||activeFilter==='open')?'.18':'1');
+ if(activeFilter==='enslaved')document.querySelectorAll('[data-enslaved]').forEach(x=>x.style.opacity='1');
+}
+document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-filter]').forEach(x=>x.classList.remove('active'));b.classList.add('active');activeFilter=b.dataset.filter;applyFilter();updateFinderLabel();});
 document.querySelectorAll('.follow').forEach(b=>b.onclick=()=>{document.querySelectorAll('.follow').forEach(x=>x.classList.remove('active'));b.classList.add('active');drawRoute(b.dataset.follow)});drawRoute('patience');
 
 const searchBox=document.getElementById('networkSearch');
@@ -351,10 +357,16 @@ searchBox.addEventListener('input',function(){
   else if(q){el.classList.add('search-hit');n++;if(el.dataset.id)identities.add(el.dataset.id);const fam=el.closest('.family');if(fam){fam.classList.add('open');const t=fam.querySelector('.family-toggle');if(t)t.textContent='−';}}
  });
  if(!q && searchFamilyState){searchFamilyState.forEach((wasOpen,f)=>{f.classList.toggle('open',wasOpen);const t=f.querySelector('.family-toggle');if(t)t.textContent=wasOpen?'−':'+';});searchFamilyState=null;}
- let label='Showing all';
- if(q){const unique=identities.size;if(unique){label=unique+' unique research identit'+(unique===1?'y':'ies')+' · '+n+' matching card'+(n===1?'':'s');}else{label=n+' matching research item'+(n===1?'':'s');}}
- document.getElementById('findCount').textContent=label;
+ window.finderStats={q,n,unique:identities.size};
+ applyFilter();
+ updateFinderLabel();
 });
+function updateFinderLabel(){
+ const st=window.finderStats||{q:'',n:0,unique:0};const filterNames={all:'All people',owner:'Documented enslavers',recipient:'Documented recipients',enslaved:'Named enslaved people',open:'Active investigations'};
+ let label=st.q?(st.unique?st.unique+' unique research identit'+(st.unique===1?'y':'ies')+' · '+st.n+' matching card'+(st.n===1?'':'s'):st.n+' matching research item'+(st.n===1?'':'s')):'Showing all';
+ if(activeFilter!=='all')label+=' · filter: '+filterNames[activeFilter];
+ document.getElementById('findCount').textContent=label;
+}
 document.getElementById('expand').onclick=()=>{document.querySelectorAll('.family').forEach(f=>{f.classList.add('open');f.querySelector('.family-toggle').textContent='−'})};
 </script>
 </body></html>

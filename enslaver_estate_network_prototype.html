@@ -139,6 +139,18 @@ document.querySelectorAll('.person').forEach(p=>p.onclick=()=>{const d=dossier[p
 function closeP(){document.getElementById('panel').classList.remove('open');document.getElementById('bg').classList.remove('open')}document.getElementById('close').onclick=closeP;document.getElementById('bg').onclick=closeP;
 document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-filter]').forEach(x=>x.classList.remove('active'));b.classList.add('active');const f=b.dataset.filter;document.querySelectorAll('.person').forEach(p=>{p.classList.toggle('dim',f==='owner'&&!p.dataset.status.includes('owner')||f==='open'&&!p.dataset.status.includes('open')||f==='enslaved')});document.querySelectorAll('[data-enslaved]').forEach(x=>x.style.opacity=(f==='owner'||f==='open')?'.18':'1');if(f==='enslaved'){document.querySelectorAll('.person').forEach(p=>p.classList.add('dim'));document.querySelectorAll('[data-enslaved]').forEach(x=>x.style.opacity='1')}})
 document.querySelectorAll('.follow').forEach(b=>b.onclick=()=>{document.querySelectorAll('.follow').forEach(x=>x.classList.remove('active'));b.classList.add('active');drawRoute(b.dataset.follow)});drawRoute('patience');
+
+const searchBox=document.getElementById('networkSearch');
+searchBox.addEventListener('input',function(){
+ const q=this.value.trim().toLowerCase(); let n=0;
+ const items=document.querySelectorAll('.person,.regcard,.deskcard,.pathrow');
+ items.forEach(function(el){
+  el.classList.remove('search-hide','search-hit');
+  if(q && el.textContent.toLowerCase().indexOf(q)===-1){el.classList.add('search-hide');}
+  else if(q){el.classList.add('search-hit');n++; const fam=el.closest('.family'); if(fam){fam.classList.add('open'); const t=fam.querySelector('.family-toggle'); if(t)t.textContent='−';}}
+ });
+ document.getElementById('findCount').textContent=q?(n+' match'+(n===1?'':'es')):'Showing all';
+});
 document.getElementById('expand').onclick=()=>{document.querySelectorAll('.family').forEach(f=>{f.classList.add('open');f.querySelector('.family-toggle').textContent='−'})};
 </script>
 </body></html>

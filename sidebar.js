@@ -431,7 +431,7 @@
     }
 
     .afa-sb-section { padding: 0; border-bottom:1px solid rgba(201,168,76,.12); }
-    .afa-sb-section > summary { cursor:pointer; list-style:none; padding:16px 20px; margin:0; border:0; color:#d6cab4; font-size:9px; letter-spacing:1.5px; }
+    .afa-sb-section > summary { cursor:pointer; list-style:none; padding:16px 20px; margin:0; border:0; color:#d6cab4; font-size:11px; letter-spacing:1.5px; }
     .afa-sb-section > summary::-webkit-details-marker { display:none; }
     .afa-sb-section > summary:after { content:'+'; float:right; color:#c9a84c; font-size:13px; }
     .afa-sb-section[open] > summary:after { content:'−'; }
@@ -470,7 +470,7 @@
     }
     .afa-sb-item-text {
       font-family: Georgia, serif;
-      font-size: 13px;
+      font-size: 15px;
       color: #d8d0c8;
       display: block;
       line-height: 1.3;
@@ -478,9 +478,10 @@
     .afa-sb-item.active .afa-sb-item-text { color: #c9a84c; }
     .afa-sb-item-note {
       font-family: 'Courier New', monospace;
-      font-size: 8px;
-      letter-spacing: 0.5px;
-      color: rgba(255,255,255,0.3);
+      font-size: 12px;
+      line-height: 1.5;
+      letter-spacing: 0;
+      color: #a99f8d;
       display: block;
       margin-top: 1px;
     }

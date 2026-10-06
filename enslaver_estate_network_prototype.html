@@ -326,7 +326,10 @@ searchBox.addEventListener('input',function(){
  const items=document.querySelectorAll('.person,.gchild,.regcard,.deskcard,.pathrow');
  items.forEach(function(el){
   el.classList.remove('search-hide','search-hit');
-  if(q && el.textContent.toLowerCase().indexOf(q)===-1){el.classList.add('search-hide');}
+  const d=el.dataset.id?dossier[el.dataset.id]:null;
+  const dossierText=d?Object.values(d).join(' '):'';
+  const haystack=(el.textContent+' '+dossierText).toLowerCase();
+  if(q && haystack.indexOf(q)===-1){el.classList.add('search-hide');}
   else if(q){el.classList.add('search-hit');n++; if(el.dataset.id)identities.add(el.dataset.id); const fam=el.closest('.family'); if(fam){fam.classList.add('open'); const t=fam.querySelector('.family-toggle'); if(t)t.textContent='−';}}
  });
  let label='Showing all';

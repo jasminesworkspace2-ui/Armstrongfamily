@@ -6817,7 +6817,7 @@ document.querySelectorAll('.journey-node').forEach(node => {
 
 <!-- FAMILY LETTER MODAL -->
 <div id="family-letter-modal" role="dialog" aria-modal="true" aria-labelledby="family-letter-title"
-     style="display:none;position:fixed;inset:0;z-index:15000;background:rgba(0,0,0,0.94);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+     style="display:none;position:fixed;inset:0;z-index:15000;background:#080808;overflow-y:auto;-webkit-overflow-scrolling:touch;">
   <div style="max-width:760px;margin:0 auto;padding:20px 20px 60px;">
     <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 0 22px;position:sticky;top:0;background:rgba(0,0,0,0.96);z-index:1;border-bottom:1px solid var(--border);">
       <div>
@@ -6833,7 +6833,7 @@ document.querySelectorAll('.journey-node').forEach(node => {
       <p class="letter-salutation">To every member of this family —</p>
       <div class="letter-body">
         <p>Seven years ago I started asking questions. Simple ones at first. Where did we come from? Who were the people before Grandma Margie? What were their names? Where did they live? What happened to them?</p>
-        <p>What I found changed how I understand myself, this family, and what it means to be who we are. I found <strong>Easter Bell Nichols</strong> — born enslaved on July 4, 1838, in Bellville, Texas. I found her mother Rendy Blayn, and Clarissa's mother Patience, whose own birth year is unknown — she is documented by 1793. I found a great-grandmother named <strong>Eva Armstrong Ballard</strong> who ran a café on San Antonio's East Side and was subpoenaed to testify in a police brutality case in 1955 — and told the truth. I found a great-uncle named James Wilson Ballard Jr. who made the front page of the San Antonio Light for helping break a cover-up case. I found ministers and porters and waitresses and gamblers and community organizers. I found people who built things under impossible conditions and kept going.</p>
+        <p>What I found changed how I understand myself, this family, and what it means to be who we are. I found <strong>Easter Bell Nichols</strong> — born enslaved on July 4, 1838, in Bellville, Texas. I followed the Rendy Blayn lead while Easter’s mother remains unidentified, and found Clarissa's mother Patience, whose own birth year is unknown — she is documented by 1793. I found a great-grandmother named <strong>Eva Armstrong Ballard</strong> who ran a café on San Antonio's East Side and was subpoenaed to testify in a police brutality case in 1955 — and told the truth. I found a great-uncle named James Wilson Ballard Jr. who made the front page of the San Antonio Light for helping break a cover-up case. I found ministers and porters and waitresses and gamblers and community organizers. I found people who built things under impossible conditions and kept going.</p>
         <p>The more I searched, the more I realized I didn't know much. You can live your entire life believing things were seamless or perfect because of the love you share for one another. But the more you learn, you find out your loved ones were human — their past wasn't easy or smooth. And you start to understand your own defaults, your blessings, and the generational curses that were passed down without anyone meaning to pass them. You realize you are not starting from scratch. You are starting from somewhere. That somewhere is what this history is about.</p>
         <p>My mother is <strong>Hjordis L. Corbin</strong> — born January 20, 1960, the daughter of Margie Nell Ballard Corbin. She grew up at 622 South Townsend Street in Santa Ana and later at 12182 Candy Lane in Garden Grove — the home where I have my earliest memories of NaNa. Hjordis carried the weight of losing her mother at 28 years old, navigated a probate process no one explained to her, and kept going. She is the reason I know this family at all. She is the thread that connects me to everything in this history.</p>
 
@@ -7018,7 +7018,7 @@ document.addEventListener('keydown',function(e){
 });
 window.addEventListener('hashchange',function(){if(location.hash==='#family-letter')openFamilyLetter();else if(document.getElementById('family-letter-modal').style.display==='block')closeFamilyLetter();});
 window.addEventListener('load',function(){restoreArchiveUpdate();});
-if(location.hash==='#family-letter')openFamilyLetter();
+document.addEventListener('DOMContentLoaded',function(){if(location.hash==='#family-letter')openFamilyLetter();});
 </script>
 
 <script src="archive-update.js"></script>

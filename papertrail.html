@@ -620,7 +620,7 @@
 
 <!-- HERO -->
 <section class="hero"><p class="hero-eyebrow">A guided reading of the surviving records</p><h1 class="hero-title">The Paper Trail</h1><p class="hero-statement">Read the words that preserved Patience’s name, then follow the records concerning her family and the wider community.</p><p class="trail-intro">Each chapter pairs record language with interpretation. Earlier same-name records are research leads; they do not establish a continuous identity on their own. This is a selection of the records examined, not a complete account of every document that may survive.</p></section>
-<nav class="trail-guide" aria-label="Paper Trail chapter index"><h2>Choose a chapter</h2><p>Read in the existing chapter order, or open a supporting section below. Dates and source references remain beside the records.</p><div id="trail-chapters"></div><p class="trail-boundary"><strong>Keep the questions separate:</strong> Easter’s mother remains unidentified. Rendy Blayn is a research lead. The Patience trail does not establish Easter’s ancestry.</p><div class="trail-links"><a href="photos.html#estate-records">Browse document images</a><a href="enslaver_estate_network_prototype.html">Explore people and connections</a><a href="research_archive.html#open">See the research queue</a></div></nav>
+<section class="trail-guide" aria-label="Paper Trail chapter index"><h2>Choose a chapter</h2><p>Read in the existing chapter order, or open a supporting section below. Dates and source references remain beside the records.</p><div id="trail-chapters"></div><p class="trail-boundary"><strong>Keep the questions separate:</strong> Easter’s mother remains unidentified. Rendy Blayn is a research lead. The Patience trail does not establish Easter’s ancestry.</p><div class="trail-links"><a href="photos.html#estate-records">Browse document images</a><a href="enslaver_estate_network_prototype.html">Explore people and connections</a><a href="research_archive.html#open">See the research queue</a></div></section>
 <!-- CHAIN OF CUSTODY OVERVIEW -->
 <details class="trail-overview"><summary>Record overview · dates, sources and unresolved links</summary><div style="max-width:800px;margin:0 auto;padding:0 24px 60px;">
   <div class="chain">
@@ -1672,7 +1672,7 @@ document.addEventListener('keydown', function(e) {
 document.addEventListener('DOMContentLoaded',()=>{
 const nav=document.getElementById('trail-chapters');
 document.querySelectorAll('h2').forEach((h,i)=>{
- if(h.closest('.trail-guide'))return;
+ if(h.closest('.trail-guide,.afa-continue'))return;
  const chapter=h.closest('.chapter');
  if(!chapter && h.classList.contains('closing-title'))return;
  const container=chapter || h.parentElement;

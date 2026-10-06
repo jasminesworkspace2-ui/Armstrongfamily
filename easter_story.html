@@ -617,7 +617,7 @@ nav{position:sticky;top:0;z-index:20;background:rgba(9,8,6,.9);backdrop-filter:b
 
 
 <script>document.querySelectorAll('.atlas-filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.atlas-filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('.atlas-card').forEach(card=>{const groups=card.dataset.group.split(' ');card.classList.toggle('hidden',f!=='all'&&!groups.includes(f))})}));</script>
-<script src="sidebar.js?v=20261006-flow"></script>
+<script src="sidebar.js?v=20261006-flow-readable"></script>
 <script src="archive-update.js"></script>
 <script src="archive-routes.js?v=20261006-flow"></script>
 </body>

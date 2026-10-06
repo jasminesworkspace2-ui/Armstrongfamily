@@ -35,6 +35,7 @@
     {
       label: 'Enslavement & Historical Records',
       items: [
+        { href: 'enslaver_estate_network_prototype.html', text: 'Enslaver & Estate Network', note: 'Start here · people, estates, transfers and evidence' },
         { href: 'bell_family.html',                    text: 'The Bells',                         note: 'Bell family slaveholding records' },
         { href: 'john_nichols.html',                  text: 'John Nichols',                       note: 'Enslavement and land records' },
         { href: 'john_nichols_community.html',        text: 'John Nichols Community',             note: 'Household and community research' },

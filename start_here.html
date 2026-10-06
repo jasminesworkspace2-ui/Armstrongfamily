@@ -24,7 +24,8 @@
 .footer{max-width:1100px;margin:auto;padding:24px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.footer span,.footer a{font:8px var(--f-mono);letter-spacing:1px;color:rgba(255,255,255,.2)}.footer a{color:rgba(245,242,236,.4);text-decoration:none;text-transform:uppercase}.footer a:hover{color:var(--gold)}
 @media(max-width:650px){.gnav-brand{display:none}.gnav-inner{justify-content:flex-start}.finder{padding:22px}.person{grid-template-columns:52px 1fr}.relationship{grid-column:2;text-align:left;min-width:0}.guide{grid-template-columns:1fr}.hero{padding-top:58px}.person:not(:last-child):after{left:18px}.gen{font-size:7px}}
 </style>
-<link rel="stylesheet" href="overrides.css">
+<link rel="stylesheet" href="overrides.css?v=20261006-audit">
+<link rel="stylesheet" href="archive-reading.css?v=20261006-audit">
 </head>
 <body>
 <nav class="gnav"><div class="gnav-inner">
@@ -167,8 +168,9 @@ setTimeout(()=>result.scrollIntoView({behavior:"smooth",block:"nearest"}),30);
 }
 select.addEventListener("change",()=>render(select.value));
 </script>
-<script src="sidebar.js?v=20261006-design"></script>
+<script src="sidebar.js?v=20261006-audit"></script>
 <script src="archive-update.js"></script>
-<script src="archive-routes.js?v=20261006-design"></script>
+<script src="archive-routes.js?v=20261006-audit"></script>
+<script src="archive-evidence.js?v=20261006-audit"></script>
 </body>
 </html>

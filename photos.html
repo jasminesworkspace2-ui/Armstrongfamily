@@ -220,8 +220,9 @@
   .breadcrumb a:hover{color:#c9a84c;}
   .breadcrumb span{color:rgba(255,255,255,0.18);margin:0 6px;}
 </style>
-<link rel="stylesheet" href="overrides.css">
-<style>.hero{padding:60px 24px 38px;min-height:0;text-align:left;max-width:1100px;margin:auto;}.hero-title{font-size:clamp(40px,7vw,76px);line-height:1.12;}.hero-statement{margin:16px 0 0;max-width:760px;}.hero-sub{margin:12px 0;}.filter-bar{position:relative;top:0;flex-wrap:wrap;overflow:visible;}.filter-btn{font-size:12px;letter-spacing:.3px;}.photo-caption-meta{display:block;font-size:13px;line-height:1.6;color:#b9ad98;}.photo-card img,.photo-card.doc img{object-fit:contain;background:#14110c;}.document-context{display:block;color:#d8b967;margin-top:10px;font-size:13px;}.lightbox-links{display:flex;gap:20px;justify-content:center;margin:15px 0;}.lightbox-links a{color:#d8b967;font-size:14px;}.lightbox{z-index:17000!important;}.section-desc{font-size:16px;line-height:1.8;}.photo-card:focus-visible{outline:2px solid #d8b967;outline-offset:4px;}</style><style>.photo-grid.docs{grid-template-columns:repeat(3,minmax(0,1fr));}@media(max-width:800px){.photo-grid.docs{grid-template-columns:repeat(2,minmax(0,1fr));}}@media(max-width:500px){.photo-grid.docs{grid-template-columns:1fr;}}</style></head>
+<link rel="stylesheet" href="overrides.css?v=20261006-audit">
+<style>.hero{padding:60px 24px 38px;min-height:0;text-align:left;max-width:1100px;margin:auto;}.hero-title{font-size:clamp(40px,7vw,76px);line-height:1.12;}.hero-statement{margin:16px 0 0;max-width:760px;}.hero-sub{margin:12px 0;}.filter-bar{position:relative;top:0;flex-wrap:wrap;overflow:visible;}.filter-btn{font-size:12px;letter-spacing:.3px;}.photo-caption-meta{display:block;font-size:13px;line-height:1.6;color:#b9ad98;}.photo-card img,.photo-card.doc img{object-fit:contain;background:#14110c;}.document-context{display:block;color:#d8b967;margin-top:10px;font-size:13px;}.lightbox-links{display:flex;gap:20px;justify-content:center;margin:15px 0;}.lightbox-links a{color:#d8b967;font-size:14px;}.lightbox{z-index:17000!important;}.section-desc{font-size:16px;line-height:1.8;}.photo-card:focus-visible{outline:2px solid #d8b967;outline-offset:4px;}</style><style>.photo-grid.docs{grid-template-columns:repeat(3,minmax(0,1fr));}@media(max-width:800px){.photo-grid.docs{grid-template-columns:repeat(2,minmax(0,1fr));}}@media(max-width:500px){.photo-grid.docs{grid-template-columns:1fr;}}</style><link rel="stylesheet" href="archive-reading.css?v=20261006-audit">
+</head>
 <body>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
@@ -1390,9 +1391,11 @@ document.addEventListener('keydown', e => {
 });
 document.querySelectorAll('.photo-card').forEach(function(card){card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label',card.querySelector('.photo-caption-title').textContent);card.addEventListener('keydown',function(e){if(e.target===card&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openLightbox(card);}});});
 </script>
-<script src="sidebar.js?v=20261006-design"></script>
+<script src="sidebar.js?v=20261006-audit"></script>
 <script src="archive-update.js"></script>
-<script src="archive-routes.js?v=20261006-design"></script>
+<script src="archive-routes.js?v=20261006-audit"></script>
+<script src="archive-evidence.js?v=20261006-audit"></script>
 </body>
 </html>
+
 

@@ -140,13 +140,13 @@
       },
       {
         "href": "papertrail.html",
-        "text": "The Documents",
-        "note": "Read record language and document transcriptions"
+        "text": "The Paper Trail",
+        "note": "Read the records chapter by chapter"
       },
       {
         "href": "research_archive.html",
-        "text": "Research Archive",
-        "note": "Detailed household, estate and network research files"
+        "text": "Research Case Files",
+        "note": "Evidence notes, open questions and next research tasks"
       },
       {
         "href": "registry.html",

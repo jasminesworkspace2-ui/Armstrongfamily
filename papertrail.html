@@ -581,7 +581,9 @@
   .story-nav-center:hover{color:rgba(245,242,236,0.5);}
 </style>
 <link rel="stylesheet" href="overrides.css">
-</head>
+<style>
+.hero{padding-top:62px;padding-bottom:36px}.trail-intro{max-width:720px;margin:22px auto;color:#b0a89e;font-size:16px;line-height:1.8}.trail-guide,.trail-overview{max-width:960px;margin:0 auto 36px;padding:24px;border:1px solid rgba(201,168,76,.3);background:#11100e}.trail-guide h2{font-size:28px;color:#f5f2ec}.trail-guide p{line-height:1.8;color:#b0a89e}.trail-guide #trail-chapters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:20px 0}.trail-guide a{color:#dec67a;line-height:1.6}.trail-guide #trail-chapters a{display:block;padding:12px;border:1px solid #393328;text-decoration:none}.trail-links{display:flex;gap:20px;flex-wrap:wrap}.trail-boundary{padding:16px;border-left:3px solid #c9a84c}.trail-overview summary,.trail-support summary{cursor:pointer;color:#dec67a;font-size:20px;line-height:1.5;padding:18px}.trail-support{max-width:1100px;margin:24px auto;border:1px solid #393328;background:#11100e}.chapter,.trail-support{scroll-margin-top:100px}@media(max-width:600px){.trail-guide #trail-chapters{grid-template-columns:1fr}.trail-guide,.trail-overview{margin-left:16px;margin-right:16px;padding:18px}}
+</style></head>
 <body>
 <div style="background:rgba(10,8,5,0.8);border-bottom:1px solid rgba(201,168,76,0.2);padding:16px 24px;margin-top:49px;">
   <div style="max-width:720px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
@@ -617,29 +619,10 @@
 </div>
 
 <!-- HERO -->
-<section class="hero">
-  <p class="hero-eyebrow">Primary Source Documents · 1793 – 1839 · Newberry County, South Carolina</p>
-  <h1 class="hero-title">The Paper Trail</h1>
-  <p class="hero-statement">
-    We found her. Not in a family story passed down through generations.
-    Not in a photograph. Not in a letter she wrote.<br><br>
-    We found her in a debt record. In a merchant's ledger.
-    In deeds signed by men who believed they owned her.<br><br>
-    <div style="background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.15);
-     padding:16px 24px;max-width:700px;margin:16px auto 0;text-align:left;">
-  <p style="font-family:'Courier New',monospace;font-size:8px;letter-spacing:3px;
-            text-transform:uppercase;color:rgba(201,168,76,0.7);margin-bottom:8px;">For Family Members · Plain Language</p>
-  <p style="font-size:13.5px;line-height:1.85;color:#b0a89e;">This page shows the actual documents that prove our family history. Every ancestor in this archive was found in one of these records — not in a family story, but in a deed, a census form, a death certificate, or a court filing. You do not need to understand genealogy to read this page. Just know that every document here is evidence that a real person in your family existed.</p>
-</div>
-
-  <em>Her name was Patience. She was approximately thirty years old.
-    And what follows is every document that ever wrote her name down.</em>
-  </p>
-  <p class="hero-scroll">scroll to read her story ↓</p>
-</section>
-
+<section class="hero"><p class="hero-eyebrow">A guided reading of the surviving records</p><h1 class="hero-title">The Paper Trail</h1><p class="hero-statement">Read the words that preserved Patience’s name, then follow the records concerning her family and the wider community.</p><p class="trail-intro">Each chapter pairs record language with interpretation. Earlier same-name records are research leads; they do not establish a continuous identity on their own. This is a selection of the records examined, not a complete account of every document that may survive.</p></section>
+<nav class="trail-guide" aria-label="Paper Trail chapter index"><h2>Choose a chapter</h2><p>Read in the existing chapter order, or open a supporting section below. Dates and source references remain beside the records.</p><div id="trail-chapters"></div><p class="trail-boundary"><strong>Keep the questions separate:</strong> Easter’s mother remains unidentified. Rendy Blayn is a research lead. The Patience trail does not establish Easter’s ancestry.</p><div class="trail-links"><a href="photos.html#estate-records">Browse document images</a><a href="enslaver_estate_network_prototype.html">Explore people and connections</a><a href="research_archive.html#open">See the research queue</a></div></nav>
 <!-- CHAIN OF CUSTODY OVERVIEW -->
-<div style="max-width:800px;margin:0 auto;padding:0 24px 60px;">
+<details class="trail-overview"><summary>Record overview · dates, sources and unresolved links</summary><div style="max-width:800px;margin:0 auto;padding:0 24px 60px;">
   <div class="chain">
     <div class="chain-link">
       <span class="chain-year">1793</span>
@@ -647,7 +630,7 @@
     </div>
     <div class="chain-link">
       <span class="chain-year">1793</span>
-      <span class="chain-text"><strong>Deed Book B:466</strong> — Three months later, James Sims gives nine people to his daughter Drucilla Braselman. Molley and Patience are not among them. They remain as collateral on the Enoree River.</span>
+      <span class="chain-text"><strong>Deed Book B:466</strong> — Three months later, James Sims gives nine people to his daughter Drucilla Braselman. Molley and Patience are not among them. Their absence from the gift does not by itself establish their later disposition.</span>
     </div>
     <div class="chain-link">
       <span class="chain-year">Nov 1794</span>
@@ -659,7 +642,7 @@
     </div>
     <div class="chain-link">
       <span class="chain-year">Aug 1795</span>
-      <span class="chain-text"><strong>Deed Book C:367-368</strong> — Francis Davenport Sr. gives Patience to his daughter Patty Waldrop. Patience is separated from Moll and the others. She leaves South Carolina.</span>
+      <span class="chain-text"><strong>Deed Book C:367-368</strong> — Francis Davenport Sr. gives Patience to his daughter Patty Waldrop. The connection to the earlier Sims and merchant records requires a documented bridge; this deed alone does not establish that continuity or a departure date.</span>
     </div>
     <div class="chain-link">
       <span class="chain-year">1827</span>
@@ -670,12 +653,13 @@
       <span class="chain-text"><strong>Rankin County MS, Deed Book 4:435 · March 25 1839 · CONFIRMED PRIMARY SOURCE · Verbatim transcription confirmed August 2026</strong> — E.P. Waldrop explicitly cites the August 4 1795 Francis Deavenport deed giving Patience to his late wife Patty Waldrop. The instrument recites "Patience and her increase named Rachel, Clarissa, Tom, Rachel's son William and Amanda and Harriet children of Clarissa" while naming Patty's eight children jointly as grantees — including <strong>Fanny Micholes (Fanny Waldrop Nichols)</strong>, whose Texas household is independently documented before 1839. The instrument does not establish eight separate person-specific allotments. This is a property transfer deed — not a freedom document. The phrase "free from the claim of myself" means E.P. Waldrop releases his personal claim only — Patience and her family were transferred as enslaved people to Patty's children. Signed before John Tate, Clerk of Court of Probate, Brandon Mississippi. Researcher notes typed on original document by Kathryn R. Bonner (Marianna AR) confirm "FANNY MICHOLES is really NICHOLS" and that she held the Austin County TX marriage record. Document received by this archive August 2026 via researcher Dawn. <strong>This document is now confirmed by primary source — no longer pending.</strong></span>
     </div>
     <div class="chain-link">
-      <span class="chain-year">1848</span>
+      <span class="chain-year">Separate trail</span>
       <span class="chain-text"><strong>Bellville, Austin County, Texas</strong> — Easter Bell Nichols is documented as born July 4, 1838 in Texas and as the daughter of Rinde Bland/Rendy Blayn through her 1935 death certificate. Her specific pre-emancipation household is unresolved. The Bell and Nichols households remain important surrounding-network research contexts; the two family lines later merge through Easter's marriage to Joseph Nichols.</span>
     </div>
   </div>
 </div>
 
+</details>
 <!-- TIMELINE -->
 <div class="timeline">
 
@@ -1141,7 +1125,7 @@
           </div>
           <div style="padding:16px;border:1px solid rgba(201,168,76,0.4);border-radius:2px;background:rgba(201,168,76,0.05);">
             <p style="font-family:var(--f-mono);font-size:10px;color:var(--gold);margin-bottom:6px;">THE MIGRATION TO TEXAS</p>
-            <p class="chapter-body" style="margin-bottom:0;font-size:14px;"><strong>Fanny Waldrop</strong> — born in Newberry, South Carolina — married John Nichols and moved to <strong>Bellville, Austin County, Texas</strong>. The Sims family also migrated to Austin County. Pioneer surveyor Bartlett Samuel Sims arrived in Stephen F. Austin&apos;s colony early. When these families arrived in Austin County, they continued to do business near one another — mirroring the community structure they had maintained in South Carolina for three generations. Easter Bell Nichols was born into this same small community in 1838. She was held by the Bell family, not by the Waldrop-Nichols household — a separate enslaved family in the same town. No document found in this research shows her great-grandmother Patience's own line ever reaching Texas.</p>
+            <p class="chapter-body" style="margin-bottom:0;font-size:14px;"><strong>Fanny Waldrop</strong> — born in Newberry, South Carolina — married John Nichols and moved to <strong>Bellville, Austin County, Texas</strong>. The Sims family also migrated to Austin County. Pioneer surveyor Bartlett Samuel Sims arrived in Stephen F. Austin&apos;s colony early. When these families arrived in Austin County, they continued to do business near one another — mirroring the community structure they had maintained in South Carolina for three generations. Easter Bell Nichols was born into this same small community in 1838. Her specific pre-emancipation household remains unresolved; the Bell and Nichols households are separate research contexts. No document cited here establishes Patience as Easter’s great-grandmother. Easter’s pre-emancipation household and maternal ancestry remain unresolved.</p>
           </div>
         </div>
       </div>
@@ -1681,8 +1665,24 @@ document.addEventListener('keydown', function(e) {
     </div>
   </div>
 
-<script src="sidebar.js?v=20261006-design"></script>
+<script src="sidebar.js?v=20261006-distinct"></script>
 <script src="archive-update.js"></script>
-<script src="archive-routes.js?v=20261006-design"></script>
-</body>
+<script src="archive-routes.js?v=20261006-distinct"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+const nav=document.getElementById('trail-chapters');
+document.querySelectorAll('h2').forEach((h,i)=>{
+ if(h.closest('.trail-guide'))return;
+ const chapter=h.closest('.chapter');
+ if(!chapter && h.classList.contains('closing-title'))return;
+ const container=chapter || h.parentElement;
+ if(!container.id)container.id='trail-section-'+i;
+ const link=document.createElement('a');link.href='#'+container.id;link.textContent=h.textContent.trim();nav.appendChild(link);
+ if(!chapter){const detail=document.createElement('details');detail.className='trail-support';container.before(detail);const summary=document.createElement('summary');summary.textContent=h.textContent.trim();detail.append(summary,container);}
+});
+function reveal(){if(!location.hash)return;const target=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(target){const detail=target.closest('details');if(detail)detail.open=true;target.scrollIntoView();}}
+window.addEventListener('hashchange',reveal);reveal();
+});
+</script></body>
 </html>
+

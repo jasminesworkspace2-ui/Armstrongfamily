@@ -27,3 +27,12 @@ button.filter,.filter-btn,.view-btn,.tab,.pill{font-size:13px!important;line-hei
 #afa-sidebar .afa-sb-item-note{font-size:13px!important;color:#d0c2aa!important;line-height:1.5!important;letter-spacing:normal!important}
 .afa-evidence-note details p{font-size:15px!important}.lightbox-links{display:flex;flex-wrap:wrap;gap:12px;max-width:100%;padding:12px}.lightbox-links a{font-size:16px!important;min-height:44px;line-height:1.5;display:flex;align-items:center}.lightbox-caption{max-height:20vh;overflow-y:auto}
 }
+
+.afa-collections{max-width:1100px;margin:20px auto;border:1px solid #5a4a2c;background:#1d1913;color:#eee5d7}.afa-collections>summary{cursor:pointer;padding:16px 20px;font-size:17px;min-height:44px}.afa-collections .filter-bar{margin:0;padding:16px!important;border:0}
+@media(max-width:700px){.afa-collections{margin:16px}.global-archive-update-inner{display:grid!important;grid-template-columns:minmax(0,1fr) 44px;gap:0 8px!important}.global-archive-update-mark,.global-archive-update-kicker{display:none!important}.global-archive-update-copy{grid-column:1;grid-row:1}.global-archive-update-link{grid-column:1;grid-row:2;width:fit-content;white-space:normal!important;letter-spacing:normal!important}.global-archive-update-close{grid-column:2;grid-row:1 / span 2;align-self:center;color:#eee5d7!important}.jump-nav{max-width:100%;flex-wrap:wrap}.jump-nav a{overflow-wrap:anywhere}.hero-statement{color:#eee5d7!important}}
+.afa-page-thank_you{display:block!important;padding:0!important}.afa-page-thank_you main{margin:40px auto;max-width:calc(100% - 32px)}
+@media(max-width:700px){
+.sec-label{display:block!important;white-space:normal!important;max-width:100%;font-size:12px!important;line-height:1.6!important;letter-spacing:1px!important;overflow-wrap:anywhere}.sec-label::after{display:none!important}
+.research-link{height:54px!important}.research-link::after{width:220px!important;max-width:220px!important;margin-left:-110px!important;text-align:center;line-height:1.4;background:#080604;padding:4px}
+.afa-page-thank_you main{padding:40px 18px!important}.afa-page-thank_you .actions a{font-size:13px!important;line-height:1.5!important;letter-spacing:normal!important}
+}

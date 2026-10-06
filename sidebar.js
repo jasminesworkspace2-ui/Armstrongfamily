@@ -6,6 +6,7 @@
  */
 (function() {
   'use strict';
+  if (document.getElementById('afa-burger')) return;
 
   // ── SIDEBAR CONTENT ──
   var sections = [
@@ -113,7 +114,7 @@
       position: fixed;
       top: 12px;
       right: 16px;
-      z-index: 1001;
+      z-index: 12002;
       width: 40px;
       height: 40px;
       background: rgba(8,6,4,0.92);
@@ -147,7 +148,7 @@
       position: fixed;
       inset: 0;
       background: rgba(4,3,2,0.7);
-      z-index: 999;
+      z-index: 12000;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.25s;
@@ -163,15 +164,16 @@
       height: 100vh;
       background: #0a0806;
       border-left: 1px solid rgba(201,168,76,0.2);
-      z-index: 1000;
+      z-index: 12001;
       overflow-y: auto;
       overscroll-behavior: contain;
       transform: translateX(100%);
-      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), visibility 0.3s;
+      visibility: hidden;
       display: flex;
       flex-direction: column;
     }
-    #afa-sidebar.open { transform: translateX(0); }
+    #afa-sidebar.open { transform: translateX(0); visibility: visible; }
     #afa-sidebar::-webkit-scrollbar { width: 4px; }
     #afa-sidebar::-webkit-scrollbar-track { background: transparent; }
     #afa-sidebar::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.2); }
@@ -265,7 +267,7 @@
 
   // ── RETIRE LEGACY PAGE-LEVEL NAVIGATION ──
   function retireLegacyNav() {
-    document.querySelectorAll('.gnav-links, header.top .nav').forEach(function(nav) {
+    document.querySelectorAll('.gnav-links, .topbar .nav, .topbar .toplinks, header.top .navlinks, #menu-btn, #nav-drawer, #nav-overlay, #archiveHamburger, #archiveDrawer, #drawerScrim').forEach(function(nav) {
       nav.style.display = 'none';
     });
   }
@@ -344,6 +346,7 @@
     burger.classList.add('open');
     sidebar.setAttribute('aria-hidden', 'false');
     burger.setAttribute('aria-expanded', 'true');
+    burger.setAttribute('aria-label', 'Close navigation menu');
     document.body.style.overflow = 'hidden';
     var first = sidebar.querySelector('.afa-sb-item');
     if (first) setTimeout(function() { first.focus(); }, 300);
@@ -356,6 +359,7 @@
     burger.classList.remove('open');
     sidebar.setAttribute('aria-hidden', 'true');
     burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Open navigation menu');
     document.body.style.overflow = '';
     burger.focus();
   }

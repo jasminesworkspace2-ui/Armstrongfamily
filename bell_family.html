@@ -66,7 +66,26 @@ td{font-size:12px;line-height:1.7;color:#bdb4a7;padding:12px;border-bottom:1px s
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease)}.reveal.visible{opacity:1;transform:none}
 @media(max-width:680px){.grid{grid-template-columns:1fr}.event{grid-template-columns:65px 14px 1fr}.chapter{padding:65px 0}.prose p{font-size:15px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
-</style></head><body>
+</style><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+/* Shared editorial header treatment; research body remains unchanged. */
+.afa-dossier-hero{position:relative;isolation:isolate;overflow:hidden;min-height:0!important;padding:94px 28px 64px!important;text-align:left!important;display:block!important;background:radial-gradient(ellipse at 18% 25%,rgba(201,168,76,.12),transparent 55%),#080604!important;border-bottom:1px solid rgba(201,168,76,.22)}
+.afa-dossier-hero:before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(201,168,76,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.045) 1px,transparent 1px);background-size:72px 72px;height:auto!important;width:auto!important;left:0!important;opacity:1!important}
+.afa-dossier-hero:after{display:none!important}.afa-hero-inner{max-width:1060px;margin:auto;position:relative}
+.afa-dossier-hero .opening-label,.afa-dossier-hero .eyebrow{max-width:720px;color:#c9a84c;font:9px/1.8 'Courier New',monospace;letter-spacing:2.4px;margin-bottom:22px;display:block}
+.afa-dossier-hero h1{font:italic clamp(64px,9.5vw,124px)/.93 'DM Serif Display',Georgia,serif!important;letter-spacing:-3px!important;color:#f0ead8!important;max-width:760px;margin:0 0 28px!important}
+.afa-dossier-hero .opening-statement,.afa-dossier-hero .subtitle{font:14px/1.95 Inter,Arial,sans-serif!important;max-width:700px;margin:0!important;color:#b9b0a2!important;text-align:left}
+.afa-dossier-hero .opening-dates,.afa-dossier-hero .dates{font:9px/1.8 'Courier New',monospace!important;color:#baab88!important;letter-spacing:1.5px!important;margin:0 0 24px!important}
+.afa-dossier-hero .companion-note{max-width:800px;margin:26px 0 0;padding:18px 20px;font:11px/1.85 Inter,Arial,sans-serif;color:#b9b0a2;border-left:2px solid #c9a84c}
+.afa-hero-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}.afa-hero-links a{padding:11px 15px;border:1px solid rgba(201,168,76,.28);text-decoration:none;color:#e8c96a;font:9px/1.4 'Courier New',monospace;letter-spacing:1px}.afa-hero-links a:hover{background:rgba(201,168,76,.08);border-color:#c9a84c}
+.afa-hero-word{position:absolute;right:-12px;top:20px;color:rgba(201,168,76,.07);font:clamp(100px,19vw,220px)/1 Georgia,serif;writing-mode:vertical-rl;pointer-events:none;z-index:-1;letter-spacing:8px}
+.afa-dossier-hero .hero-content{max-width:none;padding:0}.afa-dossier-hero .scroll,.afa-dossier-hero .scroll-hint{display:none}
+.afa-header-crumb{font:9px/1.8 'Courier New',monospace;letter-spacing:1px;background:#0e0b08;border-bottom:1px solid rgba(201,168,76,.12);padding:10px 24px;color:#9a9187}.afa-header-crumb a{color:#c9a84c;text-decoration:none}.afa-header-crumb span{padding:0 9px}
+.gnav-inner{padding-right:78px!important}
+@media(max-width:600px){.afa-dossier-hero{padding:60px 20px 44px!important}.afa-dossier-hero h1{font-size:64px!important;letter-spacing:-2px!important}.afa-hero-word{display:none}.afa-dossier-hero .opening-label{letter-spacing:1.5px}.afa-header-crumb{padding:9px 20px}}
+@media(prefers-reduced-motion:reduce){#afa-sidebar,#afa-overlay,#afa-burger .bar{transition:none!important}}
+</style>
+</head><body>
 <nav class="gnav"><div class="gnav-inner">
 <a href="welcome.html" class="gnav-brand">Armstrong Family Archive</a>
 <div class="gnav-links">
@@ -76,14 +95,15 @@ td{font-size:12px;line-height:1.7;color:#bdb4a7;padding:12px;border-bottom:1px s
 <a href="waldrop_enslavers.html" class="gnav-link">The Waldrops</a>
 <a href="davenport_family.html" class="gnav-link">The Davenports</a>
 </div></div></nav>
+<div class="afa-header-crumb"><a href="welcome.html">Our Story</a><span>›</span><a href="enslaver_estate_network_prototype.html">Enslavement &amp; Historical Records</a><span>›</span>The Bells</div>
 
-<section class="hero">
+<header class="hero afa-dossier-hero"><div class="afa-hero-inner"><span class="afa-hero-word" aria-hidden="true">BELL</span>
 <div class="hero-content">
 <span class="eyebrow">Armstrong Family Archive · Bellville, Austin County, Texas</span>
 <h1>The Bells</h1>
 <p class="subtitle">The family that gave Bellville its name — and the enslaved people whose labor, names, and lives are documented underneath that founding story.</p>
 <div class="dates">FLORIDA → AUSTIN'S COLONY → BELLVILLE · 1822–TODAY</div>
-</div><span class="scroll">SCROLL</span></section>
+</div><span class="scroll">SCROLL</span><nav class="afa-hero-links" aria-label="Related research"><a href="enslaver_estate_network_prototype.html">Explore the estate network →</a><a href="john_nichols.html">John Nichols records →</a><a href="papertrail.html">Documentary evidence →</a></nav></div></header>
 
 <main class="story">
 
@@ -227,5 +247,5 @@ td{font-size:12px;line-height:1.7;color:#bdb4a7;padding:12px;border-bottom:1px s
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}}),{threshold:.08,rootMargin:'0px 0px -35px 0px'});
 document.querySelectorAll('.reveal').forEach(x=>obs.observe(x));
 </script>
-<script src="sidebar.js"></script>
+<script src="sidebar.js?v=20261006-menu"></script>
 </body></html>

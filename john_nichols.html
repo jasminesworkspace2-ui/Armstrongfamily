@@ -105,6 +105,25 @@
 
 </style>
 <link rel="stylesheet" href="overrides.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+/* Shared editorial header treatment; research body remains unchanged. */
+.afa-dossier-hero{position:relative;isolation:isolate;overflow:hidden;min-height:0!important;padding:94px 28px 64px!important;text-align:left!important;display:block!important;background:radial-gradient(ellipse at 18% 25%,rgba(201,168,76,.12),transparent 55%),#080604!important;border-bottom:1px solid rgba(201,168,76,.22)}
+.afa-dossier-hero:before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(201,168,76,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.045) 1px,transparent 1px);background-size:72px 72px;height:auto!important;width:auto!important;left:0!important;opacity:1!important}
+.afa-dossier-hero:after{display:none!important}.afa-hero-inner{max-width:1060px;margin:auto;position:relative}
+.afa-dossier-hero .opening-label,.afa-dossier-hero .eyebrow{max-width:720px;color:#c9a84c;font:9px/1.8 'Courier New',monospace;letter-spacing:2.4px;margin-bottom:22px;display:block}
+.afa-dossier-hero h1{font:italic clamp(64px,9.5vw,124px)/.93 'DM Serif Display',Georgia,serif!important;letter-spacing:-3px!important;color:#f0ead8!important;max-width:760px;margin:0 0 28px!important}
+.afa-dossier-hero .opening-statement,.afa-dossier-hero .subtitle{font:14px/1.95 Inter,Arial,sans-serif!important;max-width:700px;margin:0!important;color:#b9b0a2!important;text-align:left}
+.afa-dossier-hero .opening-dates,.afa-dossier-hero .dates{font:9px/1.8 'Courier New',monospace!important;color:#baab88!important;letter-spacing:1.5px!important;margin:0 0 24px!important}
+.afa-dossier-hero .companion-note{max-width:800px;margin:26px 0 0;padding:18px 20px;font:11px/1.85 Inter,Arial,sans-serif;color:#b9b0a2;border-left:2px solid #c9a84c}
+.afa-hero-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:28px}.afa-hero-links a{padding:11px 15px;border:1px solid rgba(201,168,76,.28);text-decoration:none;color:#e8c96a;font:9px/1.4 'Courier New',monospace;letter-spacing:1px}.afa-hero-links a:hover{background:rgba(201,168,76,.08);border-color:#c9a84c}
+.afa-hero-word{position:absolute;right:-12px;top:20px;color:rgba(201,168,76,.07);font:clamp(100px,19vw,220px)/1 Georgia,serif;writing-mode:vertical-rl;pointer-events:none;z-index:-1;letter-spacing:8px}
+.afa-dossier-hero .hero-content{max-width:none;padding:0}.afa-dossier-hero .scroll,.afa-dossier-hero .scroll-hint{display:none}
+.afa-header-crumb{font:9px/1.8 'Courier New',monospace;letter-spacing:1px;background:#0e0b08;border-bottom:1px solid rgba(201,168,76,.12);padding:10px 24px;color:#9a9187}.afa-header-crumb a{color:#c9a84c;text-decoration:none}.afa-header-crumb span{padding:0 9px}
+.gnav-inner{padding-right:78px!important}
+@media(max-width:600px){.afa-dossier-hero{padding:60px 20px 44px!important}.afa-dossier-hero h1{font-size:64px!important;letter-spacing:-2px!important}.afa-hero-word{display:none}.afa-dossier-hero .opening-label{letter-spacing:1.5px}.afa-header-crumb{padding:9px 20px}}
+@media(prefers-reduced-motion:reduce){#afa-sidebar,#afa-overlay,#afa-burger .bar{transition:none!important}}
+</style>
 </head>
 <body>
 
@@ -122,14 +141,14 @@
 </nav>
 <div class="breadcrumb"><a href="welcome.html">Home</a><span>›</span><strong style="color:rgba(245,242,236,0.6);">The Enslaving Families</strong><span>›</span><strong style="color:rgba(245,242,236,0.6);">John Nichols · His Own Line</strong></div>
 
-<section class="opening">
+<header class="opening afa-dossier-hero"><div class="afa-hero-inner"><span class="afa-hero-word" aria-hidden="true">NICHOLS</span>
   <span class="opening-label">Armstrong Family Archive · The Enslaving Families · Companion to the Bellville Community Reconstruction</span>
   <h1 class="opening-name">John Nichols</h1>
   <span class="opening-dates">Louisiana · ca. 1797 — Bellville, Austin County, Texas · March 3, 1864</span>
   <p class="opening-statement">His own household, his own enslaved community, his voter registration voice — that story already lives on the Bellville reconstruction page. This page holds what that one doesn't: his own family of origin, the Waldrop marriage that bound two enslaving families together, and exactly how much of Austin County was built on the 80 acres the law paid him for every person he held.</p>
   <div class="companion-note">This page is a companion, not a replacement, to <a href="john_nichols_community.html">John Nichols · Enslaved Community Reconstruction</a> — which holds the full community reconstruction, the Williamson County Tennessee flight, his Texas Revolution service, Rendy Blayn's origin research, Emeline Nickols's story, and the 2006 land foreclosure. The new <a href="precinct1_analysis.html">Bellville Census Deep Analysis</a> separately examines the complete 1860 slave schedule and Austin County succession records. Read that page for the town-wide evidence; read this one for the man himself.</div>
   <span class="scroll-hint">scroll</span>
-</section>
+<nav class="afa-hero-links" aria-label="Related research"><a href="enslaver_estate_network_prototype.html">Explore the estate network →</a><a href="john_nichols_community.html">Nichols community records →</a><a href="papertrail.html">Documentary evidence →</a></nav></div></header>
 
 <div class="story">
 
@@ -333,7 +352,7 @@
   <a href="waldrop_enslavers.html" class="back-link">← The Waldrops</a>
 </div>
 
-<script src="sidebar.js"></script>
+<script src="sidebar.js?v=20261006-menu"></script>
 <script src="archive-update.js"></script>
 </body>
 </html>

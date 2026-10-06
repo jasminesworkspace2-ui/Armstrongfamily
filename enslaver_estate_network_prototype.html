@@ -411,5 +411,6 @@ searchBox.addEventListener('input',()=>{if(searchBox.value.trim())setView('all')
 document.querySelectorAll('.jumpnav a').forEach(a=>a.addEventListener('click',()=>{setView('all');const target=document.querySelector(a.getAttribute('href'));const family=target&&target.closest('.family');if(family){family.classList.add('open');syncFamily(family);}}));
 
 </script>
-<script src="sidebar.js?v=20261006-menu"></script>
+<script src="sidebar.js?v=20261006-flow"></script>
+<script src="archive-routes.js?v=20261006-flow"></script>
 </body></html>

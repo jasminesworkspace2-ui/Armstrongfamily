@@ -150,6 +150,7 @@ function setStatus(status,btn){activeStatus=status;document.querySelectorAll('.f
 function applyFilters(){const q=document.getElementById('search').value.toLowerCase().trim();document.querySelectorAll('.index-card').forEach(c=>{const status=c.dataset.status;const text=c.dataset.text.toLowerCase();const okStatus=activeStatus==='all'||status===activeStatus;const okSearch=!q||text.includes(q)||c.innerText.toLowerCase().includes(q);c.classList.toggle('hidden',!(okStatus&&okSearch))})}
 const modal=document.createElement('div');modal.className='modal';modal.innerHTML='<div class="modal-box"><button class="close" aria-label="Close">×</button><img alt="Primary document page"></div>';document.body.appendChild(modal);modal.querySelector('.close').onclick=()=>modal.classList.remove('open');modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('open')});
 </script>
-<script src="sidebar.js?v=20261006-menu"></script>
+<script src="sidebar.js?v=20261006-flow"></script>
 <script src="archive-update.js"></script>
+<script src="archive-routes.js?v=20261006-flow"></script>
 </body></html>

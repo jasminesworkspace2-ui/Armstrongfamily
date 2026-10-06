@@ -10,102 +10,332 @@
 
   // ── SIDEBAR CONTENT ──
   var sections = [
-    {
-      label: 'Begin Here',
-      items: [
-        { href: 'index.html',          text: 'Home',                 note: 'Choose where to begin' },
-        { href: 'start_here.html',     text: 'Find Where You Fit',   note: 'Start with someone you know' },
-        { href: 'welcome.html',        text: 'Our Story',            note: 'The family story as the research allows it' },
-        { href: 'our_story.html',      text: 'What I’ve Learned',    note: 'Jasmine’s personal reflection' },
-        { href: 'for_the_family.html', text: 'Explore the Archive',  note: 'Guide to everything else' }
-        ,{ href: 'family_tree.html#family-letter', text: 'Jasmine’s Letter to the Family', note: 'A personal letter · opens as a pop-up' }
-      ]
-    },
-    {
-      label: 'The Family',
-      items: [
-        { href: 'family_tree.html',          text: 'Full Family Tree',             note: 'The complete family experience' },
-        { href: 'the_thread.html',           text: 'The Thread',                   note: 'The working family thesis' },
-        { href: 'waldrop_family_story.html', text: 'The Matriarchs of the Family', note: 'Molley, Patience, Rachel, and Clarissa' },
-        { href: 'bellville_family.html',     text: 'The Family in Bellville',      note: 'Easter Bell’s nine branches' },
-        { href: 'related.html',              text: 'How We Are Related',           note: 'Connections across the family' },
-        { href: 'photos.html',               text: 'Photos',                       note: 'Family photographs' },
-        { href: 'voices.html',               text: 'Family Voices',                note: 'Stories and memories' }
-      ]
-    },
-    {
-      label: 'Enslavement & Historical Records',
-      items: [
-        { href: 'enslaver_estate_network_prototype.html', text: 'Enslaver & Estate Network', note: 'Start here · people, estates, transfers and evidence' },
-        { href: 'bell_family.html',                    text: 'The Bells',                         note: 'Bell family slaveholding records' },
-        { href: 'john_nichols.html',                  text: 'John Nichols',                       note: 'Enslavement and land records' },
-        { href: 'john_nichols_community.html',        text: 'John Nichols Community',             note: 'Household and community research' },
-        { href: 'waldrop_enslavers.html',             text: 'The Waldrops',                       note: 'Waldrop enslavement records' },
-        { href: 'davenport_family.html',              text: 'The Davenports',                     note: 'Early South Carolina records' },
-        { href: 'ownership_network.html',             text: 'Ownership Network',                  note: 'Legal-record network; not a family tree' },
-        { href: 'enslavement_community_network.html', text: 'Enslavement & Community Network',   note: 'Wider historical research network' }
-      ]
-    },
-    {
-      label: 'The Research',
-      items: [
-        { href: 'how_we_got_here.html',      text: 'The Journey',               note: 'Where the research leads across places and time' },
-        { href: 'papertrail.html',           text: 'The Documents',             note: 'Primary records and evidence' },
-        { href: 'research_archive.html',     text: 'Research Archive',           note: 'Full documentary research layer' },
-        { href: 'registry.html',             text: 'Enslaved Persons Registry',  note: 'Named people and evidence status' },
-        { href: 'land.html',                 text: 'The Land',                  note: 'Property and land records' },
-        { href: 'dna.html',                  text: 'DNA Evidence',               note: 'DNA matches and analysis' },
-        { href: 'family_database.html',      text: 'Evidence Audit',             note: 'Working people-and-evidence database' },
-        { href: 'reference.html',            text: 'Ancestral Reference',         note: 'Quick lookup' },
-        { href: 'methodology.html',          text: 'Research Methodology',        note: 'How the research is evaluated' },
-        { href: 'glossary.html',             text: 'Glossary',                   note: 'Research terms explained' },
-        { href: 'precinct1_analysis.html',   text: 'Bellville Census Deep Analysis', note: 'Detailed census, slave-schedule, and probate analysis' },
-        { href: 'location_checksheet.html',  text: 'Where Everyone Was, When',       note: 'Quick reference for testing dates and locations' }
-      ]
-    },
-    {
-      label: 'History & Community',
-      items: [
-        { href: 'we_are_bellville.html',  text: 'We Are Bellville',       note: 'The wider Bellville community' },
-        { href: 'elders.html',            text: 'The Elders of Bellville',note: 'Early residents and family clusters' },
-        { href: 'freedom.html',           text: 'Freedom Stories',        note: 'Life after emancipation' },
-        { href: 'timeline.html',          text: 'Family Timeline',        note: 'People, places, and dates' },
-        { href: 'familytime.html',        text: 'Family Dates',           note: 'Celebrations and events' },
-        { href: 'black_dutch_fork.html',  text: 'Black Dutch Fork',       note: 'South Carolina community context' }
-      ]
-    },
-    {
-      label: 'People & Historical Networks',
-      items: [
-        { href: 'molley.html',       text: 'Molley',              note: 'The earliest working ancestor in this line' },
-        { href: 'patience_story.html', text: 'Patience',            note: 'Newberry County, South Carolina' },
-        { href: 'clarissa_story.html', text: 'Clarissa',            note: 'South Carolina · working reconstruction' },
-        { href: 'rendy_story.html', text: 'Rendy Blayn',           note: 'Easter Bell’s mother' },
-        { href: 'easter_story.html', text: 'Easter Bell',           note: '1838–1935 · Bellville' },
-        { href: 'joseph_story.html', text: 'Joseph Nichols',         note: '1847–1905 · Bellville' },
-        { href: 'hellen_story.html', text: 'Hellen Nichols',         note: '1870–1931' },
-        { href: 'eva_story.html',    text: 'Eva Armstrong',          note: '1900–1977' },
-        { href: 'margie_story.html', text: 'Margie Nell Corbin',     note: '1929–1988' },
-        { href: 'hjordis.html',      text: 'Hjordis Corbin',          note: 'b. 1960' }
-        ,{ href: 'bessie.html', text: 'Aunt Bessie Rawls', note: 'Orange County family memory · relationship under research' }
-      ]
-    },
-    {
-      label: 'Other Lines & Open Research',
-      items: [
-        { href: 'ballard.html',                     text: 'Ballard Research',           note: 'Newton Ballard line' },
-        { href: 'norman_corbin.html',               text: 'Norman Corbin',              note: 'Corbin family research' },
-        { href: 'ester_nicholas.html',              text: 'Ester Nicholas · St. Croix', note: 'Open research hypothesis' },
-        { href: 'family_tree.html#africa-origins',  text: 'Where We Come From',         note: 'Africa origins research' }
-      ]
-    },
-    {
-      label: 'Connect',
-      items: [
-        { href: 'contact.html', text: 'Contact & Collaborate', note: 'Share records, memories, or corrections' }
-      ]
-    }
-  ];
+  {
+    "label": "Begin Here",
+    "items": [
+      {
+        "href": "index.html",
+        "text": "Home",
+        "note": "Choose a path into the archive"
+      },
+      {
+        "href": "welcome.html",
+        "text": "Our Story",
+        "note": "The historical family reconstruction"
+      },
+      {
+        "href": "start_here.html",
+        "text": "Find Where You Fit",
+        "note": "Find your connection through someone you know"
+      },
+      {
+        "href": "for_the_family.html",
+        "text": "Explore the Archive",
+        "note": "A guide to each page and where to begin"
+      },
+      {
+        "href": "our_story.html",
+        "text": "What I’ve Learned",
+        "note": "Jasmine’s personal reflection on the research"
+      }
+    ]
+  },
+  {
+    "label": "The Family",
+    "items": [
+      {
+        "href": "family_tree.html",
+        "text": "Full Family Tree",
+        "note": "Names, branches, photographs and family stories"
+      },
+      {
+        "href": "the_thread.html",
+        "text": "The Thread",
+        "note": "The working thesis behind the family reconstruction"
+      },
+      {
+        "href": "waldrop_family_story.html",
+        "text": "The Matriarchs of the Family",
+        "note": "Molley, Patience, Rachel and Clarissa’s family narrative"
+      },
+      {
+        "href": "bellville_family.html",
+        "text": "The Family in Bellville",
+        "note": "Easter Bell’s family branches and later generations"
+      },
+      {
+        "href": "related.html",
+        "text": "How We Are Related",
+        "note": "Compare relationships across family lines"
+      },
+      {
+        "href": "photos.html",
+        "text": "Photos & Documents",
+        "note": "Family photographs and original document images"
+      },
+      {
+        "href": "voices.html",
+        "text": "Family Voices",
+        "note": "Family memories and surviving stories"
+      },
+      {
+        "href": "family_tree.html#family-letter",
+        "text": "Jasmine’s Letter to the Family",
+        "note": "Jasmine’s personal letter · opens as a pop-up"
+      }
+    ]
+  },
+  {
+    "label": "Enslavement & Historical Records",
+    "items": [
+      {
+        "href": "enslaver_estate_network_prototype.html",
+        "text": "Enslaver & Estate Network",
+        "note": "Start here: select a person and follow the evidence"
+      },
+      {
+        "href": "bell_family.html",
+        "text": "The Bells",
+        "note": "Bell household slaveholding, estates and land records"
+      },
+      {
+        "href": "john_nichols.html",
+        "text": "John Nichols",
+        "note": "Origins, Waldrop marriage, land and historical records"
+      },
+      {
+        "href": "john_nichols_community.html",
+        "text": "John Nichols Community",
+        "note": "Enslaved population, freedom-era households and heirs"
+      },
+      {
+        "href": "waldrop_enslavers.html",
+        "text": "The Waldrops",
+        "note": "Households, property records and individual heir dossiers"
+      },
+      {
+        "href": "davenport_family.html",
+        "text": "The Davenports",
+        "note": "Deeds, wills, recipients and named enslaved people"
+      },
+      {
+        "href": "ownership_network.html",
+        "text": "Ownership Network",
+        "note": "Compare ownership and transfer claims across records"
+      },
+      {
+        "href": "enslavement_community_network.html",
+        "text": "Enslavement & Community Network",
+        "note": "Neighboring households and wider research leads"
+      }
+    ]
+  },
+  {
+    "label": "The Research",
+    "items": [
+      {
+        "href": "how_we_got_here.html",
+        "text": "The Journey",
+        "note": "Places, chronology and the documentary journey"
+      },
+      {
+        "href": "papertrail.html",
+        "text": "The Documents",
+        "note": "Read record language and document transcriptions"
+      },
+      {
+        "href": "research_archive.html",
+        "text": "Research Archive",
+        "note": "Detailed household, estate and network research files"
+      },
+      {
+        "href": "registry.html",
+        "text": "Enslaved Persons Registry",
+        "note": "Search named people by record, estate and community"
+      },
+      {
+        "href": "land.html",
+        "text": "The Land",
+        "note": "Surveys, landholding, deeds and property records"
+      },
+      {
+        "href": "dna.html",
+        "text": "DNA Evidence",
+        "note": "DNA matches, population models and research questions"
+      },
+      {
+        "href": "family_database.html",
+        "text": "Evidence Audit",
+        "note": "Cross-check people, claims, sources and evidence levels"
+      },
+      {
+        "href": "reference.html",
+        "text": "Family Line Reference",
+        "note": "Quick summaries of family lines and research questions"
+      },
+      {
+        "href": "methodology.html",
+        "text": "Research Methodology",
+        "note": "How facts, supported connections and leads are evaluated"
+      },
+      {
+        "href": "glossary.html",
+        "text": "Glossary",
+        "note": "Genealogy and historical-record terms explained"
+      },
+      {
+        "href": "precinct1_analysis.html",
+        "text": "Bellville Census Deep Analysis",
+        "note": "Detailed Austin County census and estate analysis"
+      },
+      {
+        "href": "location_checksheet.html",
+        "text": "Where Everyone Was, When",
+        "note": "Check whether a record fits a person’s date and place"
+      }
+    ]
+  },
+  {
+    "label": "History & Community",
+    "items": [
+      {
+        "href": "we_are_bellville.html",
+        "text": "We Are Bellville",
+        "note": "The wider community surrounding the Texas family"
+      },
+      {
+        "href": "elders.html",
+        "text": "The Elders of Bellville",
+        "note": "Early Bellville residents and community clusters"
+      },
+      {
+        "href": "freedom.html",
+        "text": "Freedom Stories",
+        "note": "Voting, land, work and family after emancipation"
+      },
+      {
+        "href": "timeline.html",
+        "text": "Family Timeline",
+        "note": "Family events and records across generations"
+      },
+      {
+        "href": "familytime.html",
+        "text": "Family Dates",
+        "note": "Birthdays, anniversaries and dates in the record"
+      },
+      {
+        "href": "black_dutch_fork.html",
+        "text": "Black Dutch Fork",
+        "note": "South Carolina community context"
+      }
+    ]
+  },
+  {
+    "label": "Family Lives",
+    "items": [
+      {
+        "href": "molley.html",
+        "text": "Molley",
+        "note": "The early record and people named with Molley"
+      },
+      {
+        "href": "patience_story.html",
+        "text": "Patience",
+        "note": "The South Carolina–Mississippi–Louisiana record trail"
+      },
+      {
+        "href": "clarissa_story.html",
+        "text": "Clarissa",
+        "note": "Individual story and Mississippi–Louisiana records"
+      },
+      {
+        "href": "rendy_story.html",
+        "text": "Rendy Blayn",
+        "note": "Name variants and maternal-line research leads"
+      },
+      {
+        "href": "easter_story.html",
+        "text": "Easter Bell",
+        "note": "Slavery-era questions, freedom-era households and family"
+      },
+      {
+        "href": "joseph_story.html",
+        "text": "Joseph Nichols",
+        "note": "Marriage, voting, landholding and Bellville records"
+      },
+      {
+        "href": "hellen_story.html",
+        "text": "Hellen Nichols",
+        "note": "Hellen’s individual family story"
+      },
+      {
+        "href": "eva_story.html",
+        "text": "Eva Armstrong",
+        "note": "Eva’s Texas and California family story"
+      },
+      {
+        "href": "margie_story.html",
+        "text": "Margie Nell Corbin",
+        "note": "Margie’s life, children and later generations"
+      },
+      {
+        "href": "hjordis.html",
+        "text": "Hjordis Corbin",
+        "note": "Hjordis’s individual family file"
+      },
+      {
+        "href": "bessie.html",
+        "text": "Aunt Bessie Rawls",
+        "note": "Family memory and a relationship being researched"
+      }
+    ]
+  },
+  {
+    "label": "Other Family Lines & Open Research",
+    "items": [
+      {
+        "href": "ballard.html",
+        "text": "Ballard Research",
+        "note": "Family lines, DNA evidence and open origin questions"
+      },
+      {
+        "href": "newton_ballard.html",
+        "text": "Newton Ballard",
+        "note": "Individual primary-source record and family context"
+      },
+      {
+        "href": "ballard_tracking.html",
+        "text": "Ballard Community Tracking Chart",
+        "note": "Compare 1840–1850 households and community records"
+      },
+      {
+        "href": "norman_corbin.html",
+        "text": "Norman Corbin",
+        "note": "Norman’s life, family, writings and California story"
+      },
+      {
+        "href": "ester_nicholas.html",
+        "text": "Ester Nicholas · St. Croix",
+        "note": "A separate St. Croix identity hypothesis"
+      },
+      {
+        "href": "family_tree.html#africa-origins",
+        "text": "Where We Come From",
+        "note": "The family tree’s Africa-origins research section"
+      }
+    ]
+  },
+  {
+    "label": "Connect",
+    "items": [
+      {
+        "href": "contact.html",
+        "text": "Contact & Collaborate",
+        "note": "Share a record, photograph, memory or correction"
+      }
+    ]
+  }
+];
 
   // ── INJECT STYLES ──
   var style = document.createElement('style');
@@ -200,7 +430,17 @@
       color: rgba(201,168,76,0.5);
     }
 
-    .afa-sb-section { padding: 16px 20px 4px; }
+    .afa-sb-section { padding: 0; border-bottom:1px solid rgba(201,168,76,.12); }
+    .afa-sb-section > summary { cursor:pointer; list-style:none; padding:16px 20px; margin:0; border:0; color:#d6cab4; font-size:9px; letter-spacing:1.5px; }
+    .afa-sb-section > summary::-webkit-details-marker { display:none; }
+    .afa-sb-section > summary:after { content:'+'; float:right; color:#c9a84c; font-size:13px; }
+    .afa-sb-section[open] > summary:after { content:'−'; }
+    .afa-sb-items { padding-bottom:8px; }
+    #afa-sidebar [hidden] { display:none!important; }
+    .afa-menu-search { width:100%; margin-top:16px; padding:11px; color:#f0ead8; background:#15120e; border:1px solid rgba(201,168,76,.25); border-radius:4px; font:12px Georgia,serif; }
+    .afa-menu-status { display:block; padding-top:6px; color:#b8aa90; font:10px/1.6 Georgia,serif; }
+    #afa-sidebar :focus-visible { outline:2px solid #c9a84c;outline-offset:-2px; }
+
     .afa-sb-section-label {
       font-family: 'Courier New', monospace;
       font-size: 7.5px;
@@ -294,29 +534,35 @@
 
   var currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-  sections.forEach(function(section) {
-    var sec = document.createElement('div');
+  var expandedBeforeSearch = null;
+  sections.forEach(function(section, index) {
+    var sec = document.createElement('details');
     sec.className = 'afa-sb-section';
-    var label = document.createElement('span');
-    label.className = 'afa-sb-section-label';
-    label.textContent = section.label;
-    sec.appendChild(label);
-    sidebar.appendChild(sec);
-
+    var containsPage = section.items.some(function(item) { return item.href.indexOf('#') === -1 && item.href === currentPage; });
+    sec.open = containsPage || (index === 0 && !sections.some(function(s) { return s.items.some(function(i) { return i.href.indexOf('#') === -1 && i.href === currentPage; }); }));
+    var summary = document.createElement('summary');
+    summary.className = 'afa-sb-section-label';
+    summary.textContent = section.label;
+    sec.appendChild(summary);
+    var group = document.createElement('div'); group.className = 'afa-sb-items';
     section.items.forEach(function(item) {
-      var a = document.createElement('a');
-      a.href = item.href;
-      a.className = 'afa-sb-item';
-
-      var itemPage = item.href.split('#')[0].split('/').pop();
-      if (itemPage === currentPage) a.classList.add('active');
-
-      a.innerHTML = '<span class="afa-sb-item-text">' + item.text + '</span>'
-        + '<span class="afa-sb-item-note">' + item.note + '</span>';
-
-      a.addEventListener('click', function() { close(); });
-      sidebar.appendChild(a);
+      var a = document.createElement('a'); a.href = item.href; a.className = 'afa-sb-item';
+      if (item.href.indexOf('#') === -1 && item.href === currentPage) { a.classList.add('active'); a.setAttribute('aria-current','page'); }
+      var title = document.createElement('span'); title.className = 'afa-sb-item-text'; title.textContent = item.text;
+      var note = document.createElement('span'); note.className = 'afa-sb-item-note'; note.textContent = item.note;
+      a.appendChild(title); a.appendChild(note); a.addEventListener('click', close); group.appendChild(a);
     });
+    sec.appendChild(group); sidebar.appendChild(sec);
+  });
+  var menuSearch = document.createElement('input'); menuSearch.type = 'search'; menuSearch.placeholder = 'Find a page…'; menuSearch.setAttribute('aria-label','Find a page in the archive'); menuSearch.className = 'afa-menu-search';
+  header.appendChild(menuSearch);
+  var menuStatus = document.createElement('span'); menuStatus.className='afa-menu-status'; menuStatus.setAttribute('role','status'); menuStatus.setAttribute('aria-live','polite'); header.appendChild(menuStatus);
+  menuSearch.addEventListener('input', function() {
+    var q=menuSearch.value.trim().toLowerCase(); var groups=[].slice.call(sidebar.querySelectorAll('details')); var count=0;
+    if(q && !expandedBeforeSearch) expandedBeforeSearch=groups.map(function(g){return g.open;});
+    groups.forEach(function(g,i){var hits=0;g.querySelectorAll('.afa-sb-item').forEach(function(a){var hit=!q||a.textContent.toLowerCase().indexOf(q)!==-1;a.hidden=!hit;if(hit){hits++;count++;}});g.hidden=!!q&&!hits;if(q&&hits)g.open=true;if(!q&&expandedBeforeSearch)g.open=expandedBeforeSearch[i];});
+    menuStatus.textContent=q?(count?count+' matching page'+(count===1?'':'s'):'No matching pages. Try a person, place or topic.') : '';
+    if(!q) expandedBeforeSearch=null;
   });
 
   var footer = document.createElement('div');
@@ -348,7 +594,7 @@
     burger.setAttribute('aria-expanded', 'true');
     burger.setAttribute('aria-label', 'Close navigation menu');
     document.body.style.overflow = 'hidden';
-    var first = sidebar.querySelector('.afa-sb-item');
+    var first = menuSearch;
     if (first) setTimeout(function() { first.focus(); }, 300);
   }
 
@@ -376,7 +622,7 @@
 
   sidebar.addEventListener('keydown', function(e) {
     if (e.key !== 'Tab' || !isOpen) return;
-    var focusable = sidebar.querySelectorAll('a, button, [tabindex="0"]');
+    var focusable = [].slice.call(sidebar.querySelectorAll('a, button, input, summary, [tabindex="0"]')).filter(function(el){ return el.getClientRects().length > 0; });
     var first = focusable[0];
     var last = focusable[focusable.length - 1];
     if (e.shiftKey && document.activeElement === first) {

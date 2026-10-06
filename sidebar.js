@@ -221,7 +221,7 @@
       {
         "href": "familytime.html",
         "text": "Family Dates",
-        "note": "Birthdays, anniversaries and dates in the record"
+        "note": "A month-by-month calendar of family and historical dates"
       },
       {
         "href": "black_dutch_fork.html",

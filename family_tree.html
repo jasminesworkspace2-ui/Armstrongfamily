@@ -6817,7 +6817,7 @@ document.querySelectorAll('.journey-node').forEach(node => {
 
 <!-- FAMILY LETTER MODAL -->
 <div id="family-letter-modal" role="dialog" aria-modal="true" aria-labelledby="family-letter-title"
-     style="display:none;position:fixed;inset:0;z-index:9100;background:rgba(0,0,0,0.94);overflow-y:auto;-webkit-overflow-scrolling:touch;">
+     style="display:none;position:fixed;inset:0;z-index:15000;background:rgba(0,0,0,0.94);overflow-y:auto;-webkit-overflow-scrolling:touch;">
   <div style="max-width:760px;margin:0 auto;padding:20px 20px 60px;">
     <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 0 22px;position:sticky;top:0;background:rgba(0,0,0,0.96);z-index:1;border-bottom:1px solid var(--border);">
       <div>
@@ -6829,7 +6829,7 @@ document.querySelectorAll('.journey-node').forEach(node => {
     </div>
     <div style="max-width:620px;margin:0 auto;">
     <div class="reveal visible family-letter-content">
-      <p class="letter-date">WRITTEN 2026 · RESEARCH ONGOING SINCE 2019</p>
+      
       <p class="letter-salutation">To every member of this family —</p>
       <div class="letter-body">
         <p>Seven years ago I started asking questions. Simple ones at first. Where did we come from? Who were the people before Grandma Margie? What were their names? Where did they live? What happened to them?</p>
@@ -6983,15 +6983,19 @@ document.querySelectorAll('.journey-node').forEach(node => {
   </div>
 </div>
 
-<script src="sidebar.js?v=20261006-flow-readable"></script>
+<script src="sidebar.js?v=20261006-design"></script>
 
 <script>
 
 
+var familyLetterReturnFocus=null;
 function openFamilyLetter(){
   var modal=document.getElementById('family-letter-modal');
   if(!modal)return;
+  if(modal.style.display!=='block')familyLetterReturnFocus=document.activeElement;
   modal.style.display='block';
+  [].slice.call(document.body.children).forEach(function(el){if(el!==modal && el.tagName!=='SCRIPT' && el.tagName!=='STYLE' && !el.inert){el.inert=true;el.dataset.letterInert='true';}});
+  modal.querySelector('button[aria-label="Close family letter"]').focus();
   document.body.style.overflow='hidden';
   history.replaceState(null,'','#family-letter');
 }
@@ -6999,23 +7003,26 @@ function closeFamilyLetter(){
   var modal=document.getElementById('family-letter-modal');
   if(!modal)return;
   modal.style.display='none';
+  document.querySelectorAll('[data-letter-inert]').forEach(function(el){el.inert=false;delete el.dataset.letterInert;});
   document.body.style.overflow='';
+  if(familyLetterReturnFocus && familyLetterReturnFocus.focus)familyLetterReturnFocus.focus();
   if(location.hash==='#family-letter') history.replaceState(null,'',location.pathname+location.search);
 }
 document.addEventListener('keydown',function(e){
+  var dialog=document.getElementById('family-letter-modal');
+  if(e.key==='Tab' && dialog && dialog.style.display==='block'){var focusable=[].slice.call(dialog.querySelectorAll('button,a[href],[tabindex="0"]'));var first=focusable[0],last=focusable[focusable.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}
   if(e.key==='Escape'){
     var modal=document.getElementById('family-letter-modal');
     if(modal && modal.style.display!=='none') closeFamilyLetter();
   }
 });
-window.addEventListener('load',function(){
-  restoreArchiveUpdate();
-  if(location.hash==='#family-letter') openFamilyLetter();
-});
+window.addEventListener('hashchange',function(){if(location.hash==='#family-letter')openFamilyLetter();else if(document.getElementById('family-letter-modal').style.display==='block')closeFamilyLetter();});
+window.addEventListener('load',function(){restoreArchiveUpdate();});
+if(location.hash==='#family-letter')openFamilyLetter();
 </script>
 
 <script src="archive-update.js"></script>
-<script src="archive-routes.js?v=20261006-flow"></script>
+<script src="archive-routes.js?v=20261006-design"></script>
 </body>
 </html>      <div class="person-card reveal reveal-delay-1" onclick="openPersonModal('joseph')" role="button" tabindex="0" aria-label="Joseph Nichols - read full story">
         <div class="card-header">
@@ -7032,3 +7039,4 @@ window.addEventListener('load',function(){
           <span class="card-read-more">Full Story ›</span>
         </div>
       </div>
+

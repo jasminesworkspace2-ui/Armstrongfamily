@@ -272,7 +272,7 @@
   .breadcrumb span{color:rgba(255,255,255,0.18);margin:0 6px;}
 </style>
 <link rel="stylesheet" href="overrides.css">
-</head>
+<style>.hero{min-height:0;align-items:flex-start;text-align:left;max-width:1100px;margin:auto;padding:56px 24px 32px;}.hero-title{font-size:clamp(40px,7vw,76px);}.hero-sub{margin-bottom:14px;max-width:780px;}.calendar-intro{max-width:800px;font-size:15px;line-height:1.8;color:var(--aged);}.filter-bar{position:relative;top:0;justify-content:center;flex-wrap:wrap;overflow:visible;}.filter-btn{font-size:12px;letter-spacing:.4px;}.family-calendar{max-width:1100px;margin:32px auto;padding:0 24px;}.calendar-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px;}.calendar-toolbar h2{font:36px/1.2 Georgia,serif;color:var(--parchment);}.family-calendar button{font-family:inherit;color:var(--cream);background:#18130c;border:1px solid var(--border);cursor:pointer;}.calendar-toolbar button{padding:10px 14px;font-size:14px;}.family-calendar button:focus-visible,.date-card-header:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}#calendar-months{display:flex;flex-wrap:wrap;gap:8px;}#calendar-months button{padding:9px 12px;font-size:14px;}#calendar-months button[aria-pressed=true]{color:#0e0b08;background:var(--gold);}.calendar-count{font-size:14px;line-height:1.7;color:var(--aged);padding:18px 0;}.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;}.calendar-day{min-height:105px;padding:10px;border:1px solid var(--border);color:#b6a98e;}.calendar-day-number{display:block;font:20px/1.2 Georgia,serif;margin-bottom:8px;}.calendar-day-title{font-size:12px;line-height:1.4;color:var(--cream);display:block;}.calendar-grid button{text-align:left;background:#241c10;}.calendar-day-count{font-size:11px;color:var(--gold);display:block;margin-top:7px;}#calendar-stories{margin-top:28px;}#calendar-stories h3{font:26px/1.4 Georgia,serif;color:var(--parchment);margin-bottom:16px;}.calendar-ready .months,.calendar-ready .calendar-additions{display:none;}.calendar-ready #calendar-story-cards .date-card{display:block;}.calendar-empty{padding:20px;}.date-card-meta{font-size:12px;}.tag{font-size:11px;}.glossary-title{font-size:30px;}@media(max-width:650px){.family-calendar{padding:0 16px;}.calendar-grid{gap:4px;}.calendar-day{min-height:75px;padding:6px;}.calendar-day-title{font-size:11px;overflow-wrap:anywhere;}.calendar-toolbar h2{font-size:28px;}.calendar-day-number{font-size:18px;}}@media(max-width:420px){.calendar-day-title{display:none;}.calendar-day-count{font-size:10px;}}</style></head>
 <body>
 
 <!-- NAV -->
@@ -297,16 +297,9 @@
 <!-- HERO -->
 <section class="hero">
   <p class="hero-eyebrow">Armstrong · Nichols · Ballard · Corbin · Lee</p>
-  <h1 class="hero-title">Our Dates<br>in History</h1>
+  <h1 class="hero-title">The Family Calendar</h1>
   <p class="hero-sub">Some dates belong to this family. Some belong to history. Most belong to both. This calendar shows you what happened — and why it still matters.</p>
-  <div class="how-to">
-    <strong>How to use this page</strong><br>
-    · Tap any date card to read the full story<br>
-    · Filter by <strong style="color:var(--gold)">Family</strong>, <strong style="color:#e8906a">History</strong>, or <strong style="color:#90e8a0">Both</strong><br>
-    · Scroll to the bottom for a Glossary of key terms<br>
-    · Share with family members who want to understand the history
-  </div>
-  <p class="scroll-hint">scroll down ↓</p>
+<p class="calendar-intro">Browse the months and select a marked date to read its story. This is an annual remembrance calendar: event years are shown with each entry; dates are not assigned to weekdays.</p>
 </section>
 
 <!-- LEGEND + FILTER -->
@@ -323,6 +316,7 @@
   <div class="legend-item"><div class="legend-dot legend-both"></div>Family + History together</div>
 </div>
 
+<section id="family-calendar" class="family-calendar" aria-label="Annual family calendar"><div class="calendar-toolbar"><button id="calendar-prev" type="button" aria-label="Previous month">Previous</button><h2 id="calendar-month-heading" aria-live="polite"></h2><button id="calendar-next" type="button" aria-label="Next month">Next</button></div><nav id="calendar-months" aria-label="Choose a month"></nav><p id="calendar-count" class="calendar-count" role="status"></p><div id="calendar-grid" class="calendar-grid" aria-labelledby="calendar-month-heading"></div><section id="calendar-stories" aria-label="Selected month stories"><h3 id="calendar-stories-heading"></h3><div id="calendar-story-cards"></div><p id="calendar-empty">No dates have been added for this month yet.</p></section></section>
 <!-- MONTHS -->
 <div class="months">
 
@@ -664,10 +658,10 @@
 
     <div class="date-card cat-family" data-cat="family" onclick="toggleCard(this)">
       <div class="date-card-header">
-        <div class="date-badge"><span class="day">18</span><span class="month-abbr">Dec</span></div>
+        <div class="date-badge"><span class="day">23</span><span class="month-abbr">Dec</span></div>
         <div class="date-card-info">
-          <div class="date-card-title">Easter Bell Marries Joseph Nichols · Six Months After Freedom</div>
-          <div class="date-card-meta">December 18, 1865 · Austin County, Texas</div>
+          <div class="date-card-title">Easter Bell and Joseph Nichols Marry</div>
+          <div class="date-card-meta">December 23, 1869 · Austin County, Texas</div>
           <div class="date-card-tags"><span class="tag tag-family">Family</span></div>
         </div>
         <span class="date-arrow">▼</span>
@@ -675,7 +669,7 @@
       <div class="date-body">
         <div class="layer layer-family">
           <div class="layer-label">🏠 In our family</div>
-          <p class="layer-text">Six months after Juneteenth, <strong>Easter Bell Nichols</strong> married <strong>Joseph Nichols</strong> on December 23, 1869 in Austin County, Texas. She was approximately 31 years old. She chose to stay in Bellville — on the same land where she had been enslaved — and to build something there. They would have at least eight children together. Joseph died in 1905 and is buried at Jeff Cemetery in Bellville alongside Easter Bell, who outlived him by 30 years.</p>
+          <p class="layer-text">Four years after emancipation reached Texas, <strong>Easter Bell Nichols</strong> married <strong>Joseph Nichols</strong> on December 23, 1869 in Austin County, Texas. She was approximately 31 years old. She chose to stay in Bellville — on the same land where she had been enslaved — and to build something there. They would have at least eight children together. Joseph died in 1905 and is buried at Jeff Cemetery in Bellville alongside Easter Bell, who outlived him by 30 years.</p>
         </div>
         <div class="layer layer-now">
           <div class="layer-label">💡 Why it matters now</div>
@@ -821,6 +815,7 @@
   </div>
 </div>
 
+<div class="month-block calendar-additions"><div class="date-card cat-family" data-cat="family" data-calendar-month="0" onclick="toggleCard(this)"><div class="date-card-header"><div class="date-badge"><span class="day">20</span><span class="month-abbr">Jan</span></div><div class="date-card-info"><div class="date-card-title">Hjordis L. Corbin Is Born</div><div class="date-card-meta">January 20, 1960</div><div class="date-card-tags"><span class="tag tag-family">Family</span></div></div><span class="date-arrow">▼</span></div><div class="date-body"><div class="layer layer-family"><p class="layer-text">This date is recorded in the archive’s family file or birth-certificate collection. <a href="hjordis.html">Read the family file or view the record</a>.</p></div></div></div><div class="date-card cat-family" data-cat="family" data-calendar-month="2" onclick="toggleCard(this)"><div class="date-card-header"><div class="date-badge"><span class="day">5</span><span class="month-abbr">Mar</span></div><div class="date-card-info"><div class="date-card-title">Charles Ray Ballard Is Born</div><div class="date-card-meta">March 5, 1933</div><div class="date-card-tags"><span class="tag tag-family">Family</span></div></div><span class="date-arrow">▼</span></div><div class="date-body"><div class="layer layer-family"><p class="layer-text">This date is recorded in the archive’s family file or birth-certificate collection. <a href="photos.html">Read the family file or view the record</a>.</p></div></div></div><div class="date-card cat-family" data-cat="family" data-calendar-month="4" onclick="toggleCard(this)"><div class="date-card-header"><div class="date-badge"><span class="day">24</span><span class="month-abbr">May</span></div><div class="date-card-info"><div class="date-card-title">Eloise Maud Ballard Is Born</div><div class="date-card-meta">May 24, 1931</div><div class="date-card-tags"><span class="tag tag-family">Family</span></div></div><span class="date-arrow">▼</span></div><div class="date-body"><div class="layer layer-family"><p class="layer-text">This date is recorded in the archive’s family file or birth-certificate collection. <a href="photos.html">Read the family file or view the record</a>.</p></div></div></div><div class="date-card cat-family" data-cat="family" data-calendar-month="5" onclick="toggleCard(this)"><div class="date-card-header"><div class="date-badge"><span class="day">17</span><span class="month-abbr">Jun</span></div><div class="date-card-info"><div class="date-card-title">James Wilson Ballard Jr. Is Born</div><div class="date-card-meta">June 17, 1926</div><div class="date-card-tags"><span class="tag tag-family">Family</span></div></div><span class="date-arrow">▼</span></div><div class="date-body"><div class="layer layer-family"><p class="layer-text">This date is recorded in the archive’s family file or birth-certificate collection. <a href="photos.html">Read the family file or view the record</a>.</p></div></div></div><div class="date-card cat-family" data-cat="family" data-calendar-month="11" onclick="toggleCard(this)"><div class="date-card-header"><div class="date-badge"><span class="day">3</span><span class="month-abbr">Dec</span></div><div class="date-card-info"><div class="date-card-title">Thelma Louise Ballard Is Born</div><div class="date-card-meta">December 3, 1938</div><div class="date-card-tags"><span class="tag tag-family">Family</span></div></div><span class="date-arrow">▼</span></div><div class="date-body"><div class="layer layer-family"><p class="layer-text">This date is recorded in the archive’s family file or birth-certificate collection. <a href="photos.html">Read the family file or view the record</a>.</p></div></div></div><div class="date-card cat-family" data-cat="family" data-calendar-month="11" onclick="toggleCard(this)"><div class="date-card-header"><div class="date-badge"><span class="day">13</span><span class="month-abbr">Dec</span></div><div class="date-card-info"><div class="date-card-title">Bettie Jean Ballard Is Born</div><div class="date-card-meta">December 13, 1935</div><div class="date-card-tags"><span class="tag tag-family">Family</span></div></div><span class="date-arrow">▼</span></div><div class="date-body"><div class="layer layer-family"><p class="layer-text">This date is recorded in the archive’s family file or birth-certificate collection. <a href="photos.html">Read the family file or view the record</a>.</p></div></div></div></div>
 <!-- BACK -->
 <div class="back-section">
   <a href="family_tree.html" class="back-link">Full Family Tree →</a>
@@ -868,8 +863,9 @@ function filterCards(cat, btn) {
   });
 }
 </script>
-<script src="sidebar.js?v=20261006-flow-readable"></script>
+<script src="family-calendar.js?v=20261006-design"></script>
+<script src="sidebar.js?v=20261006-design"></script>
 <script src="archive-update.js"></script>
-<script src="archive-routes.js?v=20261006-flow"></script>
+<script src="archive-routes.js?v=20261006-design"></script>
 </body>
 </html>

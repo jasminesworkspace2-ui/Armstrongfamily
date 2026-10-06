@@ -221,16 +221,16 @@
   .breadcrumb span{color:rgba(255,255,255,0.18);margin:0 6px;}
 </style>
 <link rel="stylesheet" href="overrides.css">
-</head>
+<style>.hero{padding:60px 24px 38px;min-height:0;text-align:left;max-width:1100px;margin:auto;}.hero-title{font-size:clamp(40px,7vw,76px);line-height:1.12;}.hero-statement{margin:16px 0 0;max-width:760px;}.hero-sub{margin:12px 0;}.filter-bar{position:relative;top:0;flex-wrap:wrap;overflow:visible;}.filter-btn{font-size:12px;letter-spacing:.3px;}.photo-caption-meta{font-size:13px;line-height:1.6;color:#b9ad98;}.photo-card img,.photo-card.doc img{object-fit:contain;background:#14110c;}.document-context{display:inline-block;color:#d8b967;margin-top:10px;font-size:13px;}.lightbox-links{display:flex;gap:20px;justify-content:center;margin:15px 0;}.lightbox-links a{color:#d8b967;font-size:14px;}.lightbox{z-index:17000!important;}.section-desc{font-size:16px;line-height:1.8;}.photo-card:focus-visible{outline:2px solid #d8b967;outline-offset:4px;}</style></head>
 <body>
 
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">‹</button>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button aria-label="Close image" class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button aria-label="Previous image" class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">‹</button>
   <img id="lightbox-img" src="" alt="">
   <p class="lightbox-caption" id="lightbox-caption"></p>
-  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">›</button>
-</div>
+  <button aria-label="Next image" class="lightbox-nav lightbox-next" onclick="navLightbox(1)">›</button>
+<div class="lightbox-links"><a id="lightbox-original" href="#" target="_blank" rel="noopener">Open full image</a><a id="lightbox-research" href="papertrail.html">Read the related research</a></div></div>
 
 <nav class="gnav">
   <div class="gnav-inner">
@@ -252,14 +252,15 @@
 
 <section class="hero">
   <p class="hero-label">Nichols · Armstrong · Ballard · Corbin · 1795 — Present</p>
-  <h1 class="hero-title">The Archive</h1>
+  <h1 class="hero-title">Photos &amp; Documents</h1>
   <p class="hero-sub">Primary Sources · Family Photographs · Historical Documents</p>
-  <p class="hero-statement">Every document. Every photograph. Every face that survived long enough to be captured. This is what they left behind — and what we found.</p>
+  <p class="hero-statement">Family photographs alongside the surviving records. Open an image to read it in full; follow the research link for its context and interpretation.</p>
 </section>
 
 <div class="filter-bar">
   <button class="filter-btn active" onclick="filterSection('all', this)">All</button>
   <button class="filter-btn" onclick="filterSection('deeds', this)">Deeds & Documents</button>
+  <button class="filter-btn" onclick="filterSection('estates', this)">Estate Records &amp; Letters</button>
   <button class="filter-btn" onclick="filterSection('certificates', this)">Birth Certificates</button>
   <button class="filter-btn" onclick="filterSection('bellville', this)">Bellville & Texas</button>
   <button class="filter-btn" onclick="filterSection('eva', this)">Eva Armstrong</button>
@@ -279,7 +280,7 @@
     <div class="section-header">
       <span class="section-label">Primary Sources · South Carolina · 1793–1795</span>
       <h2 class="section-title">Deeds & Historical Documents</h2>
-      <p class="section-desc">The documents that hold the names. Every deed here is a primary source confirming a moment in the life of Patience, Clarissa, and the families that held them.</p>
+      <p class="section-desc">The documents that hold the names. Original deed images and related reference pages. Read the linked research before treating a name or transaction as a confirmed family connection.</p>
     </div>
     <div class="photo-grid docs">
       <div class="photo-card doc" onclick="openLightbox(this)">
@@ -355,13 +356,14 @@
       <div class="photo-card doc" onclick="openLightbox(this)">
         <img src="https://raw.githubusercontent.com/jasminesworkspace2-ui/Armstrongfamily/main/Articleofcadwell.jpeg" alt="Article of Caldwell" loading="lazy">
         <div class="photo-caption">
-          <span class="photo-caption-title">Caldwell Document</span>
-          <span class="photo-caption-meta">South Carolina deed records · Witness network confirmation</span>
+          <span class="photo-caption-title">Eva Armstrong · Caldwell Case</span>
+          <span class="photo-caption-meta">Austin, Texas · Newspaper coverage connected to Eva’s story</span>
         </div>
       </div>
     </div>
   </div>
 
+<section class="section" data-section="estates" id="estate-records"><div class="section-header"><span class="section-label">South Carolina · Mississippi · Louisiana</span><h2 class="section-title">Estate Records &amp; Correspondence</h2><p class="section-desc">Five additional record images from the research collection. Manuscripts and compiled abstracts are labeled separately. These documents belong to the historical research network; they do not establish an ancestor connection by themselves.</p></div><div class="photo-grid docs"><div class="photo-card doc" role="button" tabindex="0" data-research="waldrop_enslavers.html" onclick="openLightbox(this)"><img src="assets/documents/waldrop-letter-1872-page-1.jpg" alt="Waldrop Correspondence · Page 1" loading="lazy"><div class="photo-caption"><span class="photo-caption-title">Waldrop Correspondence · Page 1</span><span class="photo-caption-meta">Dated August 16, 1872 · Original manuscript image · Supplied research scan</span><a class="document-context" href="waldrop_enslavers.html" onclick="event.stopPropagation()">Read the research</a></div></div><div class="photo-card doc" role="button" tabindex="0" data-research="waldrop_enslavers.html" onclick="openLightbox(this)"><img src="assets/documents/waldrop-letter-1872-page-2.jpg" alt="Waldrop Correspondence · Page 2" loading="lazy"><div class="photo-caption"><span class="photo-caption-title">Waldrop Correspondence · Page 2</span><span class="photo-caption-meta">1872 correspondence sequence · Original manuscript image · Supplied research scan</span><a class="document-context" href="waldrop_enslavers.html" onclick="event.stopPropagation()">Read the research</a></div></div><div class="photo-card doc" role="button" tabindex="0" data-research="waldrop_enslavers.html" onclick="openLightbox(this)"><img src="assets/documents/waldrop-letter-1872-page-3.jpg" alt="Waldrop Correspondence · Page 3" loading="lazy"><div class="photo-caption"><span class="photo-caption-title">Waldrop Correspondence · Page 3</span><span class="photo-caption-meta">1872 correspondence sequence · Original manuscript image · Supplied research scan</span><a class="document-context" href="waldrop_enslavers.html" onclick="event.stopPropagation()">Read the research</a></div></div><div class="photo-card doc" role="button" tabindex="0" data-research="waldrop_enslavers.html" onclick="openLightbox(this)"><img src="assets/documents/waldrop-sabine-estate-1873.jpg" alt="Waldrop Estate · Sabine Parish, 1873" loading="lazy"><div class="photo-caption"><span class="photo-caption-title">Waldrop Estate · Sabine Parish, 1873</span><span class="photo-caption-meta">Original court-record image · Supplied scan labeled C. P. Waldrop estate / Darius Waldrop</span><a class="document-context" href="waldrop_enslavers.html" onclick="event.stopPropagation()">Read the research</a></div></div><div class="photo-card doc" role="button" tabindex="0" data-research="davenport_family.html" onclick="openLightbox(this)"><img src="assets/documents/newberry-davenport-deed-abstracts.jpg" alt="Newberry Deed Abstracts · Davenport Entries" loading="lazy"><div class="photo-caption"><span class="photo-caption-title">Newberry Deed Abstracts · Davenport Entries</span><span class="photo-caption-meta">Compiled abstract page · Includes August 4, 1795 deed of gift · Check against the original deed</span><a class="document-context" href="davenport_family.html" onclick="event.stopPropagation()">Read the research</a></div></div></div></section>
   <!-- BIRTH CERTIFICATES -->
   <div class="section" data-section="certificates">
     <div class="section-header">
@@ -1344,7 +1346,7 @@ let allCards = [];
 let currentIdx = 0;
 
 function buildCardList() {
-  allCards = Array.from(document.querySelectorAll('.photo-card'));
+  allCards = Array.from(document.querySelectorAll('.photo-card')).filter(card => !card.closest('.section').classList.contains('hidden'));
 }
 
 function openLightbox(card) {
@@ -1361,6 +1363,9 @@ function showLightboxCard(idx) {
   const caption = card.querySelector('.photo-caption-title')?.textContent || '';
   const meta = card.querySelector('.photo-caption-meta')?.textContent || '';
   document.getElementById('lightbox-img').src = img.src;
+  document.getElementById('lightbox-img').alt = img.alt;
+  document.getElementById('lightbox-original').href = img.src;
+  var research=document.getElementById('lightbox-research');research.href=card.dataset.research||'papertrail.html';research.textContent=card.dataset.research?'Read the related research':'Read the Paper Trail';
   document.getElementById('lightbox-caption').textContent = caption + (meta ? ' · ' + meta : '');
 }
 
@@ -1380,12 +1385,14 @@ document.getElementById('lightbox').addEventListener('click', function(e) {
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowRight') navLightbox(1);
-  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight' && document.getElementById('lightbox').classList.contains('active')) navLightbox(1);
+  if (e.key === 'ArrowLeft' && document.getElementById('lightbox').classList.contains('active')) navLightbox(-1);
 });
+document.querySelectorAll('.photo-card').forEach(function(card){card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label',card.querySelector('.photo-caption-title').textContent);card.addEventListener('keydown',function(e){if(e.target===card&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openLightbox(card);}});});
 </script>
-<script src="sidebar.js?v=20261006-flow-readable"></script>
+<script src="sidebar.js?v=20261006-design"></script>
 <script src="archive-update.js"></script>
-<script src="archive-routes.js?v=20261006-flow"></script>
+<script src="archive-routes.js?v=20261006-design"></script>
 </body>
 </html>
+

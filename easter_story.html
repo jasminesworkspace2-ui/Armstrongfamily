@@ -100,26 +100,42 @@ nav{position:sticky;top:0;z-index:20;background:rgba(9,8,6,.9);backdrop-filter:b
 </style>
 <link rel="stylesheet" href="overrides.css?v=20261006-audit">
 <link rel="stylesheet" href="archive-reading.css?v=20261006-audit2">
-</head>
+<style>
+/* Easter's documentary portrait */
+body .hero{min-height:0;background:radial-gradient(ellipse at 10% 10%,#30271c 0,transparent 55%),#12100d;overflow:visible}body .hero:before{display:none}
+body .hero .hero-inner{width:100%;max-width:1120px;padding:64px 32px 42px;grid-template-columns:minmax(0,1fr) 320px;gap:34px;align-items:center}
+body .hero .eyebrow{font:12px/1.6 var(--sans);letter-spacing:.08em;max-width:500px}
+.easter-overline{color:#e3c875;font-size:13px;margin:28px 0 12px}
+body .hero h1{font:400 clamp(62px,8vw,100px)/.98 var(--serif);letter-spacing:-.045em;margin:12px 0 22px}body .hero h1 em{display:block;font-size:.54em;font-weight:400;line-height:1.25;letter-spacing:-.02em;color:#e3c875}
+body .hero .hero-sub{font:400 24px/1.4 var(--serif);color:#eee5d7}
+.easter-names{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.easter-names span{border-bottom:1px solid #756045;padding:4px 0;margin-right:12px;font-size:13px;color:#d7c8af}
+body .hero .hero-file{background:#e8ddc7;color:#282119;border:0;padding:26px;box-shadow:8px 8px 0 #393020;position:relative}body .hero-file-title{color:#282119;font-size:28px}body .hero-file-label{color:#665238;font-size:11px}
+.easter-file-seal{font:italic 68px/1 Georgia,serif;border-bottom:1px solid #b1a086;padding:10px 0 20px;margin:0 0 20px}.easter-file-seal span{display:block;font:11px/1.5 var(--sans);letter-spacing:.18em;text-transform:uppercase;margin-top:10px;color:#665238}
+body .hero-file-row{display:grid;grid-template-columns:1fr;gap:2px;margin-bottom:12px;color:#41382d;font-size:15px}body .hero-file-row b{color:#665238;font:11px/1.5 var(--sans);letter-spacing:.08em}body .hero-file-status{color:#53432c;font:11px/1.5 var(--sans);letter-spacing:.02em;border-color:#b1a086}body .hero-file-line{background:#b1a086}
+body .hero-grid{gap:12px;background:none;border:0;margin:14px 0 0}body .hero-grid .stat{padding:14px 0;border-top:1px solid #6d5838;background:none}body .stat span{color:#c8bda9;font:12px/1.5 var(--sans);letter-spacing:0;text-transform:none}body .stat b{font-size:30px}
+body .hero .hero-note{margin-top:22px;font-size:16px;color:#d3c7b4}.easter-record-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:30px 0}.record-path{padding:26px;background:#1d1913;border:1px solid #58452d;border-top:3px solid #d1ad67}.path-label{font:12px/1.5 var(--sans);color:#e3c875}.record-path h3{font:28px/1.2 var(--serif);margin:18px 0}.record-path .path-names{color:#eee5d7}.path-names span{color:#e3c875}.record-path a{display:inline-flex;min-height:44px;align-items:center;color:#e3c875;font-size:14px}
+body .chapter,body .intro{padding:50px 0}body nav .wrap{flex-wrap:wrap;overflow:visible;gap:8px 18px}body nav{position:static}body nav a{white-space:normal;min-height:44px;display:flex;align-items:center;font-size:12px}body .wrap{width:100%;min-width:0}
+@media(max-width:800px){body .hero .hero-inner{grid-template-columns:1fr;padding:34px 22px 32px;gap:24px}body .hero h1{font-size:70px}body .hero-file{margin:0 8px 8px 0}body .hero .hero-note[style]{margin:0!important}body .hero-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.easter-record-paths{grid-template-columns:1fr}body .wrap{padding-left:22px;padding-right:22px}body .chapter h2{font-size:34px}}
+</style></head>
 <body>
 <header class="hero" id="top"><div class="wrap hero-inner">
 <div class="hero-copy">
 <div class="eyebrow">Armstrong Family Archive · Documentary Research File · Texas</div>
-<h1>Easter</h1>
-<div class="hero-sub">Bell. Nichols. Pink.<br>A life reconstructed one record at a time.</div>
+<p class="easter-overline">A family matriarch · A documentary life</p><h1>Easter <em>Bell Nichols</em></h1>
+<div class="hero-sub">Her name survived. Her story is still unfolding.</div><div class="easter-names" aria-label="Names in the records"><span>Bell</span><span>Nichols</span><span>Pink / Pinks</span></div>
 <p class="hero-note">The records preserve Easter under several names and with conflicting ages. This file keeps those differences visible while separating documented facts from unresolved questions about her early life and enslavement.</p>
 </div>
 <aside class="hero-file">
-<span class="hero-file-label">Research File · 01</span>
+<span class="hero-file-label">Archive profile · 01</span><div class="easter-file-seal" aria-hidden="true">E<span>Bell · Nichols · Pink</span></div>
 <h2 class="hero-file-title">Easter Bell Nichols</h2>
-<div class="hero-file-row"><b>Born</b><span>July 4, 1838*</span></div>
+<div class="hero-file-row"><b>Reported birth</b><span>July 4, 1838*</span></div>
 <div class="hero-file-row"><b>Place</b><span>Texas</span></div>
-<div class="hero-file-row"><b>Mother</b><span>Rinde / Rendy Bland</span></div>
+<div class="hero-file-row"><b>Maternal field</b><span>“Rinde Bland” · identity unresolved</span></div>
 <div class="hero-file-row"><b>Died</b><span>1935 · Bellville</span></div>
 <div class="hero-file-line"></div>
 <span class="hero-file-status">Documented identity · Open questions remain</span>
 </aside>
-<div class="hero-grid"><div class="stat"><b>1838*</b><span>Death certificate birth year</span></div><div class="stat"><b>1865</b><span>Marriage to Joseph Nichols</span></div><div class="stat"><b>1914</b><span>Easther Nichols marriage index</span></div><div class="stat"><b>1935</b><span>Death · Bellville, Texas</span></div></div>
+<div class="hero-grid"><div class="stat"><b>1838*</b><span>Death certificate birth year</span></div><div class="stat"><b>1869</b><span>Reviewed marriage license</span></div><div class="stat"><b>1914</b><span>Easther Nichols marriage index</span></div><div class="stat"><b>1935</b><span>Death · Bellville, Texas</span></div></div>
 <p class="hero-note" style="font-size:11px;grid-column:1 / -1;margin-top:-22px">* Census records report different ages and therefore different implied birth years. The archive preserves those discrepancies instead of averaging them away.</p>
 </div></header>
 <nav><div class="wrap"><a href="#identity">Identity</a><a href="#birth">Birth</a><a href="#slavery">Slavery Records</a><a href="#named-enslaved">Named Enslaved People</a><a href="#enslavers">Enslaver Profiles</a><a href="#network">Network Map</a><a href="#marriage">Marriage</a><a href="#children">Children</a><a href="#land">Land</a><a href="#death">Death</a><a href="#questions">Open Questions</a><a href="#sources">Sources</a></div></nav>
@@ -138,9 +154,9 @@ nav{position:sticky;top:0;z-index:20;background:rgba(9,8,6,.9);backdrop-filter:b
 <div class="warning"><h3>Why we do not “fix” the dates</h3><p>The records themselves do not explain the discrepancies. It is historically plausible that an enslaved person might not have had a documented birth record or precise knowledge of a birth date, and later ages could be supplied by family members or enumerators. But that is an interpretation, not something Easter's documents explicitly tell us. The archive therefore preserves every reported age and identifies July 4, 1838 as the date given on her death certificate rather than claiming that the disagreement has been solved.</p></div>
 </div></section>
 
-<section class="chapter" id="slavery"><div class="wrap reveal"><span class="chapter-date">Before emancipation · Austin County, Texas</span><h2>What we can — and cannot — say about her enslavement</h2><p>Easter was born during slavery. Her 1935 death certificate gives her birth as Texas and identifies her father as unknown. It gives her mother's maiden name as <strong>Rinde Bland</strong>. Family research identifies this mother as <strong>Rendy Blayn / Bland</strong>, but the spelling should remain faithful to each source.</p><p>The difficult question is not whether Easter was enslaved. The difficult question is <strong>which enslaver or household held her, and when</strong>.</p><div class="evidence-grid"><div class="evidence"><h3>Bell household theory</h3><p>Earlier research associated Easter with the Thomas Bell / John Gideon Bell household through the 1850 and 1860 slave schedules and the Bell surname. This remains an important research lead, but unnamed slave-schedule women cannot be identified solely by age and location.</p><span class="status candidate">Candidate identification</span><span class="status lead">Research lead</span></div><div class="evidence"><h3>Nichols household theory</h3><p>Earlier versions of this page identified an unnamed 1860 female in the John Nichols slave schedule as Easter and placed Rendy immediately above her. Because the schedules are unnamed, that identification requires the original schedule and continuity evidence before it can be stated as fact.</p><span class="status unresolved">Unresolved</span></div></div><div class="quote">The strongest documentary statement is not “we know exactly who held her.” It is: Easter was born during slavery in Texas, and the surviving records do not yet give us a direct named ownership document connecting her birth to a specific enslaver.</div><p>John Nichols's 1864 estate records and the Bell family records are still valuable because they establish the surrounding enslaved community. They should be used as network evidence until a direct continuity bridge identifies Easter herself.</p></div></section>
+<section class="chapter" id="slavery"><div class="wrap reveal"><span class="chapter-date">Before emancipation · Austin County, Texas</span><h2>What we can — and cannot — say about her enslavement</h2><p>Easter was born during slavery. Her 1935 death certificate gives her birth as Texas and identifies her father as unknown. It gives her mother's maiden name as <strong>Rinde Bland</strong>. <strong>Rendy Blayn / Bland</strong> is a research lead and surname-variant investigation. Easter’s mother has not been independently identified; the certificate wording and that unresolved identity must remain separate.</p><p>The difficult question is not whether Easter was enslaved. The difficult question is <strong>which enslaver or household held her, and when</strong>.</p><div class="evidence-grid"><div class="evidence"><h3>Bell household theory</h3><p>Earlier research associated Easter with the Thomas Bell / John Gideon Bell household through the 1850 and 1860 slave schedules and the Bell surname. This remains an important research lead, but unnamed slave-schedule women cannot be identified solely by age and location.</p><span class="status candidate">Candidate identification</span><span class="status lead">Research lead</span></div><div class="evidence"><h3>Nichols household theory</h3><p>Earlier versions of this page identified an unnamed 1860 female in the John Nichols slave schedule as Easter and placed Rendy immediately above her. Because the schedules are unnamed, that identification requires the original schedule and continuity evidence before it can be stated as fact.</p><span class="status unresolved">Unresolved</span></div></div><div class="quote">The strongest documentary statement is not “we know exactly who held her.” It is: Easter was born during slavery in Texas, and the surviving records do not yet give us a direct named ownership document connecting her birth to a specific enslaver.</div><p>John Nichols's 1864 estate records and the Bell family records are still valuable because they establish the surrounding enslaved community. They should be used as network evidence until a direct continuity bridge identifies Easter herself.</p></div></section>
 
-<section class="chapter" id="marriage"><div class="wrap reveal"><span class="chapter-date">1865–1869 · Austin County, Texas</span><h2>Freedom, then a name of her own</h2><p>Two marriage dates have appeared in the research history for <strong>Joseph Nichols</strong> and <strong>Easter Bell</strong>. An index pull gives <strong>December 18, 1865</strong>, while the later-reviewed marriage license records a ceremony on <strong>December 23, 1869</strong>. Both references point to the same couple, but the archive should not silently collapse conflicting records into one date.</p><div class="pull"><div class="label">Currently controlling marriage record</div><div class="text">Joseph Nichols + Easter Bell<br>23 December 1869 · Austin County, Texas<br>Marriage license No. 8 · ceremony recorded December 23, 1869</div><div class="source">Austin County marriage record · FHL Film 1019274 · the 18 December 1865 index entry remains part of the research history and requires reconciliation with the underlying record.</div></div><p>The <strong>December 23, 1869</strong> license is the controlling marriage record used on the Joseph Nichols page. The earlier December 18, 1865 index date is preserved as a conflicting research reference rather than erased. The 1870 population schedule then gives a powerful continuity bridge: <strong>Esther</strong>, age 21, is recorded as Joseph Nichols's wife in Bellville. The spelling differs, but the husband, place, age, and later Easter Nichols records make the identification highly relevant.</p><p>The 1870 population schedule then gives us a powerful continuity bridge: <strong>Esther</strong>, age 21, is recorded as the wife of Joseph Nichols in Bellville. The spelling differs, but the husband, place, age, and later Easter Nichols records make the identification highly relevant.</p></div></section>
+<section class="chapter" id="marriage"><div class="wrap reveal"><span class="chapter-date">1865–1869 · Austin County, Texas</span><h2>Freedom, then a name of her own</h2><p>Two marriage dates have appeared in the research history for <strong>Joseph Nichols</strong> and <strong>Easter Bell</strong>. An index pull gives <strong>December 18, 1865</strong>, while the later-reviewed marriage license records a ceremony on <strong>December 23, 1869</strong>. Both references point to the same couple, but the archive should not silently collapse conflicting records into one date.</p><div class="pull"><div class="label">Currently controlling marriage record</div><div class="text">Joseph Nichols + Easter Bell<br>23 December 1869 · Austin County, Texas<br>Marriage license No. 8 · ceremony recorded December 23, 1869</div><div class="source">Austin County marriage record · FHL Film 1019274 · the 18 December 1865 index entry remains part of the research history and requires reconciliation with the underlying record.</div></div><p>The <strong>December 23, 1869</strong> license is the controlling marriage record used on the Joseph Nichols page. The earlier December 18, 1865 index date is preserved as a conflicting research reference rather than erased. The 1870 population schedule then gives a powerful continuity bridge: <strong>Esther</strong>, age 21, is recorded as Joseph Nichols's wife in Bellville. The spelling differs, but the husband, place, age, and later Easter Nichols records make the identification highly relevant.</p></div></section>
 
 <section class="chapter"><div class="wrap reveal"><span class="chapter-date">1870–1930 · Family continuity</span><h2>The name changes. The household does not disappear.</h2><div class="timeline">
 <div class="event"><div class="date">1870</div><div class="dot"></div><div><h3>Esther Nichols</h3><p>Age 21, wife of Joseph Nichols in Bellville. Children in the household include Allen and Anna. This is the first supplied post-emancipation census image in which the Nichols household can be read directly.</p></div></div>
@@ -297,63 +313,18 @@ nav{position:sticky;top:0;z-index:20;background:rgba(9,8,6,.9);backdrop-filter:b
     <h2>How the records intersect</h2>
     <p>
       This map separates <strong>documented relationships</strong> from <strong>research connections</strong>.
-      Animated lines indicate a documentary relationship or research path; a dashed red line marks an
-      unresolved identification rather than a proven identity.
+      Each card keeps a separate source trail visible. A shared name or nearby household is a research lead until continuity evidence connects the people.
     </p>
 
-    <div class="network-wrap">
-      <svg class="network-svg" viewBox="0 0 1000 570" role="img" aria-label="Schematic network connecting Easter, David Smith, Nancy Cornett, William Cornett, Thomas Bell, Abigail Grimes, George Grimes, Monty, and the Nichols family">
-        <path class="edge" d="M500 275 C410 235 300 190 205 145"/>
-        <path class="edge" d="M500 275 C610 245 700 200 795 145"/>
-        <path class="edge" d="M795 145 C845 230 845 330 795 425"/>
-        <path class="edge" d="M795 425 C700 470 600 485 500 485"/>
-        <path class="edge soft" d="M205 145 C180 245 220 355 320 425"/>
-        <path class="edge soft" d="M320 425 C390 450 445 465 500 485"/>
-        <path class="edge" d="M500 485 C600 450 700 420 795 425"/>
-        <path class="edge doubt" d="M500 275 C625 315 705 355 795 425"/>
-        <path class="edge soft" d="M205 145 C300 95 390 70 500 90"/>
-
-        <circle class="node core" cx="500" cy="275" r="58"/>
-        <text class="node-text" x="500" y="271" text-anchor="middle">Easter</text>
-        <text class="node-sub" x="500" y="289" text-anchor="middle">3rd great-grandmother</text>
-
-        <circle class="node" cx="205" cy="145" r="48"/>
-        <text class="node-text" x="205" y="142" text-anchor="middle">David Smith</text>
-        <text class="node-sub" x="205" y="160" text-anchor="middle">1853 will</text>
-
-        <circle class="node" cx="795" cy="145" r="48"/>
-        <text class="node-text" x="795" y="142" text-anchor="middle">Nancy Cornett</text>
-        <text class="node-sub" x="795" y="160" text-anchor="middle">daughter of Smith</text>
-
-        <circle class="node" cx="795" cy="425" r="52"/>
-        <text class="node-text" x="795" y="422" text-anchor="middle">William Cornett</text>
-        <text class="node-sub" x="795" y="440" text-anchor="middle">Austin County · Mill Creek</text>
-
-        <circle class="node" cx="320" cy="425" r="47"/>
-        <text class="node-text" x="320" y="422" text-anchor="middle">George Grimes</text>
-        <text class="node-sub" x="320" y="440" text-anchor="middle">Abigail's father</text>
-
-        <circle class="node" cx="500" cy="90" r="47"/>
-        <text class="node-text" x="500" y="87" text-anchor="middle">Thomas Bell</text>
-        <text class="node-sub" x="500" y="105" text-anchor="middle">Abigail's husband</text>
-
-        <circle class="node" cx="320" cy="515" r="38"/>
-        <text class="node-text" x="320" y="512" text-anchor="middle">Monty</text>
-        <text class="node-sub" x="320" y="529" text-anchor="middle">1851 Grimes estate</text>
-
-        <circle class="node" cx="650" cy="515" r="43"/>
-        <text class="node-text" x="650" y="512" text-anchor="middle">Nichols</text>
-        <text class="node-sub" x="650" y="529" text-anchor="middle">later family network</text>
-
-        <text class="node-sub" x="500" y="555" text-anchor="middle">Gold = documentary relationship · Blue = contextual network · Red = unresolved continuity</text>
-      </svg>
-      <div class="network-note">SCHEMATIC ONLY · NODE POSITIONS ARE FOR DOCUMENTARY CLARITY, NOT A SURVEY MAP OR PROOF OF PHYSICAL ADJACENCY.</div>
-    </div>
-
+    <div class="easter-record-paths" aria-label="Separate documentary research paths">
+<article class="record-path"><span class="path-label">01 · Named-person trail</span><h3>Smith &amp; Cornett</h3><p class="path-names">David Smith <span>→</span> Nancy Cornett <span>→</span> Easter named in the will</p><p>The 1853 will supplies a name. Identification as Easter Bell Nichols remains a question to prove.</p><a href="#enslavers">Read the source context →</a></article>
+<article class="record-path"><span class="path-label">02 · Community &amp; property</span><h3>Grimes &amp; Bell</h3><p class="path-names">George Grimes · Monty · William Frampton<br>Abigail Grimes · Thomas Bell</p><p>Estate, witness and family relationships guide the search. They do not establish Easter’s ownership or parentage.</p><a href="#slavery">Review the evidence limits →</a></article>
+<article class="record-path"><span class="path-label">03 · Later family record</span><h3>Easter &amp; Nichols</h3><p class="path-names">Easter Bell <span>+</span> Joseph Nichols</p><p>The reviewed 1869 license anchors their marriage. Earlier household identification remains unresolved.</p><a href="#marriage">Read the marriage records →</a></article>
+</div>
     <div class="evidence-grid">
       <div class="evidence">
-        <h3>Documented chain</h3>
-        <p><strong>David Smith → Nancy Cornett → Easter</strong> is the strongest named-person slavery-era chain currently in the investigation. The 1853 will is the controlling source for that chain.</p>
+        <h3>Named-person record chain</h3>
+        <p><strong>David Smith → Nancy Cornett → an enslaved person named Easter</strong> is a named-person chain in the 1853 will. Connecting that Easter to Easter Bell Nichols requires a separate identity and continuity argument.</p>
         <span class="status documented">Documented</span>
       </div>
       <div class="evidence">

@@ -98,7 +98,10 @@ table{border-collapse:collapse;width:100%;font-size:13px;font-family:var(--f-bod
 @media(max-width:600px){h1{font-size:49px}.grid,.flip-grid,.network,.registry{grid-template-columns:1fr}.timeline:before{left:56px}.event{grid-template-columns:45px 22px 1fr;gap:8px}.docmeta{grid-template-columns:1fr}.section{padding-bottom:45px}}
 </style>
 <link rel="stylesheet" href="archive-reading.css?v=20261006-audit2">
-</head>
+<style>
+.document-landscape{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;background:linear-gradient(135deg,#292117,#12100d);border:1px solid #695231;padding:24px;margin-bottom:24px}.landscape-card{display:flex;gap:18px;min-width:0;padding:24px;background:#181510;border:1px solid #59462e}.landscape-number{font:italic 48px/1 Georgia,serif;color:#d6b46f}.landscape-type{font:12px/1.5 var(--f-body);color:#e3c875}.landscape-card h3{font-size:27px;margin:10px 0}.landscape-card p{font-size:16px;color:#c8bda9;margin:0}.landscape-center{grid-column:1/-1;background:#e8ddc7;color:#30271c;padding:25px;text-align:center}.landscape-center span{display:block;font:11px/1.5 var(--f-body);letter-spacing:.1em}.landscape-center strong{display:block;font:30px/1.2 var(--f-display);margin:10px 0}.landscape-center p{color:#514434!important;margin:0}.section-head{flex-wrap:wrap}.orbit{display:none}.small{font:15px/1.7 var(--f-body)}
+@media(max-width:600px){.document-landscape{grid-template-columns:1fr;padding:14px;gap:12px}.landscape-card{padding:20px;gap:14px}.landscape-number{font-size:36px}.landscape-center strong{font-size:26px}.landscape-card h3{font-size:25px}.section-head .small{max-width:100%}}
+</style></head>
 <body>
 <header class="sitebar">
   <div class="sitebar-inner">
@@ -141,13 +144,13 @@ table{border-collapse:collapse;width:100%;font-size:13px;font-family:var(--f-bod
 
   <section class="section">
     <div class="section-head"><div><div class="kicker">02 · Network map</div><h2>Records pull the researcher outward.</h2></div><div class="small">Illustrative network — not a statement of biological descent.</div></div>
-    <div class="map">
-      <div class="route r1"></div><div class="route r2"></div>
-      <div class="pin p1" data-label="Georgia estates"></div>
-      <div class="pin p2" data-label="Austin County / Bellville"></div>
-      <div class="pin p3" data-label="Texas property records"></div>
-      <div class="pin p4" data-label="Community &amp; probate records"></div>
-    </div>
+<div class="document-landscape" aria-label="Four documentary research areas">
+<article class="landscape-card"><span class="landscape-number">01</span><div><span class="landscape-type">Estate &amp; legal records</span><h3>Georgia estates</h3><p>Inventories, legacies and litigation can preserve names missing from later records.</p></div></article>
+<article class="landscape-card"><span class="landscape-number">02</span><div><span class="landscape-type">Local records</span><h3>Austin County &amp; Bellville</h3><p>Compare named people across households, courts and the surrounding community.</p></div></article>
+<article class="landscape-card"><span class="landscape-number">03</span><div><span class="landscape-type">Ownership &amp; land</span><h3>Texas property records</h3><p>Deeds and partitions trace legal transactions. They require separate identity evidence.</p></div></article>
+<article class="landscape-card"><span class="landscape-number">04</span><div><span class="landscape-type">People across time</span><h3>Community &amp; probate</h3><p>Witnesses, neighbors, heirs and later censuses help test continuity.</p></div></article>
+<div class="landscape-center"><span>THE QUESTION AT THE CENTER</span><strong>Where does this person appear next?</strong><p>Compare the records. Preserve names. Prove each connection.</p></div>
+</div>
     <p class="small">The visual represents the research method: an enslaved person may appear first through an estate, then through a sale, then through a court case, then through a later census or land record. The route itself is evidence only where the underlying documents establish it.</p>
   </section>
 
